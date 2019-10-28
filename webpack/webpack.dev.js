@@ -11,8 +11,7 @@ module.exports = {
     chunkFilename: '[name].js'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(css|scss)$/,
         use: [
           'style-loader',
@@ -28,7 +27,14 @@ module.exports = {
           },
           'sass-loader'
         ]
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+        loader: 'url-loader?limit=10000&mimetype=image/png',
+      },
     ]
   },
   devServer: {
