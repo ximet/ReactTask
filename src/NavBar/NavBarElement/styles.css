@@ -1,0 +1,21 @@
+.element {
+    width: 100%;
+    margin: 0px;
+    background-color: #44ebeba8;
+    height: 48px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14pt;
+    margin: 5px 0;
+}
+
+.element:first-child {
+    margin-top: 30px;
+}
+
+.image {
+    height: 40px;
+    margin-left: 18px;
+}

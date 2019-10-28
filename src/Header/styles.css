@@ -1,0 +1,31 @@
+.head {
+    width: 80%;
+    height: 80px;
+    background-color: rgb(255, 202, 55);
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.head div {
+    margin:0 10px 0 40px;
+    border-radius: 50%;
+    border: 2px solid rgb(196, 127, 0);
+    background-color: white;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head img {
+    height: 45px;
+}
+
+.head span {
+    color: rgb(40, 51, 68);
+    font-size: 22pt;
+    font-weight: 600;
+}
+
