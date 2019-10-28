@@ -1,7 +1,7 @@
 {
     "parser": "babel-eslint",
-    "plugins": ["react", "jest", "prettier"],
-    "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+    "plugins": ["react", "jest"],
+    "extends": ["airbnb"],
     "globals": {
       "React": true,
       "document": true,
