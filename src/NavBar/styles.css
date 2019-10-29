@@ -1,10 +1,9 @@
-.block {
+.nav {
     width: 20%;
     margin: 0px;
     background-color: rgb(53, 68, 90);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     float: left;
-    overflow: hidden;
 }

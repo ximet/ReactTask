@@ -1,6 +1,6 @@
 .head {
     width: 80%;
-    height: 80px;
+    height: 60px;
     background-color: rgb(255, 202, 55);
     float: left;
     display: flex;
@@ -12,20 +12,20 @@
     border-radius: 50%;
     border: 2px solid rgb(196, 127, 0);
     background-color: white;
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .head img {
-    height: 45px;
+    height: 35px;
 }
 
 .head span {
     color: rgb(40, 51, 68);
-    font-size: 22pt;
+    font-size: 20pt;
     font-weight: 600;
 }
 

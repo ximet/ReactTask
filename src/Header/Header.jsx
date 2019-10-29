@@ -1,5 +1,4 @@
 import React from 'react';
-// import NavBarElement from './NavBarElement/NavBarElement.jsx';
 import styles from './styles.css';
 
 import logo from '../img/umbrella.png';
