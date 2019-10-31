@@ -10,16 +10,16 @@ import img3 from '../img/wind_3.png';
 
  const ImgItems = [
     {
-      img: img1,
-      title: "Дом"
+      nav_img: img1,
+      nav_title: "Дом"
     },
     {
-      img: img2,
-      title: "Погода"
+      nav_img: img2,
+      nav_title: "Погода"
     },
     {
-      img: img3,
-      title: "Прогнозы"
+      nav_img: img3,
+      nav_title: "Прогнозы"
     },
   ];
 
@@ -29,7 +29,7 @@ class NavBar extends React.Component {
     <div className = {styles.nav}>
       {
         map(ImgItems, item => (
-          <NavBarElement title={item.title} image={item.img}></NavBarElement>
+          <NavBarElement title={item.nav_title} image={item.nav_img}></NavBarElement>
         ))
       }
     </div>

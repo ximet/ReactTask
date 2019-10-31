@@ -14,6 +14,7 @@ function NavBarElement (props) {
 
 NavBarElement.propTypes = {
     title: PropTypes.string.isRequired,
+    // image:
 }
 
 // NavBarElement.defaultProps = {

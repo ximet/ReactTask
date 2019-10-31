@@ -1,20 +1,22 @@
 .main {
     float: left;
     width: 70%;
+    max-width: 150vh;
     height: 40vw;
+    max-height: 80vh;
     position: relative;
     margin: 5vh 0 0 4.6%;
     background-color: #e8e7e565;
     box-shadow: 13px 13px 5px rgba(207, 207, 207, 0.836); 
+    overflow: hidden;
 
     background-color: transparent;
     background-size: 100%;
-    background-image: url(../img/weath.jpg);
+    /* background-image: url(../img/weath.jpg); */
     background-repeat: no-repeat;
 
     display: flex;
     align-items: center;
-
 }
 
 .main div {
@@ -22,6 +24,7 @@
     height: 25vw;
     overflow: hidden;
     min-height: 240px;
+    min-width: 240px;
     /* background-color: rgba(247, 195, 25, 0.712); */
     display: flex;
     flex-direction: column;
@@ -31,7 +34,7 @@
     width: 40%;
     min-width: 210px;
     margin: 2vmin 5vmin;
-    padding: 10px;
+    padding: 10px 10px 10px 2vw;
     font-size: 52pt;
     color: rgb(36, 35, 71);
     background-color: #44ebebbd;  

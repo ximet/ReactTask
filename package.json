@@ -25,7 +25,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "core-js": "3.2.1",
     "history": "4.10.1",
-    "prop-types": "15.7.2",
+    "prop-types": "^15.7.2",
     "qs": "6.9.0",
     "ramda": "0.26.1",
     "react": "16.10.2",
