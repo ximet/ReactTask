@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './styles.css';
 
-class Button extends React.Component {
-  render() {
+function Button (props) {
     return (
     <div className = {styles.button}>
-      <button>More</button>      
+      <button>{props.title}</button>      
     </div>
     );
-  }
 }
+
+
+Button.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Button;

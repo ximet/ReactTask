@@ -21,7 +21,7 @@ class Main extends React.Component {
             <p className = {styles.city}> {this.props.city} </p>
             <p className = {styles.temperature}> {this.props.temperature} &#8451; </p>
         </div>
-        <Button></Button>
+        <Button title="More"></Button>
     </div>
     );
   }
