@@ -4,7 +4,6 @@ import styles from './styles.css';
 
 // import Background from '../img/weath.jpg';
 
-
 class Main extends React.Component {
   constructor(props) {
     super(props);
