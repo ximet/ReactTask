@@ -1,0 +1,10 @@
+.city {
+    width: 100%;
+    border-bottom: 5px solid white;
+    min-height: 10vh;
+    padding: 10px;
+}
+
+.city:last-child {
+    border: none;
+}

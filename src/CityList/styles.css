@@ -1,0 +1,14 @@
+.city_weather {
+    /* float: left;
+    width: 70%;
+    max-width: 150vh; */
+    position: relative;
+    /* margin: 5vh 0 0 4.6%; */
+    background-color: #e8e7e565;
+    box-shadow: 13px 13px 5px rgba(207, 207, 207, 0.836); 
+    /* overflow: hidden; */
+    grid-area: main;
+}
+
+
+
