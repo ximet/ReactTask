@@ -1,3 +1,223 @@
-.appHeader{
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 -15px 15px;
+}
+
+.col {
+    padding: 0 15px;
+}
+
+.p_0_15 {
+    padding: 0 15px;
+}
+
+.icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.iconImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 170px;
+    text-align: center;
+    padding: 15px;
+    background: #404040;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.btn.blue {
+    background: #00c8ff;
+}
+
+.btn.blue:hover {
+    background: #00a1ce;
+}
+
+.appWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.appHeader {
     background-color: #404040;
+    height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.appContent {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    width: 100%;
+}
+
+.appAside {
+    min-width: 50px;
+    background-color: #1f1f1f;
+    padding: 15px;
+}
+
+.appMain {
+    flex: 1 85%;
+    background-color: #f3f3f3;
+    padding: 15px;
+}
+
+.appLogo {
+    display: flex;
+}
+
+.appLogoImg {
+    height: auto;
+    width: 40px;
+    margin-right: 15px;
+}
+
+.appLogoText {
+    color: #fff;
+    font-size: 18px;
+    padding: 11px 0;
+}
+
+.menuVertical {
+    color: #fff;
+}
+
+.menuItem {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: .3s;
+    cursor: pointer;
+    background-color: #0e0e0e;
+    border-bottom: 2px #404040 solid;
+    border-left: 2px #404040 solid;
+}
+
+.menuItem:last-child {
+    margin-bottom: 0px;
+}
+
+.menuItem:hover {
+    background-color: #00c8ff;
+}
+
+.menuItemText {
+    line-height: 1;
+    font-size: 10px;
+    padding: 15px 0 15px 15px;
+    text-transform: capitalize;
+}
+
+.weatherPaneBig {
+    background-color: #404040;
+    padding: 40px;
+    width: 620px;
+}
+
+.weatherPaneBig .paneTitle {
+    font-size: 90px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.weatherPaneBig .paneTitle .icon {
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
+}
+
+.weatherPaneBig .paneData {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.weatherPaneBig .paneData .icon {
+    margin-right: 10px;
+    width: 90px;
+    height: 90px;
+}
+
+.weatherPaneBig .paneData .temperature {
+    font-size: 45px;
+}
+
+.weatherPaneBig .paneData .temperature .value {
+    font-size: 45px;
+}
+
+.weatherPaneBig .paneData .temperature .digit {
+    font-size: 35px;
+}
+
+.weatherPaneBig .paneBtns {
+    display: flex;
+}
+
+.WeatherListPane {
+    background-color: #404040;
+    padding: 20px;
+    display: flex;
+    margin: 0 0 15px 0;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.WeatherListPane:hover {
+    background-color: #00c8ff;
+}
+
+.WeatherListPane:last-child {
+    margin: 0;
+}
+
+.WeatherListPane>div {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.WeatherListPane>div:last-child {
+    margin-right: 0;
+}
+
+.WeatherListPane .icon {
+    width: 40px;
+    height: 40px;
+}
+
+.WeatherListPane .location {
+    flex: 1;
+}
+
+.WeatherListPane .temperature {
+    text-align: center;
+}
+
+.WeatherListPane .weatherIcon {
+    text-align: center;
+}
+
+.WeatherListPane .location .icon {
+    width: 16px;
+    height: 16px;
 }

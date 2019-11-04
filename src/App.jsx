@@ -1,15 +1,21 @@
 import React from 'react';
-import AppLogo from './components/AppLogo/AppLogo';
 
-import styles from './assets/css/styles.css';
-const logoSrc = require('./assets/images/logo192.png');
+import Header from 'components/blocks/Header/Header';
+import Main from 'components/blocks/Main/Main';
+import Side from 'components/blocks/Side/Side';
+
+import styles from 'assets/css/styles.css';
 
 class App extends React.PureComponent {
   render() {
     return (
-      <header className={styles.appHeader}>
-        <AppLogo logoSrc={logoSrc}/>
-      </header>
+      <div className={styles.appWrapper}>
+        <Header />
+        <section className={styles.appContent}>
+          <Side />
+          <Main />
+        </section>
+      </div>
     );
   }
 }

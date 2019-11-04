@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: commonPaths.outputPath,
-    chunkFilename: '[name].js'
+    chunkFilename: '[name].js',
   },
   module: {
     rules: [{
@@ -17,7 +17,7 @@ module.exports = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
+            options: { 
               sourceMap: true,
               localsConvention: 'camelCase',
               modules: {
@@ -27,14 +27,7 @@ module.exports = {
           },
           'sass-loader'
         ]
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ],
-        loader: 'url-loader?limit=10000&mimetype=image/png',
-      },
+      }
     ]
   },
   devServer: {
