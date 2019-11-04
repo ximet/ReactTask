@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = (api) => {
   const babelEnv = api.env();
   api.cache(true);
 
@@ -17,7 +17,7 @@ module.exports = function(api) {
   ];
   const plugins = [
     '@babel/transform-react-constant-elements',
-    'transform-react-remove-prop-types',
+    // 'transform-react-remove-prop-types',
     'transform-react-pure-class-to-function',
     '@babel/plugin-transform-runtime',
     'react-hot-loader/babel',
