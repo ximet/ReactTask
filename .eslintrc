@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "plugins": ["react", "jest", "prettier"],
-  "extends": ["airbnb"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "globals": {
     "React": true,
     "document": true,
@@ -13,7 +13,18 @@
   },
   "root": true,
   "rules": {
-    // "prettier/prettier": ["error"],
+    "prettier/prettier": ["error"],
+    "react/forbid-prop-types": 0,
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "never"
+      }
+    ],
     "react/prefer-stateless-function": "warn",
     "react/self-closing-comp": [
       "warn",

@@ -8,9 +8,23 @@ export default function SideMenu() {
         display: 'grid',
         justifyItems: 'center',
         gridArea: 'sideMenu',
+        color: '#eee',
       }}
     >
-      lol
+      <ul
+        style={{
+          display: 'grid',
+          alignContent: 'start',
+          gridGap: '2rem',
+          listStyle: 'none',
+          padding: 0,
+          margin: '1rem 0',
+          fontSize: '1.5rem',
+        }}
+      >
+        <li>123</li>
+        <li>456</li>
+      </ul>
     </div>
   );
 }

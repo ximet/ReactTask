@@ -1,7 +1,7 @@
 import React from 'react';
 import SideMenu from './SideMenu/SideMenu';
 import Header from './Header/Header';
-import Main from './Main';
+import Weather from './Weather';
 
 class App extends React.PureComponent {
   render() {
@@ -21,7 +21,7 @@ class App extends React.PureComponent {
       >
         <SideMenu />
         <Header />
-        <Main />
+        <Weather />
       </div>
     );
   }
