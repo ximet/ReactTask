@@ -9,26 +9,26 @@ import sunnyIcon from 'assets/images/icons/sunny.svg';
 
 const WeatherInfo = [{
     location: 'Minsk',
-    weatherState: 'cloudy',
+    weatherState: 'sunny',
     weatherStateIcon: sunnyIcon,
     temperature: '-2'
   },
   {
     location: 'NY',
-    weatherState: 'sunny',
+    weatherState: 'cloudy',
     weatherStateIcon: cloudyIcon,
     temperature: '5'
   },
   {
     location: 'Warsaw',
-    weatherState: 'rain',
+    weatherState: 'cloudy',
     weatherStateIcon: cloudyIcon,
     temperature: '0'
   },
   {
     location: 'South Pole',
     icon: require('assets/images/icons/penguin.svg'),
-    weatherState: 'cloudy',
+    weatherState: 'sunny',
     weatherStateIcon: sunnyIcon,
     temperature: '-30'
   },
