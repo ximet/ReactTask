@@ -9,6 +9,7 @@ export default function Header() {
         justifyContent: 'center',
         alignContent: 'center',
         fontSize: '2rem',
+        userSelect: 'none',
       }}
     >
       Simple Weather App

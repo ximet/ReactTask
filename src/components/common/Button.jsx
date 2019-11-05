@@ -5,8 +5,9 @@ const Button = ({ children, style, onClick }) => (
   <button
     type="button"
     style={{
+      cursor: 'pointer',
       border: 'none',
-      padding: '1rem 2rem',
+      padding: '0.75rem 1.75rem',
       backgroundColor: '#44639c',
       borderRadius: '0.25rem',
       color: '#eee',
