@@ -7,11 +7,6 @@
     "build": "cross-env NODE_ENV=production webpack",
     "lint": "esw --ext .js --ext .jsx webpack.config.* src webpack"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  },
   "engines": {
     "node": ">=8",
     "npm": ">=3"
@@ -25,7 +20,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "core-js": "3.2.1",
     "history": "4.10.1",
-    "prop-types": "15.7.2",
+    "prop-types": "^15.7.2",
     "qs": "6.9.0",
     "ramda": "0.26.1",
     "react": "16.10.2",
@@ -67,17 +62,17 @@
     "connect-history-api-fallback": "1.6.0",
     "cross-env": "6.0.3",
     "css-loader": "3.2.0",
-    "eslint": "6.5.1",
-    "eslint-config-airbnb": "18.0.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-standard": "14.1.0",
     "eslint-loader": "3.0.2",
-    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "22.17.0",
-    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-node": "10.0.0",
     "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-react": "7.16.0",
-    "eslint-plugin-react-hooks": "2.1.2",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-plugin-standard": "4.0.1",
     "eslint-watch": "6.0.1",
     "file-loader": "4.2.0",
