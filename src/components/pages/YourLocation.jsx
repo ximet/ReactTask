@@ -2,7 +2,6 @@ import React from 'react';
 import styles from 'assets/css/styles.css';
 import Icon from 'components/reusable/icons/Icon';
 
-
 class YourLocation extends React.Component {
   render() {
     return ( 
@@ -17,7 +16,7 @@ class YourLocation extends React.Component {
               <Icon path={this.props.weatherStateIcon} />
               <div className={styles.temperature}>
                 <span className={styles.value}>{this.props.temperature}</span>
-                <span className={styles.digit}>C°</span> 
+                <span className={styles.unit}>C°</span> 
               </div>
             </div>
             <div className={styles.paneBtns}>

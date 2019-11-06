@@ -43,7 +43,8 @@
 }
 
 .btn.blue:hover {
-    background: #00a1ce;
+    background: #00aedf;
+    color: #00487b;
 }
 
 .appWrapper {
@@ -118,6 +119,7 @@
 
 .menuItem:hover {
     background-color: #00c8ff;
+    color: #00487b;
 }
 
 .menuItemText {
@@ -165,7 +167,7 @@
     font-size: 45px;
 }
 
-.weatherPaneBig .paneData .temperature .digit {
+.weatherPaneBig .paneData .temperature .unit {
     font-size: 35px;
 }
 
@@ -220,4 +222,26 @@
 .WeatherListPane .location .icon {
     width: 16px;
     height: 16px;
+}
+
+.appClock{
+    font-size: 16px;
+    line-height: 1;
+    padding: 12px 15px;
+}
+.unitSwitcherWrapper{
+    padding: 7px 0;
+}
+.unitSwitcher{
+    background-color: #1f1f1f;
+    padding: 5px;
+}
+.unitSwitcher .unitBtn{
+    display: inline-block;
+    padding: 0 7px;
+    cursor: pointer;
+    border-right: 1px solid #00c8ff;
+}
+.unitSwitcher .unitBtn:last-child{
+    border-right: none;
 }

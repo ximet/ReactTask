@@ -1,5 +1,7 @@
 import React from 'react';
 import AppLogo from 'components/reusable/AppLogo/AppLogo';
+import Clock from 'components/reusable/Clock/Clock';
+import TempUnitsSwitcher from 'components/reusable/TempUnitsSwitcher/TempUnitsSwitcher';
 
 import styles from 'assets/css/styles.css';
 
@@ -13,6 +15,8 @@ class Header extends React.Component {
       return (
           <header className={styles.appHeader}>
             <AppLogo logoProps={logoProps}/>
+            <Clock />
+            <TempUnitsSwitcher />
           </header>    
       );
     }

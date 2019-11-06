@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from 'assets/css/styles.css';
+import YZstore from 'YZstore/YZstore'
 // pages
 import YourLocation from 'components/pages/YourLocation';
 import World from 'components/pages/World';
@@ -39,9 +40,9 @@ const CurrentLocationWeather = WeatherInfo.find((element)=>element.location==Cur
 class Main extends React.Component {
   render() {
     return ( 
-      <main className={styles.appMain}>    
-          <YourLocation {...CurrentLocationWeather}/>      
-          <World WeatherInfo={WeatherInfo}/>
+      <main className={styles.appMain}>
+        <YourLocation {...CurrentLocationWeather}/>      
+        <World WeatherInfo={WeatherInfo}/>
       </main> 
     );
   }
