@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    height: 100%;
+    color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
