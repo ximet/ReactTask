@@ -1,10 +1,33 @@
 .city {
     width: 100%;
-    border-bottom: 5px solid white;
+    border-top: 5px solid white;
     min-height: 10vh;
-    padding: 10px;
+    display: flex;
 }
 
-.city:last-child {
-    border: none;
+.city:hover {
+    background-color: #54f0f059;
+}
+
+.city .title, .city .temperature {
+    margin-left: 5%;
+    padding: 6px;
+    font-size: 22pt;
+    display: flex;
+    align-items: center;
+}
+
+.city .title {
+    width: 40%;
+}
+
+.city .temperature {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.temperature img {
+    margin: 0 7%;
+    width: 62px;
 }

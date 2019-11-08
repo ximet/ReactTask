@@ -1,14 +1,25 @@
 .city_weather {
-    /* float: left;
-    width: 70%;
-    max-width: 150vh; */
-    position: relative;
-    /* margin: 5vh 0 0 4.6%; */
+    float: left;
+    width: 60%;
+    max-height: 70vh;
+    /* position: relative; */
+    margin: 5vh 0 0 4.6%;
     background-color: #e8e7e565;
     box-shadow: 13px 13px 5px rgba(207, 207, 207, 0.836); 
-    /* overflow: hidden; */
-    grid-area: main;
+    overflow: auto;
+    /* grid-area: main; */
 }
 
+.city_weather::-webkit-scrollbar-track{
+    background-color: rgb(255, 255, 255);
+    margin-top: 5px;
+}
 
+.city_weather::-webkit-scrollbar{
+    width: 4px;
+    background-color: rgb(255, 255, 255);
+}
 
+.city_weather::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 225, 125, 0.753);
+}

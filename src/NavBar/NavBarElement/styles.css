@@ -1,11 +1,12 @@
 .nav_element {
-    width: 100%;
+    width: 60%;
     margin: 0px;
+    padding: 0 20%;
     background-color: #44ebeba8;
     height: 48px;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 14pt;
     margin: 5px 0;
