@@ -16,8 +16,8 @@ class App extends React.PureComponent {
     <div>
       <NavBar></NavBar>
       <Header></Header>
-      {/* <Main city="Minsk" temperature="+26" weatherBackground={Background}></Main> */}
-      <CityList></CityList>
+      <Main city="Minsk" temperature="+26" weatherBackground={Background}></Main>
+      {/* <CityList></CityList> */}
     </div>
     );
   }
