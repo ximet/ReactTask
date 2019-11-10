@@ -1,0 +1,24 @@
+.navItem {
+  padding: 15px;
+  background-color: #068631;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  .navItemImg {
+    width: 50px;
+    img {
+      max-width: 100%;
+    }
+  }
+  .navItemTitle {
+    margin-top: 5px;
+    font-weight: 600;
+    img {
+      max-width: 100%;
+    }
+  }
+  &:hover {
+    opacity: .5;
+  }
+}

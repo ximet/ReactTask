@@ -1,0 +1,13 @@
+.cityBlock {
+  width: 50%;
+  margin: 20px;
+  min-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid green;
+  background-color: #fff;
+  .cityInfo {
+    padding: 20px;
+  }
+}

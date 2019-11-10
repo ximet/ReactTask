@@ -1,0 +1,27 @@
+.title {
+  color: green;
+  margin-left: 10px;
+}
+
+.citiesList {
+  margin-bottom: 20px;
+  .cityDetail {
+    display: flex;
+    width: 100%;
+    padding: 15px 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-bottom: 2px solid green;
+    cursor: pointer;
+    .cityName {
+      color: green;
+    }
+    .temperature {
+      font-size: 1.3rem;
+    }
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
