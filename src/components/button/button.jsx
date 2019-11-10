@@ -1,8 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function Button(props) {
-    return ();
-}
+const Button = ({ text, handleClick }) => <button type="button" onClick={handleClick}>{text}</button>;
 
-Button.propTypes = {};
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
+
+
+export default Button;

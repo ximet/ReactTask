@@ -1,8 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function Sidebar(props) {
-    return ();
-}
+const Sidebar = ({ homeUrl, homeIcon }) => (
+  <div>
+    <ul>
+      <li>
+        <a href={homeUrl}>
+          <img src={homeIcon.source} alt={homeIcon.alt} />
+        </a>
+      </li>
+    </ul>
+  </div>
+);
 
-Button.propTypes = {};
+Sidebar.propTypes = {
+  homeUrl: PropTypes.string.isRequired,
+  homeIcon: PropTypes.shape({
+    source: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }),
+};
+
+export default Sidebar;

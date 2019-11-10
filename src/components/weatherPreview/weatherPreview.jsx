@@ -1,8 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function WeatherPreview(props) {
-    return ();
-}
+const WeatherPreview = ({ cityName, temperature }) => (
+  <div>
+    <h3>{cityName}</h3>
+    <span>{temperature}</span>
+  </div>
+);
+  
+WeatherPreview.propTypes = {
+  cityName: PropTypes.string.isRequired,
+  temperature: PropTypes.string.isRequired,
+};
 
-Button.propTypes = {};
+export default WeatherPreview;

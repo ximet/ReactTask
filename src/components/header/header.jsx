@@ -1,8 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function Header(props) {
-    return ();
-}
+const Header = ({ logo }) => (
+  <div>
+    <img src={logo.source} alt={logo.alt} />
+  </div>
+);
 
-Button.propTypes = {};
+Header.propTypes = {
+  logo: PropTypes.shape({
+    source: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }),
+};
+
+export default Header;

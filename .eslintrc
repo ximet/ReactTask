@@ -13,7 +13,7 @@
     },
     "root": true,
     "rules": {
-      "react/prefer-stateless-function": "warn",
+      "react/prefer-stateless-function": 0,
       "react/self-closing-comp": [
         "warn",
         {
