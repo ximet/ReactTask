@@ -1,0 +1,46 @@
+
+$brand: #F38F80;
+$brandOpacity: rgba($brand, 0.24);
+
+$uiColors: (
+  'purpleDark': #272059,
+  'purple': #4D3FAF,
+  'purpleLight': #E8CCFF,
+  'orange': #FBAA84,
+  'red': #D63649
+);
+
+// Blacks and grays
+// $grayColors: (
+//
+// );
+$black: #2E384D;
+$blackLight: #69707F;
+$grayLight: #BFC5D2;
+$gray: #8798AD;
+$gray2: #F4F6FC;
+$gray3: #EEF3F5;
+
+@function colorOpacity($color, $opacity: 0.18) {
+  @return rgba($color, $opacity);
+}
+
+$mainBgColor: $gray2;
+$mainTextColor: $black;
+
+$captionTextColor: $gray;
+
+$headerBgColor: #FFFFFF;
+$headerBorderColor: #E4E8F0;
+
+$sidebarBgColor: #FFFFFF;
+
+$baseCardBgColor: #FFFFFF;
+
+// Export main colors to be accessible in html
+:root{
+  --brand: #{$brand};
+  --menu-color: #{$grayLight};
+  --btn-color: #FFFFFF;
+  --ui-color: #{$blackLight}
+}

@@ -46,19 +46,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.svg$/,
-        oneOf: [
-          {
-            // load svg modules to be displayed as icons/images
-            loader: 'svg-react-loader'
-          },
-          {
-            // load svg files normally (eg. fonts, etc)
-            loader: 'url-loader?limit=100000'
-          }
-        ]
       }
     ],
   },

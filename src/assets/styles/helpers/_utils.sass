@@ -1,0 +1,28 @@
+%card-base
+  background-color: $baseCardBgColor
+  border-radius: 1px
+  border: 1px solid rgba($brand, 0.08)
+
+%card-base-hover
+  background-color: rgba($brand, 0.08)
+
+%card-base-header
+  display: flex
+  justify-content: space-between
+  text-align: left
+  padding: 32px 24px
+
+@for $i from 1 through 9
+  %fw-#{$i * 100}
+    font-weight: $i * 100
+
+=caption($solid: false)
+  text-transform: uppercase
+  color: $captionTextColor
+
+  @if $solid
+    font-size: 0.75rem
+    font-weight: 500
+  @else
+    font-size: 0.875rem
+    font-weight: 400

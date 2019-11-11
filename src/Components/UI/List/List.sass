@@ -1,0 +1,17 @@
+@import 'assets/styles/helpers'
+
+.list
+  @extend %card-base
+
+  display: flex
+  flex-direction: column
+
+.listItem
+  @extend %card-base
+
+  display: flex
+  margin-bottom: -1px
+  padding: 20px 24px
+
+  &:hover
+    @extend %card-base-hover

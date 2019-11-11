@@ -1,0 +1,31 @@
+@import 'assets/styles/helpers'
+
+.weatherCard
+  @extend %card-base
+
+.weatherCardContent
+  padding: 32px 24px
+
+.weatherCardHeader
+  display: grid
+  grid-template-areas: 'temp icon' 'location location' 'time time'
+  grid-template-columns: 1fr 40px
+  grid-gap: 8px
+
+.weatherCardLocation
+  grid-area: location
+  +caption(true)
+
+.weatherCardTemp
+  grid-area: temp
+  font-size: 28px
+
+.weatherCardTempValue
+
+.weatherCardTempUnit
+
+.weatherCardTempIcon
+  grid-area: icon
+
+.weatherCardTime
+  grid-area: time

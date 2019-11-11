@@ -1,0 +1,52 @@
+@import 'assets/styles/helpers'
+
+$btnPrimaryColors: ( 'bg': $brand, 'text': #FFFFFF )
+$btnSecondaryColors: ( 'bg': $brandOpacity, 'text': $brand )
+
+.btn
+  display: flex
+  align-items: center
+  padding: 8px 24px
+  font-size: 1rem
+  border-radius: 4px
+  font-weight: 500
+
+  &:hover
+    box-shadow: 0 4px 16px 0 rgba(200, 200, 200, 0.2)
+
+  &:focus
+    box-shadow: 0 8px 16px 0 rgba(200, 200, 200, 0.2)
+
+  &:active
+    box-shadow: none
+
+  &:disabled
+    background-color: gray
+    cursor: not-allowed
+    pointer-events: none
+
+.btnIcon
+  display: flex
+  align-items: center
+  height: auto
+  i
+    display: flex
+
+  &.btnLeftIcon
+    margin: -2px 2px -2px -4px
+  &.btnRightIcon
+    margin: -2px -4px -2px 2px
+
+.btnPrimary
+  background-color: map-get($btnPrimaryColors, 'bg')
+  color: map-get($btnPrimaryColors, 'text')
+
+.btnSecondary
+  background-color: map-get($btnSecondaryColors, 'bg')
+  color: map-get($btnSecondaryColors, 'text')
+
+.btnAccent
+  background-color: $black
+  color: map-get($btnPrimaryColors, 'text')
+
+.btnError
