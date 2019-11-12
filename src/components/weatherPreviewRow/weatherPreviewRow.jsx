@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const WeatherPreview = ({ cityName, temperature }) => (
+const WeatherPreviewRow = ({ cityName, temperature }) => (
   <div>
     <h3>{cityName}</h3>
     <span>{temperature}</span>
   </div>
 );
   
-WeatherPreview.propTypes = {
+WeatherPreviewRow.propTypes = {
   cityName: PropTypes.string.isRequired,
   temperature: PropTypes.string.isRequired,
 };
 
-export default WeatherPreview;
+export default WeatherPreviewRow;
