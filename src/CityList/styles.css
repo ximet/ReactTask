@@ -17,6 +17,7 @@
 
 .city_weather::-webkit-scrollbar{
     width: 4px;
+    height: 4px;
     background-color: rgb(255, 255, 255);
 }
 
