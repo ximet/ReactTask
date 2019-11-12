@@ -1,0 +1,9 @@
+.clock {
+    margin-right: 10% ;
+}
+
+.clock h2 {
+    border-bottom:  3px solid #e49c17;
+    padding-bottom: 4px;
+    border-radius: 50%;
+}

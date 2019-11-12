@@ -5,9 +5,16 @@
     float: left;
     display: flex;
     align-items: center;
+    /* position: relative; */
+    justify-content: space-between;
 }
 
-.head div {
+.head header {
+    display: flex;
+    align-items: center;
+}
+
+.head .circle {
     margin:0 10px 0 40px;
     border-radius: 50%;
     border: 2px solid rgb(196, 127, 0);
