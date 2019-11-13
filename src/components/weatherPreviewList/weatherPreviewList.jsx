@@ -17,7 +17,6 @@ const GetCitiesListWithWeather = () => new Promise((resolve, reject) => {
   ]), 1000);
 });
 
-
 class WeatherPreviewList extends Component {
   constructor(props) {
     super(props);
