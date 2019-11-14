@@ -7,14 +7,14 @@ const List = (props) => {
     <ul
       className={[
         styles.list,
-        props.className,
+        props.listClassName,
       ].join(' ')}
     >
       {props.items.map(item =>
         <li key={item.id}
             className={[
               styles.listItem,
-              props.liClassName,
+              props.itemClassName,
             ].join(' ')}
         >
           {item.content}
@@ -25,8 +25,8 @@ const List = (props) => {
 };
 
 List.propTypes = {
-  className: PropTypes.string,
-  liClassName: PropTypes.string,
+  listClassName: PropTypes.string,
+  itemClassName: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     content: PropTypes.oneOfType([
@@ -40,8 +40,8 @@ List.propTypes = {
 };
 
 List.defaultProps = {
-  className: '',
-  liClassName: '',
+  listClassName: '',
+  itemClassName: '',
 };
 
 export default List;

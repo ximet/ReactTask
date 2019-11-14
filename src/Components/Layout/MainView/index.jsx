@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'react-eva-icons';
-import constant from 'data/const';
+import {PLACES, CITY, COUNTRY} from 'const';
 import styles from './MainView';
 
 import Button from 'Components/UI/Button';
@@ -23,23 +23,18 @@ class MainView extends React.Component {
   }
 
   getWeatherItems = () => {
-    const weatherItems = [];
-
-    constant.PLACES.map((place, id) => {
-      weatherItems.push({
-        id: place.id,
-        location: place.city + ', ' + place.country,
-      });
+   this.setState({
+      items: PLACES.map(({id, city, country}) => ({ id, location: `${city}, ${country}`})),
+      displayCard: false,
     });
-    this.setState( {items: weatherItems, displayCard: false} );
   }
 
   render() {
     return (
       <main className={styles.mainView}>
         { this.state.items && !this.state.displayCard
-          ? <WeatherList items={this.state.items}/>
-          : <WeatherCard location={constant.CITY + ', ' + constant.COUNTRY}/>
+          ? <WeatherList items={this.state.items} />
+          : <WeatherCard location={`${CITY}, ${COUNTRY}`} />
         }
         { this.state.displayCard
           ? (

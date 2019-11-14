@@ -1,11 +1,11 @@
 import React from 'react';
 import Icon from 'react-eva-icons';
 
-import styles from 'assets/styles/all';
+import styles from 'styles/all';
 
 import Header from './Components/Layout/Header';
 import Sidebar from './Components/Layout/Sidebar';
-import Logo from './Components/Layout/Logo';
+import AppLogoLink from './Components/Layout/Logo';
 import MainView from './Components/Layout/MainView';
 
 
@@ -22,7 +22,7 @@ class App extends React.PureComponent {
     return (
       <div className='App' style={AppStyle}>
         <Header>
-          <Logo />
+          <AppLogoLink />
         </Header>
         <Sidebar />
         <MainView />

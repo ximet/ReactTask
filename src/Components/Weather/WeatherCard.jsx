@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import constant from 'data/const';
+import { WEATHER_API_KEY } from 'const/index.js';
+
 import styles from './WeatherCard.sass';
 
 class WeatherCard extends React.Component {
@@ -12,21 +13,22 @@ class WeatherCard extends React.Component {
   }
 
   componentDidMount() {
-    const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${this.props.location}&appid=${constant.WEATHER_API_KEY}&units=metric`;
+    const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${this.props.location}&appid=${WEATHER_API_KEY}&units=metric`;
     let weatherData;
 
     fetch(API_URL).then(res => res.json()).then(json => {
-      weatherData = {
-        temperature: json.main.temp,
-        city: json.name,
-        country: json.sys.country,
-        time: new Date(json.dt).toLocaleString(),
-        humidity: json.main.humidity,
-        description: json.weather[0].description,
-        iconName: json.weather[0].icon,
-        error: '',
-      };
-      this.setState({ data: weatherData });
+      this.setState({
+        data: {
+          temperature: json.main.temp,
+          city: json.name,
+          country: json.sys.country,
+          time: new Date(json.dt).toLocaleString(),
+          humidity: json.main.humidity,
+          description: json.weather[0].description,
+          iconName: json.weather[0].icon,
+          error: '',
+        }
+      });
     });
   }
 
@@ -41,10 +43,7 @@ class WeatherCard extends React.Component {
             <div className={styles.weatherCardContent}>
               <header className={styles.weatherCardHeader}>
                 <h2 className={styles.weatherCardLocation}>
-                  {wData.city}
-                  ,
-                  &nbsp;
-                  {wData.country}
+                  {`${wData.city}, ${wData.country}`}
                 </h2>
                 <div className={styles.weatherCardTemp}>
                   <span className={styles.weatherCardTempValue}>
@@ -64,18 +63,15 @@ class WeatherCard extends React.Component {
               </header>
               <div className={styles.weatherCardInfo}>
                 <p>
-                  Humidity:&nbsp;
-                  <span>{wData.humidity}%</span>
+                  {`Humidity: ${wData.humidity}`}
                 </p>
                 <p>
-                  Description:&nbsp;
-                  <span>{wData.description}</span>
+                  {`Description: ${wData.description}`}
                 </p>
                 { wData.error
                   ? (
                     <p>
-                      Error:&nbsp;
-                      <span>{wData.error}</span>
+                      {`Error: ${wData.error}`}
                     </p>
                   )
                   : ''

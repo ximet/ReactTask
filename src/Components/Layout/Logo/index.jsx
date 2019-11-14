@@ -6,7 +6,7 @@ const APP_LOGO = {
   altText: 'App Logo',
 }
 
-const Logo = () => {
+const AppLogoLink = () => {
   return (
     <a
       href="index.html"
@@ -22,4 +22,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default AppLogoLink;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'react-eva-icons';
-import constant from 'data/const';
+import { WEATHER_API_KEY } from 'const';
 
 class WeatherListItem extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class WeatherListItem extends React.Component {
 
   componentDidMount() {
     const location = this.props.location;
-    const URL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${constant.WEATHER_API_KEY}&units=metric`;
+    const URL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${WEATHER_API_KEY}&units=metric`;
     fetch(URL).then(res => res.json()).then(json => {
       this.setState({
         city: json.name,

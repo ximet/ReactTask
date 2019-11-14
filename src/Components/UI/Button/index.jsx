@@ -17,8 +17,8 @@ const Button = (props) => {
       type={props.type}
       onClick={props.onClick}
     >
-      { iconLeft
-        ? (
+      { iconLeft &&
+        (
           <span
             className={[
               styles.btnIcon,
@@ -28,10 +28,10 @@ const Button = (props) => {
             { iconLeft }
           </span>
         )
-        : '' }
+      }
       { props.label }
-      { iconRight
-        ? (
+      { iconRight &&
+        (
           <span
             className={[
               styles.btnIcon,
@@ -41,7 +41,7 @@ const Button = (props) => {
             { iconRight }
           </span>
         )
-        : '' }
+      }
     </button>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from 'react-eva-icons';
 import styles from './Sidebar.sass';
-import PropTypes from 'prop-types';
 
 const Sidebar = (props) => {
   return (
@@ -18,8 +18,8 @@ const Sidebar = (props) => {
       </div>
       <nav className={styles.sidebarNav}>
         <a
-          href={'#Overview'}
-          title={'Overview'}
+          href='#Overview'
+          title='Overview'
         >
           <Icon
             name={'grid-outline'}
@@ -28,7 +28,8 @@ const Sidebar = (props) => {
           />
         </a>
         <a
-          href={'#Analitycs'}
+          href='#Analitycs'
+          title='Analitycs'
         >
           <Icon
             name={'bar-chart'}
@@ -37,7 +38,8 @@ const Sidebar = (props) => {
           />
         </a>
         <a
-          href={'#Map'}
+          href='#Map'
+          title='Map'
         >
           <Icon
             name={'map-outline'}
@@ -46,7 +48,7 @@ const Sidebar = (props) => {
           />
         </a>
         <a
-          href={'#Travel'}
+          href='#Travel'
         >
           <Icon
             name={'briefcase-outline'}
@@ -55,7 +57,8 @@ const Sidebar = (props) => {
           />
         </a>
         <a
-          href={'#Settings'}
+          href='#Settings'
+          title='Settings'
         >
           <Icon
             name={'settings-2-outline'}

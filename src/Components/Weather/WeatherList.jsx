@@ -5,15 +5,12 @@ import WeatherListItem from './WeatherListItem';
 
 const WeatherList = (props) => {
   const convertList = (items) => {
-    const weathers = [];
-
-    items.map(item => {
-      weathers.push({
-        id: item.id,
-        content: <WeatherListItem location={item.location} />,
-      });
+    return items.map(({id, location}) => {
+      return {
+        id,
+        content: <WeatherListItem location={location} />
+      }
     });
-    return weathers;
   };
 
   return (
