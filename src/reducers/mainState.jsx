@@ -1,8 +1,8 @@
-const instate = {
+const initialState  = {
     mainState: true
   };
   
-export default function changeMainState(state = instate, action) {
+export default function changeMainState(state = initialState, action) {
     if (action.type === 'CHANGE_MAIN') {
         return {
             mainState: action.payload

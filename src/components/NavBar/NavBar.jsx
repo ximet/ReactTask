@@ -1,11 +1,9 @@
 import React from 'react';
 import NavBarElement from './NavBarElement/NavBarElement.jsx';
-import { map } from 'lodash';
-import styles from './styles.css';
-
 import img1 from '../img/browser.png';
 import img2 from '../img/globe.png';
 import img3 from '../img/mes.png';
+import styles from './styles.css';
 
 
  const ImgItems = [
@@ -31,9 +29,12 @@ class NavBar extends React.Component {
     return (
     <div className = {styles.nav}>
       {
-        map(ImgItems, item => (
-          <NavBarElement key={item.key} title={item.nav_title} image={item.nav_img}></NavBarElement>
-        ))
+        ImgItems.map(function(item) {
+          return <NavBarElement 
+                    key={item.key} 
+                    title={item.nav_title} 
+                    image={item.nav_img}/>;
+        })
       }
     </div>
     );

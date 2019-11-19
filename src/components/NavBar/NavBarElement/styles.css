@@ -1,6 +1,5 @@
 .nav_element {
-    width: 60%;
-    margin: 0px;
+    min-width: 60%;
     padding: 0 20%;
     background-color: #44ebeba8;
     height: 48px;
@@ -10,17 +9,14 @@
     align-items: center;
     font-size: 14pt;
     margin: 5px 0;
-    /* border: 2px solid #5cbbbba8; */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     overflow: hidden;
 }
 
 .nav_element:hover {
-    /* background-color: rgb(255, 202, 55); */
-    /* border: 2px solid white; */
-    /* color: rgb(59, 82, 119);  */
     position: relative;
+    z-index: 20;
     left: 10px;
 }
 

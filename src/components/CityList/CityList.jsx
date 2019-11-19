@@ -1,12 +1,10 @@
 import React from 'react';
 import City from './City/City.jsx';
 import Button from '../Main/Button/Button.jsx';
-import { map } from 'lodash';
-import styles from './styles.css';
-
 import weatherImg1 from '../img/weather_1.png';
 import weatherImg2 from '../img/weather_2.png';
 import weatherImg3 from '../img/cloud.png';
+import styles from './styles.css';
 
 
 const CityWeather = [{
@@ -60,13 +58,16 @@ class CityList extends React.Component {
   render() {
     return (
     <div className = {styles.city_weather}>
-
       {
-        map(CityWeather, item => (
-          <City key={item.key} city={item.city} weather={item.weather} weather_img={ item.weather.substring(1) > 12 ? (item.weather.substring(1) > 17 ?  weatherImg1 : weatherImg2) : weatherImg3 }></City>
-        ))
+        CityWeather.map(function(item) {
+          return <City 
+                    key={item.key} 
+                    city={item.city} 
+                    weather={item.weather} 
+                    weather_img={ item.weather.substring(1) > 12 ? (item.weather.substring(1) > 17 ?  weatherImg1 : weatherImg2) : weatherImg3 }
+                  />;
+        })
       }
-        
       <Button title="Back"></Button>
     </div>
     );

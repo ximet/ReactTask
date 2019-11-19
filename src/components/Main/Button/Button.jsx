@@ -1,16 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import styles from './styles.css';
 
-import { connect } from 'react-redux'
 
 class Button extends React.PureComponent {
-  changeMain(){
-    this.props.onChangeMain(!this.props.weatherMainStore.main.mainState);
+  constructor(props) {
+    super(props);
+    this.changeMain = this.changeMain.bind(this);
   }
+  changeMain(){
+    this.props.onChangeMain(!this.props.weatherMain.main.mainState);
+  }  
   render() {
     return (
       <div className = {styles.button}>
-        <button onClick = {this.changeMain.bind(this)}> {this.props.title} </button>      
+        <button onClick = {this.changeMain}> {this.props.title} </button>      
       </div>
       );
   }
@@ -22,7 +26,7 @@ Button.propTypes = {
 
 export default connect(
   state => ({
-    weatherMainStore: state
+    weatherMain: state
   }),
   dispatch => ({
     onChangeMain: (trackName) => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './styles.css';
 
 
@@ -16,12 +15,8 @@ function City (props) {
 }
 
 City.propTypes = {
-    title: PropTypes.string.isRequired,
-    // image:
+    city: "Minsk",
+    temperature: "+15"
 }
-
-// NavBarElement.defaultProps = {
-//   title: 'Problem'
-// };
 
 export default City;

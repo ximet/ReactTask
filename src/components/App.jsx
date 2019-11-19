@@ -1,29 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import Header from './Header/Header.jsx';
-import NavBar from './NavBar/NavBar.jsx';
 import Main from './Main/Main.jsx';
+import NavBar from './NavBar/NavBar.jsx';
 import CityList from './CityList/CityList.jsx';
 import Background from './img/weath.jpg';
-
-import { connect } from 'react-redux'
 
 
 class App extends React.PureComponent {
   render() {
-    console.log(this.props);
-    console.log(this.props.weatherMainStore);
-    console.log(this.props.weatherMainStore.main.mainState);
-    let main;
-    if (this.props.weatherMainStore.main.mainState) {
-      main =  <Main city="Minsk" temperature="+26" weatherBackground={Background}></Main>;
-    } else {
-      main = <CityList></CityList>;
-    }
     return (
     <div>
-      <NavBar></NavBar>
-      <Header></Header>
-      {main}
+      <NavBar/>
+      <Header/>
+      {this.props.weatherMain.main.mainState ? 
+           <Main 
+                 city="Minsk" 
+                 temperature="+26" 
+                 weatherBackground={Background}
+           /> : 
+           <CityList />
+       }
       </div>
     );
   }
@@ -31,7 +28,7 @@ class App extends React.PureComponent {
 
 export default connect(
   state => ({
-    weatherMainStore: state
+    weatherMain: state
   }),
   dispatch => ({})
 )(App);
