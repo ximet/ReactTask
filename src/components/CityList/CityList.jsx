@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux'
 import City from './City/City.jsx';
 import Button from '../Main/Button/Button.jsx';
-import weatherImg1 from '../img/weather_1.png';
-import weatherImg2 from '../img/weather_2.png';
-import weatherImg3 from '../img/cloud.png';
+import weatherImg1 from '../../img/weather_1.png';
+import weatherImg2 from '../../img/weather_2.png';
+import weatherImg3 from '../../img/cloud.png';
 import styles from './styles.css';
 
 

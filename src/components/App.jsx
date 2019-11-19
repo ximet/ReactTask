@@ -4,7 +4,7 @@ import Header from './Header/Header.jsx';
 import Main from './Main/Main.jsx';
 import NavBar from './NavBar/NavBar.jsx';
 import CityList from './CityList/CityList.jsx';
-import Background from './img/weath.jpg';
+import Background from '../img/weath.jpg';
 
 
 class App extends React.PureComponent {

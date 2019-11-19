@@ -1,4 +1,10 @@
-const initialState  = [{
+const initialState  = [
+  {
+    key: 0,
+    city: "Minsk",
+    weather: "+15",
+  },
+  {
     key: 1,
     city: "London",
     weather: "+23",

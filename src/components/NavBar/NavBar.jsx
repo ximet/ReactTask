@@ -1,8 +1,8 @@
 import React from 'react';
 import NavBarElement from './NavBarElement/NavBarElement.jsx';
-import img1 from '../img/browser.png';
-import img2 from '../img/globe.png';
-import img3 from '../img/mes.png';
+import img1 from '../../img/browser.png';
+import img2 from '../../img/globe.png';
+import img3 from '../../img/mes.png';
 import styles from './styles.css';
 
 

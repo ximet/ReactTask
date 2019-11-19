@@ -13,7 +13,7 @@ class City extends React.Component {
       }  
       render() {
         return (
-            <div className = {styles.city} onClick = {this.changeMainCity}>
+            <div className = {(this.props.city == this.props.Store.mainCity.city)? styles.city_activ : styles.city} onClick = {this.changeMainCity}>
                 <div className = {styles.title}><span>{this.props.city}</span></div>
                 <div className = {styles.temperature}>
                     <span>{this.props.weather} &#8451;</span>

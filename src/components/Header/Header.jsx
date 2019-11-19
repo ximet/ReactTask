@@ -1,6 +1,6 @@
 import React from 'react';
 import Clock from './Clock/Clock.jsx';
-import logo from '../img/umbrella.png';
+import logo from '../../img/umbrella.png';
 import styles from './styles.css';
 
 class Header extends React.Component {

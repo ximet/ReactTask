@@ -5,11 +5,23 @@
     display: flex;
 }
 
+.city_activ {
+    width: 100%;
+    border-top: 5px solid white;
+    min-height: 10vh;
+    display: flex;
+    background-color: rgb(255, 236, 175);
+}
+
+.city_activ:hover {
+    background-color: rgb(255, 231, 151);
+}
+
 .city:hover {
     background-color: #54f0f059;
 }
 
-.city .title, .city .temperature {
+.title, .temperature {
     margin-left: 5%;
     padding: 6px;
     font-size: 22pt;
@@ -17,12 +29,12 @@
     align-items: center;
 }
 
-.city .title {
+.title {
     width: 40%;
     overflow: hidden;
 }
 
-.city .temperature {
+.temperature {
     width: 50%;
     display: flex;
     justify-content: center;
