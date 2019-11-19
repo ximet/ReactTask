@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import Button from './Button/Button.jsx';
 import styles from './styles.css';
 
@@ -17,8 +18,8 @@ class Main extends React.Component {
     return (
     <div className = {styles.main} style={ this.backImg }>
         <div>
-            <p className = {styles.city}> {this.props.city} </p>
-            <p className = {styles.temperature}> {this.props.temperature} &#8451; </p>
+            <p className = {styles.city}> {this.props.Store.mainCity.city} </p>
+            <p className = {styles.temperature}> {this.props.Store.mainCity.temperature} &#8451; </p>
         </div>
         <Button title="More"/>
     </div>
@@ -32,4 +33,9 @@ Main.propTypes = {
   // weatherBackground:
 };
 
-export default Main;
+export default connect(
+  state => ({
+    Store: state
+  }),
+  dispatch => ({})
+)(Main);

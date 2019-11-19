@@ -33,6 +33,11 @@
     font-size: 52pt;
     color: rgb(36, 35, 71);
     background-color: #44ebebbd;  
+    overflow: hidden;
+}
+
+.city {
+    min-width: 410px;
 }
 
 .city {

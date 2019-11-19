@@ -19,6 +19,7 @@
 
 .city .title {
     width: 40%;
+    overflow: hidden;
 }
 
 .city .temperature {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import City from './City/City.jsx';
 import Button from '../Main/Button/Button.jsx';
 import weatherImg1 from '../img/weather_1.png';
@@ -7,59 +8,12 @@ import weatherImg3 from '../img/cloud.png';
 import styles from './styles.css';
 
 
-const CityWeather = [{
-    key: 1,
-    city: "London",
-    weather: "+23",
-  },
-  {
-    key: 4,
-    city: "Seoul",
-    weather: "+18",
-  },
-  {
-    key: 5,
-    city: "Tokyo",
-    weather: "+17",
-  },
-  {
-    key: 6,
-    city: "Istanbul",
-    weather: "+25",
-  },
-  {
-    key: 7,
-    city: "Kuala Lumpur,",
-    weather: "+26",
-  },
-  {
-    key: 8,
-    city: "Singapore",
-    weather: "+16",
-  },
-  {
-    key: 9,
-    city: "Dubai",
-    weather: "+22",
-  },
-  {
-    key: 2,
-    city: "New York",
-    weather: "+30",
-  },
-  {
-    key: 3,
-    city: "Moscow",
-    weather: "+10",
-  },
-];
-
 class CityList extends React.Component {  
   render() {
     return (
     <div className = {styles.city_weather}>
       {
-        CityWeather.map(function(item) {
+        this.props.Store.cityList.map(function(item) {
           return <City 
                     key={item.key} 
                     city={item.city} 
@@ -80,4 +34,11 @@ class CityList extends React.Component {
 //   // weatherBackground:
 // };
 
-export default CityList;
+// export default CityList;
+
+export default connect(
+  state => ({
+    Store : state
+  }),
+  dispatch => ({})
+)(CityList);

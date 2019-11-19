@@ -13,7 +13,7 @@ class App extends React.PureComponent {
     <div>
       <NavBar/>
       <Header/>
-      {this.props.weatherMain.main.mainState ? 
+      {this.props.Store.main.mainState ? 
            <Main 
                  city="Minsk" 
                  temperature="+26" 
@@ -28,7 +28,7 @@ class App extends React.PureComponent {
 
 export default connect(
   state => ({
-    weatherMain: state
+    Store: state
   }),
   dispatch => ({})
 )(App);

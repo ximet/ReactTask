@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import styles from './styles.css';
 
 
-class Button extends React.PureComponent {
+class Button extends React.Component {
   constructor(props) {
     super(props);
     this.changeMain = this.changeMain.bind(this);
   }
   changeMain(){
-    this.props.onChangeMain(!this.props.weatherMain.main.mainState);
+    this.props.onChangeMain(!this.props.Store.main.mainState);
   }  
   render() {
     return (
@@ -26,7 +26,7 @@ Button.propTypes = {
 
 export default connect(
   state => ({
-    weatherMain: state
+    Store: state
   }),
   dispatch => ({
     onChangeMain: (trackName) => {
