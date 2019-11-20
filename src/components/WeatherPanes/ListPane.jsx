@@ -1,35 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from 'assets/css/styles.css';
-import Store from 'Store';
+import styles from 'assets/css/styles.scss';
 
 import Icon from 'components/reusable/icons/Icon';
 
 class ListPane extends React.PureComponent {
-  constructor(props){
-    super(props);
-    this.state = {}
-  }
-
-  componentDidMount() {
-    console.log('pep')
-    this.getTempUnit();
-  }
-
-  // componentWillUnmount() {
-  // }
-
-  getTempUnit() {
-    Store.subscribe('SET_TEMP_UNIT', () => {
-      console.log(Store.getProp('tempUnit'))
-      this.setState({
-        ...Store.getProp('tempUnit')
-      });
-    })
-  }
   
   render() {
-    const {weatherStateIcon, temperature, icon, location} = this.props;
+    const {weatherStateIcon, temperature, icon, location, unit} = this.props;
     return (
       <div className={styles.WeatherListPane}>
         <div className={styles.location}>
@@ -38,7 +17,7 @@ class ListPane extends React.PureComponent {
         </div>
         <div className={styles.temperature}>
           <span className={styles.value}>{temperature}</span>
-          <span className={styles.unit}>{this.state.unit}</span>
+          <span className={styles.unit}>{unit}</span>
         </div>
         <div className={styles.weatherIcon}>
           <Icon path={weatherStateIcon} />
@@ -51,8 +30,19 @@ class ListPane extends React.PureComponent {
 ListPane.propTypes = {
   location: PropTypes.string.isRequired,
   icon: PropTypes.string,
-  temperature: PropTypes.string,
+  temperature: PropTypes.number,
   weatherStateIcon: PropTypes.string,
 };
 
-export default ListPane;
+const mapStateToProps = ({TemperatureUnitChangeReducer}, ownProps) => {
+  const reducer = TemperatureUnitChangeReducer;
+  if(typeof reducer.tempRecountFormula === 'function'){
+    return {
+      temperature: reducer.tempRecountFormula(+ownProps.temperature),
+      unit: reducer.tempUnit.unit
+    }
+  }
+  return {temperature: +ownProps.temperature};
+}
+
+export default connect(mapStateToProps)(ListPane);

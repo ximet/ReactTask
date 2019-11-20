@@ -1,28 +1,26 @@
 import React from 'react';
-import styles from 'assets/css/styles.css';
-import Icon from 'components/reusable/icons/Icon';
-
-
+import {connect} from 'react-redux';
+import {getWeatherInfo} from 'actions';
 import ListPane from 'components/WeatherPanes/ListPane';
 
+class World extends React.PureComponent{
 
-class World extends React.Component {
-  constructor(props){
-    super();
-    this.WeatherList = props.WeatherInfo.map((el, i)=>
-      <ListPane key={i.toString()} {...el} />
-    )
+  componentDidMount(){
+    this.props.dispatch({...getWeatherInfo});
   }
-  render() {
+
+  render(){
     return ( 
-      <div className={styles.row}>
-        <div className={styles.col}>
-          {this.WeatherList}
-        </div>
-      </div>
+      this.props.weatherInfo.map((el) => <ListPane key={el.location} {...el} />)
     );
   }
 }
 
-export default World;
-  
+const mapStateToProps = ({WeatherInfoReducer}) => {
+  const reducer = WeatherInfoReducer;
+  return {
+    weatherInfo: reducer.weatherInfo
+  }
+}
+
+export default connect(mapStateToProps)(World);
