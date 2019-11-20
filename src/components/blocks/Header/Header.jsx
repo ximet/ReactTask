@@ -2,24 +2,23 @@ import React from 'react';
 import AppLogo from 'components/reusable/AppLogo/AppLogo';
 import Clock from 'components/reusable/Clock/Clock';
 import TempUnitsSwitcher from 'components/reusable/TempUnitsSwitcher/TempUnitsSwitcher';
-
-import styles from 'assets/css/styles.css';
+import styles from 'assets/css/styles.scss';
+import logoPath from 'assets/images/logo192.png';
 
 const logoProps = {
-    imgSrc: require('assets/images/logo192.png'),
-    text: 'yzWeather°'
-}
+    imgSrc: logoPath,
+    text: 'yzWeather°',
+};
 
-class Header extends React.Component {
-    render() {
-      return (
-          <header className={styles.appHeader}>
-            <AppLogo logoProps={logoProps}/>
-            <Clock />
-            <TempUnitsSwitcher />
-          </header>    
-      );
-    }
-  }
+function Header(){
+
+  return (
+    <header className={styles.appHeader}>
+      <AppLogo {...logoProps} />
+      <Clock />
+      <TempUnitsSwitcher />
+    </header>
+  );
+}
   
 export default Header;

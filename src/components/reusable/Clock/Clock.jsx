@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from 'assets/css/styles.css';
+import styles from 'assets/css/styles.scss';
+
+const clockInterval = 1000;
 
 class Clock extends React.PureComponent{
   constructor(props){
@@ -10,7 +12,7 @@ class Clock extends React.PureComponent{
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
-      1000
+      clockInterval
     );
   }
 

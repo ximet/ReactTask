@@ -1,15 +1,12 @@
 import React from 'react';
-import styles from 'assets/css/styles.css';
 import MenuItem from 'components/reusable/MenuItem/MenuItem';
+import styles from 'assets/css/styles.scss';
 
 function SideMenu(props) {
-  const Navigation = props.Navigation;
-  const menuItems = Navigation.map((item, key) =>
-    <MenuItem key={key.toString()} {...item} />
-  );
-
   return (
-    <div className={styles.menuVertical}>{menuItems}</div>
+    <div className={styles.menuVertical}>
+      {props.navigation.map((item, key) => <MenuItem key={item.name} {...item} />)}
+    </div>
   );
 }
 

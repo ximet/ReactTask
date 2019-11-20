@@ -1,20 +1,19 @@
-import {GET_WEATHER_INFO} from 'actions';
+import { GET_WEATHER_INFO } from 'actions';
 import WeatherInfo from 'WeatherInfo';
 
-
 const initState = {
-  weatherInfo: WeatherInfo
-}
+  weatherInfo: WeatherInfo,
+};
 
-const WeatherInfoReducer = (state = initState, {type, ...props}) => {
+const WeatherInfoReducer = (state = initState, { type }) => {
   switch (type) {
     case GET_WEATHER_INFO: {
-      return {weatherInfo: WeatherInfo};//а потом вместо этого напишу fetch из API
+      return { weatherInfo: WeatherInfo }; // а потом вместо этого напишу fetch из API
     }
     default: {
       return state;
     }
   }
-}
+};
 
 export default WeatherInfoReducer;

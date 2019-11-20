@@ -1,6 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {getLocationWeatherInfo} from 'actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getLocationWeatherInfo } from 'actions';
 import Icon from 'components/reusable/icons/Icon';
 import styles from 'assets/css/styles.scss';
 
@@ -14,8 +15,8 @@ class YourLocation extends React.PureComponent {
   }
 
   render(){
-    const {weatherStateIcon, temperature, icon, location, unit} = this.props;
-    
+    const { weatherStateIcon, temperature, icon, location, unit } = this.props;
+
     return(
       <div className={styles.weatherPaneBig}>
         <div className={styles.paneTitle}>
@@ -35,7 +36,15 @@ class YourLocation extends React.PureComponent {
       </div>
     )
   }
-}  
+}
+
+YourLocation.propTypes = {
+  weatherStateIcon: PropTypes.string,
+  temperature: PropTypes.number,
+  icon: PropTypes.string,
+  location: PropTypes.string,
+  unit: PropTypes.string,
+};
 
 const mapStateToProps = ({TemperatureUnitChangeReducer, LocationWeatherInfoReducer}) => {
   return {

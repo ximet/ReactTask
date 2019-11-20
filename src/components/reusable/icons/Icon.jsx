@@ -1,17 +1,18 @@
 import React from 'react';
-import styles from 'assets/css/styles.css';
+import PropTypes from 'prop-types';
+import styles from 'assets/css/styles.scss';
 
-class Icon extends React.Component {
-  render() {
-    if(this.props.path){
-      return (
-        <div className={`${styles.icon}`}>
-          <img className={styles.iconImg} src={this.props.path} alt="svg"/>
-        </div>
-      );  
-    }
-    return ''
+const Icon = props => {
+  const { path } = props;
+  return path ?
+    <div className={`${styles.icon}`}>
+      <img className={styles.iconImg} src={path} alt="svg"/>
+    </div>
+    : '';
   }
-}
+
+Icon.propTypes = {
+  path: PropTypes.string,
+};
 
 export default Icon;
