@@ -2,7 +2,7 @@ class YZstore {
   constructor(reducer, initialState) {
     this.currentReducer = reducer;
     this.currentState = initialState;
-    this.defaultListener = () => {};
+    this.defaultListener = [() => {}];
     this.listeners = [];
   }
 
@@ -16,14 +16,16 @@ class YZstore {
 
   dispatch(action) {
     this.currentState = this.currentReducer(this.currentState, action);
-    this.findListener(action.type)()
+    this.findListener(action.type).forEach(element => {
+      element.listenerFunc()
+    });
     return action;
   }
 
   findListener(actionType) {
-    let listener = this.listeners.find((el) => el.actionType == actionType);
-    if (!listener) return this.defaultListener;
-    return listener.listenerFunc;
+    let listenersArr = this.listeners.filter((el) => el.actionType == actionType);
+    if (!listenersArr) return this.defaultListener;
+    return listenersArr;
   }
 
   subscribe(actionType, listenerFunc) {
