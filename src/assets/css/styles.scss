@@ -1,3 +1,7 @@
+$lightBlue-1:#00c8ff;
+$lightBlue-2:#00aedf;
+$blue-1:#00487b;
+
 .row {
     display: flex;
     flex-wrap: nowrap;
@@ -38,13 +42,14 @@
     transition: .3s;
 }
 
-.btn.blue {
-    background: #00c8ff;
+
+.btn.default {
+    background: $lightBlue-1;
 }
 
-.btn.blue:hover {
-    background: #00aedf;
-    color: #00487b;
+.btn.default:hover {
+    background: $lightBlue-2;
+    color: $blue-1;
 }
 
 .appWrapper {
@@ -66,7 +71,7 @@
 .appContent {
     display: flex;
     flex-direction: row;
-    flex: 1;
+    flex-grow: 1;
     width: 100%;
 }
 
@@ -132,7 +137,8 @@
 .weatherPaneBig {
     background-color: #404040;
     padding: 40px;
-    width: 620px;
+    max-width: 620px;
+    margin-bottom: 15px;
 }
 
 .weatherPaneBig .paneTitle {
@@ -161,6 +167,7 @@
 
 .weatherPaneBig .paneData .temperature {
     font-size: 45px;
+    margin-left: 20px;
 }
 
 .weatherPaneBig .paneData .temperature .value {
@@ -183,6 +190,7 @@
     align-items: center;
     cursor: pointer;
     transition: .3s;
+    max-width: 620px;
 }
 
 .WeatherListPane:hover {
@@ -198,6 +206,7 @@
     align-items: center;
     margin-right: 15px;
 }
+
 .WeatherListPane>div:last-child {
     margin-right: 0;
 }
@@ -224,24 +233,28 @@
     height: 16px;
 }
 
-.appClock{
+.appClock {
     font-size: 16px;
     line-height: 1;
     padding: 12px 15px;
 }
-.unitSwitcherWrapper{
+
+.unitSwitcherWrapper {
     padding: 7px 0;
 }
-.unitSwitcher{
+
+.unitSwitcher {
     background-color: #1f1f1f;
     padding: 5px;
 }
-.unitSwitcher .unitBtn{
+
+.unitSwitcher .unitBtn {
     display: inline-block;
     padding: 0 7px;
     cursor: pointer;
     border-right: 1px solid #00c8ff;
 }
-.unitSwitcher .unitBtn:last-child{
+
+.unitSwitcher .unitBtn:last-child {
     border-right: none;
 }
