@@ -1,9 +1,11 @@
-.city_weather {
+.cities {
     float: left;
     width: 65%;
+    margin: 2.5vh 0 0 4.6%;   
+}
+
+.city_weather {
     max-height: 70vh;
-    /* position: relative; */
-    margin: 5vh 0 0 4.6%;
     background-color: #e8e7e565;
     box-shadow: 13px 13px 5px rgba(207, 207, 207, 0.836); 
     overflow: auto;
@@ -24,3 +26,4 @@
 .city_weather::-webkit-scrollbar-thumb{
     background-color: rgba(255, 225, 125, 0.753);
 }
+

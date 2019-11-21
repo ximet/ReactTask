@@ -52,10 +52,5 @@ const initialState  = [
 ];;
   
 export default function changeMainState(state = initialState, action) {
-    if (action.type === 'ADD_CITY') {
-        return {
-            
-        };
-    }
     return state;
 }

@@ -30,7 +30,8 @@ export default connect(
   }),
   dispatch => ({
     onChangeMain: (trackName) => {
-      dispatch({ type: 'CHANGE_MAIN', payload: trackName })
+      dispatch({ type: 'CHANGE_MAIN', payload: trackName });
+      dispatch({ type: 'FIND_CITY', payload: "" });
     }
   })
 )(Button);
