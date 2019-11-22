@@ -13,6 +13,8 @@
     },
     "root": true,
     "rules": {
+      "no-useless-constructor": 0,
+      "linebreak-style": 0,
       "react/prefer-stateless-function": "warn",
       "react/self-closing-comp": [
         "warn",
@@ -44,7 +46,7 @@
       "jsx-a11y/href-no-hash": "off",
       "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
       "react/jsx-boolean-value": ["warn", "never"],
-      "react/jsx-closing-bracket-location": ["warn", "after-props"],
+      "react/jsx-closing-bracket-location": ["warn", "tag-aligned"],
       "react/jsx-curly-spacing": ["warn", "never"],
       "react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
       "react/jsx-first-prop-new-line": ["warn", "multiline"],

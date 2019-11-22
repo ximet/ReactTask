@@ -3,24 +3,23 @@ import PropTypes from 'prop-types';
 import styles from './Button.scss';
 
 const Button = ({
-  name,
-  clickHandler,
+  onClick,
   className,
-  alignRight,
+  children,
 }) => (
   <button
-    onClick={clickHandler}
-    className={[styles.button, className, alignRight ? styles.right : ''].join(' ')}
-    type="button">
-    {name}
+    onClick={onClick}
+    className={[styles.button, className].join(' ')}
+    type="button"
+  >
+    {children}
   </button>
 );
 
 Button.propTypes = {
-  name: PropTypes.string.isRequired,
-  clickHandler: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
-  alignRight: PropTypes.string,
+  children: PropTypes.string,
 };
 
 export default Button;

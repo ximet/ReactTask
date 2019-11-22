@@ -13,15 +13,17 @@
     align-items: center;
     border: none;
     border-bottom: 2px solid green;
+    background-color: #1b5f4e;
+    color: #fff;
     cursor: pointer;
     .cityName {
-      color: green;
+      color: #fff;
     }
     .temperature {
       font-size: 1.3rem;
     }
     &:hover {
-      background-color: #fff;
+      background-color: #3f927d;
     }
   }
 }

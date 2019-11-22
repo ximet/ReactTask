@@ -6,8 +6,13 @@
   align-items: center;
   justify-content: center;
   border: 3px solid green;
-  background-color: #fff;
+  background-color: #4bace0;
+  color: #fff;
   .cityInfo {
     padding: 20px;
+  }
+  .weatherIcon {
+    width: 80px;
+    height: 80px;
   }
 }
