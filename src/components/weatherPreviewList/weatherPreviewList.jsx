@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import WeatherPreviewRow from '../weatherPreviewRow/weatherPreviewRow.jsx';
+import WeatherPreviewRow from '../WeatherPreviewRow/WeatherPreviewRow.jsx';
 
 // eslint-disable-next-line no-unused-vars
-const GetCitiesListWithWeather = () => new Promise((resolve, reject) => {
+const GET_CITIES_LIST_WITH_WEATHER = () => new Promise((resolve, reject) => {
   setTimeout(() => resolve([
     {
       cityName: 'Minsk',
@@ -26,7 +26,7 @@ class WeatherPreviewList extends Component {
   }
 
   componentDidMount() {
-    GetCitiesListWithWeather().then(
+    GET_CITIES_LIST_WITH_WEATHER().then(
       (citiesListWithWeather) => this.setState({ citiesListWithWeather }),
     );
   }

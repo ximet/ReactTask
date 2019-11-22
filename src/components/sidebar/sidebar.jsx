@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Sidebar = ({ homeUrl, homeIcon }) => (
-  <div>
-    <ul>
-      <li>
-        <a href={homeUrl}>
-          <img src={homeIcon.source} alt={homeIcon.alt} />
-        </a>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li>
+      <a href={homeUrl}>
+        <img src={homeIcon.source} alt={homeIcon.alt} />
+      </a>
+    </li>
+  </ul>
 );
 
 Sidebar.propTypes = {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Button from '../button/button.jsx';
-import Header from '../header/header.jsx';
-import Sidebar from '../sidebar/sidebar.jsx';
-import WeatherPreviewList from '../weatherPreviewList/weatherPreviewList.jsx';
-import WeatherInfoContainer from '../weatherInfoContainer/weatherInfoContainer.jsx';
+import Button from '../Button/Button.jsx';
+import Header from '../Header/Header.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
+import WeatherPreviewList from '../WeatherPreviewList/WeatherPreviewList.jsx';
+import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.jsx';
 
 class MainScreen extends Component {
   constructor(props) {
@@ -19,15 +19,14 @@ class MainScreen extends Component {
       },
       isMore: false,
       homeUrl: 'Smth',
-
     };
   }
-    
-      onHandleClick = () => {
+
+      handleClick = () => {
         const { isMore } = this.state;
         this.setState({ isMore: !isMore });
-      }
-    
+      };
+
       render() {
         const {
           logo,
@@ -42,7 +41,7 @@ class MainScreen extends Component {
             <>
               {isMore ? <WeatherInfoContainer /> : <WeatherPreviewList />}
             </>
-            <Button text={isMore ? 'More' : 'Back'} handleClick={this.onHandleClick} />
+            <Button text={isMore ? 'More' : 'Back'} onClick={this.handleClick} />
           </>
         );
       }

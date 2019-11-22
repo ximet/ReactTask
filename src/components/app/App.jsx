@@ -1,5 +1,5 @@
 import React from 'react';
-import MainScreen from '../mainScreen/mainScreen.jsx';
+import MainScreen from '../MainScreen/MainScreen.jsx';
 
 class App extends React.PureComponent {
   render() {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import WeatherInfo from '../weatherInfo/weatherInfo.jsx';
+import WeatherInfo from '../WeatherInfo/WeatherInfo.jsx';
 
 // eslint-disable-next-line no-unused-vars
-const GetCityWeatherInfo = () => new Promise((resolve, reject) => {
+const GET_CITY_WEATHER_INFO = () => new Promise((resolve, reject) => {
   setTimeout(() => resolve({
     weatherIcon: {
       source: 'smth',
@@ -29,7 +29,7 @@ class WeatherInfoContainer extends Component {
   }
 
   componentDidMount() {
-    GetCityWeatherInfo().then(
+    GET_CITY_WEATHER_INFO().then(
       (cityWeatherInfo) => this.setState({ ...cityWeatherInfo }),
     );
   }
