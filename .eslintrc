@@ -65,7 +65,8 @@
       "import/no-unresolved": 0,
       "import/no-extraneous-dependencies": 0,
       "import/extensions": 0,
-      "babel/object-curly-spacing": 0
+      "babel/object-curly-spacing": 0,
+      "linebreak-style": [2, "windows"]
     },
     "env": {
       "es6": true,

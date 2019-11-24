@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import toggleButton from './toggleButton';
 
-const rootReducers = combineReducers({});
+const rootReducers = combineReducers({ toggleButton });
 
 export default rootReducers;
