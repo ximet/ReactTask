@@ -1,0 +1,22 @@
+.mainContent {
+    margin: 30px;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid lightgrey;
+}
+
+.mainWrapper {
+    width: 100%;
+}
+
+.cityItemWrapper {
+    margin: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+    color: rgb(38, 38, 38);
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}

@@ -1,0 +1,57 @@
+.city {
+    display: block;
+    font-size: 50px;
+}
+
+.date {
+    font-size: 30px;
+}
+
+.temperature {
+    font-size: 60px;
+}
+
+.editLocationButtonWrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+#editLocationButton {
+    font-size: 22px;
+
+    svg {
+        font-size: 32px;
+    }
+}
+
+.windText {
+    font-size: 60px;    
+}
+
+.windIcon {
+    transform: rotate(45deg);
+    transform-origin: bottom;
+    display: inline-block;
+    color: rgb(38, 38, 38);
+
+    svg {
+        font-size: 60px;
+    }
+}
+
+.time {
+    font-size: 90px;
+    margin-top: -27px;
+    border-bottom: 3px solid orange;
+    text-align: center;
+}
+
+.windWrapper {
+    text-align: center;
+    margin-top: 11px;
+}

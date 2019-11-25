@@ -1,0 +1,13 @@
+.avatar {
+    align-self: center;
+    width: 50%;
+    display: flex;
+    flex-direction: row-reverse;
+
+    div {
+        cursor: pointer;
+        margin: 10;
+        width: 60;
+        height: 60;
+    }
+}
