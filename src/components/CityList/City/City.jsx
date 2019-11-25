@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import styles from './styles.css';
 
+// import { BrowserRouter as Route, Switch, Link } from 'react-router-dom';
 
 class City extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class City extends React.Component {
       render() {
         return (
             <div className = {(this.props.city == this.props.Store.mainCity.city)? styles.city_activ : styles.city} onClick = {this.changeMainCity}>
+                {/* <div className = {styles.title}><span><Link to='/'>{this.props.city}</Link></span></div> */}
                 <div className = {styles.title}><span>{this.props.city}</span></div>
                 <div className = {styles.temperature}>
                     <span>{this.props.weather} &#8451;</span>

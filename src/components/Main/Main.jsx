@@ -17,11 +17,11 @@ class Main extends React.Component {
   render() {
     return (
     <div className = {styles.main} style={ this.backImg }>
-        <div>
+        
             <p className = {styles.city}> {this.props.Store.mainCity.city} </p>
             <p className = {styles.temperature}> {this.props.Store.mainCity.temperature} &#8451; </p>
-        </div>
-        <Button title="More"/>
+      
+        {/* <Button title="More"/> */}
     </div>
     );
   }

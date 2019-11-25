@@ -24,6 +24,12 @@
     margin-top: 60px;
 }
 
+.nav_element a {
+    color: white;;
+    text-decoration: none;
+
+}
+
 .nav_element .image {
     height: 40px;
     margin-left: 18px;

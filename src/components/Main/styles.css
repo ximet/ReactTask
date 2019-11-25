@@ -11,40 +11,28 @@
     background-color: transparent;
     background-size: 100%;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.main div {
-    width: 80%;
-    height: 25vw;
-    overflow: hidden;
-    min-height: 240px;
-    min-width: 240px;
-    display: flex;
-    flex-direction: column;
+.city {
+    grid-area: 3 / 1 / 4 / 4;
+    min-width: 230px;
+}
+
+.temperature {
+    grid-area: 5 / 1 / 6 / 3;
+    min-width: 200px;
 }
 
 .city, .temperature {
-    width: 40%;
-    min-width: 210px;
-    margin: 2vmin 5vmin;
-    padding: 10px 10px 10px 2vw;
+    margin: 2vmin 7vmin;
+    padding: 2vmin 10px 1.5vmin 2vw;
     font-size: 52pt;
     color: rgb(36, 35, 71);
     background-color: #44ebebbd;  
-    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
-
-.city {
-    min-width: 410px;
-}
-
-.city {
-    padding-right: 180px;
-}
-
-/* .temperature {
-    position: absolute;
-        bottom: 20px;
-} */

@@ -14,7 +14,7 @@ class Button extends React.Component {
   render() {
     return (
       <div className = {styles.button}>
-        <button onClick = {this.changeMain}> {this.props.title} </button>      
+        <button onClick = {this.changeMain}>{this.props.title}</button>      
       </div>
       );
   }

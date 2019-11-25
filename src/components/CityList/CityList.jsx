@@ -26,7 +26,7 @@ class CityList extends React.Component {
             />;
             })
             }
-            <Button title="Back"></Button>
+            {/* <Button title="Back"></Button> */}
         </div>
       </div>
     );

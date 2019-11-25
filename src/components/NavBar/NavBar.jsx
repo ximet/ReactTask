@@ -10,11 +10,13 @@ import styles from './styles.css';
     {
       key: 1,
       nav_img: img1,
+      nav_link: "/",
       nav_title: "Дом"
     },
     {
       key: 2,
       nav_img: img2,
+      nav_link: "/cities",
       nav_title: "Погода"
     },
     {
@@ -33,6 +35,7 @@ class NavBar extends React.Component {
           return <NavBarElement 
                     key={item.key} 
                     title={item.nav_title} 
+                    link={item.nav_link} 
                     image={item.nav_img}/>;
         })
       }
