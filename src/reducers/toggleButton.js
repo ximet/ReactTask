@@ -13,12 +13,12 @@ const DEFAULT_IS_MORE_STATE = {
   isMore: false,
 };
 
-const toggleButton = (state = DEFAULT_IS_MORE_STATE, { type, payload }) => {
+const toggleButton = (state = DEFAULT_IS_MORE_STATE, { type, isMore }) => {
   switch (type) {
     case ACTION_TYPES.TOGGLE_BUTTON:
-      return [
-        ...state, payload,
-      ];
+      return {
+        ...state, ...isMore,
+      };
     default:
       return state;
   }

@@ -9,10 +9,11 @@ import WeatherPreviewList from '../WeatherPreviewList/WeatherPreviewList.jsx';
 import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.jsx';
 import { toggleButtonAction } from '../../actions/actionCreator';
 
+
 class MainScreen extends Component {
       handleClick = () => {
         const { isMore } = this.props;
-        toggleButtonAction(isMore);
+        toggleButtonAction(!isMore);
       };
 
       render() {
@@ -21,7 +22,7 @@ class MainScreen extends Component {
           homeIcon,
           isMore,
           homeUrl,
-        } = this.state;
+        } = this.props;
         return (
           <>
             <Header logo={logo} />
@@ -36,8 +37,14 @@ class MainScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isMore: state.isMore,
+  isMore: state.toggleButton.isMore,
+  logo: state.toggleButton.logo,
+  homeIcon: state.toggleButton.homeIcon,
+  homeUrl: state.toggleButton.homeUrl,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  toggleButtonAction: (isMore) => dispatch(toggleButtonAction(isMore)),
+});
 
-export default connect(mapStateToProps, { toggleButtonAction })(MainScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
