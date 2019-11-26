@@ -19,7 +19,9 @@ class Input extends React.Component {
       render() {
         return (
           <div className={styles.input_box}>
-            <input type="text" ref={(input)=> (this.serchInput = input)} onKeyDown={(e) => this.onKeyPressed(e)}/>
+            <input type="text" 
+              ref={(input)=> (this.serchInput = input)} 
+              onKeyPress ={(e) => this.onKeyPressed(e)}/>
             <button onClick={this.findCity}> Find </button>
           </div>
         );

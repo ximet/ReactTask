@@ -17,10 +17,10 @@ class NavBarElement extends React.Component {
     render() {
         return (
             // Как сделать весь блок ссылкой?
-            <div className = {styles.nav_element}>
-                <Link to={this.props.link} onClick = {this.clearFilter}>{this.props.title}</Link>
-                <img src={this.props.image} className = {styles.image}/>
-            </div>
+            <Link className = {styles.nav_element} to={this.props.link} onClick = {this.clearFilter}>
+              <span>{this.props.title}</span> 
+              <img src={this.props.image} className = {styles.image}/>
+            </Link>
             );
     }
 }

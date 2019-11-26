@@ -17,14 +17,19 @@ class City extends React.Component {
       }  
       render() {
         return (
-            <div className = {(this.props.city == this.props.Store.mainCity.city)? styles.city_activ : styles.city} onClick = {this.changeMainCity}>
-                {/* <div className = {styles.title}><span><Link to='/'>{this.props.city}</Link></span></div> */}
-                <div className = {styles.title}><span><Link to='/'>{this.props.city}</Link></span></div>
+            <Link to='/' className = {(this.props.city == this.props.Store.mainCity.city)?
+              styles.city_activ : styles.city}
+              onClick = {this.changeMainCity}>
+                <div className = {styles.title}>
+                  <span>
+                    {this.props.city}
+                  </span>
+                </div>
                 <div className = {styles.temperature}>
                     <span>{this.props.weather} &#8451;</span>
                     <img src={this.props.weather_img}/>
                 </div>
-            </div>
+            </Link>
             );
       }
 }

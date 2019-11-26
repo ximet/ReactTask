@@ -1,3 +1,8 @@
+.city, .city_activ {
+    color: rgb(40, 51, 68);
+    text-decoration: none;
+}
+
 .city {
     width: 100%;
     border-top: 5px solid white;
