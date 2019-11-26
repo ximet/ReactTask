@@ -12,8 +12,8 @@ import { toggleButtonAction } from '../../actions/actionCreator';
 
 class MainScreen extends Component {
       handleClick = () => {
-        const { isMore } = this.props;
-        toggleButtonAction(!isMore);
+        const { isMore, toggleButton } = this.props;
+        toggleButton(!isMore);
       };
 
       render() {
@@ -23,6 +23,7 @@ class MainScreen extends Component {
           isMore,
           homeUrl,
         } = this.props;
+        console.log(isMore);
         return (
           <>
             <Header logo={logo} />
@@ -44,7 +45,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleButtonAction: (isMore) => dispatch(toggleButtonAction(isMore)),
+  toggleButton: (isMore) => dispatch(toggleButtonAction(isMore)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

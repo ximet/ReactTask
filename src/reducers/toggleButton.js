@@ -17,7 +17,7 @@ const toggleButton = (state = DEFAULT_IS_MORE_STATE, { type, isMore }) => {
   switch (type) {
     case ACTION_TYPES.TOGGLE_BUTTON:
       return {
-        ...state, ...isMore,
+        ...state, ...{ isMore },
       };
     default:
       return state;
