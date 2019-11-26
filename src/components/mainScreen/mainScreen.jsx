@@ -23,7 +23,6 @@ class MainScreen extends Component {
           isMore,
           homeUrl,
         } = this.props;
-        console.log(isMore);
         return (
           <>
             <Header logo={logo} />
