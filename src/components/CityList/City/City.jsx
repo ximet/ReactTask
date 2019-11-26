@@ -5,7 +5,6 @@ import { BrowserRouter as Route, Switch, Link } from 'react-router-dom';
 import defImg from '../../../img/broken-image.png';
 import styles from './styles.css';
 
-// import { BrowserRouter as Route, Switch, Link } from 'react-router-dom';
 
 class City extends React.Component {
     constructor(props) {
