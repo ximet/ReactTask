@@ -33,14 +33,6 @@ class CityList extends React.Component {
   }
 }
 
-// CityList.propTypes = {
-//   city: PropTypes.string.isRequired,
-//   temperature: PropTypes.string.isRequired,
-//   // weatherBackground:
-// };
-
-// export default CityList;
-
 export default connect(
   state => (
     {

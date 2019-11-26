@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { BrowserRouter as Route, Switch, Link } from 'react-router-dom';
+import defImg from '../../../img/broken-image.png';
 import styles from './styles.css';
 
 
@@ -26,11 +27,11 @@ class NavBarElement extends React.Component {
 
 NavBarElement.propTypes = {
     title: PropTypes.string.isRequired,
-    // image:
 }
 
 NavBarElement.defaultProps = {
-  link: '/'
+  link: '/',
+  image: defImg
 };
 
 export default connect(

@@ -2,12 +2,12 @@ const initialState  = [
   {
     key: 0,
     city: "Minsk",
-    weather: "+15",
+    weather: "+6",
   },
   {
     key: 1,
     city: "London",
-    weather: "+23",
+    weather: "+12",
   },
   {
     key: 4,
@@ -42,12 +42,12 @@ const initialState  = [
   {
     key: 2,
     city: "New York",
-    weather: "+30",
+    weather: "+18",
   },
   {
     key: 3,
     city: "Moscow",
-    weather: "+10",
+    weather: "-1",
   },
 ];;
   

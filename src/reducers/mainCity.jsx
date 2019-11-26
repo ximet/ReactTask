@@ -1,5 +1,5 @@
 const initialState  = {
-    city: "Kuala Lumpur",
+    city: "Minsk",
     temperature: "+15"
   };
   

@@ -1,5 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { BrowserRouter as Route, Switch, Link } from 'react-router-dom';
+import defImg from '../../../img/broken-image.png';
 import styles from './styles.css';
 
 // import { BrowserRouter as Route, Switch, Link } from 'react-router-dom';
@@ -16,7 +19,7 @@ class City extends React.Component {
         return (
             <div className = {(this.props.city == this.props.Store.mainCity.city)? styles.city_activ : styles.city} onClick = {this.changeMainCity}>
                 {/* <div className = {styles.title}><span><Link to='/'>{this.props.city}</Link></span></div> */}
-                <div className = {styles.title}><span>{this.props.city}</span></div>
+                <div className = {styles.title}><span><Link to='/'>{this.props.city}</Link></span></div>
                 <div className = {styles.temperature}>
                     <span>{this.props.weather} &#8451;</span>
                     <img src={this.props.weather_img}/>
@@ -24,7 +27,16 @@ class City extends React.Component {
             </div>
             );
       }
-    }
+}
+
+City.propTypes = {
+  city: PropTypes.string.isRequired,
+  weather: PropTypes.string.isRequired,
+};
+
+City.defaultProps = {
+  weather_img: defImg
+};
       
 
 export default connect(

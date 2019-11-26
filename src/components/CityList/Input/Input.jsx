@@ -11,11 +11,16 @@ class Input extends React.Component {
       findCity() {
         this.props.onFindCity(this.serchInput.value)
       }
+      onKeyPressed(e) {
+        if(e.key == 'Enter') {
+          this.findCity();
+        };
+      }
       render() {
         return (
           <div className={styles.input_box}>
-            <input type="text" ref={(input)=> (this.serchInput = input)}/>
-            <button onClick={this.findCity.bind(this)}> Find </button>
+            <input type="text" ref={(input)=> (this.serchInput = input)} onKeyDown={(e) => this.onKeyPressed(e)}/>
+            <button onClick={this.findCity}> Find </button>
           </div>
         );
       }

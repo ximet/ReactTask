@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import styles from './styles.css';
 
@@ -14,7 +15,8 @@ class Button extends React.Component {
   render() {
     return (
       <div className = {styles.button}>
-        <button onClick = {this.changeMain}>{this.props.title}</button>      
+        {/* <button onClick = {this.changeMain}>{this.props.title}</button>       */}
+        <button>{this.props.title}</button>   
       </div>
       );
   }
