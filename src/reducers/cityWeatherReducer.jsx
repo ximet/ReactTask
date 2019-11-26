@@ -48,7 +48,8 @@ const initialState = {
     ]
 };
 
-const cityWeather = (state = initialState, action) => {
+const cityWeatherReducer = (state = initialState, action) => {
+    console.log("Reducer");
     switch (action.type) {
         case SET_CURRENT_CITY: {
             return {
@@ -63,4 +64,4 @@ const cityWeather = (state = initialState, action) => {
     }
 };
 
-export default cityWeather;
+export default cityWeatherReducer;

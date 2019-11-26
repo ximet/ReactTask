@@ -23,6 +23,10 @@
 
 #editLocationButton {
     font-size: 22px;
+    
+    &:hover {
+        background-color: antiquewhite;
+    }
 
     svg {
         font-size: 32px;

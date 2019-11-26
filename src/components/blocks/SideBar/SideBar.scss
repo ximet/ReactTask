@@ -9,5 +9,9 @@
 
     button {
         color: rgb(38, 38, 38);
+
+        &:hover {
+            background-color: antiquewhite;
+        }
     }
 }

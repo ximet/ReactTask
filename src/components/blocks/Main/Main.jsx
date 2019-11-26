@@ -6,18 +6,18 @@ import CityItem from '../../reusable/CityItem/CityItem';
 import { mainContent, mainWrapper, cityItemWrapper } from './Main.scss';
 
 const Main = (props) => {
-    const { cityWeather } = props.cityData;
+    const { cityWeatherReducer } = props.cityData;
 
     return (
         <main className={ mainWrapper }>
             <Switch>
                 <Route exact path="/">
                     <Paper className={ mainContent }>
-                        <CurrentCity cityData={ cityWeather.currentCity }/>
+                        <CurrentCity cityData={ cityWeatherReducer.currentCity }/>
                     </Paper>
                 </Route>
                 <Route exact path="/cities">
-                    { cityWeather.allCities.map(city => (
+                    { cityWeatherReducer.allCities.map(city => (
                             <Paper key={city.id} className={ cityItemWrapper }>
                                 <CityItem cityData={ city } />
                             </Paper>

@@ -6,6 +6,7 @@ import SideBar from 'components/blocks/SideBar/SideBar';
 import { appWrapper, container } from './App.scss';
 
 class App extends React.Component {
+
   render() {
     return (
       <div>
