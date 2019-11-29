@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './Header/Header.jsx';
 import Main from './Main/Main.jsx';
 import NavBar from './NavBar/NavBar.jsx';
