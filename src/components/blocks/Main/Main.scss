@@ -1,8 +1,9 @@
+@import '../../../assets/common/colors.scss';
+
 .mainContent {
     margin: 30px;
     padding: 30px;
-    background-color: white;
-    border: 1px solid lightgrey;
+    background-color: $quaternary;
 }
 
 .mainWrapper {
@@ -13,14 +14,15 @@
     margin: 30px;
     padding: 10px 30px;
     cursor: pointer;
-    color: rgb(38, 38, 38);
+    color: $primary;
 
     &:hover {
-        background-color: antiquewhite;
+        background-color: $tertiary;
+;
     }
 
     a {
         text-decoration: none;
         color: inherit;
     }
-}
+} 

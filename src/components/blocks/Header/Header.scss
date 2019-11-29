@@ -1,27 +1,43 @@
+@import '../../../assets/common/colors.scss';
+
 .header {
-    background-color: white;
+    background-color: $quaternary;
     display: flex;
     padding: 5px 15px;
     max-width: 900px;
     margin: 0 auto;
-}
 
-.headerContent {
-    display: flex;
-    width: 50%;
-
-    button {
-        color: rgb(38, 38, 38);
-
-        &:hover {
-            background-color: antiquewhite;
+    .headerContent {
+        display: flex;
+        width: 50%;
+    
+        button {
+            color: $primary;
+    
+            &:hover {
+                background-color: $tertiary;
+            }
+        }
+    
+        .divider {
+            background-color: $primary;
+            height: 28px;
+            margin: 16px 16px;
+            width: 1px;
         }
     }
-
-    .divider {
-        background-color: rgb(38, 38, 38);
-        height: 28px;
-        margin: 16px 16px;
-        width: 1px;
-    }
+    
+    .avatarWrapper {
+        align-self: center;
+        width: 50%;
+        display: flex;
+        flex-direction: row-reverse;
+    
+        div {
+            cursor: pointer;
+            margin: 10;
+            width: 60;
+            height: 60;
+        }
+    } 
 }

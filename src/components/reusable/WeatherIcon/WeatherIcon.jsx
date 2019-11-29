@@ -1,5 +1,6 @@
 import React from 'react';
 import { ICON_HEIGHT_BIG, ICON_WIDTH_BIG, ICON_HEIGHT_SMALL, ICON_WIDTH_SMALL } from '../../../constants';
+import { ICONS_PARAM } from '../../../constants';
 import { weatherIcon } from './WeatherIcon.scss';
 
 class WeatherIcon extends React.Component {
@@ -13,9 +14,7 @@ class WeatherIcon extends React.Component {
         this.iconType = iconInfo.iconType;
         this.width = isCurrentCity ? ICON_WIDTH_BIG : ICON_WIDTH_SMALL;
         this.height = isCurrentCity ? ICON_HEIGHT_BIG : ICON_HEIGHT_SMALL;
-        this.weatherIcons = new Skycons({
-            "color": "orange"
-        });
+        this.weatherIcons = new Skycons(ICONS_PARAM);
     }
 
     componentDidMount() {

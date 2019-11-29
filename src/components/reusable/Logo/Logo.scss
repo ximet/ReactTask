@@ -1,3 +1,5 @@
+@import '../../../assets/common/colors.scss';
+
 .logo {
     align-self: center;
     margin-left: 10px;
@@ -5,7 +7,7 @@
 }
 
 .logoText {
-    color: rgb(38, 38, 38);;
+    color: $primary;;
     font-size: 18px;
     padding: 11px 0;
 }

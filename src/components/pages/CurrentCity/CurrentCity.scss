@@ -1,3 +1,5 @@
+@import '../../../assets/common/colors.scss';
+
 .city {
     display: block;
     font-size: 50px;
@@ -25,7 +27,7 @@
     font-size: 22px;
     
     &:hover {
-        background-color: antiquewhite;
+        background-color: $tertiary;
     }
 
     svg {
@@ -41,7 +43,7 @@
     transform: rotate(45deg);
     transform-origin: bottom;
     display: inline-block;
-    color: rgb(38, 38, 38);
+    color: $primary;
 
     svg {
         font-size: 60px;
@@ -51,7 +53,7 @@
 .time {
     font-size: 90px;
     margin-top: -27px;
-    border-bottom: 3px solid orange;
+    border-bottom: 3px solid $orange;
     text-align: center;
 }
 

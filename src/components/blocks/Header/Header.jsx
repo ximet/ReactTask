@@ -3,8 +3,7 @@ import Logo from 'components/reusable/Logo/Logo';
 import { IconButton } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
-import { header, headerContent, divider } from './Header.scss';
-import { avatar } from '../../reusable/Avatar/Avatar.scss';
+import { header, headerContent, divider, avatarWrapper } from './Header.scss';
 import avatartSrc from 'assets/images/DG.png';
 
 const logoProps = {
@@ -20,10 +19,10 @@ const Header = () => (
         <div className={ divider }></div>
         <Logo logoContent={ logoProps }/>
       </div>
-      <div className={ avatar }>
+      <div className={ avatarWrapper }>
         <Avatar alt="avatar" src={ avatartSrc } />
       </div>
     </header>    
 );
 
-export default Header;
+export default Header; 

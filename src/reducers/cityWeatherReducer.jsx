@@ -49,7 +49,6 @@ const initialState = {
 };
 
 const cityWeatherReducer = (state = initialState, action) => {
-    console.log("Reducer");
     switch (action.type) {
         case SET_CURRENT_CITY: {
             return {
