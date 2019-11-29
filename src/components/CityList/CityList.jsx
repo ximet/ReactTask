@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import City from './City/City.jsx';
 import Input from './Input/Input.jsx';
 import Button from '../Main/Button/Button.jsx';
