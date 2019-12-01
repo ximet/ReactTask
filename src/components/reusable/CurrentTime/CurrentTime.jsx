@@ -2,10 +2,9 @@ import React from "react";
 import FormattedTime from './FormattedTime/FormattedTime';
 
 class CurrentTime extends React.Component {
-    secondsInOneMinute = 60000;
-
     constructor(props) {
         super(props);
+        this.secondsInOneMinute = 60000;
         this.state = {
             date: new Date(),
         };

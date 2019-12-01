@@ -14,8 +14,6 @@ import {
 import { setCurrentCity } from '../../../actions/cityActions';
 
 class CityItem extends React.Component {
-    cityData = null;
-
     constructor(props) {
         super(props);
         this.cityData = this.props.cityData;

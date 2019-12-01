@@ -1,9 +1,6 @@
 import React from "react";
 
 class CurrentDate extends React.Component {
-    today = null;
-    date = null;
-
     constructor() {
         super();
         this.today = new Date();
