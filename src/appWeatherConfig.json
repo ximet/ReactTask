@@ -1,0 +1,34 @@
+{
+  "apiSrc": "http://api.openweathermap.org/data/2.5/",
+  "apiGroupRequestExample": "http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric&appid=93c89f1deec5904cc145d3a42ec29cfc",
+  "apiKey": "93c89f1deec5904cc145d3a42ec29cfc",
+  "cities": [{
+      "name": "Horad Minsk",
+      "id": 625143
+    },
+    {
+      "name": "New York",
+      "id": 5128581
+    },
+    {
+      "name": "Warsaw",
+      "id": 756135
+    },
+    {
+      "name": "London",
+      "id": 2643743
+    },
+    {
+      "name": "Vilnus",
+      "id": 593116
+    },
+    {
+      "name": "Kiev",
+      "id": 703448
+    },
+    {
+      "name": "Berlin",
+      "id": 2950159
+    }
+  ]
+}

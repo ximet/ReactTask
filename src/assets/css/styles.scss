@@ -40,6 +40,7 @@ $blue-1:#00487b;
     cursor: pointer;
     text-transform: uppercase;
     transition: .3s;
+    color: #fff;
 }
 
 
@@ -82,6 +83,7 @@ $blue-1:#00487b;
 }
 
 .appMain {
+    position: relative;
     flex: 1 85%;
     background-color: #f3f3f3;
     padding: 15px;
@@ -118,7 +120,7 @@ $blue-1:#00487b;
     border-left: 2px #404040 solid;
     color: #fff;
     text-decoration: none;
-    
+
     .menuItemText {
         line-height: 1;
         font-size: 10px;
@@ -139,8 +141,9 @@ $blue-1:#00487b;
 .weatherPaneBig {
     background-color: #404040;
     padding: 40px;
-    max-width: 620px;
+    // max-width: 620px;
     margin-bottom: 15px;
+    display: inline-block;
 }
 
 .weatherPaneBig .paneTitle {
@@ -167,17 +170,19 @@ $blue-1:#00487b;
     height: 90px;
 }
 
-.weatherPaneBig .paneData .temperature {
-    font-size: 45px;
-    margin-left: 20px;
+.weatherPaneBig .paneData .paneDataTab:last-child {
+    margin-right: 0;
 }
 
-.weatherPaneBig .paneData .temperature .value {
+.weatherPaneBig .paneData .paneDataTab {
     font-size: 45px;
-}
+    margin-right: 30px;
 
-.weatherPaneBig .paneData .temperature .unit {
-    font-size: 35px;
+    .icon {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+    }
 }
 
 .weatherPaneBig .paneBtns {
@@ -193,6 +198,8 @@ $blue-1:#00487b;
     cursor: pointer;
     transition: .3s;
     max-width: 620px;
+    color: #fff;
+    text-decoration: none;
 }
 
 .WeatherListPane:hover {
@@ -224,6 +231,10 @@ $blue-1:#00487b;
 
 .WeatherListPane .temperature {
     text-align: center;
+
+    .value {
+        margin-right: 5px;
+    }
 }
 
 .WeatherListPane .weatherIcon {
@@ -259,4 +270,44 @@ $blue-1:#00487b;
 
 .unitSwitcher .unitBtn:last-child {
     border-right: none;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    .loaderSpinningIcon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        animation-name: spin;
+        animation-duration: 5000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        .icon {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}
+
+.loader.enabled {
+    display: block;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

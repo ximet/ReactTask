@@ -11,7 +11,10 @@ class UnitButton extends React.PureComponent {
   }
 
   handleClick() {
-    this.props.dispatch({ ...changeTemperatureUnit, tempUnit: this.props });
+    this.props.dispatch({ 
+      ...changeTemperatureUnit,
+      tempUnit: this.props,
+    });
   }
 
   render() {

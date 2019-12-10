@@ -12,23 +12,22 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.(css|scss)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: { 
-              sourceMap: true,
-              localsConvention: 'camelCase',
-              modules: {
-                localIdentName: '[local]___[hash:base64:5]'
-              }
+      test: /\.(css|scss)$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            localsConvention: 'camelCase',
+            modules: {
+              localIdentName: '[local]___[hash:base64:5]'
             }
-          },
-          'sass-loader'
-        ]
-      }
-    ]
+          }
+        },
+        'sass-loader'
+      ]
+    }]
   },
   devServer: {
     historyApiFallback: true,

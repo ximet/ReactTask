@@ -1,9 +1,9 @@
 import { CHANGE_TEMPERATURE_UNIT } from 'actions';
 
 const tempRecountFormulas = {
-  C: initTemp => initTemp,
-  F: initTemp => initTemp * 1.8 + 32,
-  K: initTemp => initTemp + 273,
+  C: initTemp => Math.round(initTemp),
+  F: initTemp => Math.round(initTemp * 1.8 + 32),
+  K: initTemp => Math.round(initTemp + 273),
 };
 
 const initState = {

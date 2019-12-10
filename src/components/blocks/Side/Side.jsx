@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from 'assets/css/styles.scss';
 import SideMenu from 'components/menues/SideMenu/SideMenu';
+import styles from 'assets/css/styles.scss';
 import homeIcon from 'assets/images/icons/home.svg';
 import locationIcon from 'assets/images/icons/location.svg';
 import worldIcon from 'assets/images/icons/world.svg';
 
-const navigation = [{
+const navigation = [
+  {
     name: 'home',
     iconPath: homeIcon,
     path: '/'
@@ -19,7 +20,7 @@ const navigation = [{
     name: 'world',
     iconPath: worldIcon,
     path: '/world'
-  }
+  },
 ]
 
 function Side(){
@@ -29,5 +30,5 @@ function Side(){
     </aside>
   );
 }
-  
+
 export default Side;

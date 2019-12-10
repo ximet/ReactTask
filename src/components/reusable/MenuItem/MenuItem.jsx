@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import styles from 'assets/css/styles.scss';
-
 import Icon from 'components/reusable/icons/Icon';
 
 function MenuItem(props){

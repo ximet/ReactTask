@@ -1,31 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route } from "react-router-dom";
+import City from 'components/pages/City';
 import PropTypes from 'prop-types';
-import { getWeatherInfo } from 'actions';
+import { fetchAllWeatherData } from 'actions';
 import ListPane from 'components/WeatherPanes/ListPane';
 
 class World extends React.PureComponent{
 
   componentDidMount(){
-    this.props.dispatch({ ...getWeatherInfo });
+    this.props.dispatch(fetchAllWeatherData());
   }
 
   render(){
     return (
-      this.props.weatherInfo.map((el) => <ListPane key={el.location} {...el} />)
+      <Switch>
+        <Route exact path={'/world'}>
+          {this.props.weatherDataList.map((el) => <ListPane key={el.id} {...el} />)}
+        </Route>
+        <Route path={'/world/:cityId'} component={City} />
+      </Switch>
     );
   }
 }
 
 World.propTypes = {
-  weatherInfo: PropTypes.array.isRequired,
+  weatherDataList: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = ({ WeatherInfoReducer }) => {
-  const reducer = WeatherInfoReducer;
+const mapStateToProps = ({ AllWeatherInfoReducer }) => {
+  const { weatherData } = AllWeatherInfoReducer;
   return {
-    weatherInfo: reducer.weatherInfo
-  }
+    weatherDataList: weatherData.list,
+  }  
 }
 
 export default connect(mapStateToProps)(World);

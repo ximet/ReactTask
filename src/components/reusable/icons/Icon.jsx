@@ -6,7 +6,7 @@ const Icon = props => {
   const { path } = props;
   return path ?
     <div className={`${styles.icon}`}>
-      <img className={styles.iconImg} src={path} alt="svg"/>
+      <img className={styles.iconImg} src={`/${path}`} alt="svg"/>
     </div>
     : '';
   }
