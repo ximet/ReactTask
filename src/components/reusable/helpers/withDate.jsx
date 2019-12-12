@@ -1,7 +1,6 @@
 import React from "react";
-import FormattedTime from './FormattedTime/FormattedTime';
 
-class CurrentTime extends React.Component {
+class withDate extends React.Component {
     secondsInOneMinute = 60000;
 
     constructor(props) {
@@ -27,10 +26,10 @@ class CurrentTime extends React.Component {
 
     render() {
         return (
-            <FormattedTime date={ this.state.date }/>
+            <FormattedDate date={ this.state.date }/>
         );
     }
 
 }
 
-export default CurrentTime;
+export default withDate;

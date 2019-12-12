@@ -4,6 +4,8 @@ import { ICONS_PARAM } from '../../../constants';
 import { weatherIcon } from './WeatherIcon.scss';
 
 class WeatherIcon extends React.Component {
+    weatherIcons = null;
+
     constructor(props) {
         super(props);
         const iconInfo = this.props.iconInfo;

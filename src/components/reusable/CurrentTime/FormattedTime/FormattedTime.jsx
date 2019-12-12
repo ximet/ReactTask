@@ -6,8 +6,8 @@ const timeOptions = {
     hour12: false
 };
 
-const FormattedDate = (props) => (
+const FormattedTime = (props) => (
     <div>{ props.date.toLocaleTimeString("en-US", timeOptions) }</div>
 );
-
-export default FormattedDate;
+ 
+export default FormattedTime;

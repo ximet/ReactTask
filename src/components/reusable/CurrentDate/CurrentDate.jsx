@@ -1,19 +1,33 @@
 import React from "react";
+import FormattedDate from './FormattedDate/FormattedDate';
 
 class CurrentDate extends React.Component {
-    constructor() {
-        super();
-        this.today = new Date();
-        this.getDate();
+    secondsInOneMinute = 60000;
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date(),
+        };
     }
 
-    getDate() {
-        this.date = `${this.today.getDate()}.${this.today.getMonth()}.${this.today.getFullYear()}`;
+    componentDidMount() {
+        this.timerID = setInterval(() => this.tick(), this.secondsInOneMinute);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({
+            date: new Date()
+        });
     }
 
     render() {
         return (
-            <div>{ this.date }</div>
+            <FormattedDate date={ this.state.date }/>
         );
     }
 
