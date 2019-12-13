@@ -18,7 +18,6 @@ const initialState = {
             wind: "SE",
             id: 1,
         },
-        
         {
             weather: "partly-cloudy-day",
             iconType: "PARTLY_CLOUDY_DAY",
@@ -27,7 +26,6 @@ const initialState = {
             wind: "NE",
             id: 2,
         },
-        
         {
             weather: "rain",
             iconType: "RAIN",
@@ -36,7 +34,6 @@ const initialState = {
             wind: "SE",
             id: 3,      
         },
-        
         {
             weather: "fog",
             iconType: "FOG",
