@@ -1,5 +1,6 @@
 import React from "react";
-import FormattedDate from './FormattedDate/FormattedDate';
+import FormattedDate from '../FormattedDate/FormattedDate';
+import FormattedTime from '../FormattedTime/FormattedTime';
 
 class CurrentDate extends React.Component {
     secondsInOneMinute = 60000;
@@ -27,7 +28,9 @@ class CurrentDate extends React.Component {
 
     render() {
         return (
-            <FormattedDate date={ this.state.date }/>
+            this.props.isTime ?
+            <FormattedDate date={ this.state.date }/> :
+            <FormattedTime date={ this.state.date }/>
         );
     }
 

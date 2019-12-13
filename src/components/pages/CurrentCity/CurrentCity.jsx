@@ -5,7 +5,6 @@ import EditLocationIcon from '@material-ui/icons/EditLocation';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import WeatherIcon from '../../reusable/WeatherIcon/WeatherIcon';
 import CurrentDate from '../../reusable/CurrentDate/CurrentDate';
-import CurrentTime from '../../reusable/CurrentTime/CurrentTime';
 import styles from './CurrentCity.scss';
 
 class CurrentCity extends React.Component {
@@ -26,13 +25,13 @@ class CurrentCity extends React.Component {
                     <Grid item xs={4}>
                         <h2 className={ styles.city }>{ this.city }</h2>
                         <div className={ styles.date }>
-                            <CurrentDate />
+                            <CurrentDate isTime={ true }/>
                         </div>
                         <div className={ styles.temperature }>{ this.temperature }</div>
                     </Grid>
                     <Grid item xs={4}>
                         <div className={ styles.time }>
-                            <CurrentTime />
+                            <CurrentDate isTime={ false }/>
                         </div>
                         <div className={ styles.windWrapper }>
                             <span className={ styles.windText }>{this.wind}</span>
