@@ -1,9 +1,9 @@
 import React from 'react';
-import Logo from 'components/reusable/Logo/Logo';
 import { IconButton } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
-import { header, headerContent, divider, avatarWrapper } from './Header.scss';
+import Logo from 'components/reusable/Logo/Logo';
+import styles from './Header.scss';
 import avatartSrc from 'assets/images/DG.png';
 
 const logoProps = {
@@ -11,18 +11,18 @@ const logoProps = {
 }
 
 const Header = () => (
-    <header className={ header }>
-      <div className={ headerContent }>
-        <IconButton >
-          <HomeIcon fontSize="large"/>
-        </IconButton>
-        <div className={ divider }></div>
-        <Logo logoContent={ logoProps }/>
-      </div>
-      <div className={ avatarWrapper }>
-        <Avatar alt="avatar" src={ avatartSrc } />
-      </div>
-    </header>    
+  <header className={ styles.header }>
+    <div className={ styles.headerContent }>
+      <IconButton >
+        <HomeIcon fontSize="large"/>
+      </IconButton>
+      <div className={ styles.divider }></div>
+      <Logo logoContent={ logoProps }/>
+    </div>
+    <div className={ styles.avatarWrapper }>
+      <Avatar alt="avatar" src={ avatartSrc } />
+    </div>
+  </header>    
 );
 
 export default Header; 
