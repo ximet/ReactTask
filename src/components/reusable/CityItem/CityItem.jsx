@@ -13,7 +13,7 @@ class CityItem extends React.Component {
     }
 
     handleClick() {
-        this.props.cityData.isCurrentCity = true;
+        this.props.cityData.isCurrentCity = true; // TODO: move it to redux
         this.props.dispatch(setCurrentCity(this.props.cityData));
     }
 
