@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const SidebarWrapper = styled.div`
+  position: fixed;
+  height: calc(100vh - 40px);
+  background-color: green;
+  width: 40px;
+`;
 
 const Sidebar = ({ homeUrl, homeIcon }) => (
-  <ul>
-    <li>
-      <a href={homeUrl}>
-        <img src={homeIcon.source} alt={homeIcon.alt} />
-      </a>
-    </li>
-  </ul>
+  <SidebarWrapper>
+    <ul>
+      <li>
+        <a href={homeUrl}>
+          <img src={homeIcon.source} alt={homeIcon.alt} />
+        </a>
+      </li>
+    </ul>
+  </SidebarWrapper>
 );
 
 Sidebar.propTypes = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WeatherPreviewRow from '../WeatherPreviewRow/WeatherPreviewRow.jsx';
+import WeatherPreviewRow from '../../components/WeatherPreviewRow/WeatherPreviewRow.jsx';
 
 // eslint-disable-next-line no-unused-vars
 const GET_CITIES_LIST_WITH_WEATHER = () => new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ const GET_CITIES_LIST_WITH_WEATHER = () => new Promise((resolve, reject) => {
   ]), 1000);
 });
 
-class WeatherPreviewList extends Component {
+class WeatherPreviewRowsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class WeatherPreviewList extends Component {
   }
 }
 
-export default WeatherPreviewList;
+export default WeatherPreviewRowsContainer;

@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from '../constants';
+import { ACTION_TYPES } from '../../constants';
 
 const DEFAULT_IS_MORE_STATE = {
   logo: {

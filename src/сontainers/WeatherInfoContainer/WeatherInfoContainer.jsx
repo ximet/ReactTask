@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WeatherInfo from '../WeatherInfo/WeatherInfo.jsx';
+import WeatherInfo from '../../components/WeatherInfo/WeatherInfo.jsx';
 
 // eslint-disable-next-line no-unused-vars
 const GET_CITY_WEATHER_INFO = () => new Promise((resolve, reject) => {
