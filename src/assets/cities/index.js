@@ -161,15 +161,15 @@ const cities = [
           "lat": 51.50853
         }
       },
-      // {
-      //   "id": 745044,
-      //   "name": "Istanbul",
-      //   "country": "TR",
-      //   "coord": {
-      //     "lon": 28.949659,
-      //     "lat": 41.01384
-      //   }
-      // },
+      {
+        "id": 745044,
+        "name": "Istanbul",
+        "country": "TR",
+        "coord": {
+          "lon": 28.949659,
+          "lat": 41.01384
+        }
+      },
       {
         "id": 683506,
         "name": "Bucharest",
