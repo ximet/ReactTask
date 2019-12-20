@@ -21,6 +21,7 @@ export const citiesFetchDataSuccess = cities => ({
 });
 
 export const citiesFetchData = url => {
+    console.log(url);
     return dispatch => {
         dispatch(citiesIsLoading(true));
         fetch(url)
@@ -34,7 +35,7 @@ export const citiesFetchData = url => {
                 return response;
             })
             .then(response => response.json())
-            .then(cities => dispatch(citiesFetchDataSuccess(cities)))
+            .then(cities => dispatch(citiesFetchDataSuccess(cities.list)))
             .catch(() => dispatch(citiesHasErrored(true)));
     };
 };

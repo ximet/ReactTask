@@ -33,7 +33,7 @@ const CurrentCity = (props) => (
             </Grid>
         </Grid>
         <div className={ styles.editLocationButtonWrapper }>
-            <Link to="/cities">
+            <Link to="/">
                 <Button
                     size="large"
                     variant="contained"

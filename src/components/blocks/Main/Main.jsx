@@ -5,19 +5,20 @@ import CurrentCity from '../../pages/CurrentCity/CurrentCity';
 import CityItem from '../../reusable/CityItem/CityItem';
 import styles from './Main.scss';
 
-const Main = (props) => {
-    const { cityWeatherReducer } = props.cityData;
-
+const Main = props => {
+    // const { cityWeatherReducer } = props.cityData;
+    console.log(props.cityData);
+    
     return (
         <main className={ styles.mainWrapper }>
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/current">
                     <Paper className={ styles.mainContent }>
-                        <CurrentCity cityData={ cityWeatherReducer.currentCity }/>
+                        {/* <CurrentCity cityData={ cityWeatherReducer.currentCity }/> */}
                     </Paper>
                 </Route>
-                <Route exact path="/cities">
-                    { cityWeatherReducer.allCities.map(city => (
+                <Route exact path="/">
+                    { props.cityData.map(city => (
                             <Paper key={city.id} className={ styles.cityItemWrapper }>
                                 <CityItem cityData={ city } />
                             </Paper>
@@ -27,6 +28,6 @@ const Main = (props) => {
             </Switch>
         </main>
     );
-}
+};
 
 export default Main;
