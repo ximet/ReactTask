@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { IconButton } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,9 +14,11 @@ const logoProps = {
 const Header = () => (
   <header className={ styles.header }>
     <div className={ styles.headerContent }>
-      <IconButton >
-        <HomeIcon fontSize="large"/>
-      </IconButton>
+      <Link to="/">
+        <IconButton >
+          <HomeIcon fontSize="large"/>
+        </IconButton>
+      </Link>
       <div className={ styles.divider }></div>
       <Logo logoContent={ logoProps }/>
     </div>

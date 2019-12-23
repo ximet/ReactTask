@@ -2,7 +2,9 @@
 
 .city {
     display: block;
-    font-size: 50px;
+    font-size: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .date {
@@ -35,8 +37,12 @@
     }
 }
 
-.windText {
-    font-size: 60px;    
+.windDirection, .windSpeed, .speedDimension {
+    font-size: 34px;
+}
+
+.windSpeed {
+    margin-left: 10px;
 }
 
 .windIcon {
@@ -46,7 +52,7 @@
     color: $primary;
 
     svg {
-        font-size: 60px;
+        font-size: 35px;
     }
 }
 

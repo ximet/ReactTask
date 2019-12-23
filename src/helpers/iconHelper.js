@@ -6,8 +6,14 @@ const iconHelper = (icon) => {
             return Skycons.CLEAR_DAY;
         case "Mist":
             return Skycons.FOG;
+        case "Fog":
+            return Skycons.FOG;
         case "Rain":
             return Skycons.RAIN;
+        case "Snow":
+            return Skycons.SNOW;
+        case "Drizzle":
+            return Skycons.SLEET;
     }
 }
 

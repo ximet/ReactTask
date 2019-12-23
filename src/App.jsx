@@ -6,17 +6,15 @@ import SideBar from 'components/blocks/SideBar/SideBar';
 import styles from './App.scss';
 
 const App = () => (
-  <div>
+  <Router>
     <Header />
     <section className={ styles.appWrapper }>
       <div className={ styles.container }>
         <SideBar />
-        <Router>
-          <MainContainer />
-        </Router>
+        <MainContainer />
       </div>
     </section>
-  </div>
+  </Router>
 );
 
 export default App;

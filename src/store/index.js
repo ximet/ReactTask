@@ -16,7 +16,6 @@ const enhancer = composeEnhancers(
 const configureStore = () => {
     return createStore(
         rootReducer,
-        // initialState,
         enhancer
     );
 };

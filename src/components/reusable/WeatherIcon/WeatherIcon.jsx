@@ -1,8 +1,8 @@
 import React from 'react';
 import { ICON_HEIGHT_BIG, ICON_WIDTH_BIG, ICON_HEIGHT_SMALL, ICON_WIDTH_SMALL, ICONS_PARAM } from '../../../constants';
-import iconHelper from './iconHelper';
+import iconHelper from '../../../helpers/iconHelper';
 import styles from './WeatherIcon.scss';
-
+ 
 class WeatherIcon extends React.Component {
     constructor(props) {
         super(props);
