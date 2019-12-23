@@ -1,8 +1,8 @@
-import { SET_CURRENT_CITY, CITIES_HAS_ERRORED, CITIES_ARE_LOADING, CITIES_FETCH_DATA_SUCCESS } from '../constants';
+import { SET_CURRENT_CITY_ID, CITIES_HAS_ERRORED, CITIES_ARE_LOADING, CITIES_FETCH_DATA_SUCCESS } from '../constants';
 
-export const setCurrentCity = city => ({
-    type: SET_CURRENT_CITY,
-    city
+export const setCurrentCityId = cityId => ({
+    type: SET_CURRENT_CITY_ID,
+    cityId
 });
 
 export const citiesHasErrored = bool => ({
@@ -21,7 +21,6 @@ export const citiesFetchDataSuccess = cities => ({
 });
 
 export const citiesFetchData = url => {
-    console.log(url);
     return dispatch => {
         dispatch(citiesIsLoading(true));
         fetch(url)

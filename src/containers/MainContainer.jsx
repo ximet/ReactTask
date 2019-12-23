@@ -14,7 +14,7 @@ const citiesIdsString = citiesId.join(",");
 class MainContainer extends Component {
     componentDidMount() {
         this.props.fetchData(`${forecastCitiesURL}?id=${citiesIdsString}&units=metric&APPID=${openWeatherKey}`);
-        // this.props.fetchData(`${forecastCitiesURL}?id=${citiesIdsString}&units=metric&=${openWeatherKey}`); //CHECK ERROR
+        // this.props.fetchData(`${forecastCitiesURL}?id=${citiesIdsString}&units=metric&=${openWeatherKey}`); // FOR CHECKING AN ERROR
     }
     
     render() {
@@ -27,60 +27,28 @@ class MainContainer extends Component {
         }
 
         return (
-            console.log(this.props),
-            // <h1>BooooM</h1>
             <Main cityData={ this.props.cities }/>
         );
     };
 };
 
-// MainContainer.propTypes = {
-//     fetchData: PropTypes.func.isRequired,
-//     cities: PropTypes.array.isRequired,
-//     hasErrored: PropTypes.bool.isRequired,
-//     isLoading: PropTypes.bool.isRequired
-// };
+MainContainer.propTypes = {
+    fetchData: PropTypes.func.isRequired,
+    cities: PropTypes.array.isRequired,
+    hasErrored: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired
+};
 
-const mapStateToProps = state => {
-    console.log(state);
-    return {
+const mapStateToProps = state => ({
         cities: state.cities,
         hasErrored: state.citiesHasErrored,
         isLoading: state.citiesAreLoading
     }
-};
+);
 
-const mapDispatchToProps = dispatch => {
-    return {
+const mapDispatchToProps = dispatch => ({
         fetchData: (url) => dispatch(citiesFetchData(url))
-    };
-};
+    }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { connect } from 'react-redux';
-// import Main from '../components/blocks/Main/Main';
-
-// export default connect(state => ({cityData: state}))(Main);

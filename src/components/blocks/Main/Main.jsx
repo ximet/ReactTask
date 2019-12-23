@@ -14,13 +14,13 @@ const Main = props => {
             <Switch>
                 <Route exact path="/current">
                     <Paper className={ styles.mainContent }>
-                        {/* <CurrentCity cityData={ cityWeatherReducer.currentCity }/> */}
+                        <CurrentCity cities={ props.cityData }/>
                     </Paper>
                 </Route>
                 <Route exact path="/">
                     { props.cityData.map(city => (
                             <Paper key={city.id} className={ styles.cityItemWrapper }>
-                                <CityItem cityData={ city } />
+                                <CityItem city={ city }/>
                             </Paper>
                         )) 
                     }
