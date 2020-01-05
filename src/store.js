@@ -1,5 +1,6 @@
-import { createStore, compose } from 'redux';
-import rootReducer from './store/reducers/index';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './store/reducers/rootReducer';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = process.env.NODE_ENV !== 'production'
@@ -12,7 +13,7 @@ const configureStore = (preloadedState) => (
   createStore(
     rootReducer,
     preloadedState,
-    composeEnhancers(),
+    composeEnhancers(applyMiddleware(thunk)),
   )
 );
 

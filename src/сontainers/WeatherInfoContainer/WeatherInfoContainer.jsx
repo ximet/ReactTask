@@ -28,12 +28,6 @@ class WeatherInfoContainer extends Component {
     };
   }
 
-  componentDidMount() {
-    GET_CITY_WEATHER_INFO().then(
-      (cityWeatherInfo) => this.setState({ ...cityWeatherInfo }),
-    );
-  }
-
   render() {
     const {
       weatherIcon, time, cityName, temperature,

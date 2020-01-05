@@ -1,60 +1,93 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Reset } from 'styled-reset';
+import PropTypes from 'prop-types';
 import Button from '../../components/Button/Button.jsx';
 import Header from '../../components/Header/Header.jsx';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import WeatherPreviewRowsContainer from '../WeatherPreviewRowsContainer/WeatherPreviewRowsContainer.jsx';
 import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.jsx';
-import { toggleButtonAction } from '../../store/actions/actionCreator';
-
+import { toggleButtonAction, fetchWeatherByCityAction } from '../../store/actions/actionCreator';
+// import Transformer from '../../utils/transformer';
 
 const MainScreen = styled.div`
   display:flex;
   flex-direction: column;
   align-items: baseline;
-  margin: 40px 40px 40px 80px;
+  margin: 40px 40px 40px 80px;~
 `;
 
 class App extends React.PureComponent {
-      handleClick = () => {
-        const { isMore, toggleButton } = this.props;
-        toggleButton(!isMore);
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      logo: {
+        source: 'smth',
+        alt: 'smth',
+      },
+      homeIcon: {
+        source: 'smth',
+        alt: 'smth',
+      },
+      homeUrl: 'Smth',
+    };
+  }
 
-      render() {
-        const {
-          logo,
-          homeIcon,
-          isMore,
-          homeUrl,
-        } = this.props;
-        return (
-          <>
-            <Reset />
-            <Header logo={logo} />
-            <Sidebar homeUrl={homeUrl} homeIcon={homeIcon} />
-            <MainScreen>
-              {isMore ? <WeatherInfoContainer /> : <WeatherPreviewRowsContainer />}
-              <Button text={isMore ? 'More' : 'Back'} onClick={this.handleClick} />
-            </MainScreen>
-          </>
-        );
-      }
+  componentDidMount() {
+    const { fetchWeatherByCity } = this.props;
+    fetchWeatherByCity('Minsk');
+  }
+
+  handleClick = () => {
+    const { isMore, toggleButton } = this.props;
+    toggleButton(!isMore);
+  };
+
+  render() {
+    const {
+      logo,
+      homeIcon,
+      homeUrl,
+    } = this.state;
+    const { isMore } = this.props;
+    // console.log(cityWeather);
+    return (
+      <>
+        <Reset />
+        <Header logo={logo} />
+        <Sidebar homeUrl={homeUrl} homeIcon={homeIcon} />
+        <MainScreen>
+          {isMore ? <WeatherInfoContainer /> : <WeatherPreviewRowsContainer />}
+          <Button text={isMore ? 'More' : 'Back'} onClick={this.handleClick} />
+        </MainScreen>
+      </>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({
   isMore: state.toggleButton.isMore,
-  logo: state.toggleButton.logo,
-  homeIcon: state.toggleButton.homeIcon,
-  homeUrl: state.toggleButton.homeUrl,
+  cityWeather: state.fetchWeatherByCity,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   toggleButton: (isMore) => dispatch(toggleButtonAction(isMore)),
+  fetchWeatherByCity: (city) => dispatch(fetchWeatherByCityAction(city)),
 });
+
+App.propTypes = {
+  logo: PropTypes.shape({
+    source: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }),
+  homeIcon: PropTypes.shape({
+    source: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }),
+  isMore: PropTypes.bool.isRequired,
+  toggleButton: PropTypes.func.isRequired,
+  fetchWeatherByCity: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
