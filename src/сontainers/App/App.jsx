@@ -9,7 +9,6 @@ import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import WeatherPreviewRowsContainer from '../WeatherPreviewRowsContainer/WeatherPreviewRowsContainer.jsx';
 import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.jsx';
 import { toggleButtonAction, fetchWeatherByCityAction } from '../../store/actions/actionCreator';
-// import Transformer from '../../utils/transformer';
 
 const MainScreen = styled.div`
   display:flex;
