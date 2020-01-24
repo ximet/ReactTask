@@ -15,7 +15,7 @@ export const TransformCityWeather = (weatherInfo) => {
     return {
       name: weatherInfo.name,
       country: weatherInfo.sys.country,
-      temperature: kelvinToCelsius(weatherInfo.main.temp),
+      temperature: Math.round(kelvinToCelsius(weatherInfo.main.temp)),
       description: capitalizeFirstLetter(weatherInfo.weather[0].description),
       icon: weatherInfo.weather[0].icon,
       id: weatherInfo.id,

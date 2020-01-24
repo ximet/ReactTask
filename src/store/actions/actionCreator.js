@@ -13,7 +13,9 @@ export const fetchWeatherByCityAction = (city) => (async (dispatch) => {
     const weather = await WeatherService.getCurrentWeatherByCity(city);
     dispatch({
       type: ACTION_TYPES.FEATCH_WEATHER_BY_CITY,
-      payload: TransformCityWeather(weather),
+      payload: {
+        [city]: TransformCityWeather(weather),
+      },
     });
   } catch (error) {
     throw new Error(error);

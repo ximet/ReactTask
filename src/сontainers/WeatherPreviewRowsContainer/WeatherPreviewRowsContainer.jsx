@@ -1,38 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import WeatherPreviewRow from '../../components/WeatherPreviewRow/WeatherPreviewRow.jsx';
-
-// eslint-disable-next-line no-unused-vars
-const GET_CITIES_LIST_WITH_WEATHER = () => new Promise((resolve, reject) => {
-  setTimeout(() => resolve([
-    {
-      cityName: 'Minsk',
-      temperature: '12+',
-      id: 1,
-    },
-    {
-      cityName: 'Not Minsk',
-      temperature: 'Not 12+',
-      id: 2,
-    },
-  ]), 1000);
-});
+import { fetchWeatherByCityAction } from '../../store/actions/actionCreator';
 
 class WeatherPreviewRowsContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      citiesListWithWeather: [],
-    };
-  }
-
   componentDidMount() {
-    GET_CITIES_LIST_WITH_WEATHER().then(
-      (citiesListWithWeather) => this.setState({ citiesListWithWeather }),
-    );
+    const { fetchWeatherByCity } = this.props;
+    fetchWeatherByCity('Minsk');
+    fetchWeatherByCity('London');
+    fetchWeatherByCity('Moscow');
+    fetchWeatherByCity('Tel-Aviv');
   }
 
   render() {
-    const { citiesListWithWeather } = this.state;
+    // const { cityWeather } = this.props;
+    // const objectArray = Object.entries(cityWeather);
+    const citiesListWithWeather = [];
+    // objectArray.forEach(([key, value]) => {
+    //   citiesListWithWeather.push(value);
+    // });
     return (
       <ul>
         {
@@ -40,7 +27,7 @@ class WeatherPreviewRowsContainer extends Component {
             citiesListWithWeather.map((city) => (
               <li key={city.id}>
                 <WeatherPreviewRow
-                  cityName={city.cityName}
+                  cityName={city.name}
                   temperature={city.temperature} />
               </li>
             ))) : (<li><p>Nothing to show ☹</p></li>)
@@ -50,4 +37,16 @@ class WeatherPreviewRowsContainer extends Component {
   }
 }
 
-export default WeatherPreviewRowsContainer;
+const mapStateToProps = (state) => ({
+  cityWeather: state.fetchWeatherByCity,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchWeatherByCity: (city) => dispatch(fetchWeatherByCityAction(city)),
+});
+
+WeatherPreviewRowsContainer.propTypes = {
+  fetchWeatherByCity: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherPreviewRowsContainer);

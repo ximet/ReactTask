@@ -8,13 +8,13 @@ import Header from '../../components/Header/Header.jsx';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import WeatherPreviewRowsContainer from '../WeatherPreviewRowsContainer/WeatherPreviewRowsContainer.jsx';
 import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.jsx';
-import { toggleButtonAction, fetchWeatherByCityAction } from '../../store/actions/actionCreator';
+import { toggleButtonAction } from '../../store/actions/actionCreator';
 
 const MainScreen = styled.div`
   display:flex;
   flex-direction: column;
   align-items: baseline;
-  margin: 40px 40px 40px 80px;~
+  margin: 40px 40px 40px 80px;
 `;
 
 class App extends React.PureComponent {
@@ -33,11 +33,6 @@ class App extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    const { fetchWeatherByCity } = this.props;
-    fetchWeatherByCity('Minsk');
-  }
-
   handleClick = () => {
     const { isMore, toggleButton } = this.props;
     toggleButton(!isMore);
@@ -50,7 +45,6 @@ class App extends React.PureComponent {
       homeUrl,
     } = this.state;
     const { isMore } = this.props;
-    // console.log(cityWeather);
     return (
       <>
         <Reset />
@@ -67,12 +61,10 @@ class App extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   isMore: state.toggleButton.isMore,
-  cityWeather: state.fetchWeatherByCity,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   toggleButton: (isMore) => dispatch(toggleButtonAction(isMore)),
-  fetchWeatherByCity: (city) => dispatch(fetchWeatherByCityAction(city)),
 });
 
 App.propTypes = {
@@ -86,7 +78,6 @@ App.propTypes = {
   }),
   isMore: PropTypes.bool.isRequired,
   toggleButton: PropTypes.func.isRequired,
-  fetchWeatherByCity: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
