@@ -1,31 +1,40 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const WeatherInfoScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #A52A2A;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #A52A2A;
+`;
 
 const WeatherInfo = ({
-  cityName, weatherIcon, time, temperature,
+  cityName, temperature, country, description,
 }) => (
-  <div>
+  <WeatherInfoScreen>
     <h3>
-      {cityName}
+      {cityName} {country}
     </h3>
-    <img src={weatherIcon.source} alt={weatherIcon.alt} />
     <span>
-      {time.toString()}
+      {temperature} ℃
     </span>
     <span>
-      {temperature}
+      { description }
     </span>
-  </div>
+  </WeatherInfoScreen>
 );
 
 WeatherInfo.propTypes = {
   cityName: PropTypes.string.isRequired,
-  weatherIcon: PropTypes.shape({
-    source: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }),
-  time: PropTypes.instanceOf(Date),
+  description: PropTypes.string.isRequired,
   temperature: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
 };
 
 export default WeatherInfo;

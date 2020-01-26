@@ -21,3 +21,8 @@ export const fetchWeatherByCityAction = (city) => (async (dispatch) => {
     throw new Error(error);
   }
 });
+
+export const setSelectedCityAction = (selectedCity) => ({
+  type: ACTION_TYPES.SET_SELECTED_CITY,
+  payload: selectedCity,
+});

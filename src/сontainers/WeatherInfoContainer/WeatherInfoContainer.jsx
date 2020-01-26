@@ -1,45 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo.jsx';
 
-// eslint-disable-next-line no-unused-vars
-const GET_CITY_WEATHER_INFO = () => new Promise((resolve, reject) => {
-  setTimeout(() => resolve({
-    weatherIcon: {
-      source: 'smth',
-      alt: 'smth',
-    },
-    time: new Date(),
-    cityName: 'Minsk',
-    temperature: '12+',
-  }), 1000);
-});
-
 class WeatherInfoContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weatherIcon: {
-        source: '-',
-        alt: '-',
-      },
-      time: new Date(),
-      cityName: '-',
-      temperature: '-',
-    };
-  }
-
   render() {
-    const {
-      weatherIcon, time, cityName, temperature,
-    } = this.state;
+    const { selectedCity } = this.props;
     return (
       <WeatherInfo
-        cityName={cityName}
-        weatherIcon={weatherIcon}
-        time={time}
-        temperature={temperature} />
+        cityName={selectedCity.name}
+        country={selectedCity.country}
+        description={selectedCity.description}
+        temperature={selectedCity.temperature} />
     );
   }
 }
 
-export default WeatherInfoContainer;
+const mapStateToProps = (state) => ({
+  selectedCity: state.setSelectedCity,
+});
+
+WeatherInfoContainer.propTypes = {
+  selectedCity: PropTypes.shape({
+    country: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    temperature: PropTypes.string.isRequired,
+  }),
+};
+
+export default connect(mapStateToProps)(WeatherInfoContainer);

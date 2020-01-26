@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const SidebarWrapper = styled.div`
   position: fixed;
   height: calc(100vh - 40px);
-  background-color: green;
+  background-color: #A52A2A;
   width: 40px;
 `;
 

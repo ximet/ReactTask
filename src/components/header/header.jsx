@@ -1,24 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Clock from '../clock/clock';
 
 const HeaderWrapper = styled.div`
   width: 100vw;
   height: 40px;
-  background-color: red;
+  background-color: #A52A2A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 `;
 
-const Header = ({ logo }) => (
+const Header = () => (
   <HeaderWrapper>
-    <img src={logo.source} alt={logo.alt} />
+    <Clock />
   </HeaderWrapper>
 );
-
-Header.propTypes = {
-  logo: PropTypes.shape({
-    source: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }),
-};
 
 export default Header;

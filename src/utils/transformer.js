@@ -1,14 +1,9 @@
-function kelvinToCelsius(kelvin) {
-  return (kelvin - 273.15);
-}
+/* eslint-disable max-len */
+export const kelvinToCelsius = (kelvin) => (kelvin - 273.15);
 
-function checkForEmptyObject(object) {
-  return !(Object.entries(object).length === 0 && object.constructor === Object);
-}
+export const checkForEmptyObject = (object) => !(Object.entries(object).length === 0 && object.constructor === Object);
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.substring(1);
-}
+export const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.substring(1);
 
 export const TransformCityWeather = (weatherInfo) => {
   if (checkForEmptyObject(weatherInfo)) {

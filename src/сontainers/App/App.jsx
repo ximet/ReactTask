@@ -11,7 +11,7 @@ import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.j
 import { toggleButtonAction } from '../../store/actions/actionCreator';
 
 const MainScreen = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: baseline;
   margin: 40px 40px 40px 80px;
@@ -21,15 +21,11 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      logo: {
-        source: 'smth',
-        alt: 'smth',
-      },
       homeIcon: {
-        source: 'smth',
-        alt: 'smth',
+        source: '',
+        alt: 'No image',
       },
-      homeUrl: 'Smth',
+      homeUrl: 'http://localhost:9000/',
     };
   }
 
@@ -40,7 +36,6 @@ class App extends React.PureComponent {
 
   render() {
     const {
-      logo,
       homeIcon,
       homeUrl,
     } = this.state;
@@ -48,11 +43,11 @@ class App extends React.PureComponent {
     return (
       <>
         <Reset />
-        <Header logo={logo} />
+        <Header />
         <Sidebar homeUrl={homeUrl} homeIcon={homeIcon} />
         <MainScreen>
           {isMore ? <WeatherInfoContainer /> : <WeatherPreviewRowsContainer />}
-          <Button text={isMore ? 'More' : 'Back'} onClick={this.handleClick} />
+          {isMore ? <Button text="Back" onClick={this.handleClick} /> : null}
         </MainScreen>
       </>
     );
@@ -68,10 +63,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = {
-  logo: PropTypes.shape({
-    source: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }),
   homeIcon: PropTypes.shape({
     source: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
