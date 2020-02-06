@@ -1,5 +1,3 @@
-// api.openweathermap.org/data/2.5/weather?q=London
-
 const WEATHER_ENDPOINT = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const APPID = '&APPID=58f18d52abc8b8aedd92747199c9ba88';
 

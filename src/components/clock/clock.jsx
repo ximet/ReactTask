@@ -10,7 +10,7 @@ const Clock = () => {
 
   useEffect(() => {
     const timerId = setInterval(() => tick(), 1000);
- 
+
     return function cleanup() {
       clearInterval(timerId);
     };
