@@ -1,14 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Reset } from 'styled-reset';
 import PropTypes from 'prop-types';
-import Button from '../../components/Button/Button.jsx';
+import { Switch, Route } from 'react-router-dom';
 import Header from '../../components/Header/Header.jsx';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import WeatherPreviewRowsContainer from '../WeatherPreviewRowsContainer/WeatherPreviewRowsContainer.jsx';
 import WeatherInfoContainer from '../WeatherInfoContainer/WeatherInfoContainer.jsx';
-import { toggleButtonAction } from '../../store/actions/actionCreator';
+
 
 const MainScreen = styled.div`
   display: flex;
@@ -25,50 +24,36 @@ class App extends React.PureComponent {
         source: '',
         alt: 'No image',
       },
-      homeUrl: 'http://localhost:9000/',
+      homeUrl: '/',
     };
   }
-
-  handleClick = () => {
-    const { isMore, toggleButton } = this.props;
-    toggleButton(!isMore);
-  };
 
   render() {
     const {
       homeIcon,
       homeUrl,
     } = this.state;
-    const { isMore } = this.props;
     return (
       <>
         <Reset />
         <Header />
         <Sidebar homeUrl={homeUrl} homeIcon={homeIcon} />
         <MainScreen>
-          {isMore ? <WeatherInfoContainer /> : <WeatherPreviewRowsContainer />}
-          {isMore ? <Button text="Back" onClick={this.handleClick} /> : null}
+          <Switch>
+            <Route exact path="/" component={WeatherPreviewRowsContainer} />
+            <Route path="/:city" component={WeatherInfoContainer} />
+          </Switch>
         </MainScreen>
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  isMore: state.toggleButton.isMore,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  toggleButton: (isMore) => dispatch(toggleButtonAction(isMore)),
-});
-
 App.propTypes = {
   homeIcon: PropTypes.shape({
     source: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   }),
-  isMore: PropTypes.bool.isRequired,
-  toggleButton: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

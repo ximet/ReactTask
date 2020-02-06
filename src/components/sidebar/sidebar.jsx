@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const SidebarWrapper = styled.div`
   position: fixed;
@@ -13,9 +14,9 @@ const Sidebar = ({ homeUrl, homeIcon }) => (
   <SidebarWrapper>
     <ul>
       <li>
-        <a href={homeUrl}>
+        <Link to={homeUrl}>
           <img src={homeIcon.source} alt={homeIcon.alt} />
-        </a>
+        </Link>
       </li>
     </ul>
   </SidebarWrapper>

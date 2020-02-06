@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import WeatherPreviewRow from '../../components/WeatherPreviewRow/WeatherPreviewRow.jsx';
-import { toggleButtonAction, fetchWeatherByCityAction, setSelectedCityAction } from '../../store/actions/actionCreator';
+import { fetchWeatherByCityAction, setSelectedCityAction } from '../../store/actions/actionCreator';
 import { CITIES_LIST } from '../../constants';
 
 class WeatherPreviewRowsContainer extends Component {
@@ -14,8 +15,7 @@ class WeatherPreviewRowsContainer extends Component {
   }
 
   handleClick = (city) => {
-    const { isMore, toggleButton, setSelectedCity } = this.props;
-    toggleButton(!isMore);
+    const { setSelectedCity } = this.props;
     setSelectedCity(city);
   };
 
@@ -32,9 +32,11 @@ class WeatherPreviewRowsContainer extends Component {
           citiesListWithWeather.length ? (
             citiesListWithWeather.map((city) => (
               <li role="tab" key={city.id} onClick={() => this.handleClick(city)} onKeyPress={() => {}}>
-                <WeatherPreviewRow
-                  cityName={city.name}
-                  temperature={city.temperature} />
+                <Link to={`/${city.name}`}>
+                  <WeatherPreviewRow
+                    cityName={city.name}
+                    temperature={city.temperature} />
+                </Link>
               </li>
             ))) : (<li><p>Nothing to show ☹</p></li>)
         }
@@ -44,21 +46,17 @@ class WeatherPreviewRowsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isMore: state.toggleButton.isMore,
   cityWeather: state.fetchWeatherByCity,
   selectedCity: state.setSelectedCity,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleButton: (isMore) => dispatch(toggleButtonAction(isMore)),
   fetchWeatherByCity: (cityName) => dispatch(fetchWeatherByCityAction(cityName)),
   setSelectedCity: (city) => dispatch(setSelectedCityAction(city)),
 });
 
 WeatherPreviewRowsContainer.propTypes = {
   fetchWeatherByCity: PropTypes.func.isRequired,
-  isMore: PropTypes.bool.isRequired,
-  toggleButton: PropTypes.func.isRequired,
   setSelectedCity: PropTypes.func.isRequired,
   cityWeather: PropTypes.shape({
     country: PropTypes.string.isRequired,
