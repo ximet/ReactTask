@@ -47,7 +47,7 @@ const initialState  = [
   {
     key: 3,
     city: "Moscow",
-    weather: "-1",
+    weather: "-15",
   },
 ];;
   

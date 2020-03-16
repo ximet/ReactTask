@@ -25,8 +25,8 @@ class App extends React.PureComponent {
 
       <Switch>
         <Route exact path="/">
-          <Main weatherBackground={this.props.Store.mainCity.temperature.substring(1) > 1 ? 
-              (this.props.Store.mainCity.temperature.substring(1) > 20 ? 
+          <Main weatherBackground={Number(this.props.Store.mainCity.temperature) > 1 ? 
+              (Number(this.props.Store.mainCity.temperature) > 20 ? 
               backImg2 : backImg1) : backImg3 } /> 
         </Route>
         <Route path="/cities">
