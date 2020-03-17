@@ -21,7 +21,7 @@ class CityList extends React.Component {
           return <City key={item.key} 
             city={item.city}
             weather={item.weather} 
-            weather_img={ item.weather.substring(1)> 12 ? 
+            weather_img={ Number(item.weather)> 12 ? 
               (item.weather.substring(1) > 17 ? 
                 weatherImg1 : weatherImg2) : weatherImg3 }
             />;
