@@ -5,7 +5,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack",
-    "lint": "esw --ext .js --ext .jsx webpack.config.* src webpack"
+    "lint": "esw --ext .js --ext .jsx webpack.config.* src webpack",
+    "test": "jest --coverage"
   },
   "husky": {
     "hooks": {
@@ -87,6 +88,7 @@
     "html-webpack-plugin": "3.2.0",
     "husky": "3.0.8",
     "identity-obj-proxy": "3.0.0",
+    "jest": "^26.6.3",
     "jsdom": "15.1.1",
     "koa-connect": "2.0.1",
     "mini-css-extract-plugin": "0.8.0",
