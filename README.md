@@ -27,7 +27,7 @@ We need to create a weather application with location detection.
 ### Full description
 
 You have weather API: https://developer.foreca.com/#Forecasts (with oAuth). Your task create front-end for that API.
-You need to create 4 pages(every pages have layout with header, footer, navigation panel):
+You need to create 4 pages (every page have a layout with a header, footer, navigation panel):
 
 1. Main page with weather for the current location.
 2. List page, where user can see the weather for all cities on the World with sorting by countries and sorting in cities title
