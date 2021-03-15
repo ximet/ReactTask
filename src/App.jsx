@@ -1,35 +1,15 @@
 import React from 'react';
-import styles from './App.module.css';
 
-class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Home from './components/Home';
 
-    this.state = { isVisible: false };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState((state) => ({
-      isVisible: !state.isVisible,
-    }));
-  }
-
-  render() {
-    const { isVisible } = this.state;
-
-    return (
-      <div className={styles.App}>
-        <button
-          className={styles.visibilityButton}
-          type="button"
-          onClick={this.handleClick}>
-          {isVisible ? 'Hide' : 'Say hi!'}
-        </button>
-        {isVisible && <p className={styles.text}>Hello, World!</p>}
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="app">
+    <Header />
+    <Home />
+    <Footer />
+  </div>
+);
 
 export default App;

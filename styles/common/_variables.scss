@@ -1,0 +1,46 @@
+// colors
+$primary-color:  #ffffff;
+$primary-color-darker:  #f3f3f3;
+$complimentary-color: #66ccff;
+$secondary-color: #e4faff;
+$secondary-color-darker: #f3f3f3;
+$error-color: #ff0000;
+$font-color: #282c34;
+
+// font-size
+$font-size-default: 16px;
+$font-size-small: $font-size-default / 3 * 2.5;
+
+// padding
+$padding-default: 15px;
+$padding-big: $padding-default * 2;
+$padding-xl: $padding-default * 3;
+$padding-small: $padding-default / 1.5;
+$padding-xs: $padding-default / 3;
+
+//margin
+$margin-default: 10px;
+
+// width
+$width-default: 50%;
+$width-big: $width-default * 2;
+$width-small: $width-default / 2;
+
+$max-width-default: 150px;
+
+// height
+$height-default: 100%;
+
+//// border
+$border-bottom-default: 2px solid $secondary-color; 
+
+// border-radius
+$border-radius-default: 10px;
+
+// background
+$background-image-search: url('../public/loupe.png');
+$background-size-default: 15px;
+$background-position-default: 10px;
+
+// box-shadow
+$box-shadow-light: 5px 5px 5px $primary-color-darker;

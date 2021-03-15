@@ -1,0 +1,44 @@
+.dropdown {
+    position: relative;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        padding-left: $padding-small;
+        position: absolute;
+        text-align: left;
+
+        box-shadow: $box-shadow-light;
+        background-color: $primary-color;
+        border-radius: $border-radius-default;
+        margin-top: 0;
+        width: $width-big;
+        z-index: 10;
+
+        display: none;
+        overflow: hidden;
+
+        &__item {
+            padding: $padding-xs;
+            width: inherit;
+
+            &:hover &__list {
+                display: block;
+            }
+
+            &:hover {
+                background-color: $primary-color-darker;
+                cursor: pointer;
+            }
+
+            &:focus {
+                outline: inherit;
+            }
+        }
+    }
+
+    &:hover &__list {
+        display: flex;
+    }
+}
