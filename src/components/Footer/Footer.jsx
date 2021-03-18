@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Index.module.scss';
+import styles from './Footer.scss';
 
 function Footer() {
   const [date, setDate] = useState('');
 
-  const timerID = setInterval(() => setDate(new Date()), 1000);
-
   useEffect(() => {
-  }, [timerID]);
+    const timerId = setTimeout(() => setDate(new Date()), 1000);
+   
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [date]);
 
   return (
-    <footer className={`${styles.container} ${styles.footer}`}>
-      <span className={styles.date}>
+    <footer className={styles.footer}>
+      <span>
         {date.toLocaleString()}
       </span>
     </footer>

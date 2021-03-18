@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../components/Header/Index';
-import Footer from '../components/Footer/Index';
+import PropTypes from 'prop-types';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 // eslint-disable-next-line react/prop-types
 function PageLayout({ children }) {
@@ -12,5 +13,9 @@ function PageLayout({ children }) {
     </>
   );
 }
+
+PageLayout.propTypes = {
+  children: PropTypes.element,
+};
 
 export default PageLayout;
