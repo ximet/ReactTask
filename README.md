@@ -30,7 +30,7 @@ Use weather API: https://developer.foreca.com/#Forecasts (with oAuth). Your task
 You need to create 4 pages (every page has a layout with a header, footer and navigation panel):
 
 1. Main page with weather for the current location.
-2. List page (may also be a flyout or any other kind of menu), where user can see the weather for all cities in the World 
+2. List page (may also be a flyout or any other kind of menu), where user can see the weather for all cities in the World
    (all available cities) sorted by country and city title.
 3. Info page where user can see some information about the service.
 4. Feedback page with a form for feedback on your site: please, create the form in survey style with some simple questions.
