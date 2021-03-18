@@ -18,7 +18,7 @@ We need to create a weather application with location detection.
 ### Technologies
 
 1. React
-2. Redux 
+2. Redux
 3. Fill free to use any tools for UI mark-up
 4. router
 5. form
