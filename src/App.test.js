@@ -1,3 +1,3 @@
 test('renders learn react link', () => {
-    expect(true).toBe(true);
+  expect(true).toBe(true);
 });
