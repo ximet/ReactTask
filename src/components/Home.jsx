@@ -5,6 +5,7 @@ import SearchableDropdown from './SearchableDropdown';
 import CurrentWeather from './CurrentWeather';
 
 import useLocalStorage from './CustomHooks/useLocalStorage';
+import { ENTER_KEYCODE, MAX_ITEMS_LENGTH } from '../common/constants';
 
 const Home = () => {
   const [searchWord, setSearchWord] = useState('');
@@ -12,28 +13,48 @@ const Home = () => {
   const [searchError, setSearchError] = useState('');
   const [storedValue, setValue] = useLocalStorage('searchedPlaces', []);
 
-  const popularPlaces = ['New York', 'Monaco', 'London', 'Tokyo'];
+  const popularPlaces = [
+    { name: 'New York', id: 1 },
+    { name: 'Monaco', id: 2 },
+    { name: 'London', id: 3 },
+    { name: 'Tokyo', id: 4 },
+  ];
 
   const handleListItemClick = (e) => {
     const searchTerm = e.target.innerText;
     setCurrentSearch(searchTerm);
   };
 
-  const handleSearchWordChange = (e) => {
-    if (e.keyCode === 13) {
+  const handleSearch = (e) => {
+    if (e.keyCode === ENTER_KEYCODE) {
       if (!searchWord) {
         return setSearchError('Please provide a search term');
       }
-
+      
+      // set the current city search here,
+      // this is used for the API requests so that a new request isn't send on every keypress
       setCurrentSearch(searchWord);
-      setSearchError('');
+      setSearchError(null);
 
-      if (storedValue.includes(searchWord)) {
+      // if the city is already in LocalStorage, don't add it again
+      if (storedValue.find(({ name }) => name === searchWord)) {
         return '';
       }
 
-      const currentSearchedPlaces = storedValue.slice(0, 4);
-      setValue([searchWord, ...currentSearchedPlaces]);
+      // keep only 5 cities at a time
+      const lastFiveSearchedCities = storedValue.slice(0, MAX_ITEMS_LENGTH);
+      // take the id of the last added city and use it +1 as id
+      // if there are no searched cities, just use 1
+      const newCityId = lastFiveSearchedCities[0]
+        ? lastFiveSearchedCities[0].id + 1
+        : 1;
+
+      const newCity = {
+        name: searchWord,
+        id: newCityId,
+      };
+      // set the new items to LocalStorage
+      setValue([newCity, ...lastFiveSearchedCities]);
     }
 
     return '';
@@ -48,16 +69,16 @@ const Home = () => {
         <SearchField
             placeholder="Search a new place..."
             value={searchWord}
-            handleChange={(e) => setSearchWord(e.target.value)}
-            handleKeydown={handleSearchWordChange} />
+            onChange={(e) => setSearchWord(e.target.value)}
+            onKeyDown={handleSearch} />
         <SearchableDropdown
             places={storedValue}
             buttonText="Recent searches ˅"
-            handleListItemClick={handleListItemClick} />
+            onClick={handleListItemClick} />
         <SearchableDropdown
             places={popularPlaces}
             buttonText="Popular places ˅"
-            handleListItemClick={handleListItemClick} />
+            onClick={handleListItemClick} />
       </section>
       {currentSearch
         ? <CurrentWeather currentSearch={currentSearch} />

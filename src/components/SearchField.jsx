@@ -3,24 +3,24 @@ import PropTypes from 'prop-types';
 
 const SearchField = ({
   placeholder,
-  handleChange,
-  handleKeydown,
+  onChange,
+  onKeyDown,
   value,
 }) => (
   <input
     type="text"
     placeholder={placeholder}
     value={value}
-    onChange={handleChange}
-    onKeyDown={handleKeydown}
+    onChange={onChange}
+    onKeyDown={onKeyDown}
     className="input__search" />
 );
 
 SearchField.propTypes = {
-  placeholder: PropTypes.string,
-  handleChange: PropTypes.func,
-  handleKeydown: PropTypes.func,
-  value: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
+  value: PropTypes.string.isRequired,
 };
 
 export default SearchField;

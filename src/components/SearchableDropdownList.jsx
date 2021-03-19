@@ -1,43 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import SearchField from './SearchField';
-import SearchableDropdownListItem from './SearchableDropdownListItem';
+import Link from './Link';
 
-const SearchableDropdownList = ({ places, handleListItemClick }) => {
-  const [filteredSearches, setFilteredSearches] = useState([]);
+const SearchableDropdownList = ({ places, onClick }) => {
   const [searchWord, setSearchWord] = useState('');
 
-  useEffect(() => {
-    setFilteredSearches(places);
-  }, [places]);
-  
-  const handleChange = (e) => {
-    setSearchWord(e.target.value);
-
-    const currentFiltered = places.filter((place) => place.includes(e.target.value));
-    setFilteredSearches(currentFiltered);
-  };
+  const memoizedSearch = useMemo(() => (
+    places.filter(({ name }) => name.includes(searchWord))
+  ), [searchWord]);
 
   return (
     <div className="dropdown__list">
       <SearchField
         placeholder="Search..."
-        handleChange={handleChange}
+        onChange={({ target: { value } }) => setSearchWord(value)}
         value={searchWord} />
-      {filteredSearches.map((place) => (
-        <SearchableDropdownListItem
-        place={place}
-        key={place}
-        handleListItemClick={handleListItemClick} />
+      {memoizedSearch.map((place) => (
+        <Link
+          place={place.name}
+          key={place.id}
+          onClick={onClick} />
       ))}
     </div>
   );
 };
 
 SearchableDropdownList.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.string),
-  handleListItemClick: PropTypes.func,
+  places: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onClick: PropTypes.func,
 };
 
 export default SearchableDropdownList;

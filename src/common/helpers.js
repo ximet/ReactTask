@@ -1,4 +1,4 @@
-export const FtoC = (f) => {
-  const c = f - 273;
-  return c.toFixed(1);
+export const kelvinToCelsius = (kelvin) => {
+  const celsius = kelvin - 273;
+  return +celsius.toFixed(1);
 };
