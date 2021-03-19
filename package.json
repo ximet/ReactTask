@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --open",
+    "start": "npm run format && cross-env NODE_ENV=development webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack",
-    "lint": "esw --ext .js --ext .jsx webpack.config.* src webpack",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "format": "prettier --write ."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run format"
     }
   },
   "engines": {
@@ -63,7 +63,6 @@
     "@babel/register": "7.6.2",
     "@babel/runtime": "7.6.2",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "10.0.3",
     "babel-loader": "8.0.6",
     "babel-preset-react-optimize": "1.0.1",
     "browserslist": "4.7.0",
@@ -71,19 +70,6 @@
     "connect-history-api-fallback": "1.6.0",
     "cross-env": "6.0.3",
     "css-loader": "3.2.0",
-    "eslint": "6.5.1",
-    "eslint-config-airbnb": "18.2.1",
-    "eslint-config-standard": "14.1.0",
-    "eslint-loader": "3.0.2",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jest": "22.17.0",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-node": "10.0.0",
-    "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-react": "7.16.0",
-    "eslint-plugin-react-hooks": "2.1.2",
-    "eslint-plugin-standard": "4.0.1",
-    "eslint-watch": "6.0.1",
     "file-loader": "4.2.0",
     "html-webpack-plugin": "3.2.0",
     "husky": "3.0.8",
@@ -95,13 +81,14 @@
     "node-sass": "4.14.1",
     "npm-check-updates": "3.1.24",
     "optimize-css-assets-webpack-plugin": "5.0.3",
+    "prettier": "^2.2.1",
     "pretty-quick": "1.11.1",
     "redux-immutable-state-invariant": "2.1.0",
     "sass-loader": "8.0.0",
     "script-ext-html-webpack-plugin": "2.1.4",
     "style-loader": "1.0.0",
     "svg-react-loader": "0.4.6",
-    "terser-webpack-plugin": "2.1.2",
+    "terser-webpack-plugin": "^4.2.3",
     "url-loader": "1.1.2",
     "webpack": "4.41.0",
     "webpack-cli": "3.3.9",
