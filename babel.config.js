@@ -13,7 +13,7 @@ module.exports = function (api) {
         useBuiltIns: 'usage'
       }
     ],
-    '@babel/preset-react'
+    ['@babel/preset-react', { runtime: 'automatic' }]
   ];
   const plugins = [
     '@babel/transform-react-constant-elements',
