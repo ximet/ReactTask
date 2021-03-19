@@ -1,0 +1,27 @@
+.container{
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color: bisque;
+}
+
+.resize{
+    padding: 15px;
+    outline: none;
+    border-radius: 5px;
+    border:2px black solid;
+}
+.red{
+    background-color: red;
+} 
+
+.blue{
+    background-color:blue;
+} 
+
+

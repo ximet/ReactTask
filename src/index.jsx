@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import Navigation from './Navigation/Navigation';
+// eslint-disable-next-line no-unused-vars
+import styles from './index.module.scss';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Navigation />, document.getElementById('app'));
