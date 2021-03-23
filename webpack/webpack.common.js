@@ -44,7 +44,7 @@ module.exports = {
         oneOf: [
           {
             // load svg modules to be displayed as icons/images
-            loader: 'svg-react-loader'
+            loader: 'svg-react-loader',
           },
           {
             // load svg files normally (eg. fonts, etc)
@@ -55,7 +55,7 @@ module.exports = {
     ]
   },
   serve: {
-    add: app => {
+    add: (app) => {
       app.use(convert(history()));
     },
     content: commonPaths.entryPath,
