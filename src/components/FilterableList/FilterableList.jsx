@@ -9,17 +9,25 @@ function FilterableList({ items }) {
   return (
     <ul className={styles.list}>
       <li className={styles.listItem}>
-        <input type="text" className={styles.searchBox} onChange={(event) => setInputValue(event.target.value.toLowerCase())} />
+        <input
+          type="text"
+          className={styles.searchBox}
+          onChange={event => setInputValue(event.target.value.toLowerCase())}
+        />
       </li>
-      { items
+      {items
         .filter(({ name }) => name.includes(inputValue))
-        .map(({ name, id }) => <li className={styles.listItem} key={id}>{name}</li>)}
+        .map(({ name, id }) => (
+          <li className={styles.listItem} key={id}>
+            {name}
+          </li>
+        ))}
     </ul>
   );
 }
 
 FilterableList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf),
+  items: PropTypes.arrayOf(PropTypes.objectOf)
 };
 
 export default FilterableList;

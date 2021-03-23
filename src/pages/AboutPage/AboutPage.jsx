@@ -10,8 +10,8 @@ function AboutPage() {
         <ul>
           <li className={styles.container__text}>Search cities by their names</li>
           <li className={styles.container__text}>
-          Info about current condition(Location, Latitude, Longtitude,
-          Altitude, Temperature, Wind, Time zone) for chosen city
+            Info about current condition(Location, Latitude, Longtitude, Altitude, Temperature,
+            Wind, Time zone) for chosen city
           </li>
         </ul>
       </div>

@@ -6,7 +6,7 @@ function Footer() {
 
   useEffect(() => {
     const timerId = setTimeout(() => setDate(new Date()), 1000);
-   
+
     return () => {
       clearTimeout(timerId);
     };
@@ -14,9 +14,7 @@ function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <span>
-        {date.toLocaleString()}
-      </span>
+      <span>{date.toLocaleString()}</span>
     </footer>
   );
 }

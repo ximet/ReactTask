@@ -10,7 +10,7 @@ function Header() {
   const { capitals } = useContext(UserContext);
 
   const handleClick = () => {
-    setIsVisible((prev) => !prev);
+    setIsVisible(prev => !prev);
   };
 
   return (

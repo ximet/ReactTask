@@ -1,20 +1,17 @@
 .container {
-    display: flex;
-    list-style-type: none;
-    justify-content: end;
-    margin: 0 2em;
+  display: flex;
+  list-style-type: none;
+  justify-content: end;
+  margin: 0 2em;
 
-    &__items {
-        display: inline-block;
-        margin: 0 0.5em;
-        font-size: 1.5em;
-        
-    }
+  &__items {
+    display: inline-block;
+    margin: 0 0.5em;
+    font-size: 1.5em;
+  }
 
-    &__link {
-        text-decoration: none;
-        color: black;
-    }
+  &__link {
+    text-decoration: none;
+    color: black;
+  }
 }
-  
-  

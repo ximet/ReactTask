@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserContext = React.createContext({
-  cities: [],
+  cities: []
 });
 
 export default UserContext;

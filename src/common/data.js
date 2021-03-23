@@ -42,7 +42,7 @@ const capitals = [
   { name: 'vienna', id: 42 },
   { name: 'vilnius', id: 43 },
   { name: 'warsaw', id: 44 },
-  { name: 'zagreb', id: 45 },
+  { name: 'zagreb', id: 45 }
 ];
 
 export default capitals;

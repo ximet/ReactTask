@@ -1,24 +1,24 @@
-@import  '../../common/variables.scss';
+@import '../../common/variables.scss';
 
 .error {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
-    width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: auto;
 
-    &__img {
-        width: 400px;
-        margin: 0 auto;
-        display: block;
-    }
+  &__img {
+    width: 400px;
+    margin: 0 auto;
+    display: block;
+  }
 }
 
-.btn{ 
-    background-color: $error;  
-    width: 7em;
-    height: 3em;
-    border-radius: 1em;
-    outline: none;
+.btn {
+  background-color: $error;
+  width: 7em;
+  height: 3em;
+  border-radius: 1em;
+  outline: none;
 }

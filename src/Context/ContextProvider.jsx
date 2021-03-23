@@ -7,16 +7,11 @@ function ContextProvider({ children }) {
   // capitals will come from request from Freca Api
   const capitals = capitalsData;
 
-  return (
-    <UserContext.Provider
-      value={({ capitals })}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={{ capitals }}>{children}</UserContext.Provider>;
 }
 
 export default ContextProvider;
 
 ContextProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element
 };
