@@ -22,7 +22,15 @@
 
     &__titleContainer {
         display: flex;
-        justify-content: center;
+        justify-content:flex-end;
         align-items: center;
     }
+}
+
+.menuBtn {
+    background-color: $tertiary;
+    width: 7em;
+    border-radius: 0.3em;
+    outline: auto;
+    
 }

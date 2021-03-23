@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Button.scss';
 
-function Button({ onClick }) {
+function Button({ onClick, title, className }) {
   return (
-    <button type="button" className={styles.menuBtn} onClick={onClick}>Menu</button>
+    <button type="button" className={className} onClick={onClick}>{title}</button>
   );
 }
 
 Button.propTypes = {
   onClick: PropTypes.func,
+  title: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;

@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './LandingPage.scss';
+import styles from './HomePage.scss';
 import PageLayout from '../../PageLayout/PageLayout';
 
-function LandingPage() {
+function HomePage() {
   return (
     <PageLayout>
       <div className={styles.container} />
@@ -10,4 +10,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default HomePage;
