@@ -5,6 +5,7 @@ import PageLayout from '../../PageLayout/PageLayout';
 import Button from '../../components/Button/Button';
 import styles from './FeedbackPage.scss';
 
+// this component will be refactored
 function FeedbackPage() {
   const [userFeedback, setUserFeedback] = useState({});
   const history = useHistory();
