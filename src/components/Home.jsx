@@ -17,20 +17,20 @@ const Home = () => {
     { name: 'New York', id: 1 },
     { name: 'Monaco', id: 2 },
     { name: 'London', id: 3 },
-    { name: 'Tokyo', id: 4 },
+    { name: 'Tokyo', id: 4 }
   ];
 
-  const handleListItemClick = (e) => {
+  const handleListItemClick = e => {
     const searchTerm = e.target.innerText;
     setCurrentSearch(searchTerm);
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = e => {
     if (e.keyCode === ENTER_KEYCODE) {
       if (!searchWord) {
         return setSearchError('Please provide a search term');
       }
-      
+
       // set the current city search here,
       // this is used for the API requests so that a new request isn't send on every keypress
       setCurrentSearch(searchWord);
@@ -45,13 +45,11 @@ const Home = () => {
       const lastFiveSearchedCities = storedValue.slice(0, MAX_ITEMS_LENGTH);
       // take the id of the last added city and use it +1 as id
       // if there are no searched cities, just use 1
-      const newCityId = lastFiveSearchedCities[0]
-        ? lastFiveSearchedCities[0].id + 1
-        : 1;
+      const newCityId = lastFiveSearchedCities[0] ? lastFiveSearchedCities[0].id + 1 : 1;
 
       const newCity = {
         name: searchWord,
-        id: newCityId,
+        id: newCityId
       };
       // set the new items to LocalStorage
       setValue([newCity, ...lastFiveSearchedCities]);
@@ -63,26 +61,25 @@ const Home = () => {
   return (
     <main className="app__main home">
       <section className="home__filters">
-        {searchError
-          ? <p className="home__filters__error">{searchError}</p>
-          : null}
+        {searchError ? <p className="home__filters__error">{searchError}</p> : null}
         <SearchField
-            placeholder="Search a new place..."
-            value={searchWord}
-            onChange={(e) => setSearchWord(e.target.value)}
-            onKeyDown={handleSearch} />
+          placeholder="Search a new place..."
+          value={searchWord}
+          onChange={e => setSearchWord(e.target.value)}
+          onKeyDown={handleSearch}
+        />
         <SearchableDropdown
-            places={storedValue}
-            buttonText="Recent searches ˅"
-            onClick={handleListItemClick} />
+          places={storedValue}
+          buttonText="Recent searches ˅"
+          onClick={handleListItemClick}
+        />
         <SearchableDropdown
-            places={popularPlaces}
-            buttonText="Popular places ˅"
-            onClick={handleListItemClick} />
+          places={popularPlaces}
+          buttonText="Popular places ˅"
+          onClick={handleListItemClick}
+        />
       </section>
-      {currentSearch
-        ? <CurrentWeather currentSearch={currentSearch} />
-        : null}
+      {currentSearch ? <CurrentWeather currentSearch={currentSearch} /> : null}
     </main>
   );
 };

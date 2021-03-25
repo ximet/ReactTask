@@ -12,16 +12,15 @@ const CurrentWeather = ({ currentSearch }) => {
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
 
-    axios.get(`${BASE_URL}weather?q=${currentSearch}&APPID=${API_KEY}`, {
-      cancelToken: cancelTokenSource.token,
-    })
+    axios
+      .get(`${BASE_URL}weather?q=${currentSearch}&APPID=${API_KEY}`, {
+        cancelToken: cancelTokenSource.token
+      })
       .then(({ data }) => {
         const {
-          main: {
-            temp,
-          },
+          main: { temp }
         } = data;
-          
+
         const tempNow = kelvinToCelsius(temp);
         setCurrentTemp(tempNow);
         setIsCityFound(true);
@@ -31,13 +30,15 @@ const CurrentWeather = ({ currentSearch }) => {
     return () => cancelTokenSource.cancel();
   }, [currentSearch]);
 
-  return isCityFound
-    ? <p>{`The current weather in ${currentSearch} is ${currentTemp} C.`}</p>
-    : <p>{`Ooops, looks like we couldn't find ${currentSearch}`}</p>;
+  return isCityFound ? (
+    <p>{`The current weather in ${currentSearch} is ${currentTemp} C.`}</p>
+  ) : (
+    <p>{`Ooops, looks like we couldn't find ${currentSearch}`}</p>
+  );
 };
 
 CurrentWeather.propTypes = {
-  currentSearch: PropTypes.string.isRequired,
+  currentSearch: PropTypes.string.isRequired
 };
 
 export default CurrentWeather;

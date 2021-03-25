@@ -7,14 +7,15 @@ const Link = ({ place, onClick }) => (
     onClick={onClick}
     onKeyDown={onClick}
     tabIndex={0}
-    role="button">
+    role="button"
+  >
     {place}
   </a>
 );
 
 Link.propTypes = {
   place: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 export default Link;

@@ -5,9 +5,7 @@ import SearchableDropdownList from './SearchableDropdownList';
 
 const SearchableDropdown = ({ places, buttonText, onClick }) => (
   <section className="dropdown">
-    <button
-      type="button"
-      className="button">
+    <button type="button" className="button">
       {buttonText}
     </button>
     <SearchableDropdownList places={places} onClick={onClick} />
@@ -17,7 +15,7 @@ const SearchableDropdown = ({ places, buttonText, onClick }) => (
 SearchableDropdown.propTypes = {
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
   buttonText: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 export default SearchableDropdown;

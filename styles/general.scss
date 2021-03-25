@@ -1,9 +1,5 @@
 // common
 @import './common/variables';
-@import './common/shared';
-@import './common/mixins';
-@import './common/animations';
-
 // helpers
 @import './helpers/inputs';
 @import './helpers/buttons';
@@ -13,20 +9,19 @@
 @import './components/App';
 @import './components/Home';
 
-
 html {
-    min-height: $height-default;
+  min-height: $height-default;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    outline: none;
-    height: $height-default;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  height: $height-default;
+}
 
 #app {
-    height: inherit;
+  height: inherit;
 }
-  

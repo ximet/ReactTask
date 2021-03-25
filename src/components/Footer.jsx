@@ -5,14 +5,10 @@ const Footer = () => {
   const dateString = new Intl.DateTimeFormat('en', {
     month: 'short',
     day: '2-digit',
-    weekday: 'short',
+    weekday: 'short'
   }).format(currentDate);
 
-  return (
-    <footer className="app__footer">
-      {dateString}
-    </footer>
-  );
+  return <footer className="app__footer">{dateString}</footer>;
 };
 
 export default Footer;
