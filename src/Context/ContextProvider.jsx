@@ -15,12 +15,11 @@ function ContextProvider({ children }) {
         .then(res => {
           setToken(res.data.access_token);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
-        })
+        });
     } catch (error) {
       console.log(error);
-
     }
 
     return () => cancelTokenSource.cancel();

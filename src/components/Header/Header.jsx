@@ -42,9 +42,8 @@ function Header() {
             });
             setCities(dataCities);
           });
-      }
-      catch (error) {
-        history.push('/error')
+      } catch (error) {
+        history.push('/error');
       }
     }
     return () => cancelTokenSource.cancel();
