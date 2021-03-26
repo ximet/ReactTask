@@ -1,0 +1,29 @@
+@import '../../common/variables.scss';
+
+.list {
+  margin: 0;
+  list-style-type: none;
+  position: fixed;
+  top: $primaryHeight;
+  left: 0;
+  padding: 0 10px;
+  background-color: $primary;
+  height: auto;
+  width: $primaryWidth;
+  overflow-y: scroll;
+  max-height: calc(100vh - #{$doubleHeight});
+  box-sizing: content-box;
+}
+
+.listItem {
+  display: flex;
+  padding: 1em 0;
+  text-align: center;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+.searchBox {
+  min-width: 3em;
+  text-transform: lowercase;
+}
