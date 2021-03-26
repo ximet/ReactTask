@@ -18,11 +18,11 @@ function Header() {
   };
 
   const context = useContext(UserContext);
-  const token = context.token !== '' && context.token;
+  const token = context.token;
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
-    if (token !== false && inputValue !== '') {
+    if (token !== '' && inputValue !== '') {
       try {
         axios
           .get(`https://pfa.foreca.com/api/v1/location/search/${inputValue}`, {
@@ -32,7 +32,6 @@ function Header() {
             cancelToken: cancelTokenSource.source
           })
           .then(res => {
-            console.log(res);
             const dataCities = res.data.locations.map(city => {
               return {
                 name: `${city.name.toLowerCase()}`,
