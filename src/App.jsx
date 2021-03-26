@@ -1,23 +1,21 @@
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import { refreshAccessToken } from './common/auth';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
-import { refreshAccessToken } from './common/auth';
 
 const App = () => {
-  const isUserLogged = !!JSON.parse(sessionStorage.getItem('token'));
-  const [isLogged, setIsLogged] = useState(isUserLogged);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleLogin = () => {
-    refreshAccessToken();
-    setIsLogged(true);
-  };
+  useEffect(() => {
+    refreshAccessToken()
+      .then(() => setIsLoading(false))
+  })
 
   return (
     <div className="app">
-      <Header isLogged={isLogged} onLogin={handleLogin} />
-      {isLogged && <Home />}
+      <Header />
+      {!isLoading ? <Home /> : <p>Getting things ready for you...</p>}
       <Footer />
     </div>
   );

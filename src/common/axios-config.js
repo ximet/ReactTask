@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { refreshAccessToken } from './auth';
-import { AUTH_ERROR } from './constants';
+import { ERRORS } from './constants';
 
 const axiosInstance = axios.create();
 // axios instances seem not to have a cancel token, so fixing that here
@@ -8,7 +8,7 @@ axiosInstance.CancelToken = axios.CancelToken;
 
 // Request interceptor for API calls
 axiosInstance.interceptors.request.use(
-  async config => {
+  config => {
     const token = JSON.parse(sessionStorage.getItem('token'));
     if (token) {
       config.headers = {
@@ -27,20 +27,21 @@ axiosInstance.interceptors.response.use(
   response => {
     return response;
   },
-  async function (error) {
+  error => {
     const originalRequest = error.config;
-    // if server sends 'unauthorized' & the user has 'logged in',
+    // if server sends 'unauthorized' 
+    // and is not already trying to make the request again,
     // initiate a request to update the token
-    // add the token to the current headers and make the initial request again
+    // and make the initial request again
     if (
-      (error.response.status === AUTH_ERROR.STATUS ||
-        error.response.data.message === AUTH_ERROR.MESSAGE) &&
-      !!JSON.parse(sessionStorage.getItem('token'))
+      (error.response.status === ERRORS.AUTH_ERROR.status ||
+      error.response.data.message === ERRORS.AUTH_ERROR.message)
+      && !originalRequest.isRetrying
     ) {
-      return refreshAccessToken().then(access_token => {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-        return axios(originalRequest);
-      });
+      originalRequest.isRetrying = true;
+
+      return refreshAccessToken()
+        .then(_ => axiosInstance(originalRequest))
     }
     return Promise.reject(error);
   }

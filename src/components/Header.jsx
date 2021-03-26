@@ -1,12 +1,7 @@
-const Header = ({ isLogged, onLogin }) => {
+const Header = () => {
   return (
     <header className="app__header">
       <p>Weather Forecast</p>
-      {!isLogged && (
-        <button className="button" onClick={onLogin}>
-          Login
-        </button>
-      )}
     </header>
   );
 };
