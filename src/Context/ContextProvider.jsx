@@ -6,12 +6,22 @@ import UserContext from './UserContext';
 function ContextProvider({ children }) {
   const [token, setToken] = useState('');
 
-  useEffect(() => {
+  useEffect(async () => {
     const cancelTokenSource = axios.CancelToken.source();
 
-    axios.get('http://localhost:3000/auth', { cancelToken: cancelTokenSource.source }).then(res => {
-      setToken(res.data.access_token);
-    });
+    try {
+      const res = await axios
+        .get('http://localhost:3000/auth', { cancelToken: cancelTokenSource.source })
+        .then(res => {
+          setToken(res.data.access_token);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    } catch (error) {
+      console.log(error);
+
+    }
 
     return () => cancelTokenSource.cancel();
   }, []);

@@ -5,11 +5,13 @@ import Button from '../Button/Button';
 import MenuList from '../MenuList/MenuList';
 import styles from './Header.scss';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 function Header() {
   const [isVisible, setIsVisible] = useState(false);
   const [cities, setCities] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const history = useHistory();
 
   const handleClick = () => {
     setIsVisible(prev => !prev);
@@ -20,27 +22,31 @@ function Header() {
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
-    if (token !== '' && inputValue !== '') {
-      axios
-        .get(`https://pfa.foreca.com/api/v1/location/search/${inputValue}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-          cancelToken: cancelTokenSource.source
-        })
-        .then(res => {
-          console.log(res);
-          const dataCities = res.data.locations.map(city => {
-            return {
-              name: `${city.name.toLowerCase()}`,
-              country: `${city.country.toLowerCase()}`,
-              id: city.id
-            };
+    if (token !== false && inputValue !== '') {
+      try {
+        axios
+          .get(`https://pfa.foreca.com/api/v1/location/search/${inputValue}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+            cancelToken: cancelTokenSource.source
+          })
+          .then(res => {
+            console.log(res);
+            const dataCities = res.data.locations.map(city => {
+              return {
+                name: `${city.name.toLowerCase()}`,
+                country: `${city.country.toLowerCase()}`,
+                id: city.id
+              };
+            });
+            setCities(dataCities);
           });
-          setCities(dataCities);
-        });
+      }
+      catch (error) {
+        history.push('/error')
+      }
     }
-
     return () => cancelTokenSource.cancel();
   }, [inputValue]);
 
