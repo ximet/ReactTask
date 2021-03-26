@@ -8,9 +8,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    refreshAccessToken()
-      .then(() => setIsLoading(false))
-  })
+    refreshAccessToken().then(() => setIsLoading(false));
+  });
 
   return (
     <div className="app">

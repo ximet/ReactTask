@@ -29,19 +29,18 @@ axiosInstance.interceptors.response.use(
   },
   error => {
     const originalRequest = error.config;
-    // if server sends 'unauthorized' 
+    // if server sends 'unauthorized'
     // and is not already trying to make the request again,
     // initiate a request to update the token
     // and make the initial request again
     if (
       (error.response.status === ERRORS.AUTH_ERROR.status ||
-      error.response.data.message === ERRORS.AUTH_ERROR.message)
-      && !originalRequest.isRetrying
+        error.response.data.message === ERRORS.AUTH_ERROR.message) &&
+      !originalRequest.isRetrying
     ) {
       originalRequest.isRetrying = true;
 
-      return refreshAccessToken()
-        .then(_ => axiosInstance(originalRequest))
+      return refreshAccessToken().then(_ => axiosInstance(originalRequest));
     }
     return Promise.reject(error);
   }
