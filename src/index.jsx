@@ -1,4 +1,6 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import Navigation from './Navigation/Navigation';
+import styles from './index.scss';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Navigation />, document.getElementById('app'));
