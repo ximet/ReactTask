@@ -5,8 +5,7 @@ import PageLayout from '../../PageLayout/PageLayout';
 function HomePage() {
   return (
     <PageLayout>
-      <div className={styles.main}>
-      </div>
+      <div className={styles.main}></div>
     </PageLayout>
   );
 }

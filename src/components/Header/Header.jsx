@@ -8,18 +8,16 @@ function Header() {
 
   const clickHandler = () => {
     setVisibility(!visibility);
-};
+  };
 
-return (
-  <header className={styles.header}>
-    <nav className={styles.container}>
-      <Button clickHandler={clickHandler} />
-      {visibility && <FilterableList />}
+  return (
+    <header className={styles.header}>
+      <nav className={styles.container}>
+        <Button clickHandler={clickHandler} />
+        {visibility && <FilterableList />}
       </nav>
       <div className={styles['header__title-container']}>
-        <h2 className={styles.header__title}>
-          React Treaning App
-          </h2>
+        <h2 className={styles.header__title}>React Treaning App</h2>
       </div>
     </header>
   );
