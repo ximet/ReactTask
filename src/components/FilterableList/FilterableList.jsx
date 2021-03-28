@@ -1,38 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import menuItem from '../../common/data';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './FilterableList.scss';
 
-function List() {
-  const [items, setItems] = useState(menuItem);
+function FilterableList({ items }) {
   const [inputValue, setInputValue] = useState('');
-
-  const listItem = arrayOfItems => {
-    return arrayOfItems.map((item, i) => {
-      return (
-        <li className={styles['list-item']} key={i}>
-          {item.name}
-        </li>
-      );
-    });
-  };
-
-  useEffect(() => {
-    const result = menuItem.filter(x => x.name.toLowerCase().includes(inputValue.toLowerCase()));
-    setItems(result);
-  }, [inputValue]);
 
   return (
     <ul className={styles.list}>
-      <li className={styles['list-item']}>
+      <li className={styles.listItem}>
         <input
           type="text"
-          className={styles.searchbox}
-          onChange={e => setInputValue(e.target.value)}
+          className={styles.searchBox}
+          onChange={event => setInputValue(event.target.value.toLowerCase())}
         />
       </li>
-      {listItem(items)}
+      {items
+        .filter(({ name }) => name.includes(inputValue))
+        .map(({ name, id }) => (
+          <li className={styles.listItem} key={id}>
+            {name}
+          </li>
+        ))}
     </ul>
   );
 }
 
-export default List;
+FilterableList.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.objectOf)
+};
+
+export default FilterableList;
