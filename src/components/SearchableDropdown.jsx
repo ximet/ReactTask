@@ -15,7 +15,7 @@ const SearchableDropdown = ({ places, buttonText, onClick }) => (
 SearchableDropdown.propTypes = {
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
   buttonText: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func.isRequired
 };
 
 export default SearchableDropdown;

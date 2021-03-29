@@ -15,7 +15,7 @@ const Link = ({ place, onClick }) => (
 
 Link.propTypes = {
   place: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func.isRequired
 };
 
 export default Link;

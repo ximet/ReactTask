@@ -7,7 +7,7 @@ import Link from './Link';
 const SearchableDropdownList = ({ places, onClick }) => {
   const [searchWord, setSearchWord] = useState('');
 
-  const memoizedSearch = useMemo(() => places.filter(({ name }) => name.includes(searchWord)), [
+  const matchedPlaces = useMemo(() => places.filter(({ name }) => name.includes(searchWord)), [
     searchWord
   ]);
 
@@ -18,7 +18,7 @@ const SearchableDropdownList = ({ places, onClick }) => {
         onChange={({ target: { value } }) => setSearchWord(value)}
         value={searchWord}
       />
-      {memoizedSearch.map(place => (
+      {matchedPlaces.map(place => (
         <Link place={place.name} key={place.id} onClick={onClick} />
       ))}
     </div>
@@ -27,7 +27,7 @@ const SearchableDropdownList = ({ places, onClick }) => {
 
 SearchableDropdownList.propTypes = {
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func.isRequired
 };
 
 export default SearchableDropdownList;

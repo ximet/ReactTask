@@ -13,8 +13,15 @@ app.post('/auth', async (req, res) => {
     const { data } = await axios.post(url);
     res.status(200).send(data);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(error.response.status).send(error);
   }
 });
+
+app.use((error, req, res, next) =>  
+  res.status(500).send({ message: 'An unexpected error occured' }));
+
+// this will catch any undefined route
+app.all('*', (req, res) => 
+  res.status(404).send({ message: 'Resourse not found' }));
 
 app.listen(port, () => console.log(`http://localhost:${port}`));

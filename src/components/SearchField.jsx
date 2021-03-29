@@ -15,7 +15,7 @@ const SearchField = ({ placeholder, onChange, onKeyDown, value }) => (
 SearchField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func,
+  onKeyDown: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 };
 
