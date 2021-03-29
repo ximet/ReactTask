@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import UserContext from './UserContext';
-import capitalsData from '../common/data';
 
 function ContextProvider({ children }) {
-  // capitals will come from request from Freca Api
-  const capitals = capitalsData;
+  const [token, setToken] = useState('');
 
-  return <UserContext.Provider value={{ capitals }}>{children}</UserContext.Provider>;
+  useEffect(async () => {
+    const cancelTokenSource = axios.CancelToken.source();
+
+    try {
+      const res = await axios
+        .get('http://localhost:3000/auth', { cancelToken: cancelTokenSource.source })
+        .then(res => {
+          setToken(res.data.access_token);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    return () => cancelTokenSource.cancel();
+  }, []);
+
+  return <UserContext.Provider value={{ token }}>{children}</UserContext.Provider>;
 }
 
 export default ContextProvider;
