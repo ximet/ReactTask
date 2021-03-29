@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     refreshAccessToken().then(() => setIsLoading(false));
-  });
+  }, []);
 
   return (
     <div className="app">

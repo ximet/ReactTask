@@ -9,7 +9,6 @@ import { ENTER_KEYCODE, MAX_ITEMS_LENGTH } from '../common/constants';
 
 const Home = () => {
   const [searchWord, setSearchWord] = useState('');
-  const [currentSearch, setCurrentSearch] = useState('');
   const [searchError, setSearchError] = useState('');
   const [storedValue, setValue] = useLocalStorage('searchedPlaces', []);
 
@@ -22,7 +21,7 @@ const Home = () => {
 
   const handleListItemClick = e => {
     const searchTerm = e.target.innerText;
-    setCurrentSearch(searchTerm);
+    setSearchWord(searchTerm);
   };
 
   const handleSearch = e => {
@@ -31,9 +30,6 @@ const Home = () => {
         return setSearchError('Please provide a search term');
       }
 
-      // set the current city search here,
-      // this is used for the API requests so that a new request isn't send on every keypress
-      setCurrentSearch(searchWord);
       setSearchError(null);
 
       // if the city is already in LocalStorage, don't add it again
@@ -79,7 +75,7 @@ const Home = () => {
           onClick={handleListItemClick}
         />
       </section>
-      {currentSearch ? <CurrentWeather currentSearch={currentSearch} /> : null}
+      {searchWord ? <CurrentWeather currentSearch={searchWord} /> : null}
     </main>
   );
 };
