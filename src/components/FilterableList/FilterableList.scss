@@ -4,14 +4,14 @@
   margin: 0;
   list-style-type: none;
   position: fixed;
-  top: $primaryHeight;
+  top: $defaultHeight;
   left: 0;
   padding: 0 10px;
   background-color: $primary;
   height: auto;
-  width: $primaryWidth;
+  width: $defaultWidth;
   overflow-y: scroll;
-  max-height: calc(100vh - #{$doubleHeight});
+  max-height: $filterableListHeight;
   box-sizing: content-box;
 }
 

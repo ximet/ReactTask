@@ -8,10 +8,10 @@
 
 .header {
   display: grid;
-  grid-template-columns: $primaryWidth 1fr;
-  grid-template-rows: $primaryHeight;
+  grid-template-columns: $defaultWidth 1fr;
+  grid-template-rows: $defaultHeight;
   background-color: $primary;
-  height: $primaryHeight;
+  height: $defaultHeight;
   padding: 0;
   margin: 0;
 
