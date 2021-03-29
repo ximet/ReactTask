@@ -6,11 +6,11 @@ function Footer() {
 
   useEffect(() => {
     const timerId = setInterval(() => setDate(new Date()), 1000);
-
     return () => {
       clearTimeout(timerId);
+      
     };
-  }, [date]);
+  });
 
   return (
     <footer className={styles.footer}>

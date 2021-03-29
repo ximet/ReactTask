@@ -14,7 +14,7 @@ function PageLayout({ children }) {
 }
 
 PageLayout.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.node
 };
 
 export default PageLayout;
