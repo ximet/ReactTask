@@ -21,9 +21,7 @@ module.exports = {
             options: {
               sourceMap: true,
               localsConvention: 'camelCase',
-              modules: {
-                localIdentName: '[local]___[hash:base64:5]'
-              }
+              modules: false
             }
           },
           'sass-loader'
@@ -35,7 +33,13 @@ module.exports = {
     contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,
-    port: 9020
+    port: 9020,
+    proxy: {
+      '/auth': {
+        target: 'http://localhost:3001',
+        changeOrigin: true
+      }
+    }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };

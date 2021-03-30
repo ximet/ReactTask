@@ -1,0 +1,16 @@
+.button {
+  padding: $padding-default;
+  margin-left: $margin-default;
+  border-radius: $border-radius-default;
+  border: none;
+  background-color: $primary-color;
+
+  &:hover {
+    background-color: $primary-color-darker;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
