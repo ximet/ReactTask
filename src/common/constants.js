@@ -11,5 +11,9 @@ export const ERRORS = {
   AUTH_ERROR: {
     status: 401,
     message: 'Unauthorized'
+  },
+  DEFAULT: {
+    status: '4xx/5xx',
+    message: 'Oh, no, something went wrong'
   }
 };
