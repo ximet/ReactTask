@@ -4,7 +4,7 @@ import styles from './Button.scss';
 
 function Button({ onClick }) {
   return (
-    <button type="button" className={styles.menuBtn} onClick={onClick}>
+    <button type="button" className={styles.menuButton} onClick={onClick}>
       Menu
     </button>
   );

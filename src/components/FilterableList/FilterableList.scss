@@ -4,12 +4,12 @@
   margin: 0;
   list-style-type: none;
   position: fixed;
-  top: $defaultHeight;
+  top: $headerHeight;
   left: 0;
   padding: 0 10px;
   background-color: $primary;
   height: auto;
-  width: $defaultWidth;
+  width: $filterableListWidth;
   overflow-y: scroll;
   max-height: $filterableListHeight;
   box-sizing: content-box;
