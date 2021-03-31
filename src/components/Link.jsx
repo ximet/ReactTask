@@ -7,6 +7,7 @@ const Link = ({ place, onClick, id }) => (
     onClick={onClick}
     onKeyDown={onClick}
     data-target={id}
+    data-name={place}
     tabIndex={0}
     role="button"
   >

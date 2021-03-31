@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import SearchField from './SearchField';
@@ -8,22 +8,25 @@ import CurrentWeather from './CurrentWeather';
 import useLocalStorage from './CustomHooks/useLocalStorage';
 import { ENTER_KEYCODE, MAX_ITEMS_LENGTH } from '../common/constants';
 import { groupQueryString } from '../common/helpers';
+import { refreshAccessToken } from '../common/auth';
 
 const Home = () => {
   const history = useHistory();
   const { search } = useLocation();
 
-  // place the query data to key:value pairs
   const groupedQueryStrings = groupQueryString(search);
-  // replace %20 with spaces
   const cityName = groupedQueryStrings.city?.replace(/%20/g, ' ');
   const cityId = groupedQueryStrings.id;
 
-  // if there is a search query - take it as inital value
-  const initSearchWordValue = cityName ? cityName : '';
+  const initSearchWordValue = cityName || '';
   const [searchWord, setSearchWord] = useState(initSearchWordValue);
   const [searchError, setSearchError] = useState('');
   const [storedValue, setValue] = useLocalStorage('searchedPlaces', []);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+  useEffect(() => {
+    refreshAccessToken().then(() => setIsAuthLoading(false));
+  }, []);
 
   const popularPlaces = [
     { name: 'New York', id: 1 },
@@ -33,7 +36,7 @@ const Home = () => {
   ];
 
   const handleListItemClick = e => {
-    const searchTerm = e.target.innerText;
+    const searchTerm = e.target.dataset.name;
     setSearchWord(searchTerm);
     history.push(`/home/${searchTerm}`);
   };
@@ -69,7 +72,7 @@ const Home = () => {
     return '';
   };
 
-  return (
+  return !isAuthLoading ? (
     <main className="app__main home">
       <section className="home__filters">
         {searchError ? <p className="home__filters__error">{searchError}</p> : null}
@@ -92,6 +95,8 @@ const Home = () => {
       </section>
       {search ? <CurrentWeather cityId={cityId} cityName={cityName} /> : null}
     </main>
+  ) : (
+    <p>Getting things ready for you</p>
   );
 };
 

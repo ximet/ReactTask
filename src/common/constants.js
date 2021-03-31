@@ -17,3 +17,8 @@ export const ERRORS = {
     message: 'Oh, no, something went wrong'
   }
 };
+
+export const REQUEST_TYPES = {
+  location: 'location',
+  current: 'current'
+};
