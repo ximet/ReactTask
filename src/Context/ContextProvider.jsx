@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import UserContext from './UserContext';
-import capitalsData from '../common/data';
 
 function ContextProvider({ children }) {
+  const [token, setToken] = useState('');
+
   useEffect(async () => {
     const cancelTokenSource = axios.CancelToken.source();
 
@@ -26,8 +28,8 @@ function ContextProvider({ children }) {
   return <UserContext.Provider value={{ token }}>{children}</UserContext.Provider>;
 }
 
-export default ContextProvider;
-
 ContextProvider.propTypes = {
   children: PropTypes.element
 };
+
+export default ContextProvider;

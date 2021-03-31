@@ -1,25 +1,19 @@
-/* eslint-disable arrow-body-style */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FilterableList.scss';
 
-function FilterableList({ items }) {
-  const [inputValue, setInputValue] = useState('');
-
+function FilterableList({ items, onChange, inputValue }) {
   return (
     <ul className={styles.list}>
       <li className={styles.listItem}>
-        <input
-          type="text"
-          className={styles.searchBox}
-          onChange={event => setInputValue(event.target.value.toLowerCase())}
-        />
+        <input type="text" className={styles.searchBox} onChange={onChange} />
       </li>
       {items
         .filter(({ name }) => name.includes(inputValue))
-        .map(({ name, id }) => (
+        .sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name))
+        .map(({ name, country, id }) => (
           <li className={styles.listItem} key={id}>
-            {name}
+            {`${name}, ${country}`}
           </li>
         ))}
     </ul>

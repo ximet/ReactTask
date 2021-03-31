@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import UserContext from '../../Context/UserContext';
 import FilterableList from '../FilterableList/FilterableList';
 import Button from '../Button/Button';
@@ -22,6 +22,7 @@ function Header() {
 
   useEffect(() => {
     const cancelTokenSource = axios.CancelToken.source();
+    console.log(token);
     if (token !== '' && inputValue !== '') {
       try {
         axios
@@ -59,8 +60,10 @@ function Header() {
   return (
     <header className={styles.header}>
       <nav className={styles.container}>
-        <Button onClick={handleClick} title="Cities" className={`${styles.menuBtn}`} />
-        {isVisible && <FilterableList items={capitals} />}
+        <Button onClick={handleClick} title="Cities" className={`${styles.menuButton}`} />
+        {isVisible && (
+          <FilterableList items={cities} onChange={changeValue} inputValue={inputValue} />
+        )}
       </nav>
       <div className={styles.header__titleContainer}>
         <MenuList />
