@@ -21,7 +21,9 @@ function FilterableList({ items, onChange, inputValue }) {
 }
 
 FilterableList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf)
+  items: PropTypes.arrayOf(PropTypes.objectOf),
+  onChange: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired
 };
 
 export default FilterableList;
