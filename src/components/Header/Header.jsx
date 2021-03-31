@@ -1,72 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react';
-import UserContext from '../../Context/UserContext';
+import React, { useState } from 'react';
 import FilterableList from '../FilterableList/FilterableList';
 import Button from '../Button/Button';
-import MenuList from '../MenuList/MenuList';
 import styles from './Header.scss';
-import axios from 'axios';
-import { useHistory } from 'react-router';
+import capitals from '../../common/data';
 
 function Header() {
   const [isVisible, setIsVisible] = useState(false);
-  const [cities, setCities] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const history = useHistory();
 
   const handleClick = () => {
     setIsVisible(prev => !prev);
   };
 
-  const context = useContext(UserContext);
-  const token = context.token;
-
-  useEffect(() => {
-    const cancelTokenSource = axios.CancelToken.source();
-    console.log(token);
-    if (token !== '' && inputValue !== '') {
-      try {
-        axios
-          .get(`https://pfa.foreca.com/api/v1/location/search/${inputValue}`, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            },
-            cancelToken: cancelTokenSource.source
-          })
-          .then(res => {
-            const dataCities = res.data.locations.map(city => {
-              return {
-                name: `${city.name.toLowerCase()}`,
-                country: `${city.country.toLowerCase()}`,
-                id: city.id
-              };
-            });
-            setCities(dataCities);
-          });
-      } catch (error) {
-        history.push('/error');
-      }
-    }
-    return () => cancelTokenSource.cancel();
-  }, [inputValue]);
-
-  useEffect(() => {
-    setCities([]);
-  }, [isVisible]);
-
-  const changeValue = event => {
-    setInputValue(event.target.value.toLowerCase());
-  };
-
   return (
     <header className={styles.header}>
       <nav className={styles.container}>
-        <Button onClick={handleClick} title="Cities" className={`${styles.menuButton}`} />
-        {isVisible && (
-          <FilterableList items={cities} onChange={changeValue} inputValue={inputValue} />
-        )}
+        <Button onClick={handleClick} />
+        {isVisible && <FilterableList items={capitals} />}
       </nav>
       <div className={styles.header__titleContainer}>
-        <MenuList />
+        <h2 className={styles.header__title}>React Training App</h2>
       </div>
     </header>
   );

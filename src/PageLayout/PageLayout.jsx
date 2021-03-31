@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
-// eslint-disable-next-line react/prop-types
 function PageLayout({ children }) {
   return (
     <>
@@ -15,7 +14,7 @@ function PageLayout({ children }) {
 }
 
 PageLayout.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.node
 };
 
 export default PageLayout;
