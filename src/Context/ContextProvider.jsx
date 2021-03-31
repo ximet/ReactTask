@@ -4,10 +4,26 @@ import UserContext from './UserContext';
 import capitalsData from '../common/data';
 
 function ContextProvider({ children }) {
-  // capitals will come from request from Freca Api
-  const capitals = capitalsData;
+  useEffect(async () => {
+    const cancelTokenSource = axios.CancelToken.source();
 
-  return <UserContext.Provider value={{ capitals }}>{children}</UserContext.Provider>;
+    try {
+      const res = await axios
+        .get('http://localhost:3000/auth', { cancelToken: cancelTokenSource.source })
+        .then(res => {
+          setToken(res.data.access_token);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+    return () => cancelTokenSource.cancel();
+  }, []);
+
+  return <UserContext.Provider value={{ token }}>{children}</UserContext.Provider>;
 }
 
 export default ContextProvider;
