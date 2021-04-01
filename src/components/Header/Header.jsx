@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import UserContext from '../../Context/UserContext';
 import FilterableList from '../FilterableList/FilterableList';
 import Button from '../Button/Button';
+import MenuList from '../MenuList/MenuList';
 import styles from './Header.scss';
 import axios from 'axios';
 import { useHistory } from 'react-router';
@@ -64,7 +65,7 @@ function Header() {
         )}
       </nav>
       <div className={styles.header__titleContainer}>
-        <h2 className={styles.header__title}>React Training App</h2>
+        <MenuList />
       </div>
     </header>
   );
