@@ -7,7 +7,7 @@ const CurrentWeather = ({ cityId, cityName }) => {
   const { current } = useAPIRequest(REQUEST_TYPES.current, cityId);
 
   return current ? (
-    <p>{`The current weather in ${cityName} is ${current && current.temperature} C.`}</p>
+    <p>{`The current weather in ${cityName} is ${current.temperature} C.`}</p>
   ) : (
     <p>Fetching you data...</p>
   );

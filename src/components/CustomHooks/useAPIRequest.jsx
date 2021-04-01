@@ -24,7 +24,7 @@ const useAPIRequest = (type, urlParam) => {
       });
 
     return () => cancelRequest();
-  }, []);
+  }, [type, urlParam]);
 
   return data;
 };
