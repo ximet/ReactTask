@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import SearchField from './SearchField';
 import SearchableDropdown from './SearchableDropdown';
@@ -6,11 +7,29 @@ import CurrentWeather from './CurrentWeather';
 
 import useLocalStorage from './CustomHooks/useLocalStorage';
 import { ENTER_KEYCODE, MAX_ITEMS_LENGTH } from '../common/constants';
+import { groupQueryString, transformSpaces } from '../common/helpers';
+import { refreshAccessToken } from '../common/auth';
 
 const Home = () => {
-  const [searchWord, setSearchWord] = useState('');
+  const history = useHistory();
+  const { search } = useLocation();
+
+  const groupedQueryStrings = groupQueryString(search);
+  const cityName = transformSpaces(groupedQueryStrings);
+  const cityId = groupedQueryStrings.id;
+
+  const initSearchWordValue = cityName || '';
+  const [searchWord, setSearchWord] = useState(initSearchWordValue);
   const [searchError, setSearchError] = useState('');
   const [storedValue, setValue] = useLocalStorage('searchedPlaces', []);
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      await refreshAccessToken();
+      setIsAuthenticating(false);
+    })();
+  }, []);
 
   const popularPlaces = [
     { name: 'New York', id: 1 },
@@ -19,9 +38,9 @@ const Home = () => {
     { name: 'Tokyo', id: 4 }
   ];
 
-  const handleListItemClick = e => {
-    const searchTerm = e.target.innerText;
-    setSearchWord(searchTerm);
+  const handleListItemClick = ({ place }) => {
+    setSearchWord(place);
+    history.push(`/home/${place}`);
   };
 
   const handleSearch = e => {
@@ -30,6 +49,7 @@ const Home = () => {
         return setSearchError('Please provide a search term');
       }
 
+      history.push(`/home/${searchWord}`);
       setSearchError(null);
 
       // if the city is already in LocalStorage, don't add it again
@@ -54,7 +74,7 @@ const Home = () => {
     return '';
   };
 
-  return (
+  return !isAuthenticating ? (
     <main className="app__main home">
       <section className="home__filters">
         {searchError ? <p className="home__filters__error">{searchError}</p> : null}
@@ -75,8 +95,10 @@ const Home = () => {
           onClick={handleListItemClick}
         />
       </section>
-      {searchWord ? <CurrentWeather currentSearch={searchWord} /> : null}
+      {search ? <CurrentWeather cityId={cityId} cityName={cityName} /> : null}
     </main>
+  ) : (
+    <p>Getting things ready for you</p>
   );
 };
 

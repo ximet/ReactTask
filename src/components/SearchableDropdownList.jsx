@@ -19,7 +19,7 @@ const SearchableDropdownList = ({ places, onClick }) => {
         value={searchWord}
       />
       {matchedPlaces.map(place => (
-        <Link place={place.name} key={place.id} onClick={onClick} />
+        <Link place={place.name} key={place.id} id={place.id} onClick={onClick} />
       ))}
     </div>
   );

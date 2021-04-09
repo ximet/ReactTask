@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ERRORS } from './constants';
 
 export const refreshAccessToken = async () => {
   try {
@@ -8,6 +9,6 @@ export const refreshAccessToken = async () => {
     sessionStorage.setItem('token', JSON.stringify(access_token));
     return access_token;
   } catch (error) {
-    alert('Oh, no something went wrong!');
+    alert(ERRORS.DEFAULT.message);
   }
 };
