@@ -1,13 +1,19 @@
 import PropTypes from 'prop-types';
 
-import useAPIRequest from './CustomHooks/useAPIRequest';
-import { REQUEST_TYPES } from '../common/constants';
+import useFetch from './CustomHooks/useFetch';
+import { getCurrentWeatherData } from '../services/weatherService';
 
 const CurrentWeather = ({ cityId, cityName }) => {
-  const { current } = useAPIRequest(REQUEST_TYPES.current, cityId);
+  const { current } = useFetch(getCurrentWeatherData, cityId);
+
+  const weatherDesctiption =
+    current?.temperature && current?.symbolPhrase
+      ? // ex. 13°C and clear
+        `${current.temperature}°C and ${current.symbolPhrase}`
+      : 'unavailable';
 
   return current ? (
-    <p>{`The current weather in ${cityName} is ${current.temperature} C.`}</p>
+    <p>{`The current weather in ${cityName} is ${weatherDesctiption}.`}</p>
   ) : (
     <p>Fetching you data...</p>
   );

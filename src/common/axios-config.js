@@ -10,9 +10,7 @@ const cancelRequest = () => {
   cancelTokenSource = axios.CancelToken.source();
 };
 
-const areRequestsCanceled = err => {
-  return err && axios.isCancel(err);
-};
+const areRequestsCanceled = err => axios.isCancel(err);
 
 // Request interceptor for API calls
 axiosInstance.interceptors.request.use(

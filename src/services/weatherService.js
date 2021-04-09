@@ -11,7 +11,7 @@ export const getLocationData = async location => {
     );
   } catch (error) {
     // to be handled accordingly elsewhere
-    return Promise.reject(error);
+    throw error;
   }
 };
 
@@ -20,6 +20,6 @@ export const getCurrentWeatherData = async cityId => {
     const { data } = await axios.get(`${BASE_URL}/current/${cityId}`);
     return data;
   } catch (error) {
-    return Promise.reject(error);
+    throw error;
   }
 };

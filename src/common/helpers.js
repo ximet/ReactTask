@@ -19,3 +19,5 @@ export const groupQueryString = queryString =>
       acc[key] = value;
       return acc;
     }, {});
+
+export const transformSpaces = string => string.city?.replace(/%20/g, ' ');
