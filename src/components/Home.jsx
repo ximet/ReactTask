@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import SearchField from './SearchField';
 import SearchableDropdown from './SearchableDropdown';
-import CurrentWeather from './CurrentWeather';
+import CurrentWeather from './CurrentWeather/CurrentWeatherConnect';
 
 import useLocalStorage from './CustomHooks/useLocalStorage';
 import { ENTER_KEYCODE, MAX_ITEMS_LENGTH } from '../common/constants';

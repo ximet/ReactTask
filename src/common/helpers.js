@@ -21,3 +21,6 @@ export const groupQueryString = queryString =>
     }, {});
 
 export const transformSpaces = string => string.city?.replace(/%20/g, ' ');
+
+export const sortLocations = locations =>
+  [...locations].sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name));
