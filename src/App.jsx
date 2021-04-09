@@ -12,13 +12,13 @@ const App = () => {
     <div className="app">
       <Header />
       <Switch>
+        <Redirect path="/" exact to="/home" />
         <Route exact path="/home">
           <Home />
         </Route>
         <Route path="/home/:location">
           <SearchList />
         </Route>
-        <Redirect path="/" exact to="/home" />
         <Route exact path="/about">
           <About />
         </Route>
