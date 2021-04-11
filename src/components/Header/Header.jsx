@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
+import axios from 'axios';
 import UserContext from '../../Context/UserContext';
 import FilterableList from '../FilterableList/FilterableList';
 import Button from '../Button/Button';
 import MenuList from '../MenuList/MenuList';
 import styles from './Header.scss';
-import axios from 'axios';
-import { useHistory } from 'react-router';
+
+
 
 function Header() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,8 +15,9 @@ function Header() {
   const [inputValue, setInputValue] = useState('');
   const history = useHistory();
 
-  const handleClick = () => {
-    setIsVisible(prev => !prev);
+  const changeFilterableListProperties = () => {
+    setIsVisible(isVisible => !isVisible);
+    setCities([]);
   };
 
   const context = useContext(UserContext);
@@ -48,10 +51,6 @@ function Header() {
     return () => cancelTokenSource.cancel();
   }, [inputValue]);
 
-  useEffect(() => {
-    setCities([]);
-  }, [isVisible]);
-
   const changeValue = event => {
     setInputValue(event.target.value.toLowerCase());
   };
@@ -59,7 +58,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <nav className={styles.container}>
-        <Button onClick={handleClick} title="Cities" />
+        <Button onClick={changeFilterableListProperties} children="Cities" />
         {isVisible && (
           <FilterableList items={cities} onChange={changeValue} inputValue={inputValue} />
         )}

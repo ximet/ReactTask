@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './HomePage.scss';
 import PageLayout from '../../PageLayout/PageLayout';
+import styles from './HomePage.scss';
+
 
 function HomePage() {
   return (

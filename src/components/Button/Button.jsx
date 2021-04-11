@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.scss';
 
-function Button({ onClick, title }) {
+function Button({ onClick, children }) {
   return (
     <button type="button" className={styles.menuButton} onClick={onClick}>
-      {title}
+      {children}
     </button>
   );
 }
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 };
 
 export default Button;
