@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
 import Error from './components/Error';
-import SearchList from './components/SearchList';
+import SearchList from './components/SearchList/SearchListContainer';
 
 const App = () => {
   return (
