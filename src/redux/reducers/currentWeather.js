@@ -1,37 +1,37 @@
 import {
-  SET_CURRENT_SUCCESS,
-  SET_CURRENT_FAIL,
-  SET_CURRENT_LOADING,
-  SET_CURRENT_LOADED
+  SET_CURRENT_WEATHER_REQUEST_STARTED,
+  SET_CURRENT_WEATHER_REQUEST_SUCCEEDED,
+  SET_CURRENT_WEATHER_REQUEST_FAILED,
+  SET_CURRENT_WEATHER_REQUEST_FINISHED
 } from '../actions/currentWeather';
 
 const initialState = {
   isLoading: false,
   current: null,
-  error: []
+  errors: []
 };
 
 const currentWeatherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_CURRENT_LOADING: {
+    case SET_CURRENT_WEATHER_REQUEST_STARTED: {
       return {
         ...state,
         isLoading: true
       };
     }
-    case SET_CURRENT_SUCCESS: {
+    case SET_CURRENT_WEATHER_REQUEST_SUCCEEDED: {
       return {
         ...state,
         current: action.payload
       };
     }
-    case SET_CURRENT_FAIL: {
+    case SET_CURRENT_WEATHER_REQUEST_FAILED: {
       return {
         ...state,
-        error: [...state.error, action.payload]
+        errors: [...state.errors, action.payload]
       };
     }
-    case SET_CURRENT_LOADED: {
+    case SET_CURRENT_WEATHER_REQUEST_FINISHED: {
       return {
         ...state,
         isLoading: false

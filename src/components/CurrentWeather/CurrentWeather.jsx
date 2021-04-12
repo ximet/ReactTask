@@ -14,7 +14,7 @@ const CurrentWeather = ({ cityId, cityName, current, isLoading, getCurrentWeathe
   return !isLoading ? (
     <p>{`The current weather in ${cityName} is ${weatherDescription}.`}</p>
   ) : (
-    <p>Fetching you data...</p>
+    <p>Fetching the data for you...</p>
   );
 };
 

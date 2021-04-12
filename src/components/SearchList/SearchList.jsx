@@ -31,7 +31,7 @@ const SearchList = ({ locations, isLoading, getLocationData }) => {
           <p>Ooops, looks like we couldn't find anything</p>
         )
       ) : (
-        <p>Fetching you data...</p>
+        <p>Fetching the data for you...</p>
       )}
     </div>
   );

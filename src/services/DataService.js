@@ -1,9 +1,4 @@
-import axios from '../common/axios-config';
-import { BASE_URL } from '../common/constants';
-
-const Api = http => ({
-  get: url => http.get(`${BASE_URL}${url}`)
-});
+import api from '../data/ApiData';
 
 const DataService = api => ({
   getLocationData: async location => {
@@ -20,5 +15,4 @@ const DataService = api => ({
   }
 });
 
-const api = Api(axios);
 export default DataService(api);

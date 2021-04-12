@@ -4,29 +4,34 @@ import { sortLocations } from '../../common/helpers';
 
 const PREFIX = 'LOCATIONS/';
 
-export const SET_LOCATIONS_SUCCESS = `${PREFIX}SET_LOCATIONS_SUCCESS`;
-export const SET_LOCATIONS_FAIL = `${PREFIX}SET_LOCATIONS_FAIL`;
-export const SET_LOCATIONS_LOADING = `${PREFIX}SET_LOCATIONS_LOADING`;
-export const SET_LOCATIONS_LOADED = `${PREFIX}SET_LOCATIONS_LOADED`;
+export const SET_LOCATIONS_REQUEST_STARTED = `${PREFIX}SET_LOCATIONS_REQUEST_STARTED`;
+export const SET_LOCATIONS_REQUEST_SUCCEEDED = `${PREFIX}SET_LOCATIONS_REQUEST_SUCCEEDED`;
+export const SET_LOCATIONS_REQUEST_FAILED = `${PREFIX}SET_LOCATIONS_REQUEST_FAILED`;
+export const SET_LOCATIONS_REQUEST_FINISHED = `${PREFIX}SET_LOCATIONS_REQUEST_FINISHED`;
 
-const setLocationsFail = error => ({ type: SET_LOCATIONS_FAIL, payload: error });
-const setLocationsSuccess = locations => ({ type: SET_LOCATIONS_SUCCESS, payload: locations });
-const setLocationsLoading = { type: SET_LOCATIONS_LOADING };
-const setLocationsLoaded = { type: SET_LOCATIONS_LOADED };
+const setLocationsRequestStarted = { type: SET_LOCATIONS_REQUEST_STARTED };
+const setLocationsRequestSucceeded = locations => ({
+  type: SET_LOCATIONS_REQUEST_SUCCEEDED,
+  payload: locations
+});
+const setLocationsRequestFailed = error => ({ type: SET_LOCATIONS_REQUEST_FAILED, payload: error });
+const setLocationsRequestFinished = { type: SET_LOCATIONS_REQUEST_FINISHED };
 
 export const getLocationData = location => async (dispatch, _, DataService) => {
   try {
-    dispatch(setLocationsLoading);
+    dispatch(setLocationsRequestStarted);
 
     const locations = await DataService.getLocationData(location);
     const sortedLocations = sortLocations(locations);
 
-    dispatch(setLocationsSuccess(sortedLocations));
+    dispatch(setLocationsRequestSucceeded(sortedLocations));
   } catch (error) {
-    dispatch(setLocationsFail(error));
+    dispatch(setLocationsRequestFailed(error));
 
-    areRequestsCanceled(error) || alert(ERRORS.DEFAULT.message);
+    if (!areRequestsCanceled(error)) {
+      alert(ERRORS.DEFAULT.message);
+    }
   } finally {
-    dispatch(setLocationsLoaded);
+    dispatch(setLocationsRequestFinished);
   }
 };
