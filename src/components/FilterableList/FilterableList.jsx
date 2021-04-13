@@ -6,7 +6,12 @@ function FilterableList({ items, onChange, inputValue }) {
   return (
     <ul className={styles.list}>
       <li className={styles.listItem}>
-        <input type="text" className={styles.searchBox} onChange={onChange} />
+        <input
+          type="text"
+          className={styles.searchBox}
+          onChange={onChange}
+          placeholder={'Enter city name'}
+        />
       </li>
       {items
         .filter(({ name }) => name.includes(inputValue))

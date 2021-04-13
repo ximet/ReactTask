@@ -10,8 +10,8 @@
   background-color: $primary;
   height: auto;
   width: $filterableListWidth;
-  overflow-y: scroll;
-  max-height: $filterableListHeight;
+  overflow-y: auto;
+  height: $filterableListHeight;
   box-sizing: content-box;
 }
 
