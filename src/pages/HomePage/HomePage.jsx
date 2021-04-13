@@ -28,7 +28,7 @@ function HomePage() {
 
   return (
     <PageLayout>
-      <FilterableList items={cities} onChange={getAllCities} inputValue={inputValue} />
+      <FilterableList items={cities} onChange={getAllCitiesByName} inputValue={inputValue} />
     </PageLayout>
   );
 }
