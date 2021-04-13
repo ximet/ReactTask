@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getToken } from './getToken';
+import { unauthorizedStatus } from './constants';
 const axiosApiInstance = axios.create();
 
 // Request interceptor
@@ -27,7 +28,7 @@ axiosApiInstance.interceptors.response.use(
   async function (error) {
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response.status === unauthorizedStatus && !originalRequest._retry) {
       originalRequest._retry = true;
       const token = await getToken();
       axios.headers = {

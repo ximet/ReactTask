@@ -1,20 +1,16 @@
+import { locationURL } from '../common/constants';
 import getData from './getData';
 
 export default async function getCitiesData(inputValue) {
-  let citiesData;
-
   try {
-    const { locations } = await getData(`/location/search/${inputValue}`);
-
-    citiesData = locations.map(city => {
-      return {
-        name: `${city.name.toLowerCase()}`,
-        country: `${city.country.toLowerCase()}`,
-        id: city.id
-      };
-    });
+    const { locations } = await getData(`${locationURL}${inputValue}`);
+    return locations.map(city => ({
+      name: `${city.name.toLowerCase()}`,
+      country: `${city.country.toLowerCase()}`,
+      id: city.id
+    }));
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return Promise.reject(error);
   }
-  return citiesData;
 }

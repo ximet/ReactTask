@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { enterCityName } from '../../common/constants';
 import styles from './FilterableList.scss';
 
 function FilterableList({ items, onChange, inputValue }) {
@@ -10,7 +11,7 @@ function FilterableList({ items, onChange, inputValue }) {
           type="text"
           className={styles.searchBox}
           onChange={onChange}
-          placeholder={'Enter city name'}
+          placeholder={enterCityName}
         />
       </li>
       {items
