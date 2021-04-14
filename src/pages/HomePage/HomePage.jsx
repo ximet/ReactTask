@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import PageLayout from '../../PageLayout/PageLayout';
 import FilterableList from '../../components/FilterableList/FilterableList';
@@ -7,31 +7,28 @@ import { minValueLength } from '../../common/constants';
 
 function HomePage() {
   const [cities, setCities] = useState([]);
-  const [inputValue, setInputValue] = useState('');
   const history = useHistory();
 
-  useEffect(async () => {
-    if (inputValue.length >= minValueLength) {
+  const getAllCitiesByName = async event => {
+    const value = event.target.value.toLowerCase();
+
+    if (value.length >= minValueLength) {
       try {
-        const citiesData = await getCitiesData(inputValue);
-        setCities(citiesData);
+        const dataCities = await getCitiesData(value);
+        setCities(dataCities);
       } catch (error) {
         console.log(error);
         history.push('/error');
       }
     }
-    if (inputValue.length < minValueLength) {
+
+    if (value.length === 0 && cities.length > 0) {
       setCities([]);
     }
-  }, [inputValue]);
-
-  const changeValue = event => {
-    setInputValue(event.target.value.toLowerCase());
   };
-
   return (
     <PageLayout>
-      <FilterableList items={cities} onChange={changeValue} inputValue={inputValue} />
+      <FilterableList items={cities} onChange={getAllCitiesByName} />
     </PageLayout>
   );
 }
