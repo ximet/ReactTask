@@ -10,25 +10,28 @@ function HomePage() {
   const [inputValue, setInputValue] = useState('');
   const history = useHistory();
 
-  const getAllCitiesByName = async event => {
-    setInputValue(event.target.value.toLowerCase());
-
+  useEffect(async () => {
     if (inputValue.length >= minValueLength) {
       try {
-        let getDataCities = await getCitiesData(inputValue);
-        setCities(getDataCities);
+        const citiesData = await getCitiesData(inputValue);
+        setCities(citiesData);
       } catch (error) {
         console.log(error);
         history.push('/error');
       }
-    } else {
+    }
+    if (inputValue.length < minValueLength) {
       setCities([]);
     }
+  }, [inputValue]);
+
+  const changeValue = event => {
+    setInputValue(event.target.value.toLowerCase());
   };
 
   return (
     <PageLayout>
-      <FilterableList items={cities} onChange={getAllCitiesByName} inputValue={inputValue} />
+      <FilterableList items={cities} onChange={changeValue} inputValue={inputValue} />
     </PageLayout>
   );
 }
