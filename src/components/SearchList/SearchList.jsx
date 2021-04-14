@@ -21,7 +21,7 @@ const SearchList = ({ locations, isLoading, getLocationData }) => {
         locations?.length > 0 ? (
           locations.map(result => (
             <Link
-              place={`${result.name}, ${result.country}`}
+              place={result.fullName}
               key={result.id}
               id={result.id}
               onClick={handleSelectCity}
@@ -40,14 +40,13 @@ const SearchList = ({ locations, isLoading, getLocationData }) => {
 SearchList.propTypes = {
   locations: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string,
-      country: PropTypes.string,
+      fullName: PropTypes.string,
       id: PropTypes.number
     })
-  ),
-  isLoading: PropTypes.bool,
-  getLocationData: PropTypes.func,
-  setsearchWord: PropTypes.func
+  ).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getLocationData: PropTypes.func.isRequired,
+  setsearchWord: PropTypes.func.isRequired
 };
 
 export default SearchList;
