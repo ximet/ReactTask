@@ -1,5 +1,8 @@
+import React from 'react';
+import Navigation from './Navigation/Navigation';
+
 function App() {
-  return <div>Hello world!</div>;
+  return <Navigation />;
 }
 
 export default App;
