@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-
 import CurrentWeather from './CurrentWeather';
-
 import { getCurrentWeatherData } from '../../redux/actions/currentWeather';
 import {
   currentWeatherSelector,

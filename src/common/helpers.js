@@ -24,17 +24,3 @@ export const transformSpaces = string => string.city?.replace(/%20/g, ' ');
 
 export const sortLocations = locations =>
   [...locations].sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name));
-
-export const areLocationsTheSame = (prevLocations, newLocations) => {
-  if (!prevLocations[0]) {
-    return false;
-  }
-
-  return newLocations.every((location, i) => {
-    if (!prevLocations[i]) {
-      return false;
-    }
-
-    return Object.keys(location).every(key => location[key] === prevLocations[i][key]);
-  });
-};
