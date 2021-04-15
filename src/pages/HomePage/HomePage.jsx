@@ -3,26 +3,26 @@ import { useHistory } from 'react-router';
 import PageLayout from '../../PageLayout/PageLayout';
 import FilterableList from '../../components/FilterableList/FilterableList';
 import getCitiesData from '../../services/getCitiesData';
-import { minValueLength, zeroLength } from '../../common/constants';
+import { minRequestingQueryLength } from '../../common/constants';
 
 function HomePage() {
   const [cities, setCities] = useState([]);
   const history = useHistory();
 
   const getAllCitiesByName = async event => {
-    const value = event.target.value.toLowerCase();
+    const query = event.target.value.toLowerCase();
 
-    if (value.length >= minValueLength) {
+    if (query.length >= minRequestingQueryLength) {
       try {
-        const dataCities = await getCitiesData(value);
-        setCities(dataCities);
+        const citiesData = await getCitiesData(query);
+        setCities(citiesData);
       } catch (error) {
-        console.log(error);
+        console.error(error);
         history.push('/error');
       }
     }
 
-    if (value.length === zeroLength && cities.length > zeroLength) {
+    if (query.length === 0 && cities.length > 0) {
       setCities([]);
     }
   };
