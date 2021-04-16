@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { enterCityName } from '../../common/constants';
 import styles from './FilterableList.scss';
 
-function FilterableList({ items, onChange }) {
+function FilterableList({ items, onChange, getCurrentCityData, setCurrentCityName }) {
   return (
     <ul className={styles.list}>
       <li className={styles.listItem}>
@@ -17,7 +17,15 @@ function FilterableList({ items, onChange }) {
       {items
         .sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name))
         .map(({ name, country, id }) => (
-          <li className={styles.listItem} key={id}>
+          <li
+            className={styles.listItem}
+            key={id}
+            id={id}
+            onClick={() => {
+              getCurrentCityData(id);
+              setCurrentCityName(name);
+            }}
+          >
             {`${name}, ${country}`}
           </li>
         ))}
@@ -26,8 +34,16 @@ function FilterableList({ items, onChange }) {
 }
 
 FilterableList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf),
-  onChange: PropTypes.func.isRequired
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
+    })
+  ),
+  onChange: PropTypes.func.isRequired,
+  getCurrentCityData: PropTypes.func.isRequired,
+  setCurrentCityName: PropTypes.func.isRequired
 };
 
 export default FilterableList;
