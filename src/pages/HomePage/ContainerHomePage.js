@@ -8,7 +8,7 @@ import {
   getCurrentCityName,
   getIsLoaded
 } from '../../ReduxStore/selectors/currentCitySelectors';
-import { transformCitiesData } from '../../ReduxStore/selectors/matchedCitiesSelectors';
+import { selectMatchedCitiesData } from '../../ReduxStore/selectors/matchedCitiesSelectors';
 import HomePage from './HomePage';
 
 const mapStateToProps = state => {
@@ -16,7 +16,7 @@ const mapStateToProps = state => {
     currentCity: getCurrentCity(state),
     isLoaded: getIsLoaded(state),
     cityName: getCurrentCityName(state),
-    matchedCitiesData: transformCitiesData(state)
+    matchedCitiesData: selectMatchedCitiesData(state)
   };
 };
 
