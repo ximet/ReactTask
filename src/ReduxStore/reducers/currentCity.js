@@ -30,7 +30,7 @@ const currentCity = (state = initialState, action) => {
     case CURRENT_CITY_FAIL: {
       return {
         ...state,
-        isLoaded: false,
+        isLoaded: true,
         error: action.payload
       };
     }
