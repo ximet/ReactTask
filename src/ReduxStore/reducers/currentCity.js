@@ -1,7 +1,7 @@
 import {
   CURRENT_CITY_LOADED,
   CURRENT_CITY_LOADING,
-  CURRENT_CITY_FAIL,
+  CURRENT_CITY_LOADING_FAILED,
   SET_CURRENT_CITY_NAME
 } from '../actions/currentCity';
 
@@ -27,7 +27,7 @@ const currentCity = (state = initialState, action) => {
         city: action.payload
       };
     }
-    case CURRENT_CITY_FAIL: {
+    case CURRENT_CITY_LOADING_FAILED: {
       return {
         ...state,
         isLoaded: true,

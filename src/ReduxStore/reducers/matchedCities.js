@@ -1,7 +1,7 @@
 import {
   MATCHED_CITIES_DATA_LOADING,
   MATCHED_CITIES_DATA_LOADED,
-  MATCHED_CITIES_DATA_FAIL,
+  MATCHED_CITIES_DATA_LOADING_FAILED,
   MATCHED_CITIES_DATA_ERASE
 } from '../actions/matchedCities';
 
@@ -26,7 +26,7 @@ const matchedCities = (state = initialState, action) => {
         cities: action.payload
       };
     }
-    case MATCHED_CITIES_DATA_FAIL: {
+    case MATCHED_CITIES_DATA_LOADING_FAILED: {
       return {
         ...state,
         isLoaded: false,
