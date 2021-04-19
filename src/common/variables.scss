@@ -1,14 +1,20 @@
 // colors
-$primary: rgba(173, 216, 230, 0.5);
-$secondary: rgba(128, 128, 128, 1);
-$tertiary: rgba(255, 165, 0, 0.5);
-$temperature: red;
-$wind: blue;
+$blue_light: rgba(173, 216, 230, 0.5);
+$grey_dark: rgba(128, 128, 128, 1);
+$orange_dark: rgba(255, 165, 0, 0.5);
+$red_dark: rgba(255, 0, 0, 1);
+$blue_dark: rgba(0, 0, 255, 1);
+$temperature-text-color: $red_dark;
+$wind-text-color: $blue_dark;
+$button-background-color: $orange_dark;
+$footer-background-color: $grey-dark;
+$header-background-color: $blue_light;
+$filterable-list-background-color: $blue_light;
 
 //height
-$headerHeight: 6.25em;
-$footerHeight: 6.25em;
-$filterableListHeight: 48em;
+$header-height: 6.25em;
+$footer-height: 6.25em;
+$filterable-list-height: 48em;
 
 //width
-$filterableListWidth: 12em;
+$filterable-list-width: 12em;

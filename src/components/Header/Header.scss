@@ -9,9 +9,9 @@
 .header {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: $headerHeight;
-  background-color: $primary;
-  height: $headerHeight;
+  grid-template-rows: $header-height;
+  background-color: $header-background-color;
+  height: $header-height;
   padding: 0;
   margin: 0;
 

@@ -4,14 +4,14 @@
   margin: 0;
   list-style-type: none;
   position: fixed;
-  top: $headerHeight;
+  top: $header-height;
   left: 0;
   padding: 0 0.5em;
-  background-color: $primary;
+  background-color: $filterable-list-background-color;
   height: auto;
-  width: $filterableListWidth;
+  width: $filterable-list-width;
   overflow-y: auto;
-  height: $filterableListHeight;
+  height: $filterable-list-height;
   box-sizing: content-box;
 }
 
