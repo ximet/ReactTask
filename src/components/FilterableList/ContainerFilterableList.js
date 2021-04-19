@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import FilterableList from './FilterableList';
-import { getCurrentCityData, SET_CURRENT_CITY_NAME } from '../../ReduxStore/actions/currentCity';
+import { getCurrentCityData, setCurrentCityName } from '../../ReduxStore/actions/currentCity';
 
-const MapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     getCurrentCityData: id => dispatch(getCurrentCityData(id)),
-    setCurrentCityName: name => dispatch({ type: SET_CURRENT_CITY_NAME, payload: name })
+    setCurrentCityName: name => dispatch(setCurrentCityName(name))
   };
 };
 
-export default connect(null, MapDispatchToProps)(FilterableList);
+export default connect(null, mapDispatchToProps)(FilterableList);

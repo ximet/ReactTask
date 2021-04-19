@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import {
   getMatchedCitiesData,
-  MATCHED_CITIES_DATA_ERASE
+  matchedCitiesDataErase
 } from '../../ReduxStore/actions/matchedCities';
 import HomePage from './HomePage';
 
-const MapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     currentCity: state.currentCity.city,
     isLoaded: state.currentCity.isLoaded,
@@ -14,10 +14,10 @@ const MapStateToProps = state => {
   };
 };
 
-const MapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     getMatchedCitiesData: query => dispatch(getMatchedCitiesData(query)),
-    eraseCitiesData: () => dispatch({ type: MATCHED_CITIES_DATA_ERASE })
+    eraseCitiesData: () => dispatch(matchedCitiesDataErase)
   };
 };
-export default connect(MapStateToProps, MapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
