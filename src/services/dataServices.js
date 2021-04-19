@@ -1,9 +1,9 @@
 import getCitiesData from './getCitiesData';
-import getData from './getData';
+import getCurrentCityData from './getCurrentCityData';
 
 const dataServices = {
   getCitiesData,
-  getData
+  getCurrentCityData
 };
 
 export default dataServices;
