@@ -14,21 +14,19 @@ function FilterableList({ items, onChange, getCurrentCityData, setCurrentCityNam
           placeholder={enterCityName}
         />
       </li>
-      {items
-        .sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name))
-        .map(({ name, country, id }) => (
-          <li
-            className={styles.listItem}
-            key={id}
-            id={id}
-            onClick={() => {
-              getCurrentCityData(id);
-              setCurrentCityName(name);
-            }}
-          >
-            {`${name}, ${country}`}
-          </li>
-        ))}
+      {items.map(({ name, country, id }) => (
+        <li
+          className={styles.listItem}
+          key={id}
+          id={id}
+          onClick={() => {
+            getCurrentCityData(id);
+            setCurrentCityName(name);
+          }}
+        >
+          {`${name}, ${country}`}
+        </li>
+      ))}
     </ul>
   );
 }
