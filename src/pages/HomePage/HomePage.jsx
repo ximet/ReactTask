@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import PageLayout from '../../PageLayout/PageLayout';
 import FilterableList from '../../components/FilterableList/ContainerFilterableList';
-import City from '../../components/City/City';
+import CityWeather from '../../components/CityWeather/CityWeather';
 import { minRequestingQueryLength } from '../../common/constants';
 
 function HomePage({
@@ -29,7 +29,7 @@ function HomePage({
   return (
     <PageLayout>
       <FilterableList items={matchedCitiesData} onChange={getAllCitiesByName} />
-      {isLoaded && <City city={currentCity} cityName={cityName} />}
+      {isLoaded && <CityWeather city={currentCity} cityName={cityName} />}
     </PageLayout>
   );
 }
