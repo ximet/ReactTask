@@ -38,7 +38,8 @@
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
     "reselect": "4.0.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "styled-components": "^5.2.3"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
