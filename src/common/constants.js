@@ -18,7 +18,18 @@ export const ERRORS = {
   }
 };
 
-export const REQUEST_TYPES = {
-  location: 'location',
-  current: 'current'
+export const COLORS = {
+  white_regular: '#ffffff',
+  white_dark: '#f3f3f3',
+  blue_regular: '#66ccff',
+  grey_light: '#e4faff',
+  grey_regular: '#f3f3f3',
+  grey_dark: '#282c34',
+  black_regular: '#222222',
+  red_regular: '#ff0000'
+};
+
+export const THEMES = {
+  light: 'light',
+  dark: 'dark'
 };
