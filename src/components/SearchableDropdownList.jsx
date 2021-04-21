@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import SearchField from './SearchField';
 import Link from './Link';
+import * as S from './Theme/GlobalStyles';
 
 const SearchableDropdownList = ({ places, onClick }) => {
   const [searchWord, setSearchWord] = useState('');
@@ -12,7 +13,7 @@ const SearchableDropdownList = ({ places, onClick }) => {
   ]);
 
   return (
-    <div className="dropdown__list">
+    <S.List>
       <SearchField
         placeholder="Search..."
         onChange={({ target: { value } }) => setSearchWord(value)}
@@ -21,7 +22,7 @@ const SearchableDropdownList = ({ places, onClick }) => {
       {matchedPlaces.map(place => (
         <Link place={place.name} key={place.id} id={place.id} onClick={onClick} />
       ))}
-    </div>
+    </S.List>
   );
 };
 
