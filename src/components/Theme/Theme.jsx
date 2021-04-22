@@ -64,7 +64,7 @@ export const getTheme = mode => ({
   }
 });
 
-const Theme = () => {
+const Root = () => {
   const [storedValue, setValue] = useLocalStorage('mode', THEMES.light);
   const handleToggle = () => setValue(storedValue === THEMES.light ? THEMES.dark : THEMES.light);
   const mode = themesMap.get(storedValue);
@@ -77,4 +77,4 @@ const Theme = () => {
   );
 };
 
-export default Theme;
+export default Root;
