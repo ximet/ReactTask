@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import useFetch from '../CustomHooks/useFetch';
+import useFetch from '../../customHooks/useFetch';
 
 const CurrentWeather = ({ cityId, cityName, current, isLoading, getCurrentWeatherData }) => {
   useFetch(getCurrentWeatherData, cityId);

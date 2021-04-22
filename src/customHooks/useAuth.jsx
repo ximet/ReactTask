@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { refreshAccessToken } from '../../common/auth';
+import { refreshAccessToken } from '../common/auth';
 
 const useAuth = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(true);

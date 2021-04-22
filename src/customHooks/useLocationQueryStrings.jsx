@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { groupQueryString, transformSpaces } from '../../common/helpers';
+import { groupQueryString, transformSpaces } from '../common/helpers';
 
 const useLocationQueryStrings = () => {
   const { search } = useLocation();
