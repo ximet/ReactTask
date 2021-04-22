@@ -1,37 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CityWeather.scss';
+import {
+  DivContainer,
+  H2Name,
+  DivBody,
+  DivTemperature,
+  DivRealTemperature,
+  SpanFeelsTemperature,
+  SpanWindSpeed,
+  DivFooter,
+  SpanText
+} from './CityWeather.Styles';
 
 function CityWeather({ city, cityName }) {
   return (
-    <div className={styles.container}>
-      <h2 className={styles.container__name}>{cityName}</h2>
-      <div className={styles.container__body}>
-        <div className={styles.container__temperature}>
-          <div className={styles.container__real_temperature}>
+    <DivContainer>
+      <H2Name>{cityName}</H2Name>
+      <DivBody>
+        <DivTemperature>
+          <DivRealTemperature>
             <span>
               {city.temperature > 0 && '+'}
               {city.temperature}°
             </span>
-          </div>
+          </DivRealTemperature>
           <div>
             Feels like{' '}
-            <span className={styles.container__feels_temperature}>
+            <SpanFeelsTemperature>
               {city.feelsLikeTemp > 0 && '+'}
               {city.feelsLikeTemp}°
-            </span>
+            </SpanFeelsTemperature>
           </div>
-        </div>
+        </DivTemperature>
         {/* svg */}
         <div></div>
         <div>
-          <span className={styles.container__wind}>{city.windSpeed}</span> km/h
+          <SpanWindSpeed>{city.windSpeed}</SpanWindSpeed> km/h
         </div>
-      </div>
-      <div className={styles.container__footer}>
-        <span className={styles.container__footer_text}>{city.symbolPhrase}</span>
-      </div>
-    </div>
+      </DivBody>
+      <DivFooter>
+        <SpanText>{city.symbolPhrase}</SpanText>
+      </DivFooter>
+    </DivContainer>
   );
 }
 
@@ -42,7 +52,7 @@ CityWeather.propTypes = {
     windSpeed: PropTypes.number.isRequired,
     symbolPhrase: PropTypes.string.isRequired
   }),
-  name: PropTypes.string.isRequired
+  cityName: PropTypes.string.isRequired
 };
 
 export default CityWeather;
