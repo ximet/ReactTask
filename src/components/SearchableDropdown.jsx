@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SearchableDropdownList from './SearchableDropdownList';
-import * as S from './Theme/GlobalStyles';
+import * as Styled from '../styles/globalStyles';
 
 const SearchableDropdown = ({ places, buttonText, onClick }) => (
-  <S.Dropdown>
-    <S.Button type="button">{buttonText}</S.Button>
+  <Styled.Dropdown>
+    <Styled.Button type="button">{buttonText}</Styled.Button>
     <SearchableDropdownList places={places} onClick={onClick} />
-  </S.Dropdown>
+  </Styled.Dropdown>
 );
 
 SearchableDropdown.propTypes = {

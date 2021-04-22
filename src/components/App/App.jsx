@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Footer from '../Footer';
@@ -29,6 +30,10 @@ const App = ({ className, onClick, mode }) => {
       <Footer />
     </div>
   );
+};
+
+App.propTypes = {
+  className: PropTypes.string
 };
 
 export default App;

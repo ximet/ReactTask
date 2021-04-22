@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import Card from './Card';
-import * as S from './Theme/GlobalStyles';
+import * as Styled from '../styles/globalStyles';
 
 const CardList = ({ items }) => {
   return (
-    <S.CardList>
+    <Styled.Container>
       {items.map(item => (
         <Card key={item.id}>
           <h4>{item.name}</h4>
           <p>{item.description}</p>
         </Card>
       ))}
-    </S.CardList>
+    </Styled.Container>
   );
 };
 

@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import SearchField from '../SearchField';
 import SearchableDropdown from '../SearchableDropdown';
 import CurrentWeather from '../CurrentWeather/CurrentWeatherContainer';
 
 import useLocalStorage from '../CustomHooks/useLocalStorage';
+import useLocationQueryStrings from '../CustomHooks/useLocationQueryStrings';
+import useAuth from '../CustomHooks/useAuth';
 import { ENTER_KEYCODE, MAX_ITEMS_LENGTH } from '../../common/constants';
-import { groupQueryString, transformSpaces } from '../../common/helpers';
-import { refreshAccessToken } from '../../common/auth';
-import * as S from '../Theme/GlobalStyles';
+import * as Styled from '../../styles/globalStyles';
+
+const popularPlaces = [
+  { name: 'New York', id: 1 },
+  { name: 'Monaco', id: 2 },
+  { name: 'London', id: 3 },
+  { name: 'Tokyo', id: 4 }
+];
 
 const Home = ({ className }) => {
   const history = useHistory();
-  const { search } = useLocation();
 
-  const groupedQueryStrings = groupQueryString(search);
-  const cityName = transformSpaces(groupedQueryStrings);
-  const cityId = groupedQueryStrings.id;
-
-  const initSearchWordValue = cityName || '';
-  const [searchWord, setSearchWord] = useState(initSearchWordValue);
-  const [searchError, setSearchError] = useState('');
   const [storedValue, setValue] = useLocalStorage('searchedPlaces', []);
-  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const { cityId, cityName } = useLocationQueryStrings();
+  const isAuthenticating = useAuth();
 
-  useEffect(() => {
-    (async () => {
-      await refreshAccessToken();
-      setIsAuthenticating(false);
-    })();
-  }, []);
-
-  const popularPlaces = [
-    { name: 'New York', id: 1 },
-    { name: 'Monaco', id: 2 },
-    { name: 'London', id: 3 },
-    { name: 'Tokyo', id: 4 }
-  ];
+  const [searchWord, setSearchWord] = useState(cityName);
+  const [searchError, setSearchError] = useState('');
 
   const handleListItemClick = ({ place }) => {
     setSearchWord(place);
@@ -77,7 +67,7 @@ const Home = ({ className }) => {
 
   return !isAuthenticating ? (
     <main className={className}>
-      <S.Container row>
+      <Styled.Container row>
         {searchError ? <p className="home__filters__error">{searchError}</p> : null}
         <SearchField
           placeholder="Search a new place..."
@@ -95,12 +85,16 @@ const Home = ({ className }) => {
           buttonText="Popular places ˅"
           onClick={handleListItemClick}
         />
-      </S.Container>
-      {search ? <CurrentWeather cityId={cityId} cityName={cityName} /> : null}
+      </Styled.Container>
+      {cityName ? <CurrentWeather cityId={cityId} cityName={cityName} /> : null}
     </main>
   ) : (
     <p>Getting things ready for you</p>
   );
+};
+
+Home.propTypes = {
+  className: PropTypes.string
 };
 
 export default Home;

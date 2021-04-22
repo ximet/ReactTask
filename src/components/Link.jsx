@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as S from './Theme/GlobalStyles';
+import * as Styled from '../styles/globalStyles';
 
 const Link = ({ place, onClick, id }) => (
-  <S.Item onClick={e => onClick({ e, place, id })} onKeyDown={onClick} tabIndex={0} role="button">
+  <Styled.Item
+    onClick={e => onClick({ e, place, id })}
+    onKeyDown={onClick}
+    tabIndex={0}
+    role="button"
+  >
     {place}
-  </S.Item>
+  </Styled.Item>
 );
 
 Link.propTypes = {

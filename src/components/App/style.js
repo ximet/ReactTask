@@ -15,15 +15,6 @@ const StyledApp = styled(App)`
 
     font-size: ${theme.fontSize.default};
     color: ${theme.colors.fontColor};
-
-    &__footer {
-      position: sticky;
-      bottom: 0;
-
-      padding: ${theme.padding.default} 0;
-      width: inherit;
-      background-color: ${theme.colors.primaryColor};
-    }
   `}
 `;
 

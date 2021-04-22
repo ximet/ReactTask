@@ -1,9 +1,5 @@
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './GlobalStyles';
-import App from '../App/style';
-import useLocalStorage from '../CustomHooks/useLocalStorage';
-import searchIcon from '../../../public/loupe.png';
-import { COLORS, THEMES } from '../../common/constants';
+import searchIcon from '../../public/loupe.png';
+import { COLORS, THEMES } from '../common/constants';
 
 const light = {
   primaryColor: COLORS.white_regular,
@@ -63,18 +59,3 @@ export const getTheme = mode => ({
     position: '0.75em'
   }
 });
-
-const Root = () => {
-  const [storedValue, setValue] = useLocalStorage('mode', THEMES.light);
-  const handleToggle = () => setValue(storedValue === THEMES.light ? THEMES.dark : THEMES.light);
-  const mode = themesMap.get(storedValue);
-
-  return (
-    <ThemeProvider theme={getTheme(mode)}>
-      <GlobalStyle />
-      <App onClick={handleToggle} mode={storedValue} />
-    </ThemeProvider>
-  );
-};
-
-export default Root;

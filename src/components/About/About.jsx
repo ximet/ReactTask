@@ -1,6 +1,7 @@
-import aboutImage from '../../../public/about.jpg';
-import * as S from '../Theme/GlobalStyles';
+import PropTypes from 'prop-types';
 import CardList from '../CardList';
+import aboutImage from '../../../public/about.jpg';
+import * as Styled from '../../styles/globalStyles';
 
 const services = [
   {
@@ -23,14 +24,18 @@ const services = [
 const About = ({ className }) => {
   return (
     <div className={className}>
-      <S.Container column>
+      <Styled.Container column>
         <h1>About us</h1>
         <p>The weather app you've always dreamed of...</p>
         <CardList items={services} />
-      </S.Container>
+      </Styled.Container>
       <img src={aboutImage} alt="about-image" />
     </div>
   );
+};
+
+About.propTypes = {
+  className: PropTypes.string
 };
 
 export default About;
