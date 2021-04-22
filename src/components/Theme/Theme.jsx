@@ -33,8 +33,8 @@ export const themesMap = new Map([
 export const getTheme = mode => ({
   colors: mode,
   fontSize: {
-    default: '16px',
-    small: '12px'
+    default: '1em',
+    small: '0.75em'
   },
   padding: {
     default: '1em',
