@@ -33,6 +33,8 @@ const App = ({ className, onClick, mode }) => {
 };
 
 App.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
   className: PropTypes.string
 };
 

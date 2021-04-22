@@ -68,7 +68,7 @@ const Home = ({ className }) => {
   return !isAuthenticating ? (
     <main className={className}>
       <Styled.Container row>
-        {searchError ? <p className="home__filters__error">{searchError}</p> : null}
+        {searchError ? <p>{searchError}</p> : null}
         <SearchField
           placeholder="Search a new place..."
           value={searchWord}

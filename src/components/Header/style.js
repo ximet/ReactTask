@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import Header from './Header';
 
-const styledHeader = styled(Header)`
+const StyledHeader = styled(Header)`
   ${({ theme }) => `
     flex: 1;
     padding: ${theme.padding.default} 0;
@@ -13,4 +13,4 @@ const styledHeader = styled(Header)`
     justify-content: space-evenly;
   `}
 `;
-export default styledHeader;
+export default StyledHeader;
