@@ -4,10 +4,10 @@ export const GlobalStyles = createGlobalStyle`
 
 
   body {
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.bodyFontColor};
   }
   a {
-      color : ${({ theme }) => theme.a}
+      color : ${({ theme }) => theme.linkFontColor}
   }
   
   *,

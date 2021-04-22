@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import { lightTheme, darkTheme } from '../theme/theme';
+import { themes } from '../theme/theme';
+import { lightMode } from '../common/constants';
 import { GlobalStyles } from '../theme/global';
-import { useDarkMode } from '../theme/useDarkMode';
-import { DivMain } from './PageLayout.Styles';
+import { useThemeToggle } from '../theme/useThemeToggle';
+import { Main } from './PageLayout.Styles';
 
 function PageLayout({ children }) {
-  const [theme, toggleTheme] = useDarkMode();
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
-
+  const [theme, toggleTheme] = useThemeToggle();
+  const themeMode = theme === lightMode ? themes.light : themes.dark;
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
       <Header toggleTheme={toggleTheme} />
-      <DivMain>{children}</DivMain>
+      <Main>{children}</Main>
       <Footer />
     </ThemeProvider>
   );

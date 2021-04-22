@@ -5,3 +5,6 @@ export const currentURL = '/current';
 export const enterCityName = 'Enter city name';
 export const minRequestingQueryLength = 3;
 export const unauthorizedStatus = 401;
+export const darkMode = 'dark';
+export const lightMode = 'light';
+export const currentTheme = 'theme';

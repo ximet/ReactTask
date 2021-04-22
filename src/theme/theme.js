@@ -1,22 +1,18 @@
-import {
-  aTextColorDarkTheme,
-  aTextColorLightTheme,
-  textColorDarkTheme,
-  textColorLightTheme,
-  toggleBorderDark,
-  toggleBorderLight
-} from '../common/cssVariables';
+import { colors } from '../common/cssVariables';
 
-export const lightTheme = {
-  isLight: true,
-  text: textColorLightTheme,
-  toggleBorder: toggleBorderLight,
-  a: aTextColorLightTheme
-};
-
-export const darkTheme = {
-  isLight: false,
-  text: textColorDarkTheme,
-  toggleBorder: toggleBorderDark,
-  a: aTextColorDarkTheme
+export const themes = {
+  light: {
+    primaryBackgroundColor: colors.blue_light,
+    secondaryBackgroundColor: colors.blue_medium,
+    tertiaryBackgroundColors: colors.white,
+    bodyFontColor: colors.black_light,
+    linkFontColor: colors.black_light
+  },
+  dark: {
+    primaryBackgroundColor: colors.grey_dark,
+    secondaryBackgroundColor: colors.grey_light,
+    tertiaryBackgroundColors: colors.black_light,
+    bodyFontColor: colors.white,
+    linkFontColor: colors.white
+  }
 };
