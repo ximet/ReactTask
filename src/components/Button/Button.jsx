@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledButton } from './Button.Styles';
+import { Button as StyledButton } from './Button.Styles';
 
 function Button({ onClick, children }) {
   return (

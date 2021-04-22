@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyledFooter } from './Footer.Styles';
+import { Footer as StyledFooter } from './Footer.Styles';
 
 function Footer() {
   const [date, setDate] = useState('');

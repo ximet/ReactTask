@@ -1,14 +1,14 @@
 import React from 'react';
 import PageLayout from '../../PageLayout/PageLayout';
-import { DivError, ImageError } from './ErrorPage.Styles';
+import { Container, ErrorImage } from './ErrorPage.Styles';
 import image from '../../../public/error.jpg';
 
 function ErrorPage() {
   return (
     <PageLayout>
-      <DivError>
-        <ImageError src={image} alt="Error Pic" />
-      </DivError>
+      <Container>
+        <ErrorImage src={image} alt="Error Pic" />
+      </Container>
     </PageLayout>
   );
 }

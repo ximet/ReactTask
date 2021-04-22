@@ -1,47 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  DivContainer,
-  H2Name,
-  DivBody,
-  DivTemperature,
-  DivRealTemperature,
-  SpanFeelsTemperature,
-  SpanWindSpeed,
-  DivFooter,
-  SpanText
+  Container,
+  Title,
+  ContainerBody,
+  Temperature,
+  RealTemperature,
+  FeelsTemperature,
+  WindSpeed,
+  Footer,
+  WeatherPhrase
 } from './CityWeather.Styles';
 
 function CityWeather({ city, cityName }) {
   return (
-    <DivContainer>
-      <H2Name>{cityName}</H2Name>
-      <DivBody>
-        <DivTemperature>
-          <DivRealTemperature>
+    <Container>
+      <Title>{cityName}</Title>
+      <ContainerBody>
+        <Temperature>
+          <RealTemperature>
             <span>
               {city.temperature > 0 && '+'}
               {city.temperature}°
             </span>
-          </DivRealTemperature>
+          </RealTemperature>
           <div>
             Feels like{' '}
-            <SpanFeelsTemperature>
+            <FeelsTemperature>
               {city.feelsLikeTemp > 0 && '+'}
               {city.feelsLikeTemp}°
-            </SpanFeelsTemperature>
+            </FeelsTemperature>
           </div>
-        </DivTemperature>
+        </Temperature>
         {/* svg */}
-        <div></div>
         <div>
-          <SpanWindSpeed>{city.windSpeed}</SpanWindSpeed> km/h
+          <WindSpeed>{city.windSpeed}</WindSpeed> km/h
         </div>
-      </DivBody>
-      <DivFooter>
-        <SpanText>{city.symbolPhrase}</SpanText>
-      </DivFooter>
-    </DivContainer>
+      </ContainerBody>
+      <Footer>
+        <WeatherPhrase>{city.symbolPhrase}</WeatherPhrase>
+      </Footer>
+    </Container>
   );
 }
 

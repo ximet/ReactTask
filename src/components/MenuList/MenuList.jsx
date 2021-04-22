@@ -1,19 +1,19 @@
 import React from 'react';
-import { UlContainer, LiItems, StyledLink } from './MenuLust.Styles';
+import { List, Item, Link } from './MenuLust.Styles';
 
 function MenuList() {
   return (
-    <UlContainer>
-      <LiItems>
-        <StyledLink to="/">Home</StyledLink>
-      </LiItems>
-      <LiItems>
-        <StyledLink to="/feedback">Rate Us</StyledLink>
-      </LiItems>
-      <LiItems>
-        <StyledLink to="/about">About Us</StyledLink>
-      </LiItems>
-    </UlContainer>
+    <List>
+      <Item>
+        <Link to="/">Home</Link>
+      </Item>
+      <Item>
+        <Link to="/feedback">Rate Us</Link>
+      </Item>
+      <Item>
+        <Link to="/about">About Us</Link>
+      </Item>
+    </List>
   );
 }
 
