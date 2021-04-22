@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DivError = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@ export const DivError = styled.div`
   margin: 5em auto;
 `;
 
-export const ImageError = styled.img`
+export const ErrorImage = styled.img`
   width: 25em;
   margin: 0 auto;
 `;

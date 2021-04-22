@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { temperatureTextColor, windTextColor } from '../../common/cssVariables';
+import { colors } from '../../common/cssVariables';
 
-export const DivContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,39 +10,39 @@ export const DivContainer = styled.div`
   width: 25em;
   margin: 0 auto;
 `;
-export const H2Name = styled.h2`
+export const Title = styled.h2`
   text-align: start;
   width: inherit;
   text-transform: capitalize;
 `;
-export const DivBody = styled.div`
+export const ContainerBody = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 25em;
   height: 5em;
 `;
-export const DivTemperature = styled.div`
+export const Temperature = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const DivRealTemperature = styled.div`
+export const RealTemperature = styled.div`
   font-size: 3em;
-  color: ${temperatureTextColor};
+  color: ${colors.red};
 `;
-export const SpanFeelsTemperature = styled.span`
-  color: ${temperatureTextColor};
+export const FeelsTemperature = styled.span`
+  color: ${colors.red};
 `;
-export const SpanWindSpeed = styled.span`
-  color: ${windTextColor};
+export const WindSpeed = styled.span`
+  color: ${colors.blue_dark};
 `;
-export const DivFooter = styled.div`
+export const Footer = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 25em;
   height: 3em;
 `;
-export const SpanText = styled.div`
+export const WeatherPhrase = styled.div`
   font-size: large;
   text-transform: capitalize;
 `;

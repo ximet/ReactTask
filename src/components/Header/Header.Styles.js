@@ -1,33 +1,24 @@
 import styled from 'styled-components';
-import {
-  filterableListWidth,
-  headerBackgroundColorLight,
-  headerBackgroundColorDark,
-  headerHeight
-} from '../../common/cssVariables';
+import { filterableListWidth, headerHeight } from '../../common/cssVariables';
 
-export const StyledHeader = styled.header`
+export const Header = styled.header`
   display: grid;
   grid-template-columns: ${filterableListWidth} 3fr 1fr;
   grid-template-rows: ${headerHeight};
-  background-color: ${({ theme }) =>
-    theme.isLight ? headerBackgroundColorLight : headerBackgroundColorDark};
+  background-color: ${({ theme }) => theme.primaryBackgroundColor};
   height: ${headerHeight};
   padding: 0;
   margin: 0;
 `;
-export const DivButtonContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export const DivTitleContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Title = styled(Container)`
   font-size: 1.5em;
 `;
-export const StyledNav = styled.nav`
+export const Navigation = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;

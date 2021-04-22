@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const UlContainer = styled.ul`
+export const List = styled.ul`
   display: flex;
   list-style-type: none;
   justify-content: end;
   margin: 0 2em;
 `;
 
-export const LiItems = styled.li`
+export const Item = styled.li`
   display: inline-block;
   margin: 0 0.5em;
   font-size: 1.5em;
 `;
 
-export const StyledLink = styled(Link)`
+export const Link = styled(RouterLink)`
   text-decoration: none;
 `;

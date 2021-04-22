@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { buttonBackgroundColorLight, buttonBackgroundColorDark } from '../../common/cssVariables';
 
-export const StyledButton = styled.button`
+export const Button = styled.button`
   width: 7em;
-  background-color: ${({ theme }) =>
-    theme.isLight ? buttonBackgroundColorLight : buttonBackgroundColorDark};
+  background-color: ${({ theme }) => theme.secondaryBackgroundColor};
   border-radius: 0.3em;
   outline: auto;
 `;
