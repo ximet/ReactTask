@@ -1,18 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MenuList from '../MenuList/MenuList';
-import styles from './Header.scss';
+import Button from '../Button/Button';
+import { StyledHeader, DivButtonContainer, DivTitleContainer, StyledNav } from './Header.Styles';
 
-function Header() {
-  //Button removed
-  //FilterableList moved to HomePage as Aside bar and always be shown
+function Header({ toggleTheme }) {
   return (
-    <header className={styles.header}>
-      <div className={styles.header__titleContainer}>Simple Wheather App</div>
-      <nav className={styles.container}>
+    <StyledHeader>
+      <DivButtonContainer>
+        <Button onClick={toggleTheme}>Switch Theme</Button>
+      </DivButtonContainer>
+      <DivTitleContainer>Simple Wheather App</DivTitleContainer>
+      <StyledNav>
         <MenuList />
-      </nav>
-    </header>
+      </StyledNav>
+    </StyledHeader>
   );
 }
+
+Header.propTypes = {
+  toggleTheme: PropTypes.func.isRequired
+};
 
 export default Header;
