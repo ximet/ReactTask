@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as Styled from '../styles/globalStyles';
 
 const SearchField = ({ placeholder, onChange, onKeyDown, value }) => (
-  <input
+  <Styled.Input
+    search
     type="text"
     placeholder={placeholder}
     value={value}
     onChange={onChange}
     onKeyDown={onKeyDown}
-    className="input__search"
   />
 );
 

@@ -2,7 +2,7 @@ import { useHistory, useParams } from 'react-router';
 import PropTypes from 'prop-types';
 
 import Link from '../Link';
-import useFetch from '../CustomHooks/useFetch';
+import useFetch from '../../customHooks/useFetch';
 
 const SearchList = ({ locations, isLoading, getLocationData }) => {
   const { location } = useParams();

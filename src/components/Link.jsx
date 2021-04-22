@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as Styled from '../styles/globalStyles';
 
 const Link = ({ place, onClick, id }) => (
-  <a
-    className="dropdown__list__item"
+  <Styled.Item
     onClick={e => onClick({ e, place, id })}
     onKeyDown={onClick}
     tabIndex={0}
     role="button"
   >
     {place}
-  </a>
+  </Styled.Item>
 );
 
 Link.propTypes = {

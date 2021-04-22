@@ -77,7 +77,7 @@ const Home = () => {
   return !isAuthenticating ? (
     <main className="app__main home">
       <section className="home__filters">
-        {searchError ? <p className="home__filters__error">{searchError}</p> : null}
+        {searchError ? <p>{searchError}</p> : null}
         <SearchField
           placeholder="Search a new place..."
           value={searchWord}
