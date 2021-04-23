@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'test'
-    }
-
-  }
+  agent { docker 'node:lts-alpine3.13' }
   stages {
     stage('deps') {
       steps {
