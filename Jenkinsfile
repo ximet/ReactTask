@@ -1,15 +1,18 @@
 pipeline {
-  agent { docker 'node:lts-alpine3.13' }
+  agent any
   stages {
     stage('deps') {
       steps {
-        sh 'npm install'
+        echo 'executing npm install'
+        nodejs('Node-16.0') {
+          sh 'npm install'
+        }
       }
     }
 
     stage('build') {
       steps {
-        sh 'npm run build'
+        echo 'executing building'
       }
     }
 
