@@ -23,3 +23,7 @@ export const Navigation = styled.nav`
   align-items: center;
   justify-content: flex-end;
 `;
+
+export const Theme = styled.span`
+  text-transform: capitalize;
+`;

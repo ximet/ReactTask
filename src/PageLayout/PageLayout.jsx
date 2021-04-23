@@ -7,17 +7,15 @@ import { themes } from '../theme/theme';
 import { GlobalStyles } from '../theme/global';
 import { useThemeChange } from '../theme/useThemeChange';
 import { Main } from './PageLayout.Styles';
-import { LIGHT_THEME, DARK_THEME } from '../common/constants';
 
 function PageLayout({ children }) {
   const [theme, setTheme] = useThemeChange();
-  const currentTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
-  const toggleTheme = () => setTheme(currentTheme);
+  const toggleTheme = theme => setTheme(theme);
 
   return (
-    <ThemeProvider theme={themes[currentTheme]}>
+    <ThemeProvider theme={themes[theme]}>
       <GlobalStyles />
-      <Header toggleTheme={toggleTheme} />
+      <Header toggleTheme={toggleTheme} theme={theme} />
       <Main>{children}</Main>
       <Footer />
     </ThemeProvider>
