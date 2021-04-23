@@ -4,14 +4,13 @@ import { ThemeProvider } from 'styled-components';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import { themes } from '../theme/theme';
-import { lightMode } from '../common/constants';
 import { GlobalStyles } from '../theme/global';
 import { useThemeToggle } from '../theme/useThemeToggle';
 import { Main } from './PageLayout.Styles';
 
 function PageLayout({ children }) {
   const [theme, toggleTheme] = useThemeToggle();
-  const themeMode = theme === lightMode ? themes.light : themes.dark;
+  const themeMode = themes[theme];
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
