@@ -1,13 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
-
 export const GlobalStyles = createGlobalStyle`
-
 
   body {
     color: ${({ theme }) => theme.bodyFontColor};
   }
+
   a {
-      color : ${({ theme }) => theme.linkFontColor}
+    color : ${({ theme }) => theme.linkFontColor}
   }
   
   *,
@@ -30,7 +29,6 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
   
-  
   body {
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -50,7 +48,6 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: bolder;
   }
   
-  
   code,
   kbd,
   samp,
@@ -62,7 +59,6 @@ export const GlobalStyles = createGlobalStyle`
   small {
     font-size: 80%;
   }
-  
   
   sub,
   sup {
@@ -96,12 +92,10 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0; 
   }
   
-  
   button,
   select {
     text-transform: none;
   }
-  
   
   button,
   [type='button'],
@@ -127,7 +121,6 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   
-  
   progress {
     vertical-align: baseline;
   }
@@ -136,7 +129,6 @@ export const GlobalStyles = createGlobalStyle`
   ::-webkit-outer-spin-button {
     height: auto;
   }
-  
   
   [type='search'] {
     -webkit-appearance: textfield; /* 1 */
