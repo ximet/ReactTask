@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getToken } from './getToken';
-import { UNAUTHORISEZED_STATUS } from './constants';
+import { UNAUTHORIZED_STATUS } from './constants';
 const axiosApiInstance = axios.create();
 
 // Request interceptor
@@ -28,7 +28,7 @@ axiosApiInstance.interceptors.response.use(
   async function (error) {
     const originalRequest = error.config;
 
-    if (error.response.status === UNAUTHORISEZED_STATUS && !originalRequest._retry) {
+    if (error.response.status === UNAUTHORIZED_STATUS && !originalRequest._retry) {
       originalRequest._retry = true;
       const token = await getToken();
       axios.headers = {
