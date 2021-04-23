@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MenuList from '../MenuList/MenuList';
 import Button from '../Button/Button';
-import { Header as StyledHeader, Container, Title, Navigation } from './Header.Styles';
+import * as Styled from './Header.Styles';
 
 function Header({ toggleTheme }) {
   return (
-    <StyledHeader>
-      <Container>
+    <Styled.Header>
+      <Styled.Container>
         <Button onClick={toggleTheme}>Switch Theme</Button>
-      </Container>
-      <Title>Simple Wheather App</Title>
-      <Navigation>
+      </Styled.Container>
+      <Styled.Title>Simple Wheather App</Styled.Title>
+      <Styled.Navigation>
         <MenuList />
-      </Navigation>
-    </StyledHeader>
+      </Styled.Navigation>
+    </Styled.Header>
   );
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button as StyledButton } from './Button.Styles';
+import * as Styled from './Button.Styles';
 
 function Button({ onClick, children }) {
   return (
-    <StyledButton type="button" onClick={onClick}>
+    <Styled.Button type="button" onClick={onClick}>
       {children}
-    </StyledButton>
+    </Styled.Button>
   );
 }
 
