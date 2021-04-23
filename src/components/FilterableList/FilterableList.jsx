@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { enterCityName } from '../../common/constants';
+import { ENTER_CITY_NAME } from '../../common/constants';
 import { List, Item, SearchBox } from './FilterableList.Styles';
 
 function FilterableList({ items, onChange, getCurrentCityData, setCurrentCityName }) {
   return (
     <List>
       <Item>
-        <SearchBox type="text" onChange={onChange} placeholder={enterCityName} />
+        <SearchBox type="text" onChange={onChange} placeholder={ENTER_CITY_NAME} />
       </Item>
       {items.map(({ name, country, id }) => (
         <Item

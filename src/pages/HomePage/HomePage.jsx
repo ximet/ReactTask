@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PageLayout from '../../PageLayout/PageLayout';
 import FilterableList from '../../components/FilterableList/ContainerFilterableList';
 import CityWeather from '../../components/CityWeather/CityWeather';
-import { minRequestingQueryLength } from '../../common/constants';
+import { MIN_REQUESTING_QUERY_LENGTH } from '../../common/constants';
 
 function HomePage({
   currentCity,
@@ -18,7 +18,7 @@ function HomePage({
   const getAllCitiesByName = async event => {
     const query = event.target.value.toLowerCase();
 
-    if (query.length >= minRequestingQueryLength) {
+    if (query.length >= MIN_REQUESTING_QUERY_LENGTH) {
       getMatchedCitiesData(query);
     }
 

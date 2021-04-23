@@ -1,18 +1,18 @@
-import { colors } from '../common/cssVariables';
+import { COLORS } from '../common/cssVariables';
 
 export const themes = {
   light: {
-    primaryBackgroundColor: colors.blue_light,
-    secondaryBackgroundColor: colors.blue_medium,
-    tertiaryBackgroundColors: colors.white,
-    bodyFontColor: colors.black_light,
-    linkFontColor: colors.black_light
+    primaryBackgroundColor: COLORS.blue_light,
+    secondaryBackgroundColor: COLORS.blue_medium,
+    tertiaryBackgroundColors: COLORS.white,
+    bodyFontColor: COLORS.black_light,
+    linkFontColor: COLORS.black_light
   },
   dark: {
-    primaryBackgroundColor: colors.grey_dark,
-    secondaryBackgroundColor: colors.grey_light,
-    tertiaryBackgroundColors: colors.black_light,
-    bodyFontColor: colors.white,
-    linkFontColor: colors.white
+    primaryBackgroundColor: COLORS.grey_dark,
+    secondaryBackgroundColor: COLORS.grey_light,
+    tertiaryBackgroundColors: COLORS.black_light,
+    bodyFontColor: COLORS.white,
+    linkFontColor: COLORS.white
   }
 };

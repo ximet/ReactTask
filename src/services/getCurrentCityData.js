@@ -1,9 +1,9 @@
 import getData from './getData';
-import { currentURL } from '../common/constants';
+import { CURRENT_URL } from '../common/constants';
 
 export default async function getCurrentCityData(id) {
   try {
-    const { current } = await getData(`${currentURL}/${id}`);
+    const { current } = await getData(`${CURRENT_URL}/${id}`);
     return current;
   } catch (error) {
     console.error(error);

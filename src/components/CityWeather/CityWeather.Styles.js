@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../common/cssVariables';
+import { COLORS } from '../../common/cssVariables';
 
 export const Container = styled.div`
   display: flex;
@@ -28,13 +28,13 @@ export const Temperature = styled.div`
 `;
 export const RealTemperature = styled.div`
   font-size: 3em;
-  color: ${colors.red};
+  color: ${COLORS.red};
 `;
 export const FeelsTemperature = styled.span`
-  color: ${colors.red};
+  color: ${COLORS.red};
 `;
 export const WindSpeed = styled.span`
-  color: ${colors.blue_dark};
+  color: ${COLORS.blue_dark};
 `;
 export const Footer = styled.div`
   display: flex;

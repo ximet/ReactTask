@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { filterableListWidth, headerHeight } from '../../common/cssVariables';
+import { FILTERABLE_LIST_WIDTH, HEADER_HEIGHT } from '../../common/cssVariables';
 
 export const Header = styled.header`
   display: grid;
-  grid-template-columns: ${filterableListWidth} 3fr 1fr;
-  grid-template-rows: ${headerHeight};
+  grid-template-columns: ${FILTERABLE_LIST_WIDTH} 3fr 1fr;
+  grid-template-rows: ${HEADER_HEIGHT};
   background-color: ${({ theme }) => theme.primaryBackgroundColor};
-  height: ${headerHeight};
+  height: ${HEADER_HEIGHT};
   padding: 0;
   margin: 0;
 `;
