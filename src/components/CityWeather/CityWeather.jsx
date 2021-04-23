@@ -1,37 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './CityWeather.scss';
+import {
+  Container,
+  Title,
+  ContainerBody,
+  Temperature,
+  RealTemperature,
+  FeelsTemperature,
+  WindSpeed,
+  Footer,
+  WeatherPhrase
+} from './CityWeather.Styles';
 
 function CityWeather({ city, cityName }) {
   return (
-    <div className={styles.container}>
-      <h2 className={styles.container__name}>{cityName}</h2>
-      <div className={styles.container__body}>
-        <div className={styles.container__temperature}>
-          <div className={styles.container__real_temperature}>
+    <Container>
+      <Title>{cityName}</Title>
+      <ContainerBody>
+        <Temperature>
+          <RealTemperature>
             <span>
               {city.temperature > 0 && '+'}
               {city.temperature}°
             </span>
-          </div>
+          </RealTemperature>
           <div>
             Feels like{' '}
-            <span className={styles.container__feels_temperature}>
+            <FeelsTemperature>
               {city.feelsLikeTemp > 0 && '+'}
               {city.feelsLikeTemp}°
-            </span>
+            </FeelsTemperature>
           </div>
-        </div>
+        </Temperature>
         {/* svg */}
-        <div></div>
         <div>
-          <span className={styles.container__wind}>{city.windSpeed}</span> km/h
+          <WindSpeed>{city.windSpeed}</WindSpeed> km/h
         </div>
-      </div>
-      <div className={styles.container__footer}>
-        <span className={styles.container__footer_text}>{city.symbolPhrase}</span>
-      </div>
-    </div>
+      </ContainerBody>
+      <Footer>
+        <WeatherPhrase>{city.symbolPhrase}</WeatherPhrase>
+      </Footer>
+    </Container>
   );
 }
 
@@ -42,7 +51,7 @@ CityWeather.propTypes = {
     windSpeed: PropTypes.number.isRequired,
     symbolPhrase: PropTypes.string.isRequired
   }),
-  name: PropTypes.string.isRequired
+  cityName: PropTypes.string.isRequired
 };
 
 export default CityWeather;

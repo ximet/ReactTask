@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Footer.scss';
+import * as Styled from './Footer.Styles';
 
 function Footer() {
   const [date, setDate] = useState('');
@@ -12,9 +12,9 @@ function Footer() {
   });
 
   return (
-    <footer className={styles.footer}>
+    <Styled.Footer>
       <span>{date.toLocaleString()}</span>
-    </footer>
+    </Styled.Footer>
   );
 }
 

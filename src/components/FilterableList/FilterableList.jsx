@@ -1,22 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { enterCityName } from '../../common/constants';
-import styles from './FilterableList.scss';
+import { ENTER_CITY_NAME } from '../../common/constants';
+import { List, Item, SearchBox } from './FilterableList.Styles';
 
 function FilterableList({ items, onChange, getCurrentCityData, setCurrentCityName }) {
   return (
-    <ul className={styles.list}>
-      <li className={styles.listItem}>
-        <input
-          type="text"
-          className={styles.searchBox}
-          onChange={onChange}
-          placeholder={enterCityName}
-        />
-      </li>
+    <List>
+      <Item>
+        <SearchBox type="text" onChange={onChange} placeholder={ENTER_CITY_NAME} />
+      </Item>
       {items.map(({ name, country, id }) => (
-        <li
-          className={styles.listItem}
+        <Item
           key={id}
           id={id}
           onClick={() => {
@@ -25,9 +19,9 @@ function FilterableList({ items, onChange, getCurrentCityData, setCurrentCityNam
           }}
         >
           {`${name}, ${country}`}
-        </li>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 }
 

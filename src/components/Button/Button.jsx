@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Button.scss';
+import * as Styled from './Button.Styles';
 
 function Button({ onClick, children }) {
   return (
-    <button type="button" className={styles.menuButton} onClick={onClick}>
+    <Styled.Button type="button" onClick={onClick}>
       {children}
-    </button>
+    </Styled.Button>
   );
 }
 

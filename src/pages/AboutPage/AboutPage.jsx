@@ -1,20 +1,20 @@
 import React from 'react';
 import PageLayout from '../../PageLayout/PageLayout';
-import styles from './AboutPage.scss';
+import { Container, Title, Item } from './AboutPage.Styles';
 
 function AboutPage() {
   return (
     <PageLayout>
-      <div className={styles.container}>
-        <p className={styles.container__title}>About us</p>
+      <Container>
+        <Title>About us</Title>
         <ul>
-          <li className={styles.container__text}>Search cities by their names</li>
-          <li className={styles.container__text}>
+          <Item>Search cities by their names</Item>
+          <Item>
             Info about current condition(Location, Latitude, Longtitude, Altitude, Temperature,
             Wind, Time zone) for chosen city
-          </li>
+          </Item>
         </ul>
-      </div>
+      </Container>
     </PageLayout>
   );
 }

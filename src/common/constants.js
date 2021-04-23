@@ -1,7 +1,10 @@
-export const authURL = 'http://localhost:3000/auth';
-export const baseURL = 'https://pfa.foreca.com/api/v1';
-export const locationURL = '/location/search/';
-export const currentURL = '/current';
-export const enterCityName = 'Enter city name';
-export const minRequestingQueryLength = 3;
-export const unauthorizedStatus = 401;
+export const AUTH_URL = 'http://localhost:3000/auth';
+export const BASE_URL = 'https://pfa.foreca.com/api/v1';
+export const LOCATION_URL = '/location/search/';
+export const CURRENT_URL = '/current';
+export const ENTER_CITY_NAME = 'Enter city name';
+export const MIN_REQUESTING_QUERY_LENGTH = 3;
+export const UNAUTHORIZED_STATUS = 401;
+export const DARK_THEME = 'dark';
+export const LIGHT_THEME = 'light';
+export const CURRENT_THEME = 'theme';

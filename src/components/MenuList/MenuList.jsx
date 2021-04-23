@@ -1,26 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './MenuList.scss';
+import { List, Item, Link } from './MenuLust.Styles';
 
 function MenuList() {
   return (
-    <ul className={styles.container}>
-      <li className={styles.container__items}>
-        <Link to="/" className={styles.container__link}>
-          Home
-        </Link>
-      </li>
-      <li className={styles.container__items}>
-        <Link to="/feedback" className={styles.container__link}>
-          Rate Us
-        </Link>
-      </li>
-      <li className={styles.container__items}>
-        <Link to="/about" className={styles.container__link}>
-          About Us
-        </Link>
-      </li>
-    </ul>
+    <List>
+      <Item>
+        <Link to="/">Home</Link>
+      </Item>
+      <Item>
+        <Link to="/feedback">Rate Us</Link>
+      </Item>
+      <Item>
+        <Link to="/about">About Us</Link>
+      </Item>
+    </List>
   );
 }
 
