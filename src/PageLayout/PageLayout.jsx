@@ -10,12 +10,11 @@ import { Main } from './PageLayout.Styles';
 
 function PageLayout({ children }) {
   const [theme, setTheme] = useThemeChange();
-  const toggleTheme = theme => setTheme(theme);
 
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyles />
-      <Header toggleTheme={toggleTheme} theme={theme} />
+      <Header setTheme={setTheme} theme={theme} />
       <Main>{children}</Main>
       <Footer />
     </ThemeProvider>

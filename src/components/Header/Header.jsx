@@ -5,14 +5,14 @@ import Button from '../Button/Button';
 import { LIGHT_THEME, DARK_THEME } from '../../common/constants';
 import * as Styled from './Header.Styles';
 
-function Header({ toggleTheme, theme }) {
-  const currentTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+function Header({ setTheme, theme }) {
+  const nextTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
 
   return (
     <Styled.Header>
       <Styled.Container>
-        <Button onClick={() => toggleTheme(currentTheme)}>
-          Set <Styled.Theme>{currentTheme}</Styled.Theme> Theme
+        <Button onClick={() => setTheme(nextTheme)}>
+          Set <Styled.Theme>{nextTheme}</Styled.Theme> Theme
         </Button>
       </Styled.Container>
       <Styled.Title>Simple Wheather App</Styled.Title>
@@ -24,7 +24,7 @@ function Header({ toggleTheme, theme }) {
 }
 
 Header.propTypes = {
-  toggleTheme: PropTypes.func.isRequired,
+  setTheme: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired
 };
 
