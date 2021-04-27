@@ -1,7 +1,6 @@
 import * as Styled from '../../styles/globalStyles';
 
 const Feedback = ({ isFormValid, isFormSubmitted, form, setForm, submitForm }) => {
-  console.log(isFormValid);
   return !isFormSubmitted ? (
     <>
       <h3>We'd like to ask you a few questions!</h3>
