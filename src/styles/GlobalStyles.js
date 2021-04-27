@@ -66,26 +66,27 @@ export const Input = styled.input`
       `
     }
       
-      width: inherit;
-      &::placeholder {
-        color: ${theme.colors.fontColor}
-      }
+    width: inherit;
+      
+    &::placeholder {
+      color: ${theme.colors.fontColor}
+    }
 
-      &:focus {
-        outline: none;
-      }
+    &:focus {
+      outline: none;
+    }
 
-      ${
-        search &&
-        `
-          background-color: ${theme.colors.primaryColor};
-          background-image: ${theme.backgroundImage.image};
-          background-repeat: no-repeat;
-          background-size: ${theme.backgroundImage.size};
-          background-position: ${theme.backgroundImage.position};
+    ${
+      search &&
       `
-      }
-    `}
+        background-color: ${theme.colors.primaryColor};
+        background-image: ${theme.backgroundImage.image};
+        background-repeat: no-repeat;
+        background-size: ${theme.backgroundImage.size};
+        background-position: ${theme.backgroundImage.position};
+    `
+    }
+  `}
 `;
 
 export const Navigation = styled.nav`
