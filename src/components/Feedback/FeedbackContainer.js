@@ -4,13 +4,13 @@ import { setForm, submitForm } from '../../redux/actions/feedback';
 import {
   getIsFormValid,
   getIsFormSubmitted,
-  getformState
+  getFormState
 } from '../../redux/selectors/feedbackSelectors';
 
 const mapStateToProps = state => ({
   isFormValid: getIsFormValid(state),
   isFormSubmitted: getIsFormSubmitted(state),
-  form: getformState(state)
+  form: getFormState(state)
 });
 
 const masDispatchToProps = dispatch => ({
