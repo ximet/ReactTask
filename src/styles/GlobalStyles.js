@@ -28,7 +28,7 @@ ${({ theme }) => `
 `;
 
 export const Button = styled.button`
-  ${({ theme }) => `
+  ${({ theme, disabled }) => `
     padding: ${theme.padding.default};
     margin-left: ${theme.margin.default};
     border-radius: ${theme.borderRadius.default};
@@ -37,6 +37,13 @@ export const Button = styled.button`
     &:hover {
       background-color: ${theme.colors.primaryColorDarker};
       cursor: pointer;
+
+      ${
+        disabled &&
+        `
+        cursor: not-allowed;
+        `
+      }
     }
 
     &:focus {
@@ -46,22 +53,20 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
-  ${({ search, theme }) =>
-    search &&
-    `
-      padding: ${theme.padding.default};
-      padding-left: ${theme.padding.big};
-      border-radius: ${theme.borderRadius.default};
-      border: none;
+  ${({ theme, search, error }) => `
+    padding: ${theme.padding.default};
+    padding-left: ${theme.padding.big};
+    border: none;
+    border-bottom: 0.1em solid ${theme.colors.complimentaryColor};
 
-      background-color: ${theme.colors.primaryColor};
-      background-image: ${theme.backgroundImage.image};
-      background-repeat: no-repeat;
-      background-size: ${theme.backgroundImage.size};
-      background-position: ${theme.backgroundImage.position};
-
+    ${
+      error &&
+      `
+      border-bottom: 0.1em solid ${theme.colors.errorColor};
+      `
+    }
+      
       width: inherit;
-
       &::placeholder {
         color: ${theme.colors.fontColor}
       }
@@ -69,7 +74,18 @@ export const Input = styled.input`
       &:focus {
         outline: none;
       }
-  `}
+
+      ${
+        search &&
+        `
+          background-color: ${theme.colors.primaryColor};
+          background-image: ${theme.backgroundImage.image};
+          background-repeat: no-repeat;
+          background-size: ${theme.backgroundImage.size};
+          background-position: ${theme.backgroundImage.position};
+      `
+      }
+    `}
 `;
 
 export const Navigation = styled.nav`
@@ -148,8 +164,11 @@ export const Card = styled.div`
 `;
 
 export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  ${({ theme }) => `
+    display: flex;
+    flex: wrap;
+    padding: ${theme.padding.default};
+  `}
 
   ${({ row }) =>
     row &&
@@ -162,4 +181,11 @@ export const Container = styled.div`
     `
       flex-direction: column;
     `}
+`;
+
+export const Error = styled.p`
+  ${({ theme }) => `
+    font-size: ${theme.fontSize.small};
+    color: ${theme.colors.errorColor};
+  `}
 `;

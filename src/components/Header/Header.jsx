@@ -9,6 +9,7 @@ const Header = ({ onClick, mode, className }) => {
       <Styled.Navigation>
         <Styled.Link to="/home">Home</Styled.Link>
         <Styled.Link to="/about">About</Styled.Link>
+        <Styled.Link to="/feedback">Feedback</Styled.Link>
       </Styled.Navigation>
       <Styled.Button onClick={onClick}>
         Go {mode === THEMES.dark ? THEMES.light : THEMES.dark}

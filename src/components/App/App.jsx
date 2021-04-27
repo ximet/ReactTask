@@ -7,6 +7,7 @@ import Home from '../Home/style';
 import About from '../About/style';
 import Error from '../Error';
 import SearchList from '../SearchList/SearchListContainer';
+import Feedback from '../Feedback/FeedbackContainer';
 
 const App = ({ className, onClick, mode }) => {
   return (
@@ -22,6 +23,9 @@ const App = ({ className, onClick, mode }) => {
         </Route>
         <Route exact path="/about">
           <About />
+        </Route>
+        <Route path="/feedback">
+          <Feedback />
         </Route>
         <Route path="*">
           <Error />
