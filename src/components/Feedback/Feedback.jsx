@@ -11,7 +11,7 @@ const Feedback = ({ isFormValid, isFormSubmitted, form, setForm, submitForm }) =
             <Styled.Input
               bordred
               error={!!field.error}
-              type="text"
+              type={field.type}
               placeholder={field.placeholder}
               name={field.name}
               value={field.answer}

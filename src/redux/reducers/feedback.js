@@ -1,11 +1,12 @@
 import { SET_FIELD, SET_IS_FORM_VALID, SUBMIT_FORM, RESET_FORM_STATE } from '../actions/feedback';
 
 const initialFormData = {
-  one: {
-    question: 'How often do you visit weather forecast applications?',
+  firstQuestion: {
+    question: 'How often do you visit weather applications?',
     answer: '',
-    name: 'one',
+    name: 'firstQuestion',
     placeholder: 'ex. 1-3 times a week',
+    type: 'text',
     validators: {
       minLength: 3,
       required: true
@@ -14,11 +15,12 @@ const initialFormData = {
     valid: false,
     error: null
   },
-  two: {
+  secondQuestion: {
     question: 'How often do you visit Weather Forecast?',
     answer: '',
-    name: 'two',
+    name: 'secondQuestion',
     placeholder: 'ex. 1-3 times a week',
+    type: 'text',
     validators: {
       minLength: 3,
       required: true
@@ -27,24 +29,26 @@ const initialFormData = {
     valid: false,
     error: null
   },
-  three: {
+  thirdQuestion: {
     question: 'Is there something you`d like us to change in Weather Forecast?',
     answer: '',
-    name: 'three',
+    name: 'thirdQuestion',
     placeholder: 'ex. I would like you to add monthly forecast!',
+    type: 'text',
     validators: {
-      minLength: 2,
+      minLength: 3,
       required: true
     },
     touched: false,
     valid: false,
     error: null
   },
-  four: {
+  fourthQuestion: {
     question: 'Tell us anything else you want!',
     answer: '',
-    name: 'four',
-    placeholder: 'ex. I think you should add dark mode!',
+    name: 'fourthQuestion',
+    placeholder: 'ex. I think you should add another theme!',
+    type: 'text',
     validators: {
       minLength: 3,
       required: true
@@ -61,10 +65,13 @@ const initialState = {
   formData: initialFormData
 };
 
-const feedback = (state = initialState, action) => {
+const feedbackReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_FIELD: {
-      const newFormState = { ...state.formData, [action.payload.name]: action.payload.copyField };
+      const newFormState = {
+        ...state.formData,
+        [action.payload.name]: action.payload.currentField
+      };
       return { ...state, formData: newFormState };
     }
     case SET_IS_FORM_VALID: {
@@ -82,4 +89,4 @@ const feedback = (state = initialState, action) => {
   }
 };
 
-export default feedback;
+export default feedbackReducer;

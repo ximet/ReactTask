@@ -1,3 +1,6 @@
+import { FEEDBACK } from '../../common/constants';
+import { getFormFieldLengthErrorMessage } from '../../common/helpers';
+
 const PREFIX = 'FEEDBACK/';
 
 export const SET_FIELD = `${PREFIX}SET_FIELD`;
@@ -6,7 +9,7 @@ export const SET_IS_FORM_SUBMITTED = `${PREFIX}SET_IS_FORM_SUBMITTED`;
 export const RESET_FORM_STATE = `${PREFIX}RESET_FORM_STATE`;
 export const SUBMIT_FORM = `${PREFIX}SUBMIT_FORM`;
 
-const setField = (name, copyField) => ({ type: SET_FIELD, payload: { name, copyField } });
+const setField = (name, currentField) => ({ type: SET_FIELD, payload: { name, currentField } });
 const setIsFormValid = isValid => ({ type: SET_IS_FORM_VALID, payload: isValid });
 const submitFormAction = { type: SUBMIT_FORM };
 const resetFormState = { type: RESET_FORM_STATE };
@@ -18,19 +21,19 @@ export const setForm = event => (dispatch, getState) => {
   } = getState();
 
   // get the current field
-  const copyField = { ...formData[name] };
-  copyField.answer = value;
-  copyField.touched = true;
+  const currentField = { ...formData[name] };
+  currentField.answer = value;
+  currentField.touched = true;
 
-  if (copyField.answer.length >= copyField.validators.minLength) {
-    copyField.valid = true;
-    copyField.error = null;
+  if (currentField.answer.length >= currentField.validators.minLength) {
+    currentField.valid = true;
+    currentField.error = null;
   } else {
-    copyField.valid = false;
-    copyField.error = `You'll need to add at least ${copyField.validators.minLength} symbols here`;
+    currentField.valid = false;
+    currentField.error = getFormFieldLengthErrorMessage(currentField.validators.minLength);
   }
 
-  dispatch(setField(name, copyField));
+  dispatch(setField(name, currentField));
 
   const isValid = Object.values(formData).every(field => field.valid);
   dispatch(setIsFormValid(isValid));
@@ -42,13 +45,15 @@ export const submitForm = event => (dispatch, getState) => {
     feedback: { formData }
   } = getState();
 
+  // gather up the form state
   const formState = Object.values(formData).reduce(
     (acc, value) => [...acc, { question: value.question, answer: value.answer }],
     []
   );
-  const storedFeedback = JSON.parse(localStorage.getItem('feedback')) || [];
+
+  const storedFeedback = JSON.parse(localStorage.getItem(FEEDBACK)) || [];
   const addedFeedback = [...storedFeedback, formState];
-  localStorage.setItem('feedback', JSON.stringify(addedFeedback));
+  localStorage.setItem(FEEDBACK, JSON.stringify(addedFeedback));
 
   dispatch(submitFormAction);
   dispatch(resetFormState);
