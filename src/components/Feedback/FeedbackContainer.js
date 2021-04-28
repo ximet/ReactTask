@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Feedback from './Feedback';
-import { setForm, submitForm } from '../../redux/actions/feedback';
+import { updateFormState, submitForm } from '../../redux/actions/feedback';
 import {
   getIsFormValid,
   getIsFormSubmitted,
@@ -10,12 +10,12 @@ import {
 const mapStateToProps = state => ({
   isFormValid: getIsFormValid(state),
   isFormSubmitted: getIsFormSubmitted(state),
-  form: getFormState(state)
+  formState: getFormState(state)
 });
 
 const masDispatchToProps = dispatch => ({
-  setForm: value => dispatch(setForm(value)),
-  submitForm: value => dispatch(submitForm(value))
+  updateFormState: (name, value) => dispatch(updateFormState(name, value)),
+  submitForm: event => dispatch(submitForm(event))
 });
 
 export default connect(mapStateToProps, masDispatchToProps)(Feedback);

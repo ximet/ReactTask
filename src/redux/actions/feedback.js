@@ -1,5 +1,6 @@
 import { FEEDBACK } from '../../common/constants';
 import { getFormFieldLengthErrorMessage } from '../../common/helpers';
+import { getFormState } from '../selectors/feedbackSelectors';
 
 const PREFIX = 'FEEDBACK/';
 
@@ -14,18 +15,15 @@ const setIsFormValid = isValid => ({ type: SET_IS_FORM_VALID, payload: isValid }
 const submitFormAction = { type: SUBMIT_FORM };
 const resetFormState = { type: RESET_FORM_STATE };
 
-export const setForm = event => (dispatch, getState) => {
-  const { name, value } = event.target;
-  const {
-    feedback: { formData }
-  } = getState();
+export const updateFormState = (name, value) => (dispatch, getState) => {
+  const formData = getFormState(getState());
 
   // get the current field
   const currentField = { ...formData[name] };
-  currentField.answer = value;
+  currentField.value = value;
   currentField.touched = true;
 
-  if (currentField.answer.length >= currentField.validators.minLength) {
+  if (currentField.value.length >= currentField.validators.minLength) {
     currentField.valid = true;
     currentField.error = null;
   } else {
@@ -41,13 +39,11 @@ export const setForm = event => (dispatch, getState) => {
 
 export const submitForm = event => (dispatch, getState) => {
   event.preventDefault();
-  const {
-    feedback: { formData }
-  } = getState();
+  const formData = getFormState(getState());
 
   // gather up the form state
   const formState = Object.values(formData).reduce(
-    (acc, value) => [...acc, { question: value.question, answer: value.answer }],
+    (acc, field) => acc.concat({ question: field.question, answer: field.value }),
     []
   );
 

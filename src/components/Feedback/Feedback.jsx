@@ -1,11 +1,11 @@
 import * as Styled from '../../styles/globalStyles';
 
-const Feedback = ({ isFormValid, isFormSubmitted, form, setForm, submitForm }) => {
+const Feedback = ({ isFormValid, isFormSubmitted, formState, updateFormState, submitForm }) => {
   return !isFormSubmitted ? (
     <>
       <h3>We'd like to ask you a few questions!</h3>
       <form onSubmit={submitForm}>
-        {Object.values(form).map(field => (
+        {Object.values(formState).map(field => (
           <Styled.Container column key={field.name}>
             <label htmlFor={field.name}>{field.question}</label>
             <Styled.Input
@@ -14,8 +14,8 @@ const Feedback = ({ isFormValid, isFormSubmitted, form, setForm, submitForm }) =
               type={field.type}
               placeholder={field.placeholder}
               name={field.name}
-              value={field.answer}
-              onChange={setForm}
+              value={field.value}
+              onChange={({ target: { name, value } }) => updateFormState(name, value)}
               required={field.validators.required}
             />
             <Styled.Error>{field.error}</Styled.Error>

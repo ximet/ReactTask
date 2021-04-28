@@ -26,4 +26,4 @@ export const sortLocations = locations =>
   [...locations].sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name));
 
 export const getFormFieldLengthErrorMessage = symbolsLength =>
-  `You'll need to add at least ${symbolsLength} symbols here`;
+  `This field needs to be at least ${symbolsLength} symbols.`;

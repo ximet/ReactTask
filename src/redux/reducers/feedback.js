@@ -3,7 +3,7 @@ import { SET_FIELD, SET_IS_FORM_VALID, SUBMIT_FORM, RESET_FORM_STATE } from '../
 const initialFormData = {
   firstQuestion: {
     question: 'How often do you visit weather applications?',
-    answer: '',
+    value: '',
     name: 'firstQuestion',
     placeholder: 'ex. 1-3 times a week',
     type: 'text',
@@ -17,7 +17,7 @@ const initialFormData = {
   },
   secondQuestion: {
     question: 'How often do you visit Weather Forecast?',
-    answer: '',
+    value: '',
     name: 'secondQuestion',
     placeholder: 'ex. 1-3 times a week',
     type: 'text',
@@ -31,7 +31,7 @@ const initialFormData = {
   },
   thirdQuestion: {
     question: 'Is there something you`d like us to change in Weather Forecast?',
-    answer: '',
+    value: '',
     name: 'thirdQuestion',
     placeholder: 'ex. I would like you to add monthly forecast!',
     type: 'text',
@@ -45,7 +45,7 @@ const initialFormData = {
   },
   fourthQuestion: {
     question: 'Tell us anything else you want!',
-    answer: '',
+    value: '',
     name: 'fourthQuestion',
     placeholder: 'ex. I think you should add another theme!',
     type: 'text',
