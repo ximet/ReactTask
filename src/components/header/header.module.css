@@ -1,0 +1,18 @@
+.header {
+  /* background-color: aliceblue; */
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  height: 40px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.headerLeftpart {
+  display: flex;
+}
+
+.headerRightPart {
+  display: flex;
+}

@@ -1,0 +1,9 @@
+.link {
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.link p {
+  font-size: 24px;
+  color: white;
+}

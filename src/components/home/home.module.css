@@ -1,0 +1,4 @@
+.homePageContainer {
+    /* background-color: aliceblue; */
+    height: calc(100vh - 70px);
+}
