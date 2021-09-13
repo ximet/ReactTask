@@ -11,9 +11,9 @@ function App() {
       <BackgroundVideo />
       <Header />
       <Switch>
-        {routes.map(({ path, Component }) => 
+        {routes.map(({ path, Component }) => (
           <Route key={path} path={path} component={Component} />
-        )}
+        ))}
       </Switch>
     </BrowserRouter>
   );

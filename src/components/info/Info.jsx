@@ -1,12 +1,8 @@
-import React from 'react'
-import classes from './info.module.css'
+import React from 'react';
+import classes from './info.module.css';
 
 function Info() {
-    return (
-        <div>
-            info
-        </div>
-    )
+  return <div>info</div>;
 }
 
-export default Info
+export default Info;

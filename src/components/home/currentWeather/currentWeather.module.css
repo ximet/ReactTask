@@ -1,0 +1,31 @@
+.container {
+    background-color: #fff6e699;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+}
+
+.weatherIcon {
+    color: #ffd000;
+    font-size: 100px;
+}
+
+.weatherInfo {
+    margin-left: 40px;
+    font-size: 22px;
+}
+
+.temperature {
+    font-size: 90px;
+    margin-top: -4px;
+}
+
+.weatherInfo{
+}
+
+.weatherInfoItem {
+    margin: 4px 0;
+}

@@ -1,4 +1,3 @@
-
 import Feedback from '../components/feedback/Feedback';
 import Home from '../components/home/Home';
 import Info from '../components/info/Info';
