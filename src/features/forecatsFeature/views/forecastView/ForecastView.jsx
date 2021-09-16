@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function ForecastView() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default ForecastView
+export default ForecastView;

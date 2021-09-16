@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function SelectedDate() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default SelectedDate
+export default SelectedDate;

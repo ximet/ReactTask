@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function SearchedCity() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default SearchedCity
+export default SearchedCity;

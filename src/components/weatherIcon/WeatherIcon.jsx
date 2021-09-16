@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function WeatherIcon() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default WeatherIcon
+export default WeatherIcon;

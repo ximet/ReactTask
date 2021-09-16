@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function ThemeSwitcher() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default ThemeSwitcher
+export default ThemeSwitcher;

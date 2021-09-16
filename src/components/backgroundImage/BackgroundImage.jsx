@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function BackgroundImage() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default BackgroundImage
+export default BackgroundImage;
