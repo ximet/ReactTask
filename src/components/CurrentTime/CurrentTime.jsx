@@ -1,5 +1,5 @@
-function Clock() {
-  return <div>Clock</div>;
+function CurrentTime() {
+  return <div>CurrentTime</div>;
 }
 
-export default Clock;
+export default CurrentTime;

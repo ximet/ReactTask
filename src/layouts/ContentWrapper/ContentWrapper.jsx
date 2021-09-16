@@ -1,5 +1,5 @@
-function MainPage() {
-  return <div>MainPage</div>;
+function ContentWrapper() {
+  return <div>ContentWrapper</div>;
 }
 
-export default MainPage;
+export default ContentWrapper;
