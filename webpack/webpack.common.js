@@ -40,6 +40,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.(mp4|mov)$/,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      },
+      {
         test: /\.svg$/,
         oneOf: [
           {
