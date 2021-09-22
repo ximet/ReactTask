@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path')
 const cors = require('cors')
 const router = require('./src/routes/index')
 require('dotenv').config()
@@ -10,7 +9,6 @@ const app = express();
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.resolve(__dirname, 'static')))
 app.use('/api', router)
 
 app.get( '/', (req, res) => {
@@ -18,7 +16,7 @@ app.get( '/', (req, res) => {
 })
 
 
-const start = async () => {
+const startServer = async () => {
     try {
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     } catch (e){
@@ -26,4 +24,4 @@ const start = async () => {
     }
 }
 
-start();
+startServer();

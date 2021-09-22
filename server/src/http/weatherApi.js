@@ -1,8 +1,8 @@
 const $host = require('./index')
 require('dotenv').config()
 
-const user = process.env.WE_API_USER;
-const password = process.env.WE_API_PASSWORD;
+const user = process.env.WEATHER_API_USER;
+const password = process.env.WEATHER_API_PASSWORD;
 
 class WeatherApi {
     async getAccessToken() {
