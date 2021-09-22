@@ -1,6 +1,6 @@
 const { Curl } = require('node-libcurl');
 
-const ServiceForecastAPI = {
+const ForecastApiService = {
   getToken: function (response) {
     const curlRequest = new Curl();
     const terminate = curlRequest.close.bind(curlRequest);
@@ -64,4 +64,4 @@ const ServiceForecastAPI = {
   }
 };
 
-module.exports = ServiceForecastAPI;
+module.exports = ForecastApiService;

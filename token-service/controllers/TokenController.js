@@ -1,8 +1,8 @@
-const ServiceForecastAPI = require('../services/ForecastApiService');
+const ForecastApiService = require('../services/ForecastApiService');
 
 const TokenController = {
   getToken: (request, response) => {
-    ServiceForecastAPI.getToken(response);
+    ForecastApiService.getToken(response);
   }
 };
 
