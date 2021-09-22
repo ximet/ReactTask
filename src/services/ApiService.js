@@ -1,4 +1,4 @@
-const AuthService = {
+const ApiService = {
   getAccessToken: async function (cookies) {
     let resultToken = '';
     if (!cookies.token) {
@@ -19,7 +19,19 @@ const AuthService = {
     }
 
     return resultToken;
+  },
+  getLocationSearch: async function (url, accessToken) {
+    const fetchResponse = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+
+    const responseData = await fetchResponse.json();
+
+    return responseData;
   }
 };
 
-export default AuthService;
+export default ApiService;

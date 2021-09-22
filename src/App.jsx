@@ -1,6 +1,6 @@
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import AuthService from './services/AuthService';
+import ApiService from './services/ApiService';
 
 function App() {
   const [cookies] = useCookies(['token']);
@@ -12,17 +12,10 @@ function App() {
   }, []);
 
   async function getSearchLocation(location, cookies) {
-    const accessToken = await AuthService.getAccessToken(cookies);
+    const accessToken = await ApiService.getAccessToken(cookies);
     const url = `/api/v1/location/search/${location}`;
 
-    const fetchResponse = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    });
-
-    const responseData = await fetchResponse.json();
+    const responseData = ApiService.getLocationSearch(url, accessToken);
 
     return responseData;
   }
