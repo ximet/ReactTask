@@ -11,7 +11,6 @@ const ForecastApiService = {
     curlRequest.setOpt(Curl.option.URL, `${domainApi}/authorize/token`);
     curlRequest.setOpt(Curl.option.POST, true);
     curlRequest.setOpt(Curl.option.VERBOSE, true);
-    curlRequest.setOpt(Curl.option.POST, true);
     curlRequest.setOpt(
       Curl.option.POSTFIELDS,
       JSON.stringify({
