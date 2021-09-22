@@ -11,6 +11,7 @@ const ForecastApiService = {
     curlRequest.setOpt(Curl.option.URL, `${domainApi}/authorize/token`);
     curlRequest.setOpt(Curl.option.POST, true);
     curlRequest.setOpt(Curl.option.VERBOSE, true);
+    curlRequest.setOpt(Curl.option.SSL_VERIFYPEER, false);
     curlRequest.setOpt(
       Curl.option.POSTFIELDS,
       JSON.stringify({
@@ -20,6 +21,7 @@ const ForecastApiService = {
     );
 
     curlRequest.on('end', function (statusCode, data, headers) {
+      console.log('headers: ', headers);
       context.curlRequestEnd(data, response);
       this.close();
     });
@@ -41,7 +43,7 @@ const ForecastApiService = {
         maxAge: accessData.expires_in * 1000
       });
     } catch (error) {
-      console.error(error);
+      console.error('test', error);
     }
 
     response.send(

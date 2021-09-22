@@ -18,12 +18,12 @@ const ApiService = {
   },
 
   getLocationSearch: async function (url, accessToken) {
-    const fetchResponse = ForecastApi.fetchLocationSearch(url, accessToken);
+    const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
 
     const responseData = await fetchResponse.json();
 
     return responseData;
-  },
+  }
 };
 
 export default ApiService;

@@ -1,24 +1,23 @@
 const ForecastApi = {
+  fetchAccessToken: async () => {
+    const url = '/auth/get-token';
 
-    fetchAccessToken: async () => {
-        const url = '/auth/get-token';
+    return await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        mode: 'corse'
+      })
+    });
+  },
 
-        return await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
-              mode: 'corse'
-            })
-        });
-    },
-
-    fetchLocationSearch: async (url, accessToken) => {
-        return await fetch(url, {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${accessToken}`
-            }
-        });
-    }
-}
+  fetchLocationSearch: async (url, accessToken) => {
+    return await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+  }
+};
 
 export default ForecastApi;
