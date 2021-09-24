@@ -1,5 +1,8 @@
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import './styles.scss';
+import commonClasses from './styles.scss';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const appMainContainer = document.getElementById('app');
+appMainContainer.classList.add(commonClasses.appContainer);
+
+ReactDOM.render(<App />, appMainContainer);

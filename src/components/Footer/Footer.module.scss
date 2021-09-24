@@ -1,7 +1,11 @@
 .footer {
   display: flex;
   justify-content: flex-end;
+  border-top: 1px solid #dadada;
+  padding: 0 80px;
 
   .copyright {
+    padding: 20px 0;
+    font-size: 12px;
   }
 }
