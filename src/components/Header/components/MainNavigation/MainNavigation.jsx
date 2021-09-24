@@ -1,22 +1,24 @@
 import classes from './MainNavigation.module.scss';
 
+import Link from '../../../Link/Link';
+
 function MainNavigation() {
   return (
     <ul className={classes.navigation}>
       <li className={classes.navItem}>
-        <a className={classes.link} href="#">
+        <Link className={classes.link} href="#">
           Home
-        </a>
+        </Link>
       </li>
       <li className={classes.navItem}>
-        <a className={classes.link} href="#">
+        <Link className={classes.link} href="#">
           About us
-        </a>
+        </Link>
       </li>
       <li className={classes.navItem}>
-        <a className={classes.link} href="#">
+        <Link className={classes.link} href="#">
           Contacts
-        </a>
+        </Link>
       </li>
     </ul>
   );
