@@ -1,0 +1,17 @@
+.navigation {
+  display: flex;
+  list-style: none;
+
+  .navItem {
+    .link {
+      padding: 10px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #000;
+
+      &:hover {
+        color: #00b2ff;
+      }
+    }
+  }
+}
