@@ -1,5 +1,11 @@
+import Footer from './components/Footer/Footer';
+
 function App() {
-  return <div>Hello world!</div>;
+  return (
+    <>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
