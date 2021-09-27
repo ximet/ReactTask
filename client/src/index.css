@@ -4,14 +4,16 @@
   color: white;
 }
 
-:root, [data-theme="dark"] {
+:root,
+[data-theme='dark'] {
   --navlink-color: white;
   --theme-sweetcher-text-color: white;
   --header-bg-color: black;
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   --navlink-color: black;
   --theme-sweetcher-text-color: black;
   --header-bg-color: white;
 }
+

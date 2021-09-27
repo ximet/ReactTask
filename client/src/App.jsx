@@ -1,29 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './layouts/header/Header';
-import { setThemeToLocalStorage, getThemeFromlocalStorage } from './services/themeService';
+import { themes } from './globalConstVariables';
 
 function App() {
+  const [theme, setTheme] = useState(setPrimaryTheme());
 
-  const[theme, setTheme] = useState('light');
+  function themeToggle() {
+    const newTheme = theme == themes.light ? themes.dark : themes.light;
 
-  const themeToggle = () => {
-    const newTheme = theme == 'light' ? 'dark': 'light';
-
-    setThemeToLocalStorage(newTheme)
+    localStorage.setItem('theme', newTheme);
     setTheme(newTheme);
+  };
+
+  function setPrimaryTheme() {
+    const prevTheme = localStorage.getItem('theme') || '';
+
+    return prevTheme == '' ? themes.light : prevTheme
   }
 
-  useEffect(() => {
-    const prevTheme = getThemeFromlocalStorage();
-    
-    setTheme(prevTheme == '' ? 'light' : prevTheme);
-  }, [])
 
   return (
     //Use BrowserRouter to use Link from react-router-dom
     <BrowserRouter>
-      <Header theme={theme} themeToggle={themeToggle}/>
+      <Header theme={theme} themeToggle={themeToggle} />
     </BrowserRouter>
   );
 }
