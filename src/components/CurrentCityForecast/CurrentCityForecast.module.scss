@@ -1,0 +1,64 @@
+.currentCityContainer {
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  padding: 30px;
+
+  .currentCityInfo {
+    display: flex;
+    justify-content: space-between;
+
+    .forecastInfo {
+      display: flex;
+
+      .mainInfo {
+        display: flex;
+
+        .icon {
+          width: 100px;
+          height: 100px;
+          margin-right: 30px;
+        }
+
+        .temperature {
+          font-size: 95px;
+          line-height: 1;
+          display: flex;
+
+          &::after {
+            content: '℃';
+            font-family: 'arial';
+            font-size: 36px;
+            display: block;
+          }
+        }
+      }
+
+      .additionalInfo {
+        margin-left: 30px;
+
+        .wind,
+        .humidity,
+        .precitipate {
+          font-size: 16px;
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+
+    .locationInfo {
+      .cityName {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: right;
+      }
+
+      .areaName,
+      .forecastDate,
+      .forecastDate {
+        font-size: 18px;
+        text-align: right;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}

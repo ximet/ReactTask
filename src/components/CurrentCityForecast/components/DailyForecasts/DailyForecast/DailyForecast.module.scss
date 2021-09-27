@@ -1,0 +1,42 @@
+.forecastItem {
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .icon {
+    width: 80px;
+    height: 80px;
+    margin: 15px 0;
+  }
+
+  .temperature {
+    font-size: 18px;
+
+    .sun {
+      padding: 0 10px;
+      &::after {
+        content: '°';
+      }
+
+      border-right: 1px solid rgba(0, 0, 0, 0.5);
+    }
+
+    .shadow {
+      color: rgba(0, 0, 0, 0.5);
+      padding: 0 10px;
+
+      &::after {
+        content: '°';
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import Sidebar from '../../layouts/Sidebar/Sidebar';
 import ContentWrapper from '../../layouts/ContentWrapper/ContentWrapper';
 import Warnings from '../../components/Warnings/Warnings';
 import FavoriteCities from '../../components/FavoriteCities/FavoriteCities';
+import CurrentCityForecast from '../../components/CurrentCityForecast/CurrentCityForecast';
 
 function CurrentCityForecastView() {
   return (
@@ -11,7 +12,9 @@ function CurrentCityForecastView() {
       <Sidebar>
         <Warnings />
       </Sidebar>
-      <ContentWrapper>ContentWrapper</ContentWrapper>
+      <ContentWrapper>
+        <CurrentCityForecast />
+      </ContentWrapper>
       <Sidebar>
         <FavoriteCities />
       </Sidebar>
