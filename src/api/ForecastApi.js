@@ -5,7 +5,7 @@ const ForecastApi = {
     return await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        mode: 'corse'
+        mode: 'cors'
       })
     });
   },
