@@ -7,15 +7,15 @@ function App() {
   const [locations, setLocations] = useState([]);
 
   useEffect(async () => {
-    const searchedLocations = await getSearchLocation('London', cookies);
+    const searchedLocations = await getSearchLocations('London', cookies);
     setLocations(searchedLocations.locations);
   }, []);
 
-  async function getSearchLocation(location, cookies) {
+  async function getSearchLocations(locationQueryStr, cookies) {
     const accessToken = await ApiService.getAccessToken(cookies);
-    const url = `/api/v1/location/search/${location}`;
+    const url = `/api/v1/location/search/${locationQueryStr}`;
 
-    const responseData = ApiService.getLocationSearch(url, accessToken);
+    const responseData = ApiService.getLocationsSearch(url, accessToken);
 
     return responseData;
   }

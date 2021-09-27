@@ -17,7 +17,7 @@ const ApiService = {
     return resultToken;
   },
 
-  getLocationSearch: async function (url, accessToken) {
+  getLocationsSearch: async function (url, accessToken) {
     const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
 
     const responseData = await fetchResponse.json();
