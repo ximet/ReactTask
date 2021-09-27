@@ -1,0 +1,60 @@
+.item {
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  padding: 15px 25px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .itemInfo {
+    display: flex;
+
+    .mainInfo {
+      width: 50%;
+      .icon {
+        width: 90px;
+        height: 90px;
+      }
+      .temperature {
+        font-family: 'arial';
+        font-size: 28px;
+        font-weight: bold;
+        display: flex;
+        align-items: flex-start;
+
+        &::after {
+          content: '℃';
+          font-family: 'arial';
+          font-size: 18px;
+          display: block;
+        }
+      }
+    }
+
+    .additionalInfo {
+      width: 50%;
+
+      .cityName {
+        font-weight: bold;
+        font-size: 18px;
+        text-align: right;
+      }
+
+      .wind,
+      .humidity,
+      .precitipate {
+        text-align: right;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .linkMore {
+    display: flex;
+    justify-content: flex-end;
+    color: #00b2ff;
+    text-decoration: none;
+  }
+}
