@@ -5,11 +5,14 @@ const ApiService = {
     let resultToken = '';
 
     if (!cookies.token) {
-      const getTokenResult = await ForecastApi.fetchAccessToken();
+      try {
+        const getTokenResult = await ForecastApi.fetchAccessToken();
+        const tokenData = await getTokenResult.json();
 
-      const tokenData = await getTokenResult.json();
-
-      resultToken = tokenData.access_token;
+        resultToken = tokenData.access_token;
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       resultToken = cookies.token;
     }
@@ -18,9 +21,16 @@ const ApiService = {
   },
 
   getLocationsSearch: async function (url, accessToken) {
-    const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
+    let responseData = {
+      status: false
+    };
 
-    const responseData = await fetchResponse.json();
+    try {
+      const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
+      responseData = await fetchResponse.json();
+    } catch (error) {
+      console.error(error);
+    }
 
     return responseData;
   }

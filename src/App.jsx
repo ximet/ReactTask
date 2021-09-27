@@ -12,10 +12,18 @@ function App() {
   }, []);
 
   async function getSearchLocations(locationQueryStr, cookies) {
-    const accessToken = await ApiService.getAccessToken(cookies);
-    const url = `/api/v1/location/search/${locationQueryStr}`;
+    let responseData = {
+      status: false
+    };
 
-    const responseData = ApiService.getLocationsSearch(url, accessToken);
+    try {
+      const accessToken = await ApiService.getAccessToken(cookies);
+      const url = `/api/v1/location/search/${locationQueryStr}`;
+
+      responseData = await ApiService.getLocationsSearch(url, accessToken);
+    } catch (error) {
+      console.error(error);
+    }
 
     return responseData;
   }
