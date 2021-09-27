@@ -35,7 +35,17 @@ module.exports = {
     contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,
-    port: 9020
+    port: 9020,
+    proxy: {
+      '/auth': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/api': {
+        target: 'http://pfa.foreca.com/api',
+        changeOrigin: true
+      }
+    }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };
