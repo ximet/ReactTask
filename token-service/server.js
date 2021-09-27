@@ -23,7 +23,7 @@ router.post('/auth/get-token', TokenController.getToken);
 
 app.use(router);
 
-const PORT = process.env.PORT_TOKEN_SERVICE || '3000';
+const PORT = process.env.TOKEN_SERVICE_PORT || '3000';
 
 startService();
 
