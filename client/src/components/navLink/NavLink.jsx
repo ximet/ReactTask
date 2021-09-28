@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './navLink.module.css';
 
-function NavLink( props ) {
-  console.log(props.theme)
+function NavLink(props) {
   return (
     <Link className={`${classes.link} ${props.theme}`} to={props.path}>
       {props.text}
