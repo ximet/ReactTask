@@ -10,7 +10,7 @@ function Header() {
   return (
     <header className={classes.header}>
       <a className={classes.logo} href="/">
-        <img src={mainLogo} alt="" />
+        <img src={mainLogo} alt="Logo" title="Logo" />
       </a>
       <MainNavigation />
       <LocationSearch />
