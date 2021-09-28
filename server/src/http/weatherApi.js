@@ -1,4 +1,3 @@
-// const $host = require('./index')
 const axios = require('axios');
 require('dotenv').config()
 
@@ -12,6 +11,5 @@ class WeatherApi {
         return data;
     }
 }
-
 
 module.exports = new WeatherApi();
