@@ -1,17 +1,17 @@
-import Header from './components/Header/Header';
-
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import ApiService from './services/ForecastApiService';
+import classes from './SearchedLocations.module.scss';
+import ApiService from '../../../../../../services/ForecastApiService';
+import SearchedLocation from '../SearchedLocation/SearchedLocation';
 
-function App() {
+function SearchedLocations({ searchString }) {
   const [cookies] = useCookies(['token']);
   const [locations, setLocations] = useState([]);
 
   useEffect(async () => {
-    // const searchedLocations = await getSearchLocations('London', cookies);
-    // setLocations(searchedLocations.locations);
-  }, []);
+    const searchedLocations = await getSearchLocations(searchString, cookies);
+    setLocations(searchedLocations.locations);
+  }, [searchString]);
 
   async function getSearchLocations(locationQueryStr, cookies) {
     let responseData = {
@@ -23,6 +23,7 @@ function App() {
       const url = `/api/v1/location/search/${locationQueryStr}`;
 
       responseData = await ApiService.getLocationsSearch(url, accessToken);
+      console.log(responseData);
     } catch (error) {
       console.error(error);
     }
@@ -31,10 +32,12 @@ function App() {
   }
 
   return (
-    <>
-      <Header />
-    </>
+    <ul className={classes.searchedLocationsContainer}>
+      {locations.map(item => (
+        <SearchedLocation location={item} />
+      ))}
+    </ul>
   );
 }
 
-export default App;
+export default SearchedLocations;
