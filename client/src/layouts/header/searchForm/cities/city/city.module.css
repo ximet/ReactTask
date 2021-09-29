@@ -1,0 +1,19 @@
+.container {
+  width: 254px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.cityWeatherIconAndCity {
+    display: flex;
+    align-items: center;
+}
+
+.cityWeatherIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 14px;
+}

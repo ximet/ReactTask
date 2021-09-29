@@ -1,40 +1,38 @@
 .container {
-    box-sizing: border-box;
-    width: 300px;
-    height: 30px;
-    border-radius: 20px;
-    display: flex;
-    background: var(--search-bar-bg-color);
-    align-items: center;
-    padding: 0 9px;
+  box-sizing: border-box;
+  width: 300px;
+  height: 30px;
+  border-radius: 20px;
+  display: flex;
+  background: var(--search-bar-bg-color);
+  align-items: center;
+  padding: 0 9px;
 }
 
 .container > input {
-    box-sizing: border-box;
-    padding: 0 5px;
-    width: 260px;
-    height: 100%;
-    border: none;
-    border-radius: 20px 0 0 20px;
-    background: transparent;
-    font-size: 22px;
-    color: var(--search-bar-input-text-color);
+  box-sizing: border-box;
+  padding: 0 5px;
+  width: 260px;
+  height: 100%;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  background: transparent;
+  font-size: 22px;
+  color: var(--search-bar-input-text-color);
 }
 
 .container > input:focus {
-    outline: none;
+  outline: none;
 }
 
 .container > input::placeholder {
-    color: var(--search-bar-input-placeholder-text-color);
+  color: var(--search-bar-input-placeholder-text-color);
 }
 
 .container > img {
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
 }
 
-
 /* Rectangle 5 */
-
