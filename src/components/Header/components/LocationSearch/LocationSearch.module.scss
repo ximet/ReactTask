@@ -1,12 +1,14 @@
+@import '../../../../assets/styles/constants.scss';
+
 .currentLocation {
   .title {
-    color: var(--additional-text-collor);
+    color: $additional-text-collor;
   }
 
   .value {
     text-decoration: none;
-    color: var(--link-color);
-    border-bottom: 1px dashed var(--link-color);
+    color: $link-color;
+    border-bottom: 1px dashed $link-color;
     padding-bottom: 1px;
     margin-left: 5px;
   }

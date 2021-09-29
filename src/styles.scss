@@ -2,6 +2,6 @@
 @import './assets/styles/constants.scss';
 
 body {
-  font-family: var(--main-font-family);
-  font-size: var(--main-font-size);
+  font-family: $main-font-family;
+  font-size: $main-font-size;
 }
