@@ -1,5 +1,4 @@
 import mainLogo from '../../assets/img/logo.png';
-import commonStyles from '../../styles.scss';
 import classes from './Header.module.scss';
 
 import LocationSearch from './components/LocationSearch/LocationSearch';

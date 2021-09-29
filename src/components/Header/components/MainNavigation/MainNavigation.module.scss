@@ -7,10 +7,10 @@
       padding: 10px 20px;
       text-decoration: none;
       text-transform: uppercase;
-      color: #000;
+      color: var(--main-font-color);
 
       &:hover {
-        color: #00b2ff;
+        color: var(--link-color);
       }
     }
   }

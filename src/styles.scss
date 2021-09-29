@@ -1,6 +1,7 @@
 @import './assets/styles/reset.scss';
+@import './assets/styles/constants.scss';
 
 body {
-  font-family: 'Arial';
-  font-size: 16px;
+  font-family: var(--main-font-family);
+  font-size: var(--main-font-size);
 }

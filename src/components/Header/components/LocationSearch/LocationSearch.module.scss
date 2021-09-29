@@ -1,13 +1,13 @@
 .currentLocation {
   .title {
-    color: #aaaaaa;
+    color: var(--additional-text-collor);
   }
 
   .value {
     display: inline-block;
     text-decoration: none;
-    color: #00b2ff;
-    border-bottom: 1px dashed #00b2ff;
+    color: var(--link-color);
+    border-bottom: 1px dashed var(--link-color);
     padding-bottom: 1px;
     margin-left: 5px;
   }
