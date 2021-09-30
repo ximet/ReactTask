@@ -5,7 +5,7 @@ import City from './city/City';
 function Cities({ cities }) {
   return (
     <div className={classes.container}>
-      {cities.map((city) => (
+      {cities.map(city => (
         <City key={city.name} city={city} />
       ))}
     </div>

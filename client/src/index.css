@@ -25,14 +25,8 @@
   --navlink-color: black;
   --theme-sweetcher-text-color: black;
   --header-bg-color: white;
-  --search-bar-bg-color: linear-gradient(
-    180deg,
-    #000000 0%,
-    rgba(0, 0, 0, 0.8) 28.13%,
-    rgba(0, 0, 0, 0.42) 60.94%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-  --search-bar-input-text-color: black;
-  --search-bar-input-placeholder-text-color: black;
-  --cities-bg-color: #2d1149;
+  --search-bar-bg-color: linear-gradient(180deg, #79B6FE 0%, rgba(64, 48, 255, 0) 100%);
+  --search-bar-input-text-color: white;
+  --search-bar-input-placeholder-text-color: white;
+  --cities-bg-color: #54D6FF;
 }

@@ -13,7 +13,10 @@ function SearchForm() {
   };
 
   const findMatchingCities = () => {
-    const tempMatchingCities = searchText !== '' ? cities.filter(city => city.name.toLowerCase().startsWith(searchText.toLowerCase())) : [];
+    const tempMatchingCities =
+      searchText !== ''
+        ? cities.filter(city => city.name.toLowerCase().startsWith(searchText.toLowerCase()))
+        : [];
 
     setMatchingCities(tempMatchingCities);
   };
