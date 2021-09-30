@@ -1,5 +1,5 @@
-import nightBgImage from '../public/images/nightBgImage.png'
-import sunnyBgImage from '../public/images/sunnyBgImage.png'
+import nightBgImage from '../public/images/nightBgImage.png';
+import sunnyBgImage from '../public/images/sunnyBgImage.png';
 
 const themes = {
   light: 'light',
@@ -7,11 +7,8 @@ const themes = {
 };
 
 const bgImages = {
-  'dark' : nightBgImage,
-  'light' : sunnyBgImage
-}
+  dark: nightBgImage,
+  light: sunnyBgImage
+};
 
-export {
-  themes,
-  bgImages
-}
+export { themes, bgImages };

@@ -5,17 +5,15 @@ import { themes, bgImages } from './globalConsts';
 import CityForecast from './layouts/cityForecast/CityForecast';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 
-const useLocalStorageTheme = (initialTheme) => {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem('theme') || initialTheme
-  );
+const useLocalStorageTheme = initialTheme => {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  return [theme, setTheme]
-}
+  return [theme, setTheme];
+};
 
 function App() {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
@@ -30,9 +28,9 @@ function App() {
   return (
     //Use BrowserRouter to use Link from react-router-dom
     <BrowserRouter>
-      <BackgroundImage bgImage={bgImage}/>
+      <BackgroundImage bgImage={bgImage} />
       <Header theme={theme} themeToggle={themeToggle} />
-      <CityForecast/>
+      <CityForecast />
     </BrowserRouter>
   );
 }
