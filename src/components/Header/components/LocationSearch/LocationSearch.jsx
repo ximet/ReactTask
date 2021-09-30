@@ -15,6 +15,24 @@ class LocationSearch extends React.Component {
     };
   }
 
+  dropdownContainer = React.createRef();
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutsideDropdown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutsideDropdown);
+  }
+
+  handleClickOutsideDropdown = event => {
+    if (this.dropdownContainer.current && !this.dropdownContainer.current.contains(event.target)) {
+      this.setState({
+        isOpenSearchBar: false
+      });
+    }
+  };
+
   handleSetSearchString = string => {
     this.setState({
       searchString: string
@@ -31,7 +49,7 @@ class LocationSearch extends React.Component {
 
   render() {
     const searchBar = (
-      <div className={classes.searchBarContainer}>
+      <div className={classes.searchBarContainer} ref={this.dropdownContainer}>
         <SearchBar setSearchString={this.handleSetSearchString} />
         <SearchedLocations searchString={this.state.searchString} />
       </div>

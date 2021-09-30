@@ -4,4 +4,6 @@ $hover-item-color: #f9f9f9;
 
 .searchedLocationsContainer {
   list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
 }
