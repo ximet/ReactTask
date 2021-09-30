@@ -1,7 +1,12 @@
 import React from 'react';
+import classes from './cityForecast.module.css'
 
-function CityForecast() {
-  return <div></div>;
+class CityForecast extends React.Component {
+  render() {
+    return (
+      <div className={classes.container}></div>
+    )
+  }
 }
 
 export default CityForecast;
