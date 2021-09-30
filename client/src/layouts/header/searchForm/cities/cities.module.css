@@ -10,7 +10,6 @@
   overflow: scroll;
 }
 
-
 /* need to add custom scroll coz this is ugly and i decided to hide it now */
 
 .container::-webkit-scrollbar {
