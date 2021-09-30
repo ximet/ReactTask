@@ -1,23 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const globalTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#03A9F4',
-      contrastText: '#FFFFFF',
-      dark: '#0288D1',
-      light: '#B3E5FC',
-    },
-    secondary: {
-      light: '#7F8892',
-      main: '#ffffff',
-    },
-    error: {},
-    background: {},
-    warning: {},
-    info: {},
-    grey: {},
-  },
+const globalTheme = createTheme({
   shape: { borderRadius: 2 },
   spacing: 4,
   typography: {
@@ -34,7 +17,7 @@ const globalTheme = createMuiTheme({
   },
 });
 
-export const lightTheme = createMuiTheme(
+export const lightTheme = createTheme(
   {
     palette: {
       text: {
@@ -60,7 +43,7 @@ export const lightTheme = createMuiTheme(
   globalTheme,
 );
 
-export const darkTheme = createMuiTheme(
+export const darkTheme = createTheme(
   {
     palette: {
       text: {

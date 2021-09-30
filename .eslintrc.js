@@ -19,6 +19,8 @@ module.exports = {
     ],
     'func-names': ['error', 'never'],
     'import/prefer-default-export': 0,
+    'react/prop-types': 0,
+    'max-len': ['error', 120],
   },
   ignorePatterns: ['node_modules/'],
   settings: {
