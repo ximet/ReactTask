@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './extraCityForecast.module.css'
+import classes from './extraCityForecast.module.css';
 
 function ExtraCityForecast({ weather }) {
   return (
@@ -9,7 +9,7 @@ function ExtraCityForecast({ weather }) {
       <span className={classes.weatherItem}>{`feels like ${weather.feels}°C`}</span>
       <span className={classes.weatherItem}>{`pressure ${weather.pressure}mm`}</span>
     </div>
-  )
+  );
 }
 
 export default ExtraCityForecast;
