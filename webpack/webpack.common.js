@@ -14,8 +14,8 @@ module.exports = {
         loader: 'babel-loader',
         exclude: [/node_modules/],
         options: {
-          sourceMap: true
-        }
+          sourceMap: true,
+        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -23,10 +23,10 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: commonPaths.imagesFolder
-            }
-          }
-        ]
+              outputPath: commonPaths.imagesFolder,
+            },
+          },
+        ],
       },
       {
         test: /\.(woff2|ttf|woff|eot)$/,
@@ -34,47 +34,47 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: commonPaths.fontsFolder
-            }
-          }
-        ]
+              outputPath: commonPaths.fontsFolder,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
         oneOf: [
           {
             // load svg modules to be displayed as icons/images
-            loader: 'svg-react-loader'
+            loader: 'svg-react-loader',
           },
           {
             // load svg files normally (eg. fonts, etc)
-            loader: 'url-loader?limit=100000'
-          }
-        ]
-      }
-    ]
+            loader: 'url-loader?limit=100000',
+          },
+        ],
+      },
+    ],
   },
   serve: {
-    add: app => {
+    add: (app) => {
       app.use(convert(history()));
     },
     content: commonPaths.entryPath,
     dev: {
-      publicPath: commonPaths.outputPath
+      publicPath: commonPaths.outputPath,
     },
-    open: true
+    open: true,
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.js', '.jsx', '.css', '.scss'],
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
-      template: commonPaths.templatePath
+      template: commonPaths.templatePath,
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'async'
-    })
-  ]
+      defaultAttribute: 'async',
+    }),
+  ],
 };

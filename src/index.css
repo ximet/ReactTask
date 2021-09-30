@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Gilroy';
+  src: url(assets/fonts/Gilroy/Gilroy-Light.ttf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url(assets/fonts/Gilroy/Gilroy-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url(assets/fonts/Gilroy/Gilroy-ExtraBold.ttf);
+  font-weight: 600;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Gilroy', 'Mulish', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f2f2f2 inset !important;
+  box-shadow: 0 0 0 30px #f2f2f2 inset !important;
+}
