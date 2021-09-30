@@ -1,10 +1,10 @@
 import Header from '../../components/Header/Header';
 import Container from '../../components/Container/Container';
 
-function HeaderWrapper() {
+function HeaderWrapper({themeMode, toggleThemeMode}) {
   return (
     <Container>
-      <Header />
+      <Header themeMode={themeMode} toggleThemeMode={toggleThemeMode} />
     </Container>
   );
 }
