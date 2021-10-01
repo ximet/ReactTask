@@ -6,7 +6,9 @@ import { DARK, LIGHT } from 'constants/theme';
 import { ThemeContext } from './duck';
 
 const ThemeProvider = ({ children }) => {
-  const [themeName, setThemeName] = useState(() => localStorage.getItem(THEME_STORAGE_NAME) || LIGHT);
+  const [themeName, setThemeName] = useState(
+    () => localStorage.getItem(THEME_STORAGE_NAME) || LIGHT,
+  );
   const currentTheme = { [LIGHT]: lightTheme, [DARK]: darkTheme }[themeName];
 
   return (

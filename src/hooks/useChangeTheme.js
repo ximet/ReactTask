@@ -4,7 +4,10 @@ import { THEME_STORAGE_NAME } from 'constants/localStorage';
 
 const useChangeTheme = () => {
   const { themeName, setThemeName } = useContext(ThemeContext);
-  useEffect(() => localStorage.setItem(THEME_STORAGE_NAME, themeName), [themeName]);
+  useEffect(
+    () => localStorage.setItem(THEME_STORAGE_NAME, themeName),
+    [themeName],
+  );
 
   return [themeName, setThemeName];
 };

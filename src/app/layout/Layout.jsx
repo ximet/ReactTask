@@ -1,13 +1,11 @@
 import { Suspense } from 'react';
 import { Main, Header } from './components';
 
-const Layout = ({ Routes }) => (
+const Layout = ({ children }) => (
   <>
     <Header />
     <Main>
-      <Suspense fallback={null}>
-        <Routes />
-      </Suspense>
+      <Suspense fallback={null}>{children}</Suspense>
     </Main>
   </>
 );

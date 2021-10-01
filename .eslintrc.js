@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['airbnb', 'plugin:react/jsx-runtime'],
+  extends: [
+    'prettier',
+    'airbnb',
+    'plugin:react/jsx-runtime',
+    'plugin:prettier/recommended',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -11,8 +16,9 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['prettier', 'react'],
   rules: {
+    'prettier/prettier': 'error',
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: ['./webpack/*', '**/*.config.*', '**/*.test.js'] },
@@ -20,7 +26,6 @@ module.exports = {
     'func-names': ['error', 'never'],
     'import/prefer-default-export': 0,
     'react/prop-types': 0,
-    'max-len': ['error', 120],
   },
   ignorePatterns: ['node_modules/'],
   settings: {

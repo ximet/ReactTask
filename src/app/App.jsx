@@ -12,13 +12,17 @@ const App = ({ store }) => (
     <BrowserRouter>
       <ThemeProvider>
         <AppProvider>
-          {(isLoggedIn) => (isLoggedIn ? (
-            <Layout Routes={PrivateRoutes} />
-          ) : (
-            <Suspense fallback={null}>
-              <PublicRoutes />
-            </Suspense>
-          ))}
+          {(isLoggedIn) =>
+            isLoggedIn ? (
+              <Layout>
+                <PrivateRoutes />
+              </Layout>
+            ) : (
+              <Suspense fallback={null}>
+                <PublicRoutes />
+              </Suspense>
+            )
+          }
         </AppProvider>
       </ThemeProvider>
     </BrowserRouter>

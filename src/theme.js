@@ -4,7 +4,14 @@ const globalTheme = createTheme({
   shape: { borderRadius: 2 },
   spacing: 4,
   typography: {
-    fontFamily: ['Gilroy', 'Mulish', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+    fontFamily: [
+      'Gilroy',
+      'Mulish',
+      'Roboto',
+      'Helvetica',
+      'Arial',
+      'sans-serif',
+    ].join(','),
   },
   breakpoints: {
     values: {
