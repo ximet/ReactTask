@@ -17,6 +17,8 @@
 }
 
 #root {
+  --background-color: #f2f2f2;
+
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -24,7 +26,7 @@
 
 body {
   font-family: 'Gilroy', 'Mulish', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background: #f2f2f2;
+  background: var(--background-color);
   margin: 0;
   padding: 0;
 }
@@ -38,6 +40,6 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #f2f2f2 inset !important;
-  box-shadow: 0 0 0 30px #f2f2f2 inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--background-color) inset !important;
+  box-shadow: 0 0 0 30px var(--background-color) inset !important;
 }
