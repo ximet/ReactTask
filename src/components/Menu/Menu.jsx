@@ -1,4 +1,4 @@
-import './Menu.css'
+import './Menu.css';
 import MenuList from './MenuList/MenuList';
 
 function Menu() {

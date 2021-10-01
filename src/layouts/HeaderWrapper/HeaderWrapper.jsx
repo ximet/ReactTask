@@ -1,7 +1,7 @@
 import Header from '../../components/Header/Header';
 import Container from '../../components/Container/Container';
 
-function HeaderWrapper({themeMode, toggleThemeMode}) {
+function HeaderWrapper({ themeMode, toggleThemeMode }) {
   return (
     <Container>
       <Header themeMode={themeMode} toggleThemeMode={toggleThemeMode} />
