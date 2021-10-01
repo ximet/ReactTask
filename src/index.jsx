@@ -1,10 +1,11 @@
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import commonClasses from './styles.scss';
+import './styles.scss';
+import classes from './assets/styles/common.scss';
 import { CookiesProvider } from 'react-cookie';
 
 const appMainContainer = document.getElementById('app');
-appMainContainer.classList.add(commonClasses.appContainer);
+appMainContainer.classList.add(classes.appContainer);
 
 ReactDOM.render(
   <CookiesProvider>

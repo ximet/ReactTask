@@ -1,13 +1,14 @@
+@import '../../../../assets/styles/constants.scss';
+
 .currentLocation {
   .title {
-    color: #aaaaaa;
+    color: $additional-text-collor;
   }
 
   .value {
-    display: inline-block;
     text-decoration: none;
-    color: #00b2ff;
-    border-bottom: 1px dashed #00b2ff;
+    color: $link-color;
+    border-bottom: 1px dashed $link-color;
     padding-bottom: 1px;
     margin-left: 5px;
   }

@@ -1,7 +1,6 @@
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import CurrentCityForecastView from './views/CurrentCityForecastView/CurrentCityForecastView';
-
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import ApiService from './services/ForecastApiService';
