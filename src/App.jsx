@@ -5,17 +5,20 @@ import MiddleWrapper from './layouts/MiddleWrapper/MiddleWrapper';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
-import { THEME_DARK, THEME_LIGHT } from './constants/constants';
+import {
+  API_AUTH_PASS,
+  API_AUTH_USERNAME,
+  API_KIEV_ID,
+  THEME_DARK,
+  THEME_LIGHT
+} from './constants/constants';
 import { weatherAPI } from './services/dataService';
 
 function App() {
-  // weatherAPI
-  //   .getToken('coherentsolutions', 'X4AbD4NrEd30')
-  //   .then(response => {
-  //     const token = response.data.access_token;
-  //     weatherAPI.searchLocation('Kiev', token)
-  //       .then(search => console.log(search))
-  //   });
+  weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
+    weatherAPI.searchLocation('Kiev').then(locations => console.log(locations));
+    weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
+  });
 
   const [themeMode, setThemeMode] = useState(THEME_LIGHT);
 
