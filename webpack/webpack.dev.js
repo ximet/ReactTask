@@ -35,8 +35,16 @@ module.exports = {
   devServer: {
     contentBase: commonPaths.outputPath,
     compress: true,
+    https: true,
     hot: true,
-    port: 9020
+    port: 9020,
+
+    proxy: {
+      '/api': {
+        target: commonPaths.externalApiBaseUrl,
+        secure: false
+      }
+    }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 };
