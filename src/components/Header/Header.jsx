@@ -1,5 +1,4 @@
 import mainLogo from '../../assets/img/logo.png';
-import commonStyles from '../../styles.scss';
 import classes from './Header.module.scss';
 
 import LocationSearch from './components/LocationSearch/LocationSearch';
@@ -10,7 +9,7 @@ function Header() {
   return (
     <header className={classes.header}>
       <a className={classes.logo} href="/">
-        <img src={mainLogo} alt="" />
+        <img src={mainLogo} alt="Logo" title="Logo" />
       </a>
       <MainNavigation />
       <LocationSearch />

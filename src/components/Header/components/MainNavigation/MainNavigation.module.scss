@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/constants.scss';
+
 .navigation {
   display: flex;
   list-style: none;
@@ -7,10 +9,10 @@
       padding: 10px 20px;
       text-decoration: none;
       text-transform: uppercase;
-      color: #000;
+      color: $main-font-color;
 
       &:hover {
-        color: #00b2ff;
+        color: $link-color;
       }
     }
   }

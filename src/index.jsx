@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import commonClasses from './styles.scss';
+import './styles.scss';
 import { CookiesProvider } from 'react-cookie';
 
 const appMainContainer = document.getElementById('app');
