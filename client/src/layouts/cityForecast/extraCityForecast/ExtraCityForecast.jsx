@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './extraCityForecast.module.css';
+import classes from './ExtraCityForecast.module.css';
 
 function ExtraCityForecast({ weather }) {
   return (

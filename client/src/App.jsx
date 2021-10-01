@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './layouts/header/Header';
 import { themes, bgImages } from './globalConsts';
-import CityForecast from './layouts/cityForecast/CityForecast';
+import CityForecast from './layouts/CityForecast/CityForecast';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 
 const useLocalStorageTheme = initialTheme => {

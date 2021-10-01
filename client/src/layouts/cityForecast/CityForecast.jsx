@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './cityForecast.module.css';
-import CurrentCityForecast from './currentCityForecast/CurrentCityForecast';
-import ExtraCityForecast from './extraCityForecast/ExtraCityForecast';
-import SelectedDateTime from './selectedDateTime/SelectedDateTime';
+import classes from './CityForecast.module.css';
+import CurrentCityForecast from './CurrentCityForecast/CurrentCityForecast';
+import ExtraCityForecast from './ExtraCityForecast/ExtraCityForecast';
+import SelectedDateTime from './SelectedDateTime/SelectedDateTime';
 import { currentCityData } from '../../mock/mock.js';
 
 class CityForecast extends React.Component {

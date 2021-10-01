@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './currentCityForecast.module.css';
+import classes from './CurrentCityForecast.module.css';
 import moonWeatherIcon from '../../../../public/images/moonWeatherIcon.png';
 
 function CurrentCityForecast({ currentCityData }) {
