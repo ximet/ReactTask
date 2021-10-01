@@ -8,6 +8,8 @@ import { useState } from 'react';
 import {
   API_AUTH_PASS,
   API_AUTH_USERNAME,
+  API_FORECAST_3_HOURLY,
+  API_FORECAST_DAILY,
   API_KIEV_ID,
   THEME_DARK,
   THEME_LIGHT
@@ -15,10 +17,12 @@ import {
 import { weatherAPI } from './services/dataService';
 
 function App() {
-  weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
-    weatherAPI.searchLocation('Kiev').then(locations => console.log(locations));
-    weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
-  });
+  // weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
+  //   weatherAPI.searchLocation('Kiev').then(locations => console.log(locations));
+  //   weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
+  //   weatherAPI.getForecast(API_FORECAST_3_HOURLY, API_KIEV_ID).then(forecast => console.log(forecast));
+  //   weatherAPI.getForecast(API_FORECAST_DAILY, API_KIEV_ID).then(forecast => console.log(forecast));
+  // });
 
   const [themeMode, setThemeMode] = useState(THEME_LIGHT);
 
