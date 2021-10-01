@@ -1,7 +1,2 @@
 @import './assets/styles/reset.scss';
-@import './assets/styles/constants.scss';
-
-body {
-  font-family: $main-font-family;
-  font-size: $main-font-size;
-}
+@import './assets/styles/common.scss';
