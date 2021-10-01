@@ -11,7 +11,11 @@ import { weatherAPI } from './services/dataService';
 function App() {
   // weatherAPI
   //   .getToken('coherentsolutions', 'X4AbD4NrEd30')
-  //   .then(response => console.log('Token:', response.data.access_token));
+  //   .then(response => {
+  //     const token = response.data.access_token;
+  //     weatherAPI.searchLocation('Kiev', token)
+  //       .then(search => console.log(search))
+  //   });
 
   const [themeMode, setThemeMode] = useState(THEME_LIGHT);
 
