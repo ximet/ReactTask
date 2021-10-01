@@ -1,0 +1,19 @@
+@import '../../../../assets/styles/constants.scss';
+
+.navigation {
+  display: flex;
+  list-style: none;
+
+  .navItem {
+    .link {
+      padding: 10px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $main-font-color;
+
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+}

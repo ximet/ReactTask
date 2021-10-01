@@ -1,3 +1,5 @@
+import Header from './components/Header/Header';
+
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import ApiService from './services/ForecastApiService';
@@ -30,14 +32,7 @@ function App() {
 
   return (
     <>
-      <div>Hello world!</div>
-      <ol>
-        {locations.map(location => (
-          <li key={location.id}>
-            <b>{location.name}</b>
-          </li>
-        ))}
-      </ol>
+      <Header />
     </>
   );
 }
