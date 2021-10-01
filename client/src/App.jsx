@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './layouts/header/Header';
+import Header from './layouts/Header/Header';
 import { themes } from './globalConsts';
 
-const useLocalStorageTheme = (initialTheme) => {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem('theme') || initialTheme
-  );
+const useLocalStorageTheme = initialTheme => {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  return [theme, setTheme]
-}
+  return [theme, setTheme];
+};
 
 function App() {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
