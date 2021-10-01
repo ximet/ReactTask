@@ -1,10 +1,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
-:root {
-  --theme-color: #efefef;
-  --primary-color: #000e29;
-  --secondary-color: #333;
-}
+@import url('./constants/colors.css');
 
 * {
   margin: 0;
@@ -13,7 +9,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --theme-color: #0f3057;
   --primary-color: #e7e7de;
   --secondary-color: #aaa;

@@ -1,27 +1,27 @@
 .theme-switcher {
-    position: relative;
-    margin-left: 30px;
-    width: 60px;
-    height: 30px;
-    border-radius: 15px;
-    background-color: var(--primary-color); 
-    cursor: pointer;    
+  position: relative;
+  margin-left: 30px;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: var(--primary-color);
+  cursor: pointer;
 }
 
 .theme-switcher__indicator {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);    
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--theme-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--theme-color);
 }
 
 .theme-switcher__indicator_dark {
-    right: 7px;
+  right: 7px;
 }
 
 .theme-switcher__indicator_light {
-    left: 7px;
+  left: 7px;
 }
