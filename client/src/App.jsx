@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './layouts/header/Header';
+import Header from './layouts/Header/Header';
 import { themes } from './globalConsts';
 
 const useLocalStorageTheme = initialTheme => {

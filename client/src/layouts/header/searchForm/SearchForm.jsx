@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './searchBar/SearchBar';
-import Cities from './cities/Cities';
-import classes from './searchForm.module.css';
+import Cities from './Cities/Cities';
+import classes from './SearchForm.module.css';
 import { cities } from '../../../../arrayOfCities';
 
 function SearchForm() {

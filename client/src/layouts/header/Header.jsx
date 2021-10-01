@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './header.module.css';
 import NavBar from './navBar/NavBar';
 import ThemeSwitcher from '../../components/themeSwitcher/ThemeSwitcher';
-import SearchForm from './searchForm/SearchForm';
+import SearchForm from './SearchForm/SearchForm';
 
 function Header({ theme, themeToggle }) {
   return (

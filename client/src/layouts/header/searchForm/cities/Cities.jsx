@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './cities.module.css';
-import City from './city/City';
+import classes from './Cities.module.css';
+import City from './City/City';
 
 function Cities({ cities }) {
   return (
