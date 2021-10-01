@@ -3,13 +3,8 @@
 $copyright-font-size: 12px;
 
 .footer {
-  display: flex;
-  justify-content: flex-end;
+  text-align: right;
   border-top: 1px solid $main-border-color;
-  padding: 0 80px;
-
-  .copyright {
-    padding: 20px 0;
-    font-size: $copyright-font-size;
-  }
+  padding: 20px 80px;
+  font-size: $copyright-font-size;
 }
