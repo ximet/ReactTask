@@ -1,7 +1,7 @@
-import MainPage from '../../pages/MainPage/MainPage';
+import Main from '../../pages/Main/Main';
 
 function ContentWrapper() {
-  return <MainPage />;
+  return <Main />;
 }
 
 export default ContentWrapper;

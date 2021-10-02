@@ -2,6 +2,7 @@ import FooterWrapper from './layouts/FooterWrapper/FooterWrapper';
 import HeaderWrapper from './layouts/HeaderWrapper/HeaderWrapper';
 import MiddleWrapper from './layouts/MiddleWrapper/MiddleWrapper';
 
+import 'normalize.css';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="global-wrapper" data-theme={themeMode}>
+      <div className={`global-wrapper theme-mode_${themeMode}`}>
         <HeaderWrapper themeMode={themeMode} toggleThemeMode={toggleThemeMode} />
         <MiddleWrapper />
         <FooterWrapper />

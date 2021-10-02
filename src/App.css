@@ -1,15 +1,11 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-
 @import url('./constants/colors.css');
 
-* {
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-
 
 .global-wrapper {
   background: var(--theme-color);
