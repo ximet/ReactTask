@@ -1,5 +1,5 @@
 import { ThemeProvider as StyleComponentThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from 'theme';
+import { lightTheme, darkTheme } from 'configs/theme';
 import { THEME_STORAGE_NAME } from 'constants/localStorage';
 import { DARK, LIGHT } from 'constants/theme';
 import { useLocalStorage } from 'hooks';
