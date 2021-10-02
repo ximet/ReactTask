@@ -1,11 +1,11 @@
-import { Suspense } from 'react';
+import * as React from 'react';
 import { Main, Header } from './components';
 
 const PrivateLayout = ({ children }) => (
   <>
     <Header />
     <Main>
-      <Suspense fallback={null}>{children}</Suspense>
+      <React.Suspense fallback={null}>{children}</React.Suspense>
     </Main>
   </>
 );

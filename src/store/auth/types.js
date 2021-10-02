@@ -1,0 +1,1 @@
+export const SET_LOGGED_IN = 'AUTH/SET_LOGGED_IN';
