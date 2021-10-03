@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import './MenuItem.css';
+import './NavMenuItem.css';
 
-function MenuItem({ text, link }) {
+function NavMenuItem({ text, link }) {
   return (
     <li className="menu__item">
       <NavLink to={link} className="menu__link" activeClassName="menu__link_active">
@@ -11,4 +11,4 @@ function MenuItem({ text, link }) {
   );
 }
 
-export default MenuItem;
+export default NavMenuItem;
