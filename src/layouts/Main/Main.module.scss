@@ -1,7 +1,9 @@
+@import '../../assets/styles/constants/main.scss';
+
 .main {
   display: flex;
   width: 100vw;
   height: 85vh;
-  background-color: var(--primary-bg-color);
-  color: var(--dark-font-color);
+  background-color: $primary-bg-color;
+  color: $dark-font-color;
 }
