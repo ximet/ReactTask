@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 const commonPaths = require('./paths');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -35,7 +36,12 @@ module.exports = {
     contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,
-    port: 9020
+    port: 9020,
+    proxy: {
+      '/api': {
+        target: 'http://pfa.foreca.com/api'
+      }
+    }
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()]
 };
