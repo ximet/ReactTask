@@ -20,6 +20,7 @@
   --search-bar-input-placeholder-text-color: white;
   --cities-bg-color: #2d1149;
   --city-hover-bg-color: #5900a3;
+  --daily-forecast-text-color: white;
 }
 
 [data-theme='light'] {
@@ -31,4 +32,5 @@
   --search-bar-input-placeholder-text-color: white;
   --cities-bg-color: #54d6ff;
   --city-hover-bg-color: #12bad1;
+  --daily-forecast-text-color: black;
 }

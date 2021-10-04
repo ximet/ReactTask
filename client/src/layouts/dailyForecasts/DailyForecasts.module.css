@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    /* width: 80%; */
+    width: 1200px;
+    /* background-color: rgb(0, 0, 0); */
+}
+
+.title{
+    color: var(--daily-forecast-text-color)
+}

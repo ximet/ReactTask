@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './layouts/Header/Header';
 import { themes } from './globalConsts';
+import DailyForecasts from './layouts/dailyForecasts/DailyForecasts';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -26,6 +27,7 @@ function App() {
     //Use BrowserRouter to use Link from react-router-dom
     <BrowserRouter>
       <Header theme={theme} themeToggle={themeToggle} />
+      <DailyForecasts theme={theme}/>
     </BrowserRouter>
   );
 }
