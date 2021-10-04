@@ -3,12 +3,12 @@ import NavMenu from '../NavMenu/NavMenu';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import './Header.css';
 
-function Header({ themeMode, toggleThemeMode }) {
+function Header({ theme, onToggleTheme }) {
   return (
     <div className="header">
       <Logo />
       <NavMenu />
-      <ThemeSwitcher themeMode={themeMode} toggleThemeMode={toggleThemeMode} />
+      <ThemeSwitcher theme={theme} onToggleTheme={onToggleTheme} />
     </div>
   );
 }

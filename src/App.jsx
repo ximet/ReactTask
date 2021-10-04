@@ -1,6 +1,6 @@
 import FooterWrapper from './layouts/FooterWrapper/FooterWrapper';
 import HeaderWrapper from './layouts/HeaderWrapper/HeaderWrapper';
-import MiddleWrapper from './layouts/MiddleWrapper/MiddleWrapper';
+import ContentWrapper from './layouts/ContentWrapper/ContentWrapper';
 
 import 'normalize.css';
 import './App.css';
@@ -9,17 +9,17 @@ import { useState } from 'react';
 import { THEME_DARK, THEME_LIGHT } from './constants/constants';
 
 function App() {
-  const [themeMode, setThemeMode] = useState(THEME_LIGHT);
+  const [theme, setTheme] = useState(THEME_LIGHT);
 
-  function toggleThemeMode() {
-    setThemeMode(themeMode === THEME_LIGHT ? THEME_DARK : THEME_LIGHT);
+  function switchTheme() {
+    setTheme(theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT);
   }
 
   return (
     <BrowserRouter>
-      <div className={`global-wrapper theme-mode_${themeMode}`}>
-        <HeaderWrapper themeMode={themeMode} toggleThemeMode={toggleThemeMode} />
-        <MiddleWrapper />
+      <div className={`global-wrapper theme-mode_${theme}`}>
+        <HeaderWrapper theme={theme} onToggleTheme={switchTheme} />
+        <ContentWrapper />
         <FooterWrapper />
       </div>
     </BrowserRouter>
