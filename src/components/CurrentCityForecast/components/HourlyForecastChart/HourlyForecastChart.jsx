@@ -1,33 +1,54 @@
-import classes from './HourlyForecastChart.module.scss';
 import { Line } from 'react-chartjs-2';
+import hourlyForecastData from './mockData';
 
 function HourlyForecastChart() {
+  const { hours, temperatures } = prepareChartData(hourlyForecastData);
+
   const data = {
-    labels: ['12:00', '15:00', '18:00', '21:00', '00:00', '03:00', '06:00', '09:00'],
+    labels: hours,
     datasets: [
       {
-        label: '# of Votes',
-        data: [20, 23, 23, 18, 13, 12, 11, 13],
+        label: 'Temperature ℃',
+        data: temperatures,
         fill: true,
-        backgroundColor: 'rgb(255, 99, 132, 0.5)',
-        borderColor: 'rgba(255, 99, 132, 0.2)'
+        backgroundColor: 'rgb(0, 178, 255, 0.5)',
+        borderColor: 'rgba(248, 178, 0, 1)'
       }
     ]
   };
 
   const options = {
+    maintainAspectRatio: false,
+    responsive: true,
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            // beginAtZero: true
-          }
+      y: {
+        ticks: {
+          stepSize: 10
         }
-      ]
+      }
     }
   };
 
-  return <Line type="basic" data={data} options={options} />;
+  function prepareChartData(hourlyForecast) {
+    const hours = [];
+    const temperatures = [];
+
+    hourlyForecast.forEach(forecast => {
+      hours.push(forecast.time);
+      temperatures.push(forecast.temperature);
+    });
+
+    return {
+      hours,
+      temperatures
+    };
+  }
+
+  return (
+    <div>
+      <Line height={250} type="basic" data={data} options={options} />
+    </div>
+  );
 }
 
 export default HourlyForecastChart;
