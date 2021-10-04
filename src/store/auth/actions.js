@@ -15,12 +15,15 @@ export const setLoading = (payload) => ({
 export const login = (payload) => (dispatch) => {
   dispatch(setLoading(true));
 
-  return authApi
-    .login(payload)
-    .then((response) => {
-      localStorage.setItem(TOKEN, response.access_token);
-      setLoggedIn(true);
-    })
-    .catch(console.error)
-    .finally(() => dispatch(setLoading(false)));
+  return (
+    authApi
+      .login(payload)
+      .then((response) => {
+        localStorage.setItem(TOKEN, response.access_token);
+        setLoggedIn(true);
+      })
+      // TODO: add error reducer
+      .catch(() => {})
+      .finally(() => dispatch(setLoading(false)))
+  );
 };
