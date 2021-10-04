@@ -16,7 +16,6 @@ class Form extends React.Component {
   render() {
     const { t, handleSubmit } = this.props;
 
-    console.log(process.env.FORECA_AUTH_URL);
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <StyledWrapper>

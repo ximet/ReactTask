@@ -7,5 +7,4 @@ export const login = ({ data }) =>
     url: endpoints.authorizeToken,
     data,
     baseURL: process.env.FORECA_AUTH_URL,
-    headers: { 'Access-Control-Allow-Origin': process.env.FORECA_AUTH_URL },
   });

@@ -4,7 +4,8 @@ const http = axios.create();
 
 http.defaults.baseURL = process.env.BASE_URL;
 http.defaults.headers = {
-  'Access-Control-Allow-Origin': process.env.BASE_URL,
+  // TODO: change to correct
+  'Access-Control-Allow-Origin': '*',
 };
 
 export default http;
