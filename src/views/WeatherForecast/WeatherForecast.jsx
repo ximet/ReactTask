@@ -8,11 +8,7 @@ class WeatherForecast extends React.Component {
   }
 
   componentDidMount() {
-    // dataService.getForecastToken().then(() => {
-    //   dataService.getWeatherData('Minsk').then(data => {
-    //     console.log(data);
-    //   });
-    // });
+    dataService.getForecastToken();
   }
 }
 

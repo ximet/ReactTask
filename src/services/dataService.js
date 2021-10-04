@@ -18,14 +18,12 @@ export const dataService = {
       const response = await instance.post(FORECAST_PATHS.tokenUrl, forecastUserCredentials);
 
       token = response.data.access_token;
-
-      console.log(token);
     } catch (error) {
       console.error(error);
     }
   },
 
-  getWeatherData: async city => {
+  searchCity: async city => {
     try {
       const response = await instance.get(FORECAST_PATHS.searchCityUrl + city, {
         headers: {
@@ -38,4 +36,18 @@ export const dataService = {
       console.error(error);
     }
   },
+
+  getWeather: async id => {
+    try {
+      const response = await instance.get(FORECAST_PATHS.getForecast + id, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 };
