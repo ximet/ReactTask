@@ -1,0 +1,16 @@
+.menu__item {
+  margin-right: 20px;
+}
+
+.menu__link {
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: transform 0.3s, color 0.3s;
+}
+
+.menu__link:hover {
+  transform: scale(1.05);
+  color: var(--secondary-color);
+}

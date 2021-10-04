@@ -1,0 +1,14 @@
+@import url('./constants/colors.css');
+@import url('./constants/genneral_variables.css');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font);
+}
+
+.global-wrapper {
+  background: var(--theme-color);
+  color: var(--primary-color);
+}
