@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { uniqueId } from 'lodash-es';
-import Typography from '../typography';
-import { StyledButton, StyledContainer } from './components';
+import Typography from '../../typography';
+import { StyledButton, StyledWrapper } from './components';
 
 const Switcher = ({
   label,
@@ -14,7 +14,7 @@ const Switcher = ({
   const [checked, setChecked] = React.useState(defaultChecked);
 
   return (
-    <StyledContainer>
+    <StyledWrapper>
       <StyledButton
         type="button"
         role="switch"
@@ -29,7 +29,7 @@ const Switcher = ({
       <Typography as="label" variant="label" htmlFor={buttonIdRef.current}>
         {label}
       </Typography>
-    </StyledContainer>
+    </StyledWrapper>
   );
 };
 

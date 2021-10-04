@@ -47,10 +47,7 @@ const StyledSwitcherButton = styled('button')`
   &:focus {
     outline-style: solid;
     outline-color: transparent;
-  }
-
-  &[data-focus-visible] {
-    box-shadow: ${(props) => props.theme.shape.boxShadow};
+    box-shadow: 0 0 0 2px ${(props) => props.theme.palette.primary.dark};
   }
 
   &::before {

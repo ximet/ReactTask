@@ -1,15 +1,6 @@
-import styled from 'styled-components';
 import * as Components from 'components';
 import { useTranslation } from 'hooks';
-
-const StyledBox = styled(Components.Box)`
-  margin-top: ${(props) => props.theme.spacing(40)};
-`;
-
-const StyledHeader = styled('header')`
-  display: flex;
-  justify-content: space-between;
-`;
+import { StyledBox, StyledHeader, Form } from './components';
 
 const Login = () => {
   const { t } = useTranslation('login');
@@ -24,6 +15,7 @@ const Login = () => {
             </Components.Typography>
             <Components.ThemeSwitcher />
           </StyledHeader>
+          <Form />
         </StyledBox>
       </Components.Container>
     </Components.Wrapper>

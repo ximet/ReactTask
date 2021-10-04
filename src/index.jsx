@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-import 'configs/request.config';
 import 'configs/i18n.config';
 import App from 'app';
 import store from './store';

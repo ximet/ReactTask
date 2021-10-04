@@ -1,6 +1,6 @@
 import { useChangeTheme, useTranslation } from 'hooks';
 import { LIGHT, DARK } from 'constants/theme';
-import Switcher from '../switcher';
+import { Switcher } from 'components';
 
 const ThemeSwitcher = () => {
   const { t } = useTranslation('common');

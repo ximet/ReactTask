@@ -1,1 +1,2 @@
 export const SET_LOGGED_IN = 'AUTH/SET_LOGGED_IN';
+export const SET_LOADING = 'AUTH/SET_LOADING';
