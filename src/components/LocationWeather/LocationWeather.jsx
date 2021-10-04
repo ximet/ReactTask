@@ -1,6 +1,11 @@
 import './LocationWeather.css';
 import React, { Component, PureComponent } from 'react';
-import { API_AUTH_PASS, API_AUTH_USERNAME, API_FORECAST_DAILY, API_KIEV_ID } from '../../constants/constants';
+import {
+  API_AUTH_PASS,
+  API_AUTH_USERNAME,
+  API_FORECAST_DAILY,
+  API_KIEV_ID
+} from '../../constants/constants';
 import { weatherAPI } from '../../services/dataService';
 import LocationWeatherCurrent from './LocationWeatherCurrent/LocationWeatherCurrent';
 import LocationWeatherDailyList from './LocationWeatherDailyList/LocationWeatherDailyList';
@@ -13,7 +18,7 @@ class LocationWeather extends PureComponent {
       currentLocationInfo: null,
       currentLocationWeather: null,
       currentLocationDailyWeather: null,
-      activeDayDate: '',
+      activeDayDate: ''
     };
 
     this.setActiveDayDate = this.setActiveDayDate.bind(this);
@@ -24,11 +29,17 @@ class LocationWeather extends PureComponent {
       try {
         await weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS);
         const currentLocationWeather = await weatherAPI.getCurrentWeather(API_KIEV_ID);
-        this.setState({ currentLocationWeather, activeDayDate: currentLocationWeather.time.split("T")[0] });                     
+        this.setState({
+          currentLocationWeather,
+          activeDayDate: currentLocationWeather.time.split('T')[0]
+        });
         const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);
-        this.setState({ currentLocationInfo });        
-        const currentLocationDailyWeather = await weatherAPI.getForecast(API_FORECAST_DAILY, API_KIEV_ID);
-        this.setState({ currentLocationDailyWeather });        
+        this.setState({ currentLocationInfo });
+        const currentLocationDailyWeather = await weatherAPI.getForecast(
+          API_FORECAST_DAILY,
+          API_KIEV_ID
+        );
+        this.setState({ currentLocationDailyWeather });
       } catch (error) {
         console.log(error);
       }
@@ -36,7 +47,7 @@ class LocationWeather extends PureComponent {
   }
 
   setActiveDayDate(date) {
-    this.setState({activeDayDate: date});
+    this.setState({ activeDayDate: date });
   }
 
   render() {

@@ -1,8 +1,12 @@
-import LocationWeatherDailyListItem from '../LocationWeatherDailyListItem/LocationWeatherDailyListItem'
+import LocationWeatherDailyListItem from '../LocationWeatherDailyListItem/LocationWeatherDailyListItem';
 
 import './LocationWeatherDailyList.css';
 
-function LocationWeatherDailyList({ currentLocationDailyWeather, activeDayDate, setActiveDayDate}) {
+function LocationWeatherDailyList({
+  currentLocationDailyWeather,
+  activeDayDate,
+  setActiveDayDate
+}) {
   function mapDayData(dayData) {
     return (
       <LocationWeatherDailyListItem
@@ -11,15 +15,15 @@ function LocationWeatherDailyList({ currentLocationDailyWeather, activeDayDate, 
         activeDayDate={activeDayDate}
         setActiveDayDate={setActiveDayDate}
       />
-    ); 
+    );
   }
 
   const dailyList = currentLocationDailyWeather
     ? currentLocationDailyWeather.map(mapDayData)
     : null;
-  return (    
+  return (
     <ul className="location-weather__daily-list">
-      {currentLocationDailyWeather ? dailyList : null }
+      {currentLocationDailyWeather ? dailyList : null}
     </ul>
   );
 }

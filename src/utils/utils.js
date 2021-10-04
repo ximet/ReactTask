@@ -1,3 +1,3 @@
 export function formatTemperature(temperature) {
-    return +temperature <= 0 ? temperature : `+${temperature}`;
+  return +temperature <= 0 ? temperature : `+${temperature}`;
 }

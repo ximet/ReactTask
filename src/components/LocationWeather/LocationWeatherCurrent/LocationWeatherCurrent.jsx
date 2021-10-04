@@ -10,7 +10,7 @@ import './LocationWeatherCurrent.css';
 
 function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo }) {
   const locationName = currentLocationInfo ? currentLocationInfo.name : null;
-  const locationCountry = currentLocationInfo ? currentLocationInfo.country : null;  
+  const locationCountry = currentLocationInfo ? currentLocationInfo.country : null;
   const currentWeather = currentLocationWeather ? (
     <>
       <div className="location-weather__current-weather-item location-weather__current-weather-title">
