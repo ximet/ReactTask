@@ -7,13 +7,13 @@ module.exports = function (api) {
       '@babel/preset-env',
       {
         targets: {
-          esmodules: true
+          esmodules: true,
         },
         corejs: '3.0.0',
-        useBuiltIns: 'usage'
-      }
+        useBuiltIns: 'usage',
+      },
     ],
-    ['@babel/preset-react', { runtime: 'automatic' }]
+    ['@babel/preset-react', { runtime: 'automatic' }],
   ];
   const plugins = [
     '@babel/transform-react-constant-elements',
@@ -33,7 +33,7 @@ module.exports = function (api) {
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-meta',
     ['@babel/plugin-proposal-class-properties', { loose: true }],
-    '@babel/plugin-proposal-json-strings'
+    '@babel/plugin-proposal-json-strings',
   ];
 
   if (babelEnv === 'production') {
@@ -42,6 +42,6 @@ module.exports = function (api) {
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };

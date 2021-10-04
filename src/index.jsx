@@ -1,4 +1,7 @@
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import './index.css';
+import 'configs/request.config';
+import App from 'app';
+import store from './configs/store';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App store={store} />, document.getElementById('app'));
