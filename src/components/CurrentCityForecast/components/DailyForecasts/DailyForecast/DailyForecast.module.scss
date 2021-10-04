@@ -1,5 +1,9 @@
+@import '../../../../../assets/styles/constants.scss';
+
+$degrees-content: '°';
+
 .forecastItem {
-  border: 1px solid #dadada;
+  border: 1px solid $main-border-color;
   border-radius: 10px;
   padding: 15px;
   display: flex;
@@ -9,7 +13,7 @@
   .title {
     text-align: center;
     font-weight: bold;
-    font-size: 18px;
+    font-size: $additional-text-font-size;
   }
 
   .icon {
@@ -19,23 +23,23 @@
   }
 
   .temperature {
-    font-size: 18px;
+    font-size: $additional-text-font-size;
 
     .sun {
       padding: 0 10px;
       &::after {
-        content: '°';
+        content: $degrees-content;
       }
 
-      border-right: 1px solid rgba(0, 0, 0, 0.5);
+      border-right: 1px solid $main-border-color;
     }
 
     .shadow {
-      color: rgba(0, 0, 0, 0.5);
+      color: $main-border-color;
       padding: 0 10px;
 
       &::after {
-        content: '°';
+        content: $degrees-content;
       }
     }
   }

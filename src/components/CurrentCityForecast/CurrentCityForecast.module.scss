@@ -1,5 +1,12 @@
+@import '../../assets/styles/constants.scss';
+
+$current-temperature-font-size: 95px;
+$temperature-type-content: '℃';
+$temperature-type-font-size: 36px;
+$current-city-font-size: 36px;
+
 .currentCityContainer {
-  border: 1px solid #dadada;
+  border: 1px solid $main-border-color;
   border-radius: 10px;
   padding: 30px;
 
@@ -20,14 +27,13 @@
         }
 
         .temperature {
-          font-size: 95px;
+          font-size: $current-temperature-font-size;
           line-height: 1;
           display: flex;
 
           &::after {
-            content: '℃';
-            font-family: 'arial';
-            font-size: 36px;
+            content: $temperature-type-content;
+            font-size: $temperature-type-font-size;
             display: block;
           }
         }
@@ -39,25 +45,29 @@
         .wind,
         .humidity,
         .precitipate {
-          font-size: 16px;
-          color: rgba(0, 0, 0, 0.5);
+          font-size: $main-font-size;
+          color: $additional-text-collor;
         }
       }
     }
 
     .locationInfo {
       .cityName {
-        font-size: 36px;
+        font-size: $current-city-font-size;
         font-weight: bold;
         text-align: right;
       }
 
-      .areaName,
-      .forecastDate,
-      .forecastDate {
-        font-size: 18px;
+      .areaName {
+        font-size: $additional-text-font-size;
         text-align: right;
-        color: rgba(0, 0, 0, 0.5);
+        color: $additional-text-collor;
+      }
+
+      .forecastDate {
+        font-size: $additional-text-font-size;
+        text-align: right;
+        color: $additional-text-collor;
       }
     }
   }

@@ -1,5 +1,7 @@
+@import '../../assets/styles/constants.scss';
+
 .favoriteContainer {
-  border: 1px solid #dadada;
+  border: 1px solid $main-border-color;
   border-radius: 10px;
   padding: 15px;
   margin: 0 10px;
