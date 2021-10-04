@@ -3,6 +3,8 @@ import React, { Component, PureComponent } from 'react';
 import {
   API_AUTH_PASS,
   API_AUTH_USERNAME,
+  API_FORECAST_3_HOURLY,
+  API_FORECAST_3_HOURLY_PERIODS,
   API_FORECAST_DAILY,
   API_KIEV_ID
 } from '../../constants/constants';
@@ -18,6 +20,7 @@ class LocationWeather extends PureComponent {
       currentLocationInfo: null,
       currentLocationWeather: null,
       currentLocationDailyWeather: null,
+      currentLocation3HourlyWeather: null,
       activeDayDate: ''
     };
 
@@ -40,6 +43,13 @@ class LocationWeather extends PureComponent {
           API_KIEV_ID
         );
         this.setState({ currentLocationDailyWeather });
+        const currentLocation3HourlyWeather = await weatherAPI.getForecast(
+          API_FORECAST_3_HOURLY,
+          API_KIEV_ID,
+          API_FORECAST_3_HOURLY_PERIODS
+        );
+        this.setState({ currentLocation3HourlyWeather });
+        console.log(currentLocation3HourlyWeather);
       } catch (error) {
         console.log(error);
       }

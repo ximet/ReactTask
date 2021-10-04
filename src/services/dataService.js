@@ -66,7 +66,9 @@ export const weatherAPI = {
     return this.getData(API_GET_CURRENT_WEATHER_DATA_TYPE, locationId);
   },
 
-  async getForecast(forecastType, locationId) {
-    return this.getData(API_GET_FORECAST_DATA_TYPE, forecastType + locationId);
+  async getForecast(forecastType, locationId, periods = '') {
+    debugger
+    periods = periods ? '?periods=' + periods : '';
+    return this.getData(API_GET_FORECAST_DATA_TYPE, forecastType + locationId + periods);
   }
 };

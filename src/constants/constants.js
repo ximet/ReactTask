@@ -13,6 +13,7 @@ export const API_GET_LOCATION_INFO_URL = '/api/v1/location/';
 export const API_CURRENT_WEATHER_URL = '/api/v1/current/';
 export const API_FORECAST_URL = '/api/v1/forecast/';
 export const API_FORECAST_3_HOURLY = '3hourly/';
+export const API_FORECAST_3_HOURLY_PERIODS = '56';
 export const API_FORECAST_DAILY = 'daily/';
 
 export const API_SYMBOL_URL_PREFIX = 'https://www.foreca.com/public/images/symbols/';
