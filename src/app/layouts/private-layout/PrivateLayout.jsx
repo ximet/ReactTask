@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Main, Header } from './components';
 
-const Layout = ({ children }) => (
+const PrivateLayout = ({ children }) => (
   <>
     <Header />
     <Main>
@@ -10,4 +10,4 @@ const Layout = ({ children }) => (
   </>
 );
 
-export default Layout;
+export default PrivateLayout;

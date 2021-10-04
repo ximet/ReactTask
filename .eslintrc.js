@@ -27,7 +27,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react/prop-types': 0,
   },
-  ignorePatterns: ['node_modules/'],
+  ignorePatterns: ['node_modules/', 'build/', 'coverage/'],
   settings: {
     'import/resolver': {
       node: { paths: ['src'] },
