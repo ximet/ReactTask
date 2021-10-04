@@ -1,5 +1,11 @@
+import LocationWeather from '../../components/LocationWeather/LocationWeather';
+
 function Main() {
-  return <div>Main Page</div>;
+  return (
+    <>
+      <LocationWeather />
+    </>
+  );
 }
 
 export default Main;

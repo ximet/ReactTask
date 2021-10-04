@@ -1,0 +1,63 @@
+.location-weather__current {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.location-weather__current-title {
+    margin: 0 20px 0 0;
+    padding: 0;
+}
+
+.location-weather__current-weather-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.location-weather__current-weather-item {
+    margin-left: 20px;
+}
+
+.location-weather__current-weather-title {
+    align-self: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.location-weather__current-weather-temp-wrapper {
+    display: flex;
+}
+
+.location-weather__current-weather-item-label {
+    margin-bottom: 5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+}
+.location-weather__current-weather-temp-value {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.location-weather__current-weather-temp-degrees {
+    margin-top: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.location-weather__current-weather-symbol-img {
+    display: block;
+    width: 72px;
+}
+
+.location-weather__current-weather-wing-img {
+    display: block;
+    width: 52px;
+}
+
+.location-weather__current-weather-wind-value {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+}

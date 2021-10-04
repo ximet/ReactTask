@@ -5,7 +5,8 @@ import {
   DATA_TYPES,
   API_SEARCH_LOCATION_DATA_TYPE,
   API_GET_CURRENT_WEATHER_DATA_TYPE,
-  API_GET_FORECAST_DATA_TYPE
+  API_GET_FORECAST_DATA_TYPE,
+  API_GET_LOCATION_INFO_DATA_TYPE
 } from '../constants/constants';
 
 const instance = axios.create({
@@ -46,7 +47,7 @@ export const weatherAPI = {
     const { url, dataKey } = DATA_TYPES[dataType];
     try {
       const response = await instance.get(url + param, this.getAuthHeaders());
-      return response.data[dataKey];
+      return response.data[dataKey] ? response.data[dataKey] : response.data;
     } catch (error) {
       console.log(error);
       return null;
@@ -55,6 +56,10 @@ export const weatherAPI = {
 
   async searchLocation(query) {
     return this.getData(API_SEARCH_LOCATION_DATA_TYPE, query);
+  },
+
+  async getLocationInfo(locationId) {    
+    return this.getData(API_GET_LOCATION_INFO_DATA_TYPE, locationId);
   },
 
   async getCurrentWeather(locationId) {
