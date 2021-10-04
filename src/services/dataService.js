@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { FORECAST_PATHS } from '../constants/constants';
 
+let token = '';
+
 const instance = axios.create({
-  baseURL: FORECAST_PATHS.baseURL
+  baseURL: FORECAST_PATHS.baseUrl
 });
 
 const forecastUserCredentials = {
@@ -11,13 +13,29 @@ const forecastUserCredentials = {
 };
 
 export const dataService = {
-  async getForecastToken() {
+  getForecastToken: async () => {
     try {
-      const response = await instance.post(FORECAST_PATHS.tokenURL, forecastUserCredentials);
+      const response = await instance.post(FORECAST_PATHS.tokenUrl, forecastUserCredentials);
 
-      return response.data.access_token;
+      token = response.data.access_token;
+
+      console.log(token);
     } catch (error) {
       console.error(error);
     }
-  }
+  },
+
+  getWeatherData: async city => {
+    try {
+      const response = await instance.get(FORECAST_PATHS.searchCityUrl + city, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
