@@ -1,9 +1,9 @@
 import './ThemeSwitcher.css';
 
-function ThemeSwitcher({ themeMode, toggleThemeMode }) {
+function ThemeSwitcher({ theme, onToggleTheme }) {
   return (
-    <div className="theme-switcher" onClick={() => toggleThemeMode()}>
-      <div className={`theme-switcher__indicator theme-switcher__indicator_${themeMode}`}></div>
+    <div className="theme-switcher" onClick={() => onToggleTheme()}>
+      <div className={`theme-switcher__indicator theme-switcher__indicator_${theme}`}></div>
     </div>
   );
 }

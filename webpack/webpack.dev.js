@@ -14,21 +14,7 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss)$/,
-        use: [
-          'style-loader',
-          // {
-          //   loader: 'css-loader',
-          //   options: {
-          //     sourceMap: true,
-          //     localsConvention: 'camelCase',
-          //     modules: {
-          //       localIdentName: '[local]___[hash:base64:5]'
-          //     }
-          //   }
-          // },
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },

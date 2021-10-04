@@ -1,13 +1,13 @@
 :root {
   --theme-color: #efefef;
   --primary-color: #000e29;
-  --secondary-color: #333;
-  --selection-color: #ccc;
+  --secondary-color: #333333;
+  --selection-color: #cccccc;
 }
 
 .theme-mode_dark {
   --theme-color: #0f3057;
   --primary-color: #e7e7de;
-  --secondary-color: #aaa;
+  --secondary-color: #aaaaaa;
   --selection-color: #0f3077;
 }

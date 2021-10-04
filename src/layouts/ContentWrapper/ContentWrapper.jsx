@@ -1,7 +1,16 @@
-import Main from '../../pages/Main/Main';
+import MainWrapper from '../MainWrapper/MainWrapper';
+import SidebarWrapper from '../SidebarWrapper/SidebarWrapper';
+import Container from '../../components/Container/Container';
 
 function ContentWrapper() {
-  return <Main />;
+  return (
+    <Container>
+      <div className="content-wrapper">
+        <MainWrapper />
+        <SidebarWrapper />
+      </div>
+    </Container>
+  );
 }
 
 export default ContentWrapper;
