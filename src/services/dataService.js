@@ -58,7 +58,7 @@ export const weatherAPI = {
     return this.getData(API_SEARCH_LOCATION_DATA_TYPE, query);
   },
 
-  async getLocationInfo(locationId) {    
+  async getLocationInfo(locationId) {
     return this.getData(API_GET_LOCATION_INFO_DATA_TYPE, locationId);
   },
 

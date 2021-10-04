@@ -45,14 +45,14 @@ export const DATA_TYPES = {
 };
 
 export const WIND_DIRECTIONS_TO_IMG = {
-  'N': 'w0',
-  'NE': 'w45',
-  'E': 'w90',
-  'SE': 'w135',
-  'S': 'w180',
-  'SW': 'w225',
-  'W': 'w270',
-  'NW': 'w315',  
+  N: 'w0',
+  NE: 'w45',
+  E: 'w90',
+  SE: 'w135',
+  S: 'w180',
+  SW: 'w225',
+  W: 'w270',
+  NW: 'w315'
 };
 
 export const API_KIEV_ID = 100703448;

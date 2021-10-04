@@ -18,12 +18,12 @@ class LocationWeather extends PureComponent {
     (async () => {
       try {
         await weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS);
-        const currentLocationWeather = await weatherAPI.getCurrentWeather(API_KIEV_ID); 
-        this.setState({currentLocationWeather});
-        console.log(currentLocationWeather);   
-        const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);    
-        this.setState({currentLocationInfo});
-        console.log(currentLocationInfo);    
+        const currentLocationWeather = await weatherAPI.getCurrentWeather(API_KIEV_ID);
+        this.setState({ currentLocationWeather });
+        console.log(currentLocationWeather);
+        const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);
+        this.setState({ currentLocationInfo });
+        console.log(currentLocationInfo);
       } catch (error) {
         console.log(error);
       }
