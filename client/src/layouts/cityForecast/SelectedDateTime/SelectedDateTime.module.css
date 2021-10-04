@@ -6,13 +6,13 @@
 
 .selectedTime {
   font-weight: 500;
-  font-size: 42px;
+  font-size: var(--font-size-l);
   line-height: 51px;
   margin-bottom: 22px;
 }
 
 .selectedDate {
   font-weight: 300;
-  font-size: 28px;
+  font-size: var(--font-size-s);
   line-height: 34px;
 }

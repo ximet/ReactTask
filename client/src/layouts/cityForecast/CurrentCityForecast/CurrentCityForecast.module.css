@@ -21,7 +21,7 @@
 
 .city {
   font-weight: 600;
-  font-size: 64px;
+  font-size: var(--font-size-xl);
 }
 
 .temperature {
@@ -32,6 +32,6 @@
 
 .weatherConditions {
   font-weight: 300;
-  font-size: 32px;
+  font-size: var(--font-size-m);
   line-height: 39px;
 }
