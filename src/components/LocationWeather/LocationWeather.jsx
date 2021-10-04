@@ -1,8 +1,9 @@
 import './LocationWeather.css';
 import React, { Component, PureComponent } from 'react';
-import { API_AUTH_PASS, API_AUTH_USERNAME, API_KIEV_ID } from '../../constants/constants';
+import { API_AUTH_PASS, API_AUTH_USERNAME, API_FORECAST_DAILY, API_KIEV_ID } from '../../constants/constants';
 import { weatherAPI } from '../../services/dataService';
 import LocationWeatherCurrent from './LocationWeatherCurrent/LocationWeatherCurrent';
+import LocationWeatherDailyList from './LocationWeatherDailyList/LocationWeatherDailyList';
 
 class LocationWeather extends PureComponent {
   constructor(props) {
@@ -10,8 +11,12 @@ class LocationWeather extends PureComponent {
     this.state = {
       currentLocationId: API_KIEV_ID,
       currentLocationInfo: null,
-      currentLocationWeather: null
+      currentLocationWeather: null,
+      currentLocationDailyWeather: null,
+      activeDayDate: '',
     };
+
+    this.setActiveDayDate = this.setActiveDayDate.bind(this);
   }
 
   componentDidMount() {
@@ -19,15 +24,19 @@ class LocationWeather extends PureComponent {
       try {
         await weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS);
         const currentLocationWeather = await weatherAPI.getCurrentWeather(API_KIEV_ID);
-        this.setState({ currentLocationWeather });
-        console.log(currentLocationWeather);
+        this.setState({ currentLocationWeather, activeDayDate: currentLocationWeather.time.split("T")[0] });                     
         const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);
-        this.setState({ currentLocationInfo });
-        console.log(currentLocationInfo);
+        this.setState({ currentLocationInfo });        
+        const currentLocationDailyWeather = await weatherAPI.getForecast(API_FORECAST_DAILY, API_KIEV_ID);
+        this.setState({ currentLocationDailyWeather });        
       } catch (error) {
         console.log(error);
       }
     })();
+  }
+
+  setActiveDayDate(date) {
+    this.setState({activeDayDate: date});
   }
 
   render() {
@@ -36,6 +45,11 @@ class LocationWeather extends PureComponent {
         <LocationWeatherCurrent
           currentLocationWeather={this.state.currentLocationWeather}
           currentLocationInfo={this.state.currentLocationInfo}
+        />
+        <LocationWeatherDailyList
+          currentLocationDailyWeather={this.state.currentLocationDailyWeather}
+          activeDayDate={this.state.activeDayDate}
+          setActiveDayDate={this.setActiveDayDate}
         />
       </div>
     );

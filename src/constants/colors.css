@@ -2,10 +2,12 @@
   --theme-color: #efefef;
   --primary-color: #000e29;
   --secondary-color: #333;
+  --selection-color: #ccc;
 }
 
 .theme-mode_dark {
   --theme-color: #0f3057;
   --primary-color: #e7e7de;
   --secondary-color: #aaa;
+  --selection-color: #0f3077;
 }

@@ -5,14 +5,12 @@ import {
   API_WIND_IMG_URL_PREFIX,
   WIND_DIRECTIONS_TO_IMG
 } from '../../../constants/constants';
+import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherCurrent.css';
 
 function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo }) {
-  console.dir(currentLocationWeather);
-  console.dir(currentLocationInfo);
-
   const locationName = currentLocationInfo ? currentLocationInfo.name : null;
-  const locationCountry = currentLocationInfo ? currentLocationInfo.country : null;
+  const locationCountry = currentLocationInfo ? currentLocationInfo.country : null;  
   const currentWeather = currentLocationWeather ? (
     <>
       <div className="location-weather__current-weather-item location-weather__current-weather-title">
@@ -22,7 +20,7 @@ function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo })
         <div className="location-weather__current-weather-item-label">Temperature:</div>
         <div className="location-weather__current-weather-temp-wrapper">
           <div className="location-weather__current-weather-temp-value">
-            {currentLocationWeather.temperature}
+            {formatTemperature(currentLocationWeather.temperature)}
           </div>
           <div className="location-weather__current-weather-temp-degrees">°C</div>
         </div>
