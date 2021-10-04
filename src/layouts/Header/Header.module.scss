@@ -1,0 +1,9 @@
+@import '../../assets/styles/constants/main.scss';
+
+.header {
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  background-color: $secondary-bg-color;
+  color: $light-font-color;
+}
