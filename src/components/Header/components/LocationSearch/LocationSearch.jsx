@@ -1,7 +1,8 @@
 import classes from './LocationSearch.module.scss';
 import React from 'react';
-import SearchBar from './components/SearchBar/SearchBar';
-import SearchedLocations from './components/SearchedLocations/SearchedLocations';
+
+import SearchDropDown from './components/SearchDropDown/SearchDropDown';
+// import { withCookies, Cookies } from 'react-cookie';
 
 class LocationSearch extends React.Component {
   constructor(props) {
@@ -9,9 +10,7 @@ class LocationSearch extends React.Component {
 
     this.state = {
       currentLocation: 'Gomel',
-      searchString: '',
-      isLoading: false,
-      isOpenSearchBar: false
+      isOpenDropDown: false
     };
   }
 
@@ -28,40 +27,38 @@ class LocationSearch extends React.Component {
   handleClickOutsideDropdown = event => {
     if (this.dropdownContainer.current && !this.dropdownContainer.current.contains(event.target)) {
       this.setState({
-        isOpenSearchBar: false
+        isOpenDropDown: false
       });
     }
   };
 
-  handleSetSearchString = string => {
+  handleSetChangeLocation = location => {
     this.setState({
-      searchString: string
+      currentLocation: location.name
     });
   };
 
-  handleToggleSearchBar = event => {
+  handleToggleDropDown = event => {
     event.preventDefault();
 
     this.setState({
-      isOpenSearchBar: !this.state.isOpenSearchBar
+      isOpenDropDown: !this.state.isOpenDropDown
     });
   };
 
   render() {
-    const searchBar = (
-      <div className={classes.searchBarContainer} ref={this.dropdownContainer}>
-        <SearchBar setSearchString={this.handleSetSearchString} />
-        <SearchedLocations searchString={this.state.searchString} />
-      </div>
-    );
-
     return (
-      <div className={classes.currentLocation}>
+      <div className={classes.currentLocation} ref={this.dropdownContainer}>
         <span className={classes.title}>current city:</span>
-        <a className={classes.value} onClick={this.handleToggleSearchBar} href="#">
+        <a className={classes.value} onClick={this.handleToggleDropDown} href="#">
           {this.state.currentLocation}
         </a>
-        {this.state.isOpenSearchBar && searchBar}
+        {this.state.isOpenDropDown && (
+          <SearchDropDown
+            isOpenDropDown={this.state.isOpenDropDown}
+            onChangeLocation={this.handleSetChangeLocation}
+          />
+        )}
       </div>
     );
   }

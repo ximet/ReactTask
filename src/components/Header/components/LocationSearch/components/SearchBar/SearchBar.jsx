@@ -6,19 +6,14 @@ class SearchBar extends React.Component {
     super(props);
 
     this.state = {
-      isLoading: false,
       searchSting: ''
     };
   }
 
-  handleSearch = event => {
+  onChangeSearchString = event => {
     const searchString = event.target.value;
-
-    this.setState({
-      searchSting: searchString
-    });
-
-    this.props.setSearchString(searchString);
+    this.setState({ searchSting: searchString });
+    this.props.onChangeSearchString(searchString);
   };
 
   render() {
@@ -26,7 +21,7 @@ class SearchBar extends React.Component {
       <form className={classes.searchBarForm} action="#">
         <input
           className={classes.searchField}
-          onChange={this.handleSearch}
+          onChange={this.onChangeSearchString}
           type="text"
           value={this.state.searchSting}
           placeholder="Enter location"
