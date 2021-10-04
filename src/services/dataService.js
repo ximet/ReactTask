@@ -24,8 +24,8 @@ export const weatherAPI = {
   },
   async getToken(user, password) {
     const body = {
-      user: `${user}`,
-      password: `${password}`
+      user,
+      password
     };
     try {
       const response = await instance.post(API_AUTH_URL, body, {
