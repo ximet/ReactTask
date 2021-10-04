@@ -10,7 +10,7 @@ function ThemeSwitcher({ theme, themeToggle }) {
   return (
     <div className={classes.container}>
       <div className={classes.themeBtn} onClick={themeToggle}>
-        <img src={themeBtnImg} alt="theme-img"/>
+        <img src={themeBtnImg} alt="theme-img" />
       </div>
       <span className={classes.themeText} data-theme={theme}>
         {theme}
