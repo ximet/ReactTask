@@ -1,3 +1,3 @@
 export { useSelector } from 'react-redux';
 
-export { default as useChangeTheme } from './useChangeTheme';
+export { default as useLocalStorage } from './useLocalStorage';
