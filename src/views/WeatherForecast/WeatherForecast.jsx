@@ -4,7 +4,7 @@ import { dataService } from '../../services/dataService';
 
 class WeatherForecast extends React.Component {
   render() {
-    return <div>Main content</div>;
+    return <div>Weather Forecast content</div>;
   }
 
   componentDidMount() {
