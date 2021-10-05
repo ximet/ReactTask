@@ -4,12 +4,7 @@ import './LocationWeatherDetailedList.css';
 
 function LocationWeatherDetailedList({ currentLocationDetailedWeather, activeDayDate }) {
   function mapData(detailedData) {
-    return (
-      <LocationWeatherDetailedListItem
-        key={detailedData.time}
-        detailedData={detailedData}
-      />
-    );
+    return <LocationWeatherDetailedListItem key={detailedData.time} detailedData={detailedData} />;
   }
 
   function filterData(detailedData) {
