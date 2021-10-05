@@ -3,8 +3,8 @@ import React from 'react';
 import { dataService } from '../../services/dataService';
 import styles from './WeatherForecast.module.scss';
 
-import CurrentCityForecast from '../../layouts/Main/CurrentCityForecast/CurrentCityForecast';
-import DetailedForecast from '../../layouts/Main/DetailedForecast/DetailedForecast';
+import CurrentCityForecast from '../../layouts/CurrentCityForecast/CurrentCityForecast';
+import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
 
 class WeatherForecast extends React.Component {
   componentDidMount() {
