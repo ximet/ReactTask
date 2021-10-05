@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './layouts/Header/Header';
-import { themes } from './globalConsts';
+import Header from './layouts/header/Header';
+import { themes, bgImages } from './globalConsts';
+import CityForecast from './layouts/CityForecast/CityForecast';
+import BackgroundImage from './components/backgroundImage/BackgroundImage';
 import DailyForecasts from './layouts/dailyForecasts/DailyForecasts';
 import HourlyForecasts from './layouts/hourlyForecasts/HourlyForecasts';
 
@@ -17,6 +19,7 @@ const useLocalStorageTheme = initialTheme => {
 
 function App() {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
+  const bgImage = bgImages[theme];
 
   function themeToggle() {
     const newTheme = theme == themes.light ? themes.dark : themes.light;
@@ -27,7 +30,9 @@ function App() {
   return (
     //Use BrowserRouter to use Link from react-router-dom
     <BrowserRouter>
+      <BackgroundImage bgImage={bgImage} />
       <Header theme={theme} themeToggle={themeToggle} />
+      <CityForecast />
       <DailyForecasts theme={theme} />
       <HourlyForecasts theme={theme} />
     </BrowserRouter>

@@ -1,0 +1,13 @@
+.container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weatherItem {
+  margin-bottom: 11px;
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  line-height: 27px;
+  letter-spacing: 0.005em;
+}

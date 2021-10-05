@@ -4,7 +4,14 @@
   color: white;
 }
 
-:root,
+:root {
+  --font-size-xs: 26px;
+  --font-size-s: 28px;
+  --font-size-m: 32px;
+  --font-size-l: 42px;
+  --font-size-xl: 68px;
+}
+
 [data-theme='dark'] {
   --navlink-color: white;
   --theme-sweetcher-text-color: white;
