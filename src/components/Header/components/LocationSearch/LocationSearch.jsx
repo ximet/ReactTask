@@ -14,13 +14,12 @@ class LocationSearch extends React.Component {
     this.dropdownContainer = React.createRef();
   }
 
-
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutsideDropdown);
+    document.addEventListener('mousedown', this.handleClickOutsideDropdown, true);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutsideDropdown);
+    document.removeEventListener('mousedown', this.handleClickOutsideDropdown, true);
   }
 
   handleClickOutsideDropdown = event => {
@@ -47,17 +46,19 @@ class LocationSearch extends React.Component {
 
   render() {
     return (
-      <div className={classes.currentLocation} ref={this.dropdownContainer}>
+      <div className={classes.currentLocation}>
         <span className={classes.title}>current city:</span>
-        <a className={classes.value} onClick={this.handleToggleDropDown} href="#">
-          {this.state.currentLocation}
-        </a>
-        {this.state.isOpenDropDown && (
-          <SearchDropDown
-            isOpenDropDown={this.state.isOpenDropDown}
-            onChangeLocation={this.handleSetChangeLocation}
-          />
-        )}
+        <span ref={this.dropdownContainer}>
+          <a className={classes.value} onClick={this.handleToggleDropDown} href="#">
+            {this.state.currentLocation}
+          </a>
+          {this.state.isOpenDropDown && (
+            <SearchDropDown
+              isOpenDropDown={this.state.isOpenDropDown}
+              onChangeLocation={this.handleSetChangeLocation}
+            />
+          )}
+        </span>
       </div>
     );
   }
