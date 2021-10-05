@@ -1,0 +1,18 @@
+.container {
+  box-sizing: border-box;
+  width: 300px;
+  height: 200px;
+  background-color: var(--cities-bg-color);
+  position: absolute;
+  margin-top: 28px;
+  border-radius: 22px;
+  padding: 9px 21px;
+  overflow: scroll;
+}
+
+/* need to add custom scroll coz this is ugly and i decided to hide it now */
+
+.container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
