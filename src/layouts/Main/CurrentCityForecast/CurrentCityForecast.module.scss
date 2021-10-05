@@ -1,6 +1,16 @@
-@import '../../../assets/styles/constants/themes.scss';
+@import '../../../assets/styles/constants/main.scss';
 
 .current-city-forecast {
   width: 30%;
   height: 100%;
+  background-color: #fff;
+
+  &-wrapper {
+    justify-content: center;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(121, 121, 121);
+    color: $light-font-color;
+  }
 }
