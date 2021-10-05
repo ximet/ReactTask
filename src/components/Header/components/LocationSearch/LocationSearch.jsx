@@ -1,8 +1,6 @@
 import classes from './LocationSearch.module.scss';
 import React from 'react';
-
 import SearchDropDown from './components/SearchDropDown/SearchDropDown';
-// import { withCookies, Cookies } from 'react-cookie';
 
 class LocationSearch extends React.Component {
   constructor(props) {
