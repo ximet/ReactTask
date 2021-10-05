@@ -61,7 +61,7 @@ export const weatherAPI = {
     } catch (error) {
       console.log(error);
       return null;
-    }    
+    }
   },
 
   async getCurrentWeather(locationId) {
@@ -72,7 +72,7 @@ export const weatherAPI = {
     } catch (error) {
       console.log(error);
       return null;
-    }    
+    }
   },
 
   async getForecast(forecastType, locationId) {
@@ -83,6 +83,6 @@ export const weatherAPI = {
     } catch (error) {
       console.log(error);
       return null;
-    }    
+    }
   }
 };
