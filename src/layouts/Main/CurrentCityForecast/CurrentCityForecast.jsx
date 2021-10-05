@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './CurrentCityForecast.module.scss';
 
 import CurrentDate from '../../../components/CurrentDate/CurrentDate';
-import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle'
+import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
 
 function CurrentCityForecast() {
   return (
