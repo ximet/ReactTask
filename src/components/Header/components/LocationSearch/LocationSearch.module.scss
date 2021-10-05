@@ -1,6 +1,7 @@
 @import '../../../../assets/styles/constants.scss';
 
 .currentLocation {
+  position: relative;
   .title {
     color: $additional-text-collor;
   }
@@ -11,5 +12,12 @@
     border-bottom: 1px dashed $link-color;
     padding-bottom: 1px;
     margin-left: 5px;
+  }
+
+  .searchBarContainer {
+    position: absolute;
+    top: 100%;
+    background-color: $main-bg-color;
+    box-shadow: 0px 4px 4px $shadow-theme-color;
   }
 }
