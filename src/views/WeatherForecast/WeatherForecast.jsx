@@ -1,7 +1,15 @@
 import React from 'react';
 
-function WeatherForecast() {
-  return <div>Weather forecast content</div>;
+import { dataService } from '../../services/dataService';
+
+class WeatherForecast extends React.Component {
+  render() {
+    return <div>Main content</div>;
+  }
+
+  componentDidMount() {
+    dataService.getForecastToken();
+  }
 }
 
 export default WeatherForecast;

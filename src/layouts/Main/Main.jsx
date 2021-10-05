@@ -1,10 +1,11 @@
 import React from 'react';
-import classes from './Main.module.scss';
+import style from './Main.module.scss';
+
 import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
 
 function Main() {
   return (
-    <div className={classes.main}>
+    <div className={style.main}>
       <WeatherForecast />
     </div>
   );
