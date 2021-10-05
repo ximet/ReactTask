@@ -5,7 +5,16 @@ body {
   padding: 0;
   font-family: $font-family;
   font-size: $font-size;
-  color: $dark-font-color;
+  color: $primary-font-color;
   width: 100vw;
   height: 100vh;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

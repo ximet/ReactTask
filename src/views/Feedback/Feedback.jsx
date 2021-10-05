@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Feedback() {
-  return <div></div>;
+  return <div>Feedback</div>;
 }
 
 export default Feedback;
