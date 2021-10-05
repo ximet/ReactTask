@@ -73,7 +73,7 @@ export const weatherAPI = {
     } catch (error) {
       console.log(error);
       return null;
-    }    
+    }
   },
 
   async getCurrentWeather(locationId) {
@@ -92,11 +92,14 @@ export const weatherAPI = {
     periods = periods ? '?periods=' + periods : '';
 
     try {
-      const response = await instance.get(url + forecastType + locationId + periods, this.getAuthHeaders());
+      const response = await instance.get(
+        url + forecastType + locationId + periods,
+        this.getAuthHeaders()
+      );
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
       return null;
-    }    
+    }
   }
 };

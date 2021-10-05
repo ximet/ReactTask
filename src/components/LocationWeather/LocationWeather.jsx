@@ -49,8 +49,8 @@ class LocationWeather extends PureComponent {
           API_KIEV_ID,
           API_FORECAST_3_HOURLY_PERIODS
         );
-        this.setState({ currentLocation3HourlyWeather });   
-        console.log(currentLocation3HourlyWeather)    ; 
+        this.setState({ currentLocation3HourlyWeather });
+        console.log(currentLocation3HourlyWeather);
       } catch (error) {
         console.log(error);
       }

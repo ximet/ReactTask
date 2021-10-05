@@ -1,33 +1,33 @@
 .location-weather__3hourly-list-item {
-    flex-grow: 1;
-    padding: 0.6rem;    
-    text-align: center;
+  flex-grow: 1;
+  padding: 0.6rem;
+  text-align: center;
 }
 
 .location-weather__3hourly-list-item-time {
-    font-size: 0.7rem;
-    font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
 .location-weather__3hourly-list-item-symbol-img {
-    display: block;
-    margin: 0.4rem auto 0 auto;
-    max-width: 5rem;
+  display: block;
+  margin: 0.4rem auto 0 auto;
+  max-width: 5rem;
 }
 
 .location-weather__3hourly-list-item-temperature {
-    margin-top: 0.4rem;
-    font-size: 0.8rem;
-    font-weight: 700;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .location-weather__3hourly-list-item-wing-img {
-    display: block;
-    margin: 0.4rem auto 0 auto;
-    max-width: 3rem;
+  display: block;
+  margin: 0.4rem auto 0 auto;
+  max-width: 3rem;
 }
 
 .location-weather__3hourly-list-item-wind-speed {
-    margin-top: 0.2rem;
-    font-size: 0.8rem;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
 }

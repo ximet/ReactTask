@@ -2,12 +2,12 @@ import LocationWeather3HourlyListItem from '../LocationWeather3HourlyListItem/Lo
 
 import './LocationWeather3HourlyList.css';
 
-function LocationWeather3HourlyList({ currentLocation3HourlyWeather, activeDayDate}) {
+function LocationWeather3HourlyList({ currentLocation3HourlyWeather, activeDayDate }) {
   function map3HourlyData(threeHourlyData) {
     return (
       <LocationWeather3HourlyListItem
         key={threeHourlyData.time}
-        threeHourlyData={threeHourlyData}                
+        threeHourlyData={threeHourlyData}
       />
     );
   }
@@ -15,7 +15,6 @@ function LocationWeather3HourlyList({ currentLocation3HourlyWeather, activeDayDa
   function filter3HourlyData(threeHourlyData) {
     return threeHourlyData.time.includes(activeDayDate);
   }
-  
 
   const threeHourlyList = currentLocation3HourlyWeather
     ? currentLocation3HourlyWeather.filter(filter3HourlyData).map(map3HourlyData)

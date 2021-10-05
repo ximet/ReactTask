@@ -1,9 +1,9 @@
 .location-weather__3hourly-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    background-color: var(--selection-color);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--selection-color);
 }
