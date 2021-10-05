@@ -1,11 +1,17 @@
 import React from 'react';
-import classes from './Main.module.scss';
+import styles from './Main.module.scss';
+import { Route } from 'react-router-dom';
+
 import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
+import Info from '../../views/Info/Info';
+import Feedback from '../../views/Feedback/Feedback';
 
 function Main() {
   return (
-    <div className={classes.main}>
-      <WeatherForecast />
+    <div className={styles.main}>
+      <Route exact path="/" component={WeatherForecast} />
+      <Route path="/info" component={Info} />
+      <Route path="/feedback" component={Feedback} />
     </div>
   );
 }
