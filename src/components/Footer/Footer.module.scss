@@ -1,0 +1,10 @@
+@import '../../assets/styles/constants.scss';
+
+$copyright-font-size: 12px;
+
+.footer {
+  text-align: right;
+  border-top: 1px solid $main-border-color;
+  padding: 20px 80px;
+  font-size: $copyright-font-size;
+}

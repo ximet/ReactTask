@@ -1,5 +1,5 @@
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import ApiService from './services/ForecastApiService';
@@ -33,6 +33,7 @@ function App() {
   return (
     <>
       <Header />
+      <Footer />
     </>
   );
 }
