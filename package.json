@@ -18,8 +18,9 @@
     "npm": ">=3"
   },
   "dependencies": {
-    "axios": "0.21.4",
+    "axios": "^0.21.4",
     "core-js": "3.2.1",
+    "dotenv-webpack": "^7.0.3",
     "history": "4.10.1",
     "prop-types": "15.7.2",
     "ramda": "0.26.1",
