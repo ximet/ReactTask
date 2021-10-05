@@ -66,7 +66,14 @@ export const weatherAPI = {
   },
 
   async getLocationInfo(locationId) {
-    return this.getData(API_GET_LOCATION_INFO_DATA_TYPE, locationId);
+    const { url } = DATA_TYPES[API_GET_LOCATION_INFO_DATA_TYPE];
+    try {
+      const response = await instance.get(url + locationId, this.getAuthHeaders());
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }    
   },
 
   async getCurrentWeather(locationId) {
@@ -81,7 +88,15 @@ export const weatherAPI = {
   },
 
   async getForecast(forecastType, locationId, periods = '') {
+    const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
     periods = periods ? '?periods=' + periods : '';
-    return this.getData(API_GET_FORECAST_DATA_TYPE, forecastType + locationId + periods);
+
+    try {
+      const response = await instance.get(url + forecastType + locationId + periods, this.getAuthHeaders());
+      return response.data[dataKey];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }    
   }
 };

@@ -11,6 +11,7 @@ import {
 import { weatherAPI } from '../../services/dataService';
 import LocationWeatherCurrent from './LocationWeatherCurrent/LocationWeatherCurrent';
 import LocationWeatherDailyList from './LocationWeatherDailyList/LocationWeatherDailyList';
+import LocationWeather3HourlyList from './LocationWeather3HourlyList/LocationWeather3HourlyList';
 
 class LocationWeather extends PureComponent {
   constructor(props) {
@@ -48,8 +49,8 @@ class LocationWeather extends PureComponent {
           API_KIEV_ID,
           API_FORECAST_3_HOURLY_PERIODS
         );
-        this.setState({ currentLocation3HourlyWeather });
-        console.log(currentLocation3HourlyWeather);
+        this.setState({ currentLocation3HourlyWeather });   
+        console.log(currentLocation3HourlyWeather)    ; 
       } catch (error) {
         console.log(error);
       }
@@ -71,6 +72,10 @@ class LocationWeather extends PureComponent {
           currentLocationDailyWeather={this.state.currentLocationDailyWeather}
           activeDayDate={this.state.activeDayDate}
           setActiveDayDate={this.setActiveDayDate}
+        />
+        <LocationWeather3HourlyList
+          currentLocation3HourlyWeather={this.state.currentLocation3HourlyWeather}
+          activeDayDate={this.state.activeDayDate}
         />
       </div>
     );
