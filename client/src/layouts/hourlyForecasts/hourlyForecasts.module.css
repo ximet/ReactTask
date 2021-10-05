@@ -1,15 +1,15 @@
 .container {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
 }
 
 .content {
-    width: 1200px;  
+  width: 1200px;
 }
 
 .title {
-    color: var(--daily-forecast-text-color);
-    font-size: 30px;
-    margin-bottom: 40px;
+  color: var(--daily-forecast-text-color);
+  font-size: 30px;
+  margin-bottom: 40px;
 }

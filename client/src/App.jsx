@@ -29,7 +29,7 @@ function App() {
     <BrowserRouter>
       <Header theme={theme} themeToggle={themeToggle} />
       <DailyForecasts theme={theme} />
-      <HourlyForecasts theme={theme}/>
+      <HourlyForecasts theme={theme} />
     </BrowserRouter>
   );
 }

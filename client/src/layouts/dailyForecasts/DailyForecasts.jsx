@@ -13,7 +13,7 @@ function DailyForecasts({ theme }) {
     <div className={classes.container} data-theme={theme}>
       <div className={classes.content}>
         <h5 className={classes.title}>Days</h5>
-        <Slider slides={slides} slidesToShow={7}/>
+        <Slider slides={slides} slidesToShow={7} />
       </div>
     </div>
   );

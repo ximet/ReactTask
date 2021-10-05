@@ -21,9 +21,9 @@
   --cities-bg-color: #2d1149;
   --city-hover-bg-color: #5900a3;
   --daily-forecast-text-color: white;
-  
-  --slider-left-arrow-bg-image: url("../public//images/lightLeftArrow.png");
-  --sliderright-arrow-bg-image: url("../public//images/lightRightArrow.png");
+
+  --slider-left-arrow-bg-image: url('../public//images/lightLeftArrow.png');
+  --sliderright-arrow-bg-image: url('../public//images/lightRightArrow.png');
 }
 
 [data-theme='light'] {
@@ -37,6 +37,6 @@
   --city-hover-bg-color: #12bad1;
   --daily-forecast-text-color: black;
 
-  --slider-left-arrow-bg-image: url("../public//images/darkLeftArrow.png");
-  --sliderright-arrow-bg-image: url("../public//images/darkRightArrow.png");
+  --slider-left-arrow-bg-image: url('../public//images/darkLeftArrow.png');
+  --sliderright-arrow-bg-image: url('../public//images/darkRightArrow.png');
 }

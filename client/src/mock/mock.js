@@ -168,6 +168,6 @@ const hourlyForecasts = [
     windSpeed: 25,
     humidity: 35
   }
-]
+];
 
 export { dailyForecasts, hourlyForecasts };
