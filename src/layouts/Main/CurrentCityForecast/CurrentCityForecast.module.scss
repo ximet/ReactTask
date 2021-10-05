@@ -1,6 +1,6 @@
 @import '../../../assets/styles/constants/main.scss';
 
-.current-city-forecast {
+.city-forecast {
   width: 30%;
   height: 100%;
   background-color: #fff;
@@ -10,7 +10,7 @@
     width: 80%;
     margin: 20px auto;
     padding: 20px;
-    background-color: rgb(121, 121, 121);
+    background-color: #5171b0a1;
     color: $light-font-color;
   }
 }
