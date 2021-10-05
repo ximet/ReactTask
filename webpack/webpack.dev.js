@@ -41,7 +41,8 @@ module.exports = {
       '/api': {
         target: 'http://pfa.foreca.com/api'
       }
-    }
+    },
+    historyApiFallback: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()]
 };

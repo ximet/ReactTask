@@ -2,8 +2,16 @@
 
 .header {
   display: flex;
-  width: 100vw;
   height: 10vh;
   background-color: $secondary-bg-color;
-  color: $light-font-color;
+  color: $secondary-font-color;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 33.33%;
 }
