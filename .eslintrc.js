@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  parser: '@babel/eslint-parser',
   extends: [
     'prettier',
     'airbnb',
@@ -26,6 +27,11 @@ module.exports = {
     'func-names': ['error', 'never'],
     'import/prefer-default-export': 0,
     'react/prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      { required: { some: ['nesting', 'id'] } },
+    ],
   },
   ignorePatterns: ['node_modules/', 'build/', 'coverage/'],
   settings: {

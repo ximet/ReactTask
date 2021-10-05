@@ -1,7 +1,7 @@
-import { createContext } from 'react';
+import * as React from 'react';
 import { LIGHT } from 'constants/theme';
 
-export default createContext({
+export default React.createContext({
   themeName: LIGHT,
   setThemeName: () => {},
 });

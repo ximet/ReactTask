@@ -1,8 +1,8 @@
-import { lazy } from 'react';
+import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { routes } from 'configs';
 
-const Login = lazy(() => import('./login'));
+const Login = React.lazy(() => import('./login'));
 
 const PrivateRoutes = () => (
   <Switch>
