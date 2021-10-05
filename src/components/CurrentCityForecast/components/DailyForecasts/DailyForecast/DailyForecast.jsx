@@ -7,6 +7,8 @@ function DailyForecast() {
       <img
         className={classes.icon}
         src="https://developer.foreca.com/static/images/symbols/d310.png"
+        alt="forecast"
+        title="forecast"
       />
       <div className={classes.temperature}>
         <span className={classes.sun}>23</span>

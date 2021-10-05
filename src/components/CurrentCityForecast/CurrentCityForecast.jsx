@@ -12,6 +12,8 @@ function CurrentCityForecast() {
             <img
               className={classes.icon}
               src="https://developer.foreca.com/static/images/symbols/d310.png"
+              alt="forecast"
+              title="forecast"
             />
             <div className={classes.temperature}>20</div>
           </div>
