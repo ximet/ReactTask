@@ -5,9 +5,10 @@ import DailyForecast from './dailyForecast/DailyForecast.jsx';
 import { dailyForecasts } from '../../mock/mock';
 
 function DailyForecasts({ theme }) {
-  const slides = dailyForecasts.map(forecast => (
-    <DailyForecast theme={theme} forecast={forecast} />
-  ));
+  const slides = dailyForecasts.map(forecast => ({
+    id: forecast.id,
+    component: <DailyForecast theme={theme} forecast={forecast} />
+  }));
 
   return (
     <div className={classes.container} data-theme={theme}>

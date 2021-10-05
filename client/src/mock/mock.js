@@ -5,6 +5,7 @@ import moonAndCloudsIcon from '../../public/images/weatherIcon/moonAndCloudsIcon
 
 const dailyForecasts = [
   {
+    id: 'sdfsdfdsf',
     weekDay: 'mon',
     date: 14,
     conditions: 'party cloudy',
@@ -12,6 +13,7 @@ const dailyForecasts = [
     icon: sunAndCloudsIcon
   },
   {
+    id: 'sdfsdfdsfewfewf',
     weekDay: 'mon',
     date: 15,
     conditions: 'party cloudy',
@@ -19,6 +21,7 @@ const dailyForecasts = [
     icon: snowingIcon
   },
   {
+    id: 'sdfsdfdsreeff',
     weekDay: 'mon',
     date: 16,
     conditions: 'party cloudy',
@@ -26,6 +29,7 @@ const dailyForecasts = [
     icon: thunderstormIcon
   },
   {
+    id: 'sdferfresdfdsf',
     weekDay: 'mon',
     date: 17,
     conditions: 'party cloudy',
@@ -33,6 +37,7 @@ const dailyForecasts = [
     icon: sunAndCloudsIcon
   },
   {
+    id: 'sdfsdffreffcdsf',
     weekDay: 'mon',
     date: 18,
     conditions: 'party cloudy',
@@ -40,6 +45,7 @@ const dailyForecasts = [
     icon: moonAndCloudsIcon
   },
   {
+    id: 'sdfsdfdsf8loiloi',
     weekDay: 'mon',
     date: 19,
     conditions: 'party cloudy',
@@ -47,6 +53,7 @@ const dailyForecasts = [
     icon: sunAndCloudsIcon
   },
   {
+    id: 'sdfsdfdsftgj4vf',
     weekDay: 'mon',
     date: 20,
     conditions: 'party cloudy',
@@ -54,6 +61,7 @@ const dailyForecasts = [
     icon: thunderstormIcon
   },
   {
+    id: 'sdfsdfdsfejfwcoji',
     weekDay: 'mon',
     date: 21,
     conditions: 'party cloudy',
@@ -61,6 +69,7 @@ const dailyForecasts = [
     icon: sunAndCloudsIcon
   },
   {
+    id: 'sdfsdfdsfekf3ekcw',
     weekDay: 'mon',
     date: 22,
     conditions: 'party cloudy',
@@ -68,6 +77,7 @@ const dailyForecasts = [
     icon: snowingIcon
   },
   {
+    id: 'sdfsdfdsfwdixchewcui',
     weekDay: 'mon',
     date: 23,
     conditions: 'party cloudy',
@@ -78,6 +88,7 @@ const dailyForecasts = [
 
 const hourlyForecasts = [
   {
+    id: 'sdfsdfdsfepcjrqecj3',
     time: '00:00',
     temperature: 12,
     icon: thunderstormIcon,
@@ -85,6 +96,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdfdsorevjof',
     time: '01:00',
     temperature: 13,
     icon: thunderstormIcon,
@@ -92,6 +104,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdfdfvkdnfvkjresf',
     time: '02:00',
     temperature: 14,
     icon: thunderstormIcon,
@@ -99,6 +112,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdfvlmoirnvoidsf',
     time: '03:00',
     temperature: 5,
     icon: thunderstormIcon,
@@ -106,6 +120,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdfoirejoviredsf',
     time: '04:00',
     temperature: 6,
     icon: thunderstormIcon,
@@ -113,6 +128,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdferovknredsf',
     time: '05:00',
     temperature: 7,
     icon: thunderstormIcon,
@@ -120,6 +136,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfeorvmfecrvosdfdsf',
     time: '06:00',
     temperature: 12,
     icon: thunderstormIcon,
@@ -127,6 +144,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsvnervorendfdsf',
     time: '07:00',
     temperature: 12,
     icon: thunderstormIcon,
@@ -134,6 +152,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'revrejvnnsdfsdfdsf',
     time: '08:00',
     temperature: 32,
     icon: thunderstormIcon,
@@ -141,6 +160,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfeporek89sdfdsf',
     time: '09:00',
     temperature: 13,
     icon: thunderstormIcon,
@@ -148,6 +168,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdfdgfrmlevsf',
     time: '10:00',
     temperature: 17,
     icon: thunderstormIcon,
@@ -155,6 +176,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'sdfsdfdsgkjvbnf',
     time: '11:00',
     temperature: 31,
     icon: thunderstormIcon,
@@ -162,6 +184,7 @@ const hourlyForecasts = [
     humidity: 35
   },
   {
+    id: 'srevrebvirebvndfsdfdsf',
     time: '12:00',
     temperature: 7,
     icon: thunderstormIcon,

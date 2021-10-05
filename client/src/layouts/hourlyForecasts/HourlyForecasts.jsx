@@ -5,7 +5,10 @@ import HourlyForecast from './hourlyForecast/HourlyForecast';
 import { hourlyForecasts } from '../../mock/mock';
 
 function HourlyForecasts({ theme }) {
-  const slides = hourlyForecasts.map(forecast => <HourlyForecast forecast={forecast} />);
+  const slides = hourlyForecasts.map(forecast => ({
+    id: forecast.id,
+    component: <HourlyForecast theme={theme} forecast={forecast} />
+  }));
 
   return (
     <div className={classes.container} data-theme={theme}>
