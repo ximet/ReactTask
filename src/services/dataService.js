@@ -54,14 +54,35 @@ export const weatherAPI = {
   },
 
   async searchLocation(query) {
-    return this.getData(API_SEARCH_LOCATION_DATA_TYPE, query);
+    const { url, dataKey } = DATA_TYPES[API_SEARCH_LOCATION_DATA_TYPE];
+    try {
+      const response = await instance.get(url + query, this.getAuthHeaders());
+      return response.data[dataKey];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }    
   },
 
   async getCurrentWeather(locationId) {
-    return this.getData(API_GET_CURRENT_WEATHER_DATA_TYPE, locationId);
+    const { url, dataKey } = DATA_TYPES[API_GET_CURRENT_WEATHER_DATA_TYPE];
+    try {
+      const response = await instance.get(url + locationId, this.getAuthHeaders());
+      return response.data[dataKey];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }    
   },
 
   async getForecast(forecastType, locationId) {
-    return this.getData(API_GET_FORECAST_DATA_TYPE, forecastType + locationId);
+    const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
+    try {
+      const response = await instance.get(url + forecastType + locationId, this.getAuthHeaders());
+      return response.data[dataKey];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }    
   }
 };
