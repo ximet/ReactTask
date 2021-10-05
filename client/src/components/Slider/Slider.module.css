@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.slides::-webkit-scrollbar {
+  display: none;
+}
+
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.leftArrow {
+  left: -100px;
+  background-image: var(--slider-left-arrow-bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rightArrow {
+  right: -100px;
+  background-image: var(--sliderright-arrow-bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.leftArrow > img,
+.rightArrow > img {
+  width: 100%;
+  height: 100%;
+}
