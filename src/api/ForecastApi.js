@@ -10,9 +10,10 @@ const ForecastApi = {
     });
   },
 
-  fetchLocationSearch: async (url, accessToken) => {
+  fetchData: async (url, accessToken) => {
     return await fetch(url, {
       method: 'GET',
+      credentials: 'omit',
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
