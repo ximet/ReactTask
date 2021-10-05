@@ -1,10 +1,10 @@
-function delayDecorator(callback, dellay) {
+function delayDecorator(callback, delay) {
   let timeoutId = null;
   return (...args) => {
-    clearTimeout(timeoutId);
+    if (timeoutId) clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       callback(...args);
-    }, dellay);
+    }, delay);
   };
 }
 
