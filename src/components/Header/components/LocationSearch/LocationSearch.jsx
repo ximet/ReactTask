@@ -10,9 +10,10 @@ class LocationSearch extends React.Component {
       currentLocation: 'Gomel',
       isOpenDropDown: false
     };
+
+    this.dropdownContainer = React.createRef();
   }
 
-  dropdownContainer = React.createRef();
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutsideDropdown);
