@@ -3,15 +3,15 @@ import React, { Component, PureComponent } from 'react';
 import {
   API_AUTH_PASS,
   API_AUTH_USERNAME,
-  API_FORECAST_3_HOURLY,
-  API_FORECAST_3_HOURLY_PERIODS,
+  API_FORECAST_DETAILED,
+  API_FORECAST_DETAILED_PERIODS,
   API_FORECAST_DAILY,
   API_KIEV_ID
 } from '../../constants/constants';
 import { weatherAPI } from '../../services/dataService';
 import LocationWeatherCurrent from './LocationWeatherCurrent/LocationWeatherCurrent';
 import LocationWeatherDailyList from './LocationWeatherDailyList/LocationWeatherDailyList';
-import LocationWeather3HourlyList from './LocationWeather3HourlyList/LocationWeather3HourlyList';
+import LocationWeatherDetailedList from './LocationWeatherDetailedList/LocationWeatherDetailedList';
 
 class LocationWeather extends PureComponent {
   constructor(props) {
@@ -21,7 +21,7 @@ class LocationWeather extends PureComponent {
       currentLocationInfo: null,
       currentLocationWeather: null,
       currentLocationDailyWeather: null,
-      currentLocation3HourlyWeather: null,
+      currentLocationDetailedWeather: null,
       activeDayDate: ''
     };
 
@@ -44,13 +44,13 @@ class LocationWeather extends PureComponent {
           API_KIEV_ID
         );
         this.setState({ currentLocationDailyWeather });
-        const currentLocation3HourlyWeather = await weatherAPI.getForecast(
-          API_FORECAST_3_HOURLY,
+        const currentLocationDetailedWeather = await weatherAPI.getForecast(
+          API_FORECAST_DETAILED,
           API_KIEV_ID,
-          API_FORECAST_3_HOURLY_PERIODS
+          API_FORECAST_DETAILED_PERIODS
         );
-        this.setState({ currentLocation3HourlyWeather });
-        console.log(currentLocation3HourlyWeather);
+        this.setState({ currentLocationDetailedWeather });
+        console.log(currentLocationDetailedWeather);
       } catch (error) {
         console.log(error);
       }
@@ -73,8 +73,8 @@ class LocationWeather extends PureComponent {
           activeDayDate={this.state.activeDayDate}
           setActiveDayDate={this.setActiveDayDate}
         />
-        <LocationWeather3HourlyList
-          currentLocation3HourlyWeather={this.state.currentLocation3HourlyWeather}
+        <LocationWeatherDetailedList
+          currentLocationDetailedWeather={this.state.currentLocationDetailedWeather}
           activeDayDate={this.state.activeDayDate}
         />
       </div>
