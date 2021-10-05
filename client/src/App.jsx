@@ -4,6 +4,8 @@ import Header from './layouts/header/Header';
 import { themes, bgImages } from './globalConsts';
 import CityForecast from './layouts/CityForecast/CityForecast';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
+import DailyForecasts from './layouts/dailyForecasts/DailyForecasts';
+import HourlyForecasts from './layouts/hourlyForecasts/HourlyForecasts';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -31,6 +33,8 @@ function App() {
       <BackgroundImage bgImage={bgImage} />
       <Header theme={theme} themeToggle={themeToggle} />
       <CityForecast />
+      <DailyForecasts theme={theme} />
+      <HourlyForecasts theme={theme} />
     </BrowserRouter>
   );
 }
