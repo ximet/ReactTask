@@ -1,11 +1,11 @@
 import React from 'react';
 
-import styles from './CurrentCityForecast.module.scss';
+import styles from './CityForecast.module.scss';
 
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
 
-function CurrentCityForecast() {
+function CityForecast() {
   return (
     <div className={styles.cityForecast}>
       <div className={styles.cityForecastWrapper}>
@@ -21,4 +21,4 @@ function CurrentCityForecast() {
   );
 }
 
-export default CurrentCityForecast;
+export default CityForecast;

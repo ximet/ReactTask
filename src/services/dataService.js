@@ -37,9 +37,9 @@ export const dataService = {
     }
   },
 
-  getWeather: async id => {
+  getDaylyForecast: async id => {
     try {
-      const response = await instance.get(FORECAST_PATHS.getForecast + id, {
+      const response = await instance.get(FORECAST_PATHS.getDailyForecast + id, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -49,5 +49,19 @@ export const dataService = {
     } catch (error) {
       console.error(error);
     }
-  }
+  },
+
+  getHourlyForecast: async id => {
+    try {
+      const response = await instance.get(FORECAST_PATHS.getHourlyForecast + id, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
