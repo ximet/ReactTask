@@ -1,0 +1,9 @@
+@import '../../assets/styles/constants/main.scss';
+
+.footer {
+  display: flex;
+  width: 100vw;
+  height: 5vh;
+  background-color: $secondary-bg-color;
+  color: $light-font-color;
+}
