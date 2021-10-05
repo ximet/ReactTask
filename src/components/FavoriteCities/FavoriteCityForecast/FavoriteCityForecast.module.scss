@@ -1,0 +1,63 @@
+@import '../../../assets/styles/constants.scss';
+
+$temperature-font-size: 28px;
+
+.item {
+  border: 1px solid $main-border-color;
+  border-radius: 10px;
+  padding: 15px 25px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .itemInfo {
+    display: flex;
+
+    .mainInfo {
+      width: 50%;
+      .icon {
+        width: 90px;
+        height: 90px;
+      }
+      .temperature {
+        font-family: $main-font-family;
+        font-size: $temperature-font-size;
+        font-weight: bold;
+        display: flex;
+        align-items: flex-start;
+
+        &::after {
+          content: $temperature-type-content;
+          font-size: $additional-text-font-size;
+          display: block;
+        }
+      }
+    }
+
+    .additionalInfo {
+      width: 50%;
+
+      .cityName {
+        font-weight: bold;
+        font-size: $additional-text-font-size;
+        text-align: right;
+      }
+
+      .wind,
+      .humidity,
+      .precitipate {
+        text-align: right;
+        font-size: $main-font-size;
+        color: $additional-text-collor;
+      }
+    }
+  }
+
+  .linkMore {
+    display: flex;
+    justify-content: flex-end;
+    color: $link-color;
+    text-decoration: none;
+  }
+}
