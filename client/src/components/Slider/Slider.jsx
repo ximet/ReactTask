@@ -1,7 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
 import classes from './Slider.module.css'
-import leftArrow from '../../../public/images/leftArrow.png' 
-import rightArrow from '../../../public/images/b.svg' 
 
 function Slider({slides, slidesToShow = 4, theme}) {
     const slideRef = useRef(null);
@@ -28,8 +26,8 @@ function Slider({slides, slidesToShow = 4, theme}) {
 
     return (
         <div className={classes.container}>
-            <div className={classes.leftArrow}>
-                <img src={leftArrow} onClick={scrollLeft} alt="arrow-left"></img>
+            <div className={classes.leftArrow} onClick={scrollLeft}>
+                {/* <img src={leftArrow} onClick={scrollLeft} alt="arrow-left"></img> */}
             </div>
             <div  id="slider" ref={slider} className={classes.slides}>
                 {
@@ -43,8 +41,8 @@ function Slider({slides, slidesToShow = 4, theme}) {
                     })
                 }
             </div>
-            <div className={classes.rightArrow}>
-                <img src={rightArrow} onClick={scrollRight} alt="arrow-right" ></img>
+            <div className={classes.rightArrow} onClick={scrollRight}>
+                {/* <img src={rightArrow} onClick={scrollRight} alt="arrow-right" ></img> */}
             </div>
         </div>
     )

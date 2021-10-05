@@ -1,0 +1,45 @@
+.container {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80px;
+    margin: 0 10px;
+}
+
+.time, .temperature, .conditionsText {
+    color: var(--daily-forecast-text-color);
+}
+
+.time {
+    font-size: 15px;
+}
+
+.temperature {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.weatherIcon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 12px;
+}
+
+.conditionsIcon {
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+}
+
+.conditionsText {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.conditions {
+    display: flex;
+    align-items: center;
+}

@@ -1,14 +1,14 @@
 .container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .content {
-    /* width: 80%; */
-    width: 1200px;
-    /* background-color: rgb(0, 0, 0); */
+  width: 1200px;
 }
 
-.title{
-    color: var(--daily-forecast-text-color)
+.title {
+  color: var(--daily-forecast-text-color);
+  font-size: 30px;
+  margin-bottom: 40px;
 }
