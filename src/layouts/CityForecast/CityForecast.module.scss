@@ -46,12 +46,6 @@
     display: flex;
     justify-content: center;
 
-    .vertical-line {
-      content: '';
-      width: 1px;
-      background-color: $white;
-    }
-
     .added-info-type,
     .added-info-value {
       display: flex;
