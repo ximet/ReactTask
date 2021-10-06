@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import {
   API_AUTH_PASS,
-  API_AUTH_USERNAME,  
+  API_AUTH_USERNAME,
   API_FORECAST_DAILY_ENDPOINT,
   API_FORECAST_DETAILED_ENDPOINT,
   API_KIEV_ID,
@@ -24,7 +24,9 @@ function App() {
     weatherAPI
       .getForecast(API_FORECAST_DETAILED_ENDPOINT, API_KIEV_ID)
       .then(forecast => console.log(forecast));
-    weatherAPI.getForecast(API_FORECAST_DAILY_ENDPOINT, API_KIEV_ID).then(forecast => console.log(forecast));
+    weatherAPI
+      .getForecast(API_FORECAST_DAILY_ENDPOINT, API_KIEV_ID)
+      .then(forecast => console.log(forecast));
   });
 
   const [theme, setTheme] = useState(THEME_LIGHT);

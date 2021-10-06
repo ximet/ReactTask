@@ -3,7 +3,7 @@ import React, { Component, PureComponent } from 'react';
 import {
   API_AUTH_PASS,
   API_AUTH_USERNAME,
-  API_FORECAST_DETAILED_PERIODS,  
+  API_FORECAST_DETAILED_PERIODS,
   API_KIEV_ID,
   API_FORECAST_DAILY_ENDPOINT,
   API_FORECAST_DETAILED_ENDPOINT
@@ -36,7 +36,7 @@ class LocationWeather extends PureComponent {
         this.setState({
           currentLocationWeather,
           activeDayDate: new Date(currentLocationWeather.time).setHours(0, 0, 0, 0)
-        });        
+        });
 
         const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);
         this.setState({ currentLocationInfo });
