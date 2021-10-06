@@ -42,17 +42,6 @@ export const weatherAPI = {
     return this.token;
   },
 
-  async getData(dataType, param) {
-    const { url, dataKey } = DATA_TYPES[dataType];
-    try {
-      const response = await instance.get(`${url}${param}`, this.getAuthHeaders());
-      return response.data[dataKey];
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  },
-
   async searchLocation(query) {
     const { url, dataKey } = DATA_TYPES[API_SEARCH_LOCATION_DATA_TYPE];
     try {
