@@ -74,10 +74,10 @@ export const weatherAPI = {
     }
   },
 
-  async getForecast(forecastType, locationId, params = null) {
+  async getForecast(forecastEndpoint, locationId, params = null) {
     const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${forecastType}${locationId}`, {
+      const response = await instance.get(`${url}${forecastEndpoint}${locationId}`, {
         headers: this.getHeaders(),
         params
       });

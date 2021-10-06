@@ -5,12 +5,15 @@ import {
   API_WIND_IMG_URL_PREFIX,
   WIND_DIRECTIONS_TO_IMG
 } from '../../../constants/constants';
-import { formatTemperature, normalizeTimeNumber } from '../../../utils/utils';
+import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherDetailedListItem.css';
 
 function LocationWeatherDetailedListItem({ detailedData }) {
   const date = new Date(detailedData.time);
-  const time = `${normalizeTimeNumber(date.getHours())}-${normalizeTimeNumber(date.getMinutes())}`;
+  const time = date.toLocaleTimeString('en-US', {    
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 
   return (
     <li className="location-weather__detailed-list-item">
