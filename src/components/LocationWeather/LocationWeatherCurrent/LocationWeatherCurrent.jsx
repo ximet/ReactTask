@@ -49,7 +49,9 @@ function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo })
         </div>
       </div>
     </>
-  ) : '';
+  ) : (
+    ''
+  );
 
   return (
     <div className="location-weather__current">

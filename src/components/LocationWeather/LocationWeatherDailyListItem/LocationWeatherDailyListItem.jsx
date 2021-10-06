@@ -2,7 +2,7 @@ import { API_SYMBOL_URL_POSTFIX, API_SYMBOL_URL_PREFIX } from '../../../constant
 import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherDailyListItem.css';
 
-function LocationWeatherDailyListItem({ dayData, isActive, setActiveDayDate }) {  
+function LocationWeatherDailyListItem({ dayData, isActive, setActiveDayDate }) {
   const date = new Date(dayData.date);
   const dayName = date.toLocaleString('en-us', { weekday: 'long' });
   const dayNumber = date.getDate();

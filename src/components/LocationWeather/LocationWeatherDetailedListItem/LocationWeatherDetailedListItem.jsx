@@ -8,7 +8,7 @@ import {
 import { formatTemperature, normalizeTimeNumber } from '../../../utils/utils';
 import './LocationWeatherDetailedListItem.css';
 
-function LocationWeatherDetailedListItem({ detailedData }) {  
+function LocationWeatherDetailedListItem({ detailedData }) {
   const date = new Date(detailedData.time);
   const time = `${normalizeTimeNumber(date.getHours())}-${normalizeTimeNumber(date.getMinutes())}`;
 
