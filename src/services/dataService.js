@@ -15,11 +15,9 @@ const instance = axios.create({
 
 export const weatherAPI = {
   token: null,
-  getAuthHeaders() {
+  getHeaders() {
     return {
-      headers: {
-        Authorization: `Bearer ${this.token}`
-      }
+      Authorization: `Bearer ${this.token}`      
     };
   },
   async getToken(user, password) {
@@ -45,7 +43,7 @@ export const weatherAPI = {
   async searchLocation(query) {
     const { url, dataKey } = DATA_TYPES[API_SEARCH_LOCATION_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${query}`, this.getAuthHeaders());
+      const response = await instance.get(`${url}${query}`, { headers : this.getHeaders() });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
@@ -56,7 +54,7 @@ export const weatherAPI = {
   async getCurrentWeather(locationId) {
     const { url, dataKey } = DATA_TYPES[API_GET_CURRENT_WEATHER_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${locationId}`, this.getAuthHeaders());
+      const response = await instance.get(`${url}${locationId}`, { headers : this.getHeaders() });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
@@ -69,7 +67,7 @@ export const weatherAPI = {
     try {
       const response = await instance.get(
         `${url}${forecastType}${locationId}`,
-        this.getAuthHeaders()
+        { headers : this.getHeaders() }
       );
       return response.data[dataKey];
     } catch (error) {
