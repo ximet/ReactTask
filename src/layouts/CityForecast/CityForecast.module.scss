@@ -5,12 +5,63 @@
   height: 100%;
   background-color: #fff;
 
-  &-wrapper {
+  .content {
     justify-content: center;
     width: 80%;
     margin: 20px auto;
     padding: 20px;
     background-color: #5171b0a1;
     color: $secondary-font-color;
+    cursor: default;
+  }
+
+  .city-temperature {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 10px 0;
+
+    .temperature-degrees {
+      font-size: 114px;
+      font-weight: 600;
+      line-height: 100%;
+      margin-right: 5px;
+    }
+  }
+
+  .temperature-description {
+    display: block;
+    text-align: center;
+    font-size: 36px;
+  }
+
+  .city-location {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .added-info {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+    .vertical-line {
+      content: '';
+      width: 1px;
+      background-color: #fff;
+    }
+
+    .added-info-type,
+    .added-info-value {
+      display: flex;
+      flex-direction: column;
+      margin: 0 20px;
+    }
+
+    .added-info-type-name {
+      display: flex;
+    }
   }
 }
