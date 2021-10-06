@@ -78,7 +78,10 @@ export const weatherAPI = {
   async getForecast(forecastType, locationId) {
     const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${forecastType}${locationId}`, this.getAuthHeaders());
+      const response = await instance.get(
+        `${url}${forecastType}${locationId}`,
+        this.getAuthHeaders()
+      );
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
