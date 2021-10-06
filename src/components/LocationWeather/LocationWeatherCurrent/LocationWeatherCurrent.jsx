@@ -9,8 +9,8 @@ import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherCurrent.css';
 
 function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo }) {
-  const locationName = currentLocationInfo ? currentLocationInfo.name : null;
-  const locationCountry = currentLocationInfo ? currentLocationInfo.country : null;
+  const locationName = currentLocationInfo ? currentLocationInfo.name : '';
+  const locationCountry = currentLocationInfo ? currentLocationInfo.country : '';
   const currentWeather = currentLocationWeather ? (
     <>
       <div className="location-weather__current-weather-item location-weather__current-weather-title">
@@ -49,7 +49,7 @@ function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo })
         </div>
       </div>
     </>
-  ) : null;
+  ) : '';
 
   return (
     <div className="location-weather__current">

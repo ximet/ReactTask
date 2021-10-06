@@ -5,11 +5,12 @@ import {
   API_WIND_IMG_URL_PREFIX,
   WIND_DIRECTIONS_TO_IMG
 } from '../../../constants/constants';
-import { formatTemperature } from '../../../utils/utils';
+import { formatTemperature, normalizeTimeNumber } from '../../../utils/utils';
 import './LocationWeatherDetailedListItem.css';
 
-function LocationWeatherDetailedListItem({ detailedData }) {
-  const time = detailedData.time.split('T')[1].split(/[+-]/)[0];
+function LocationWeatherDetailedListItem({ detailedData }) {  
+  const date = new Date(detailedData.time);
+  const time = `${normalizeTimeNumber(date.getHours())}-${normalizeTimeNumber(date.getMinutes())}`;
 
   return (
     <li className="location-weather__detailed-list-item">
@@ -20,7 +21,7 @@ function LocationWeatherDetailedListItem({ detailedData }) {
         className="location-weather__detailed-list-item-symbol-img"
       />
       <div className="location-weather__detailed-list-item-temperature">
-        {formatTemperature(detailedData.temperature) + '°'}
+        {`${formatTemperature(detailedData.temperature)}°`}
       </div>
       <img
         src={`

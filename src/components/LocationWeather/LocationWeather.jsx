@@ -22,7 +22,7 @@ class LocationWeather extends PureComponent {
       currentLocationWeather: null,
       currentLocationDailyWeather: null,
       currentLocationDetailedWeather: null,
-      activeDayDate: ''
+      activeDayDate: null
     };
 
     this.setActiveDayDate = this.setActiveDayDate.bind(this);
@@ -30,13 +30,17 @@ class LocationWeather extends PureComponent {
 
   componentDidMount() {
     (async () => {
-      try {
+      try {        
         await weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS);
         const currentLocationWeather = await weatherAPI.getCurrentWeather(API_KIEV_ID);
         this.setState({
           currentLocationWeather,
-          activeDayDate: currentLocationWeather.time.split('T')[0]
+          activeDayDate: new Date(currentLocationWeather.time).setHours(0,0,0,0)         //currentLocationWeather.time.split('T')[0]
         });
+        console.log('activeDayDate:', new Date(currentLocationWeather.time).setHours(0,0,0,0))
+
+
+
         const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);
         this.setState({ currentLocationInfo });
         const currentLocationDailyWeather = await weatherAPI.getForecast(
@@ -58,7 +62,7 @@ class LocationWeather extends PureComponent {
   }
 
   setActiveDayDate(date) {
-    this.setState({ activeDayDate: date });
+    this.setState({ activeDayDate: new Date(date).setHours(0,0,0,0) });
   }
 
   render() {

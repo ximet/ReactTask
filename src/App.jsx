@@ -35,7 +35,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className={`global-wrapper theme-mode_${theme}`}>
+      <div className={['global-wrapper', `theme-mode_${theme}`].join(' ')}>
         <HeaderWrapper theme={theme} onToggleTheme={switchTheme} />
         <ContentWrapper />
         <FooterWrapper />
