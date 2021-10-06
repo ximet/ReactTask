@@ -1,13 +1,13 @@
 import classes from './CurrentTime.module.scss';
 import { useState, useEffect } from 'react';
-import { getFormatedCurrentTime } from '../../utils/dateTimeUtils';
+import { getFormattedCurrentTime } from '../../utils/dateTimeUtils';
 
 function CurrentTime() {
-  const [currentTime, setCurrentTime] = useState(() => getFormatedCurrentTime());
+  const [currentTime, setCurrentTime] = useState(getFormattedCurrentTime);
 
   useEffect(() => {
     setTimeout(() => {
-      const timeString = getFormatedCurrentTime();
+      const timeString = getFormattedCurrentTime();
 
       setCurrentTime(timeString);
     }, 1000);
