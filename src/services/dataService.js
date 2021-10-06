@@ -73,13 +73,14 @@ export const weatherAPI = {
       return null;
     }
   },
-  
+
   async getForecast(forecastType, locationId, periods = '') {
     const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
-    periods = periods ? '?periods=' + periods : '';
+    const params = periods ? { periods } : {};    
     try {
-      const response = await instance.get(`${url}${forecastType}${locationId}${periods}`, {
-        headers: this.getHeaders()
+      const response = await instance.get(`${url}${forecastType}${locationId}`, {
+        headers: this.getHeaders(),
+        params
       });
       return response.data[dataKey];
     } catch (error) {
