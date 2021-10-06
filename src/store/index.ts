@@ -1,8 +1,6 @@
-import { createStore, applyMiddleware, AnyAction } from 'redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk, { ThunkMiddleware } from 'redux-thunk';
-import { RootState } from './types';
+import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 const store = createStore(
