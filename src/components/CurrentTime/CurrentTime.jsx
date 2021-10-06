@@ -4,13 +4,14 @@ import { getFormattedCurrentTime } from '../../utils/dateTimeUtils';
 
 function CurrentTime() {
   const [currentTime, setCurrentTime] = useState(getFormattedCurrentTime);
+  const delayClockTick = 1000;
 
   useEffect(() => {
     setTimeout(() => {
       const timeString = getFormattedCurrentTime();
 
       setCurrentTime(timeString);
-    }, 1000);
+    }, delayClockTick);
   }, [currentTime]);
 
   return <div className={classes.currentTime}>{currentTime}</div>;

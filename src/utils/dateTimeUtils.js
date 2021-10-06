@@ -1,10 +1,12 @@
 function getFormattedCurrentTime() {
-  const dateObj = new Date();
-  const hours = dateObj.getHours().toString().padStart(2, '0');
-  const minutes = dateObj.getMinutes().toString().padStart(2, '0');
-  const seconds = dateObj.getSeconds().toString().padStart(2, '0');
+  const padSymbol = '0';
+  const padStringLength = 2;
 
-  console.log('func:', Date.now());
+  const dateObj = new Date();
+  const hours = dateObj.getHours().toString().padStart(padStringLength, padSymbol);
+  const minutes = dateObj.getMinutes().toString().padStart(padStringLength, padSymbol);
+  const seconds = dateObj.getSeconds().toString().padStart(padStringLength, padSymbol);
+
   return `${hours}:${minutes}:${seconds}`;
 }
 
