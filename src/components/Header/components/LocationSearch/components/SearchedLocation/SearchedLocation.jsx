@@ -1,6 +1,9 @@
-import classes from './SearchedLocation.module.scss';
+// @flow
 
-function SearchedLocation({ location, ...props }) {
+import classes from './SearchedLocation.module.scss';
+import type { SearchedLocationPropsType } from './SearchedLocationPropsType';
+
+const SearchedLocation = ({ location, ...props }: SearchedLocationPropsType): React$Node => {
   const onChangeLocation = event => props.onChangeLocation(location);
 
   return (
@@ -11,6 +14,6 @@ function SearchedLocation({ location, ...props }) {
       </a>
     </li>
   );
-}
+};
 
 export default SearchedLocation;
