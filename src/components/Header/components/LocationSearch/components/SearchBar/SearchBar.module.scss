@@ -1,0 +1,17 @@
+@import '../../../../../../assets/styles/constants.scss';
+
+.searchBarForm {
+  .searchField {
+    border: 1px solid $border-field-color;
+    padding: 5px 5px 5px 25px;
+    margin: 5px;
+    &:focus {
+      outline: 0;
+    }
+
+    background-image: url('../../../../../../assets/img/icon-search.png');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 5px center;
+  }
+}

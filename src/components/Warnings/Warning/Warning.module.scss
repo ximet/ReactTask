@@ -1,0 +1,34 @@
+@import '../../../assets/styles/constants.scss';
+
+$warning-type-font-size: 14px;
+
+.item {
+  border: 1px solid $main-border-color;
+  border-radius: 10px;
+  padding: 15px;
+
+  .timestamp {
+    color: $additional-text-collor;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .type {
+    font-size: $warning-type-font-size;
+    color: $additional-text-collor;
+  }
+
+  .description {
+    margin: 15px 0;
+  }
+
+  .linkMore {
+    display: flex;
+    justify-content: flex-end;
+    color: $link-color;
+    text-decoration: none;
+  }
+}

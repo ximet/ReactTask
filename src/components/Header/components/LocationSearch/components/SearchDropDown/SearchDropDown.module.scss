@@ -1,0 +1,8 @@
+@import '../../../../../../assets/styles/constants.scss';
+
+.searchBarContainer {
+  position: absolute;
+  top: 100%;
+  background-color: $main-bg-color;
+  box-shadow: 0px 4px 4px $shadow-theme-color;
+}
