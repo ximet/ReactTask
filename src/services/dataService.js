@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FORECAST_PATHS, FORECAST_TYPES } from '../constants/constants';
+import { FORECAST_PATHS, FORECAST_TYPES } from '../constants/forecaApi';
 
 const instance = axios.create({
   baseURL: FORECAST_PATHS.baseUrl
@@ -38,7 +38,7 @@ export const dataService = {
 
   searchCity: async function (city) {
     try {
-      const response = await instance.get(FORECAST_PATHS.searchCityUrl + city, {
+      const response = await instance.get(`${FORECAST_PATHS.searchCityUrl}${city}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -52,7 +52,7 @@ export const dataService = {
 
   getCityInfo: async function (id) {
     try {
-      const response = await instance.get(FORECAST_PATHS.getCityInfoUrl + id, {
+      const response = await instance.get(`${FORECAST_PATHS.getCityInfoUrl}${id}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -66,7 +66,7 @@ export const dataService = {
 
   getCurrentForecast: async function (id) {
     try {
-      const response = await instance.get(FORECAST_PATHS.getCurrentWeatherUrl + id, {
+      const response = await instance.get(`${FORECAST_PATHS.getCurrentWeatherUrl}${id}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -80,7 +80,7 @@ export const dataService = {
 
   getForecast: async function (type, id) {
     try {
-      const response = await instance.get(FORECAST_PATHS.getForecastUrl + type + id, {
+      const response = await instance.get(`${FORECAST_PATHS.getForecastUrl}${type}${id}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }

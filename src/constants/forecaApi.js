@@ -6,7 +6,7 @@ export const FORECAST_PATHS = {
   getCurrentWeatherUrl: '/api/v1/current/',
   getForecastUrl: '/api/v1/forecast/',
   getForecastUrl: '/api/v1/forecast/',
-  getIcon: 'https://developer.foreca.com/static/images/symbols/'
+  getIconUrl: 'https://developer.foreca.com/static/images/symbols/'
 };
 
 export const FORECAST_TYPES = {

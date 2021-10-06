@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './WeatherForecast.module.scss';
 import { dataService } from '../../services/dataService';
-import { CURRENT_CITY_ID } from '../../constants/constants';
+import { CURRENT_CITY_ID } from '../../constants/forecaApi';
 
 import CityForecast from '../../layouts/CityForecast/CityForecast';
 import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
@@ -11,7 +11,7 @@ class WeatherForecast extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      dataIsReturned: false,
+      isDataReturned: false,
       cityId: CURRENT_CITY_ID,
       cityInfo: null,
       cityForecast: null,
@@ -37,7 +37,7 @@ class WeatherForecast extends React.PureComponent {
         dailyCityForecast,
         hourlyCityForecast,
         cityInfo,
-        dataIsReturned: true
+        isDataReturned: true
       });
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ class WeatherForecast extends React.PureComponent {
   }
 
   render() {
-    if (this.state.dataIsReturned) {
+    if (this.state.isDataReturned) {
       return (
         <div className={styles.weatherForecast}>
           <DetailedForecast
