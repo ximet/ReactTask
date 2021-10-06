@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './SearchBar.module.scss';
+import { delayDecorator } from '../../../../../../utils/decorators';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,12 +9,14 @@ class SearchBar extends React.Component {
     this.state = {
       searchSting: ''
     };
+
+    this.setChangingSearch = delayDecorator(this.props.onChangeSearchString, 1000);
   }
 
   onChangeSearchString = event => {
     const searchString = event.target.value;
     this.setState({ searchSting: searchString });
-    this.props.onChangeSearchString(searchString);
+    this.setChangingSearch(searchString);
   };
 
   render() {
