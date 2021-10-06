@@ -39,7 +39,6 @@ export const dataService = {
 
   getFullForecast: async function (id) {
     try {
-      console.log(this);
       const cityForecast = await this.getCurrentForecast(id);
       const dailyCityForecast = await this.getDailyForecast(id);
       const hourlyCityForecast = await this.getHourlyForecast(id);
