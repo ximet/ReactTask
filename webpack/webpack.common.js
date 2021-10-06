@@ -11,12 +11,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(\.js$|\.jsx?$)/,
+        test: /\.(js|jsx|ts|tsx)$/,
         loader: 'babel-loader',
         exclude: [/node_modules/],
-        options: {
-          sourceMap: true,
-        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -67,7 +64,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
   },
   plugins: [
     new webpack.ProgressPlugin(),
