@@ -1,3 +1,5 @@
+@import '../../assets/styles/constants/main.scss';
+
 .current-date {
   display: flex;
   align-items: center;
@@ -14,7 +16,7 @@
     flex-direction: column;
 
     .time {
-      font-size: 36px;
+      font-size: $font-size-lg;
     }
   }
 }

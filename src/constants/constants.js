@@ -10,8 +10,8 @@ export const FORECAST_PATHS = {
 };
 
 export const FORECAST_TYPES = {
-  daily: 'daily/',
-  hourly: 'hourly/'
+  day: 'daily/',
+  hour: 'hourly/'
 };
 
 export const CURRENT_CITY_ID = 100625144;

@@ -3,14 +3,13 @@
 .city-forecast {
   width: 30%;
   height: 100%;
-  background-color: #fff;
 
   .content {
-    justify-content: center;
     width: 80%;
+    justify-content: center;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #5171b0a1;
+    padding: 30px;
+    background-color: $transparent-darken-blue;
     color: $secondary-font-color;
     cursor: default;
   }
@@ -19,27 +18,27 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    margin: 10px 0;
+    margin: 15px 0;
 
     .temperature-degrees {
-      font-size: 114px;
-      font-weight: 600;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
       line-height: 100%;
-      margin-right: 5px;
+      margin: 0 5px 0 40px;
     }
   }
 
   .temperature-description {
     display: block;
     text-align: center;
-    font-size: 36px;
+    font-size: $font-size-lg;
   }
 
   .city-location {
     position: relative;
     display: block;
     text-align: center;
-    font-size: 18px;
+    font-size: $font-size-md;
   }
 
   .added-info {
@@ -50,14 +49,14 @@
     .vertical-line {
       content: '';
       width: 1px;
-      background-color: #fff;
+      background-color: $white;
     }
 
     .added-info-type,
     .added-info-value {
       display: flex;
       flex-direction: column;
-      margin: 0 20px;
+      margin: 0 15px;
     }
 
     .added-info-type-name {
