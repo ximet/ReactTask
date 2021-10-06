@@ -37,7 +37,34 @@ export const dataService = {
     }
   },
 
-  getDaylyForecast: async id => {
+  getFullForecast: async function (id) {
+    try {
+      console.log(this);
+      const cityForecast = await this.getCurrentForecast(id);
+      const dailyCityForecast = await this.getDailyForecast(id);
+      const hourlyCityForecast = await this.getHourlyForecast(id);
+
+      return { cityForecast, dailyCityForecast, hourlyCityForecast };
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getCurrentForecast: async id => {
+    try {
+      const response = await instance.get(FORECAST_PATHS.getCurrentWeather + id, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getDailyForecast: async id => {
     try {
       const response = await instance.get(FORECAST_PATHS.getDailyForecast + id, {
         headers: {
@@ -63,5 +90,5 @@ export const dataService = {
     } catch (error) {
       console.error(error);
     }
-  },
+  }
 };

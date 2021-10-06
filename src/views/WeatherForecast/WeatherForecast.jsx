@@ -7,9 +7,9 @@ import { CURRENT_CITY_ID } from '../../constants/constants';
 import CityForecast from '../../layouts/CityForecast/CityForecast';
 import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
 
-class WeatherForecast extends React.Component {
-  constructor() {
-    super();
+class WeatherForecast extends React.PureComponent {
+  constructor(props) {
+    super(props);
     this.state = {
       cityId: CURRENT_CITY_ID,
       cityForecast: null,
@@ -19,25 +19,18 @@ class WeatherForecast extends React.Component {
   }
 
   componentDidMount() {
-    dataService
-      .getForecastToken()
-      .then(() => {
-        return dataService.getDaylyForecast(this.state.cityId);
-      })
-      .then(data => {
-        const { forecast } = data;
-        const todayForecast = forecast[1];
+    (async () => {
+      try {
+        await dataService.getForecastToken();
 
-        this.setState({ dailyCityForecast: forecast, cityForecast: todayForecast });
-      })
-      .then(() => {
-        return dataService.getHourlyForecast(this.state.cityId);
-      })
-      .then(data => {
-        const { forecast } = data;
+        const { cityForecast, dailyCityForecast, hourlyCityForecast } =
+          await dataService.getFullForecast(this.state.cityId);
 
-        this.setState({ hourlyCityForecast: forecast });
-      });
+        this.setState({ cityForecast, dailyCityForecast, hourlyCityForecast });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }
 
   render() {

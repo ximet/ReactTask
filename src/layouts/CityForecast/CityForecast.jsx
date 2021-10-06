@@ -5,7 +5,9 @@ import styles from './CityForecast.module.scss';
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
 
-function CityForecast() {
+function CityForecast({ hourlyCityForecast, dailyCityForecast }) {
+
+  console.log(hourlyCityForecast);
   return (
     <div className={styles.cityForecast}>
       <div className={styles.cityForecastWrapper}>

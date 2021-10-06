@@ -2,6 +2,7 @@ export const FORECAST_PATHS = {
   baseUrl: '/api',
   tokenUrl: '/authorize/token',
   searchCityUrl: '/api/v1/location/search/',
+  getCurrentWeather: '/api/v1/current/',
   getDailyForecast: '/api/v1/forecast/daily/',
   getHourlyForecast: '/api/v1/forecast/hourly/'
 };
