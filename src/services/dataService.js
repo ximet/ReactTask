@@ -17,7 +17,7 @@ export const weatherAPI = {
   token: null,
   getHeaders() {
     return {
-      Authorization: `Bearer ${this.token}`      
+      Authorization: `Bearer ${this.token}`
     };
   },
   async getToken(user, password) {
@@ -43,7 +43,7 @@ export const weatherAPI = {
   async searchLocation(query) {
     const { url, dataKey } = DATA_TYPES[API_SEARCH_LOCATION_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${query}`, { headers : this.getHeaders() });
+      const response = await instance.get(`${url}${query}`, { headers: this.getHeaders() });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
@@ -54,7 +54,7 @@ export const weatherAPI = {
   async getCurrentWeather(locationId) {
     const { url, dataKey } = DATA_TYPES[API_GET_CURRENT_WEATHER_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${locationId}`, { headers : this.getHeaders() });
+      const response = await instance.get(`${url}${locationId}`, { headers: this.getHeaders() });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
@@ -65,10 +65,9 @@ export const weatherAPI = {
   async getForecast(forecastType, locationId) {
     const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
     try {
-      const response = await instance.get(
-        `${url}${forecastType}${locationId}`,
-        { headers : this.getHeaders() }
-      );
+      const response = await instance.get(`${url}${forecastType}${locationId}`, {
+        headers: this.getHeaders()
+      });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
