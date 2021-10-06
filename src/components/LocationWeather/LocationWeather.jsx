@@ -47,7 +47,7 @@ class LocationWeather extends PureComponent {
         const currentLocationDetailedWeather = await weatherAPI.getForecast(
           API_FORECAST_DETAILED,
           API_KIEV_ID,
-          API_FORECAST_DETAILED_PERIODS
+          { periods: API_FORECAST_DETAILED_PERIODS }
         );
         this.setState({ currentLocationDetailedWeather });
         console.log(currentLocationDetailedWeather);
