@@ -13,6 +13,7 @@ class WeatherForecast extends React.PureComponent {
     this.state = {
       dataIsReturned: false,
       cityId: CURRENT_CITY_ID,
+      cityInfo: null,
       cityForecast: null,
       dailyCityForecast: null,
       hourlyCityForecast: null
@@ -28,10 +29,16 @@ class WeatherForecast extends React.PureComponent {
     try {
       await dataService.getForecastToken();
 
-      const { cityForecast, dailyCityForecast, hourlyCityForecast } =
+      const { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo } =
         await dataService.getFullForecast(this.state.cityId);
 
-      this.setState({ cityForecast, dailyCityForecast, hourlyCityForecast, dataIsReturned: true });
+      this.setState({
+        cityForecast,
+        dailyCityForecast,
+        hourlyCityForecast,
+        cityInfo,
+        dataIsReturned: true
+      });
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +52,7 @@ class WeatherForecast extends React.PureComponent {
             hourlyCityForecast={this.state.hourlyCityForecast}
             dailyCityForecast={this.state.dailyCityForecast}
           />
-          <CityForecast cityForecast={this.state.cityForecast} />
+          <CityForecast cityForecast={this.state.cityForecast} cityInfo={this.state.cityInfo} />
         </div>
       );
     } else {

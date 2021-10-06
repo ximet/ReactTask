@@ -2,9 +2,15 @@ export const FORECAST_PATHS = {
   baseUrl: '/api',
   tokenUrl: '/authorize/token',
   searchCityUrl: '/api/v1/location/search/',
-  getCurrentWeather: '/api/v1/current/',
-  getDailyForecast: '/api/v1/forecast/daily/',
-  getHourlyForecast: '/api/v1/forecast/hourly/'
+  getCityInfoUrl: '/api/v1/location/',
+  getCurrentWeatherUrl: '/api/v1/current/',
+  getForecastUrl: '/api/v1/forecast/',
+  getForecastUrl: '/api/v1/forecast/'
 };
+
+export const FORECAST_TYPES = {
+  daily: 'daily/',
+  hourly: 'hourly/'
+}
 
 export const CURRENT_CITY_ID = 100625144;

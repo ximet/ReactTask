@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { FORECAST_PATHS } from '../constants/constants';
-
-let token = '';
+import { FORECAST_PATHS, FORECAST_TYPES } from '../constants/constants';
 
 const instance = axios.create({
   baseURL: FORECAST_PATHS.baseUrl
@@ -13,25 +11,13 @@ const forecastUserCredentials = {
 };
 
 export const dataService = {
-  getForecastToken: async () => {
+  token: null,
+
+  getForecastToken: async function () {
     try {
       const response = await instance.post(FORECAST_PATHS.tokenUrl, forecastUserCredentials);
 
-      token = response.data.access_token;
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  searchCity: async city => {
-    try {
-      const response = await instance.get(FORECAST_PATHS.searchCityUrl + city, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
-      return response.data;
+      this.token = response.data.access_token;
     } catch (error) {
       console.error(error);
     }
@@ -40,20 +26,21 @@ export const dataService = {
   getFullForecast: async function (id) {
     try {
       const cityForecast = await this.getCurrentForecast(id);
-      const dailyCityForecast = await this.getDailyForecast(id);
-      const hourlyCityForecast = await this.getHourlyForecast(id);
+      const dailyCityForecast = await this.getForecast(FORECAST_TYPES.daily, id);
+      const hourlyCityForecast = await this.getForecast(FORECAST_TYPES.hourly, id);
+      const cityInfo = await this.getCityInfo(id);
 
-      return { cityForecast, dailyCityForecast, hourlyCityForecast };
+      return { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo };
     } catch (error) {
       console.error(error);
     }
   },
 
-  getCurrentForecast: async id => {
+  searchCity: async function (city) {
     try {
-      const response = await instance.get(FORECAST_PATHS.getCurrentWeather + id, {
+      const response = await instance.get(FORECAST_PATHS.searchCityUrl + city, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${this.token}`
         }
       });
 
@@ -63,11 +50,11 @@ export const dataService = {
     }
   },
 
-  getDailyForecast: async id => {
+  getCityInfo: async function (id) {
     try {
-      const response = await instance.get(FORECAST_PATHS.getDailyForecast + id, {
+      const response = await instance.get(FORECAST_PATHS.getCityInfoUrl + id, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${this.token}`
         }
       });
 
@@ -77,11 +64,25 @@ export const dataService = {
     }
   },
 
-  getHourlyForecast: async id => {
+  getCurrentForecast: async function (id) {
     try {
-      const response = await instance.get(FORECAST_PATHS.getHourlyForecast + id, {
+      const response = await instance.get(FORECAST_PATHS.getCurrentWeatherUrl + id, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${this.token}`
+        }
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getForecast: async function (type, id) {
+    try {
+      const response = await instance.get(FORECAST_PATHS.getForecastUrl + type + id, {
+        headers: {
+          Authorization: `Bearer ${this.token}`
         }
       });
 
