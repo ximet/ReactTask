@@ -18,16 +18,16 @@ import {
 import { weatherAPI } from './services/dataService';
 
 function App() {
-  weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
-    weatherAPI.searchLocation('Kiev').then(locations => console.log(locations));
-    weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
-    weatherAPI
-      .getForecast(API_FORECAST_DETAILED_ENDPOINT, API_KIEV_ID)
-      .then(forecast => console.log(forecast));
-    weatherAPI
-      .getForecast(API_FORECAST_DAILY_ENDPOINT, API_KIEV_ID)
-      .then(forecast => console.log(forecast));
-  });
+  // weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
+  //   weatherAPI.searchLocation('Kiev').then(locations => console.log(locations));
+  //   weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
+  //   weatherAPI
+  //     .getForecast(API_FORECAST_DETAILED_ENDPOINT, API_KIEV_ID)
+  //     .then(forecast => console.log(forecast));
+  //   weatherAPI
+  //     .getForecast(API_FORECAST_DAILY_ENDPOINT, API_KIEV_ID)
+  //     .then(forecast => console.log(forecast));
+  // });
 
   const [theme, setTheme] = useState(THEME_LIGHT);
 
