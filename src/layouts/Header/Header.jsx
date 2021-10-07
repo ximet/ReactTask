@@ -7,7 +7,7 @@ import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
 
 function Header({ theme, onSwitchTheme }) {
   return (
-    <div className={[styles.header, theme].join(' ')}>
+    <div className={styles.header}>
       <NavBar />
       <div className={styles.wrapper}>
         <SearchInput />

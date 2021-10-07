@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { THEMES } from './constants/themes';
+import './assets/styles/constants/theme.css'
 
 import Header from './Layouts/Header/Header';
 import Main from './layouts/Main/Main';
@@ -18,9 +19,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header theme={theme} onSwitchTheme={switchTheme} />
-      <Main />
-      <Footer />
+      <div className={theme}>
+        <Header theme={theme} onSwitchTheme={switchTheme} />
+        <Main />
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

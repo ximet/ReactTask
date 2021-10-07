@@ -1,7 +1,7 @@
-$lighten-blue: #f0f5ff;
-$blue: #5171b0;
-$black: #333333;
-$white: #ffffff;
+$lighten-blue: var(--lighten-blue);
+$blue: var(--blue);
+$black: var(--black);
+$white: var(--white);
 $grey: #9eaed1;
 $yellow: #ffd158;
 
@@ -9,11 +9,11 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubu
   'Open Sans', 'Helvetica Neue', sans-serif;
 $font-size: 18px;
 
-$secondary-font-color: $white;
-$primary-font-color: $black;
+$secondary-font-color: var(--secondary-font-color);
+$primary-font-color: var(--primary-font-color);
 
-$primary-bg-color: $lighten-blue;
-$secondary-bg-color: $blue;
+$primary-bg-color: var(--primary-bg-color);
+$secondary-bg-color: var(--secondary-bg-color);
 
 $light-btn-bg-color: $yellow;
 $dark-btn-bg-color: $blue;
