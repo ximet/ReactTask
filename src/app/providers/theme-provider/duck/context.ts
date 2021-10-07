@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IContext } from './types';
+import { Context } from './types';
 
-export default React.createContext<IContext>({
+export default React.createContext<Context>({
   themeName: 'light',
   setThemeName: () => {},
 });
