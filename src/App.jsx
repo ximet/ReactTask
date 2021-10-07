@@ -8,8 +8,14 @@ import Header from './Layouts/Header/Header';
 import Main from './layouts/Main/Main';
 import Footer from './layouts/Footer/Footer';
 
+const getInitialTheme = () => localStorage.getItem('theme') || THEMES.light;
+
 function App() {
-  const [theme, setTheme] = useState(THEMES.light);
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   function switchTheme() {
     const currentTheme = theme === THEMES.light ? THEMES.dark : THEMES.light;
