@@ -7,9 +7,9 @@ import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
 
 function Header() {
   return (
-    <div className={classes.header}>
+    <div className={styles.header}>
       <NavBar />
-      <div className={classes.wrapper}>
+      <div className={styles.wrapper}>
         <SearchInput />
         <ThemeSwitcher />
       </div>
