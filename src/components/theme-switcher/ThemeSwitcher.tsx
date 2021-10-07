@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { useTranslation } from 'hooks';
-import { LIGHT, DARK } from 'constants/theme';
 import { ThemeContext } from 'app/providers/theme-provider/duck';
-import { Switcher } from 'components';
+import { Switcher, SwitcherProps } from 'components';
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher: React.FC<
+  Omit<SwitcherProps, 'label' | 'checked' | 'onChange'>
+> = (props) => {
   const { themeName, setThemeName } = React.useContext(ThemeContext);
   const { t } = useTranslation('common');
 
   const toggleTheme = () =>
-    setThemeName((prevTheme) => (prevTheme === LIGHT ? DARK : LIGHT));
+    setThemeName((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
 
   return (
     <Switcher
+      {...props}
       label={t('dark_theme')}
-      checked={themeName === DARK}
+      checked={themeName === 'dark'}
       onChange={toggleTheme}
     />
   );

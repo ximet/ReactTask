@@ -1,6 +1,6 @@
 import * as Grid from './grid';
 
-export { default as Box } from './box';
+export { default as Card } from './card';
 export { default as Typography } from './typography';
 export { default as VisuallyHidden } from './visually-hidden';
 export { default as ThemeSwitcher } from './theme-switcher';

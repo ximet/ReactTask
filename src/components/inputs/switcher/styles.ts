@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const StyledSwitcherButton = styled('button')`
+export const Wrapper = styled('div')`
+  display: flex;
+  gap: ${(props) => props.theme.spacing(2)};
+`;
+
+export const SwitcherButton = styled('button')`
   --switch-height: ${(props) => props.theme.typography.fontSizes[3]};
   --switch-width: ${(props) => props.theme.typography.fontSizes[0]};
   --switch-thumb-size: calc(var(--switch-height) - 1px * 2);
@@ -61,5 +66,3 @@ const StyledSwitcherButton = styled('button')`
     transition: all ${(props) => props.theme.transition};
   }
 `;
-
-export default StyledSwitcherButton;
