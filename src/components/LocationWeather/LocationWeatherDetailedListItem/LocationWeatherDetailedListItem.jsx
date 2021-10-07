@@ -28,8 +28,8 @@ function LocationWeatherDetailedListItem({ detailedData }) {
       </div>
       <img
         src={`${API_WIND_IMG_URL_PREFIX}${
-                WIND_DIRECTIONS_TO_IMG[detailedData.windDirString]
-             }${API_WIND_IMG_URL_POSTFIX}`}
+          WIND_DIRECTIONS_TO_IMG[detailedData.windDirString]
+        }${API_WIND_IMG_URL_POSTFIX}`}
         alt={`${detailedData.windDirString} ${detailedData.windSpeed} m/s`}
         className="location-weather__detailed-list-item-wing-img"
       />

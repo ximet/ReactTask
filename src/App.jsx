@@ -29,13 +29,13 @@ function App() {
   //     .then(forecast => console.log(forecast));
   // });
 
-  // navigator.geolocation.getCurrentPosition(onSuccess, onError);  
+  // navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-  // function onSuccess({ coords }) {    
+  // function onSuccess({ coords }) {
   //   weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
-  //     weatherAPI.getLocationInfo(`${coords.longitude},${coords.latitude}`).then(locations => console.log(locations))      
+  //     weatherAPI.getLocationInfo(`${coords.longitude},${coords.latitude}`).then(locations => console.log(locations))
   //   });
-    
+
   // }
   // function onError(error) {
   //   console.log(error)
