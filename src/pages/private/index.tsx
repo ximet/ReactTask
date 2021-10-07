@@ -3,7 +3,7 @@ import { routes } from 'configs';
 
 const PrivateRoutes = () => (
   <Switch>
-    <Route component={null} path={routes.home} exact />
+    {/* <Route component={null} path={routes.home} exact /> */}
     <Redirect to={routes.home} />
   </Switch>
 );
