@@ -27,7 +27,7 @@ function App() {
     <BrowserRouter>
       <div className={theme}>
         <Header theme={theme} onSwitchTheme={switchTheme} />
-        <Main />
+        <Main theme={theme} />
         <Footer />
       </div>
     </BrowserRouter>
