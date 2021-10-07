@@ -9,7 +9,7 @@ import {
   API_FORECAST_DETAILED_ENDPOINT
 } from '../../constants/constants';
 import { weatherAPI } from '../../services/dataService';
-import LocationWeatherCurrent from './LocationWeatherCurrent/LocationWeatherCurrent';
+import LocationWeatherCurrentInfo from './LocationWeatherCurrentInfo/LocationWeatherCurrentInfo';
 import LocationWeatherDailyList from './LocationWeatherDailyList/LocationWeatherDailyList';
 import LocationWeatherDetailedList from './LocationWeatherDetailedList/LocationWeatherDetailedList';
 
@@ -84,7 +84,7 @@ class LocationWeather extends PureComponent {
   render() {
     return (
       <div className="location-weather">
-        <LocationWeatherCurrent
+        <LocationWeatherCurrentInfo
           currentLocationWeather={this.state.currentLocationWeather}
           currentLocationInfo={this.state.currentLocationInfo}
         />

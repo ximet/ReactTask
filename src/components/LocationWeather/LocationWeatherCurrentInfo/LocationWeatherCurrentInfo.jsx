@@ -6,9 +6,9 @@ import {
   WIND_DIRECTIONS_TO_IMG
 } from '../../../constants/constants';
 import { formatTemperature } from '../../../utils/utils';
-import './LocationWeatherCurrent.css';
+import './LocationWeatherCurrentInfo.css';
 
-function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo }) {
+function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInfo }) {
   const locationName = currentLocationInfo ? currentLocationInfo.name : '';
   const locationCountry = currentLocationInfo ? currentLocationInfo.country : '';
   const currentWeather = currentLocationWeather ? (
@@ -65,4 +65,4 @@ function LocationWeatherCurrent({ currentLocationWeather, currentLocationInfo })
   );
 }
 
-export default LocationWeatherCurrent;
+export default LocationWeatherCurrentInfo;
