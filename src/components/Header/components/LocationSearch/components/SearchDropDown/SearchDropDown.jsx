@@ -1,23 +1,36 @@
+// @flow
+
 import SearchBar from '../SearchBar/SearchBar';
 import SearchedLocations from '../SearchedLocations/SearchedLocations';
 import classes from './SearchDropDown.module.scss';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import ApiService from '../../../../../../services/ForecastApiService';
+import type {
+  LocationType,
+  SearchedLocationsType,
+  LocationsResponseType
+} from '../../../../../../types/LocationType';
+import type { SearchDropDownPropsType } from './SearchDropDownPropsType';
 
-function SearchDropDown({ isOpenDropDown, ...props }) {
+function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): React$Node {
   const [searchString, setSearchString] = useState('');
   const [locations, setLocations] = useState([]);
   const [cookies] = useCookies(['token']);
 
-  useEffect(async () => {
-    const searchedResult = await getSearchLocations(searchString, cookies);
-    setLocations(searchedResult.locations);
+  useEffect(() => {
+    const setLocationsValue = async (): Promise<void> => {
+      const searchedResult: SearchedLocationsType = await getSearchLocations(searchString, cookies);
+      setLocations(searchedResult.locations);
+    };
+
+    setLocationsValue();
   }, [searchString]);
 
-  const getSearchLocations = async (locationQueryStr, cookies) => {
+  const getSearchLocations = async (locationQueryStr, cookies): Promise<LocationsResponseType> => {
     let responseData = {
-      status: false
+      status: false,
+      locations: []
     };
 
     try {
@@ -25,10 +38,10 @@ function SearchDropDown({ isOpenDropDown, ...props }) {
       const url = `/api/v1/location/search/${locationQueryStr}`;
 
       responseData = await ApiService.getLocationsSearch(url, accessToken);
-      console.log(responseData);
     } catch (error) {
       console.error(error);
     }
+    console.log(responseData);
 
     return responseData;
   };
