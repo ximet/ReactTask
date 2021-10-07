@@ -19,7 +19,7 @@ import { weatherAPI } from './services/dataService';
 
 function App() {
   // weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
-  //   weatherAPI.searchLocation('Kiev').then(locations => console.log(locations));
+  //   weatherAPI.searchLocation('Moscow').then(locations => console.log(locations));
   //   weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
   //   weatherAPI
   //     .getForecast(API_FORECAST_DETAILED_ENDPOINT, API_KIEV_ID)
@@ -28,6 +28,18 @@ function App() {
   //     .getForecast(API_FORECAST_DAILY_ENDPOINT, API_KIEV_ID)
   //     .then(forecast => console.log(forecast));
   // });
+
+  // navigator.geolocation.getCurrentPosition(onSuccess, onError);  
+
+  // function onSuccess({ coords }) {    
+  //   weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
+  //     weatherAPI.getLocationInfo(`${coords.longitude},${coords.latitude}`).then(locations => console.log(locations))      
+  //   });
+    
+  // }
+  // function onError(error) {
+  //   console.log(error)
+  // }
 
   const [theme, setTheme] = useState(THEME_LIGHT);
 

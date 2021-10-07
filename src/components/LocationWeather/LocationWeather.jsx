@@ -4,7 +4,7 @@ import {
   API_AUTH_PASS,
   API_AUTH_USERNAME,
   API_FORECAST_DETAILED_PERIODS,
-  API_KIEV_ID,
+  API_DEFAULT_ID,
   API_FORECAST_DAILY_ENDPOINT,
   API_FORECAST_DETAILED_ENDPOINT
 } from '../../constants/constants';
@@ -17,7 +17,7 @@ class LocationWeather extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      currentLocationId: API_KIEV_ID,
+      defaultLocationId: API_DEFAULT_ID,
       currentLocationInfo: null,
       currentLocationWeather: null,
       currentLocationDailyWeather: null,
@@ -31,23 +31,42 @@ class LocationWeather extends PureComponent {
   componentDidMount() {
     (async () => {
       try {
+        let geoPosition = null;
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            geoPosition = position;
+          },
+          error => {
+            console.log('Could not get geo position from browser', error);
+          }
+        );
+
         await weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS);
-        const currentLocationWeather = await weatherAPI.getCurrentWeather(API_KIEV_ID);
+
+        const currentLocationInfo = await weatherAPI.getLocationInfo(
+          geoPosition
+            ? `${geoPosition.coords.longitude},${geoPosition.coords.latitude}`
+            : this.state.defaultLocationId
+        );
+        this.setState({ currentLocationInfo });
+
+        const currentLocationWeather = await weatherAPI.getCurrentWeather(
+          this.state.currentLocationInfo.id
+        );
         this.setState({
           currentLocationWeather,
           activeDayDate: new Date(currentLocationWeather.time).setHours(0, 0, 0, 0)
         });
 
-        const currentLocationInfo = await weatherAPI.getLocationInfo(API_KIEV_ID);
-        this.setState({ currentLocationInfo });
         const currentLocationDailyWeather = await weatherAPI.getForecast(
           API_FORECAST_DAILY_ENDPOINT,
-          API_KIEV_ID
+          this.state.currentLocationInfo.id
         );
         this.setState({ currentLocationDailyWeather });
+
         const currentLocationDetailedWeather = await weatherAPI.getForecast(
           API_FORECAST_DETAILED_ENDPOINT,
-          API_KIEV_ID,
+          this.state.currentLocationInfo.id,
           { periods: API_FORECAST_DETAILED_PERIODS }
         );
         this.setState({ currentLocationDetailedWeather });

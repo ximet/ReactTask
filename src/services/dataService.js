@@ -52,10 +52,10 @@ export const weatherAPI = {
     }
   },
 
-  async getLocationInfo(locationId) {
+  async getLocationInfo(location) {
     const { url } = DATA_TYPES[API_GET_LOCATION_INFO_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${locationId}`, { headers: this.getHeaders() });
+      const response = await instance.get(`${url}${location}`, { headers: this.getHeaders() });
       return response.data;
     } catch (error) {
       console.log(error);

@@ -57,3 +57,6 @@ export const WIND_DIRECTIONS_TO_IMG = {
 };
 
 export const API_KIEV_ID = 100703448;
+export const API_MOSCOW_ID = 100524901;
+
+export const API_DEFAULT_ID = API_KIEV_ID;
