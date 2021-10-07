@@ -2,7 +2,6 @@
   box-sizing: border-box;
   height: 84px;
   width: 100%;
-  background-color: var(--header-bg-color);
   display: flex;
   align-items: center;
   justify-content: space-between;

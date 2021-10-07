@@ -1,6 +1,10 @@
 import nightBgImage from '../public/images/nightBgImage.png';
 import sunnyBgImage from '../public/images/sunnyBgImage.png';
 
+const urls = {
+  accessToken: '/getAccessToken'
+};
+
 const themes = {
   light: 'light',
   dark: 'dark'
@@ -11,4 +15,4 @@ const bgImages = {
   light: sunnyBgImage
 };
 
-export { themes, bgImages };
+export { themes, bgImages, urls };

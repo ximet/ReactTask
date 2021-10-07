@@ -26,8 +26,7 @@ function Slider({ slides, slidesToShow = 4, theme }) {
 
   return (
     <div className={classes.container}>
-      <div className={classes.leftArrow} onClick={scrollLeft}>
-      </div>
+      <div className={classes.leftArrow} onClick={scrollLeft}></div>
       <div id="slider" ref={sliderRef} className={classes.slides}>
         {slides.map(slide => {
           return (
@@ -41,8 +40,7 @@ function Slider({ slides, slidesToShow = 4, theme }) {
           );
         })}
       </div>
-      <div className={classes.rightArrow} onClick={scrollRight}>
-      </div>
+      <div className={classes.rightArrow} onClick={scrollRight}></div>
     </div>
   );
 }
