@@ -6,7 +6,6 @@ import CityForecast from './layouts/CityForecast/CityForecast';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 import DailyForecasts from './layouts/dailyForecasts/DailyForecasts';
 import HourlyForecasts from './layouts/hourlyForecasts/HourlyForecasts';
-import { getAccessToken } from './api/weatherApi';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -17,13 +16,6 @@ const useLocalStorageTheme = initialTheme => {
 
   return [theme, setTheme];
 };
-
-const getToken = async () => {
-  const token = await getAccessToken();
-  console.log(token);
-};
-
-getToken();
 
 function App() {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
