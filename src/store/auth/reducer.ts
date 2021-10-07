@@ -1,11 +1,13 @@
-import * as actionTypes from './types';
+import { AnyAction } from 'redux';
+import { AuthState } from './types';
+import * as actionTypes from './actionTypes';
 
-const initialState = {
+const initialState: AuthState = {
   isLoggedIn: false,
   loading: false,
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: AnyAction): AuthState => {
   switch (action.type) {
     case actionTypes.SET_LOGGED_IN:
       return { ...state, isLoggedIn: action.payload };
