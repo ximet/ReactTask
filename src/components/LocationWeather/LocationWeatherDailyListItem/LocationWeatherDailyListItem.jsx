@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import { API_SYMBOL_URL_POSTFIX, API_SYMBOL_URL_PREFIX } from '../../../constants/constants';
+import { dayDataType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherDailyListItem.css';
 
@@ -35,5 +37,11 @@ function LocationWeatherDailyListItem({ dayData, isActive, setActiveDayDate }) {
     </li>
   );
 }
+
+LocationWeatherDailyListItem.propTypes = {
+  dayData: dayDataType,
+  isActive: PropTypes.bool.isRequired,
+  setActiveDayDate: PropTypes.func.isRequired
+};
 
 export default LocationWeatherDailyListItem;

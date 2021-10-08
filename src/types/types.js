@@ -33,12 +33,14 @@ export const currentLocationWeatherType = PropTypes.shape({
     visibility: number
 });
 
-export const currentLocationDailyWeatherType = PropTypes.arrayOf(PropTypes.shape({
-    "date": string.isRequired,
-    "symbol": string.isRequired,
-    "maxTemp": number.isRequired,
-    "minTemp": number.isRequired,
-    "precipAccum": number,
-    "maxWindSpeed": number.isRequired,
-    "windDir": number
-}));
+export const dayDataType = PropTypes.shape({
+    date: string.isRequired,
+    symbol: string.isRequired,
+    maxTemp: number.isRequired,
+    minTemp: number.isRequired,
+    precipAccum: number,
+    maxWindSpeed: number.isRequired,
+    windDir: number
+});
+
+export const currentLocationDailyWeatherType = PropTypes.arrayOf(dayDataType);
