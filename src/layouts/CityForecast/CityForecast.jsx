@@ -17,8 +17,6 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
   const symbolPhrase = weather.symbolPhrase[0].toUpperCase() + weather.symbolPhrase.slice(1);
   const themeBg = theme === THEMES.light ? lightBg : darkBg;
 
-  console.log(theme);
-
   return (
     <div className={styles.cityForecast}>
       <img className={styles.cityForecastBg} src={themeBg} />

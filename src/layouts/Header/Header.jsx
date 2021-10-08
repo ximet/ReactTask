@@ -11,7 +11,7 @@ function Header({ theme, onSwitchTheme }) {
       <NavBar />
       <div className={styles.wrapper}>
         <SearchInput />
-        <ThemeSwitcher theme={theme} onSwitchTheme={onSwitchTheme} />
+        <ThemeSwitcher theme={theme} onSwitch={onSwitchTheme} />
       </div>
     </div>
   );
