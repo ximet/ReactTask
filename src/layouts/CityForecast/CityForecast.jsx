@@ -1,20 +1,25 @@
 import React from 'react';
 
 import styles from './CityForecast.module.scss';
+import { THEMES } from '../../constants/themes';
 import LocationIcon from '../../assets/images/location-icon.png';
 import WindIcon from '../../assets/images/wind-icon.png';
 import HumidityIcon from '../../assets/images/hum-icon.png';
+import lightBg from '../../assets/images/light-bg-img.jpg';
+import darkBg from '../../assets/images/dark-bg-img.jpg';
 
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
 import VerticalLine from '../../components/VerticalLine/VerticalLine';
 
-function CityForecast({ cityForecast, cityInfo }) {
+function CityForecast({ cityForecast, cityInfo, theme }) {
   const weather = cityForecast.current;
   const symbolPhrase = weather.symbolPhrase[0].toUpperCase() + weather.symbolPhrase.slice(1);
+  const themeBg = theme === THEMES.light ? lightBg : darkBg;
 
   return (
     <div className={styles.cityForecast}>
+      <img className={styles.cityForecastBg} src={themeBg} />
       <div className={styles.content}>
         <CurrentDate weatherImg={weather.symbol} />
         <div className={styles.cityTemperature}>

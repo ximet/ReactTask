@@ -18,7 +18,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -41,13 +41,8 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        oneOf: [
+        use: [
           {
-            // load svg modules to be displayed as icons/images
-            loader: 'svg-react-loader'
-          },
-          {
-            // load svg files normally (eg. fonts, etc)
             loader: 'url-loader?limit=100000'
           }
         ]

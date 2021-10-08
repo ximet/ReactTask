@@ -6,12 +6,18 @@ import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
 import Info from '../../views/Info/Info';
 import Feedback from '../../views/Feedback/Feedback';
 
-function Main() {
+function Main({ theme }) {
   return (
     <div className={styles.main}>
-      <Route exact path="/" component={WeatherForecast} />
-      <Route path="/info" component={Info} />
-      <Route path="/feedback" component={Feedback} />
+      <Route exact path="/">
+        <WeatherForecast theme={theme} />
+      </Route>
+      <Route path="/info">
+        <Info />
+      </Route>
+      <Route path="/feedback">
+        <Feedback />
+      </Route>
     </div>
   );
 }
