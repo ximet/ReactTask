@@ -209,4 +209,3 @@ const currentCityData = {
 };
 
 export { dailyForecasts, hourlyForecasts, currentCityData };
-

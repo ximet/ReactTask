@@ -13,9 +13,6 @@
 }
 
 [data-theme='dark'] {
-  --navlink-color: white;
-  --theme-sweetcher-text-color: white;
-  --header-bg-color: black;
   --search-bar-bg-color: linear-gradient(
     180deg,
     #000000 0%,
@@ -34,9 +31,6 @@
 }
 
 [data-theme='light'] {
-  --navlink-color: black;
-  --theme-sweetcher-text-color: black;
-  --header-bg-color: white;
   --search-bar-bg-color: linear-gradient(180deg, #79b6fe 0%, rgba(64, 48, 255, 0) 100%);
   --search-bar-input-text-color: white;
   --search-bar-input-placeholder-text-color: white;
