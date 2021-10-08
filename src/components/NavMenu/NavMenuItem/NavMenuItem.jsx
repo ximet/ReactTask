@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './NavMenuItem.css';
 
 function NavMenuItem({ text, link }) {
@@ -10,5 +11,10 @@ function NavMenuItem({ text, link }) {
     </li>
   );
 }
+
+NavMenuItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
+};
 
 export default NavMenuItem;
