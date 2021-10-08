@@ -1,25 +1,27 @@
 import { TOKEN } from 'constants/localStorage';
+import { LoginSchema } from 'types/schemas';
 import * as authApi from 'services/auth/api';
-import * as actionTypes from './types';
+import * as actionTypes from './actionTypes';
+import { AppThunk } from '../types';
 
-export const setLoggedIn = (payload) => ({
+export const setLoggedIn = (payload: boolean) => ({
   type: actionTypes.SET_LOGGED_IN,
   payload,
 });
 
-export const setLoading = (payload) => ({
+export const setLoading = (payload: boolean) => ({
   type: actionTypes.SET_LOADING,
   payload,
 });
 
-export const login = (payload) => (dispatch) => {
+export const login: AppThunk<LoginSchema> = (payload) => (dispatch) => {
   dispatch(setLoading(true));
 
   return (
     authApi
-      .login(payload)
+      .login({ data: payload })
       .then((response) => {
-        localStorage.setItem(TOKEN, response.access_token);
+        localStorage.setItem(TOKEN, response.data.access_token);
         setLoggedIn(true);
       })
       // TODO: add error reducer

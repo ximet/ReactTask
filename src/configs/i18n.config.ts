@@ -12,8 +12,9 @@ i18n
   )
   .use(initReactI18next)
   .init({
-    lng: ['en'],
+    lng: 'en',
     fallbackLng: 'en',
+    supportedLngs: ['en'],
     keySeparator: false,
     ns: ['login', 'common'],
     defaultNS: 'common',

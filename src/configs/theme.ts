@@ -1,3 +1,5 @@
+import { DefaultTheme } from 'styled-components';
+
 const globalTheme = {
   shape: {
     borderRadius: '4px',
@@ -55,7 +57,7 @@ const globalTheme = {
   },
 };
 
-export const lightTheme = {
+export const lightTheme: DefaultTheme = {
   ...globalTheme,
   palette: {
     ...globalTheme.palette,
@@ -64,7 +66,7 @@ export const lightTheme = {
   },
 };
 
-export const darkTheme = {
+export const darkTheme: DefaultTheme = {
   ...globalTheme,
   palette: {
     ...globalTheme.palette,
