@@ -43,7 +43,7 @@ function LocationWeatherDetailedListItem({ detailedData }) {
 }
 
 LocationWeatherDetailedListItem.propTypes = {
-  detailedData: detailedDataType,  
+  detailedData: detailedDataType.isRequired
 };
 
 export default LocationWeatherDetailedListItem;

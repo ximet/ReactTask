@@ -39,7 +39,7 @@ function LocationWeatherDailyListItem({ dayData, isActive, setActiveDayDate }) {
 }
 
 LocationWeatherDailyListItem.propTypes = {
-  dayData: dayDataType,
+  dayData: dayDataType.isRequired,
   isActive: PropTypes.bool.isRequired,
   setActiveDayDate: PropTypes.func.isRequired
 };
