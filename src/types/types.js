@@ -44,3 +44,18 @@ export const dayDataType = PropTypes.shape({
 });
 
 export const currentLocationDailyWeatherType = PropTypes.arrayOf(dayDataType);
+
+export const detailedDataType = PropTypes.shape({
+    "time": string.isRequired,
+    "symbol": string.isRequired,
+    "temperature": number.isRequired,
+    "feelsLikeTemp": number,
+    "windSpeed": number.isRequired,
+    "windGust": number,
+    "windDir": number,
+    "windDirString": string.isRequired,
+    "precipProb": number,
+    "precipAccum": number
+});
+
+export const currentLocationDetailedWeatherType = PropTypes.arrayOf(detailedDataType);
