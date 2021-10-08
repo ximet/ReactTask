@@ -41,7 +41,6 @@ function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): 
     } catch (error) {
       console.error(error);
     }
-    console.log(responseData);
 
     return responseData;
   };
