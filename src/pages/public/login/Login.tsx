@@ -1,20 +1,21 @@
 import * as Components from 'components';
 import { useTranslation } from 'hooks';
-import { StyledBox, StyledHeader, Form } from './components';
+import { Form } from './components';
+import * as S from './styles';
 
 const Login = () => {
   const { t } = useTranslation('login');
 
   return (
-    <StyledBox>
-      <StyledHeader>
+    <S.Box>
+      <S.Header>
         <Components.Typography as="h1" variant="h1">
           {t('login_title')}
         </Components.Typography>
         <Components.ThemeSwitcher />
-      </StyledHeader>
+      </S.Header>
       <Form />
-    </StyledBox>
+    </S.Box>
   );
 };
 

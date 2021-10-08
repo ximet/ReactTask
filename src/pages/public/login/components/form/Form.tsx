@@ -1,16 +1,26 @@
 // example class component
 import * as React from 'react';
+import { AnyAction } from 'redux';
 import { connect } from 'react-redux';
-import { withTranslation } from 'react-i18next';
-import { reduxForm, Field } from 'redux-form';
+import { ThunkDispatch } from 'redux-thunk';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form';
+import { withTranslation, TFunction } from 'react-i18next';
 import * as Components from 'components';
 import * as authActions from 'store/auth/actions';
-import { StyledWrapper } from './components';
+import { LoginSchema } from 'types/schemas';
+import { RootState } from 'store/types';
+import * as S from './styles';
 
-class Form extends React.Component {
-  onSubmit = (values) => {
+interface FormProps {
+  dispatch: ThunkDispatch<RootState, void, AnyAction>;
+  t: TFunction;
+}
+class Form extends React.Component<
+  InjectedFormProps<LoginSchema, FormProps> & FormProps
+> {
+  onSubmit = (values: LoginSchema): void => {
     const { dispatch } = this.props;
-    dispatch(authActions.login({ data: values }));
+    dispatch(authActions.login(values));
   };
 
   render() {
@@ -18,7 +28,7 @@ class Form extends React.Component {
 
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
-        <StyledWrapper>
+        <S.Wrapper>
           <Field
             name="email"
             component={Components.TextInput}
@@ -31,7 +41,7 @@ class Form extends React.Component {
             label={t('password')}
             type="password"
           />
-        </StyledWrapper>
+        </S.Wrapper>
         {/* TODO: add spinner */}
         <Components.Button type="submit" role="button">
           {t('login_title')}
@@ -41,9 +51,9 @@ class Form extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ loading: state.auth.loading });
+const mapStateToProps = (state: RootState) => ({ loading: state.auth.loading });
 
-const ReduxForm = reduxForm({ form: 'login' })(Form);
+const ReduxForm = reduxForm<LoginSchema, FormProps>({ form: 'login' })(Form);
 const ConnectedForm = connect(mapStateToProps)(ReduxForm);
 
 export default withTranslation('login')(ConnectedForm);
