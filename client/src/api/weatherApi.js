@@ -10,11 +10,14 @@ export const getAccessToken = async () => {
   }
 };
 
-export const getCurrentWeather = async (location, token) => {
+export const setAccessToken = (token) => {
+  weatherApi.interceptors.request.use({headers: { Authorization: `Bearer ${token}` }})
+}
+
+export const getCurrentWeather = async (location) => {
   try {
-    const { data } = await weatherApi.get(`${urls.currentWeather}${location}`, {
-        headers: {  Authorization: `Bearer ${token}` }
-    });
+    const { data } = await weatherApi.get(`${urls.currentWeather}${location}`);
+
     return data;
   } catch (e) {
     console.error(e);
@@ -23,9 +26,8 @@ export const getCurrentWeather = async (location, token) => {
 
 export const locationSearch = async (query, token) => {
   try {
-    const { data } = await weatherApi.get(`${urls.locatonSearch}${query}`, {
-        headers: {  Authorization: `Bearer ${token}` }
-    });
+    const { data } = await weatherApi.get(`${urls.locatonSearch}${query}`);
+
     return data;
   } catch (e) {
     console.error(e);
@@ -33,23 +35,21 @@ export const locationSearch = async (query, token) => {
 };
 
 export const getHourlyWeather = async (location, token) => {
-    try {
-      const { data } = await weatherApi.get(`${urls.hourlyWeather}${location}`, {
-          headers: {  Authorization: `Bearer ${token}` }
-      });
-      return data;
-    } catch (e) {
-      console.error(e);
-    }
+  try {
+    const { data } = await weatherApi.get(`${urls.hourlyWeather}${location}`);
+
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export const getDailyWeather = async (location, token) => {
-    try {
-      const { data } = await weatherApi.get(`${urls.dailyWeather}${location}`, {
-          headers: {  Authorization: `Bearer ${token}` }
-      });
-      return data;
-    } catch (e) {
-      console.error(e);
-    }
+  try {
+    const { data } = await weatherApi.get(`${urls.dailyWeather}${location}`);
+    
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };
