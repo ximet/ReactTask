@@ -1,0 +1,30 @@
+@import '../../assets/styles/constants/main.scss';
+
+.search-wrapper {
+  position: relative;
+  width: 60%;
+  height: 100%;
+
+  .search-input {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: $primary-bg-color;
+    border-radius: 6px;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    font-size: $font-size-xs;
+    color: $lighten-black;
+
+    &::placeholder {
+      color: $lighten-black;
+    }
+  }
+
+  .search-input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
