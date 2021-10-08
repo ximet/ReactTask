@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { currentLocationDetailedWeatherType } from '../../../types/types';
+import { CurrentLocationDetailedWeatherType } from '../../../types/types';
 import LocationWeatherDetailedListItem from '../LocationWeatherDetailedListItem/LocationWeatherDetailedListItem';
 
 import './LocationWeatherDetailedList.css';
@@ -24,7 +24,7 @@ function LocationWeatherDetailedList({ currentLocationDetailedWeather, activeDay
 }
 
 LocationWeatherDetailedList.propTypes = {
-  currentLocationDetailedWeather: currentLocationDetailedWeatherType,
+  currentLocationDetailedWeather: CurrentLocationDetailedWeatherType,
   activeDayDate: PropTypes.number //timestamp
 };
 

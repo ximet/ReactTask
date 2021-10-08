@@ -5,7 +5,7 @@ import {
   API_WIND_IMG_URL_PREFIX,
   WIND_DIRECTIONS_TO_IMG
 } from '../../../constants/constants';
-import { currentLocationInfoType, currentLocationWeatherType } from '../../../types/types';
+import { CurrentLocationInfoType, CurrentLocationWeatherType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherCurrentInfo.css';
 
@@ -67,8 +67,8 @@ function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInf
 }
 
 LocationWeatherCurrentInfo.propTypes = {
-  currentLocationWeather: currentLocationWeatherType,
-  currentLocationInfo: currentLocationInfoType
+  currentLocationWeather: CurrentLocationWeatherType,
+  currentLocationInfo: CurrentLocationInfoType
 };
 
 export default LocationWeatherCurrentInfo;

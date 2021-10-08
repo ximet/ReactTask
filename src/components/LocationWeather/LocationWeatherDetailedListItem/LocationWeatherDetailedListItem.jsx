@@ -6,7 +6,7 @@ import {
   API_WIND_IMG_URL_PREFIX,
   WIND_DIRECTIONS_TO_IMG
 } from '../../../constants/constants';
-import { detailedDataType } from '../../../types/types';
+import { DetailedDataType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherDetailedListItem.css';
 
@@ -43,7 +43,7 @@ function LocationWeatherDetailedListItem({ detailedData }) {
 }
 
 LocationWeatherDetailedListItem.propTypes = {
-  detailedData: detailedDataType.isRequired
+  detailedData: DetailedDataType.isRequired
 };
 
 export default LocationWeatherDetailedListItem;

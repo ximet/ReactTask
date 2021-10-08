@@ -1,6 +1,6 @@
 import PropTypes, { number, string } from 'prop-types';
 
-export const currentLocationInfoType = PropTypes.shape({
+export const CurrentLocationInfoType = PropTypes.shape({
   id: number.isRequired,
   name: string.isRequired,
   country: string.isRequired,
@@ -10,7 +10,7 @@ export const currentLocationInfoType = PropTypes.shape({
   lat: number
 });
 
-export const currentLocationWeatherType = PropTypes.shape({
+export const CurrentLocationWeatherType = PropTypes.shape({
   time: string.isRequired,
   symbol: string.isRequired,
   symbolPhrase: string.isRequired,
@@ -30,7 +30,7 @@ export const currentLocationWeatherType = PropTypes.shape({
   visibility: number
 });
 
-export const dayDataType = PropTypes.shape({
+export const DayDataType = PropTypes.shape({
   date: string.isRequired,
   symbol: string.isRequired,
   maxTemp: number.isRequired,
@@ -40,9 +40,9 @@ export const dayDataType = PropTypes.shape({
   windDir: number
 });
 
-export const currentLocationDailyWeatherType = PropTypes.arrayOf(dayDataType);
+export const CurrentLocationDailyWeatherType = PropTypes.arrayOf(DayDataType);
 
-export const detailedDataType = PropTypes.shape({
+export const DetailedDataType = PropTypes.shape({
   time: string.isRequired,
   symbol: string.isRequired,
   temperature: number.isRequired,
@@ -55,4 +55,4 @@ export const detailedDataType = PropTypes.shape({
   precipAccum: number
 });
 
-export const currentLocationDetailedWeatherType = PropTypes.arrayOf(detailedDataType);
+export const CurrentLocationDetailedWeatherType = PropTypes.arrayOf(DetailedDataType);
