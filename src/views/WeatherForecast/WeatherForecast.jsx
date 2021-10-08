@@ -52,7 +52,11 @@ class WeatherForecast extends React.PureComponent {
             hourlyCityForecast={this.state.hourlyCityForecast}
             dailyCityForecast={this.state.dailyCityForecast}
           />
-          <CityForecast cityForecast={this.state.cityForecast} cityInfo={this.state.cityInfo} />
+          <CityForecast
+            cityForecast={this.state.cityForecast}
+            cityInfo={this.state.cityInfo}
+            theme={this.props.theme}
+          />
         </div>
       );
     } else {

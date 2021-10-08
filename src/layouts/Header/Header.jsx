@@ -5,13 +5,13 @@ import NavBar from './NavBar/Navbar';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
 
-function Header() {
+function Header({ theme, onSwitchTheme }) {
   return (
     <div className={styles.header}>
       <NavBar />
       <div className={styles.wrapper}>
         <SearchInput />
-        <ThemeSwitcher />
+        <ThemeSwitcher theme={theme} onSwitch={onSwitchTheme} />
       </div>
     </div>
   );
