@@ -30,10 +30,9 @@ class Form extends React.Component<
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <S.Wrapper>
           <Field
-            name="email"
+            name="user"
             component={Components.TextInput}
-            label={t('email')}
-            type="email"
+            label={t('user')}
           />
           <Field
             name="password"

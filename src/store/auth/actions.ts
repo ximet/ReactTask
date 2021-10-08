@@ -22,7 +22,7 @@ export const login: AppThunk<LoginSchema> = (payload) => (dispatch) => {
       .login({ data: payload })
       .then((response) => {
         localStorage.setItem(TOKEN, response.data.access_token);
-        setLoggedIn(true);
+        dispatch(setLoggedIn(true));
       })
       // TODO: add error reducer
       .catch(() => {})

@@ -14,7 +14,7 @@ const PrivateRoutes = React.lazy(() => import('pages/private'));
 
 const App = () => {
   const { isLoggedIn } = useAuth();
-
+  console.log(isLoggedIn);
   return (
     <StyledWrapper>
       {isLoggedIn ? (

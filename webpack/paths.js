@@ -9,4 +9,5 @@ module.exports = {
   fontsFolder: 'fonts',
   cssFolder: 'css',
   jsFolder: 'js',
+  weatherApiPath: 'https://pfa.foreca.com/',
 };
