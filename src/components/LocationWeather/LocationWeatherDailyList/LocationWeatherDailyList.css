@@ -1,0 +1,9 @@
+.location-weather__daily-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.4rem 0 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--primary-color);
+}
