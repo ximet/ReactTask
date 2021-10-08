@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
 const webpackMerge = require('webpack-merge');
 const common = require('./webpack/webpack.common');
 
