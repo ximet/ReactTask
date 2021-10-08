@@ -25,7 +25,7 @@ function LocationWeatherDetailedList({ currentLocationDetailedWeather, activeDay
 
 LocationWeatherDetailedList.propTypes = {
   currentLocationDetailedWeather: currentLocationDetailedWeatherType,
-  activeDayDate: PropTypes.number, //timestamp  
+  activeDayDate: PropTypes.number //timestamp
 };
 
 export default LocationWeatherDetailedList;
