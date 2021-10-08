@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { uniqueId } from 'lodash-es';
-import Typography from '../../typography';
-import { StyledButton, StyledWrapper } from './components';
+import { Typography } from 'components';
+import * as S from './styles';
 
-const Switcher = ({
+export interface SwitcherProps {
+  label: string;
+  onChange: (event: { value: boolean }) => void;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+}
+
+const Switcher: React.FC<SwitcherProps> = ({
   label,
   onChange,
   checked: externalChecked,
@@ -14,8 +22,8 @@ const Switcher = ({
   const [checked, setChecked] = React.useState(defaultChecked);
 
   return (
-    <StyledWrapper>
-      <StyledButton
+    <S.Wrapper>
+      <S.SwitcherButton
         type="button"
         role="switch"
         disabled={disabled}
@@ -29,7 +37,7 @@ const Switcher = ({
       <Typography as="label" variant="label" htmlFor={buttonIdRef.current}>
         {label}
       </Typography>
-    </StyledWrapper>
+    </S.Wrapper>
   );
 };
 

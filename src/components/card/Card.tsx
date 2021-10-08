@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Box = styled('div')`
+const Card = styled('div')`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -10,4 +10,4 @@ const Box = styled('div')`
   box-shadow: ${(props) => props.theme.shape.boxShadow};
 `;
 
-export default Box;
+export default Card;
