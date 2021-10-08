@@ -4,6 +4,7 @@ $black: var(--black);
 $white: var(--white);
 $grey: #9eaed1;
 $yellow: #ffd158;
+$lilac: #bacbf3;
 $darken-blue: #5171b0;
 $lighten-black: #1f2e4a;
 
@@ -30,3 +31,5 @@ $secondary-bg-color: var(--secondary-bg-color);
 
 $light-btn-bg-color: $yellow;
 $dark-btn-bg-color: $blue;
+
+$default-transition-delay: 0.6s;
