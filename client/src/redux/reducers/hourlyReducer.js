@@ -4,7 +4,7 @@ const initialState = {
   hourlyWeather: []
 };
 
-export const hourlyWeatherReducer = (state = initialState, action) => {
+export const hourlyWeather = (state = initialState, action) => {
   switch (action.type) {
     case SET_HOURS: {
       return { ...state, hourlyWeather: [...action.payload] };

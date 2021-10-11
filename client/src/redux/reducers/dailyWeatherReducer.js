@@ -4,7 +4,7 @@ const initialState = {
   dailyWeather: []
 };
 
-export const dailyWeatherReducer = (state = initialState, action) => {
+export const dailyWeather = (state = initialState, action) => {
   switch (action.type) {
     case SET_DAYS: {
       return { ...state, dailyWeather: [...action.payload] };

@@ -16,7 +16,7 @@ const initialState = {
   }
 };
 
-export const currentWeatherReducer = (state = initialState, action) => {
+export const currentWeather = (state = initialState, action) => {
   switch (action.type) {
     case SET_WEATHER: {
       return { ...state, currentWeather: { ...action.payload } };
