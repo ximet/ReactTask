@@ -10,11 +10,11 @@ export const getAccessToken = async () => {
   }
 };
 
-export const setAccessToken = (token) => {
-  weatherApi.interceptors.request.use({headers: { Authorization: `Bearer ${token}` }})
-}
+export const setAccessToken = token => {
+  weatherApi.interceptors.request.use({ headers: { Authorization: `Bearer ${token}` } });
+};
 
-export const getCurrentWeather = async (location) => {
+export const getCurrentWeather = async location => {
   try {
     const { data } = await weatherApi.get(`${urls.currentWeather}${location}`);
 
@@ -47,7 +47,7 @@ export const getHourlyWeather = async (location, token) => {
 export const getDailyWeather = async (location, token) => {
   try {
     const { data } = await weatherApi.get(`${urls.dailyWeather}${location}`);
-    
+
     return data;
   } catch (e) {
     console.error(e);
