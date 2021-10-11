@@ -1,9 +1,11 @@
 import { CHANGE_LOCATION, CHANGE_SEARCH_STRING } from '../actions/locationsManagerActions';
+import GeolocationService from '../services/GeolocationService';
 
 const initialState = {
-  currentLocation: 'Gomel',
+  currentLocation: {},
   searchString: ''
 };
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case CHANGE_LOCATION: {
