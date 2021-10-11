@@ -11,7 +11,7 @@ function ContentWrapperContainer({ fetchingError }) {
 }
 
 ContentWrapperContainer.propTypes = {
-  isFetchingError: PropTypes.instanceOf(Error).isRequired
+    fetchingError: PropTypes.instanceOf(Error).isRequired
 };
 
 const mapStateToProps = state => {
