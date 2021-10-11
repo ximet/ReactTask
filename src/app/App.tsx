@@ -17,15 +17,17 @@ const App = () => {
 
   return (
     <StyledWrapper>
-      {isLoggedIn ? (
-        <PrivateLayout>
-          <PrivateRoutes />
-        </PrivateLayout>
-      ) : (
-        <PublicLayout>
-          <PublicRoutes />
-        </PublicLayout>
-      )}
+      <React.Suspense fallback={null}>
+        {isLoggedIn ? (
+          <PrivateLayout>
+            <PrivateRoutes />
+          </PrivateLayout>
+        ) : (
+          <PublicLayout>
+            <PublicRoutes />
+          </PublicLayout>
+        )}
+      </React.Suspense>
     </StyledWrapper>
   );
 };

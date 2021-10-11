@@ -1,3 +1,7 @@
 {
-  "dark_theme": "Dark theme"
+  "dark_theme": "Dark theme",
+  "home": "Home",
+  "open_home": "Open Home",
+  "list_of_countries": "List of Countries",
+  "open_list_of_countries": "Open List of Countries"
 }

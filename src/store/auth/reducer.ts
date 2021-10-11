@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 
 const initialState: AuthState = {
   isLoggedIn: false,
+  isAdmin: false,
   loading: false,
 };
 
