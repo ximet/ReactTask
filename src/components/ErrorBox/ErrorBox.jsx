@@ -1,5 +1,5 @@
 import Container from '../Container/Container';
-import './ErrorBox.css'
+import './ErrorBox.css';
 
 function ErrorBox() {
   return (

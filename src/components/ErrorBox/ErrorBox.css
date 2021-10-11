@@ -1,5 +1,5 @@
 .error-box {
-    padding: 1rem;
-    margin: 0.4rem;
-    background-color: var(--error-bg-color);
+  padding: 1rem;
+  margin: 0.4rem;
+  background-color: var(--error-bg-color);
 }
