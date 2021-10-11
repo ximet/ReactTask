@@ -5,11 +5,11 @@ import HourlyForecasts from '../../layouts/hourlyForecasts/HourlyForecasts';
 
 function CityForecastView({ theme }) {
   return (
-    <div>
+    <>
       <CityForecast />
       <DailyForecasts theme={theme} />
       <HourlyForecasts theme={theme} />
-    </div>
+    </>
   );
 }
 
