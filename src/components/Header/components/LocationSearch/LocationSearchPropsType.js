@@ -1,6 +1,8 @@
 // @flow
+import type { LocationType } from '../../../../types/LocationType';
+
 export type LocationSearchPropsType = {
-  currentLocation: string
+  currentLocation: LocationType
 };
 
 export type LocationSearchStatesType = {

@@ -49,7 +49,7 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
         <span className={classes.title}>current city:</span>
         <span ref={this.dropdownContainer}>
           <a className={classes.value} onClick={this.handleToggleDropDown} href="#">
-            {this.props.currentLocation}
+            {this.props.currentLocation.name}
           </a>
           {this.state.isOpenDropDown && (
             <SearchDropDown isOpenDropDown={this.state.isOpenDropDown} />

@@ -10,7 +10,7 @@ import { changeLocation } from '../../../../../../actions/locationsManagerAction
 
 const SearchedLocation = ({ location, ...props }: SearchedLocationPropsType): React$Node => {
   return (
-    <li onClick={() => props.onChangeLocation(location.name)} className={classes.locationItem}>
+    <li onClick={() => props.onChangeLocation(location)} className={classes.locationItem}>
       <a className={classes.locationItemLink} href="#">
         <div className={classes.locationName}>{location.name}</div>
         <div className={classes.locationArea}>{`${location.adminArea} / ${location.country}`}</div>
@@ -25,9 +25,7 @@ const mapStateToProps = ({ locationManager: { currentLocation } }) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onChangeLocation: location => {
-      dispatch(changeLocation(location));
-    }
+    onChangeLocation: location => dispatch(changeLocation(location))
   };
 };
 
