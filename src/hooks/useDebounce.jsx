@@ -4,11 +4,11 @@ export function useDebounce(value, delay) {
   const [dbValue, setDbValue] = useState('');
 
   useEffect(() => {
-    const handler = setTimeout(() => {
+    const dbTimeout = setTimeout(() => {
       setDbValue(value);
     }, delay);
     return () => {
-      clearTimeout(handler);
+      clearTimeout(dbTimeout);
     };
   }, [value]);
 

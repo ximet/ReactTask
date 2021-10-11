@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDebounce } from '../../hooks/useDebounce.jsx';
 import { dataService } from '../../services/dataService';
 
@@ -10,7 +10,7 @@ function SearchInput() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const debouncedSearchQuery = useCallback(useDebounce(searchQuery, 1000));
+  const debouncedSearchQuery = useDebounce(searchQuery, 1000);
 
   useEffect(() => {
     if (debouncedSearchQuery) {
