@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { DebounceInput } from 'react-debounce-input';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDebounce } from '../../hooks/useDebounce.jsx';
+import { dataService } from '../../services/dataService';
 
 import styles from './SearchInput.module.scss';
 import SearchIcon from '../../assets/images/search-icon.png';
 import SearchLocationIcon from '../../assets/images/search-location-icon.png';
-import { NUMBER_OF_RESULTS } from '../../constants/forecaApi';
-import { dataService } from '../../services/dataService';
 
 function SearchInput() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  const debouncedSearchQuery = useCallback(useDebounce(searchQuery, 1000));
+
   useEffect(() => {
-    if (searchQuery) {
-      searchCities(searchQuery);
+    if (debouncedSearchQuery) {
+      searchCities(debouncedSearchQuery);
     }
-  }, [searchQuery]);
+  }, [debouncedSearchQuery]);
 
   async function searchCities(query) {
     try {
@@ -31,22 +32,14 @@ function SearchInput() {
     setSearchQuery(e.target.value);
   };
 
-  const renderSearchResults = searchResults.map(item => (
-    <li key={item.id} className={styles.searchResultItem}>
-      <img src={SearchLocationIcon} alt="location" />
-      <span>{item.name}</span>
-    </li>
-  ));
-
   return (
     <div className={styles.searchWrapper}>
       <div className={styles.searchForm}>
-        <DebounceInput
+        <input
           id="searchInput"
           type="text"
           placeholder="Search"
           autoComplete="off"
-          debounceTimeout={500}
           value={searchQuery}
           className={styles.searchInput}
           onChange={handleChange}
@@ -55,7 +48,14 @@ function SearchInput() {
           <img src={SearchIcon} alt="search icon" />
         </label>
       </div>
-      <div className={styles.searchResults}>{renderSearchResults}</div>
+      <div className={styles.searchResults}>
+        {searchResults.map(item => (
+          <li key={item.id} className={styles.searchResultItem}>
+            <img src={SearchLocationIcon} alt="location" />
+            <span>{item.name}</span>
+          </li>
+        ))}
+      </div>
     </div>
   );
 }
