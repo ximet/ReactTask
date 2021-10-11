@@ -1,6 +1,6 @@
 import PropTypes, { number, string } from 'prop-types';
 
-export const cityInfoTypes = PropTypes.shape({
+export const CityInfoTypes = PropTypes.shape({
   country: string.isRequired,
   id: number.isRequired,
   name: string.isRequired,
@@ -10,7 +10,7 @@ export const cityInfoTypes = PropTypes.shape({
   timezone: string
 });
 
-export const cityForecastTypes = PropTypes.shape({
+export const CityForecastTypes = PropTypes.shape({
   relHumidity: number.isRequired,
   symbol: string.isRequired,
   symbolPhrase: string.isRequired,
@@ -30,7 +30,7 @@ export const cityForecastTypes = PropTypes.shape({
   windGust: number
 });
 
-export const hourlyCityForecastTypes = PropTypes.arrayOf(
+export const HourlyCityForecastTypes = PropTypes.arrayOf(
   PropTypes.shape({
     feelsLikeTemp: number,
     precipAccum: number,
@@ -45,7 +45,7 @@ export const hourlyCityForecastTypes = PropTypes.arrayOf(
   })
 );
 
-export const dailyCityForecastTypes = PropTypes.arrayOf(
+export const DailyCityForecastTypes = PropTypes.arrayOf(
   PropTypes.shape({
     date: string,
     maxTemp: number,

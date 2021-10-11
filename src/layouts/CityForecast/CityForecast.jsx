@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { cityForecastTypes, cityInfoTypes } from '../../types/weatherDataTypes';
+import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
 
 import styles from './CityForecast.module.scss';
 import { THEMES } from '../../constants/themes';
@@ -57,8 +57,8 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
 }
 
 CityForecast.propTypes = {
-  cityForecast: cityForecastTypes,
-  cityInfo: cityInfoTypes,
+  cityForecast: CityForecastTypes,
+  cityInfo: CityInfoTypes,
   theme: PropTypes.string.isRequired
 };
 
