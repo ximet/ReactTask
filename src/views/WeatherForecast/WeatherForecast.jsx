@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './WeatherForecast.module.scss';
 import { dataService } from '../../services/dataService';
@@ -64,5 +65,9 @@ class WeatherForecast extends React.PureComponent {
     }
   }
 }
+
+WeatherForecast.propTypes = {
+  theme: PropTypes.string.isRequired
+};
 
 export default WeatherForecast;

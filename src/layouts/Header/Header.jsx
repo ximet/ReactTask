@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './Header.module.scss';
 
 import NavBar from './NavBar/Navbar';
@@ -16,5 +18,10 @@ function Header({ theme, onSwitchTheme }) {
     </div>
   );
 }
+
+Header.propTypes = {
+  theme: PropTypes.string.isRequired,
+  onSwitchTheme: PropTypes.func.isRequired
+};
 
 export default Header;
