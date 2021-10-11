@@ -3,6 +3,7 @@
   --primary-color: #000e29;
   --secondary-color: #333333;
   --selection-color: #cccccc;
+  --error-bg-color: rgba(255, 0, 0, 0.1);
 }
 
 .theme-mode_dark {

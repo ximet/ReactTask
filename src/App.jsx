@@ -1,6 +1,5 @@
 import FooterWrapper from './layouts/FooterWrapper/FooterWrapper';
 import HeaderWrapper from './layouts/HeaderWrapper/HeaderWrapper';
-import ContentWrapper from './layouts/ContentWrapper/ContentWrapper';
 
 import 'normalize.css';
 import './App.css';
@@ -16,6 +15,7 @@ import {
   THEME_LIGHT
 } from './constants/constants';
 import { weatherAPI } from './services/dataService';
+import ContentWrapperContainer from './containers/ContentWrapperContainer';
 
 function App() {
   // weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
@@ -39,7 +39,7 @@ function App() {
     <BrowserRouter>
       <div className={['global-wrapper', `theme-mode_${theme}`].join(' ')}>
         <HeaderWrapper theme={theme} onToggleTheme={switchTheme} />
-        <ContentWrapper />
+        <ContentWrapperContainer />
         <FooterWrapper />
       </div>
     </BrowserRouter>

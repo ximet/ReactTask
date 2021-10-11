@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import serverApi from './reducers/serverApi';
+import serverApi from './reducers/serverApiReducer';
 
 import thunkMiddleware from 'redux-thunk';
 
