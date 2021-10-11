@@ -1,5 +1,5 @@
 import {
-  SET_IS_FETCHING_ERROR,
+  SET_FETCHING_ERROR,
   SET_IS_FETCHING_IN_PROGRESS,
   SET_IS_TOKEN_RECEIVED,
   SET_TOKEN_EXPIRATION_TIME
@@ -20,7 +20,7 @@ export const setIsFetchingInProgress = isFetchingInProgress => ({
   payload: { isFetchingInProgress }
 });
 
-export const setIsFetchingError = isFetchingError => ({
-  type: SET_IS_FETCHING_ERROR,
-  payload: { isFetchingError }
+export const setIsFetchingError = fetchingError => ({
+  type: SET_FETCHING_ERROR,
+  payload: { fetchingError }
 });

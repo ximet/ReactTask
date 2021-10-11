@@ -1,5 +1,5 @@
 import {
-  SET_IS_FETCHING_ERROR,
+  SET_FETCHING_ERROR,
   SET_IS_FETCHING_IN_PROGRESS,
   SET_IS_TOKEN_RECEIVED,
   SET_TOKEN_EXPIRATION_TIME
@@ -9,7 +9,7 @@ const initialState = {
   isTokenReceived: false,
   tokenExpirationTime: 0,
   isFetchingInProgress: false,
-  isFetchingError: false
+  fetchingError: null
 };
 
 const serverApiReducer = (state = initialState, action) => {
@@ -29,10 +29,10 @@ const serverApiReducer = (state = initialState, action) => {
         ...state,
         isFetchingInProgress: action.payload.isFetchingInProgress
       };
-    case SET_IS_FETCHING_ERROR:
+    case SET_FETCHING_ERROR:
       return {
         ...state,
-        isFetchingError: action.payload.isFetchingError
+        fetchingError: action.payload.fetchingError
       };
 
     default:
