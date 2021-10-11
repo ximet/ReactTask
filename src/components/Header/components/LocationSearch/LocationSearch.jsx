@@ -52,9 +52,7 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
             {this.props.currentLocation}
           </a>
           {this.state.isOpenDropDown && (
-            <SearchDropDown
-              isOpenDropDown={this.state.isOpenDropDown}
-            />
+            <SearchDropDown isOpenDropDown={this.state.isOpenDropDown} />
           )}
         </span>
       </div>
@@ -68,8 +66,8 @@ const mapStateToProps = ({ locationManager: { currentLocation } }) => {
   };
 };
 
-const WrappedLocationSearch = (connect(
-  mapStateToProps
-)(LocationSearch): React.AbstractComponent<LocationSearchPropsType>);
+const WrappedLocationSearch = (connect(mapStateToProps)(
+  LocationSearch
+): React.AbstractComponent<LocationSearchPropsType>);
 
 export default WrappedLocationSearch;
