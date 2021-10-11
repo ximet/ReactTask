@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { DebounceInput } from 'react-debounce-input';
 
 import styles from './SearchInput.module.scss';
 import SearchIcon from '../../assets/images/search-icon.png';
@@ -12,15 +13,14 @@ function SearchInput() {
 
   useEffect(() => {
     if (searchQuery) {
-      searchCities();
+      searchCities(searchQuery);
     }
   }, [searchQuery]);
 
-  async function searchCities() {
+  async function searchCities(query) {
     try {
-      const { locations } = await dataService.searchCity(searchQuery);
+      const { locations } = await dataService.searchCity(query);
 
-      locations.splice(NUMBER_OF_RESULTS);
       setSearchResults(locations);
     } catch (error) {
       console.log(error);
@@ -41,11 +41,12 @@ function SearchInput() {
   return (
     <div className={styles.searchWrapper}>
       <div className={styles.searchForm}>
-        <input
+        <DebounceInput
           id="searchInput"
           type="text"
           placeholder="Search"
           autoComplete="off"
+          debounceTimeout={500}
           value={searchQuery}
           className={styles.searchInput}
           onChange={handleChange}

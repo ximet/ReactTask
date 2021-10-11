@@ -38,6 +38,7 @@
   position: absolute;
   opacity: 0;
   width: calc(100% - 10px);
+  max-height: 400px;
   top: 100%;
   left: 0;
   display: flex;
@@ -46,6 +47,8 @@
   transform: translateY(-20px);
   transition: all $default-transition-delay ease;
   z-index: 20;
+  overflow: auto;
+  box-shadow: $default-box-shadow;
 
   .search-result-item {
     list-style: none;
@@ -88,4 +91,16 @@
 .search-wrapper:hover .search-results {
   opacity: 1;
   transform: translateY(0);
+}
+
+.search-results::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.search-results::-webkit-scrollbar-track {
+  box-shadow: $scroll-box-shadow;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: $secondary-font-color;
 }
