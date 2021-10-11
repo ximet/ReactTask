@@ -17,22 +17,22 @@ const serverApiReducer = (state = initialState, action) => {
     case SET_IS_TOKEN_RECEIVED:
       return {
         ...state,
-        isTokenReceived: action.payload
+        isTokenReceived: action.payload.isTokenReceived
       };
     case SET_TOKEN_EXPIRATION_TIME:
       return {
         ...state,
-        tokenExpirationTime: action.payload
+        tokenExpirationTime: action.payload.tokenExpirationTime
       };
     case SET_IS_FETCHING_IN_PROGRESS:
       return {
         ...state,
-        isFetchingInProgress: action.payload
+        isFetchingInProgress: action.payload.isFetchingInProgress
       };
     case SET_IS_FETCHING_ERROR:
       return {
         ...state,
-        isFetchingError: action.payload
+        isFetchingError: action.payload.isFetchingError
       };
 
     default:

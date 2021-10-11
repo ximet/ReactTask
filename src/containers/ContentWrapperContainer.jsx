@@ -11,8 +11,8 @@ function ContentWrapperContainer({ isFetchingError }) {
 }
 
 ContentWrapperContainer.propTypes = {
-    isFetchingError: PropTypes.bool.isRequired
-}
+  isFetchingError: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => {
   return {
