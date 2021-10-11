@@ -6,7 +6,7 @@ import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
 import Info from '../../views/Info/Info';
 import Feedback from '../../views/Feedback/Feedback';
 
-function Main({theme}) {
+function Main({ theme }) {
   return (
     <div className={styles.main}>
       <Route exact path="/">
