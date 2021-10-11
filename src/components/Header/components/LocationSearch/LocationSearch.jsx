@@ -1,17 +1,21 @@
+// @flow
 import classes from './LocationSearch.module.scss';
-import React from 'react';
+import * as React from 'react';
 import SearchDropDown from './components/SearchDropDown/SearchDropDown';
+import { connect } from 'react-redux';
+import { changeLocation } from '../../../../actions/locationsManagerActions';
+import type { LocationSearchPropsType, LocationSearchStatesType } from './LocationSearchPropsType';
 
-class LocationSearch extends React.Component {
+class LocationSearch extends React.Component<LocationSearchPropsType, LocationSearchStatesType> {
+  dropdownContainer;
+
   constructor(props) {
     super(props);
 
     this.state = {
-      currentLocation: 'Gomel',
       isOpenDropDown: false
     };
-
-    this.dropdownContainer = React.createRef();
+    this.dropdownContainer = React.createRef<HTMLElement>();
   }
 
   componentDidMount() {
@@ -22,21 +26,16 @@ class LocationSearch extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutsideDropdown, true);
   }
 
-  handleClickOutsideDropdown = event => {
-    if (this.dropdownContainer.current && !this.dropdownContainer.current.contains(event.target)) {
+  handleClickOutsideDropdown = (event: MouseEvent): void => {
+    const $target: any = event.target;
+    if (this.dropdownContainer.current && !this.dropdownContainer.current.contains($target)) {
       this.setState({
         isOpenDropDown: false
       });
     }
   };
 
-  handleSetChangeLocation = location => {
-    this.setState({
-      currentLocation: location.name
-    });
-  };
-
-  handleToggleDropDown = event => {
+  handleToggleDropDown = (event: MouseEvent): void => {
     event.preventDefault();
 
     this.setState({
@@ -50,12 +49,11 @@ class LocationSearch extends React.Component {
         <span className={classes.title}>current city:</span>
         <span ref={this.dropdownContainer}>
           <a className={classes.value} onClick={this.handleToggleDropDown} href="#">
-            {this.state.currentLocation}
+            {this.props.currentLocation}
           </a>
           {this.state.isOpenDropDown && (
             <SearchDropDown
               isOpenDropDown={this.state.isOpenDropDown}
-              onChangeLocation={this.handleSetChangeLocation}
             />
           )}
         </span>
@@ -64,4 +62,14 @@ class LocationSearch extends React.Component {
   }
 }
 
-export default LocationSearch;
+const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+  return {
+    currentLocation
+  };
+};
+
+const WrappedLocationSearch = (connect(
+  mapStateToProps
+)(LocationSearch): React.AbstractComponent<LocationSearchPropsType>);
+
+export default WrappedLocationSearch;
