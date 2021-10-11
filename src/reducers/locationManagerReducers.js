@@ -1,5 +1,4 @@
 import { CHANGE_LOCATION, CHANGE_SEARCH_STRING } from '../actions/locationsManagerActions';
-import GeolocationService from '../services/GeolocationService';
 
 const initialState = {
   currentLocation: {},
