@@ -37,6 +37,16 @@ module.exports = {
     compress: true,
     hot: true,
     port: 9020,
+    proxy: {
+      '/authorize': {
+        target: commonPaths.weatherApiPath,
+        secure: false,
+      },
+      '/api': {
+        target: commonPaths.weatherApiPath,
+        secure: false,
+      },
+    },
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
 };

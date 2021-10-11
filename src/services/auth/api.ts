@@ -8,5 +8,4 @@ export const login: ApiRequest<TokenData> = ({ data }) =>
     method: 'post',
     url: endpoints.authorizeToken,
     data,
-    baseURL: process.env.FORECA_AUTH_URL,
   });
