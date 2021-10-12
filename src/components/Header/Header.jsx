@@ -1,22 +1,16 @@
-import PropTypes from 'prop-types';
+import ThemeSwitcherContainer from '../../containers/ThemeSwitcherContainer';
 import Logo from '../Logo/Logo';
 import NavMenu from '../NavMenu/NavMenu';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import './Header.css';
 
-function Header({ theme, onToggleTheme }) {
+function Header() {
   return (
     <div className="header">
       <Logo />
       <NavMenu />
-      <ThemeSwitcher theme={theme} onToggleTheme={onToggleTheme} />
+      <ThemeSwitcherContainer />
     </div>
   );
 }
-
-Header.propTypes = {
-  theme: PropTypes.string.isRequired,
-  onToggleTheme: PropTypes.func.isRequired
-};
 
 export default Header;
