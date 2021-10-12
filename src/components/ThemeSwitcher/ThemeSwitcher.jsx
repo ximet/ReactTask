@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './ThemeSwitcher.css';
 
 function ThemeSwitcher({ theme, onToggleTheme }) {
@@ -7,5 +8,10 @@ function ThemeSwitcher({ theme, onToggleTheme }) {
     </div>
   );
 }
+
+ThemeSwitcher.propTypes = {
+  theme: PropTypes.string.isRequired,
+  onToggleTheme: PropTypes.func.isRequired
+};
 
 export default ThemeSwitcher;

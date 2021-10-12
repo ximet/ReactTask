@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Header from '../../components/Header/Header';
 import Container from '../../components/Container/Container';
 
@@ -8,5 +9,10 @@ function HeaderWrapper({ theme, onToggleTheme }) {
     </Container>
   );
 }
+
+HeaderWrapper.propTypes = {
+  theme: PropTypes.string.isRequired,
+  onToggleTheme: PropTypes.func.isRequired
+};
 
 export default HeaderWrapper;
