@@ -29,7 +29,7 @@ LocationWeatherDetailedList.propTypes = {
 };
 
 LocationWeatherDetailedList.defaultProps = {
-  currentLocationDetailedWeather: null,  
+  currentLocationDetailedWeather: null
 };
 
 export default LocationWeatherDetailedList;
