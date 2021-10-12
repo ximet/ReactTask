@@ -1,0 +1,17 @@
+@import '../../../assets/styles/constants/main.scss';
+
+.hourly-forecast {
+  display: flex;
+  flex-direction: column;
+
+  .hourly-forecast-title {
+    font-size: $font-size-md;
+    margin-bottom: 10px;
+  }
+}
+
+#hourly-forecast-chart {
+  background-color: $chart-bg-color;
+  color: $primary-font-color;
+  padding: 10px 0;
+}

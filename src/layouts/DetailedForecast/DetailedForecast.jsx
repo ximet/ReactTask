@@ -10,7 +10,7 @@ function DetailedForecast({ hourlyCityForecast }) {
     <div className={classes.detailedForecast}>
       <FavoriteCities />
       <DailyForecast />
-      <HourlyForecast hourlyForecast={hourlyCityForecast}/>
+      <HourlyForecast hourlyForecast={hourlyCityForecast} />
     </div>
   );
 }
