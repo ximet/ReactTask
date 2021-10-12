@@ -16,10 +16,10 @@ import {
 } from './constants/constants';
 import { weatherAPI } from './services/dataService';
 import ContentWrapperContainer from './containers/ContentWrapperContainer';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-function App({ theme }) {
+function App() {
+  const theme = useSelector(state => state.theme.name);
   // weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
   //   weatherAPI.searchLocation('Moscow').then(locations => console.log(locations));
   //   weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
@@ -42,14 +42,4 @@ function App({ theme }) {
   );
 }
 
-App.propTypes = {
-  theme: PropTypes.string.isRequired
-};
-
-const mapStateToProps = state => {
-  return {
-    theme: state.theme.name
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;
