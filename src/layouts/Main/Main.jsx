@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './Main.module.scss';
+import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
+
+import styles from './Main.module.scss';
 
 import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
 import Info from '../../views/Info/Info';
@@ -21,5 +23,9 @@ function Main({ theme }) {
     </div>
   );
 }
+
+Main.propTypes = {
+  theme: PropTypes.string.isRequired
+};
 
 export default Main;

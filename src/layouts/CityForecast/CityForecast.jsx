@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
 
 import styles from './CityForecast.module.scss';
 import { THEMES, BG_IMAGES } from '../../constants/themes';
@@ -11,23 +14,23 @@ import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteTog
 import VerticalLine from '../../components/VerticalLine/VerticalLine';
 
 function CityForecast({ cityForecast, cityInfo, theme }) {
-  const weather = cityForecast.current;
-  const symbolPhrase = weather.symbolPhrase[0].toUpperCase() + weather.symbolPhrase.slice(1);
-  const themeBg = theme === THEMES.light ? BG_IMAGES.light : BG_IMAGES.dark;
-
+  const symbolPhrase =
+    cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
+  const themeBg = theme === THEMES.light ? lightBg : darkBg;
+  
   return (
     <div className={styles.cityForecast}>
       <img className={styles.cityForecastBg} src={themeBg} />
       <div className={styles.content}>
-        <CurrentDate weatherImg={weather.symbol} />
+        <CurrentDate weatherImg={cityForecast.symbol} />
         <div className={styles.cityTemperature}>
-          <span className={styles.temperatureDegrees}>{weather.temperature}</span>
+          <span className={styles.temperatureDegrees}>{cityForecast.temperature}</span>
           <TemperatureUniteToggle />
         </div>
         <span className={styles.temperatureDescription}>{symbolPhrase}</span>
         <div className={styles.cityLocation}>
           <img src={LocationIcon} alt="location icon" />
-          <span>{`${cityInfo.adminArea}, ${cityInfo.country}`}</span>
+          <span>{`${cityInfo.name}, ${cityInfo.country}`}</span>
         </div>
         <div className={styles.addedInfo}>
           <div className={styles.addedInfoType}>
@@ -42,13 +45,19 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
           </div>
           <VerticalLine />
           <div className={styles.addedInfoValue}>
-            <span className={styles.addedInfoValue}>{weather.windSpeed} km/h</span>
-            <span className={styles.addedInfoValue}>{weather.relHumidity} %</span>
+            <span className={styles.addedInfoValue}>{cityForecast.windSpeed} km/h</span>
+            <span className={styles.addedInfoValue}>{cityForecast.relHumidity} %</span>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+CityForecast.propTypes = {
+  cityForecast: CityForecastTypes,
+  cityInfo: CityInfoTypes,
+  theme: PropTypes.string.isRequired
+};
 
 export default CityForecast;
