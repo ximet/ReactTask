@@ -2,18 +2,10 @@ const GeolocationService = {
   getCurrentPosition: function () {
     return new Promise((resolve, reject) => {
       const position = navigator.geolocation.getCurrentPosition(
-        position => this.getPositionSuccess(position, resolve),
-        () => this.getPositionError(reject)
+        position => resolve(position),
+        () => reject()
       );
     });
-  },
-
-  getPositionSuccess: (position, resolve) => {
-    resolve(position);
-  },
-
-  getPositionError: reject => {
-    reject();
   }
 };
 
