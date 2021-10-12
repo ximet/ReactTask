@@ -15,3 +15,4 @@ export const FORECAST_TYPES = {
 };
 
 export const CURRENT_CITY_ID = 100625144;
+export const NUMBER_OF_RESULTS = 5;
