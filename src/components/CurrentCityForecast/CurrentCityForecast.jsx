@@ -4,12 +4,13 @@ import { useCookies } from 'react-cookie';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import ApiService from '../../services/ForecastApiService';
+import mockLocation from './mockLocation';
 
 function CurrentCityForecast() {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
   const [cookies] = useCookies(['token']);
 
-  const currentLocationId = '102643743';
+  const currentLocationId = mockLocation.id;
 
   useEffect(async () => {
     const currentForecast = await ApiService.getCurrentForecast(currentLocationId, cookies);
