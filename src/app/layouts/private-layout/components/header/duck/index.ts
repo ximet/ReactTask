@@ -1,2 +1,2 @@
 export * as headerLinks from './links';
-export * as hedaerSelectors from './selectors';
+export * as headerSelectors from './selectors';

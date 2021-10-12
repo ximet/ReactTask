@@ -4,7 +4,7 @@ import * as S from './styles';
 import * as Components from 'components';
 import { useSelector, useTranslation } from 'hooks';
 import { RootState } from 'store/types';
-import { hedaerSelectors } from './duck';
+import { headerSelectors } from './duck';
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     shallowEqual,
   );
   const links = React.useMemo(
-    () => hedaerSelectors.getLinks(t, auth),
+    () => headerSelectors.getLinks(t, auth),
     [t, auth],
   );
 
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
               exact={link.exact}
               title={link.title}
               isActive={(match, location) =>
-                hedaerSelectors.isActive(link, match, location.pathname)
+                headerSelectors.isActive(link, match, location.pathname)
               }
             >
               {link.text}
