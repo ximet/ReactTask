@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './ThemeSwitcher.module.scss';
 import { THEMES } from '../../../constants/themes';
@@ -23,5 +24,10 @@ function ThemeSwitcher({ theme, onSwitch }) {
     </div>
   );
 }
+
+ThemeSwitcher.propTypes = {
+  theme: PropTypes.string.isRequired,
+  onSwitch: PropTypes.func.isRequired
+};
 
 export default ThemeSwitcher;
