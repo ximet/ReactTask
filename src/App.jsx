@@ -30,7 +30,7 @@ function App({ theme, setTheme }) {
   //   weatherAPI
   //     .getForecast(API_FORECAST_DAILY_ENDPOINT, API_KIEV_ID)
   //     .then(forecast => console.log(forecast));
-  // });  
+  // });
 
   return (
     <BrowserRouter>

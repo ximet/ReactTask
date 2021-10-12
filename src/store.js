@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk';
 
 const reducers = combineReducers({
   serverApi,
-  theme,
+  theme
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

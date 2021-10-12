@@ -14,7 +14,7 @@ function ThemeSwitcherContainer({ theme, setTheme }) {
 
 ThemeSwitcherContainer.propTypes = {
   theme: PropTypes.string.isRequired,
-  setTheme: PropTypes.func.isRequired,
+  setTheme: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
