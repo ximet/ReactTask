@@ -4,10 +4,10 @@ export const CurrentLocationInfoType = PropTypes.shape({
   id: number.isRequired,
   name: string.isRequired,
   country: string.isRequired,
-  timezone: string,
-  adminArea: string,
-  lon: number,
-  lat: number
+  timezone: string.isRequired,
+  adminArea: string.isRequired,
+  lon: number.isRequired,
+  lat: number.isRequired
 });
 
 export const CurrentLocationWeatherType = PropTypes.shape({
@@ -16,18 +16,18 @@ export const CurrentLocationWeatherType = PropTypes.shape({
   symbolPhrase: string.isRequired,
   temperature: number.isRequired,
   feelsLikeTemp: number.isRequired,
-  relHumidity: number,
-  dewPoint: number,
+  relHumidity: number.isRequired,
+  dewPoint: number.isRequired,
   windSpeed: number.isRequired,
   windDirString: string.isRequired,
-  windGust: number,
-  precipProb: number,
-  precipRate: number,
-  cloudiness: number,
-  thunderProb: number,
-  uvIndex: number,
-  pressure: number,
-  visibility: number
+  windGust: number.isRequired,
+  precipProb: number.isRequired,
+  precipRate: number.isRequired,
+  cloudiness: number.isRequired,
+  thunderProb: number.isRequired,
+  uvIndex: number.isRequired,
+  pressure: number.isRequired,
+  visibility: number.isRequired
 });
 
 export const DayDataType = PropTypes.shape({
@@ -35,9 +35,9 @@ export const DayDataType = PropTypes.shape({
   symbol: string.isRequired,
   maxTemp: number.isRequired,
   minTemp: number.isRequired,
-  precipAccum: number,
+  precipAccum: number.isRequired,
   maxWindSpeed: number.isRequired,
-  windDir: number
+  windDir: number.isRequired
 });
 
 export const CurrentLocationDailyWeatherType = PropTypes.arrayOf(DayDataType);
@@ -46,13 +46,13 @@ export const DetailedDataType = PropTypes.shape({
   time: string.isRequired,
   symbol: string.isRequired,
   temperature: number.isRequired,
-  feelsLikeTemp: number,
+  feelsLikeTemp: number.isRequired,
   windSpeed: number.isRequired,
-  windGust: number,
-  windDir: number,
+  windGust: number.isRequired,
+  windDir: number.isRequired,
   windDirString: string.isRequired,
-  precipProb: number,
-  precipAccum: number
+  precipProb: number.isRequired,
+  precipAccum: number.isRequired
 });
 
 export const CurrentLocationDetailedWeatherType = PropTypes.arrayOf(DetailedDataType);

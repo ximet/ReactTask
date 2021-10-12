@@ -22,7 +22,7 @@ class LocationWeather extends PureComponent {
       currentLocationWeather: null,
       currentLocationDailyWeather: null,
       currentLocationDetailedWeather: null,
-      activeDayDate: null
+      activeDayDate: 0
     };
 
     this.setActiveDayDate = this.setActiveDayDate.bind(this);
