@@ -4,7 +4,6 @@ import HeaderWrapper from './layouts/HeaderWrapper/HeaderWrapper';
 import 'normalize.css';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import { setTheme } from './actions/ThemeActions';
 
 import {
   API_AUTH_PASS,
@@ -20,7 +19,7 @@ import ContentWrapperContainer from './containers/ContentWrapperContainer';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-function App({ theme, setTheme }) {
+function App({ theme }) {
   // weatherAPI.getToken(API_AUTH_USERNAME, API_AUTH_PASS).then(() => {
   //   weatherAPI.searchLocation('Moscow').then(locations => console.log(locations));
   //   weatherAPI.getCurrentWeather(API_KIEV_ID).then(weather => console.log(weather));
@@ -53,4 +52,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { setTheme })(App);
+export default connect(mapStateToProps)(App);
