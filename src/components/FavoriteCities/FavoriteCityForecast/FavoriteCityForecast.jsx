@@ -1,6 +1,6 @@
 import classes from './FavoriteCityForecast.module.scss';
 
-function FavoriteCityForecast(props) {
+function FavoriteCityForecast({ location }) {
   return (
     <div className={classes.item}>
       <div className={classes.itemInfo}>
@@ -14,7 +14,7 @@ function FavoriteCityForecast(props) {
           <div className={classes.temperature}>20</div>
         </div>
         <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{props.cityName}</div>
+          <div className={classes.cityName}>{location.name}</div>
           <div className={classes.wind}>Wind: 1 km/h</div>
           <div className={classes.humidity}>Humidity: 30%</div>
           <div className={classes.precitipate}>Precitipate: 0%</div>
