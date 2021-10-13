@@ -20,22 +20,6 @@ const ApiService = {
     return resultToken;
   },
 
-  // getLocationsSearch: async function (url, accessToken) {
-  //   let responseData = {
-  //     status: false
-  //   };
-
-  //   try {
-  //     const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
-  //     responseData = await fetchResponse.json();
-  //     responseData.status = true;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-
-  //   return responseData;
-  // },
-
   _getData: async function (url, accessToken) {
     let responseData = {
       status: false
@@ -45,6 +29,24 @@ const ApiService = {
       const fetchResponse = await ForecastApi.fetchData(url, accessToken);
       responseData = await fetchResponse.json();
       responseData.status = true;
+    } catch (error) {
+      console.error(error);
+    }
+
+    return responseData;
+  },
+
+  getLocationsSearch: async function (locationQueryStr, cookies) {
+    let responseData = {
+      status: false,
+      locations: []
+    };
+
+    try {
+      const accessToken = await ApiService.getAccessToken(cookies);
+      const url = `/api/v1/location/search/${locationQueryStr}`;
+
+      responseData = await ApiService.getLocationsSearch(url, accessToken);
     } catch (error) {
       console.error(error);
     }
