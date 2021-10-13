@@ -4,7 +4,9 @@ $black: var(--black);
 $white: var(--white);
 $grey: #9eaed1;
 $yellow: #ffd158;
+$lilac: #bacbf3;
 $darken-blue: #5171b0;
+$lighten-black: #1f2e4a;
 
 $transparent-darken-blue: rgba($darken-blue, 0.5);
 
@@ -31,3 +33,7 @@ $chart-bg-color: var(--chart-bg-color);
 
 $light-btn-bg-color: $yellow;
 $dark-btn-bg-color: $blue;
+
+$default-transition-delay: 0.6s;
+$default-box-shadow: rgba($darken-blue, 0.2) 0px 7px 29px 0px;
+$scroll-box-shadow: inset 0 0 6px rgba($black, 0.3);

@@ -10,7 +10,7 @@ import {
 import styles from './HourlyForecast.module.scss';
 
 function HourlyForecast({ hourlyForecast }) {
-  const chartData = getCorrectHourlyChartData(hourlyForecast.forecast);
+  const chartData = getCorrectHourlyChartData(hourlyForecast);
 
   return (
     <div className={styles.hourlyForecast}>

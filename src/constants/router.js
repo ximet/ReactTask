@@ -1,4 +1,4 @@
-export const routes = {
+export const ROUTES = {
   main: {
     path: '/',
     content: 'Main'

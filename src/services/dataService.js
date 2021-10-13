@@ -30,7 +30,12 @@ export const dataService = {
       const hourlyCityForecast = await this.getForecast(FORECAST_TYPES.hour, id);
       const cityInfo = await this.getCityInfo(id);
 
-      return { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo };
+      return {
+        cityForecast: cityForecast.current,
+        dailyCityForecast: dailyCityForecast.forecast,
+        hourlyCityForecast: hourlyCityForecast.forecast,
+        cityInfo
+      };
     } catch (error) {
       console.error(error);
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './CurrentDate.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
@@ -18,5 +19,9 @@ function CurrentDate({ weatherImg }) {
     </div>
   );
 }
+
+CurrentDate.propTypes = {
+  weatherImg: PropTypes.string.isRequired
+};
 
 export default CurrentDate;

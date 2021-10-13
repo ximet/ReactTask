@@ -1,0 +1,106 @@
+@import '../../assets/styles/constants/main.scss';
+
+.search-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.search-form {
+  position: relative;
+  height: inherit;
+  margin-right: 10px;
+
+  .search-input {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    background-color: $primary-bg-color;
+    border-radius: 6px;
+    padding: 0 20px 0 60px;
+    outline: none;
+    border: none;
+    font-size: $font-size-xs;
+    color: $primary-font-color;
+
+    &::placeholder {
+      color: $primary-font-color;
+    }
+  }
+
+  .search-input-label {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+  }
+}
+
+.search-results {
+  position: absolute;
+  opacity: 0;
+  width: calc(100% - 10px);
+  max-height: 400px;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  transform: translateY(-20px);
+  transition: all $default-transition-delay ease;
+  z-index: 20;
+  overflow: auto;
+  box-shadow: $default-box-shadow;
+
+  .search-result-item {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: $primary-font-color;
+    background-color: $primary-bg-color;
+    padding: 10px;
+    transition: all $default-transition-delay ease;
+
+    &:hover {
+      background-color: $lilac;
+    }
+
+    &:first-child {
+      margin-top: 10px;
+      border-radius: 6px 6px 0 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        right: 115px;
+        top: 0px;
+        border: 11px solid transparent;
+        border-top: 11px solid $primary-bg-color;
+      }
+    }
+
+    &:last-child {
+      border-radius: 0 0 6px 6px;
+    }
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+.search-wrapper:hover .search-results {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-results::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.search-results::-webkit-scrollbar-track {
+  box-shadow: $scroll-box-shadow;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: $secondary-font-color;
+}
