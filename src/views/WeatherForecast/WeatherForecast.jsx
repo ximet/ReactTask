@@ -40,8 +40,6 @@ class WeatherForecast extends React.PureComponent {
         cityInfo,
         isDataReturned: true
       });
-
-      console.log(cityInfo);
     } catch (error) {
       console.log(error);
     }
