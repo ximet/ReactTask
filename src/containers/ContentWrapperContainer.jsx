@@ -11,15 +11,11 @@ function ContentWrapperContainer({ fetchingError }) {
 }
 
 ContentWrapperContainer.propTypes = {
-<<<<<<< HEAD
-  fetchingError: PropTypes.instanceOf(Error).isRequired
-=======
   fetchingError: PropTypes.instanceOf(Error)
 };
 
 ContentWrapperContainer.defaultProps = {
   fetchingError: null
->>>>>>> oleksandr_viktorov
 };
 
 const mapStateToProps = state => {
