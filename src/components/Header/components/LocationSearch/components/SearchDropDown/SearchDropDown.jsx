@@ -1,5 +1,4 @@
 // @flow
-
 import SearchBar from '../SearchBar/SearchBar';
 import SearchedLocations from '../SearchedLocations/SearchedLocations';
 import classes from './SearchDropDown.module.scss';
@@ -46,12 +45,11 @@ function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): 
   };
 
   const handleSetSearchString = async string => setSearchString(string);
-  const onChangeLocation = location => props.onChangeLocation(location);
 
   return (
     <div className={classes.searchBarContainer}>
       <SearchBar onChangeSearchString={handleSetSearchString} />
-      <SearchedLocations onChangeLocation={onChangeLocation} locations={locations} />
+      <SearchedLocations locations={locations} />
     </div>
   );
 }
