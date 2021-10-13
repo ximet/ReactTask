@@ -8,12 +8,17 @@ const INITIAL_STATE = {
   }
 };
 
-export const locationReducer = (state = INITIAL_STATE, action) => {
+const locationReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_LOCATION_INFO:
       return {
         ...state,
         locationInfo: action.payload
       };
+
+    default:
+      return state;
   }
 };
+
+export default locationReducer;
