@@ -1,7 +1,7 @@
-import { SET_LOCATION } from '../types/locationTypes';
+import { SET_CURRENT_LOCATION } from '../types/locationTypes';
 
 const INITIAL_STATE = {
-  location: {
+  currentLocation: {
     country: 'Belarus',
     id: 100625144,
     name: 'Minsk'
@@ -10,10 +10,10 @@ const INITIAL_STATE = {
 
 const locationReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_LOCATION:
+    case SET_CURRENT_LOCATION:
       return {
         ...state,
-        locationInfo: action.payload
+        currentLocation: action.payload
       };
 
     default:
