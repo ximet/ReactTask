@@ -29,8 +29,12 @@ function LocationWeatherDailyList({
 
 LocationWeatherDailyList.propTypes = {
   currentLocationDailyWeather: CurrentLocationDailyWeatherType,
-  activeDayDate: PropTypes.number, //timestamp
+  activeDayDate: PropTypes.number.isRequired, //timestamp
   setActiveDayDate: PropTypes.func.isRequired
+};
+
+LocationWeatherDailyList.defaultProps = {
+  currentLocationDailyWeather: null
 };
 
 export default LocationWeatherDailyList;

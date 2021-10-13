@@ -71,4 +71,9 @@ LocationWeatherCurrentInfo.propTypes = {
   currentLocationInfo: CurrentLocationInfoType
 };
 
+LocationWeatherCurrentInfo.defaultProps = {
+  currentLocationWeather: null,
+  currentLocationInfo: null
+};
+
 export default LocationWeatherCurrentInfo;
