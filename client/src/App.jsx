@@ -4,6 +4,7 @@ import Header from './layouts/header/Header';
 import { themes, bgImages } from './globalConsts';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 import CityForecastView from './views/cityForecastView/CityForecastView';
+import { getCurrentLocation } from './services/locationService';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
