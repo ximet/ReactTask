@@ -1,12 +1,17 @@
+import { dateFormat, timeOptions } from '../constants/date';
+
 export function getCorrectHourlyChartData(data) {
   const time = [];
   const temperature = [];
   const wind = [];
 
-  data.forEach(hour => {
-    time.push(`${new Date(hour.time).getHours()}:00`);
-    temperature.push(hour.temperature);
-    wind.push(hour.windSpeed);
+  data.forEach(forecast => {
+    const date = new Date(forecast.time);
+    const forecastTime = date.toLocaleTimeString(dateFormat, timeOptions);
+
+    time.push(forecastTime);
+    temperature.push(forecast.temperature);
+    wind.push(forecast.windSpeed);
   });
 
   return { time, temperature, wind };
@@ -46,10 +51,12 @@ export const hourlyChartOptions = {
   plugins: {
     legend: {
       position: 'bottom',
+      margin: 40,
       labels: {
         fontColor: 'black',
         fontFamily: 'Calibri Light',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        padding: 20
       }
     },
     tooltip: {
