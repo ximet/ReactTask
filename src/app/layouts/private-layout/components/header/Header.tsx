@@ -3,15 +3,12 @@ import { shallowEqual } from 'react-redux';
 import * as S from './styles';
 import * as Components from 'components';
 import { useSelector, useTranslation } from 'hooks';
-import { RootState } from 'store/types';
+import { authSelectors } from 'store/auth';
 import { headerSelectors } from './duck';
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
-  const auth = useSelector<RootState, RootState['auth']>(
-    (state) => state.auth,
-    shallowEqual,
-  );
+  const auth = useSelector(authSelectors.getAuth, shallowEqual);
   const links = React.useMemo(
     () => headerSelectors.getLinks(t, auth),
     [t, auth],

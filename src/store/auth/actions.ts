@@ -1,6 +1,6 @@
 import { TOKEN } from 'constants/localStorage';
 import { LoginSchema } from 'types/schemas';
-import * as authApi from 'services/auth/api';
+import { authApi } from 'services/auth';
 import * as actionTypes from './actionTypes';
 import { AppThunk } from '../types';
 

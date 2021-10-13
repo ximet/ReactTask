@@ -6,8 +6,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { reduxForm, Field, InjectedFormProps } from 'redux-form';
 import { withTranslation, TFunction } from 'react-i18next';
 import * as Components from 'components';
-import * as authActions from 'store/auth/actions';
 import { LoginSchema } from 'types/schemas';
+import { authActions } from 'store/auth';
 import { RootState } from 'store/types';
 import * as S from './styles';
 

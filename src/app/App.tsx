@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useAuth } from 'hooks';
+import { useAuth, useInterceptors } from './duck/hooks';
 import { PublicLayout, PrivateLayout } from './layouts';
 
 const StyledWrapper = styled.div`
@@ -14,6 +14,8 @@ const PrivateRoutes = React.lazy(() => import('pages/private'));
 
 const App = () => {
   const { isLoggedIn } = useAuth();
+
+  useInterceptors();
 
   return (
     <StyledWrapper>
