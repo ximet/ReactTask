@@ -1,18 +1,27 @@
-import { useState, useEffect } from 'react';
+// @flow
+import React, { useState, useEffect } from 'react';
 import classes from './FavoriteCityForecast.module.scss';
 import ApiService from '../../../services/ForecastApiService';
 import { useCookies } from 'react-cookie';
+import type { FavoriteCityForecastPropsType } from './FavoriteCityForecastPropsType';
 
-function FavoriteCityForecast({ location }) {
+function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): React$Node {
   const [forecast, setForecast] = useState({});
   const [cookies] = useCookies(['token']);
 
-  useEffect(async () => {
-    const { current } = await ApiService.getCurrentForecast(location.id, cookies);
-    setForecast(current);
+  useEffect(() => {
+    const setForecastValue = async (): Promise<void> => {
+      const { current } = await ApiService.getCurrentForecast(location.id, cookies);
+      setForecast(current);
+    };
+
+    setForecastValue();
   }, []);
 
-  const symbolUrl = `https://developer.foreca.com/static/images/symbols/${forecast.symbol}.png`;
+  const symbolUrl = forecast.symbol
+    ? `https://developer.foreca.com/static/images/symbols/${forecast.symbol}.png`
+    : '';
+
   return (
     <div className={classes.item}>
       <div className={classes.itemInfo}>
