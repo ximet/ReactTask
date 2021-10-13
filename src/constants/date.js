@@ -1,4 +1,5 @@
 export const dateFormat = 'en-us';
+export const updatingDateInterval = 1000
 
 export const dateOptions = {
   weekday: 'short',

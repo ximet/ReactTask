@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import PropTypes, { func } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import styles from './CurrentDate.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
+import { updatingDateInterval } from '../../constants/date';
 import { getFormattedDate } from '../../utils/getFormattedDate';
 
 function CurrentDate({ weatherImg }) {
@@ -11,7 +12,7 @@ function CurrentDate({ weatherImg }) {
   useEffect(() => {
     let timerId = setInterval(() => {
       changeTime();
-    }, 1000);
+    }, updatingDateInterval);
 
     return () => {
       clearInterval(timerId);
