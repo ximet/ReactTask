@@ -30,13 +30,13 @@ function App(props) {
   const initializeApp = async () => {
     await getAndSetAccessToken();
     await setCurrentLocation();
-    props.getWeather(props.location.id)
-  }
+    props.getWeather(props.location.id);
+  };
 
-  const setCurrentLocation = async() => {
+  const setCurrentLocation = async () => {
     const currentlocation = await getCurrentLocation();
     props.getLocation(currentlocation);
-  }
+  };
 
   useEffect(async () => {
     await initializeApp();

@@ -10,10 +10,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const getWeather = (id, dispatch) => {
-    dispatch(getWeatherAction(id));
-    dispatch(getHourlyWeatherAction(id))
-    dispatch(getDailyWeatherAction(id))
-}
+  dispatch(getWeatherAction(id));
+  dispatch(getHourlyWeatherAction(id));
+  dispatch(getDailyWeatherAction(id));
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
