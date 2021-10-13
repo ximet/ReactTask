@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './FavoriteCityForecast.module.scss';
 import ApiService from '../../../services/ForecastApiService';
 import { useCookies } from 'react-cookie';
-import IconClose from '../../../assets/img/svg/close-icon.svg';
+import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import type { FavoriteCityForecastPropsType } from './FavoriteCityForecastPropsType';
 
 function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): React$Node {
@@ -25,10 +25,9 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
 
   return (
     <div className={classes.item}>
-      <svg className={classes.closeIcon} width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0.353553" y1="1.1849" x2="6.81509" y2="7.64644" stroke="#BDBDBD"/>
-        <line x1="6.8151" y1="1.35355" x2="0.353562" y2="7.81509" stroke="#BDBDBD"/>
-      </svg>
+      <span className={classes.closeIcon}>
+        <IconClose />
+      </span>
       <div className={classes.itemInfo}>
         <div className={classes.mainInfo}>
           <img className={classes.icon} src={symbolUrl} alt="forecast" title="forecast" />
