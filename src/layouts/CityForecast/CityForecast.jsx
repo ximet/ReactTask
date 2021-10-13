@@ -16,8 +16,8 @@ import VerticalLine from '../../components/VerticalLine/VerticalLine';
 function CityForecast({ cityForecast, cityInfo, theme }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
-  const themeBg = theme === THEMES.light ? lightBg : darkBg;
-  
+  const themeBg = theme === THEMES.light ? BG_IMAGES.light : BG_IMAGES.dark;
+
   return (
     <div className={styles.cityForecast}>
       <img className={styles.cityForecastBg} src={themeBg} />
