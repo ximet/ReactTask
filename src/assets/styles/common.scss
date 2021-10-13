@@ -1,0 +1,13 @@
+@import '../styles/constants.scss';
+
+body {
+  font-family: $main-font-family;
+  font-size: $main-font-size;
+}
+
+.appContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -28,6 +28,7 @@ const ApiService = {
     try {
       const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
       responseData = await fetchResponse.json();
+      responseData.status = true;
     } catch (error) {
       console.error(error);
     }

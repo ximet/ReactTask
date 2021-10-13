@@ -1,0 +1,25 @@
+@import '../../../../../../assets/styles/constants.scss';
+
+$hover-item-color: #f9f9f9;
+
+.locationItem {
+  padding: 10px;
+  .locationItemLink {
+    text-decoration: none;
+    .locationName {
+      color: $link-color;
+    }
+    .locationArea {
+      color: $additional-text-collor;
+      font-size: 10px;
+    }
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+
+  &:hover {
+    background-color: $hover-item-color;
+  }
+}
