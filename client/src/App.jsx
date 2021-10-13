@@ -5,6 +5,7 @@ import { themes, bgImages } from './globalConsts';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 import CityForecastView from './views/cityForecastView/CityForecastView';
 import { getCurrentLocation } from './services/locationService';
+import { getAndSetAccessToken } from './api/weatherApi';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -16,7 +17,7 @@ const useLocalStorageTheme = initialTheme => {
   return [theme, setTheme];
 };
 
-function App() {
+function App(props) {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
   const bgImage = bgImages[theme];
 
@@ -25,6 +26,21 @@ function App() {
 
     setTheme(newTheme);
   }
+
+  const initializeApp = async () => {
+    await getAndSetAccessToken();
+    await setCurrentLocation();
+    props.getWeather(props.location.id)
+  }
+
+  const setCurrentLocation = async() => {
+    const currentlocation = await getCurrentLocation();
+    props.getLocation(currentlocation);
+  }
+
+  useEffect(async () => {
+    await initializeApp();
+  }, []);
 
   return (
     <BrowserRouter>

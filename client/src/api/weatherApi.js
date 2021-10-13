@@ -1,6 +1,11 @@
 import { proxyServer, weatherApi } from './index';
 import { urls } from '../globalConsts';
 
+export const getAndSetAccessToken = async () => {
+  const token = await getAccessToken();
+  await setAccessToken(token);
+};
+
 export const getAccessToken = async () => {
   try {
     const { data } = await proxyServer.post(urls.accessToken);
@@ -11,7 +16,12 @@ export const getAccessToken = async () => {
 };
 
 export const setAccessToken = token => {
-  weatherApi.interceptors.request.use({ headers: { Authorization: `Bearer ${token}` } });
+  weatherApi.interceptors.request.use(async config => {
+    config.headers = {
+      Authorization: `Bearer ${token}`
+    };
+    return config;
+  });
 };
 
 export const getCurrentWeather = async location => {
@@ -24,7 +34,17 @@ export const getCurrentWeather = async location => {
   }
 };
 
-export const locationSearch = async (query, token) => {
+export const getLocationInfo = async (latitude, longitude) => {
+  try {
+    const { data } = await weatherApi.get(`${urls.locationInfo}${latitude},${longitude}`);
+
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const locationSearch = async query => {
   try {
     const { data } = await weatherApi.get(`${urls.locatonSearch}${query}`);
 
@@ -34,7 +54,7 @@ export const locationSearch = async (query, token) => {
   }
 };
 
-export const getHourlyWeather = async (location, token) => {
+export const getHourlyWeather = async location => {
   try {
     const { data } = await weatherApi.get(`${urls.hourlyWeather}${location}`);
 
@@ -44,7 +64,7 @@ export const getHourlyWeather = async (location, token) => {
   }
 };
 
-export const getDailyWeather = async (location, token) => {
+export const getDailyWeather = async location => {
   try {
     const { data } = await weatherApi.get(`${urls.dailyWeather}${location}`);
 

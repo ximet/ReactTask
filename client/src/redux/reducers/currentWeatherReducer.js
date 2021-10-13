@@ -19,7 +19,7 @@ const initialState = {
 export const currentWeather = (state = initialState, action) => {
   switch (action.type) {
     case SET_WEATHER: {
-      return { ...state, currentWeather: { ...action.payload } };
+      return { ...state, currentWeather: { ...action.payload.weather } };
     }
 
     default: {

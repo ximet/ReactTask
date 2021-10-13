@@ -1,4 +1,4 @@
-import { SET_LOCATION } from '../actions/locationReducer';
+import { SET_LOCATION } from '../actions/locationAction';
 
 const initialState = {
   location: {
@@ -13,7 +13,7 @@ const initialState = {
 export const location = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOCATION: {
-      return { ...state, location: { ...action.payload } };
+      return { ...state, location: { ...action.payload.location } };
     }
 
     default: {
