@@ -1,6 +1,6 @@
 import { dateFormat, timeOptions } from '../constants/date';
 
-export function getCorrectHourlyChartData(data) {
+export function getCorrectHourlyData(data) {
   const time = [];
   const temperature = [];
   const wind = [];
@@ -17,7 +17,7 @@ export function getCorrectHourlyChartData(data) {
   return { time, temperature, wind };
 }
 
-export const hourlyChartData = data => ({
+export const getHourlyChartData = data => ({
   labels: data.time,
   datasets: [
     {
