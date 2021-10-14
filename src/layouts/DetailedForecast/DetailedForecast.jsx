@@ -1,13 +1,19 @@
 import React from 'react';
+import DailyForecast from './DailyForecast/DailyForecast';
+import { HourlyCityForecastTypes, DailyCityForecastTypes } from '../../types/WeatherDataTypes';
 
 import classes from './DetailedForecast.module.scss';
-import { HourlyCityForecastTypes, DailyCityForecastTypes } from '../../types/WeatherDataTypes';
 import Slider from '../../components/Slider/Slider';
+import FavoriteCities from './FavoriteCities/FavoriteCities';
+import HourlyForecast from './HourlyForecast/HourlyForecast';
 
 function DetailedForecast({ hourlyCityForecast, dailyCityForecast }) {
   return (
     <div className={classes.detailedForecast}>
       <Slider />
+      <FavoriteCities />
+      <DailyForecast />
+      <HourlyForecast hourlyForecast={hourlyCityForecast} />
     </div>
   );
 }
