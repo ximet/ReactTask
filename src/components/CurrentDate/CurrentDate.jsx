@@ -1,10 +1,29 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './CurrentDate.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
+import { updatingDateInterval } from '../../constants/date';
+import { getFormattedDate } from '../../utils/getFormattedDate';
 
 function CurrentDate({ weatherImg }) {
+  const [currentDate, setCurrentDate] = useState(getFormattedDate);
+
+  useEffect(() => {
+    let timerId = setInterval(() => {
+      changeTime();
+    }, updatingDateInterval);
+
+    return () => {
+      clearInterval(timerId);
+    };
+  });
+
+  function changeTime() {
+    const currentDate = getFormattedDate();
+    setCurrentDate(currentDate);
+  }
+
   return (
     <div className={styles.currentDate}>
       <img
@@ -13,8 +32,8 @@ function CurrentDate({ weatherImg }) {
         className={styles.weatherIcon}
       />
       <div className={styles.dateInfo}>
-        <span className={styles.time}>12:44 PM</span>
-        <span className={styles.date}>Fri, 21 Sep</span>
+        <span className={styles.time}>{currentDate.time}</span>
+        <span className={styles.date}>{currentDate.date}</span>
       </div>
     </div>
   );
