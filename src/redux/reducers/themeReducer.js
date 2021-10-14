@@ -1,5 +1,5 @@
 import { THEMES } from '../../constants/themes';
-import { SET_THEME } from '../types/themeTypes';
+import { SET_CURRENT_THEME } from '../types/themeTypes';
 
 const INITIAL_STATE = {
   theme: THEMES.light
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 const themeReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_THEME:
+    case SET_CURRENT_THEME:
       return {
         ...state,
         theme: action.payload

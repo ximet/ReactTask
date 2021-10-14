@@ -17,4 +17,4 @@ export const setDailyCityForecast = forecast => ({
 export const setHourlyCityForecast = forecast => ({
   type: SET_HOURLY_CITY_FORECAST,
   payload: forecast
-})
+});
