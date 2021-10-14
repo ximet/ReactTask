@@ -26,25 +26,29 @@ export const weatherAPI = {
       user,
       password
     };
+    let response = instance.post(API_AUTH_URL, body, {
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    });
+
     try {
-      const response = await instance.post(API_AUTH_URL, body, {
-        headers: {
-          'Content-Type': 'text/plain'
-        }
-      });
-      this.token = response.data.access_token;
+      const result = await response;
+      this.token = result.data.access_token;
     } catch (error) {
       console.log(error);
       this.token = null;
     }
 
-    return this.token;
+    return response;
   },
 
   async searchLocation(query) {
     const { url, dataKey } = DATA_TYPES[API_SEARCH_LOCATION_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${query}`, { headers: this.getHeaders() });
+      const response = await instance.get(`${url}${query}`, {
+        headers: this.getHeaders()
+      });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
@@ -55,7 +59,9 @@ export const weatherAPI = {
   async getLocationInfo(location) {
     const { url } = DATA_TYPES[API_GET_LOCATION_INFO_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${location}`, { headers: this.getHeaders() });
+      const response = await instance.get(`${url}${location}`, {
+        headers: this.getHeaders()
+      });
       return response.data;
     } catch (error) {
       console.log(error);
@@ -66,7 +72,9 @@ export const weatherAPI = {
   async getCurrentWeather(locationId) {
     const { url, dataKey } = DATA_TYPES[API_GET_CURRENT_WEATHER_DATA_TYPE];
     try {
-      const response = await instance.get(`${url}${locationId}`, { headers: this.getHeaders() });
+      const response = await instance.get(`${url}${locationId}`, {
+        headers: this.getHeaders()
+      });
       return response.data[dataKey];
     } catch (error) {
       console.log(error);
