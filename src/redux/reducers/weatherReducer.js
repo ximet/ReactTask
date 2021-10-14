@@ -1,7 +1,7 @@
 import {
-  SET_SITY_FORECAST,
-  SET_DAILY_SITY_FORECAST,
-  SET_HOURLY_SITY_FORECAST
+  SET_CITY_FORECAST,
+  SET_DAILY_CITY_FORECAST,
+  SET_HOURLY_CITY_FORECAST
 } from '../types/weatherTypes';
 
 const INITIAL_STATE = {
@@ -20,19 +20,19 @@ const INITIAL_STATE = {
 
 const weatherReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_SITY_FORECAST:
+    case SET_CITY_FORECAST:
       return {
         ...state,
         cityForecast: action.payload
       };
 
-    case SET_DAILY_SITY_FORECAST:
+    case SET_DAILY_CITY_FORECAST:
       return {
         ...state,
         dailyCityForecast: action.payload
       };
 
-    case SET_HOURLY_SITY_FORECAST:
+    case SET_HOURLY_CITY_FORECAST:
       return {
         ...state,
         hourlyCityForecast: action.payload
