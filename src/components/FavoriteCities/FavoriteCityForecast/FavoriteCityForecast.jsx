@@ -13,14 +13,19 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
 
   useEffect(() => {
     const setForecastValue = async (): Promise<void> => {
-      const {data: {current}} = await ApiService.getCurrentForecast(location.id);
-      setForecast(current);
+      let currentForecast = {};
+      try {
+        const { data } = await ApiService.getCurrentForecast(location.id);
+        currentForecast = data.current;
+      } catch (error) {
+        console.log(error);
+      }
+
+      setForecast(currentForecast);
     };
 
     setForecastValue();
   }, []);
-
-  console.log(forecast);
 
   const symbolUrl = forecast?.symbol
     ? `${FORECAST_SYMBOL_LINK}${forecast?.symbol}${FORECAST_SYMBOL_EXT}`
