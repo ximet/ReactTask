@@ -32,3 +32,7 @@ $warning-type-font-size: 14px;
     text-decoration: none;
   }
 }
+
+.item:not(:last-child) {
+  margin-bottom: 15px;
+}

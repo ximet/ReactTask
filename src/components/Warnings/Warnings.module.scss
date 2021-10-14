@@ -5,9 +5,19 @@
   border-radius: 10px;
   padding: 15px;
   margin: 0 10px;
+  max-height: 100vh;
+  overflow-y: auto;
 
   .title {
     text-align: center;
     text-transform: uppercase;
+  }
+}
+
+.noticeMessage {
+  margin: 100px 0;
+  h3, p {
+    color: $additional-text-collor;
+    text-align: center;
   }
 }

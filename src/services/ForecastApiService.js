@@ -118,6 +118,25 @@ const ApiService = {
     }
 
     return responseData;
+  },
+
+  getWarnings: async function (locationId, cookies) {
+    let responseData = {
+      status: false
+    };
+
+    try {
+      const accessToken = await this._getAccessToken(cookies);
+      const url = `/api/v1/warning/${locationId}`;
+
+      console.log(locationId);
+      console.log(accessToken);
+      responseData = await this._getData(url, accessToken);
+    } catch (error) {
+      console.error(error);
+    }
+
+    return responseData;
   }
 };
 
