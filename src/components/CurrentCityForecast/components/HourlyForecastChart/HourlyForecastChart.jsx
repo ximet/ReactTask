@@ -4,17 +4,17 @@ import { useCookies } from 'react-cookie';
 import { prepareChartData } from '../../../../utils/prepareData';
 import { hourlyLineChartData, hourlyLineChartOptions } from '../../../../utils/chartSettings';
 import ApiService from '../../../../services/ForecastApiService';
+import { COOKIE_TOKEN_FIELD } from '../../../../utils/constants';
 
 function HourlyForecastChart({ locationId }) {
   const [hourlyForecast, setHourlyForecast] = useState([]);
-  const [cookies] = useCookies(['token']);
+  const [cookies] = useCookies([COOKIE_TOKEN_FIELD]);
+  const [hours, temperatures] = prepareChartData(hourlyForecast);
 
   useEffect(async () => {
     const { forecast } = await ApiService.getHourlyForecast(locationId, cookies);
     setHourlyForecast(forecast);
   }, []);
-
-  const [hours, temperatures] = prepareChartData(hourlyForecast);
 
   return (
     <div>

@@ -6,10 +6,15 @@ import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecast
 import ApiService from '../../services/ForecastApiService';
 import mockLocation from './mockLocation';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
+import {
+  FORECAST_SYMBOL_EXT,
+  FORECAST_SYMBOL_LINK,
+  COOKIE_TOKEN_FIELD
+} from '../../utils/constants';
 
 function CurrentCityForecast() {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
-  const [cookies] = useCookies(['token']);
+  const [cookies] = useCookies([COOKIE_TOKEN_FIELD]);
 
   const currentLocationId = mockLocation.id;
 
@@ -23,7 +28,7 @@ function CurrentCityForecast() {
     });
   }, []);
 
-  const symbolUrl = `https://developer.foreca.com/static/images/symbols/${currentCityForecast.forecast?.symbol}.png`;
+  const symbolUrl = `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`;
   const forecastTime = formatTime(currentCityForecast.forecast?.time);
   const forecastDay = getDay(currentCityForecast.forecast?.time);
 

@@ -2,11 +2,11 @@ import classes from './DailyForecast.module.scss';
 import { getDayShort } from '../../../../../utils/dateTimeUtils';
 import { ReactComponent as WindCompasBg } from '../../../../../assets/img/svg/wind-compas-bg.svg';
 import { ReactComponent as WindCompas } from '../../../../../assets/img/svg/wind-compas.svg';
+import { FORECAST_SYMBOL_EXT, FORECAST_SYMBOL_LINK } from '../../../../../utils/constants';
 
 function DailyForecast({ forecast }) {
-  const symbolUrl = `https://developer.foreca.com/static/images/symbols/${forecast.symbol}.png`;
+  const symbolUrl = `${FORECAST_SYMBOL_LINK}${forecast.symbol}${FORECAST_SYMBOL_EXT}`;
   const dayName = getDayShort(forecast.date, 'en-US');
-  console.log(forecast);
 
   return (
     <div className={classes.forecastItem}>

@@ -11,11 +11,12 @@ import type {
   LocationsResponseType
 } from '../../../../../../types/LocationType';
 import type { SearchDropDownPropsType } from './SearchDropDownPropsType';
+import { COOKIE_TOKEN_FIELD } from '../../../../../../utils/constants';
 
 function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): React$Node {
   const [searchString, setSearchString] = useState('');
   const [locations, setLocations] = useState([]);
-  const [cookies] = useCookies(['token']);
+  const [cookies] = useCookies([COOKIE_TOKEN_FIELD]);
 
   useEffect(() => {
     const setLocationsValue = async (): Promise<void> => {

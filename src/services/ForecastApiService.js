@@ -20,22 +20,6 @@ const ApiService = {
     return resultToken;
   },
 
-  // getLocationsSearch: async function (url, accessToken) {
-  //   let responseData = {
-  //     status: false
-  //   };
-
-  //   try {
-  //     const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
-  //     responseData = await fetchResponse.json();
-  //     responseData.status = true;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-
-  //   return responseData;
-  // },
-
   _getData: async function (url, accessToken) {
     let responseData = {
       status: false
