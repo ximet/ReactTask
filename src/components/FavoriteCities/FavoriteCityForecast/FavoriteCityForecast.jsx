@@ -13,15 +13,17 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
 
   useEffect(() => {
     const setForecastValue = async (): Promise<void> => {
-      const { current } = await ApiService.getCurrentForecast(location.id, cookies);
+      const {data: {current}} = await ApiService.getCurrentForecast(location.id);
       setForecast(current);
     };
 
     setForecastValue();
   }, []);
 
-  const symbolUrl = forecast.symbol
-    ? `${FORECAST_SYMBOL_LINK}${forecast.symbol}${FORECAST_SYMBOL_EXT}`
+  console.log(forecast);
+
+  const symbolUrl = forecast?.symbol
+    ? `${FORECAST_SYMBOL_LINK}${forecast?.symbol}${FORECAST_SYMBOL_EXT}`
     : '';
 
   return (
@@ -32,13 +34,13 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
       <div className={classes.itemInfo}>
         <div className={classes.mainInfo}>
           <img className={classes.icon} src={symbolUrl} alt="forecast" title="forecast" />
-          <div className={classes.temperature}>{forecast.temperature}</div>
+          <div className={classes.temperature}>{forecast?.temperature}</div>
         </div>
         <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{location.name}</div>
-          <div className={classes.wind}>Wind: {forecast.windSpeed} km/h</div>
-          <div className={classes.humidity}>Humidity: {forecast.relHumidity}%</div>
-          <div className={classes.precitipate}>Precitipate: {forecast.precipProb}%</div>
+          <div className={classes.cityName}>{location?.name}</div>
+          <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
+          <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
+          <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
           <a className={classes.linkMore} href="#">
             read more
           </a>
