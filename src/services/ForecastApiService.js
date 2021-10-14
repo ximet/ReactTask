@@ -20,15 +20,19 @@ const ApiService = {
     return resultToken;
   },
 
-  _getData: async function (url, accessToken) {
-    let responseData = {
-      status: false
-    };
+  _getData: async function (url, cookies) {
+    const accessToken = await this._getAccessToken(cookies);
+    const fetchResponse = await ForecastApi.fetchData(url, accessToken);
+    const responseData = await fetchResponse.json();
 
+    return responseData;
+  },
+
+  getLocationsSearch: async function (locationQueryStr, cookies) {
+    let responseData = {};
+    const url = `/api/v1/location/search/${locationQueryStr}`;
     try {
-      const fetchResponse = await ForecastApi.fetchData(url, accessToken);
-      responseData = await fetchResponse.json();
-      responseData.status = true;
+      responseData = this._getData(url, cookies);
     } catch (error) {
       console.error(error);
     }
@@ -37,15 +41,10 @@ const ApiService = {
   },
 
   getCurrentForecast: async function (locationId, cookies) {
-    let responseData = {
-      status: false
-    };
-
+    let responseData = {};
+    const url = `/api/v1/current/${locationId}`;
     try {
-      const accessToken = await this._getAccessToken(cookies);
-      const url = `/api/v1/current/${locationId}`;
-
-      responseData = await this._getData(url, accessToken);
+      responseData = this._getData(url, cookies);
     } catch (error) {
       console.error(error);
     }
@@ -54,15 +53,10 @@ const ApiService = {
   },
 
   getLocationInfo: async function (locationId, cookies) {
-    let responseData = {
-      status: false
-    };
-
+    let responseData = {};
+    const url = `/api/v1/location/${locationId}`;
     try {
-      const accessToken = await this._getAccessToken(cookies);
-      const url = `/api/v1/location/${locationId}`;
-
-      responseData = await this._getData(url, accessToken);
+      responseData = this._getData(url, cookies);
     } catch (error) {
       console.error(error);
     }
@@ -71,15 +65,10 @@ const ApiService = {
   },
 
   getHourlyForecast: async function (locationId, cookies) {
-    let responseData = {
-      status: false
-    };
-
+    let responseData = {};
+    const url = `/api/v1/forecast/hourly/${locationId}`;
     try {
-      const accessToken = await this._getAccessToken(cookies);
-      const url = `/api/v1/forecast/hourly/${locationId}`;
-
-      responseData = await this._getData(url, accessToken);
+      responseData = this._getData(url, cookies);
     } catch (error) {
       console.error(error);
     }
@@ -88,15 +77,10 @@ const ApiService = {
   },
 
   getDailyForecast: async function (locationId, cookies) {
-    let responseData = {
-      status: false
-    };
-
+    let responseData = {};
+    const url = `/api/v1/forecast/daily/${locationId}`;
     try {
-      const accessToken = await this._getAccessToken(cookies);
-      const url = `/api/v1/forecast/daily/${locationId}`;
-
-      responseData = await this._getData(url, accessToken);
+      responseData = this._getData(url, cookies);
     } catch (error) {
       console.error(error);
     }
