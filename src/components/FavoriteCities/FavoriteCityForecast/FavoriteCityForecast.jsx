@@ -4,6 +4,7 @@ import classes from './FavoriteCityForecast.module.scss';
 import ApiService from '../../../services/ForecastApiService';
 import { useCookies } from 'react-cookie';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
+import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
 import type { FavoriteCityForecastPropsType } from './FavoriteCityForecastPropsType';
 
 function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): React$Node {
@@ -20,7 +21,7 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
   }, []);
 
   const symbolUrl = forecast.symbol
-    ? `https://developer.foreca.com/static/images/symbols/${forecast.symbol}.png`
+    ? `${FORECAST_SYMBOL_LINK}${forecast.symbol}${FORECAST_SYMBOL_EXT}`
     : '';
 
   return (
