@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import ApiService from '../../services/ForecastApiService';
 import mockData from './mockData';
 
-const warningsList = (warnings) => warnings.map((warning) => <Warning data={warning} />);
+const warningsList = warnings => warnings.map(warning => <Warning data={warning} />);
 const emptyWarningList = () => (
   <div className={classes.noticeMessage}>
     <h3>Warnings list is empy</h3>
@@ -25,9 +25,7 @@ function Warnings() {
   return (
     <div className={classes.warningsContainer}>
       <h2 className={classes.title}>Warnings</h2>
-      <div>
-        {warnings.length ? warningsList(warnings) : emptyWarningList()}
-      </div>
+      <div>{warnings.length ? warningsList(warnings) : emptyWarningList()}</div>
     </div>
   );
 }
