@@ -1,0 +1,6 @@
+.location-weather {
+  flex-shrink: 0;
+  flex-grow: 1;
+  margin-right: 0.4rem;
+  min-width: 30rem;
+}
