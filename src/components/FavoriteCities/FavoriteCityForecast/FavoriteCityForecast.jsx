@@ -2,14 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import classes from './FavoriteCityForecast.module.scss';
 import ApiService from '../../../services/ForecastApiService';
-import { useCookies } from 'react-cookie';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
 import type { FavoriteCityForecastPropsType } from './FavoriteCityForecastPropsType';
 
 function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): React$Node {
   const [forecast, setForecast] = useState({});
-  const [cookies] = useCookies(['token']);
 
   useEffect(() => {
     const setForecastValue = async (): Promise<void> => {

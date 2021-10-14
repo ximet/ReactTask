@@ -8,7 +8,8 @@ axiosInstance.interceptors.request.use(
     let token = Cookies.get('token');
 
     if (!token) {
-      token = await axiosInstance.post(url);
+      const response = await axios.post('/auth/get-token', {});
+      token = response.data.token;
     }
     config.headers.Authorization = `Bearer ${token}`;
 
