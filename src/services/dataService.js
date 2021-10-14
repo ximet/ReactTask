@@ -43,56 +43,52 @@ export const weatherAPI = {
     return response;
   },
 
-  async searchLocation(query) {
+  searchLocation(query) {
     const { url, dataKey } = DATA_TYPES[API_SEARCH_LOCATION_DATA_TYPE];
-    try {
-      const response = await instance.get(`${url}${query}`, {
+
+    const response = instance
+      .get(`${url}${query}`, {
         headers: this.getHeaders()
-      });
-      return response.data[dataKey];
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+      })
+      .then(({ data }) => data[dataKey]);
+
+    return response;
   },
 
-  async getLocationInfo(location) {
+  getLocationInfo(location) {
     const { url } = DATA_TYPES[API_GET_LOCATION_INFO_DATA_TYPE];
-    try {
-      const response = await instance.get(`${url}${location}`, {
+
+    const response = instance
+      .get(`${url}${location}`, {
         headers: this.getHeaders()
-      });
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+      })
+      .then(({ data }) => data);
+
+    return response;
   },
 
-  async getCurrentWeather(locationId) {
+  getCurrentWeather(locationId) {
     const { url, dataKey } = DATA_TYPES[API_GET_CURRENT_WEATHER_DATA_TYPE];
-    try {
-      const response = await instance.get(`${url}${locationId}`, {
+
+    const response = instance
+      .get(`${url}${locationId}`, {
         headers: this.getHeaders()
-      });
-      return response.data[dataKey];
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+      })
+      .then(({ data }) => data[dataKey]);
+
+    return response;
   },
 
-  async getForecast(forecastEndpoint, locationId, params = null) {
+  getForecast(forecastEndpoint, locationId, params = null) {
     const { url, dataKey } = DATA_TYPES[API_GET_FORECAST_DATA_TYPE];
-    try {
-      const response = await instance.get(`${url}${forecastEndpoint}${locationId}`, {
+
+    const response = instance
+      .get(`${url}${forecastEndpoint}${locationId}`, {
         headers: this.getHeaders(),
         params
-      });
-      return response.data[dataKey];
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+      })
+      .then(({ data }) => data[dataKey]);
+
+    return response;
   }
 };
