@@ -1,0 +1,7 @@
+@import '../../../../../../assets/styles/constants.scss';
+
+.searchedLocationsContainer {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}

@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const FlowWebpackPlugin = require('flow-webpack-plugin');
 
 const commonPaths = require('./paths');
 
@@ -47,5 +48,5 @@ module.exports = {
       }
     }
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [new FlowWebpackPlugin(), new webpack.HotModuleReplacementPlugin()]
 };

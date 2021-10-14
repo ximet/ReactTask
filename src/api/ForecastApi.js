@@ -18,6 +18,15 @@ const ForecastApi = {
         Authorization: `Bearer ${accessToken}`
       }
     });
+  },
+
+  fetchData: async (url, accessToken) => {
+    return await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
   }
 };
 
