@@ -2,11 +2,11 @@ import { SET_LOCATION } from '../actions/locationAction';
 
 const initialState = {
   location: {
-    id: 102643743,
-    name: 'London',
-    country: 'United Kingdom',
-    lon: -0.125532746,
-    lat: 51.508415222
+    id: 0,
+    name: '',
+    country: '',
+    lon: 0,
+    lat: 0
   }
 };
 

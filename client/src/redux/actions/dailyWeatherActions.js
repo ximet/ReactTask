@@ -8,9 +8,8 @@ export const setDailyWeatherAction = dailyWeather => ({
   }
 });
 
-export const getDailyWeatherAction = id => dispatch => {
-  getDailyWeather(id).then(dailyWeather => {
-    console.log(dailyWeather);
+export const getDailyWeatherAction = location => dispatch => {
+  getDailyWeather(location).then(dailyWeather => {
     dispatch(setDailyWeatherAction(dailyWeather.forecast));
   });
 };

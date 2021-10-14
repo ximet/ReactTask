@@ -2,7 +2,7 @@ import { SET_WEATHER } from '../actions/currentWeatherActions';
 
 const initialState = {
   currentWeather: {
-    temperature: 12,
+    temperature: 0,
     time: 0,
     windSpeed: 0,
     relHumidity: 0,

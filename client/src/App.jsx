@@ -4,8 +4,6 @@ import Header from './layouts/header/Header';
 import { themes, bgImages } from './globalConsts';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 import CityForecastView from './views/cityForecastView/CityForecastView';
-import { getCurrentLocation } from './services/locationService';
-import { getAndSetAccessToken } from './api/weatherApi';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -27,19 +25,8 @@ function App(props) {
     setTheme(newTheme);
   }
 
-  const initializeApp = async () => {
-    await getAndSetAccessToken();
-    await setCurrentLocation();
-    props.getWeather(props.location.id);
-  };
-
-  const setCurrentLocation = async () => {
-    const currentlocation = await getCurrentLocation();
-    props.getLocation(currentlocation);
-  };
-
   useEffect(async () => {
-    await initializeApp();
+    props.initializeApp();
   }, []);
 
   return (

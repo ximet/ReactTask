@@ -8,8 +8,8 @@ export const setHourlyWeatherAction = hourlyWeather => ({
   }
 });
 
-export const getHourlyWeatherAction = id => dispatch => {
-  getHourlyWeather(id).then(hourlyWeather =>
+export const getHourlyWeatherAction = location => dispatch => {
+  getHourlyWeather(location).then(hourlyWeather =>
     dispatch(setHourlyWeatherAction(hourlyWeather.forecast))
   );
 };

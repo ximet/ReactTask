@@ -2,8 +2,12 @@ import { proxyServer, weatherApi } from './index';
 import { urls } from '../globalConsts';
 
 export const getAndSetAccessToken = async () => {
-  const token = await getAccessToken();
-  await setAccessToken(token);
+  try {
+    const token = await getAccessToken();
+    await setAccessToken(token);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export const getAccessToken = async () => {

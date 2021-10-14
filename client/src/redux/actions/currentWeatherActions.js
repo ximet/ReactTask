@@ -8,6 +8,6 @@ export const setCurrentWeatherAction = weather => ({
   }
 });
 
-export const getWeatherAction = id => dispatch => {
-  getCurrentWeather(id).then(weather => dispatch(setCurrentWeatherAction(weather.current)));
+export const getWeatherAction = location => dispatch => {
+  getCurrentWeather(location).then(weather => dispatch(setCurrentWeatherAction(weather.current)));
 };
