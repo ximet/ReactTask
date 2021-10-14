@@ -2,9 +2,14 @@ import React from 'react';
 
 import classes from './DetailedForecast.module.scss';
 import { HourlyCityForecastTypes, DailyCityForecastTypes } from '../../types/WeatherDataTypes';
+import Slider from '../../components/Slider/Slider';
 
 function DetailedForecast({ hourlyCityForecast, dailyCityForecast }) {
-  return <div className={classes.detailedForecast}>Detailed forecast</div>;
+  return (
+    <div className={classes.detailedForecast}>
+      <Slider />
+    </div>
+  );
 }
 
 DetailedForecast.propTypes = {
