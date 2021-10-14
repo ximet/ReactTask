@@ -1,7 +1,7 @@
 import React from 'react';
 
 function FavoriteCities() {
-  return <div></div>;
+  return <div>Favorite Cities</div>;
 }
 
 export default FavoriteCities;

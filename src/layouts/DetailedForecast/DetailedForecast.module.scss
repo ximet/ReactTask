@@ -1,5 +1,7 @@
 .detailed-forecast {
   display: flex;
+  flex-direction: column;
   width: 70%;
   height: 100%;
+  padding: 0 20px;
 }
