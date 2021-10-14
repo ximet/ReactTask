@@ -5,6 +5,7 @@ import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import ApiService from '../../services/ForecastApiService';
 import mockLocation from './mockLocation';
+import { getDay, formatTime } from '../../utils/dateTimeUtils';
 
 function CurrentCityForecast() {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
@@ -23,6 +24,8 @@ function CurrentCityForecast() {
   }, []);
 
   const symbolUrl = `https://developer.foreca.com/static/images/symbols/${currentCityForecast.forecast?.symbol}.png`;
+  const forecastTime = formatTime(currentCityForecast.forecast?.time);
+  const forecastDay = getDay(currentCityForecast.forecast?.time);
 
   return (
     <div className={classes.currentCityContainer}>
@@ -47,7 +50,9 @@ function CurrentCityForecast() {
           <div className={classes.areaName}>
             {currentCityForecast.city?.adminArea} / {currentCityForecast.city?.country}
           </div>
-          <div className={classes.forecastDate}>friday 11:00</div>
+          <div className={classes.forecastDate}>
+            {forecastDay} {forecastTime}
+          </div>
           <div className={classes.forecastDate}>{currentCityForecast.forecast?.symbolPhrase}</div>
         </div>
       </div>

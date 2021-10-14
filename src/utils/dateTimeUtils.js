@@ -27,4 +27,10 @@ function getDayShort(time, locale) {
   return dateObj.toLocaleDateString(locale, { weekday: 'short' });
 }
 
-export { getFormattedCurrentTime, formatTime, getDayShort };
+function getDay(time, locale) {
+  const dateObj = new Date(time);
+
+  return dateObj.toLocaleDateString(locale, { weekday: 'long' });
+}
+
+export { getFormattedCurrentTime, formatTime, getDayShort, getDay };
