@@ -10,16 +10,25 @@ import {
 import { getCurrentLocationData } from '../actions/CurrentLocationActions';
 import { connect } from 'react-redux';
 import Preloader from '../components/Preloader/Preloader';
+import { WEATHER_UPDATE_INTERVAL } from '../constants/constants';
 
 class LocationWeatherContainer extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.timerId = null;
+  }
+
   componentDidMount() {
-    if (!this.props.isDataFetchnig) {
-      this.props.getCurrentLocationData();
-    }
+    this.timerId = setInterval(() => {
+      if (this.props.isTokenReceived && !this.props.isDataFetchnig) {
+        this.props.getCurrentLocationData();
+      }
+    }, WEATHER_UPDATE_INTERVAL);
   }
 
   componentDidUpdate(prevProps) {
     if (
+      this.props.isTokenReceived &&
       !this.props.isDataFetchnig &&
       !this.props.currentLocationInfo &&
       !prevProps.currentLocationInfo &&
@@ -34,8 +43,12 @@ class LocationWeatherContainer extends PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+
   render() {
-    if (this.props.isDataFetchnig) {
+    if (this.props.isDataFetchnig || !this.props.isTokenReceived) {
       return (
         <div className="location-weather">
           <Preloader />
@@ -57,6 +70,7 @@ class LocationWeatherContainer extends PureComponent {
 
 LocationWeatherContainer.propTypes = {
   isDataFetchnig: PropTypes.bool.isRequired,
+  isTokenReceived: PropTypes.bool.isRequired,
   currentLocationInfo: CurrentLocationInfoType,
   currentLocationWeather: CurrentLocationWeatherType,
   currentLocationDailyWeather: CurrentLocationDailyWeatherType,
@@ -74,6 +88,7 @@ LocationWeatherContainer.defaultProps = {
 const mapStateToProps = state => {
   return {
     isDataFetchnig: state.serverApi.isFetchingInProgress,
+    isTokenReceived: state.serverApi.isTokenReceived,
     currentLocationInfo: state.currentLocation.info,
     currentLocationWeather: state.currentLocation.weather,
     currentLocationDailyWeather: state.currentLocation.dailyWeather,
