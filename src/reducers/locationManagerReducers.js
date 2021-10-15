@@ -2,7 +2,9 @@ import { CHANGE_LOCATION, CHANGE_SEARCH_STRING } from '../actions/locationsManag
 
 const initialState = {
   currentLocation: {},
-  searchString: ''
+  searchString: '',
+  favoriteCitiesList: [],
+  forecasts: {}
 };
 
 export default function (state = initialState, action) {
