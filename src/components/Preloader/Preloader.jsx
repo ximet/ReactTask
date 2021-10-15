@@ -9,4 +9,3 @@ function Preloader() {
 }
 
 export default Preloader;
-reloader;
