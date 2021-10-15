@@ -1,9 +1,13 @@
 import { CHANGE_LOCATION, CHANGE_SEARCH_STRING } from '../actions/locationsManagerActions';
+import StorageConnection from '../services/StorageConnectionService';
+
+const currentLocationFromStore = StorageConnection.getValue('cur_loc');
+const favoriteCitiesFromStore = StorageConnection.getValue('fav_cities');
 
 const initialState = {
-  currentLocation: {},
+  currentLocation: currentLocationFromStore ? currentLocationFromStore : {},
   searchString: '',
-  favoriteCitiesList: [],
+  favoriteCitiesList: favoriteCitiesFromStore ? favoriteCitiesFromStore : [],
   forecasts: {}
 };
 
