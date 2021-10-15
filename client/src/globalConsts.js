@@ -20,18 +20,23 @@ const bgImages = {
   light: sunnyBgImage
 };
 
-const dateOptions = {
+const defaultDateOptions = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
-  day: '2-digit',
+  day: '2-digit'
 };
 
-const timeOptions = {
-  hour: '2-digit',
-  minute: '2-digit'
+const dailyWeatherDateOptions = {
+  day: '2-digit',
+  month: 'short',
 }
 
-const dateFormat = "en-US"
+const defaultTimeOptions = {
+  hour: '2-digit',
+  minute: '2-digit'
+};
 
-export { themes, bgImages, urls, dateOptions, timeOptions, dateFormat };
+const dateFormat = 'en-US';
+
+export { themes, bgImages, urls, defaultDateOptions, defaultTimeOptions, dateFormat, dailyWeatherDateOptions };

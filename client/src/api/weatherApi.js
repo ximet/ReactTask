@@ -68,7 +68,7 @@ export const getHourlyWeather = async location => {
   }
 };
 
-export const getDailyWeather = async (location, params=null) => {
+export const getDailyWeather = async (location, params = null) => {
   try {
     const { data } = await weatherApi.get(`${urls.dailyWeather}${location}`, {
       params

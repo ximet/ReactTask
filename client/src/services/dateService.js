@@ -1,14 +1,13 @@
-import { dateOptions, timeOptions, dateFormat } from '../globalConsts'
+import { defaultDateOptions, defaultTimeOptions, dateFormat } from '../globalConsts';
 
-export const formatDate = (unformattedDate) => {
-    const fullDate = new Date(unformattedDate);
+export const formatDate = (unformattedDate, dateOptions = defaultDateOptions, timeOptions = defaultTimeOptions) => {
+  const fullDate = new Date(unformattedDate);
 
-    const date = fullDate.toLocaleString(dateFormat, dateOptions);
-    const time = fullDate.toLocaleString(dateFormat, timeOptions);
+  const date = fullDate.toLocaleString(dateFormat, dateOptions);
+  const time = fullDate.toLocaleString(dateFormat, timeOptions);
+  return { date, time };
+};
 
-    return {date, time}
-}
-
-export const getCurrentTimeByTimeZone = (timeZone) => {
-    return new Date().toLocaleString(dateFormat, {...timeOptions, timeZone: timeZone})
-}
+export const getCurrentTimeByTimeZone = timeZone => {
+  return new Date().toLocaleString(dateFormat, { ...timeOptions, timeZone: timeZone });
+};
