@@ -3,14 +3,8 @@
 .carousel-wrapper {
   position: relative;
   margin: 0 auto;
-
-  &[data-overflowing='false'] {
-    padding: 0;
-
-    button {
-      display: none;
-    }
-  }
+  padding: 20px 0;
+  width: 90%;
 
   .carousel {
     display: flex;
@@ -18,10 +12,21 @@
     overflow: hidden;
     padding: 0;
     width: 60vw;
-    background-color: #fff;
+    align-items: center;
+    width: 100%;
 
     .carousel-items {
       display: flex;
+    }
+  }
+
+  &[data-overflowing='false'] {
+    button {
+      display: none;
+    }
+
+    .carousel {
+      width: 65vw;
     }
   }
 
@@ -53,10 +58,5 @@
       right: auto;
       left: -50px;
     }
-  }
-
-  .item {
-    width: 200px;
-    height: 200px;
   }
 }

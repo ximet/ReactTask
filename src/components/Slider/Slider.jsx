@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 
 import styles from './Slider.module.scss';
 
-function Slider({ slideData, slideWidth }) {
+function Slider({ slides, slideWidth }) {
   const sliderRef = useRef();
 
   const [sliderWidth, setSliderWidth] = useState(0);
@@ -12,6 +12,8 @@ function Slider({ slideData, slideWidth }) {
   useEffect(() => {
     const { sliderWidth, isOverflowing } = getSettings();
 
+    console.log(sliderWidth);
+
     setSliderWidth(sliderWidth);
     setIsOverflowing(isOverflowing);
   }, []);
@@ -20,7 +22,7 @@ function Slider({ slideData, slideWidth }) {
     const offsets = getOffsets();
     const totalWidth = offsets[offsets.length - 1];
 
-    const sliderWidth = sliderRef.current.offsetWidth;
+    const sliderWidth = sliderRef.current.clientWidth;
     const isOverflowing = totalWidth > sliderWidth;
 
     return { isOverflowing, sliderWidth };
@@ -30,7 +32,7 @@ function Slider({ slideData, slideWidth }) {
     const offsets = [];
     let increment = 0;
 
-    for (let i = 0; i < slideData.length; i++) {
+    for (let i = 0; i < slides.length; i++) {
       increment += slideWidth;
       offsets[i] = increment;
     }
@@ -71,8 +73,10 @@ function Slider({ slideData, slideWidth }) {
       <button onClick={rightMove}>&#128898;</button>
       <div className={styles.carousel} ref={sliderRef}>
         <div className={styles.carouselItems} style={{ transform: `translateX(${translateX}px)` }}>
-          {slideData.map(item => (
-            <span className={styles.item}>{item}</span>
+          {slides.map(item => (
+            <div key={item.id} className={styles.item}>
+              {item.slide}
+            </div>
           ))}
         </div>
       </div>
