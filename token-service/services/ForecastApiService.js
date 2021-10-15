@@ -8,9 +8,7 @@ const ForecastApiService = {
   },
 
   getToken: async function (response) {
-    let resonseData = {
-      status: false
-    };
+    let resonseData = {};
 
     try {
       const requestInstance = await this.createRequestInstance();
@@ -26,7 +24,7 @@ const ForecastApiService = {
         maxAge: expires_in * 1000
       });
 
-      resonseData.status = true;
+      resonseData.token = access_token;
     } catch (error) {
       console.error(error);
     }

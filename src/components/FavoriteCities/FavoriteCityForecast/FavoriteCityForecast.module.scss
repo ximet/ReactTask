@@ -3,14 +3,34 @@
 $temperature-font-size: 28px;
 
 .item {
+  position: relative;
   border: 1px solid $main-border-color;
   border-radius: 10px;
-  padding: 15px 25px;
+  padding: 15px 25px 15px 25px;
 
   &:not(:last-child) {
     margin-bottom: 15px;
   }
 
+  .closeIcon {
+    position: absolute;
+    display: inline-block;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    svg {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &:hover {
+      path {
+        stroke: $main-icons-color;
+      }
+    }
+  }
   .itemInfo {
     display: flex;
 
