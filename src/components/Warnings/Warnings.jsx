@@ -1,31 +1,41 @@
+// @flow
+import * as React from 'react';
 import classes from './Warnings.module.scss';
 import Warning from './Warning/Warning';
 import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
-import { useCookies } from 'react-cookie';
+import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ApiService from '../../services/ForecastApiService';
-import mockData from './mockData';
+import {
+  EMPTY_WARNING_LIST_MAIN_MESSAGE,
+  EMPTY_WARNING_LIST_ADDITIONAL_MESSAGE
+} from '../../utils/constants';
+import type { WarningsPropsType } from './WarningsPropsType';
 
-const warningsList = warnings => warnings.map(warning => <Warning data={warning} />);
+const makeWarningsList = warnings => warnings.map(warning => <Warning data={warning} />);
 
-function Warnings() {
+function Warnings({ currentLocation }: WarningsPropsType): React$Node {
   const [warnings, setWarnings] = useState([]);
 
-  useEffect(async () => {
-    const { data } = await ApiService.getWarnings('105128581');
-    setWarnings(data.warnings);
-  }, []);
+  useEffect(() => {
+    const getWarningsData = async (): Promise<void> => {
+      const { data } = await ApiService.getWarnings(currentLocation.id);
+      setWarnings(data.warnings);
+    };
+
+    getWarningsData();
+  }, [currentLocation]);
 
   return (
     <div className={classes.warningsContainer}>
       <h2 className={classes.title}>Warnings</h2>
       <div>
         {warnings.length ? (
-          warningsList(warnings)
+          makeWarningsList(warnings)
         ) : (
           <EmptyListMessage
-            mainMessage={`Warnings list is empy`}
-            additionalMessage={`Have a nice day!`}
+            mainMessage={EMPTY_WARNING_LIST_MAIN_MESSAGE}
+            additionalMessage={EMPTY_WARNING_LIST_ADDITIONAL_MESSAGE}
           />
         )}
       </div>
@@ -33,4 +43,14 @@ function Warnings() {
   );
 }
 
-export default Warnings;
+const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+  return {
+    currentLocation
+  };
+};
+
+const WrappedWarnings = (connect(mapStateToProps)(
+  Warnings
+): React.AbstractComponent<WarningsPropsType>);
+
+export default WrappedWarnings;
