@@ -6,7 +6,8 @@ const urls = {
   currentWeather: '/v1/current/',
   locatonSearch: '/v1/location/search/',
   hourlyWeather: '/v1/forecast/hourly/',
-  dailyWeather: '/v1/forecast/daily/'
+  dailyWeather: '/v1/forecast/daily/',
+  locationInfo: '/api/v1/location/'
 };
 
 const themes = {

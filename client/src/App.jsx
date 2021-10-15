@@ -15,7 +15,7 @@ const useLocalStorageTheme = initialTheme => {
   return [theme, setTheme];
 };
 
-function App() {
+function App(props) {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
   const bgImage = bgImages[theme];
 
@@ -24,6 +24,10 @@ function App() {
 
     setTheme(newTheme);
   }
+
+  useEffect(async () => {
+    props.initializeApp();
+  }, []);
 
   return (
     <BrowserRouter>
