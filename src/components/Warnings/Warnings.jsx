@@ -33,10 +33,7 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
         {warnings.length ? (
           makeWarningsList(warnings)
         ) : (
-          <EmptyListMessage
-            title={EMPTY_WARNING_LIST_MAIN_MESSAGE}
-            message={EMPTY_WARNING_LIST_ADDITIONAL_MESSAGE}
-          />
+          <EmptyListMessage title="Warnings list is empty" message="Have a nice day!" />
         )}
       </div>
     </div>
