@@ -2,33 +2,27 @@ import { useState, useEffect } from 'react';
 
 import styles from './Slider.module.scss';
 
-const slideData = [1, 2, 3];
-const MIN_X_DISTANCE = 20;
-const BTN_WIDTH = 50;
-const slideWidth = 100;
+const slideData = [1, 2, 3, 4, 5];
+const slideWidth = 200;
 
 function Slider() {
   const [sliderSettings, setSliderSettings] = useState({
-    width: 0,
+    width: 400,
     translateX: 0,
     isOverflowing: false
   });
 
   useEffect(() => {
-    // const width = sliderSettings.width;
-    const isOverfloving = getIsOverfloving();
-
-    console.log(isOverfloving);
+    const isOverflowing = getSettings();
+    setSliderSettings({ ...sliderSettings, isOverflowing });
   }, []);
 
-  function getIsOverfloving() {
+  function getSettings() {
     const offsets = getOffsets();
     const totalWidth = offsets[offsets.length - 1];
-    const offset = sliderSettings.isOverflowing ? BTN_WIDTH * 2 : 0;
+    const isOverflowing = totalWidth > sliderSettings.width;
 
-    setSliderSettings({ ...sliderSettings, width: totalWidth });
-
-    return totalWidth < slideWidth + offset;
+    return isOverflowing;
   }
 
   function getOffsets() {
@@ -45,12 +39,13 @@ function Slider() {
 
   function getPrevElOffset() {
     const { translateX } = sliderSettings;
+
     if (translateX === 0) return false;
 
     const offsets = getOffsets();
 
     for (let i = offsets.length - 1; i >= 0; i--) {
-      if (translateX - MIN_X_DISTANCE > offsets[i]) {
+      if (Math.abs(translateX) > offsets[i]) {
         return -offsets[i];
       }
     }
@@ -59,12 +54,11 @@ function Slider() {
 
   function getNextElOffset() {
     const { translateX } = sliderSettings;
-
     const rightEdgeOffset = slideWidth - translateX;
     const offsets = getOffsets();
 
-    for (let i = 0; i < offsets.length; i++) {
-      if (offsets[i] > rightEdgeOffset + MIN_X_DISTANCE) {
+    for (let i = 0; i < offsets.length - 1; i++) {
+      if (offsets[i] > rightEdgeOffset) {
         return -(offsets[i] - slideWidth);
       }
     }
@@ -77,15 +71,18 @@ function Slider() {
   }
 
   return (
-    <div className="carousel-wrapper" data-overflowing={sliderSettings.isOverflowing}>
+    <div className={styles.carouselWrapper} data-overflowing={sliderSettings.isOverflowing}>
       <button onClick={e => move('left')}>&lsaquo;</button>
       <button onClick={e => move('right')}>&rsaquo;</button>
-      <div className="carousel">
-        <ul style={{ transform: `translateX(${sliderSettings.translateX}px)` }}>
+      <div className={styles.carousel}>
+        <div
+          className={styles.carouselItems}
+          style={{ transform: `translateX(${sliderSettings.translateX}px)` }}
+        >
           {slideData.map(item => (
-            <span>{item}</span>
+            <span className={styles.item}>{item}</span>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,56 @@
+.carousel-wrapper {
+  position: relative;
+  margin: 0 auto;
+
+  &[data-overflowing='false'] {
+    padding: 0;
+
+    button {
+      display: none;
+    }
+  }
+
+  .carousel {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0;
+    background: #fff;
+    width: 400px;
+
+    .carousel-items {
+      display: flex;
+    }
+  }
+
+  button {
+    position: absolute;
+    left: auto;
+    right: -50px;
+    height: 50px;
+    width: 50px;
+    border: 0;
+    background: #f1f1f1;
+    z-index: 1;
+    font-size: 34px;
+    color: #999;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background: #eee;
+      color: #666;
+    }
+
+    &:first-child {
+      right: auto;
+      left: -50px;
+      top: 0;
+    }
+  }
+
+  .item {
+    width: 200px;
+    height: 200px;
+  }
+}
