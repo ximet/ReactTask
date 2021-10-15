@@ -1,4 +1,3 @@
-import Link from '../../Link/Link';
 import classes from './Warning.module.scss';
 import { formatTime, formatDate } from '../../../utils/dateTimeUtils';
 
