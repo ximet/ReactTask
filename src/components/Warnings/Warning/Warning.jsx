@@ -1,7 +1,9 @@
+// @flow
 import classes from './Warning.module.scss';
 import { formatTime, formatDate } from '../../../utils/dateTimeUtils';
+import type { WarningPropsType } from './WarningPropsType';
 
-function Warning({ data }) {
+function Warning({ data }: WarningPropsType): React$Node {
   return (
     <div className={classes.item}>
       <div className={classes.timestamp}>

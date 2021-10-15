@@ -1,10 +1,10 @@
 import classes from './EmptyListMessage.module.scss';
 
-function EmptyListNotice({ mainMessage, additionalMessage }) {
+function EmptyListNotice({ title, message }) {
   return (
     <div className={classes.noticeMessage}>
-      {mainMessage.length && <h3>{mainMessage}</h3>}
-      {additionalMessage.length && <p>additionalMessage</p>}
+      {title.length && <h3>{title}</h3>}
+      {message.length && <p>{message}</p>}
     </div>
   );
 }
