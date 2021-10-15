@@ -7,11 +7,10 @@ import ApiService from '../../../../services/ForecastApiService';
 
 function DailyForecasts({ locationId }) {
   const [dailyForecast, setDailyForecast] = useState([]);
-  const [cookies] = useCookies(['token']);
 
   useEffect(async () => {
-    const { forecast } = await ApiService.getDailyForecast(locationId, cookies);
-    setDailyForecast(forecast);
+    const { data } = await ApiService.getDailyForecast(locationId);
+    setDailyForecast(data.forecast);
   }, []);
 
   return (
