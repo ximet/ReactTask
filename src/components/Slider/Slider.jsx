@@ -2,9 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 
 import styles from './Slider.module.scss';
 
-const slideData = [1, 2, 3, 4, 5];
-
-function Slider({ slideWidth }) {
+function Slider({ slideData, slideWidth }) {
   const sliderRef = useRef();
 
   const [sliderWidth, setSliderWidth] = useState(0);
