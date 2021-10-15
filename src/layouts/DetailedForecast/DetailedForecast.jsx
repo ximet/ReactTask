@@ -7,10 +7,15 @@ import Slider from '../../components/Slider/Slider';
 import FavoriteCities from './FavoriteCities/FavoriteCities';
 import HourlyForecast from './HourlyForecast/HourlyForecast';
 
+const favCitiesSliderOptions = {
+  sliderWidth: 400,
+  slideWidth: 200
+};
+
 function DetailedForecast({ hourlyCityForecast, dailyCityForecast }) {
   return (
     <div className={classes.detailedForecast}>
-      <Slider />
+      <Slider {...favCitiesSliderOptions} />
       <FavoriteCities />
       <DailyForecast />
       <HourlyForecast hourlyForecast={hourlyCityForecast} />

@@ -3,24 +3,19 @@ import { useState, useEffect } from 'react';
 import styles from './Slider.module.scss';
 
 const slideData = [1, 2, 3, 4, 5];
-const slideWidth = 200;
 
-function Slider() {
-  const [sliderSettings, setSliderSettings] = useState({
-    width: 400,
-    translateX: 0,
-    isOverflowing: false
-  });
+function Slider({ sliderWidth, slideWidth }) {
+  const [translateX, setTranslateX] = useState(0);
+  const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
-    const isOverflowing = getSettings();
-    setSliderSettings({ ...sliderSettings, isOverflowing });
+    setIsOverflowing(getSettings());
   }, []);
 
   function getSettings() {
     const offsets = getOffsets();
     const totalWidth = offsets[offsets.length - 1];
-    const isOverflowing = totalWidth > sliderSettings.width;
+    const isOverflowing = totalWidth > sliderWidth;
 
     return isOverflowing;
   }
@@ -38,8 +33,6 @@ function Slider() {
   }
 
   function getPrevElOffset() {
-    const { translateX } = sliderSettings;
-
     if (translateX === 0) return false;
 
     const offsets = getOffsets();
@@ -53,7 +46,6 @@ function Slider() {
   }
 
   function getNextElOffset() {
-    const { translateX } = sliderSettings;
     const rightEdgeOffset = slideWidth - translateX;
     const offsets = getOffsets();
 
@@ -67,18 +59,15 @@ function Slider() {
 
   function move(direction) {
     const targetElOffset = direction === 'left' ? getPrevElOffset() : getNextElOffset();
-    setSliderSettings({ ...sliderSettings, translateX: targetElOffset });
+    setTranslateX(targetElOffset);
   }
 
   return (
-    <div className={styles.carouselWrapper} data-overflowing={sliderSettings.isOverflowing}>
+    <div className={styles.carouselWrapper} data-overflowing={isOverflowing}>
       <button onClick={e => move('left')}>&lsaquo;</button>
       <button onClick={e => move('right')}>&rsaquo;</button>
       <div className={styles.carousel}>
-        <div
-          className={styles.carouselItems}
-          style={{ transform: `translateX(${sliderSettings.translateX}px)` }}
-        >
+        <div className={styles.carouselItems} style={{ transform: `translateX(${translateX}px)` }}>
           {slideData.map(item => (
             <span className={styles.item}>{item}</span>
           ))}
