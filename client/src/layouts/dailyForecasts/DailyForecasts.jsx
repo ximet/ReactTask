@@ -5,7 +5,6 @@ import DailyForecast from './dailyForecast/DailyForecast';
 import { v4 as uuidv4 } from 'uuid';
 
 function DailyForecasts({ theme, dailyForecasts }) {
-  console.log(dailyForecasts);
   const slides = dailyForecasts.map(forecast => ({
     id: uuidv4(),
     component: <DailyForecast theme={theme} forecast={forecast} />

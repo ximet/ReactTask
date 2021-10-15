@@ -10,7 +10,8 @@ export const setDailyWeatherAction = dailyWeather => ({
 
 export const getDailyWeatherAction = location => dispatch => {
   const params = {
-    dataset: 'full'
+    dataset: 'full',
+    periods: 14
   };
   getDailyWeather(location, params).then(dailyWeather => {
     dispatch(setDailyWeatherAction(dailyWeather.forecast));
