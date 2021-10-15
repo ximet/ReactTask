@@ -4,15 +4,13 @@ import DailyForecast from './DailyForecast/DailyForecast';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import ApiService from '../../../../services/ForecastApiService';
-import { COOKIE_TOKEN_FIELD } from '../../../../utils/constants';
 
 function DailyForecasts({ locationId }) {
   const [dailyForecast, setDailyForecast] = useState([]);
-  const [cookies] = useCookies([COOKIE_TOKEN_FIELD]);
 
   useEffect(async () => {
-    const { forecast } = await ApiService.getDailyForecast(locationId, cookies);
-    setDailyForecast(forecast);
+    const { data } = await ApiService.getDailyForecast(locationId);
+    setDailyForecast(data.forecast);
   }, []);
 
   return (

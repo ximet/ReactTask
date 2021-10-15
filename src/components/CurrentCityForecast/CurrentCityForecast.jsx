@@ -1,6 +1,5 @@
 import classes from './CurrentCityForecast.module.scss';
 import { useState, useEffect } from 'react';
-import { useCookies } from 'react-cookie';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import ApiService from '../../services/ForecastApiService';
@@ -9,35 +8,39 @@ import { getDay, formatTime } from '../../utils/dateTimeUtils';
 import {
   FORECAST_SYMBOL_EXT,
   FORECAST_SYMBOL_LINK,
-  COOKIE_TOKEN_FIELD
+  CURRENT_CITY_FORECAST_ALT_TEXT,
+  CURRENT_CITY_FORECAST_TITLE_TEXT
 } from '../../utils/constants';
 
 function CurrentCityForecast() {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
-  const [cookies] = useCookies([COOKIE_TOKEN_FIELD]);
 
   const currentLocationId = mockLocation.id;
-
-  useEffect(async () => {
-    const currentForecast = await ApiService.getCurrentForecast(currentLocationId, cookies);
-    const currentCity = await ApiService.getLocationInfo(currentLocationId, cookies);
-
-    setCurrentCityForecast({
-      forecast: currentForecast.current,
-      city: currentCity
-    });
-  }, []);
-
   const symbolUrl = `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`;
   const forecastTime = formatTime(currentCityForecast.forecast?.time);
   const forecastDay = getDay(currentCityForecast.forecast?.time);
+
+  useEffect(async () => {
+    const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
+    const currentCity = await ApiService.getLocationInfo(currentLocationId);
+
+    setCurrentCityForecast({
+      forecast: currentForecast.data.current,
+      city: currentCity.data
+    });
+  }, []);
 
   return (
     <div className={classes.currentCityContainer}>
       <div className={classes.currentCityInfo}>
         <div className={classes.forecastInfo}>
           <div className={classes.mainInfo}>
-            <img className={classes.icon} src={symbolUrl} alt="forecast" title="forecast" />
+            <img
+              className={classes.icon}
+              src={symbolUrl}
+              alt={CURRENT_CITY_FORECAST_ALT_TEXT}
+              title={CURRENT_CITY_FORECAST_TITLE_TEXT}
+            />
             <div className={classes.temperature}>{currentCityForecast.forecast?.temperature}</div>
           </div>
           <div className={classes.additionalInfo}>
