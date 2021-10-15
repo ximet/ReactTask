@@ -1,12 +1,8 @@
 import axiosInstance from './interseptors';
 
 const ForecastApi = {
-  getData: async (url, accessToken) => {
-    return await axiosInstance.get(url, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    });
+  getData: async url => {
+    return await axiosInstance.get(url);
   }
 };
 
