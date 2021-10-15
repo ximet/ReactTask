@@ -1,6 +1,10 @@
 import { defaultDateOptions, defaultTimeOptions, dateFormat } from '../globalConsts';
 
-export const formatDate = (unformattedDate, dateOptions = defaultDateOptions, timeOptions = defaultTimeOptions) => {
+export const formatDate = (
+  unformattedDate,
+  dateOptions = defaultDateOptions,
+  timeOptions = defaultTimeOptions
+) => {
   const fullDate = new Date(unformattedDate);
 
   const date = fullDate.toLocaleString(dateFormat, dateOptions);

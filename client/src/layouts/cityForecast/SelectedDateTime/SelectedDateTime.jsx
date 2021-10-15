@@ -1,14 +1,15 @@
 import React from 'react';
 import classes from './SelectedDateTime.module.css';
+import { formatDate } from '../../../services/dateService';
 
-function SelectedDateTime({ currentCityData }) {
-  const date = `${currentCityData.weekDay} ${currentCityData.day} ${currentCityData.month} ${currentCityData.year}`;
+function SelectedDateTime({ currentDate }) {
+  const date = formatDate(currentDate);
 
   return (
     <div className={classes.container}>
-      <div className={classes.selectedTime}>{currentCityData.time}</div>
+      <div className={classes.selectedTime}>{date.time}</div>
       <div>
-        <span className={classes.selectedDate}>{date}</span>
+        <span className={classes.selectedDate}>{date.date}</span>
       </div>
     </div>
   );

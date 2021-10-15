@@ -29,8 +29,8 @@ const defaultDateOptions = {
 
 const dailyWeatherDateOptions = {
   day: '2-digit',
-  month: 'short',
-}
+  month: 'short'
+};
 
 const defaultTimeOptions = {
   hour: '2-digit',
@@ -39,4 +39,12 @@ const defaultTimeOptions = {
 
 const dateFormat = 'en-US';
 
-export { themes, bgImages, urls, defaultDateOptions, defaultTimeOptions, dateFormat, dailyWeatherDateOptions };
+export {
+  themes,
+  bgImages,
+  urls,
+  defaultDateOptions,
+  defaultTimeOptions,
+  dateFormat,
+  dailyWeatherDateOptions
+};

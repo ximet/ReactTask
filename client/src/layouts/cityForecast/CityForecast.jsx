@@ -3,7 +3,6 @@ import classes from './CityForecast.module.css';
 import CurrentCityForecast from './CurrentCityForecast/Container';
 import ExtraCityForecast from './ExtraCityForecast/Container';
 import SelectedDateTime from './SelectedDateTime/Container';
-import { currentCityData } from '../../mock/mock.js';
 
 class CityForecast extends React.Component {
   render() {
@@ -11,7 +10,7 @@ class CityForecast extends React.Component {
       <div className={classes.container}>
         <ExtraCityForecast />
         <CurrentCityForecast />
-        <SelectedDateTime currentCityData={currentCityData} />
+        <SelectedDateTime/>
       </div>
     );
   }
