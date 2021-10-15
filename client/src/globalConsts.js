@@ -20,4 +20,18 @@ const bgImages = {
   light: sunnyBgImage
 };
 
-export { themes, bgImages, urls };
+const dateOptions = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: '2-digit',
+};
+
+const timeOptions = {
+  hour: '2-digit',
+  minute: '2-digit'
+}
+
+const dateFormat = "en-US"
+
+export { themes, bgImages, urls, dateOptions, timeOptions, dateFormat };
