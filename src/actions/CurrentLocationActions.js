@@ -42,17 +42,18 @@ export const setCurrentLocationDetailedWeather = detailedWeather => ({
 });
 
 export const getLocationDataById = locationId => async (dispatch, getState) => {
-  if (getState().serverApi.isTokenReceived && !getState().serverApi.isFetchingInProgress) {
-    dispatch(setIsFetchingInProgress(true));
-
+  const state = getState();
+  if (state.serverApi.isTokenReceived && !state.serverApi.isFetchingInProgress) {
     try {
-      const currentLocationInfo = weatherAPI.getLocationInfo(locationId);
-      const currentLocationWeather = weatherAPI.getCurrentWeather(locationId);
-      const currentLocationDailyWeather = weatherAPI.getForecast(
+      dispatch(setIsFetchingInProgress(true));
+
+      const currentLocationInfoPromise = weatherAPI.getLocationInfo(locationId);
+      const currentLocationWeatherPromise = weatherAPI.getCurrentWeather(locationId);
+      const currentLocationDailyWeatherPromise = weatherAPI.getForecast(
         API_FORECAST_DAILY_ENDPOINT,
         locationId
       );
-      const currentLocationDetailedWeather = weatherAPI.getForecast(
+      const currentLocationDetailedWeatherPromise = weatherAPI.getForecast(
         API_FORECAST_DETAILED_ENDPOINT,
         locationId,
         {
@@ -60,30 +61,28 @@ export const getLocationDataById = locationId => async (dispatch, getState) => {
         }
       );
 
-      const results = await Promise.all([
+      const [
         currentLocationInfo,
         currentLocationWeather,
         currentLocationDailyWeather,
         currentLocationDetailedWeather
+      ] = await Promise.all([
+        currentLocationInfoPromise,
+        currentLocationWeatherPromise,
+        currentLocationDailyWeatherPromise,
+        currentLocationDetailedWeatherPromise
       ]);
 
-      const [
-        currentLocationInfoResult,
-        currentLocationWeatherResult,
-        currentLocationDailyWeatherResult,
-        currentLocationDetailedWeatherResult
-      ] = results;
-
-      dispatch(setCurrentLocationInfo(currentLocationInfoResult));
-      dispatch(setCurrentLocationWeather(currentLocationWeatherResult));
-      dispatch(setCurrentLocationDailyWeather(currentLocationDailyWeatherResult));
-      dispatch(setCurrentLocationDetailedWeather(currentLocationDetailedWeatherResult));
+      dispatch(setCurrentLocationInfo(currentLocationInfo));
+      dispatch(setCurrentLocationWeather(currentLocationWeather));
+      dispatch(setCurrentLocationDailyWeather(currentLocationDailyWeather));
+      dispatch(setCurrentLocationDetailedWeather(currentLocationDetailedWeather));
     } catch (error) {
       dispatch(setFetchingError(error));
       console.log(error);
+    } finally {
+      dispatch(setIsFetchingInProgress(false));
     }
-
-    dispatch(setIsFetchingInProgress(false));
   }
 };
 
