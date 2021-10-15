@@ -9,7 +9,10 @@ export const setHourlyWeatherAction = hourlyWeather => ({
 });
 
 export const getHourlyWeatherAction = location => dispatch => {
-  getHourlyWeather(location).then(hourlyWeather =>
+  const params = {
+    dataset: 'full'
+  };
+  getHourlyWeather(location, params).then(hourlyWeather =>
     dispatch(setHourlyWeatherAction(hourlyWeather.forecast))
   );
 };

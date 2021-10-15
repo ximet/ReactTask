@@ -10,7 +10,7 @@ class CityForecast extends React.Component {
       <div className={classes.container}>
         <ExtraCityForecast />
         <CurrentCityForecast />
-        <SelectedDateTime/>
+        <SelectedDateTime />
       </div>
     );
   }
