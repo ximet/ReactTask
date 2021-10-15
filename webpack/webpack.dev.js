@@ -37,6 +37,7 @@ module.exports = {
     compress: true,
     hot: true,
     port: 9020,
+    historyApiFallback: true,
     proxy: {
       '/auth': {
         target: 'http://localhost:3000',

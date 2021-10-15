@@ -1,24 +1,23 @@
 import classes from './MainNavigation.module.scss';
-
-import Link from '../../../Link/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 function MainNavigation() {
   return (
     <ul className={classes.navigation}>
       <li className={classes.navItem}>
-        <Link className={classes.link} href="#">
+        <RouterLink className={classes.link} to="/">
           Home
-        </Link>
+        </RouterLink>
       </li>
       <li className={classes.navItem}>
-        <Link className={classes.link} href="#">
+        <RouterLink className={classes.link} to="/about">
           About us
-        </Link>
+        </RouterLink>
       </li>
       <li className={classes.navItem}>
-        <Link className={classes.link} href="#">
+        <RouterLink className={classes.link} to="/contacts">
           Contacts
-        </Link>
+        </RouterLink>
       </li>
     </ul>
   );
