@@ -1,14 +1,15 @@
 @import '../../../../assets/styles/constants/main.scss';
 
 .city-card {
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 110px;
-  height: 110px;
-  padding: 15px;
+  width: 130px;
+  height: 130px;
+  padding: 10px;
   margin-right: 20px;
   background-color: $city-bg-color;
   color: $primary-font-color;

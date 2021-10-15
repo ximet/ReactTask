@@ -1,3 +1,3 @@
 export const favCitiesSliderOptions = {
-  slideWidth: 160
+  slideWidth: 150
 };

@@ -13,7 +13,7 @@ const info = {
   },
   gomel: {
     name: 'Gomel'
-  },
+  }
 };
 
 function FavoriteCities() {
@@ -45,13 +45,12 @@ function FavoriteCities() {
     {
       id: 7,
       slide: <CityCard info={info.minsk} />
-    },
+    }
   ];
 
   return (
     <>
       <Slider slides={slides} {...favCitiesSliderOptions} />
-      {/* <CityCard /> */}
     </>
   );
 }

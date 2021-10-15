@@ -30,15 +30,33 @@ class WeatherForecast extends React.PureComponent {
     try {
       await dataService.getForecastToken();
 
-      const { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo } =
-        await dataService.getFullForecast(this.state.cityId);
+      // const { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo } =
+      //   await dataService.getFullForecast(this.state.cityId);
+
+      // this.setState({
+      //   cityForecast,
+      //   dailyCityForecast,
+      //   hourlyCityForecast,
+      //   cityInfo,
+      //   isDataReturned: true
+      // });
 
       this.setState({
-        cityForecast,
-        dailyCityForecast,
-        hourlyCityForecast,
-        cityInfo,
-        isDataReturned: true
+        cityForecast: {
+          relHumidity: 0,
+          symbol: 'd000',
+          symbolPhrase: 'no info',
+          temperature: 0,
+          windSpeed: 0
+        },
+        dailyCityForecast: [],
+        hourlyCityForecast: [],
+        isDataReturned: true,
+        cityInfo: {
+          id: 1234,
+          name: 'Minsk',
+          country: 'Belarus'
+        }
       });
     } catch (error) {
       console.log(error);
