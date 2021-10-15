@@ -1,40 +1,19 @@
 import ForecastApi from '../api/ForecastApi';
 
 const ApiService = {
-  getAccessToken: async function (cookies) {
-    let resultToken = '';
+  getLocationsSearch: async locationQueryStr =>
+    await ForecastApi.getData(`/api/v1/location/search/${locationQueryStr}`),
 
-    if (!cookies.token) {
-      try {
-        const getTokenResult = await ForecastApi.fetchAccessToken();
-        const tokenData = await getTokenResult.json();
+  getCurrentForecast: async locationId =>
+    await ForecastApi.getData(`/api/v1/current/${locationId}`),
 
-        resultToken = tokenData.access_token;
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      resultToken = cookies.token;
-    }
+  getLocationInfo: async locationId => await ForecastApi.getData(`/api/v1/location/${locationId}`),
 
-    return resultToken;
-  },
+  getHourlyForecast: async locationId =>
+    await ForecastApi.getData(`/api/v1/forecast/hourly/${locationId}`),
 
-  getLocationsSearch: async function (url, accessToken) {
-    let responseData = {
-      status: false
-    };
-
-    try {
-      const fetchResponse = await ForecastApi.fetchLocationSearch(url, accessToken);
-      responseData = await fetchResponse.json();
-      responseData.status = true;
-    } catch (error) {
-      console.error(error);
-    }
-
-    return responseData;
-  }
+  getDailyForecast: async locationId =>
+    await ForecastApi.getData(`/api/v1/forecast/daily/${locationId}`)
 };
 
 export default ApiService;

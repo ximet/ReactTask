@@ -1,15 +1,17 @@
+// @flow
 import classes from './FavoriteCities.module.scss';
-
+import * as React from 'react';
 import FavoriteCityForecast from './FavoriteCityForecast/FavoriteCityForecast';
+import mockFavoriteCities from './mockData';
 
-function FavoriteCities() {
+function FavoriteCities(): React.Node {
   return (
     <div className={classes.favoriteContainer}>
       <h2 className={classes.title}>Favorite cities</h2>
       <div>
-        <FavoriteCityForecast cityName="Gomel" />
-        <FavoriteCityForecast cityName="Minsk" />
-        <FavoriteCityForecast cityName="Moskow" />
+        {mockFavoriteCities.map(location => (
+          <FavoriteCityForecast key={`fav_${location.id}`} location={location} />
+        ))}
       </div>
     </div>
   );
