@@ -1,3 +1,5 @@
+@import '../../assets/styles/constants/main.scss';
+
 .carousel-wrapper {
   position: relative;
   margin: 0 auto;
@@ -15,8 +17,8 @@
     white-space: nowrap;
     overflow: hidden;
     padding: 0;
-    background: #fff;
-    width: 400px;
+    width: 60vw;
+    background-color: #fff;
 
     .carousel-items {
       display: flex;
@@ -24,28 +26,32 @@
   }
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    left: auto;
     right: -50px;
     height: 50px;
+    top: 50%;
+    transform: translate(0, -50%);
     width: 50px;
     border: 0;
-    background: #f1f1f1;
     z-index: 1;
     font-size: 34px;
-    color: #999;
+    background-color: $primary-bg-color;
+    color: $arrow-btn-color;
     cursor: pointer;
     outline: none;
+    transition: font-size $default-transition-delay ease;
 
     &:hover {
-      background: #eee;
-      color: #666;
+      color: $hover-arrow-btn-color;
+      font-size: 40px;
     }
 
     &:first-child {
       right: auto;
       left: -50px;
-      top: 0;
     }
   }
 
