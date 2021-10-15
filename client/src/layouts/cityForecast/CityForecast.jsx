@@ -9,8 +9,8 @@ class CityForecast extends React.Component {
   render() {
     return (
       <div className={classes.container}>
-        <ExtraCityForecast/>
-        <CurrentCityForecast/>
+        <ExtraCityForecast />
+        <CurrentCityForecast />
         <SelectedDateTime currentCityData={currentCityData} />
       </div>
     );

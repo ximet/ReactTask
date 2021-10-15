@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from '../../components/slider/Slider';
 import classes from './dailyForecasts.module.css';
-import DailyForecast from './dailyForecast/DailyForecast.jsx';
+import DailyForecast from './dailyForecast/Container';
 import { dailyForecasts } from '../../mock/mock';
 
 function DailyForecasts({ theme }) {

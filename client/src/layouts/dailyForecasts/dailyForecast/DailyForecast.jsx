@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './dailyForecast.module.css';
 
-function DailyForecast({ forecast, theme }) {
+function DailyForecast({ forecast }) {
   return (
     <div className={classes.container}>
       <span className={classes.day}>{`${forecast.weekDay} ${forecast.date}`}</span>
