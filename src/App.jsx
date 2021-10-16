@@ -36,8 +36,7 @@ const mapStateToProps = ({ locationManager: { currentLocation } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setGeolocationCity: () => dispatch(setGeolocationCity),
-    onChangeLocation: location => dispatch(changeLocation(location))
+    setGeolocationCity: () => dispatch(setGeolocationCity)
   };
 };
 
