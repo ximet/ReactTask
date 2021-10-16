@@ -11,7 +11,7 @@ function DailyForecasts({ locationId }) {
   useEffect(async () => {
     const { data } = await ApiService.getDailyForecast(locationId);
     setDailyForecast(data.forecast);
-  }, []);
+  }, [locationId]);
 
   return (
     <div className={classes.forecastsContainer}>

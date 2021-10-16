@@ -11,7 +11,7 @@ function HourlyForecastChart({ locationId }) {
   useEffect(async () => {
     const { data } = await ApiService.getHourlyForecast(locationId);
     setHourlyForecast(data.forecast);
-  }, []);
+  }, [locationId]);
 
   return (
     <div>

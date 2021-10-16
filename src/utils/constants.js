@@ -1,6 +1,9 @@
 export const FORECAST_SYMBOL_LINK = 'https://developer.foreca.com/static/images/symbols/';
 export const FORECAST_SYMBOL_EXT = '.png';
 
+export const CURRENT_LOCATION_STORAGE_CODE = 'cur_loc';
+export const FAVORITE_CITIES_STORAGE_CODE = 'fav_cities';
+
 export const COOKIE_TOKEN_FIELD = 'token';
 
 export const LOCALE_DATE = 'en-US';

@@ -1,9 +1,20 @@
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import { connect } from 'react-redux';
 import CurrentCityForecastView from './views/CurrentCityForecastView/CurrentCityForecastView';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Geolocation from './services/GeolocationService';
+import ApiService from './services/ForecastApiService';
+import { changeLocation, setGeolocationCity } from './actions/locationsManagerActions';
+import Storage from './services/StorageConnectionService';
+import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
 
-function App() {
+function App(props) {
+  useEffect(async () => {
+    props.setGeolocationCity();
+  }, []);
+
   return (
     <BrowserRouter>
       <Header />
@@ -17,4 +28,19 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+  return {
+    currentLocation
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setGeolocationCity: () => dispatch(setGeolocationCity),
+    onChangeLocation: location => dispatch(changeLocation(location))
+  };
+};
+
+const WrappedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default WrappedApp;
