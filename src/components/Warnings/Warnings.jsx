@@ -19,8 +19,14 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
 
   useEffect(() => {
     const getWarningsData = async (): Promise<void> => {
-      const { data } = await ApiService.getWarnings(currentLocation.id);
-      setWarnings(data.warnings);
+      try {
+        if (currentLocation.id) {
+          const { data } = await ApiService.getWarnings(currentLocation.id);
+          setWarnings(data.warnings);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getWarningsData();
@@ -33,10 +39,7 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
         {warnings.length ? (
           makeWarningsList(warnings)
         ) : (
-          <EmptyListMessage
-            title={EMPTY_WARNING_LIST_MAIN_MESSAGE}
-            message={EMPTY_WARNING_LIST_ADDITIONAL_MESSAGE}
-          />
+          <EmptyListMessage title="Warnings list is empty" message="Have a nice day!" />
         )}
       </div>
     </div>
