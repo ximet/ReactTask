@@ -39,6 +39,8 @@ const defaultTimeOptions = {
 
 const dateFormat = 'en-US';
 
+const temperatureUnits = '°C'
+
 export {
   themes,
   bgImages,
@@ -46,5 +48,6 @@ export {
   defaultDateOptions,
   defaultTimeOptions,
   dateFormat,
-  dailyWeatherDateOptions
+  dailyWeatherDateOptions,
+  temperatureUnits
 };

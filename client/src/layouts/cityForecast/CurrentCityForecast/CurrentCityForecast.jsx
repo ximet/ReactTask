@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './CurrentCityForecast.module.css';
 import moonWeatherIcon from '../../../../public/images/moonWeatherIcon.png';
+import { temperatureUnits } from '../../../globalConsts';
 
 function CurrentCityForecast({ location, weather }) {
   return (
@@ -10,7 +11,7 @@ function CurrentCityForecast({ location, weather }) {
         <span className={`${classes.city} ${classes.weatherItem}`}>{location.name}</span>
         <span
           className={`${classes.temperature} ${classes.weatherItem}`}
-        >{`${weather.temperature} °C`}</span>
+        >{`${weather.temperature} ${temperatureUnits}`}</span>
         <span className={`${classes.weatherConditions} ${classes.weatherItem}`}>
           {weather.symbolPhrase}
         </span>

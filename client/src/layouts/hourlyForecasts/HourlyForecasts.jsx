@@ -2,8 +2,7 @@ import React from 'react';
 import Slider from '../../components/slider/Slider';
 import classes from './hourlyForecasts.module.css';
 import HourlyForecast from './hourlyForecast/HourlyForecast';
-// import { hourlyForecasts } from '../../mock/mock';
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 function HourlyForecasts({ theme, hourlyForecasts }) {
   const slides = hourlyForecasts.map(forecast => ({

@@ -4,14 +4,15 @@ import moonAndCloudsIcon from '../../../../public/images/weatherIcon/moonAndClou
 import dropsIcon from '../../../../public/images/dropsIcon.png';
 import windIcon from '../../../../public/images/windIcon.png';
 import { formatDate } from '../../../services/dateService';
+import { temperatureUnits } from '../../../globalConsts';
 
 function HourlyForecast({ forecast }) {
-  const time = formatDate(forecast.time).time
+  const time = formatDate(forecast.time).time;
 
   return (
     <div className={classes.container}>
       <span className={classes.time}>{time}</span>
-      <span className={classes.temperature}>{`${forecast.temperature}°C`}</span>
+      <span className={classes.temperature}>{`${forecast.temperature}${temperatureUnits}`}</span>
       <div>
         <img className={classes.weatherIcon} src={moonAndCloudsIcon} alt="weather-icon" />
       </div>
