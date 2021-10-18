@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 import styles from './Main.module.scss';
 
-import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
+import WeatherForecast from '../../views/WeatherForecast/Container';
 import Info from '../../views/Info/Info';
 import Feedback from '../../views/Feedback/Feedback';
 

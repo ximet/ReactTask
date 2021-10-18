@@ -45,19 +45,19 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
     case SET_CITY_FORECAST:
       return {
         ...state,
-        cityForecast: action.payload.cityForecast
+        cityForecast: action.payload
       };
 
     case SET_DAILY_CITY_FORECAST:
       return {
         ...state,
-        dailyCityForecast: action.payload.dailyCityForecast
+        dailyCityForecast: action.payload
       };
 
     case SET_HOURLY_CITY_FORECAST:
       return {
         ...state,
-        hourlyCityForecast: action.payload.hourlyCityForecast
+        hourlyCityForecast: action.payload
       };
 
     default:

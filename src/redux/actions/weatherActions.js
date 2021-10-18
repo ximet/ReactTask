@@ -9,35 +9,35 @@ import {
 
 import { dataService } from '../../services/dataService';
 
-export const fetchWeatherStart = {
+const fetchWeatherStart = {
   type: FETCH_WEATHER_START
 };
 
-export const fetchWeatherSuccess = {
+const fetchWeatherSuccess = {
   type: FETCH_WEATHER_SUCCESS
 };
 
-export const fetchWeatherFailure = errorMessage => ({
+const fetchWeatherFailure = errorMessage => ({
   type: FETCH_WEATHER_FAILURE,
   payload: errorMessage
 });
 
-export const setCityForecast = forecast => ({
+const setCityForecast = forecast => ({
   type: SET_CITY_FORECAST,
   payload: forecast
 });
 
-export const setDailyCityForecast = forecast => ({
+const setDailyCityForecast = forecast => ({
   type: SET_DAILY_CITY_FORECAST,
   payload: forecast
 });
 
-export const setHourlyCityForecast = forecast => ({
+const setHourlyCityForecast = forecast => ({
   type: SET_HOURLY_CITY_FORECAST,
   payload: forecast
 });
 
-export const getCityInfo = location => async dispatch => {
+export const getWeatherInfo = location => async dispatch => {
   dispatch(fetchWeatherStart);
 
   try {
@@ -50,8 +50,9 @@ export const getCityInfo = location => async dispatch => {
     dispatch(setDailyCityForecast(dailyCityForecast));
     dispatch(setHourlyCityForecast(hourlyCityForecast));
 
-    dispatch(fetchWeatherSuccess());
+    dispatch(fetchWeatherSuccess);
   } catch (error) {
+    console.log(error);
     dispatch(fetchWeatherFailure());
   }
 };
