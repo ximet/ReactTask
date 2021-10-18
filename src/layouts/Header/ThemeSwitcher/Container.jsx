@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { THEMES } from '../../../constants/themes';
 import { setCurrentTheme } from '../../../redux/actions/themeActions';
@@ -17,6 +18,11 @@ const ThemeSwitcherContainer = ({ theme, switchTheme }) => {
   }, [theme]);
 
   return <ThemeSwitcher theme={theme} onSwitch={changeTheme} />;
+};
+
+ThemeSwitcherContainer.propTypes = {
+  theme: PropTypes.string.isRequired,
+  switchTheme: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
