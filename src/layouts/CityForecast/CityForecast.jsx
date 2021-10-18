@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
 
 import styles from './CityForecast.module.scss';
-import { THEMES, BG_IMAGES } from '../../constants/themes';
 import LocationIcon from '../../assets/images/location-icon.png';
 import WindIcon from '../../assets/images/wind-icon.png';
 import HumidityIcon from '../../assets/images/hum-icon.png';
@@ -13,10 +12,9 @@ import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
 import VerticalLine from '../../components/VerticalLine/VerticalLine';
 
-function CityForecast({ cityForecast, cityInfo, theme }) {
+function CityForecast({ cityForecast, cityInfo, themeBg }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
-  const themeBg = theme === THEMES.light ? BG_IMAGES.light : BG_IMAGES.dark;
 
   return (
     <div className={styles.cityForecast}>
@@ -57,7 +55,7 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
 CityForecast.propTypes = {
   cityForecast: CityForecastTypes,
   cityInfo: CityInfoTypes,
-  theme: PropTypes.string.isRequired
+  themeBg: PropTypes.string.isRequired
 };
 
 export default CityForecast;

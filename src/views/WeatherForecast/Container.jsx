@@ -19,10 +19,9 @@ class WeatherForecastContainer extends React.PureComponent {
     if (this.props.isFetchingFailure) {
       return <span> Something went wrong...</span>;
     }
-    
+
     return (
       <WeatherForecast
-        cityForecast={this.props.cityForecast}
         dailyCityForecast={this.props.dailyCityForecast}
         hourlyCityForecast={this.props.hourlyCityForecast}
         cityInfo={this.props.cityInfo}
@@ -35,7 +34,6 @@ class WeatherForecastContainer extends React.PureComponent {
 const mapStateToProps = state => ({
   isFetching: state.weather.isFetching,
   isFetchingFailure: state.weather.isFetchingFailure,
-  cityForecast: state.weather.cityForecast,
   dailyCityForecast: state.weather.dailyCityForecast,
   hourlyCityForecast: state.weather.hourlyCityForecast,
   cityInfo: state.location.currentLocation
