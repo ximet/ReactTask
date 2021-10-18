@@ -24,7 +24,7 @@ export function useInitialize() {
         })
       );
     });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     //get token initially or if it's expired
