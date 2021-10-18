@@ -16,7 +16,6 @@ function CurrentCityForecast({ currentLocation }) {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
 
   const currentLocationId = currentLocation.id;
-  console.log(currentLocation);
   const symbolUrl = currentCityForecast.forecast?.symbol
     ? `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`
     : '';

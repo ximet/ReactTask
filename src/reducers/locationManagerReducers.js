@@ -1,4 +1,9 @@
-import { CHANGE_LOCATION, CHANGE_SEARCH_STRING } from '../actions/locationsManagerActions';
+import {
+  CHANGE_LOCATION,
+  CHANGE_SEARCH_STRING,
+  SET_HOURLY_FORECAST,
+  SET_DAILY_FORECAST
+} from '../actions/locationsManagerActions';
 import StorageConnection from '../services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../utils/constants';
 
@@ -9,7 +14,8 @@ const initialState = {
   currentLocation: currentLocationFromStore ? currentLocationFromStore : {},
   searchString: '',
   favoriteCitiesList: favoriteCitiesFromStore ? favoriteCitiesFromStore : [],
-  forecasts: {}
+  forecasts: {},
+  currentHourlyForecustType: {}
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +26,14 @@ export default function (state = initialState, action) {
 
     case CHANGE_SEARCH_STRING: {
       return { ...state, searchString };
+    }
+
+    case SET_HOURLY_FORECAST: {
+      return { ...state, currentHourlyForecast: action.currentHourlyForecast };
+    }
+
+    case SET_DAILY_FORECAST: {
+      return { ...state, currentDailyForecast: action.currentDailyForecast };
     }
 
     default: {

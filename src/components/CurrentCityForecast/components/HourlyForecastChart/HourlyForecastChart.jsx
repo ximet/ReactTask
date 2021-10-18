@@ -1,23 +1,25 @@
+// @flow
 import { Line } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import { prepareChartData } from '../../../../utils/prepareData';
 import { hourlyLineChartData, hourlyLineChartOptions } from '../../../../utils/chartSettings';
 import ApiService from '../../../../services/ForecastApiService';
+import { setCurrentHourlyForecast } from '../../../../actions/locationsManagerActions';
+import { connect } from 'react-redux';
+import * as React from 'react';
+import type { HourlyForecastPropsType } from './HourlyForecastChartPropsType';
 
-function HourlyForecastChart({ locationId }) {
+function HourlyForecastChart({
+  locationId,
+  currentHourlyForecast,
+  setCurrentHourlyForecast
+}: HourlyForecastPropsType): React$Node {
   const [hourlyForecast, setHourlyForecast] = useState([]);
-  const [hours, temperatures] = prepareChartData(hourlyForecast);
+  const [hours, temperatures] = prepareChartData(currentHourlyForecast || []);
 
-  useEffect(async () => {
-    try {
-      if (locationId) {
-        const { data } = await ApiService.getHourlyForecast(locationId);
-        setHourlyForecast(data.forecast);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [locationId]);
+  useEffect(() => {
+    setCurrentHourlyForecast(locationId);
+  }, [locationId, setCurrentHourlyForecast]);
 
   return (
     <div>
@@ -31,4 +33,21 @@ function HourlyForecastChart({ locationId }) {
   );
 }
 
-export default HourlyForecastChart;
+const mapStateToProps = ({ locationManager: { currentHourlyForecast } }) => {
+  return {
+    currentHourlyForecast
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentHourlyForecast: locationId => dispatch(setCurrentHourlyForecast(locationId))
+  };
+};
+
+const WrappedHourlyForecastChart = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HourlyForecastChart): React.AbstractComponent<HourlyForecastPropsType>);
+
+export default WrappedHourlyForecastChart;
