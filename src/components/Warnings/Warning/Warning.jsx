@@ -1,24 +1,17 @@
-import Link from '../../Link/Link';
+// @flow
 import classes from './Warning.module.scss';
+import { formatTime, formatDate } from '../../../utils/dateTimeUtils';
+import type { WarningPropsType } from './WarningPropsType';
 
-function Warning() {
+function Warning({ data }: WarningPropsType): React$Node {
   return (
     <div className={classes.item}>
-      <div className={classes.timestamp}>08.09.2021 17:00</div>
-      <div className={classes.title}>Fog</div>
-      <div className={classes.type}>Potentially dangerous</div>
-      <div className={classes.description}>
-        <p>
-          Dense Fog Advisory issued January 08 at 4:17AM CST until January 08 at 11:00AM CST by NWS
-          Minneapolis; Anoka; Benton; Blue Earth; Brown; Carver; Chippewa; Chisago; Douglas;
-          Hennepin; Isanti; Kanabec; Kandiyohi; Lac Qui Parle; Le Sueur; Martin; McLeod; Meeker;
-          Mille Lacs; Morrison; Nicollet; Pope; Ramsey; Redwood; Renville; Scott; Sherburne; Sibley;
-          Stearns; Stevens; Swift; Todd; Watonwan; Wright; Yellow Medicine...
-        </p>
+      <div className={classes.timestamp}>
+        {formatDate(data.validFrom)} {formatTime(data.validFrom)}
       </div>
-      <Link className={classes.linkMore} href="#">
-        read more
-      </Link>
+      <div className={classes.title}>{data.name}</div>
+      <div className={classes.type}>{data.significanceDescription}</div>
+      <div className={classes.description}>{data.description.map(message => message.text)}</div>
     </div>
   );
 }

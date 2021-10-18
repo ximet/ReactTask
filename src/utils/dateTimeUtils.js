@@ -21,6 +21,18 @@ function formatTime(time) {
   return `${hours}:${minutes}`;
 }
 
+function formatDate(time) {
+  const padSymbol = '0';
+  const padStringLength = 2;
+
+  const dateObj = new Date(time);
+  const day = dateObj.getDate().toString().padStart(padStringLength, padSymbol);
+  const month = dateObj.getMonth().toString().padStart(padStringLength, padSymbol);
+  const year = dateObj.getFullYear();
+
+  return `${day}.${month}.${year}`;
+}
+
 function getDayShort(time, locale) {
   const dateObj = new Date(time);
 
@@ -33,4 +45,4 @@ function getDay(time, locale) {
   return dateObj.toLocaleDateString(locale, { weekday: 'long' });
 }
 
-export { getFormattedCurrentTime, formatTime, getDayShort, getDay };
+export { getFormattedCurrentTime, formatTime, getDayShort, getDay, formatDate };

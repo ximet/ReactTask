@@ -13,7 +13,9 @@ const ApiService = {
     await ForecastApi.getData(`/api/v1/forecast/hourly/${locationId}`),
 
   getDailyForecast: async locationId =>
-    await ForecastApi.getData(`/api/v1/forecast/daily/${locationId}`)
+    await ForecastApi.getData(`/api/v1/forecast/daily/${locationId}`),
+
+  getWarnings: async locationId => await ForecastApi.getData(`/api/v1/warning/${locationId}`)
 };
 
 export default ApiService;
