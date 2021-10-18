@@ -20,9 +20,16 @@ export type StoreStateLocationManager = {
   currentLocation: LocationType,
   searchString: string,
   favoriteCitiesList: Array<LocationType>,
-  forecasts: Array<LocationForecastType>
+  forecasts: StoreForecastState
 };
 
 export type StoreState = {
   locationManager: StoreStateLocationManager
+};
+
+export type StoreForecastState = {
+  [number | string]: {
+    cacheTimeStamp: number,
+    value: LocationForecastType
+  }
 };
