@@ -11,9 +11,9 @@ import Storage from './services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
 
 function App(props) {
-  useEffect(async () => {
+  useEffect(() => {
     props.setGeolocationCity();
-  }, []);
+  }, [props.setGeolocationCity()]);
 
   return (
     <BrowserRouter>

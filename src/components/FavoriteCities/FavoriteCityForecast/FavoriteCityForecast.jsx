@@ -16,7 +16,7 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
         const { data } = await ApiService.getCurrentForecast(location.id);
         currentForecast = data.current;
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
 
       setForecast(currentForecast);
