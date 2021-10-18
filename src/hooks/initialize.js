@@ -3,15 +3,20 @@ import { useEffect } from 'react';
 import { getPosition } from '../actions/GeoDetectionActions';
 import { getToken } from '../actions/ServerApiActions';
 import { putSelectedLocation } from '../actions/SelectedLocationsActions';
-import { DEFAULT_SELECTED_LOCATIONS } from '../constants/constants';
+import { DEFAULT_SELECTED_LOCATIONS, TOKEN_UPDATE_INTERVAL } from '../constants/constants';
 
 export function useInitialize() {
   const dispatch = useDispatch();
-  const { isTokenReceived, tokenExpirationTime, fetchingError } = useSelector(
-    state => state.serverApi
-  );
 
   useEffect(() => {
+    //get token initially
+    dispatch(getToken());
+
+    //get token after expiration
+    const tokenTimer = setInterval(() => {
+      dispatch(getToken());
+    }, TOKEN_UPDATE_INTERVAL);
+
     //get Geo location here
     dispatch(getPosition());
     //push default locations here
@@ -24,21 +29,9 @@ export function useInitialize() {
         })
       );
     });
-  }, [dispatch]);
 
-  useEffect(() => {
-    //get token initially or if it's expired
-    if (
-      (!isTokenReceived || (tokenExpirationTime && tokenExpirationTime <= Number(new Date()))) &&
-      !fetchingError
-    ) {
-      dispatch(getToken());
-    }
-  }, [
-    isTokenReceived,
-    tokenExpirationTime,
-    tokenExpirationTime <= Number(new Date()),
-    fetchingError,
-    dispatch
-  ]);
+    return function () {
+      clearInterval(tokenTimer);
+    };
+  }, [dispatch]);
 }
