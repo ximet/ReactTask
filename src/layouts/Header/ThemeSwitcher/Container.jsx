@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { THEMES } from '../../../constants/themes';
+import { localStorageService } from '../../../services/localStorageService';
 import { setCurrentTheme } from '../../../redux/actions/themeActions';
 import ThemeSwitcher from './ThemeSwitcher';
 
 const ThemeSwitcherContainer = ({ theme, switchTheme }) => {
   function changeTheme() {
     const currentTheme = theme === THEMES.light ? THEMES.dark : THEMES.light;
-    localStorage.setItem('theme', currentTheme);
+    localStorageService.setCurrentTheme(currentTheme);
 
     switchTheme(currentTheme);
   }
