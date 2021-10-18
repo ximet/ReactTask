@@ -11,6 +11,7 @@ import { getCurrentLocationData } from '../actions/CurrentLocationActions';
 import { connect } from 'react-redux';
 import Preloader from '../components/Preloader/Preloader';
 import { WEATHER_FIRST_UPDATE_INTERVAL, WEATHER_UPDATE_INTERVAL } from '../constants/constants';
+import { isReadyForDataFetchingSelector } from '../selectors';
 
 class LocationWeatherContainer extends PureComponent {
   constructor(props) {
@@ -21,7 +22,7 @@ class LocationWeatherContainer extends PureComponent {
   componentDidMount() {
     // wait for ability to get data first time
     const internalTimer = setInterval(() => {
-      if (this.props.isTokenReceived && !this.props.isDataFetchnig) {
+      if (this.props.isReadyForDataFetching) {
         this.props.getCurrentLocationData();
         clearInterval(internalTimer);
       }
@@ -29,7 +30,7 @@ class LocationWeatherContainer extends PureComponent {
 
     // auto refresh
     this.timerId = setInterval(() => {
-      if (this.props.isTokenReceived && !this.props.isDataFetchnig) {
+      if (this.props.isReadyForDataFetching) {
         this.props.getCurrentLocationData();
       }
     }, WEATHER_UPDATE_INTERVAL);
@@ -40,7 +41,7 @@ class LocationWeatherContainer extends PureComponent {
   }
 
   render() {
-    if (this.props.isDataFetchnig || !this.props.isTokenReceived) {
+    if (!this.props.isReadyForDataFetching) {
       return (
         <div className="location-weather">
           <Preloader />
@@ -61,8 +62,7 @@ class LocationWeatherContainer extends PureComponent {
 }
 
 LocationWeatherContainer.propTypes = {
-  isDataFetchnig: PropTypes.bool.isRequired,
-  isTokenReceived: PropTypes.bool.isRequired,
+  isReadyForDataFetching: PropTypes.bool.isRequired,
   currentLocationInfo: CurrentLocationInfoType,
   currentLocationWeather: CurrentLocationWeatherType,
   currentLocationDailyWeather: CurrentLocationDailyWeatherType,
@@ -79,8 +79,7 @@ LocationWeatherContainer.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    isDataFetchnig: state.serverApi.isFetchingInProgress,
-    isTokenReceived: state.serverApi.isTokenReceived,
+    isReadyForDataFetching: isReadyForDataFetchingSelector(state),
     currentLocationInfo: state.currentLocation.info,
     currentLocationWeather: state.currentLocation.weather,
     currentLocationDailyWeather: state.currentLocation.dailyWeather,

@@ -10,6 +10,7 @@ import {
   updateAllSelectedLocationsData
 } from '../actions/SelectedLocationsActions';
 import SelectedLocations from '../components/SelectedLocations/SelectedLocations';
+import { isReadyForDataFetchingSelector } from '../selectors';
 
 class SelectedLocationsContainer extends PureComponent {
   constructor(props) {
@@ -20,7 +21,7 @@ class SelectedLocationsContainer extends PureComponent {
   componentDidMount() {
     // wait for ability to get data first time
     const internalTimer = setInterval(() => {
-      if (this.props.isTokenReceived && !this.props.isDataFetchnig) {
+      if (this.props.isReadyForDataFetching) {
         this.props.updateAllSelectedLocationsData();
         clearInterval(internalTimer);
       }
@@ -28,7 +29,7 @@ class SelectedLocationsContainer extends PureComponent {
 
     // auto refresh
     this.timerId = setInterval(() => {
-      if (this.props.isTokenReceived && !this.props.isDataFetchnig) {
+      if (this.props.isReadyForDataFetching) {
         this.props.updateAllSelectedLocationsData();
       }
     }, WEATHER_UPDATE_INTERVAL);
@@ -39,7 +40,7 @@ class SelectedLocationsContainer extends PureComponent {
   }
 
   render() {
-    if (this.props.isDataFetchnig || !this.props.isTokenReceived) {
+    if (!this.props.isReadyForDataFetching) {
       return <Preloader />;
     }
 
@@ -53,8 +54,7 @@ class SelectedLocationsContainer extends PureComponent {
 }
 
 SelectedLocationsContainer.propTypes = {
-  isDataFetchnig: PropTypes.bool.isRequired,
-  isTokenReceived: PropTypes.bool.isRequired,
+  isReadyForDataFetching: PropTypes.bool.isRequired,
   selectedLocations: PropTypes.arrayOf(SelectedLocationType),
   updateAllSelectedLocationsData: PropTypes.func.isRequired,
   deleteSelectedLocation: PropTypes.func.isRequired
@@ -66,8 +66,7 @@ SelectedLocationsContainer.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    isDataFetchnig: state.serverApi.isFetchingInProgress,
-    isTokenReceived: state.serverApi.isTokenReceived,
+    isReadyForDataFetching: isReadyForDataFetchingSelector(state),
     selectedLocations: state.selectedLocations
   };
 };
