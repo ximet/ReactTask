@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './WeatherForecast.module.scss';
 import { dataService } from '../../services/dataService';
@@ -7,6 +8,7 @@ import { CURRENT_CITY_ID } from '../../constants/forecaApi';
 
 import CityForecast from '../../layouts/CityForecast/CityForecast';
 import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
+import { getCityInfo } from '../../redux/actions/weatherActions';
 
 class WeatherForecast extends React.PureComponent {
   constructor(props) {
@@ -24,6 +26,8 @@ class WeatherForecast extends React.PureComponent {
 
   componentDidMount() {
     this.getData();
+
+    this.props.getWeatherData();
   }
 
   async getData() {
@@ -84,8 +88,14 @@ class WeatherForecast extends React.PureComponent {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    getWeatherData: () => dispatch(getCityInfo())
+  };
+};
+
 WeatherForecast.propTypes = {
   theme: PropTypes.string.isRequired
 };
 
-export default WeatherForecast;
+export default connect(null, mapDispatchToProps)(WeatherForecast);
