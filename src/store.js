@@ -3,6 +3,7 @@ import serverApi from './reducers/serverApiReducer';
 import theme from './reducers/themeReducer';
 import geoDetection from './reducers/geoDetectionReducer';
 import currentLocation from './reducers/currentLocationReducer';
+import selectedLocations from './reducers/selectedLocationsReducer';
 
 import thunkMiddleware from 'redux-thunk';
 
@@ -10,7 +11,8 @@ const reducers = combineReducers({
   serverApi,
   theme,
   geoDetection,
-  currentLocation
+  currentLocation,
+  selectedLocations
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
