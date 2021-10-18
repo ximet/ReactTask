@@ -34,5 +34,11 @@ export function useInitialize() {
     ) {
       dispatch(getToken());
     }
-  }, [isTokenReceived, tokenExpirationTime, fetchingError, dispatch]);
+  }, [
+    isTokenReceived,
+    tokenExpirationTime,
+    tokenExpirationTime <= Number(new Date()),
+    fetchingError,
+    dispatch
+  ]);
 }
