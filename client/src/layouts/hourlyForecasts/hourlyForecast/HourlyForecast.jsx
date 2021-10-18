@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './hourlyForecast.module.css';
-import moonAndCloudsIcon from '../../../../public/images/weatherIcon/moonAndCloudsIcon.png';
+import weatherIcon from '../../../../public/images/weatherIcon/moonAndCloudsIcon.png';
 import dropsIcon from '../../../../public/images/dropsIcon.png';
 import windIcon from '../../../../public/images/windIcon.png';
 import { formatDate } from '../../../services/dateService';
@@ -14,7 +14,7 @@ function HourlyForecast({ forecast }) {
       <span className={classes.time}>{time}</span>
       <span className={classes.temperature}>{`${forecast.temperature}${temperatureUnits}`}</span>
       <div>
-        <img className={classes.weatherIcon} src={moonAndCloudsIcon} alt="weather-icon" />
+        <img className={classes.weatherIcon} src={weatherIcon} alt="weather-icon" />
       </div>
       <div className={classes.conditions}>
         <img className={classes.conditionsIcon} src={windIcon} alt="wind" />
