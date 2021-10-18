@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { THEMES } from '../../../constants/themes';
@@ -10,6 +11,10 @@ const ThemeSwitcherContainer = ({ theme, switchTheme }) => {
 
     switchTheme(currentTheme);
   }
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   return <ThemeSwitcher theme={theme} onSwitch={changeTheme} />;
 };
