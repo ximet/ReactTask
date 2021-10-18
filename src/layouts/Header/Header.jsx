@@ -5,7 +5,7 @@ import styles from './Header.module.scss';
 
 import NavBar from './NavBar/Navbar';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
+import ThemeSwitcher from './ThemeSwitcher/Container';
 
 function Header() {
   return (

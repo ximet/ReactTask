@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
@@ -62,7 +61,7 @@ const mapStateToProps = state => ({
 
 CityForecast.propTypes = {
   cityForecast: CityForecastTypes,
-  cityInfo: CityInfoTypes,
+  cityInfo: CityInfoTypes
 };
 
 export default connect(mapStateToProps)(CityForecast);
