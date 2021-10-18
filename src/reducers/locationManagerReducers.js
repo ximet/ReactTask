@@ -7,13 +7,13 @@ import {
 import StorageConnection from '../services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../utils/constants';
 
-const currentLocationFromStore = StorageConnection.getValue(CURRENT_LOCATION_STORAGE_CODE);
-const favoriteCitiesFromStore = StorageConnection.getValue(FAVORITE_CITIES_STORAGE_CODE);
+const currentLocationFromStore = StorageConnection.getValue(CURRENT_LOCATION_STORAGE_CODE) || {};
+const favoriteCitiesFromStore = StorageConnection.getValue(FAVORITE_CITIES_STORAGE_CODE || []);
 
 const initialState = {
-  currentLocation: currentLocationFromStore ? currentLocationFromStore : {},
+  currentLocation: currentLocationFromStore,
   searchString: '',
-  favoriteCitiesList: favoriteCitiesFromStore ? favoriteCitiesFromStore : [],
+  favoriteCitiesList: favoriteCitiesFromStore,
   forecasts: {},
   currentHourlyForecustType: {}
 };
