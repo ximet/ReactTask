@@ -14,17 +14,21 @@ class WeatherForecastContainer extends React.PureComponent {
   render() {
     if (this.props.isFetching) {
       return <span> Loading...</span>;
-    } else {
-      return (
-        <WeatherForecast
-          cityForecast={this.props.cityForecast}
-          dailyCityForecast={this.props.dailyCityForecast}
-          hourlyCityForecast={this.props.hourlyCityForecast}
-          cityInfo={this.props.cityInfo}
-          theme={this.props.theme}
-        />
-      );
     }
+
+    if (this.props.isFetchingFailure) {
+      return <span> Something went wrong...</span>;
+    }
+    
+    return (
+      <WeatherForecast
+        cityForecast={this.props.cityForecast}
+        dailyCityForecast={this.props.dailyCityForecast}
+        hourlyCityForecast={this.props.hourlyCityForecast}
+        cityInfo={this.props.cityInfo}
+        theme={this.props.theme}
+      />
+    );
   }
 }
 

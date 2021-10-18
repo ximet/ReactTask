@@ -52,7 +52,6 @@ export const getWeatherInfo = location => async dispatch => {
 
     dispatch(fetchWeatherSuccess);
   } catch (error) {
-    console.log(error);
     dispatch(fetchWeatherFailure());
   }
 };
