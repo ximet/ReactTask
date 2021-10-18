@@ -9,13 +9,10 @@ import ThemeSwitcher from './ThemeSwitcher';
 const ThemeSwitcherContainer = ({ theme, switchTheme }) => {
   function changeTheme() {
     const currentTheme = theme === THEMES.light ? THEMES.dark : THEMES.light;
+    localStorage.setItem('theme', currentTheme);
 
     switchTheme(currentTheme);
   }
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
 
   return <ThemeSwitcher theme={theme} onSwitch={changeTheme} />;
 };
