@@ -14,11 +14,22 @@ import ApiService from '../services/ForecastApiService';
 const PREFIX = 'LOCATION_MANAGER';
 
 export const CHANGE_LOCATION = `${PREFIX}/CHANGE`;
+export const SET_LOCATION_FORECAST = `${PREFIX}/SET_LOCATION_FORECAST`;
 export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
   currentLocation: location
+});
+
+export const setFavoriteLocForecast = forecasts => ({
+  type: SET_LOCATION_FORECAST,
+  forecasts: forecasts
+});
+
+export const changeSearchString = (searchString: string): ChangeSearctStringActionType => ({
+  type: CHANGE_SEARCH_STRING,
+  searchString
 });
 
 export const setCurrentLocation =
@@ -46,8 +57,3 @@ export const setGeolocationCity = async (
     dispatch(changeLocation(currentLocationData));
   }
 };
-
-export const changeSearchString = (searchString: string): ChangeSearctStringActionType => ({
-  type: CHANGE_SEARCH_STRING,
-  searchString
-});
