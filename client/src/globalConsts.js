@@ -39,7 +39,7 @@ const defaultTimeOptions = {
 
 const dateFormat = 'en-US';
 
-const temperatureUnits = '°C'
+const temperatureUnits = '°C';
 
 export {
   themes,

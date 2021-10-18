@@ -7,7 +7,9 @@ function ExtraCityForecast({ weather }) {
     <div className={classes.container}>
       <span className={classes.weatherItem}>{`wind ${weather.windSpeed}m/h`}</span>
       <span className={classes.weatherItem}>{`humidity ${weather.relHumidity}%`}</span>
-      <span className={classes.weatherItem}>{`feels like ${weather.feelsLikeTemp}${temperatureUnits}`}</span>
+      <span
+        className={classes.weatherItem}
+      >{`feels like ${weather.feelsLikeTemp}${temperatureUnits}`}</span>
       <span className={classes.weatherItem}>{`pressure ${weather.pressure}mm`}</span>
     </div>
   );
