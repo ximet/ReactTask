@@ -20,12 +20,13 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
   useEffect(() => {
     const getWarningsData = async (): Promise<void> => {
       try {
+        console.log('currentLocation.id: ', currentLocation.id);
         if (currentLocation.id) {
           const { data } = await ApiService.getWarnings(currentLocation.id);
           setWarnings(data.warnings);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 

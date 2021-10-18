@@ -9,8 +9,14 @@ function HourlyForecastChart({ locationId }) {
   const [hours, temperatures] = prepareChartData(hourlyForecast);
 
   useEffect(async () => {
-    const { data } = await ApiService.getHourlyForecast(locationId);
-    setHourlyForecast(data.forecast);
+    try {
+      if (locationId) {
+        const { data } = await ApiService.getHourlyForecast(locationId);
+        setHourlyForecast(data.forecast);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }, [locationId]);
 
   return (

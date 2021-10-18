@@ -9,8 +9,14 @@ function DailyForecasts({ locationId }) {
   const [dailyForecast, setDailyForecast] = useState([]);
 
   useEffect(async () => {
-    const { data } = await ApiService.getDailyForecast(locationId);
-    setDailyForecast(data.forecast);
+    try {
+      if (locationId) {
+        const { data } = await ApiService.getDailyForecast(locationId);
+        setDailyForecast(data.forecast);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }, [locationId]);
 
   return (

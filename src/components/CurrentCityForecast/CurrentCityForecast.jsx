@@ -16,6 +16,7 @@ function CurrentCityForecast({ currentLocation }) {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
 
   const currentLocationId = currentLocation.id;
+  console.log(currentLocation);
   const symbolUrl = currentCityForecast.forecast?.symbol
     ? `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`
     : '';
@@ -23,12 +24,18 @@ function CurrentCityForecast({ currentLocation }) {
   const forecastDay = getDay(currentCityForecast.forecast?.time);
 
   useEffect(async () => {
-    const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
+    try {
+      if (currentLocationId) {
+        const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
 
-    setCurrentCityForecast({
-      forecast: currentForecast.data.current,
-      city: currentLocation
-    });
+        setCurrentCityForecast({
+          forecast: currentForecast.data.current,
+          city: currentLocation
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }, [currentLocation]);
 
   return (
