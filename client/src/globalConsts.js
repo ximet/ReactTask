@@ -20,18 +20,34 @@ const bgImages = {
   light: sunnyBgImage
 };
 
-const dateOptions = {
+const defaultDateOptions = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
-  day: '2-digit',
+  day: '2-digit'
 };
 
-const timeOptions = {
+const dailyWeatherDateOptions = {
+  day: '2-digit',
+  month: 'short'
+};
+
+const defaultTimeOptions = {
   hour: '2-digit',
   minute: '2-digit'
-}
+};
 
-const dateFormat = "en-US"
+const dateFormat = 'en-US';
 
-export { themes, bgImages, urls, dateOptions, timeOptions, dateFormat };
+const temperatureUnits = '°C';
+
+export {
+  themes,
+  bgImages,
+  urls,
+  defaultDateOptions,
+  defaultTimeOptions,
+  dateFormat,
+  dailyWeatherDateOptions,
+  temperatureUnits
+};

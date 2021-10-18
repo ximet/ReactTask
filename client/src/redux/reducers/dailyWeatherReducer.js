@@ -1,13 +1,11 @@
 import { SET_DAYS } from '../actions/dailyWeatherActions';
 
-const initialState = {
-  dailyWeather: []
-};
+const initialState = [];
 
 export const dailyWeather = (state = initialState, action) => {
   switch (action.type) {
     case SET_DAYS: {
-      return { ...state, dailyWeather: [...action.payload.dailyWeather] };
+      return [...action.payload.dailyWeather];
     }
 
     default: {
