@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
 
@@ -16,6 +17,7 @@ import VerticalLine from '../../components/VerticalLine/VerticalLine';
 function CityForecast({ cityForecast, cityInfo, theme }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
+
   const themeBg = theme === THEMES.light ? BG_IMAGES.light : BG_IMAGES.dark;
 
   return (
@@ -54,10 +56,13 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
   );
 }
 
+const mapStateToProps = state => ({
+  theme: state.theme.currentTheme
+});
+
 CityForecast.propTypes = {
   cityForecast: CityForecastTypes,
   cityInfo: CityInfoTypes,
-  theme: PropTypes.string.isRequired
 };
 
-export default CityForecast;
+export default connect(mapStateToProps)(CityForecast);

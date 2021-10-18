@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './ThemeSwitcher.module.scss';
 import { THEMES } from '../../../constants/themes';
 import { darkIcon } from '../../../assets/svg/dark-theme-icon.js';
 import { lightIcon } from '../../../assets/svg/light-theme-icon.js';
+import { setCurrentTheme } from '../../../redux/actions/themeActions';
 
-function ThemeSwitcher({ theme, onSwitch }) {
+function ThemeSwitcher({ theme, switchTheme }) {
+  function onSwitch() {
+    const currentTheme = theme === THEMES.light ? THEMES.dark : THEMES.light;
+
+    switchTheme(currentTheme);
+  }
+
   const lightThemeBtnClasses =
     theme === THEMES.light
       ? [styles.switchThemeBtn, styles.active, styles.lightBtn].join(' ')
@@ -25,9 +33,14 @@ function ThemeSwitcher({ theme, onSwitch }) {
   );
 }
 
-ThemeSwitcher.propTypes = {
-  theme: PropTypes.string.isRequired,
-  onSwitch: PropTypes.func.isRequired
+const mapStateToProps = state => ({
+  theme: state.theme.currentTheme
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    switchTheme: theme => dispatch(setCurrentTheme(theme))
+  };
 };
 
-export default ThemeSwitcher;
+export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitcher);

@@ -8,11 +8,11 @@ import WeatherForecast from '../../views/WeatherForecast/WeatherForecast';
 import Info from '../../views/Info/Info';
 import Feedback from '../../views/Feedback/Feedback';
 
-function Main({ theme }) {
+function Main() {
   return (
     <div className={styles.main}>
       <Route exact path="/">
-        <WeatherForecast theme={theme} />
+        <WeatherForecast />
       </Route>
       <Route path="/info">
         <Info />
@@ -23,9 +23,5 @@ function Main({ theme }) {
     </div>
   );
 }
-
-Main.propTypes = {
-  theme: PropTypes.string.isRequired
-};
 
 export default Main;

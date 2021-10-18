@@ -2,7 +2,7 @@ import { THEMES } from '../../constants/themes';
 import { SET_CURRENT_THEME } from '../types/themeTypes';
 
 const INITIAL_STATE = {
-  theme: THEMES.light
+  currentTheme: THEMES.light
 };
 
 const themeReducer = (state = INITIAL_STATE, action) => {
@@ -10,7 +10,7 @@ const themeReducer = (state = INITIAL_STATE, action) => {
     case SET_CURRENT_THEME:
       return {
         ...state,
-        theme: action.payload
+        currentTheme: action.payload.themeName
       };
 
     default:
