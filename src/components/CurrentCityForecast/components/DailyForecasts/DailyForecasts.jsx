@@ -1,31 +1,49 @@
+// @flow
 import classes from './DailyForecasts.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import DailyForecast from './DailyForecast/DailyForecast';
 import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 import ApiService from '../../../../services/ForecastApiService';
+import { setCurrentDailyForecast } from '../../../../actions/locationsManagerActions';
+import { connect } from 'react-redux';
+import * as React from 'react';
+import type { DailyForecastPropsType, DailyForecastOwnPropsType } from './DailyForecastPropsType';
 
-function DailyForecasts({ locationId }) {
-  const [dailyForecast, setDailyForecast] = useState([]);
+function DailyForecasts({
+  locationId,
+  currentDailyForecast,
+  setCurrentDailyForecast
+}: DailyForecastPropsType): React$Node {
+  const dailyForecastData = currentDailyForecast || [];
 
-  useEffect(async () => {
-    try {
-      if (locationId) {
-        const { data } = await ApiService.getDailyForecast(locationId);
-        setDailyForecast(data.forecast);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [locationId]);
+  useEffect(() => {
+    setCurrentDailyForecast(locationId);
+  }, [locationId, setCurrentDailyForecast]);
 
   return (
     <div className={classes.forecastsContainer}>
-      {dailyForecast.map(forecast => (
+      {dailyForecastData.map(forecast => (
         <DailyForecast key={uuidv4()} forecast={forecast} />
       ))}
     </div>
   );
 }
 
-export default DailyForecasts;
+const mapStateToProps = ({ locationManager: { currentDailyForecast } }) => {
+  return {
+    currentDailyForecast
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentDailyForecast: locationId => dispatch(setCurrentDailyForecast(locationId))
+  };
+};
+
+const WrappedDailyForecasts = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DailyForecasts): React.AbstractComponent<DailyForecastOwnPropsType>);
+
+export default WrappedDailyForecasts;

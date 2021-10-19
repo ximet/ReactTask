@@ -19,7 +19,6 @@ function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): 
   useEffect(() => {
     const setLocationsValue = async (): Promise<void> => {
       const { data } = await ApiService.getLocationsSearch(searchString);
-      console.log(data);
       setLocations(data.locations);
     };
 
