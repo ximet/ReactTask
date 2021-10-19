@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './SelectedDateTime.module.css';
 import { formatDate } from '../../../services/dateService';
+import { string } from 'prop-types'
 
 function SelectedDateTime({ currentDate }) {
   const date = formatDate(currentDate);
@@ -13,6 +14,10 @@ function SelectedDateTime({ currentDate }) {
       </div>
     </div>
   );
+}
+
+SelectedDateTime.propTypes = {
+  currentDate: string.isRequired
 }
 
 export default SelectedDateTime;

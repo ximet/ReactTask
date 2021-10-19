@@ -25,7 +25,7 @@ function App(props) {
     setTheme(newTheme);
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     props.initializeApp();
   }, []);
 

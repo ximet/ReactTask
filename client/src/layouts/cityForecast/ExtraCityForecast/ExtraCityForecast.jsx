@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './ExtraCityForecast.module.css';
 import { temperatureUnits } from '../../../globalConsts';
+import { ExtraCityForecastWeatherTypes } from './types';
 
 function ExtraCityForecast({ weather }) {
   return (
@@ -14,5 +15,9 @@ function ExtraCityForecast({ weather }) {
     </div>
   );
 }
+
+ExtraCityForecast.propTypes = {
+  weather: ExtraCityForecastWeatherTypes
+};
 
 export default ExtraCityForecast;
