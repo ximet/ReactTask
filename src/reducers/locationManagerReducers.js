@@ -10,7 +10,7 @@ import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../
 import mockFavoriteCities from '../components/FavoriteCities/mockData';
 
 const currentLocationFromStore = StorageConnection.getValue(CURRENT_LOCATION_STORAGE_CODE) || {};
-const favoriteCitiesFromStore = StorageConnection.getValue(FAVORITE_CITIES_STORAGE_CODE || []);
+const favoriteCitiesFromStore = StorageConnection.getValue(FAVORITE_CITIES_STORAGE_CODE) || [];
 
 const initialState = {
   currentLocation: currentLocationFromStore,

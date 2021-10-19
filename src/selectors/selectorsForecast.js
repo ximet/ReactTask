@@ -1,6 +1,7 @@
 export const selectorGetLocationForecast = ({ locationManager }) => {
   const favoriteCities = locationManager.favoriteCitiesList;
   console.log(locationManager);
+  console.log(favoriteCities);
   return favoriteCities.map(location => {
     const locationForecast = locationManager.forecasts[location.id];
     const dateObj = new Date();
