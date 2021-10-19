@@ -25,6 +25,6 @@ function DailyForecast({ forecast }) {
 
 DailyForecast.propTypes = {
   forecast: DailyForecastForecastTypes
-}
+};
 
 export default DailyForecast;

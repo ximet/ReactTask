@@ -25,6 +25,6 @@ function DailyForecasts({ theme, dailyForecasts }) {
 DailyForecasts.propTypes = {
   theme: themeType,
   dailyForecasts: DailyForecastsDailyForecastsTypes
-}
+};
 
 export default DailyForecasts;
