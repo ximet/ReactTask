@@ -26,7 +26,6 @@ export const setAccessToken = token => {
     };
     return config;
   });
-  console.log('set_token')
 };
 
 export const getCurrentWeather = async location => {
@@ -64,7 +63,6 @@ export const getHourlyWeather = async (location, params = null) => {
     const { data } = await weatherApi.get(`${urls.hourlyWeather}${location}`, {
       params
     });
-    console.log('weather')
 
     return data;
   } catch (e) {

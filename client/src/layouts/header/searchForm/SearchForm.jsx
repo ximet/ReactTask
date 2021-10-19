@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './searchBar/SearchBar';
-import Cities from './Cities/Cities';
+import Cities from './Cities/Container';
 import classes from './SearchForm.module.css';
 import { useCitiesSearch } from '../../../hooks/hooks';
 
