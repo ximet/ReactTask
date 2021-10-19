@@ -1,13 +1,20 @@
 import {
   PUT_SELECTED_LOCATION,
   DELETE_SELECTED_LOCATION,
-  CLEAR_SELECTED_LOCATIONS
+  CLEAR_SELECTED_LOCATIONS,
+  UPDATE_SELECTED_LOCATION,
+  ADD_SELECTED_LOCATION
 } from '../actionTypes';
 import { weatherAPI } from '../services/dataService';
 import { setIsFetchingInProgress } from './ServerApiActions';
 
-export const putSelectedLocation = locationData => ({
-  type: PUT_SELECTED_LOCATION,
+export const addSelectedLocation = locationData => ({
+  type: ADD_SELECTED_LOCATION,
+  payload: locationData
+});
+
+export const updateSelectedLocation = locationData => ({
+  type: UPDATE_SELECTED_LOCATION,
   payload: locationData
 });
 
@@ -21,6 +28,16 @@ export const deleteSelectedLocation = id => ({
 export const clearSelectedLocations = () => ({
   type: CLEAR_SELECTED_LOCATIONS
 });
+
+export const putSelectedLocation = locationData => (dispatch, getState) => {
+  const selectedLocations = getState().selectedLocations;
+
+  if (selectedLocations.some(data => data.id === locationData.id)) {
+    dispatch(updateSelectedLocation(locationData));
+  } else {
+    dispatch(addSelectedLocation(locationData));
+  }
+};
 
 export const updateAllSelectedLocationsData = () => async (dispatch, getState) => {
   const state = getState();
