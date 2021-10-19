@@ -1,8 +1,10 @@
-import { THEMES } from '../../constants/themes';
 import { SET_CURRENT_THEME } from '../types/themeTypes';
 
+import { THEMES } from '../../constants/themes';
+import { localStorageService } from '../../services/localStorageService';
+
 const INITIAL_STATE = {
-  theme: THEMES.light
+  currentTheme: localStorageService.getCurrentTheme() || THEMES.light
 };
 
 const themeReducer = (state = INITIAL_STATE, action) => {
@@ -10,7 +12,7 @@ const themeReducer = (state = INITIAL_STATE, action) => {
     case SET_CURRENT_THEME:
       return {
         ...state,
-        theme: action.payload
+        currentTheme: action.payload.themeName
       };
 
     default:
