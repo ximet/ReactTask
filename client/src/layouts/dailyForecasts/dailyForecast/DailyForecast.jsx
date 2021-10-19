@@ -4,6 +4,7 @@ import weatherIcon from '../../../../public/images/weatherIcon/sunAndCloudsIcon.
 import { formatDate } from '../../../services/dateService';
 import { dailyWeatherDateOptions } from '../../../globalConsts';
 import { temperatureUnits } from '../../../globalConsts';
+import { DailyForecastForecastTypes } from './types';
 
 //later will add weatherIconService and icons will depend on symbolPhrase
 
@@ -20,6 +21,10 @@ function DailyForecast({ forecast }) {
       <span className={classes.condition}>{forecast.symbolPhrase}</span>
     </div>
   );
+}
+
+DailyForecast.propTypes = {
+  forecast: DailyForecastForecastTypes
 }
 
 export default DailyForecast;
