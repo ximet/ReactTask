@@ -6,11 +6,10 @@ import styles from './WeatherForecast.module.scss';
 import CityForecast from '../../layouts/CityForecast/Container';
 import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
 
-function WeatherForecast({ dailyCityForecast, hourlyCityForecast, theme }) {
+function WeatherForecast({ dailyCityForecast, theme }) {
   return (
     <div className={styles.weatherForecast}>
       <DetailedForecast
-        hourlyCityForecast={hourlyCityForecast}
         dailyCityForecast={dailyCityForecast}
       />
       <CityForecast theme={theme} />

@@ -23,7 +23,6 @@ class WeatherForecastContainer extends React.PureComponent {
     return (
       <WeatherForecast
         dailyCityForecast={this.props.dailyCityForecast}
-        hourlyCityForecast={this.props.hourlyCityForecast}
         cityInfo={this.props.cityInfo}
         theme={this.props.theme}
       />
@@ -35,7 +34,6 @@ const mapStateToProps = state => ({
   isFetching: state.weather.isFetching,
   isFetchingFailure: state.weather.isFetchingFailure,
   dailyCityForecast: state.weather.dailyCityForecast,
-  hourlyCityForecast: state.weather.hourlyCityForecast,
   cityInfo: state.location.currentLocation
 });
 

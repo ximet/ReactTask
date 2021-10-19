@@ -56,3 +56,9 @@ export const DailyCityForecastTypes = PropTypes.arrayOf(
     windDir: number
   })
 );
+
+export const HourlyChartData = PropTypes.shape({
+  time: PropTypes.arrayOf(string).isRequired,
+  temperature: PropTypes.arrayOf(number).isRequired,
+  wind: PropTypes.arrayOf(number).isRequired
+});
