@@ -4,6 +4,8 @@ $hover-item-color: #f9f9f9;
 
 .locationItem {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
   .locationItemLink {
     text-decoration: none;
     .locationName {
@@ -21,5 +23,13 @@ $hover-item-color: #f9f9f9;
 
   &:hover {
     background-color: $hover-item-color;
+  }
+
+  .favoriteBtn {
+    &.active {
+      path {
+        fill: $color-primary-accent;
+      }
+    }
   }
 }

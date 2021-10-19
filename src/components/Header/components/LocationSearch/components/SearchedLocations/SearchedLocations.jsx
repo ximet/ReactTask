@@ -1,7 +1,11 @@
 // @flow
 import classes from './SearchedLocations.module.scss';
 import SearchedLocation from '../SearchedLocation/SearchedLocation';
-import type { SearchedLocationsPropsType } from './SearchedLocationsPropsType';
+import * as React from 'react';
+import type {
+  SearchedLocationsPropsType,
+  SearchedLocationsOwnPropsType
+} from './SearchedLocationsPropsType';
 
 function SearchedLocations({ locations, ...props }: SearchedLocationsPropsType): React$Node {
   return (

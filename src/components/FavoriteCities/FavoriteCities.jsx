@@ -2,19 +2,43 @@
 import classes from './FavoriteCities.module.scss';
 import * as React from 'react';
 import FavoriteCityForecast from './FavoriteCityForecast/FavoriteCityForecast';
-import mockFavoriteCities from './mockData';
+import { connect } from 'react-redux';
+import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
+import type { FavoriteCitiesPropsType } from './FavoriteCitiesPropsType';
 
-function FavoriteCities(): React.Node {
+const makeFavoriteCitiesList = favoriteCities =>
+  favoriteCities.map(location => (
+    <FavoriteCityForecast key={`fav_${location.id}`} location={location} />
+  ));
+
+function FavoriteCities({ favoriteCitiesList }: FavoriteCitiesPropsType): React$Node {
+  console.log(favoriteCitiesList);
   return (
     <div className={classes.favoriteContainer}>
       <h2 className={classes.title}>Favorite cities</h2>
       <div>
-        {mockFavoriteCities.map(location => (
-          <FavoriteCityForecast key={`fav_${location.id}`} location={location} />
-        ))}
+        {favoriteCitiesList.length ? (
+          makeFavoriteCitiesList(favoriteCitiesList)
+        ) : (
+          <EmptyListMessage
+            title="Favorite cities list is empty"
+            message="You acn complete this list."
+          />
+        )}
       </div>
     </div>
   );
 }
 
-export default FavoriteCities;
+const mapStateToProps = ({ locationManager: { favoriteCitiesList } }) => {
+  console.log(favoriteCitiesList);
+  return {
+    favoriteCitiesList
+  };
+};
+
+const WrappedFavoriteCities = (connect(mapStateToProps)(
+  FavoriteCities
+): React.AbstractComponent<{}>);
+
+export default WrappedFavoriteCities;
