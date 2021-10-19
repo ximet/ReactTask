@@ -10,7 +10,7 @@ import {
 import { getCurrentLocationData } from '../actions/CurrentLocationActions';
 import { connect } from 'react-redux';
 import Preloader from '../components/Preloader/Preloader';
-import { WEATHER_FIRST_UPDATE_INTERVAL, WEATHER_UPDATE_INTERVAL } from '../constants/constants';
+import { WEATHER_UPDATE_INTERVAL } from '../constants/constants';
 import { isReadyForDataFetchingSelector } from '../selectors';
 
 class LocationWeatherContainer extends PureComponent {
@@ -20,19 +20,12 @@ class LocationWeatherContainer extends PureComponent {
   }
 
   componentDidMount() {
-    // wait for ability to get data first time
-    const internalTimer = setInterval(() => {
-      if (this.props.isReadyForDataFetching) {
-        this.props.getCurrentLocationData();
-        clearInterval(internalTimer);
-      }
-    }, WEATHER_FIRST_UPDATE_INTERVAL);
+    // get data first time
+    this.props.getCurrentLocationData();
 
     // auto refresh
     this.timerId = setInterval(() => {
-      if (this.props.isReadyForDataFetching) {
-        this.props.getCurrentLocationData();
-      }
+      this.props.getCurrentLocationData();
     }, WEATHER_UPDATE_INTERVAL);
   }
 

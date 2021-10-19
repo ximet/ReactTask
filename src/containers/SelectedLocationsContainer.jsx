@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { SelectedLocationType } from '../types/types';
 import { connect } from 'react-redux';
 import Preloader from '../components/Preloader/Preloader';
-import { WEATHER_FIRST_UPDATE_INTERVAL, WEATHER_UPDATE_INTERVAL } from '../constants/constants';
+import { WEATHER_UPDATE_INTERVAL } from '../constants/constants';
 import {
   deleteSelectedLocation,
   updateAllSelectedLocationsData
@@ -19,19 +19,12 @@ class SelectedLocationsContainer extends PureComponent {
   }
 
   componentDidMount() {
-    // wait for ability to get data first time
-    const internalTimer = setInterval(() => {
-      if (this.props.isReadyForDataFetching) {
-        this.props.updateAllSelectedLocationsData();
-        clearInterval(internalTimer);
-      }
-    }, WEATHER_FIRST_UPDATE_INTERVAL);
+    // update all selected locations first time
+    this.props.updateAllSelectedLocationsData();
 
     // auto refresh
     this.timerId = setInterval(() => {
-      if (this.props.isReadyForDataFetching) {
-        this.props.updateAllSelectedLocationsData();
-      }
+      this.props.updateAllSelectedLocationsData();
     }, WEATHER_UPDATE_INTERVAL);
   }
 

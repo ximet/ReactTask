@@ -1,10 +1,10 @@
 import {
-  PUT_SELECTED_LOCATION,
   DELETE_SELECTED_LOCATION,
   CLEAR_SELECTED_LOCATIONS,
   UPDATE_SELECTED_LOCATION,
   ADD_SELECTED_LOCATION
 } from '../actionTypes';
+import { WEATHER_MIN_WAIT_INTERVAL } from '../constants/constants';
 import { weatherAPI } from '../services/dataService';
 import { setIsFetchingInProgress } from './ServerApiActions';
 
@@ -67,5 +67,9 @@ export const updateAllSelectedLocationsData = () => async (dispatch, getState) =
     } finally {
       dispatch(setIsFetchingInProgress(false));
     }
+  } else {
+    setTimeout(() => {
+      dispatch(updateAllSelectedLocationsData());
+    }, WEATHER_MIN_WAIT_INTERVAL);
   }
 };
