@@ -1,22 +1,10 @@
 import { connect } from 'react-redux';
 
-import { getCorrectHourlyData } from '../../../utils/hourlyChartSettings';
-import { HourlyCityForecastTypes } from '../../../types/WeatherDataTypes';
-
 import HourlyForecast from './HourlyForecast';
-
-function HourlyForecastContainer({ hourlyForecast }) {
-  const correctHourlyData = getCorrectHourlyData(hourlyForecast);
-
-  return <HourlyForecast chartData={correctHourlyData} />;
-}
-
-HourlyForecastContainer.propTypes = {
-  hourlyForecast: HourlyCityForecastTypes
-};
+import { getHourlyChartData } from '../../../redux/selectors/weatherSelectors';
 
 const mapStateToProps = state => ({
-  hourlyForecast: state.weather.hourlyCityForecast
+  chartData: getHourlyChartData(state)
 });
 
-export default connect(mapStateToProps)(HourlyForecastContainer);
+export default connect(mapStateToProps)(HourlyForecast);
