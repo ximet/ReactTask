@@ -45,20 +45,22 @@ export const updateAllSelectedLocationsData = () => async (dispatch, getState) =
     try {
       dispatch(setIsFetchingInProgress(true));
 
-      state.selectedLocations.forEach(async location => {
-        const locationInfoPromise = weatherAPI.getLocationInfo(location.id);
-        const locationWeatherPromise = weatherAPI.getCurrentWeather(location.id);
+      const locationInfoPromises = state.selectedLocations.map(({ id }) =>
+        weatherAPI.getLocationInfo(id)
+      );
+      const locationWeatherPromises = state.selectedLocations.map(({ id }) =>
+        weatherAPI.getCurrentWeather(id)
+      );
 
-        const [locationInfo, locationWeather] = await Promise.all([
-          locationInfoPromise,
-          locationWeatherPromise
-        ]);
+      const locationInfos = await Promise.all(locationInfoPromises);
+      const weatherInfos = await Promise.all(locationWeatherPromises);
 
+      locationInfos.forEach((item, index) => {
         dispatch(
           putSelectedLocation({
-            id: location.id,
-            locationInfo,
-            locationWeather
+            id: String(item.id),
+            locationInfo: item,
+            locationWeather: weatherInfos[index]
           })
         );
       });
