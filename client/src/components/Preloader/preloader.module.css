@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-.moon {
+.centralObj {
   width: 50px;
   height: 50px;
   position: absolute;
@@ -23,7 +23,7 @@
   }
 }
 
-.sun {
+.rotatingObj {
   width: 70px;
   height: 70px;
   animation: spinAround 3s linear infinite;
