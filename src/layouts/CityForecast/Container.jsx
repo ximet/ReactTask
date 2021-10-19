@@ -19,7 +19,8 @@ CityForecastContainer.propTypes = {
 
 const mapStateToProps = state => ({
   cityForecast: state.weather.cityForecast,
-  cityInfo: state.location.currentLocation
+  cityInfo: state.location.currentLocation,
+  theme: state.theme.currentTheme
 });
 
 export default connect(mapStateToProps)(CityForecastContainer);

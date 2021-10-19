@@ -20,13 +20,7 @@ class WeatherForecastContainer extends React.PureComponent {
       return <span> Something went wrong...</span>;
     }
 
-    return (
-      <WeatherForecast
-        dailyCityForecast={this.props.dailyCityForecast}
-        cityInfo={this.props.cityInfo}
-        theme={this.props.theme}
-      />
-    );
+    return <WeatherForecast />;
   }
 }
 
