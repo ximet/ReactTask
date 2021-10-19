@@ -12,9 +12,8 @@ import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
 
 function App(props) {
   useEffect(() => {
-    console.log('setGeolocationCity');
     props.setGeolocationCity();
-  }, []);
+  }, [props.setGeolocationCity]);
 
   return (
     <BrowserRouter>
