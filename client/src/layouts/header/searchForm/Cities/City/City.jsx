@@ -7,7 +7,10 @@ function City({ city }) {
     <div className={classes.container}>
       <div className={classes.cityWeatherIconAndCity}>
         <img src={nightCloudyWeatherIcon} alt="weather icon" className={classes.cityWeatherIcon} />
-        <span>{city.name}</span>
+        <div className={classes.textContent}>
+          <span>{city.name}</span>
+          <span className={classes.country}>{city.country}</span>
+        </div>
       </div>
       <span>{city.temperature}°C</span>
     </div>

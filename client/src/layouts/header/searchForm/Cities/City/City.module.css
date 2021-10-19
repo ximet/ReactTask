@@ -25,3 +25,14 @@
   height: 20px;
   margin-right: 14px;
 }
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.country {
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 1.5px;
+}
