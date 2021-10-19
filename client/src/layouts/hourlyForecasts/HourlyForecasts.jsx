@@ -25,6 +25,6 @@ function HourlyForecasts({ theme, hourlyForecasts }) {
 HourlyForecasts.propTypes = {
   theme: themeType,
   hourlyForecasts: hourlyForecastsHourlyForecastsTypes
-}
+};
 
 export default HourlyForecasts;

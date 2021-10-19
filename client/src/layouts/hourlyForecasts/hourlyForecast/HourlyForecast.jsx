@@ -31,6 +31,6 @@ function HourlyForecast({ forecast }) {
 
 HourlyForecast.propTypes = {
   forecast: hourlyForecastsForecastTypes
-}
+};
 
 export default HourlyForecast;
