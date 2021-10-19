@@ -5,23 +5,18 @@ import styles from './Header.module.scss';
 
 import NavBar from './NavBar/Navbar';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
+import ThemeSwitcher from './ThemeSwitcher/Container';
 
-function Header({ theme, onSwitchTheme }) {
+function Header() {
   return (
     <div className={styles.header}>
       <NavBar />
       <div className={styles.wrapper}>
         <SearchInput />
-        <ThemeSwitcher theme={theme} onSwitch={onSwitchTheme} />
+        <ThemeSwitcher />
       </div>
     </div>
   );
 }
-
-Header.propTypes = {
-  theme: PropTypes.string.isRequired,
-  onSwitchTheme: PropTypes.func.isRequired
-};
 
 export default Header;

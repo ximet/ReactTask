@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
 
@@ -60,4 +61,8 @@ CityForecast.propTypes = {
   theme: PropTypes.string.isRequired
 };
 
-export default CityForecast;
+const mapStateToProps = state => ({
+  theme: state.theme.currentTheme
+});
+
+export default connect(mapStateToProps)(CityForecast);

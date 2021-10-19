@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './WeatherForecast.module.scss';
 import { dataService } from '../../services/dataService';
@@ -71,11 +70,7 @@ class WeatherForecast extends React.PureComponent {
             hourlyCityForecast={this.state.hourlyCityForecast}
             dailyCityForecast={this.state.dailyCityForecast}
           />
-          <CityForecast
-            cityForecast={this.state.cityForecast}
-            cityInfo={this.state.cityInfo}
-            theme={this.props.theme}
-          />
+          <CityForecast cityForecast={this.state.cityForecast} cityInfo={this.state.cityInfo} />
         </div>
       );
     } else {
@@ -83,9 +78,5 @@ class WeatherForecast extends React.PureComponent {
     }
   }
 }
-
-WeatherForecast.propTypes = {
-  theme: PropTypes.string.isRequired
-};
 
 export default WeatherForecast;
