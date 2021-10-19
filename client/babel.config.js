@@ -17,7 +17,6 @@ module.exports = function (api) {
   ];
   const plugins = [
     '@babel/transform-react-constant-elements',
-    'transform-react-remove-prop-types',
     'transform-react-pure-class-to-function',
     '@babel/plugin-transform-runtime',
     'react-hot-loader/babel',
