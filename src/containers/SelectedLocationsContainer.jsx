@@ -19,7 +19,7 @@ class SelectedLocationsContainer extends PureComponent {
   }
 
   componentDidMount() {
-    // update all selected locations first time
+    // update selected locations first time
     this.props.updateAllSelectedLocationsData();
 
     // auto refresh
