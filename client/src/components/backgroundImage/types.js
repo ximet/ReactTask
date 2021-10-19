@@ -1,3 +1,3 @@
-import { string } from 'prop-types'
+import { string } from 'prop-types';
 
 export const backgroundImageBgImageType = string.isRequired;

@@ -12,6 +12,6 @@ function BackgroundImage({ bgImage }) {
 
 BackgroundImage.propTypes = {
   bgImage: backgroundImageBgImageType
-}
+};
 
 export default BackgroundImage;
