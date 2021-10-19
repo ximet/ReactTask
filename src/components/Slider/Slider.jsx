@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import styles from './Slider.module.scss';
 
@@ -11,8 +11,6 @@ function Slider({ slides, slideWidth }) {
 
   useEffect(() => {
     const { sliderWidth, isOverflowing } = getSettings();
-
-    console.log(sliderWidth);
 
     setSliderWidth(sliderWidth);
     setIsOverflowing(isOverflowing);
