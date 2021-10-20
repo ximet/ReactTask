@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import { prepareChartData } from '../../../../utils/prepareData';
 import { hourlyLineChartData, hourlyLineChartOptions } from '../../../../utils/chartSettings';
-import ApiService from '../../../../services/ForecastApiService';
 import { setCurrentHourlyForecast } from '../../../../actions/locationsManagerActions';
 import { connect } from 'react-redux';
 import * as React from 'react';

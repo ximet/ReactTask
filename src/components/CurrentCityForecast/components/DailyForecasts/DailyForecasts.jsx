@@ -3,7 +3,6 @@ import classes from './DailyForecasts.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import DailyForecast from './DailyForecast/DailyForecast';
 import { useEffect, useState } from 'react';
-import ApiService from '../../../../services/ForecastApiService';
 import { setCurrentDailyForecast } from '../../../../actions/locationsManagerActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
