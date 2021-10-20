@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import { useDebounce } from '../../hooks/useDebounce.jsx';
 import { dataService } from '../../services/dataService';
+import { setCurrentCity } from '../../redux/actions/locationActions.js';
 
 import styles from './SearchInput.module.scss';
 import SearchIcon from '../../assets/images/search-icon.png';
 import SearchLocationIcon from '../../assets/images/search-location-icon.png';
 
-function SearchInput() {
+function SearchInput({ setCurrentCity }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -50,7 +53,11 @@ function SearchInput() {
       </div>
       <div className={styles.searchResults}>
         {searchResults.map(item => (
-          <li key={item.id} className={styles.searchResultItem}>
+          <li
+            key={item.id}
+            className={styles.searchResultItem}
+            onClick={() => setCurrentCity(item)}
+          >
             <img src={SearchLocationIcon} alt="location" />
             <span>{item.name}</span>
           </li>
@@ -60,4 +67,10 @@ function SearchInput() {
   );
 }
 
-export default SearchInput;
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentCity: cityInfo => dispatch(setCurrentCity(cityInfo))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SearchInput);

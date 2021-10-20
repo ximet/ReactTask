@@ -1,8 +1,5 @@
-import {
-  SET_CURRENT_CITY,
-  SET_RECENT_CITY,
-  REMOVE_RECENT_CITY
-} from '../types/locationTypes';
+import { SET_CURRENT_CITY, SET_RECENT_CITY, REMOVE_RECENT_CITY } from '../types/locationTypes';
+import { addRecentCity, removeRecentCity } from '../../utils/locationData';
 
 const INITIAL_STATE = {
   currentCity: {

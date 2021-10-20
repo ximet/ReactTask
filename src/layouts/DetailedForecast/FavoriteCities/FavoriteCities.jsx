@@ -1,7 +1,7 @@
 import React from 'react';
 
-function FavoriteCities({favoriteCities}) {
-  console.log(favoriteCities);
+function FavoriteCities({ favoriteCities, currentCity }) {
+  console.log(favoriteCities, currentCity);
   return <div>Favorite Cities</div>;
 }
 
