@@ -2,25 +2,25 @@ import React from 'react';
 import classes from './preloader.module.css';
 import sun from '../../../public/images/sun.png';
 import moon from '../../../public/images/moon.png';
-import { string } from 'prop-types'
+import PropTypes from 'prop-types'
 
-function Preloader({ centralObj, rotatingObj }) {
+function Preloader({ staticImage, rotatingImage }) {
   return (
     <div className={classes.container}>
-      <img src={centralObj} className={classes.centralObj} alt='cental obj'/>
-      <img src={rotatingObj} className={classes.rotatingObj} alt ='rotating obj'/>
+      <img src={staticImage} className={classes.staticImage} alt='cental obj'/>
+      <img src={rotatingImage} className={classes.rotatingImage} alt ='rotating obj'/>
     </div>
   );
 }
 
 Preloader.defaultProps = {
-    centralObj: moon,
-    rotatingObj: sun
+    staticImage: moon,
+    rotatingImage: sun
 }
 
 Preloader.propTypes = {
-    centralObj: string,
-    rotatingObj: string
+  staticImage: PropTypes.string,
+  rotatingImage: PropTypes.string
 }
 
 export default Preloader;

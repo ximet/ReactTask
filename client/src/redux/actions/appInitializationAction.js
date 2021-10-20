@@ -10,8 +10,8 @@ export const initializeApp = async dispatch => {
   const location = `${currentLocation.coords.latitude},${currentLocation.coords.longitude}`;
 
   await getAndSetAccessToken();
-  await dispatch(getLocationAction(currentLocation));
-  await dispatch(getWeatherAction(location));
-  await dispatch(getHourlyWeatherAction(location));
-  await dispatch(getDailyWeatherAction(location));
+  dispatch(getLocationAction(currentLocation));
+  dispatch(getWeatherAction(location));
+  dispatch(getHourlyWeatherAction(location));
+  dispatch(getDailyWeatherAction(location));
 };
