@@ -4,10 +4,15 @@ import type {
   ChangeLocationActionType,
   ChangeSearctStringActionType,
   HourlyForecastActionType,
-  DailyForecastActionType
+  DailyForecastActionType,
+  CachedForecastsActionType
 } from './types/locationActionsTypes';
 import type { LocationForecastType } from '../types/LocationType';
-import type { HourlyForecastType, DailyForecastType } from '../types/ForecastType';
+import type {
+  HourlyForecastType,
+  DailyForecastType,
+  CachedForecastCurrentType
+} from '../types/ForecastType';
 import type {
   DispatchLocation,
   GetStoreState,
@@ -29,6 +34,7 @@ export const CHANGE_LOCATION = `${PREFIX}/CHANGE`;
 export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
+export const SET_FORECASTS = `${PREFIX}/SET_FORECASTS`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
@@ -52,6 +58,13 @@ export const changeCurrentHourlyForecast = (
 ): HourlyForecastActionType => ({
   type: SET_HOURLY_FORECAST,
   currentHourlyForecast: hourlyForecast
+});
+
+export const changeCurrentForecast = (
+  forecasts: CachedForecastCurrentType
+): CachedForecastsActionType => ({
+  type: SET_FORECASTS,
+  forecasts: forecasts
 });
 
 export const setCurrentHourlyForecast =

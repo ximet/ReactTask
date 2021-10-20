@@ -28,6 +28,10 @@ export default function (state = initialState, action) {
       return { ...state, searchString };
     }
 
+    case SET_FORECASTS: {
+      return { ...state, forecasts: action.forecasts };
+    }
+
     case SET_HOURLY_FORECAST: {
       return { ...state, currentHourlyForecast: action.currentHourlyForecast };
     }

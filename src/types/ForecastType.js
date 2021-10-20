@@ -23,6 +23,37 @@ export type DailyForecastItemType = {
   windDir: number
 };
 
+export type ForecastType = {
+  current: ForecastCurrentType
+};
+
+export type ForecastCurrentType = {
+  time: string,
+  symbol: string,
+  symbolPhrase: string,
+  temperature: number,
+  feelsLikeTemp: number,
+  relHumidity: number,
+  dewPoint: number,
+  windSpeed: number,
+  windDirString: string,
+  windGust: number,
+  precipProb: number,
+  precipRate: number,
+  cloudiness: number,
+  thunderProb: number,
+  uvIndex: number,
+  pressure: number,
+  visibility: number
+};
+
+export type CachedForecastCurrentType = {
+  [id: number]: {
+    cachTime: number,
+    forecast: ForecastCurrentType
+  }
+};
+
 export type HourlyForecastType = {
   forecast: Array<HourlyForecastItemType>
 };
