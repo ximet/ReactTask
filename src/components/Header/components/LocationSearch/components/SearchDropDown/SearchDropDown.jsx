@@ -3,7 +3,6 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchedLocations from '../SearchedLocations/SearchedLocations';
 import classes from './SearchDropDown.module.scss';
 import React, { useState, useEffect } from 'react';
-import { useCookies } from 'react-cookie';
 import ApiService from '../../../../../../services/ForecastApiService';
 import type {
   LocationType,
@@ -16,34 +15,15 @@ import { COOKIE_TOKEN_FIELD } from '../../../../../../utils/constants';
 function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): React$Node {
   const [searchString, setSearchString] = useState('');
   const [locations, setLocations] = useState([]);
-  const [cookies] = useCookies([COOKIE_TOKEN_FIELD]);
 
   useEffect(() => {
     const setLocationsValue = async (): Promise<void> => {
-      const searchedResult: SearchedLocationsType = await getSearchLocations(searchString, cookies);
-      setLocations(searchedResult.locations);
+      const { data } = await ApiService.getLocationsSearch(searchString);
+      setLocations(data.locations);
     };
 
     setLocationsValue();
   }, [searchString]);
-
-  const getSearchLocations = async (locationQueryStr, cookies): Promise<LocationsResponseType> => {
-    let responseData = {
-      status: false,
-      locations: []
-    };
-
-    try {
-      const accessToken = await ApiService.getAccessToken(cookies);
-      const url = `/api/v1/location/search/${locationQueryStr}`;
-
-      responseData = await ApiService.getLocationsSearch(url, accessToken);
-    } catch (error) {
-      console.error(error);
-    }
-
-    return responseData;
-  };
 
   const handleSetSearchString = async string => setSearchString(string);
 

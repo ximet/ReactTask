@@ -1,9 +1,9 @@
 import classes from './CurrentCityForecast.module.scss';
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import ApiService from '../../services/ForecastApiService';
-import mockLocation from './mockLocation';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
 import {
   FORECAST_SYMBOL_EXT,
@@ -12,23 +12,30 @@ import {
   CURRENT_CITY_FORECAST_TITLE_TEXT
 } from '../../utils/constants';
 
-function CurrentCityForecast() {
+function CurrentCityForecast({ currentLocation }) {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
 
-  const currentLocationId = mockLocation.id;
-  const symbolUrl = `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`;
+  const currentLocationId = currentLocation.id;
+  const symbolUrl = currentCityForecast.forecast?.symbol
+    ? `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`
+    : '';
   const forecastTime = formatTime(currentCityForecast.forecast?.time);
   const forecastDay = getDay(currentCityForecast.forecast?.time);
 
   useEffect(async () => {
-    const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
-    const currentCity = await ApiService.getLocationInfo(currentLocationId);
+    try {
+      if (currentLocationId) {
+        const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
 
-    setCurrentCityForecast({
-      forecast: currentForecast.data.current,
-      city: currentCity.data
-    });
-  }, []);
+        setCurrentCityForecast({
+          forecast: currentForecast.data.current,
+          city: currentLocation
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }, [currentLocation]);
 
   return (
     <div className={classes.currentCityContainer}>
@@ -71,4 +78,12 @@ function CurrentCityForecast() {
   );
 }
 
-export default CurrentCityForecast;
+const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+  return {
+    currentLocation
+  };
+};
+
+const WrappedCurrentCityForecast = connect(mapStateToProps)(CurrentCityForecast);
+
+export default WrappedCurrentCityForecast;

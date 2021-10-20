@@ -25,7 +25,7 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
           setWarnings(data.warnings);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 

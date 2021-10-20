@@ -6,7 +6,7 @@ export type SearchedLocationOwnPropsType = {|
 |};
 
 export type SearchedLocationDispatchType = {|
-  onChangeLocation: (location: LocationType) => void
+  setCurrentLocation: (location: LocationType) => void
 |};
 
 export type SearchedLocationPropsType = {|
