@@ -2,9 +2,8 @@ import React from 'react';
 import classes from './dailyForecast.module.css';
 import weatherIcon from '../../../../public/images/weatherIcon/sunAndCloudsIcon.png';
 import { formatDate } from '../../../services/dateService';
-import { dailyWeatherDateOptions } from '../../../globalConsts';
-import { temperatureUnits } from '../../../globalConsts';
-import { DailyForecastForecastTypes } from './types';
+import { dailyWeatherDateOptions, temperatureUnits } from '../../../globalConsts';
+import { forecastType } from './types';
 
 //later will add weatherIconService and icons will depend on symbolPhrase
 
@@ -24,7 +23,7 @@ function DailyForecast({ forecast }) {
 }
 
 DailyForecast.propTypes = {
-  forecast: DailyForecastForecastTypes
+  forecast: forecastType
 };
 
 export default DailyForecast;

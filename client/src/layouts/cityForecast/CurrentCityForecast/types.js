@@ -1,10 +1,10 @@
-import PropTypes, { number, string } from 'prop-types';
+import PropTypes from 'prop-types';
 
-export const CurrentCityForecastLocationTypes = PropTypes.shape({
-  name: string.isRequired
+export const locationType = PropTypes.shape({
+  name: PropTypes.string.isRequired
 });
 
-export const CurrentCityForecastWeatherTypes = PropTypes.shape({
-  temperature: number.isRequired,
-  symbolPhrase: string.isRequired
+export const weatherType = PropTypes.shape({
+  temperature: PropTypes.number.isRequired,
+  symbolPhrase: PropTypes.string.isRequired
 });

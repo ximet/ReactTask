@@ -3,7 +3,7 @@ import Slider from '../../components/slider/Slider';
 import classes from './dailyForecasts.module.css';
 import DailyForecast from './dailyForecast/DailyForecast';
 import { v4 as uuidv4 } from 'uuid';
-import { DailyForecastsDailyForecastsTypes } from './types';
+import { dailyForecastsType } from './types';
 import { themeType } from '../../types/types';
 
 function DailyForecasts({ theme, dailyForecasts }) {
@@ -24,7 +24,7 @@ function DailyForecasts({ theme, dailyForecasts }) {
 
 DailyForecasts.propTypes = {
   theme: themeType,
-  dailyForecasts: DailyForecastsDailyForecastsTypes
+  dailyForecasts: dailyForecastsType
 };
 
 export default DailyForecasts;

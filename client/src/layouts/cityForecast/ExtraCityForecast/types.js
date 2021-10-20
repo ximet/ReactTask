@@ -1,8 +1,8 @@
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 
-export const ExtraCityForecastWeatherTypes = PropTypes.shape({
-  windSpeed: number.isRequired,
-  relHumidity: number.isRequired,
-  feelsLikeTemp: number.isRequired,
-  pressure: number.isRequired
+export const weatherType = PropTypes.shape({
+  windSpeed: PropTypes.number.isRequired,
+  relHumidity: PropTypes.number.isRequired,
+  feelsLikeTemp: PropTypes.number.isRequired,
+  pressure: PropTypes.number.isRequired
 });

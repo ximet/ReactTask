@@ -5,7 +5,7 @@ import dropsIcon from '../../../../public/images/dropsIcon.png';
 import windIcon from '../../../../public/images/windIcon.png';
 import { formatDate } from '../../../services/dateService';
 import { temperatureUnits } from '../../../globalConsts';
-import { hourlyForecastsForecastTypes } from './types';
+import { forecastType } from './types';
 
 function HourlyForecast({ forecast }) {
   const time = formatDate(forecast.time).time;
@@ -30,7 +30,7 @@ function HourlyForecast({ forecast }) {
 }
 
 HourlyForecast.propTypes = {
-  forecast: hourlyForecastsForecastTypes
+  forecast: forecastType
 };
 
 export default HourlyForecast;

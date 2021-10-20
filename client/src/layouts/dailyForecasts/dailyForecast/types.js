@@ -1,7 +1,7 @@
-import PropTypes, { string, number } from 'prop-types';
+import PropTypes from 'prop-types';
 
-export const DailyForecastForecastTypes = PropTypes.shape({
-  date: string.isRequired,
-  maxTemp: number.isRequired,
-  symbolPhrase: string.isRequired
+export const forecastType = PropTypes.shape({
+  date: PropTypes.string.isRequired,
+  maxTemp: PropTypes.number.isRequired,
+  symbolPhrase: PropTypes.string.isRequired
 });
