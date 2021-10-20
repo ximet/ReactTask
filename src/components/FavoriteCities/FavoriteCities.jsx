@@ -3,7 +3,7 @@ import classes from './FavoriteCities.module.scss';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import FavoriteCityForecast from './FavoriteCityForecast/FavoriteCityForecast';
-import { selectorGetLocationForecast } from '../../selectors/selectorsForecast';
+import { selectLocationForecast } from '../../selectors/selectorsForecast';
 import type { FavoriteCitiesPropsType } from './FavoriteCitiesPropsType';
 
 function FavoriteCities({ favoriteLocations }: FavoriteCitiesPropsType): React.Node {
@@ -21,7 +21,7 @@ function FavoriteCities({ favoriteLocations }: FavoriteCitiesPropsType): React.N
 
 const mapStateToProps = state => {
   return {
-    favoriteLocations: selectorGetLocationForecast(state)
+    favoriteLocations: selectLocationForecast(state)
   };
 };
 

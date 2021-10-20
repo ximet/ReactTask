@@ -6,7 +6,7 @@ import type {
   HourlyForecastActionType,
   DailyForecastActionType,
   CachedForecastsActionType
-} from './types/locationActionsTypes';
+} from '../types/ActionsTypes';
 import type { LocationForecastType } from '../types/LocationType';
 import type {
   HourlyForecastType,
@@ -20,10 +20,13 @@ import type {
   DispatchHourlyForecast,
   ThunkActionHourlyForecast,
   DispatchDailyForecast,
-  ThunkActionDailyForecast
+  ThunkActionDailyForecast,
+  DispatchCachedForecasts,
+  ThunkActionCachedForecasts
 } from '../types/ReduxTypes';
 import type { LocationType } from '../types/LocationType';
 import { CURRENT_LOCATION_STORAGE_CODE } from '../utils/constants';
+import { getCurrentTime } from '../utils/dateTimeUtils';
 import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
 import ApiService from '../services/ForecastApiService';
@@ -31,11 +34,10 @@ import ApiService from '../services/ForecastApiService';
 const PREFIX = 'LOCATION_MANAGER';
 
 export const CHANGE_LOCATION = `${PREFIX}/CHANGE`;
-export const SET_LOCATION_FORECAST = `${PREFIX}/SET_LOCATION_FORECAST`;
 export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
-export const SET_FORECASTS = `${PREFIX}/SET_FORECASTS`;
+export const SET_FORECAST = `${PREFIX}/SET_FORECAST`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
@@ -61,12 +63,30 @@ export const changeCurrentHourlyForecast = (
   currentHourlyForecast: hourlyForecast
 });
 
-export const changeCurrentForecast = (
-  forecasts: CachedForecastCurrentType
+export const changeForecasts = (
+  forecast: CachedForecastCurrentType,
+  locationId: string
 ): CachedForecastsActionType => ({
-  type: SET_FORECASTS,
-  forecasts: forecasts
+  type: SET_FORECAST,
+  forecast: forecast,
+  locationId: locationId
 });
+
+export const checkCachedForecast =
+  (locationId: string): ThunkActionCachedForecasts =>
+  async (dispatch: DispatchCachedForecasts, getState: GetStoreState): Promise<void> => {
+    try {
+      const { data } = await ApiService.getCurrentForecast(locationId);
+      const locationForecast = {
+        cacheTimeStamp: getCurrentTime(),
+        forecast: data.current
+      };
+
+      dispatch(changeForecasts(locationForecast, locationId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 export const setCurrentHourlyForecast =
   (locationId: number | string): ThunkActionHourlyForecast =>

@@ -48,12 +48,13 @@ export type ForecastCurrentType = {
 };
 
 export type CachedForecastCurrentType = {
-  [id: number]: {
-    cachTime: number,
-    forecast: ForecastCurrentType
-  }
+  cacheTimeStamp: number,
+  forecast: ForecastCurrentType
 };
 
+export type CachedForecastsCurrentType = {
+  [id: number | string]: CachedForecastCurrentType
+};
 export type HourlyForecastType = {
   forecast: Array<HourlyForecastItemType>
 };

@@ -1,29 +1,26 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
 import ApiService from '../../../services/ForecastApiService';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
-import type { FavoriteCityForecastPropsType } from './FavoriteCityForecastPropsType';
+import { checkCachedForecast } from '../../../actions/locationsManagerActions';
+import type {
+  FavoriteCityForecastPropsType,
+  FavoriteCityForecastOwnPropsType
+} from './FavoriteCityForecastPropsType';
 
-function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): React$Node {
-  const [forecast, setForecast] = useState({});
+function FavoriteCityForecast({
+  location,
+  forecasts,
+  ...props
+}: FavoriteCityForecastPropsType): React$Node {
+  const forecast = forecasts[location.id]?.forecast;
 
-  useEffect(() => {
-    const setForecastValue = async (): Promise<void> => {
-      let currentForecast = {};
-      try {
-        const { data } = await ApiService.getCurrentForecast(location.id);
-        currentForecast = data.current;
-      } catch (error) {
-        console.error(error);
-      }
-
-      setForecast(currentForecast);
-    };
-
-    setForecastValue();
-  }, []);
+  React.useEffect(() => {
+    if (location.id && !forecast) props.checkCachedForecast(location.id);
+  }, [location]);
 
   const symbolUrl = forecast?.symbol
     ? `${FORECAST_SYMBOL_LINK}${forecast?.symbol}${FORECAST_SYMBOL_EXT}`
@@ -53,4 +50,21 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
   );
 }
 
-export default FavoriteCityForecast;
+const mapStateToProps = ({ locationManager: { forecasts } }) => {
+  return {
+    forecasts: forecasts
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    checkCachedForecast: locationId => dispatch(checkCachedForecast(locationId))
+  };
+};
+
+const WrappedFavoriteCityForecast = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FavoriteCityForecast): React.AbstractComponent<FavoriteCityForecastOwnPropsType>);
+
+export default WrappedFavoriteCityForecast;

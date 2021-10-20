@@ -1,16 +1,19 @@
-export const selectorGetLocationForecast = ({ locationManager }) => {
+import { getCurrentTime } from '../utils/dateTimeUtils';
+
+export const selectLocationForecast = ({ locationManager }) => {
   const favoriteCities = locationManager.favoriteCitiesList;
-  console.log(locationManager);
-  console.log(favoriteCities);
   return favoriteCities.map(location => {
     const locationForecast = locationManager.forecasts[location.id];
-    const dateObj = new Date();
-    const currentTime = dateObj.getTime();
+    const currentTime = getCurrentTime();
     location.forecast = null;
 
     if (locationForecast && currentTime <= locationForecast.cacheTimeStamp) {
-      location.forecast = locationForecast.value;
+      location.forecast = locationForecast.forecast;
     }
     return location;
   });
+};
+
+export const selectCurrentForecast = (forecasts, locationId) => {
+  return forecasts[locationId]?.forecast;
 };
