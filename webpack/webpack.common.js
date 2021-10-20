@@ -42,7 +42,12 @@ module.exports = {
       {
         test: /\.svg$/,
         use: [
-          '@svgr/webpack',
+          {
+            loader: '@svgr/webpack',
+            options: {
+              titleProp: true
+            }
+          },
           {
             loader: 'file-loader',
             options: {

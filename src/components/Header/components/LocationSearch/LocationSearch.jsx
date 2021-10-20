@@ -3,8 +3,13 @@ import classes from './LocationSearch.module.scss';
 import * as React from 'react';
 import SearchDropDown from './components/SearchDropDown/SearchDropDown';
 import { connect } from 'react-redux';
-import { changeLocation } from '../../../../actions/locationsManagerActions';
-import type { LocationSearchPropsType, LocationSearchStatesType } from './LocationSearchPropsType';
+import { changeLocation, getCurrentGeolocation } from '../../../../actions/locationsManagerActions';
+import { ReactComponent as IconGeolocation } from '../../../../assets/img/svg/icon-geolocation.svg';
+import type {
+  LocationSearchPropsType,
+  LocationSearchStatesType,
+  LocationSearchOwnPropsType
+} from './LocationSearchPropsType';
 
 class LocationSearch extends React.Component<LocationSearchPropsType, LocationSearchStatesType> {
   dropdownContainer;
@@ -16,6 +21,7 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
       isOpenDropDown: false
     };
     this.dropdownContainer = React.createRef<HTMLElement>();
+    console.log(props);
   }
 
   componentDidMount() {
@@ -43,6 +49,11 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
     });
   };
 
+  handleGetGeolocation = (event: MouseEvent): void => {
+    console.log(this.props);
+    this.props.getCurrentGeolocation();
+  };
+
   render() {
     return (
       <div className={classes.currentLocation}>
@@ -55,6 +66,9 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
             <SearchDropDown isOpenDropDown={this.state.isOpenDropDown} />
           )}
         </span>
+        <span className={classes.geolocationContainer} onClick={this.handleGetGeolocation}>
+          <IconGeolocation title="Click in order to get your correct geolocation" />
+        </span>
       </div>
     );
   }
@@ -66,8 +80,15 @@ const mapStateToProps = ({ locationManager: { currentLocation } }) => {
   };
 };
 
-const WrappedLocationSearch = (connect(mapStateToProps)(
-  LocationSearch
-): React.AbstractComponent<LocationSearchPropsType>);
+const mapDispatchToProps = dispatch => {
+  return {
+    getCurrentGeolocation: () => dispatch(getCurrentGeolocation)
+  };
+};
+
+const WrappedLocationSearch = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LocationSearch): React.AbstractComponent<LocationSearchOwnPropsType>);
 
 export default WrappedLocationSearch;

@@ -20,4 +20,21 @@
     background-color: $main-bg-color;
     box-shadow: 0px 4px 4px $shadow-theme-color;
   }
+
+  .geolocationContainer {
+    margin-left: 10px;
+    cursor: pointer;
+
+    &.active {
+      path {
+        fill: $link-color;
+      }
+    }
+
+    &:hover {
+      path {
+        fill: $link-color;
+      }
+    }
+  }
 }
