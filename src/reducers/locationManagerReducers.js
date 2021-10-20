@@ -2,10 +2,12 @@ import {
   CHANGE_LOCATION,
   CHANGE_SEARCH_STRING,
   SET_HOURLY_FORECAST,
-  SET_DAILY_FORECAST
+  SET_DAILY_FORECAST,
+  SET_LOCATION_FORECAST
 } from '../actions/locationsManagerActions';
 import StorageConnection from '../services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../utils/constants';
+import mockFavoriteCities from '../components/FavoriteCities/mockData';
 
 const currentLocationFromStore = StorageConnection.getValue(CURRENT_LOCATION_STORAGE_CODE) || {};
 const favoriteCitiesFromStore = StorageConnection.getValue(FAVORITE_CITIES_STORAGE_CODE) || [];
@@ -22,6 +24,10 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case CHANGE_LOCATION: {
       return { ...state, currentLocation: action.currentLocation };
+    }
+
+    case SET_LOCATION_FORECAST: {
+      return { ...state, forecasts: action.forecasts };
     }
 
     case CHANGE_SEARCH_STRING: {

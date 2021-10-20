@@ -31,6 +31,7 @@ import ApiService from '../services/ForecastApiService';
 const PREFIX = 'LOCATION_MANAGER';
 
 export const CHANGE_LOCATION = `${PREFIX}/CHANGE`;
+export const SET_LOCATION_FORECAST = `${PREFIX}/SET_LOCATION_FORECAST`;
 export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
