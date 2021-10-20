@@ -3,7 +3,7 @@ import DailyForecast from './DailyForecast/DailyForecast';
 import { HourlyCityForecastTypes, DailyCityForecastTypes } from '../../types/WeatherDataTypes';
 
 import classes from './DetailedForecast.module.scss';
-import FavoriteCities from './FavoriteCities/FavoriteCities';
+import FavoriteCities from './FavoriteCities/Container';
 import HourlyForecast from './HourlyForecast/HourlyForecast';
 
 function DetailedForecast({ hourlyCityForecast, dailyCityForecast }) {
