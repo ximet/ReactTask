@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/constants.scss';
+
+.theme {
+  padding: 10px 15px;
+  color: $link-color;
+  background-color: $main-bg-color;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+
+  &:hover {
+    background-color: $hover-item-color;
+  }
+
+  &.active {
+    background-color: $hover-item-color;
+    pointer-events: none;
+  }
+}
