@@ -6,6 +6,7 @@ import { CURRENT_CITY_ID } from '../../constants/forecaApi';
 
 import CityForecast from '../../layouts/CityForecast/CityForecast';
 import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
+import { getCurrentLocation } from '../../services/locationService';
 
 class WeatherForecast extends React.PureComponent {
   constructor(props) {
