@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import { useDebounce } from '../../hooks/useDebounce.jsx';
 import { dataService } from '../../services/dataService';
-import { setCurrentCity } from '../../redux/actions/locationActions.js';
+import { setCurrentCity, setRecentCity } from '../../redux/actions/locationActions.js';
 
 import styles from './SearchInput.module.scss';
 import SearchIcon from '../../assets/images/search-icon.png';
 import SearchLocationIcon from '../../assets/images/search-location-icon.png';
 
-function SearchInput({ setCurrentCity }) {
+function SearchInput({ setCurrentCity, setRecentCity }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -35,6 +35,11 @@ function SearchInput({ setCurrentCity }) {
     setSearchQuery(e.target.value);
   };
 
+  function addCity(cityInfo) {
+    setCurrentCity(cityInfo);
+    setRecentCity(cityInfo);
+  }
+
   return (
     <div className={styles.searchWrapper}>
       <div className={styles.searchForm}>
@@ -53,11 +58,7 @@ function SearchInput({ setCurrentCity }) {
       </div>
       <div className={styles.searchResults}>
         {searchResults.map(item => (
-          <li
-            key={item.id}
-            className={styles.searchResultItem}
-            onClick={() => setCurrentCity(item)}
-          >
+          <li key={item.id} className={styles.searchResultItem} onClick={() => addCity(item)}>
             <img src={SearchLocationIcon} alt="location" />
             <span>{item.name}</span>
           </li>
@@ -69,7 +70,8 @@ function SearchInput({ setCurrentCity }) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentCity: cityInfo => dispatch(setCurrentCity(cityInfo))
+    setCurrentCity: cityInfo => dispatch(setCurrentCity(cityInfo)),
+    setRecentCity: cityInfo => dispatch(setRecentCity(cityInfo))
   };
 };
 
