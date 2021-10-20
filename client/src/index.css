@@ -28,6 +28,8 @@
 
   --slider-left-arrow-bg-image: url('../public//images/lightLeftArrow.png');
   --sliderright-arrow-bg-image: url('../public//images/lightRightArrow.png');
+
+  --preloader-background-color: #2f1c5a;
 }
 
 [data-theme='light'] {
@@ -40,4 +42,6 @@
 
   --slider-left-arrow-bg-image: url('../public//images/darkLeftArrow.png');
   --sliderright-arrow-bg-image: url('../public//images/darkRightArrow.png');
+
+  --preloader-background-color: #b3cbff;
 }

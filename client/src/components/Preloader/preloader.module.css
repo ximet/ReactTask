@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   height: 100vh;
-  background-color: #2f1c5a;
+  background-color: var(--preloader-background-color);
   display: flex;
   align-items: center;
   justify-content: center;
