@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
-
 import styles from './CityForecast.module.scss';
 import LocationIcon from '../../assets/images/location-icon.png';
 import WindIcon from '../../assets/images/wind-icon.png';
@@ -54,8 +52,17 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
 }
 
 CityForecast.propTypes = {
-  cityForecast: CityForecastTypes,
-  cityInfo: CityInfoTypes,
+  cityForecast: PropTypes.shape({
+    relHumidity: PropTypes.number.isRequired,
+    symbol: PropTypes.string.isRequired,
+    symbolPhrase: PropTypes.string.isRequired,
+    temperature: PropTypes.number.isRequired,
+    windSpeed: PropTypes.number.isRequired
+  }),
+  cityInfo: PropTypes.shape({
+    country: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
   themeBg: PropTypes.string.isRequired
 };
 

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import { THEMES, BG_IMAGES } from '../../constants/themes';
 import CityForecast from './CityForecast';
 import { getCurrentBgImage } from '../../redux/selectors/themeSelectors';
+import { getCityForecast } from '../../redux/selectors/weatherSelectors';
+import { getCityInfo } from '../../redux/selectors/locationSelectors';
 
 const mapStateToProps = state => ({
-  cityForecast: state.weather.cityForecast,
-  cityInfo: state.location.currentLocation,
+  cityForecast: getCityForecast(state),
+  cityInfo: getCityInfo(state),
   themeBg: getCurrentBgImage(state)
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
-import { HourlyChartData } from '../../../types/WeatherDataTypes';
 import { hourlyChartOptions, getHourlyChartData } from '../../../utils/hourlyChartSettings';
 import styles from './HourlyForecast.module.scss';
 
@@ -20,7 +20,11 @@ function HourlyForecast({ chartData }) {
 }
 
 HourlyForecast.propTypes = {
-  chartData: HourlyChartData
+  chartData: PropTypes.shape({
+    time: PropTypes.arrayOf(PropTypes.string).isRequired,
+    temperature: PropTypes.arrayOf(PropTypes.number).isRequired,
+    wind: PropTypes.arrayOf(PropTypes.number).isRequired
+  })
 };
 
 export default HourlyForecast;
