@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import classes from './Slider.module.css';
-import { slidesType } from './types';
 import PropTypes from 'prop-types';
 
 function Slider({ slides, slidesToShow }) {
@@ -52,7 +51,12 @@ Slider.defaultProps = {
 };
 
 Slider.propTypes = {
-  slides: slidesType,
+  slides: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      component: PropTypes.node
+    })
+  ).isRequired,
   slidesToShow: PropTypes.number
 };
 
