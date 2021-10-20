@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './ExtraCityForecast.module.css';
 import { temperatureUnits } from '../../../globalConsts';
-import { weatherType } from './types';
+import PropTypes from 'prop-types';
 
 function ExtraCityForecast({ weather }) {
   return (
@@ -17,7 +17,12 @@ function ExtraCityForecast({ weather }) {
 }
 
 ExtraCityForecast.propTypes = {
-  weather: weatherType
+  weather: PropTypes.shape({
+    windSpeed: PropTypes.number.isRequired,
+    relHumidity: PropTypes.number.isRequired,
+    feelsLikeTemp: PropTypes.number.isRequired,
+    pressure: PropTypes.number.isRequired
+  })
 };
 
 export default ExtraCityForecast;

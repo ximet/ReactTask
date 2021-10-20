@@ -3,8 +3,8 @@ import Slider from '../../components/slider/Slider';
 import classes from './hourlyForecasts.module.css';
 import HourlyForecast from './hourlyForecast/HourlyForecast';
 import { v4 as uuidv4 } from 'uuid';
-import { hourlyForecastsType } from './types';
 import { themeType } from '../../types/types';
+import PropTypes from 'prop-types'
 
 function HourlyForecasts({ theme, hourlyForecasts }) {
   const slides = hourlyForecasts.map(forecast => ({
@@ -24,7 +24,14 @@ function HourlyForecasts({ theme, hourlyForecasts }) {
 
 HourlyForecasts.propTypes = {
   theme: themeType,
-  hourlyForecasts: hourlyForecastsType
+  hourlyForecasts: PropTypes.arrayOf(
+    PropTypes.shape({
+      time: PropTypes.string.isRequired,
+      temperature: PropTypes.number.isRequired,
+      windSpeed: PropTypes.number.isRequired,
+      relHumidity: PropTypes.number.isRequired
+    })
+  )
 };
 
 export default HourlyForecasts;

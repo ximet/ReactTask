@@ -3,8 +3,8 @@ import Slider from '../../components/slider/Slider';
 import classes from './dailyForecasts.module.css';
 import DailyForecast from './dailyForecast/DailyForecast';
 import { v4 as uuidv4 } from 'uuid';
-import { dailyForecastsType } from './types';
 import { themeType } from '../../types/types';
+import PropTypes from 'prop-types';
 
 function DailyForecasts({ theme, dailyForecasts }) {
   const slides = dailyForecasts.map(forecast => ({
@@ -24,7 +24,13 @@ function DailyForecasts({ theme, dailyForecasts }) {
 
 DailyForecasts.propTypes = {
   theme: themeType,
-  dailyForecasts: dailyForecastsType
+  dailyForecasts: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      symbolPhrase: PropTypes.string.isRequired,
+      maxTemp: PropTypes.number.isRequired
+    })
+  )
 };
 
 export default DailyForecasts;

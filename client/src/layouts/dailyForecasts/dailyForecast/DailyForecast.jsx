@@ -3,7 +3,7 @@ import classes from './dailyForecast.module.css';
 import weatherIcon from '../../../../public/images/weatherIcon/sunAndCloudsIcon.png';
 import { formatDate } from '../../../services/dateService';
 import { dailyWeatherDateOptions, temperatureUnits } from '../../../globalConsts';
-import { forecastType } from './types';
+import PropTypes from 'prop-types';
 
 //later will add weatherIconService and icons will depend on symbolPhrase
 
@@ -23,7 +23,11 @@ function DailyForecast({ forecast }) {
 }
 
 DailyForecast.propTypes = {
-  forecast: forecastType
+  forecast: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    maxTemp: PropTypes.number.isRequired,
+    symbolPhrase: PropTypes.string.isRequired
+  })
 };
 
 export default DailyForecast;
