@@ -16,6 +16,6 @@ function CityForecastView({ theme }) {
 
 CityForecastView.propTypes = {
   theme: themeType
-}
+};
 
 export default CityForecastView;

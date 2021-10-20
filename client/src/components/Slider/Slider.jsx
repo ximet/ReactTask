@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import classes from './Slider.module.css';
-import { sliderSlidesTypes } from './types';
-import { number } from 'prop-types'
+import { slidesType } from './types';
+import PropTypes from 'prop-types';
 
 function Slider({ slides, slidesToShow }) {
   const slideRef = useRef(null);
@@ -49,11 +49,11 @@ function Slider({ slides, slidesToShow }) {
 
 Slider.defaultProps = {
   slidesToShow: 4
-}
+};
 
 Slider.propTypes = {
-  slides: sliderSlidesTypes,
-  slidesToShow: number
+  slides: slidesType,
+  slidesToShow: PropTypes.number
 };
 
 export default Slider;

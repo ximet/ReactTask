@@ -1,8 +1,8 @@
-import PropTypes, { string, number } from 'prop-types';
+import PropTypes from 'prop-types';
 
-export const sliderSlidesTypes = PropTypes.arrayOf(
+export const slidesType = PropTypes.arrayOf(
   PropTypes.shape({
-    id: string.isRequired,
+    id: PropTypes.string.isRequired,
     component: PropTypes.node
   })
 );

@@ -1,3 +1,3 @@
 import PropTypes, { string } from 'prop-types';
 
-export const themeType = string.isRequired;
+export const themeType = PropTypes.string.isRequired;
