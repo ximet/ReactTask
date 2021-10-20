@@ -13,6 +13,6 @@ export function addRecentCity(recentCities, cityToAdd) {
 
 export function removeRecentCity(recentCities, cityToRemove) {
   const cityIndex = recentCities.indexOf(cityToRemove);
-  
+
   return recentCities.splice(cityIndex, removeElementNumber);
 }
