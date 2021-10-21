@@ -4,7 +4,7 @@ import sun from '../../../public/images/sun.png';
 import moon from '../../../public/images/moon.png';
 import PropTypes from 'prop-types';
 import sun from '../../../public/images/sun.png';
-import moon from '../../../public/images/moon.png'
+import moon from '../../../public/images/moon.png';
 
 function Preloader({ theme }) {
   return (
@@ -16,7 +16,7 @@ function Preloader({ theme }) {
 }
 
 Preloader.propTypes = {
-  theme: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired
 };
 
 export default Preloader;
