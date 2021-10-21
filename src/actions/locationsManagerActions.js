@@ -113,8 +113,6 @@ export const setGeolocationCity =
       locationManager: { currentLocation: storageLocation }
     } = getState();
 
-    console.log(storageLocation);
-    console.log(isRefreshCurrentLocation);
     if (!storageLocation.id || isRefreshCurrentLocation) {
       let currentLocationData = storageLocation;
 

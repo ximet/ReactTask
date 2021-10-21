@@ -21,7 +21,6 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
       isOpenDropDown: false
     };
     this.dropdownContainer = React.createRef<HTMLElement>();
-    console.log(props);
   }
 
   componentDidMount() {
@@ -50,7 +49,6 @@ class LocationSearch extends React.Component<LocationSearchPropsType, LocationSe
   };
 
   handleGetGeolocation = (event: MouseEvent): void => {
-    console.log(this.props);
     this.props.getCurrentGeolocation();
   };
 
