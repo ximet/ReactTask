@@ -6,7 +6,7 @@ import { getWeatherInfo } from '../../redux/actions/weatherActions';
 
 import WeatherForecast from './WeatherForecast';
 
-class WeatherForecastContainer extends React.PureComponent {
+class WeatherForecastContainer extends React.Component {
   componentDidMount() {
     this.props.getWeatherInfo(CURRENT_CITY_ID);
   }
@@ -16,8 +16,8 @@ class WeatherForecastContainer extends React.PureComponent {
       return <span> Loading...</span>;
     }
 
-    if (this.props.isFetchingFailure) {
-      return <span> Something went wrong...</span>;
+    if (this.props.errorMessage) {
+      return <span> {this.props.errorMessage}</span>;
     }
 
     return <WeatherForecast />;
@@ -26,7 +26,7 @@ class WeatherForecastContainer extends React.PureComponent {
 
 const mapStateToProps = state => ({
   isFetching: state.weather.isFetching,
-  isFetchingFailure: state.weather.isFetchingFailure,
+  errorMessage: state.weather.errorMessage,
   dailyCityForecast: state.weather.dailyCityForecast,
   cityInfo: state.location.currentLocation
 });

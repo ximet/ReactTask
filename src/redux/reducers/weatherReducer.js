@@ -9,7 +9,7 @@ import {
 
 const INITIAL_STATE = {
   isFetching: false,
-  isFetchingFailure: false,
+  errorMessage: '',
   cityForecast: {
     relHumidity: 0,
     symbol: 'd000',
@@ -39,7 +39,7 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        isFetchingFailure: true
+        errorMessage: action.payload
       };
 
     case SET_CITY_FORECAST:
