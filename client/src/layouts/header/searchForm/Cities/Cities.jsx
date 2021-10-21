@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 
 function Cities({ cities, setWeather, setLocation }) {
-  const onClickHandle = city => {
+  const handleClick = city => {
     setWeather(city);
     setLocation(city);
   };
@@ -13,7 +13,7 @@ function Cities({ cities, setWeather, setLocation }) {
   return (
     <div className={classes.container}>
       {cities.map(city => (
-        <City key={uuidv4()} city={city} onClickHandle={onClickHandle} />
+        <City key={uuidv4()} city={city} onClick={handleClick} />
       ))}
     </div>
   );

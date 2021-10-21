@@ -41,9 +41,9 @@ const dateFormat = 'en-US';
 
 const temperatureUnits = '°C';
 
-const timeoutToSearchCities = 500;
+const searchCitiesTimout = 500;
 
-const startLengthToSearchCitisThroughApi = 2;
+const startLengthToSearchCities = 2;
 
 export {
   themes,
@@ -54,6 +54,6 @@ export {
   dateFormat,
   dailyWeatherDateOptions,
   temperatureUnits,
-  timeoutToSearchCities,
-  startLengthToSearchCitisThroughApi
+  searchCitiesTimout,
+  startLengthToSearchCities
 };

@@ -1,33 +1,33 @@
 import { locationSearch } from '../api/weatherApi';
 import { useState, useEffect } from 'react';
-import { timeoutToSearchCities } from '../globalConsts';
-import { startLengthToSearchCitisThroughApi } from '../globalConsts';
+import { searchCitiesTimout } from '../globalConsts';
+import { startLengthToSearchCities } from '../globalConsts';
 
 export const useCitiesSearch = initialState => {
   const [searchText, setSearchText] = useState(initialState);
   const [matchingCities, setMatchingCities] = useState([]);
-  const [needToShowCitiesWindow, setNeedToShowCitiesWindow] = useState(false);
+  const [shouldShowCitiesWindow, setShouldShowCitiesWindow] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timerId = setTimeout(() => {
       findMatchingCities();
-    }, timeoutToSearchCities);
+    }, searchCitiesTimout);
 
     return () => {
-      clearInterval(timer);
+      clearTimeout(timerId);
     };
   }, [searchText]);
 
   const findMatchingCities = async () => {
-    if (searchText.length > startLengthToSearchCitisThroughApi) {
+    if (searchText.length > startLengthToSearchCities) {
       const tempMatchingCities = await locationSearch(searchText);
+      const didCitiesMatch = tempMatchingCities.locations.length > 0;
+
       setMatchingCities(tempMatchingCities.locations);
-      tempMatchingCities.locations.length > 0
-        ? setNeedToShowCitiesWindow(true)
-        : setNeedToShowCitiesWindow(false);
+      setShouldShowCitiesWindow(didCitiesMatch);
     } else {
       setMatchingCities([]);
-      setNeedToShowCitiesWindow(false);
+      setShouldShowCitiesWindow(false);
     }
   };
 
@@ -35,7 +35,7 @@ export const useCitiesSearch = initialState => {
     searchText,
     setSearchText,
     matchingCities,
-    needToShowCitiesWindow,
-    setNeedToShowCitiesWindow
+    shouldShowCitiesWindow,
+    setShouldShowCitiesWindow
   ];
 };
