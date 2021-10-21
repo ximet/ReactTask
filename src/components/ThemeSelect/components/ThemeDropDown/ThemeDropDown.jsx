@@ -3,9 +3,9 @@ import classes from './ThemeDropDown.module.scss';
 import { getThemesList } from '../../../../config/themeConfig';
 import ThemeContext from '../../../../providers/themeContext';
 
-function ThemeDropDown({ currentTheme, selectTheme }) {
-  const themeList = getThemesList();
+const themeList = getThemesList();
 
+function ThemeDropDown({ currentTheme, selectTheme }) {
   return (
     <ul className={classes.themesDropdown}>
       {themeList.map(theme => (
