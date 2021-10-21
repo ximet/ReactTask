@@ -5,7 +5,6 @@ import CurrentCityForecastView from './views/CurrentCityForecastView/CurrentCity
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Geolocation from './services/GeolocationService';
-import ApiService from './services/ForecastApiService';
 import { changeLocation, setGeolocationCity } from './actions/locationsManagerActions';
 import Storage from './services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
@@ -51,7 +50,7 @@ const mapStateToProps = ({ locationManager: { currentLocation } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setGeolocationCity: () => dispatch(setGeolocationCity)
+    setGeolocationCity: () => dispatch(setGeolocationCity())
   };
 };
 

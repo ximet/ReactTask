@@ -95,30 +95,38 @@ export const setCurrentLocation =
   (location: LocationType): ThunkActionLocation =>
   async (dispatch: DispatchLocation, getState: GetStoreState): Promise<void> => {
     Storage.setValue(CURRENT_LOCATION_STORAGE_CODE, location);
+
     dispatch(changeLocation(location));
   };
 
-export const setGeolocationCity = async (
+export const getCurrentGeolocation = (
   dispatch: DispatchLocation,
   getState: GetStoreState
-): Promise<void> => {
-  const {
-    locationManager: { currentLocation: storageLocation }
-  } = getState();
-
-  if (!storageLocation.id) {
-    let currentLocationData = storageLocation;
-
-    try {
-      const position = await Geolocation.getCurrentPosition();
-      const currentLocationApi = await ApiService.getLocationInfo(
-        `${position.coords.longitude},${position.coords.latitude}`
-      );
-      currentLocationData = currentLocationApi.data;
-    } catch (error) {
-      console.error(error);
-    }
-
-    dispatch(changeLocation(currentLocationData));
-  }
+): void => {
+  Storage.setValue(CURRENT_LOCATION_STORAGE_CODE, {});
+  dispatch(setGeolocationCity(true));
 };
+
+export const setGeolocationCity =
+  (isRefreshCurrentLocation: boolean = false): ThunkActionLocation =>
+  async (dispatch: DispatchLocation, getState: GetStoreState): Promise<void> => {
+    const {
+      locationManager: { currentLocation: storageLocation }
+    } = getState();
+
+    if (!storageLocation.id || isRefreshCurrentLocation) {
+      let currentLocationData = storageLocation;
+
+      try {
+        const position = await Geolocation.getCurrentPosition();
+        const currentLocationApi = await ApiService.getLocationInfo(
+          `${position.coords.longitude},${position.coords.latitude}`
+        );
+        currentLocationData = currentLocationApi.data;
+      } catch (error) {
+        console.error(error);
+      }
+
+      dispatch(changeLocation(currentLocationData));
+    }
+  };
