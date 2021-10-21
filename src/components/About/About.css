@@ -1,0 +1,24 @@
+.about {
+  padding: 1rem;
+  margin-right: 0.2rem;
+  max-width: 40rem;
+  border-top: 1px solid var(--primary-color);
+}
+
+.about__title {
+  margin: 1rem 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.about__text {
+  margin: 0.7rem 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.about__link {
+  display: block;
+  margin-top: 1.5rem;
+  color: var(--secondary-color);
+}
