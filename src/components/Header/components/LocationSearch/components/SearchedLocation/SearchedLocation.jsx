@@ -10,7 +10,7 @@ import {
   setCurrentLocation,
   setFavoriteCities
 } from '../../../../../../actions/locationsManagerActions';
-import { selectFavoriteCitiesId } from '../../../../../../selectors/selectorsFavorite';
+import { selectFavoriteCityIds } from '../../../../../../selectors/selectorsFavorite';
 import { ReactComponent as HeartIcon } from '../../../../../../assets/img/svg/icon-heart.svg';
 
 const SearchedLocation = ({
@@ -19,15 +19,14 @@ const SearchedLocation = ({
   favoriteCitiesIdList,
   ...props
 }: SearchedLocationPropsType): React$Node => {
-  const [isFavorite, setIsFavorite] = React.useState(() => {
-    return favoriteCitiesIdList.indexOf(location.id) !== -1;
-  });
+  const [isFavorite, setIsFavorite] = React.useState(() =>
+    favoriteCitiesIdList.some(id => id === location.id)
+  );
 
   const handleToggleFavorite = event => {
-    setIsFavorite(isFavorite => {
-      setFavoriteCities(location, !isFavorite);
-      return !isFavorite;
-    });
+    setFavoriteCities(location, !isFavorite);
+
+    setIsFavorite(isFavorite => !isFavorite);
 
     event.preventDefault();
     event.stopPropagation();
@@ -41,7 +40,7 @@ const SearchedLocation = ({
       </a>
       <a
         href="#"
-        className={[classes.favoriteBtn, isFavorite && classes.active].join(' ')}
+        className={[classes.favoriteBtn, isFavorite ? classes.active : ''].join(' ')}
         onClick={handleToggleFavorite}
       >
         <HeartIcon />
@@ -51,7 +50,7 @@ const SearchedLocation = ({
 };
 
 const mapStateToProps = ({ locationManager: { favoriteCitiesList } }) => ({
-  favoriteCitiesIdList: selectFavoriteCitiesId(favoriteCitiesList)
+  favoriteCitiesIdList: selectFavoriteCityIds(favoriteCitiesList)
 });
 
 const mapDispatchToProps = dispatch => {

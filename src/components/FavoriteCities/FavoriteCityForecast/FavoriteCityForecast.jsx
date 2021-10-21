@@ -38,8 +38,6 @@ function FavoriteCityForecast({
 
   const handleFavoriteCityDelete = event => {
     setFavoriteCities(location, false);
-
-    event.preventDefault();
   };
 
   return (
@@ -57,9 +55,6 @@ function FavoriteCityForecast({
           <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
           <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
           <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
-          <a className={classes.linkMore} href="#">
-            read more
-          </a>
         </div>
       </div>
     </div>

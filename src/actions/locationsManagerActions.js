@@ -75,14 +75,11 @@ export const setFavoriteCities =
     let newFavoriteList = [];
 
     if (isFavorite) {
-      newFavoriteList = [...favoriteCitiesList];
-      newFavoriteList.push(location);
+      newFavoriteList = favoriteCitiesList.concat([location]);
     } else {
-      favoriteCitiesList.forEach(favoriteLocation => {
-        if (locationId !== favoriteLocation.id) {
-          newFavoriteList.push(favoriteLocation);
-        }
-      });
+      newFavoriteList = favoriteCitiesList.filter(
+        favoriteLocation => favoriteLocation.id !== locationId
+      );
     }
     Storage.setValue(FAVORITE_CITIES_STORAGE_CODE, newFavoriteList);
 
