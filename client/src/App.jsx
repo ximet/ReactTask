@@ -27,7 +27,7 @@ function App(props) {
 
   useEffect(() => {
     props.initializeApp();
-  }, []);
+  }, [props.initializeApp]);
 
   return (
     <BrowserRouter>
