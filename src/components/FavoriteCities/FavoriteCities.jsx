@@ -12,7 +12,6 @@ const makeFavoriteCitiesList = favoriteCities =>
   ));
 
 function FavoriteCities({ favoriteCitiesList }: FavoriteCitiesPropsType): React$Node {
-  console.log(favoriteCitiesList);
   return (
     <div className={classes.favoriteContainer}>
       <h2 className={classes.title}>Favorite cities</h2>
@@ -31,7 +30,6 @@ function FavoriteCities({ favoriteCitiesList }: FavoriteCitiesPropsType): React$
 }
 
 const mapStateToProps = ({ locationManager: { favoriteCitiesList } }) => {
-  console.log(favoriteCitiesList);
   return {
     favoriteCitiesList
   };
