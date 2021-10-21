@@ -1,6 +1,7 @@
 import { locationSearch } from '../api/weatherApi';
 import { useState, useEffect } from 'react';
 import { timeoutToSearchCities } from '../globalConsts';
+import { startLengthToSearchCitisThroughApi } from '../globalConsts';
 
 export const useCitiesSearch = initialState => {
   const [searchText, setSearchText] = useState(initialState);
@@ -18,7 +19,7 @@ export const useCitiesSearch = initialState => {
   }, [searchText]);
 
   const findMatchingCities = async () => {
-    if (searchText.length > 2) {
+    if (searchText.length > startLengthToSearchCitisThroughApi) {
       const tempMatchingCities = await locationSearch(searchText);
       setMatchingCities(tempMatchingCities.locations);
       tempMatchingCities.locations.length > 0

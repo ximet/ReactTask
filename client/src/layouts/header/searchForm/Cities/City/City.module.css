@@ -15,17 +15,6 @@
   border-radius: 14px;
 }
 
-.cityWeatherIconAndCity {
-  display: flex;
-  align-items: center;
-}
-
-.cityWeatherIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 14px;
-}
-
 .textContent {
   display: flex;
   flex-direction: column;
@@ -35,4 +24,5 @@
   font-size: 15px;
   line-height: 15px;
   letter-spacing: 1.5px;
+  margin-top: 1px;
 }
