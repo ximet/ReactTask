@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 20px;
+  font-size: 1.15rem;
   margin-bottom: 10px;
   padding: 3px 6px;
   cursor: pointer;
@@ -21,7 +21,7 @@
 }
 
 .country {
-  font-size: 15px;
+  font-size: 0.9rem;
   line-height: 15px;
   letter-spacing: 1.5px;
   margin-top: 1px;
