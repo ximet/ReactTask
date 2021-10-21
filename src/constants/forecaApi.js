@@ -16,3 +16,5 @@ export const FORECAST_TYPES = {
 
 export const CURRENT_CITY_ID = 100625144;
 export const NUMBER_OF_RESULTS = 5;
+
+export const FETCHING_ERROR_TEXT = 'Sory. Have no acsess to server. Try to refresh page later.';

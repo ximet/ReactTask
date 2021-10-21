@@ -10,6 +10,5 @@ export const dateOptions = {
 
 export const timeOptions = {
   hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit'
+  minute: '2-digit'
 };

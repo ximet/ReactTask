@@ -1,24 +1,18 @@
 import React from 'react';
-import DailyForecast from './DailyForecast/DailyForecast';
-import { HourlyCityForecastTypes, DailyCityForecastTypes } from '../../types/WeatherDataTypes';
 
 import classes from './DetailedForecast.module.scss';
 import FavoriteCities from './FavoriteCities/FavoriteCities';
-import HourlyForecast from './HourlyForecast/HourlyForecast';
+import DailyForecast from './DailyForecast/DailyForecast';
+import HourlyForecast from './HourlyForecast/Container';
 
-function DetailedForecast({ hourlyCityForecast, dailyCityForecast }) {
+function DetailedForecast() {
   return (
     <div className={classes.detailedForecast}>
       <FavoriteCities />
       <DailyForecast />
-      <HourlyForecast hourlyForecast={hourlyCityForecast} />
+      <HourlyForecast />
     </div>
   );
 }
-
-DetailedForecast.propTypes = {
-  hourlyCityForecast: HourlyCityForecastTypes,
-  dailyCityForecast: DailyCityForecastTypes
-};
 
 export default DetailedForecast;
