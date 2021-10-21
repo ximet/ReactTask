@@ -1,4 +1,4 @@
-export default {
+export const themeConfig = {
   defaultActive: 'light_theme',
   themeMap: {
     light_theme: {
@@ -11,3 +11,16 @@ export default {
     }
   }
 };
+
+export function getThemesList() {
+  const themeList = themeConfig.themeMap;
+  const themesKeys = Object.keys(themeList);
+
+  return themesKeys.map(themeKey => themeList[themeKey]);
+}
+
+export function getDefaultTheme() {
+  const defaultThemeKey = themeConfig.defaultActive;
+
+  return themeConfig.themeMap[defaultThemeKey];
+}

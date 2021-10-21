@@ -12,17 +12,4 @@ function prepareChartData(hourlyForecast) {
   return [hours, temperatures];
 }
 
-function prepareThemesList(themeConfig) {
-  const themeList = themeConfig.themeMap;
-  const themesKeys = Object.keys(themeList);
-
-  return themesKeys.map(themeKey => themeList[themeKey]);
-}
-
-function getDefaultTheme(themeConfig) {
-  const defaultThemeKey = themeConfig.defaultActive;
-
-  return themeConfig.themeMap[defaultThemeKey];
-}
-
-export { prepareChartData, prepareThemesList, getDefaultTheme };
+export { prepareChartData };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import themeConfig from '../config/themeConfig';
+import { themeConfig } from '../config/themeConfig';
 
 const defaultThemeKey = themeConfig.defaultActive;
 const themesMap = themeConfig.themeMap;

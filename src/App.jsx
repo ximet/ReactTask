@@ -10,12 +10,11 @@ import { changeLocation, setGeolocationCity } from './actions/locationsManagerAc
 import Storage from './services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
 import ThemeContext from './providers/themeContext';
-import themeConfig from './config/themeConfig';
-import { getDefaultTheme } from './utils/prepareData';
+import { getDefaultTheme } from './config/themeConfig';
 import classes from './assets/styles/constants.scss';
 
 function App(props) {
-  const [theme, setTheme] = useState(() => getDefaultTheme(themeConfig));
+  const [theme, setTheme] = useState(() => getDefaultTheme());
 
   const selectTheme = newTheme => {
     if (theme.code !== newTheme.code) {

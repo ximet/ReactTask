@@ -1,11 +1,10 @@
 import ThemeItem from '../ThemeItem/ThemeItem';
 import classes from './ThemeDropDown.module.scss';
-import themeConfig from '../../../../config/themeConfig';
-import { prepareThemesList } from '../../../../utils/prepareData';
+import { getThemesList } from '../../../../config/themeConfig';
 import ThemeContext from '../../../../providers/themeContext';
 
 function ThemeDropDown() {
-  const themeList = prepareThemesList(themeConfig);
+  const themeList = getThemesList();
 
   return (
     <ThemeContext.Consumer>
