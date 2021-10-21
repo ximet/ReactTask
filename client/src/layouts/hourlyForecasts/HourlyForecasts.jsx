@@ -4,7 +4,7 @@ import classes from './hourlyForecasts.module.css';
 import HourlyForecast from './hourlyForecast/HourlyForecast';
 import { v4 as uuidv4 } from 'uuid';
 import { themeType } from '../../types/types';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function HourlyForecasts({ theme, hourlyForecasts }) {
   const slides = hourlyForecasts.map(forecast => ({
