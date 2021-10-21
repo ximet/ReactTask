@@ -72,7 +72,7 @@ export const changeForecasts = (
   locationId: locationId
 });
 
-export const checkCachedForecast =
+export const getForecast =
   (locationId: string): ThunkActionCachedForecasts =>
   async (dispatch: DispatchCachedForecasts, getState: GetStoreState): Promise<void> => {
     try {
@@ -110,10 +110,6 @@ export const setCurrentDailyForecast =
   (locationId: number | string): ThunkActionDailyForecast =>
   async (dispatch: DispatchDailyForecast, getState: GetStoreState): Promise<void> => {
     try {
-      const {
-        locationManager: { currentDailyForecast }
-      } = getState();
-
       if (locationId) {
         const { data } = await ApiService.getDailyForecast(locationId);
 

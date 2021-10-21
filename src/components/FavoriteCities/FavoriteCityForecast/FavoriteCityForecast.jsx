@@ -2,10 +2,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
-import ApiService from '../../../services/ForecastApiService';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
-import { checkCachedForecast } from '../../../actions/locationsManagerActions';
+import { getForecast } from '../../../actions/locationsManagerActions';
+import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
+import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
+import ForecastCacheController from '../../../controllers/ForecastCacheController';
+
 import type {
   FavoriteCityForecastPropsType,
   FavoriteCityForecastOwnPropsType
@@ -16,15 +19,12 @@ function FavoriteCityForecast({
   forecasts,
   ...props
 }: FavoriteCityForecastPropsType): React$Node {
-  const forecast = forecasts[location.id]?.forecast;
+  const forecast = selectCurrentForecast(forecasts, location.id);
+  const symbolUrl = getForecastSymbolUrl(forecast);
 
   React.useEffect(() => {
-    if (location.id && !forecast) props.checkCachedForecast(location.id);
+    if (ForecastCacheController(location.id, forecasts)) props.getForecast(location.id);
   }, [location]);
-
-  const symbolUrl = forecast?.symbol
-    ? `${FORECAST_SYMBOL_LINK}${forecast?.symbol}${FORECAST_SYMBOL_EXT}`
-    : '';
 
   return (
     <div className={classes.item}>
@@ -58,7 +58,7 @@ const mapStateToProps = ({ locationManager: { forecasts } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkCachedForecast: locationId => dispatch(checkCachedForecast(locationId))
+    getForecast: locationId => dispatch(getForecast(locationId))
   };
 };
 

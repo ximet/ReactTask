@@ -9,5 +9,5 @@ export type FavoriteCityForecastOwnPropsType = {
 export type FavoriteCityForecastPropsType = {
   ...FavoriteCityForecastOwnPropsType,
   forecasts: CachedForecastCurrentType,
-  checkCachedForecast: (locationId: number) => void
+  getForecast: (locationId: number) => void
 };

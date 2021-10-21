@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
+import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
   FORECAST_SYMBOL_EXT,
   FORECAST_SYMBOL_LINK,
@@ -11,24 +12,18 @@ import {
   CURRENT_CITY_FORECAST_TITLE_TEXT
 } from '../../utils/constants';
 import { selectCurrentForecast } from '../../selectors/selectorsForecast';
-import { checkCachedForecast } from '../../actions/locationsManagerActions';
+import { getForecast } from '../../actions/locationsManagerActions';
+import ForecastCacheController from '../../controllers/ForecastCacheController';
 
 function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
   const currentLocationId = currentLocation.id;
-  const currentForecast = !!forecasts[currentLocationId]
-    ? forecasts[currentLocationId].forecast
-    : null;
-
-  const symbolUrl = currentForecast?.symbol
-    ? `${FORECAST_SYMBOL_LINK}${currentForecast?.symbol}${FORECAST_SYMBOL_EXT}`
-    : '';
+  const currentForecast = selectCurrentForecast(forecasts, currentLocationId);
+  const symbolUrl = getForecastSymbolUrl(currentForecast);
   const forecastTime = formatTime(currentForecast?.time);
   const forecastDay = getDay(currentForecast?.time);
 
   useEffect(() => {
-    if (currentLocation.id && !currentForecast) {
-      props.checkCachedForecast(currentLocationId);
-    }
+    if (ForecastCacheController(currentLocationId, forecasts)) props.getForecast(currentLocationId);
   }, [currentLocation]);
 
   return (
@@ -77,7 +72,7 @@ const mapStateToProps = ({ locationManager: { currentLocation, forecasts } }) =>
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkCachedForecast: locationId => dispatch(checkCachedForecast(locationId))
+    getForecast: locationId => dispatch(getForecast(locationId))
   };
 };
 
