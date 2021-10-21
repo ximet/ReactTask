@@ -1,5 +1,1 @@
-export const getCityInfo = state => {
-  const { name, country } = state.location.currentLocation;
-
-  return { name, country };
-};
+export const getCityInfo = state => state.location.currentLocation;
