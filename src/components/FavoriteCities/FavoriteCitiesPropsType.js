@@ -6,6 +6,6 @@ export type FavoriteLocationForecastType = {
   forecast: LocationForecastType
 };
 
-export type FavoriteCitiesPropsType = {|
+export type FavoriteCitiesPropsType = {
   favoriteLocations: Array<FavoriteLocationForecastType>
-|};
+};
