@@ -20,6 +20,11 @@ function LocationWeatherCurrentInfo({
   const locationId = currentLocationInfo ? currentLocationInfo.id : '';
   const locationName = currentLocationInfo ? currentLocationInfo.name : '';
   const locationCountry = currentLocationInfo ? currentLocationInfo.country : '';
+  const selectedLocationActionPayload = {
+    id: String(locationId),
+    locationInfo: currentLocationInfo,
+    locationWeather: currentLocationWeather
+  };
   const currentWeather = currentLocationWeather ? (
     <>
       <div className="location-weather__current-weather-item location-weather__current-weather-title">
@@ -72,13 +77,7 @@ function LocationWeatherCurrentInfo({
         <button
           className="location-weather__add-btn"
           type="button"
-          onClick={() => {
-            addToSelectedLocations({
-              id: String(locationId),
-              locationInfo: currentLocationInfo,
-              locationWeather: currentLocationWeather
-            });
-          }}
+          onClick={() => addToSelectedLocations(selectedLocationActionPayload)}
         >
           Add to selected
         </button>
