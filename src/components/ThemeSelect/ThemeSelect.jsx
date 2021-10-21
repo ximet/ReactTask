@@ -8,7 +8,7 @@ function ThemeSelect() {
   const [refElement, isOpen, setIsOpen] = useClickOutsideElement(false);
   return (
     <ThemeContext.Consumer>
-      {({ theme }) => (
+      {({ theme, selectTheme }) => (
         <div className={classes.themeSelectContainer}>
           <span className={classes.selectorTitle}>theme: </span>
           <span ref={refElement}>
@@ -18,7 +18,7 @@ function ThemeSelect() {
             >
               {theme.name}
             </span>
-            {isOpen && <ThemeDropDown />}
+            {isOpen && <ThemeDropDown currentTheme={theme} selectTheme={selectTheme} />}
           </span>
         </div>
       )}
