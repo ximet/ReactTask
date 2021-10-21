@@ -1,0 +1,49 @@
+.selected-locations__list-item {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.selected-locations__list-item-link {
+  display: block;
+  padding: 0.1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.selected-locations__list-item-title {
+  margin: 0;
+  padding: 0;
+}
+
+.selected-locations__list-info-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.selected-locations__list-item-symbol-img {
+  display: block;
+  height: 3.5rem;
+}
+
+.selected-locations__list-item-temperature {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.selected-locations__list-item-wind-img {
+  display: block;
+  height: 2.5rem;
+}
+
+.selected-locations__list-item-wind-speed {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.selected-locations__list-item-remove-btn {
+  margin-top: 0.4rem;
+  cursor: pointer;
+}

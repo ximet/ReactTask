@@ -8,7 +8,8 @@ import {
   API_DEFAULT_ID,
   API_FORECAST_DAILY_ENDPOINT,
   API_FORECAST_DETAILED_ENDPOINT,
-  API_FORECAST_DETAILED_PERIODS
+  API_FORECAST_DETAILED_PERIODS,
+  WEATHER_MIN_WAIT_INTERVAL
 } from '../constants/constants';
 import { weatherAPI } from '../services/dataService';
 import { setFetchingError, setIsFetchingInProgress } from './ServerApiActions';
@@ -83,6 +84,10 @@ export const getLocationDataById = locationId => async (dispatch, getState) => {
     } finally {
       dispatch(setIsFetchingInProgress(false));
     }
+  } else {
+    setTimeout(() => {
+      dispatch(getLocationDataById(locationId));
+    }, WEATHER_MIN_WAIT_INTERVAL);
   }
 };
 

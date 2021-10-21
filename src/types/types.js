@@ -56,3 +56,9 @@ export const DetailedDataType = PropTypes.shape({
 });
 
 export const CurrentLocationDetailedWeatherType = PropTypes.arrayOf(DetailedDataType);
+
+export const SelectedLocationType = PropTypes.shape({
+  id: string.isRequired,
+  locationInfo: CurrentLocationInfoType,
+  locationWeather: CurrentLocationWeatherType
+});
