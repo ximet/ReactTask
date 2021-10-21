@@ -42,7 +42,7 @@ export const getWeatherInfo = location => async dispatch => {
   dispatch(fetchWeatherStart);
 
   try {
-    // await dataService.getForecastToken();
+    await dataService.getForecastToken();
 
     const { cityForecast, dailyCityForecast, hourlyCityForecast } =
       await dataService.getFullForecast(location);
