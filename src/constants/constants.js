@@ -75,4 +75,4 @@ export const WEATHER_MIN_WAIT_INTERVAL = 100; // in milliseconds
 export const TOKEN_UPDATE_INTERVAL = 3600000; // in milliseconds
 
 export const DEBOUNCE_WAIT_TIME = 700; // in milliseconds
-export const MIN_CHARACKTERS_FOR_SEARCH = 3;
+export const MIN_CHARACTERS_FOR_SEARCH = 3;
