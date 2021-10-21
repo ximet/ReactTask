@@ -1,51 +1,50 @@
 @import '../../../assets/styles/constants/main.scss';
 
 .feedback-form {
+  box-sizing: border-box;
+  width: 60%;
+  margin: 0 auto;
   display: flex;
-  width: 50%;
-}
-
-.star-rating-group {
-  display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 80%;
-  border: none;
-  border-radius: 1px;
-  margin: 20px;
-  unicode-bidi: bidi-override;
-  direction: rtl;
+  margin-top: 20px;
 
-  & input {
-    display: none;
+  .textInput,
+  .textareaInput {
+    margin-top: 5px;
+  }
 
-    & + label {
-      display: inline-block;
-      width: 50px;
-      cursor: pointer;
+  .textInput {
+    height: 35px;
+    font-size: $font-size-sm;
+  }
 
-      &:before {
-        font-size: 40px;
-        display: inline-block;
-        content: $unchecked-star;
-        color: $unchecked-star-color;
-      }
-    }
+  .textareaInput {
+    resize: none;
+  }
 
-    &:checked ~ label:before,
-    & + label:hover ~ label:before,
-    & + label:hover:before {
-      content: $checked-star;
-      color: $checked-star-color;
+  input[type='submit'],
+  input[type='reset'] {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    background-color: $secondary-bg-color;
+    color: $secondary-font-color;
+    outline: $secondary-bg-color;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: $active-btn-color;
     }
   }
 
-  &:hover > input + label:before {
-    content: $unchecked-star;
-    color: $unchecked-star-color;
+  input[type='reset'] {
+    background-color: $grey;
   }
-  &:hover > input + label:hover ~ label:before,
-  &:hover > input + label:hover:before {
-    content: $checked-star;
-    color: $checked-star-color;
+
+  .resetBtn {
+    display: flex;
+    margin-top: 20px;
   }
 }

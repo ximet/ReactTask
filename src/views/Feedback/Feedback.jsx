@@ -7,7 +7,13 @@ import FeedbackForm from './FeedbackForm/FeedbackForm';
 function Feedback() {
   return (
     <div className={styles.feedback}>
-      <FeedbackForm />
+      <div className={styles.formWrapper}>
+        <h2 className={styles.feedbackTitle}>Give feedback</h2>
+        <span className={styles.feedbackSubtitle}>
+          What do you think about our app? Rate your experience
+        </span>
+        <FeedbackForm />
+      </div>
       <FeedbackComments />
     </div>
   );

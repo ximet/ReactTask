@@ -1,0 +1,46 @@
+@import '../../assets/styles/constants/main.scss';
+
+.star-rating-group {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  border: none;
+  border-radius: 1px;
+  margin: 20px;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  & input {
+    display: none;
+
+    & + label {
+      display: inline-block;
+      width: 50px;
+      cursor: pointer;
+
+      &:before {
+        font-size: 40px;
+        display: inline-block;
+        content: $unchecked-star;
+        color: $unchecked-star-color;
+      }
+    }
+
+    &:checked ~ label:before,
+    & + label:hover ~ label:before,
+    & + label:hover:before {
+      content: $checked-star;
+      color: $checked-star-color;
+    }
+  }
+
+  &:hover > input + label:before {
+    content: $unchecked-star;
+    color: $unchecked-star-color;
+  }
+  &:hover > input + label:hover ~ label:before,
+  &:hover > input + label:hover:before {
+    content: $checked-star;
+    color: $checked-star-color;
+  }
+}

@@ -1,5 +1,27 @@
+@import '../../assets/styles/constants/main.scss';
+
 .feedback {
   box-sizing: border-box;
   display: flex;
   width: 100%;
+
+  .form-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .feedback-title {
+    font-size: $font-size-md;
+    margin: 10px 0;
+  }
+
+  .feedback-subtitle {
+    font-size: $font-size-xs;
+    text-align: center;
+    width: 50%;
+  }
 }
