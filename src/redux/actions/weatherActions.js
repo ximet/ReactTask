@@ -8,7 +8,6 @@ import {
 } from '../types/weatherTypes';
 
 import { dataService } from '../../services/dataService';
-import { FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
 
 const fetchWeatherStart = {
   type: FETCH_WEATHER_START
@@ -42,7 +41,7 @@ export const getWeatherInfo = location => async dispatch => {
   dispatch(fetchWeatherStart);
 
   try {
-    await dataService.getForecastToken();
+    // await dataService.getForecastToken();
 
     const { cityForecast, dailyCityForecast, hourlyCityForecast } =
       await dataService.getFullForecast(location);
@@ -53,6 +52,6 @@ export const getWeatherInfo = location => async dispatch => {
 
     dispatch(fetchWeatherSuccess);
   } catch (error) {
-    dispatch(fetchWeatherFailure(FETCHING_ERROR_TEXT));
+    dispatch(fetchWeatherFailure(error));
   }
 };

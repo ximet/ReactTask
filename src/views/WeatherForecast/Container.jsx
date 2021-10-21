@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { CURRENT_CITY_ID } from '../../constants/forecaApi';
+import { CURRENT_CITY_ID, FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
 import { getWeatherInfo } from '../../redux/actions/weatherActions';
 
 import WeatherForecast from './WeatherForecast';
@@ -16,8 +16,13 @@ class WeatherForecastContainer extends React.Component {
       return <span> Loading...</span>;
     }
 
-    if (this.props.errorMessage) {
-      return <span> {this.props.errorMessage}</span>;
+    if (this.props.error) {
+      return (
+        <div>
+          <p>{this.props.error.message}.</p>
+          <p>{FETCHING_ERROR_TEXT}</p>
+        </div>
+      );
     }
 
     return <WeatherForecast />;
@@ -26,7 +31,7 @@ class WeatherForecastContainer extends React.Component {
 
 const mapStateToProps = state => ({
   isFetching: state.weather.isFetching,
-  errorMessage: state.weather.errorMessage,
+  error: state.weather.error,
   dailyCityForecast: state.weather.dailyCityForecast,
   cityInfo: state.location.currentLocation
 });
