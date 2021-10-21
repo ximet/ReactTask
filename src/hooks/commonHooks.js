@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function useDropdownVisible(initialVisible) {
-  const [isOpen, setIsOpen] = useState(initialVisible);
+export function useClickOutsideElement(initialState) {
+  const [isOpen, setIsOpen] = useState(initialState);
   const refElement = useRef(null);
 
   const handleClick = event => {
@@ -16,7 +16,7 @@ export function useDropdownVisible(initialVisible) {
     return () => {
       document.removeEventListener('click', handleClick, true);
     };
-  }, [refElement]);
+  }, []);
 
   return [refElement, isOpen, setIsOpen];
 }

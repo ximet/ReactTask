@@ -2,10 +2,10 @@ import classes from './ThemeSelect.module.scss';
 import ThemeContext from '../../providers/themeContext';
 import ThemeDropDown from './components/ThemeDropDown/ThemeDropDown';
 import { useState, useRef } from 'react';
-import { useDropdownVisible } from '../../hooks/commonHooks';
+import { useClickOutsideElement } from '../../hooks/commonHooks';
 
 function ThemeSelect() {
-  const [refElement, isOpen, setIsOpen] = useDropdownVisible(false);
+  const [refElement, isOpen, setIsOpen] = useClickOutsideElement(false);
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
