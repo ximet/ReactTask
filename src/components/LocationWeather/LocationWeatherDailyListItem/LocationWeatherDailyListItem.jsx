@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
-import { API_SYMBOL_URL_POSTFIX, API_SYMBOL_URL_PREFIX } from '../../../constants/constants';
+import {
+  API_SYMBOL_URL_POSTFIX,
+  API_SYMBOL_URL_PREFIX,
+  DEGREES_TEXT
+} from '../../../constants/constants';
 import { DayDataType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherDailyListItem.css';
@@ -27,11 +31,11 @@ function LocationWeatherDailyListItem({ dayData, isActive, setActiveDayDate }) {
       />
       <div className="location-weather__daily-list-item-temperature">
         <div className="location-weather__daily-list-item-minmax-temperature">
-          {`${formatTemperature(dayData.minTemp)}°`}
+          {`${formatTemperature(dayData.minTemp)}${DEGREES_TEXT}`}
         </div>
         <div className="location-weather__daily-list-item-minmax-temperature">{' ... '}</div>
         <div className="location-weather__daily-list-item-minmax-temperature">
-          {`${formatTemperature(dayData.maxTemp)}°`}
+          {`${formatTemperature(dayData.maxTemp)}${DEGREES_TEXT}`}
         </div>
       </div>
     </li>

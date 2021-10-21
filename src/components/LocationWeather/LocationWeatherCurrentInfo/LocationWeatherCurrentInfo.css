@@ -11,6 +11,12 @@
   padding: 0;
 }
 
+.location-weather__add-btn {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .location-weather__current-weather-box {
   display: flex;
   align-items: flex-start;

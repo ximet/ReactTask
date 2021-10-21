@@ -1,0 +1,34 @@
+.locations-search__results-title {
+  margin: 1rem 0 0 0;
+  padding: 0;
+}
+
+.locations-search__results-list {
+  margin: 0.5rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.locations-search__results-item {
+  margin: 0.3rem;
+  width: 45%;
+  text-align: left;
+}
+
+.locations-search__results-link {
+  display: block;
+  padding: 0.3rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.locations-search__no-results {
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}

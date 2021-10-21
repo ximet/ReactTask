@@ -4,7 +4,9 @@ import {
   API_SYMBOL_URL_PREFIX,
   API_WIND_IMG_URL_POSTFIX,
   API_WIND_IMG_URL_PREFIX,
-  WIND_DIRECTIONS_TO_IMG
+  DEGREES_TEXT,
+  WIND_DIRECTIONS_TO_IMG,
+  WIND_SPEED_TEXT
 } from '../../../constants/constants';
 import { DetailedDataType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
@@ -26,17 +28,17 @@ function LocationWeatherDetailedListItem({ detailedData }) {
         className="location-weather__detailed-list-item-symbol-img"
       />
       <div className="location-weather__detailed-list-item-temperature">
-        {`${formatTemperature(detailedData.temperature)}°`}
+        {`${formatTemperature(detailedData.temperature)}${DEGREES_TEXT}`}
       </div>
       <img
         src={`${API_WIND_IMG_URL_PREFIX}${
           WIND_DIRECTIONS_TO_IMG[detailedData.windDirString]
         }${API_WIND_IMG_URL_POSTFIX}`}
-        alt={`${detailedData.windDirString} ${detailedData.windSpeed} m/s`}
+        alt={`${detailedData.windDirString} ${detailedData.windSpeed} ${WIND_SPEED_TEXT}`}
         className="location-weather__detailed-list-item-wing-img"
       />
       <div className="location-weather__detailed-list-item-wind-speed">
-        {detailedData.windSpeed} m/s
+        {detailedData.windSpeed} {WIND_SPEED_TEXT}
       </div>
     </li>
   );

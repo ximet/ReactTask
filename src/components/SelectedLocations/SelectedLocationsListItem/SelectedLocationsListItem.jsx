@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   API_SYMBOL_URL_POSTFIX,
   API_SYMBOL_URL_PREFIX,
   API_WIND_IMG_URL_POSTFIX,
   API_WIND_IMG_URL_PREFIX,
+  DEGREES_TEXT,
   LOCATIONS_PAGE_LINK,
-  WIND_DIRECTIONS_TO_IMG
+  WIND_DIRECTIONS_TO_IMG,
+  WIND_SPEED_TEXT
 } from '../../../constants/constants';
 import { SelectedLocationType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
@@ -17,7 +20,7 @@ function SelectedLocationsListItem({ locationData, deleteSelectedLocation }) {
     locationInfo &&
     locationWeather && (
       <li className="selected-locations__list-item">
-        <a href={`${LOCATIONS_PAGE_LINK}/${id}`} className="selected-locations__list-item-link">
+        <Link to={`${LOCATIONS_PAGE_LINK}/${id}`} className="selected-locations__list-item-link">
           <h3 className="selected-locations__list-item-title">{locationInfo.name}</h3>
           <div className="selected-locations__list-info-wrapper">
             <img
@@ -26,22 +29,22 @@ function SelectedLocationsListItem({ locationData, deleteSelectedLocation }) {
               className="selected-locations__list-item-symbol-img"
             />
             <div className="selected-locations__list-item-temperature">
-              {`${formatTemperature(locationWeather.temperature)}°`}
+              {`${formatTemperature(locationWeather.temperature)}${DEGREES_TEXT}`}
             </div>
             <div className="selected-locations__list-item-wind-wrapper">
               <img
                 src={`${API_WIND_IMG_URL_PREFIX}${
                   WIND_DIRECTIONS_TO_IMG[locationWeather.windDirString]
                 }${API_WIND_IMG_URL_POSTFIX}`}
-                alt={`${locationWeather.windDirString} ${locationWeather.windSpeed} m/s`}
+                alt={`${locationWeather.windDirString} ${locationWeather.windSpeed} ${WIND_SPEED_TEXT}`}
                 className="selected-locations__list-item-wind-img"
               />
               <div className="selected-locations__list-item-wind-speed">
-                {locationWeather.windSpeed} m/s
+                {locationWeather.windSpeed} {WIND_SPEED_TEXT}
               </div>
             </div>
           </div>
-        </a>
+        </Link>
         <button
           className="selected-locations__list-item-remove-btn"
           type="button"

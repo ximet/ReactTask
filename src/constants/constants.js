@@ -1,8 +1,13 @@
 export const THEME_LIGHT = 'light';
 export const THEME_DARK = 'dark';
 
-export const CONTACT_US_PAGE_LINK = '/about';
+export const CONTACT_US_PAGE_LINK = '/contact';
+export const ABOUT_US_PAGE_LINK = '/about';
 export const LOCATIONS_PAGE_LINK = '/locations';
+
+export const DEGREES_TEXT = '°';
+export const DEGREES_FULL_TEXT = '°C';
+export const WIND_SPEED_TEXT = 'm/s';
 
 export const API_AUTH_USERNAME = process.env.API_AUTH_USERNAME;
 export const API_AUTH_PASS = process.env.API_AUTH_PASS;
@@ -64,7 +69,10 @@ export const API_DEFAULT_ID = API_KIEV_ID;
 
 export const DEFAULT_SELECTED_LOCATIONS = [API_KIEV_ID, API_LONDON_ID, API_MINSK_ID];
 
-export const WEATHER_UPDATE_INTERVAL = 300000; // in milliseconds
+export const WEATHER_UPDATE_INTERVAL = 900000; // in milliseconds
 export const WEATHER_FIRST_UPDATE_INTERVAL = 100; // in milliseconds
 export const WEATHER_MIN_WAIT_INTERVAL = 100; // in milliseconds
 export const TOKEN_UPDATE_INTERVAL = 3600000; // in milliseconds
+
+export const DEBOUNCE_WAIT_TIME = 700; // in milliseconds
+export const MIN_CHARACKTERS_FOR_SEARCH = 3;

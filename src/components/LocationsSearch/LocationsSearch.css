@@ -1,0 +1,22 @@
+.locations-search {
+  flex-shrink: 0;
+  flex-grow: 1;
+  margin-right: 0.2rem;
+  max-width: 45rem;
+  border-top: 1px solid var(--primary-color);
+  text-align: center;
+}
+
+.locations-search__title {
+  margin: 1rem 0 0 0;
+  padding: 0;
+}
+
+.locations-search__input {
+  margin-top: 0.5rem;
+}
+
+.locations-search__input-description {
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+}
