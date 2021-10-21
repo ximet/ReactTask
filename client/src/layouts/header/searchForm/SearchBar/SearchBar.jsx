@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './SearchBar.module.css';
 import searchIcon from '../../../../../public/images/searchIcon.png';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function SearchBar({ searchText, handleSearchText }) {
   return (
@@ -15,6 +15,6 @@ function SearchBar({ searchText, handleSearchText }) {
 SearchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
   handleSearchText: PropTypes.func.isRequired
-}
+};
 
 export default SearchBar;

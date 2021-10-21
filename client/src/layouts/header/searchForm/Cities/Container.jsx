@@ -3,7 +3,7 @@ import Cities from './Cities';
 import { setWeatherAction } from '../../../../redux/actions/weatherAction';
 import { setLocationAction } from '../../../../redux/actions/locationAction';
 
-const mapStateToProps = (state, ownProps) => ({});
+// const mapStateToProps = (state, ownProps) => ({});
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cities);
+export default connect(mapDispatchToProps)(Cities);

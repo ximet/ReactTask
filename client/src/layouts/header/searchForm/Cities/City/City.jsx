@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './City.module.css';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function City({ city, onClickHandle }) {
   return (
@@ -16,9 +16,9 @@ function City({ city, onClickHandle }) {
 City.propTypes = {
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired
   }).isRequired,
   onClickHandle: PropTypes.func.isRequired
-}
+};
 
 export default City;
