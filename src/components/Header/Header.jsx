@@ -4,6 +4,7 @@ import classes from './Header.module.scss';
 import LocationSearch from './components/LocationSearch/LocationSearch';
 import MainNavigation from './components/MainNavigation/MainNavigation';
 import CurrentTime from '../CurrentTime/CurrentTime';
+import ThemeSelect from '../ThemeSelect/ThemeSelect';
 
 function Header() {
   return (
@@ -13,6 +14,7 @@ function Header() {
       </a>
       <MainNavigation />
       <LocationSearch />
+      <ThemeSelect />
       <CurrentTime />
     </header>
   );

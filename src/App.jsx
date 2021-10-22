@@ -8,22 +8,37 @@ import Geolocation from './services/GeolocationService';
 import { changeLocation, setGeolocationCity } from './actions/locationsManagerActions';
 import Storage from './services/StorageConnectionService';
 import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
+import ThemeContext from './providers/themeContext';
+import { getDefaultTheme } from './config/themeConfig';
+import classes from './assets/styles/constants.scss';
 
 function App(props) {
+  const [theme, setTheme] = useState(() => getDefaultTheme());
+
+  const selectTheme = newTheme => {
+    if (theme.code !== newTheme.code) {
+      setTheme(newTheme);
+    }
+  };
+
   useEffect(() => {
     props.setGeolocationCity();
   }, [props.setGeolocationCity]);
 
   return (
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route path="/">
-          <CurrentCityForecastView />
-        </Route>
-      </Switch>
-      <Footer />
-    </BrowserRouter>
+    <ThemeContext.Provider value={{ theme, selectTheme }}>
+      <div id="themeContainer" className={classes[theme.code]}>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path="/">
+              <CurrentCityForecastView />
+            </Route>
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
