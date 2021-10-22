@@ -23,7 +23,7 @@
   }
 }
 
-.rotatingImage {
+.animatedImage {
   width: 70px;
   height: 70px;
   animation: spinAround 3s linear infinite;
