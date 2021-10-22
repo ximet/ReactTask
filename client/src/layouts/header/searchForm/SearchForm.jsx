@@ -9,8 +9,7 @@ function SearchForm() {
     searchText,
     setSearchText,
     matchingCities,
-    shouldShowCitiesWindow,
-    setShouldShowCitiesWindow
+    setMatchingCities
   ] = useCitiesSearch('');
   const citiesRef = useRef(null);
 
@@ -20,8 +19,8 @@ function SearchForm() {
 
   const handleClickOutsideCities = e => {
     if (!citiesRef.current.contains(e.target)) {
-      setShouldShowCitiesWindow(false);
-      setSearchText('');
+      setMatchingCities([]);
+      setSearchText('')
     }
   };
 
@@ -36,7 +35,7 @@ function SearchForm() {
   return (
     <div className={classes.container}>
       <SearchBar searchText={searchText} handleSearchText={handleSearchText} />
-      <div ref={citiesRef}>{shouldShowCitiesWindow && <Cities cities={matchingCities} />}</div>
+      <div ref={citiesRef}>{matchingCities.length > 0 && <Cities cities={matchingCities} />}</div>
     </div>
   );
 }

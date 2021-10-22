@@ -6,7 +6,6 @@ import { startLengthToSearchCities } from '../globalConsts';
 export const useCitiesSearch = initialState => {
   const [searchText, setSearchText] = useState(initialState);
   const [matchingCities, setMatchingCities] = useState([]);
-  const [shouldShowCitiesWindow, setShouldShowCitiesWindow] = useState(false);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -21,13 +20,10 @@ export const useCitiesSearch = initialState => {
   const findMatchingCities = async () => {
     if (searchText.length > startLengthToSearchCities) {
       const tempMatchingCities = await locationSearch(searchText);
-      const didCitiesMatch = tempMatchingCities.locations.length > 0;
 
       setMatchingCities(tempMatchingCities.locations);
-      setShouldShowCitiesWindow(didCitiesMatch);
     } else {
       setMatchingCities([]);
-      setShouldShowCitiesWindow(false);
     }
   };
 
@@ -35,7 +31,6 @@ export const useCitiesSearch = initialState => {
     searchText,
     setSearchText,
     matchingCities,
-    shouldShowCitiesWindow,
-    setShouldShowCitiesWindow
+    setMatchingCities
   ];
 };
