@@ -1,8 +1,8 @@
 // @flow
 import classes from './FavoriteCities.module.scss';
 import * as React from 'react';
-import FavoriteCityForecast from './FavoriteCityForecast/FavoriteCityForecast';
 import { connect } from 'react-redux';
+import FavoriteCityForecast from './FavoriteCityForecast/FavoriteCityForecast';
 import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
 import type { FavoriteCitiesPropsType } from './FavoriteCitiesPropsType';
 

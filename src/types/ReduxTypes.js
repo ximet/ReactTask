@@ -60,3 +60,10 @@ export type StoreStateLocationManager = {
 export type StoreState = {
   locationManager: StoreStateLocationManager
 };
+
+export type StoreForecastState = {
+  [number | string]: {
+    cacheTimeStamp: number,
+    value: LocationForecastType
+  }
+};
