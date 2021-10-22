@@ -24,6 +24,7 @@ module.exports = {
     https: true,
     hot: true,
     port: 9020,
+    historyApiFallback: true,
 
     proxy: {
       '/api': {
