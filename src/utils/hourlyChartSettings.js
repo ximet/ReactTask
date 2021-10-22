@@ -1,6 +1,6 @@
 import { dateFormat, timeOptions } from '../constants/date';
 
-export function getCorrectHourlyData(data) {
+export function getFormattedHourlyData(data) {
   const time = [];
   const temperature = [];
   const wind = [];

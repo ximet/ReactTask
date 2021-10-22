@@ -14,6 +14,8 @@ export const FORECAST_TYPES = {
   hour: 'hourly/'
 };
 
+export const FETCHING_ERROR_TEXT = 'Sory. Have no acsess to server. Try to refresh page later.';
+
 const MINSK_CITY_DATA = {
   id: 100625144,
   name: 'Minsk',
