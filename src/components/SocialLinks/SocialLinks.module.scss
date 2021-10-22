@@ -1,0 +1,22 @@
+@import '../../assets/styles/constants.scss';
+
+$link-social-color: $color-secondary-accent;
+
+.socials {
+  display: flex;
+  justify-content: center;
+
+  .social {
+    margin: 15px;
+
+    a {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: $link-social-color;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
