@@ -3,7 +3,6 @@ import Slider from '../../components/slider/Slider';
 import classes from './hourlyForecasts.module.css';
 import HourlyForecast from './hourlyForecast/HourlyForecast';
 import { v4 as uuidv4 } from 'uuid';
-import { themeType } from '../../types/types';
 import PropTypes from 'prop-types';
 
 function HourlyForecasts({ theme, hourlyForecasts }) {
@@ -23,7 +22,7 @@ function HourlyForecasts({ theme, hourlyForecasts }) {
 }
 
 HourlyForecasts.propTypes = {
-  theme: themeType,
+  theme: PropTypes.string.isRequired,
   hourlyForecasts: PropTypes.arrayOf(
     PropTypes.shape({
       time: PropTypes.string.isRequired,
