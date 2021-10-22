@@ -25,10 +25,8 @@ const SearchedLocation = ({
 
   const handleToggleFavorite = event => {
     setFavoriteCities(location, !isFavorite);
-
     setIsFavorite(isFavorite => !isFavorite);
 
-    event.preventDefault();
     event.stopPropagation();
   };
 
@@ -38,13 +36,12 @@ const SearchedLocation = ({
         <div className={classes.locationName}>{location.name}</div>
         <div className={classes.locationArea}>{`${location.adminArea} / ${location.country}`}</div>
       </a>
-      <a
-        href="#"
+      <button
         className={[classes.favoriteBtn, isFavorite ? classes.active : ''].join(' ')}
         onClick={handleToggleFavorite}
       >
         <HeartIcon />
-      </a>
+      </button>
     </li>
   );
 };

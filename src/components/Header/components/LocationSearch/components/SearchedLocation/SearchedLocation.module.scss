@@ -24,6 +24,20 @@
   }
 
   .favoriteBtn {
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    width: 13px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
     &.active {
       path {
         fill: $color-primary-accent;
