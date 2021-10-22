@@ -3,10 +3,12 @@
 .star-rating-group {
   display: flex;
   justify-content: center;
-  width: 80%;
+  align-items: center;
+  width: 100%;
   border: none;
   border-radius: 1px;
-  margin: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   unicode-bidi: bidi-override;
   direction: rtl;
 
@@ -16,10 +18,14 @@
     & + label {
       display: inline-block;
       width: 50px;
+      height: 50px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &:before {
-        font-size: 40px;
+        font-size: 50px;
         display: inline-block;
         content: $unchecked-star;
         color: $unchecked-star-color;

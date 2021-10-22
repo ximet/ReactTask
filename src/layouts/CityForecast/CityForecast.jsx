@@ -9,7 +9,7 @@ import HumidityIcon from '../../assets/images/hum-icon.png';
 
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
-import VerticalLine from '../../components/VerticalLine/VerticalLine';
+import Line from '../../components/Line/Line';
 
 function CityForecast({ cityForecast, cityInfo, themeBg }) {
   const symbolPhrase =
@@ -40,7 +40,7 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
               <span className={styles.addedInfoType}>Hum</span>
             </div>
           </div>
-          <VerticalLine />
+          <Line type="vertical" theme="light" />
           <div className={styles.addedInfoValue}>
             <span className={styles.addedInfoValue}>{cityForecast.windSpeed} km/h</span>
             <span className={styles.addedInfoValue}>{cityForecast.relHumidity} %</span>

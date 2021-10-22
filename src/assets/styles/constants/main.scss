@@ -7,6 +7,7 @@ $yellow: #ffd158;
 $lilac: #bacbf3;
 $darken-blue: #5171b0;
 $lighten-black: #1f2e4a;
+$red: rgb(255, 0, 0);
 
 $transparent-darken-blue: rgba($darken-blue, 0.5);
 
@@ -44,4 +45,5 @@ $unchecked-star-color: $primary-font-color;
 $checked-star: '\2605';
 $checked-star-color: $light-btn-bg-color;
 
-$active-btn-color: $lighten-black
+$active-btn-color: $lighten-black;
+$error-color: $red;

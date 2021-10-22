@@ -1,0 +1,22 @@
+@import '../../assets/styles/constants/main.scss';
+
+.vertical-line {
+  content: '';
+  background-color: $white;
+}
+
+.vertical {
+  width: 1px;
+}
+
+.horizontal {
+  height: 1px;
+}
+
+.dark {
+  background-color: $primary-font-color;
+}
+
+.light {
+  background-color: $secondary-font-color;
+}
