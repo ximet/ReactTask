@@ -18,5 +18,5 @@
 
 .locations-search__input-description {
   margin-top: 0.2rem;
-  font-size: 0.7rem;
+  font-size: var(--fz-small);
 }

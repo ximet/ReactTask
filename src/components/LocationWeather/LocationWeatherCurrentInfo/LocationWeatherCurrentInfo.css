@@ -13,8 +13,8 @@
 
 .location-weather__add-btn {
   margin-top: 0.2rem;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__current-weather-box {
@@ -29,8 +29,8 @@
 
 .location-weather__current-weather-title {
   align-self: center;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: var(--fz-large);
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__current-weather-temp-wrapper {
@@ -39,19 +39,19 @@
 
 .location-weather__current-weather-item-label {
   margin-bottom: 0.2rem;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-bold);
   text-align: center;
 }
 .location-weather__current-weather-temp-value {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__current-weather-temp-degrees {
   margin-top: 0.2rem;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__current-weather-symbol-img {
@@ -66,6 +66,6 @@
 
 .location-weather__current-weather-wind-value {
   margin-top: 0.2rem;
-  font-size: 0.8rem;
+  font-size: var(--fz-small);
   text-align: center;
 }
