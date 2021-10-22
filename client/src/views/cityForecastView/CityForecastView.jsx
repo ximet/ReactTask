@@ -2,7 +2,7 @@ import React from 'react';
 import CityForecast from '../../layouts/CityForecast/CityForecast';
 import DailyForecasts from '../../layouts/dailyForecasts/Container';
 import HourlyForecasts from '../../layouts/hourlyForecasts/Container';
-import { themeType } from '../../types/types';
+import PropTypes from 'prop-types'
 
 function CityForecastView({ theme }) {
   return (
@@ -15,7 +15,7 @@ function CityForecastView({ theme }) {
 }
 
 CityForecastView.propTypes = {
-  theme: themeType
+  theme: PropTypes.string.isRequired
 };
 
 export default CityForecastView;
