@@ -7,7 +7,7 @@ import type {
   DailyForecastActionType,
   FavoriteLocationsActionType
 } from '../types/ActionsTypes';
-import type { LocationForecastType } from '../types/LocationType';
+import type { LocationForecastType, LocationType, LocationsType } from '../types/LocationType';
 import type { HourlyForecastType, DailyForecastType } from '../types/ForecastType';
 import type {
   DispatchLocation,
@@ -20,7 +20,6 @@ import type {
   DispatchFavorite,
   ThunkActionFavorite
 } from '../types/ReduxTypes';
-import type { LocationType } from '../types/LocationType';
 import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../utils/constants';
 import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
@@ -68,32 +67,37 @@ export const changeCurrentHourlyForecast = (
 export const setFavoriteCities =
   (location: LocationType, isFavorite: boolean): ThunkActionFavorite =>
   (dispatch: DispatchFavorite, getState: GetStoreState): void => {
-    const locationId = location.id;
-    const {
-      locationManager: { favoriteCitiesList }
-    } = getState();
-    let newFavoriteList = [];
+    if (isFavorite) dispatch(addFavoriteLocation(location));
+    else dispatch(removeFavoriteLocation(location));
+  };
 
-    if (isFavorite) {
-      newFavoriteList = favoriteCitiesList.concat([location]);
-    } else {
-      newFavoriteList = favoriteCitiesList.filter(
-        favoriteLocation => favoriteLocation.id !== locationId
-      );
-    }
-    Storage.setValue(FAVORITE_CITIES_STORAGE_CODE, newFavoriteList);
+export const addFavoriteLocation =
+  (location: LocationType): ThunkActionFavorite =>
+  (dispatch: DispatchFavorite, getState: GetStoreState): void => {
+    const favoriteLocations = getState().locationManager.favoriteCitiesList.concat([location]);
+    dispatch(changeFavoriteLocationsList(favoriteLocations));
+  };
 
-    dispatch(changeFavoriteLocation(newFavoriteList));
+export const removeFavoriteLocation =
+  (location: LocationType): ThunkActionFavorite =>
+  (dispatch: DispatchFavorite, getState: GetStoreState): void => {
+    const favoriteLocations = getState().locationManager.favoriteCitiesList.filter(
+      loc => loc.id !== location.id
+    );
+    dispatch(changeFavoriteLocationsList(favoriteLocations));
+  };
+
+export const changeFavoriteLocationsList =
+  (locations: LocationsType): ThunkActionFavorite =>
+  (dispatch: DispatchFavorite, getState: GetStoreState): void => {
+    Storage.setValue(FAVORITE_CITIES_STORAGE_CODE, locations);
+    dispatch(changeFavoriteLocation(locations));
   };
 
 export const setCurrentHourlyForecast =
   (locationId: number | string): ThunkActionHourlyForecast =>
   async (dispatch: DispatchHourlyForecast, getState: GetStoreState): Promise<void> => {
     try {
-      const {
-        locationManager: { currentDailyForecast }
-      } = getState();
-
       if (locationId) {
         const { data } = await ApiService.getHourlyForecast(locationId);
 
@@ -108,10 +112,6 @@ export const setCurrentDailyForecast =
   (locationId: number | string): ThunkActionDailyForecast =>
   async (dispatch: DispatchDailyForecast, getState: GetStoreState): Promise<void> => {
     try {
-      const {
-        locationManager: { currentDailyForecast }
-      } = getState();
-
       if (locationId) {
         const { data } = await ApiService.getDailyForecast(locationId);
 
@@ -126,7 +126,6 @@ export const setCurrentLocation =
   (location: LocationType): ThunkActionLocation =>
   async (dispatch: DispatchLocation, getState: GetStoreState): Promise<void> => {
     Storage.setValue(CURRENT_LOCATION_STORAGE_CODE, location);
-
     dispatch(changeLocation(location));
   };
 
@@ -141,23 +140,16 @@ export const getCurrentGeolocation = (
 export const setGeolocationCity =
   (isRefreshCurrentLocation: boolean = false): ThunkActionLocation =>
   async (dispatch: DispatchLocation, getState: GetStoreState): Promise<void> => {
-    const {
-      locationManager: { currentLocation: storageLocation }
-    } = getState();
-
-    if (!storageLocation.id || isRefreshCurrentLocation) {
-      let currentLocationData = storageLocation;
-
-      try {
+    let currentLocationData = getState().locationManager.currentLocation;
+    try {
+      if (!currentLocationData.id || isRefreshCurrentLocation) {
         const position = await Geolocation.getCurrentPosition();
         const currentLocationApi = await ApiService.getLocationInfo(
           `${position.coords.longitude},${position.coords.latitude}`
         );
-        currentLocationData = currentLocationApi.data;
-      } catch (error) {
-        console.error(error);
+        dispatch(changeLocation(currentLocationApi.data));
       }
-
-      dispatch(changeLocation(currentLocationData));
+    } catch (error) {
+      console.error(error);
     }
   };
