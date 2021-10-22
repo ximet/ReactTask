@@ -22,6 +22,22 @@ const fetchWeatherFailure = error => ({
   payload: error
 });
 
+export const getAllData = location => async dispatch => {
+  try {
+    const { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo } =
+      await dataService.getFullForecast(location);
+
+    dispatch(setCurrentCity(cityInfo));
+    dispatch(setCityForecast(cityForecast));
+    dispatch(setDailyCityForecast(dailyCityForecast));
+    dispatch(setHourlyCityForecast(hourlyCityForecast));
+
+    dispatch(fetchWeatherSuccess);
+  } catch (error) {
+    dispatch(fetchWeatherFailure(error));
+  }
+};
+
 export const initApp = () => async (dispatch, getState) => {
   dispatch(fetchWeatherStart);
 
@@ -29,19 +45,6 @@ export const initApp = () => async (dispatch, getState) => {
   const defaultLocation = getState().location.currentCity.id;
   const location = currenLocationFromGeo || defaultLocation;
 
-  try {
-    await dataService.getForecastToken();
-
-    const { cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo } =
-      await dataService.getFullForecast(location);
-
-    dispatch(setCityForecast(cityForecast));
-    dispatch(setDailyCityForecast(dailyCityForecast));
-    dispatch(setHourlyCityForecast(hourlyCityForecast));
-    dispatch(setCurrentCity(cityInfo));
-
-    dispatch(fetchWeatherSuccess);
-  } catch (error) {
-    dispatch(fetchWeatherFailure(error));
-  }
+  await dataService.getForecastToken();
+  dispatch(getAllData(location));
 };

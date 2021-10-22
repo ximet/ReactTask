@@ -29,7 +29,8 @@ export const getHourlyChartData = data => ({
       borderColor: 'rgba(255, 99, 132, 0.2)',
       fill: {
         target: 'origin',
-        above: 'rgb(255, 99, 132, 0.1)'
+        above: 'rgb(255, 99, 132, 0.1)',
+        below: 'rgb(255, 99, 132, 0.1)'
       }
     },
     {
@@ -41,7 +42,8 @@ export const getHourlyChartData = data => ({
       borderColor: 'rgba(81, 113, 176, 0.2)',
       fill: {
         target: 'origin',
-        above: 'rgb(81, 113, 176, 0.1)'
+        above: 'rgb(81, 113, 176, 0.1)',
+        below: 'rgb(81, 113, 176, 0.1)'
       }
     }
   ]

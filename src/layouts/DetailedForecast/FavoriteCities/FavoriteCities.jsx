@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function FavoriteCities({ favoriteCities, currentCity }) {
-  console.log(favoriteCities, currentCity);
   return <div>Favorite Cities</div>;
 }
 
