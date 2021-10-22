@@ -25,9 +25,9 @@ function App(props) {
     setTheme(newTheme);
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     props.initializeApp();
-  }, [props.initializeApp]);
+  }, []);
 
   return (
     <BrowserRouter>
