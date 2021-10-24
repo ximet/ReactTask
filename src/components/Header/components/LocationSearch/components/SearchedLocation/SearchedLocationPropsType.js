@@ -6,10 +6,12 @@ export type SearchedLocationOwnPropsType = {|
 |};
 
 export type SearchedLocationDispatchType = {|
-  setCurrentLocation: (location: LocationType) => void
+  setCurrentLocation: (location: LocationType) => void,
+  setFavoriteCities: (location: LocationType, isFavorite: boolean) => void
 |};
 
 export type SearchedLocationPropsType = {|
   ...SearchedLocationOwnPropsType,
+  favoriteCitiesIdList: Array<number | string>,
   ...SearchedLocationDispatchType
 |};

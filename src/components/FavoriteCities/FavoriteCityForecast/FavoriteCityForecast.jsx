@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
-import { getForecast } from '../../../actions/locationsManagerActions';
+import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
 import ForecastCacheController from '../../../controllers/ForecastCacheController';
@@ -17,10 +17,15 @@ import type {
 function FavoriteCityForecast({
   location,
   forecasts,
+  setFavoriteCities,
   ...props
 }: FavoriteCityForecastPropsType): React$Node {
   const forecast = selectCurrentForecast(forecasts, location.id);
   const symbolUrl = getForecastSymbolUrl(forecast);
+
+  const handleFavoriteCityDelete = event => {
+    setFavoriteCities(location, false);
+  };
 
   React.useEffect(() => {
     if (ForecastCacheController(location.id, forecasts)) props.getForecast(location.id);
@@ -28,7 +33,7 @@ function FavoriteCityForecast({
 
   return (
     <div className={classes.item}>
-      <span className={classes.closeIcon}>
+      <span className={classes.closeIcon} onClick={handleFavoriteCityDelete}>
         <IconClose />
       </span>
       <div className={classes.itemInfo}>
@@ -41,9 +46,6 @@ function FavoriteCityForecast({
           <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
           <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
           <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
-          <a className={classes.linkMore} href="#">
-            read more
-          </a>
         </div>
       </div>
     </div>
@@ -58,7 +60,8 @@ const mapStateToProps = ({ locationManager: { forecasts } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getForecast: locationId => dispatch(getForecast(locationId))
+    getForecast: locationId => dispatch(getForecast(locationId)),
+    setFavoriteCities: (location, isFavorite) => dispatch(setFavoriteCities(location, isFavorite))
   };
 };
 
