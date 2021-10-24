@@ -40,33 +40,25 @@ function CurrentCityForecast({ currentLocation, forecasts, isLoading, ...props }
                   alt={CURRENT_CITY_FORECAST_ALT_TEXT}
                   title={CURRENT_CITY_FORECAST_TITLE_TEXT}
                 />
-                <div className={classes.temperature}>
-                  {currentCityForecast.forecast?.temperature}
-                </div>
+                <div className={classes.temperature}>{currentForecast?.temperature}</div>
               </div>
               <div className={classes.additionalInfo}>
                 <div className={classes.precitipate}>
-                  Precitipate: {currentCityForecast.forecast?.precipProb}%
+                  Precitipate: {currentForecast?.precipProb}%
                 </div>
-                <div className={classes.humidity}>
-                  Humidity: {currentCityForecast.forecast?.relHumidity}%
-                </div>
-                <div className={classes.wind}>
-                  Wind: {currentCityForecast.forecast?.windSpeed} km/h
-                </div>
+                <div className={classes.humidity}>Humidity: {currentForecast?.relHumidity}%</div>
+                <div className={classes.wind}>Wind: {currentForecast?.windSpeed} km/h</div>
               </div>
             </div>
             <div className={classes.locationInfo}>
-              <div className={classes.cityName}>{currentCityForecast.city?.name}</div>
+              <div className={classes.cityName}>{currentLocation?.name}</div>
               <div className={classes.areaName}>
-                {currentCityForecast.city?.adminArea} / {currentCityForecast.city?.country}
+                {currentLocation?.adminArea} / {currentLocation?.country}
               </div>
               <div className={classes.forecastDate}>
                 {forecastDay} {forecastTime}
               </div>
-              <div className={classes.forecastDate}>
-                {currentCityForecast.forecast?.symbolPhrase}
-              </div>
+              <div className={classes.forecastDate}>{currentForecast?.symbolPhrase}</div>
             </div>
           </>
         ) : (

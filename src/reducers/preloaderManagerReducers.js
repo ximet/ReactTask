@@ -1,13 +1,33 @@
-import { CURRENT_LOCATION_IS_LOADING } from '../actions/preloaderManagerActions';
+import {
+  CURRENT_LOCATION_IS_LOADING,
+  DAILY_FORECAST_IS_LOADING,
+  HOURLY_FORECAST_IS_LOADING,
+  FAVORITE_FORECAST_IS_LOADING
+} from '../actions/preloaderManagerActions';
 
 const initialState = {
-  currentLocation: true
+  currentLocation: true,
+  dailyForecast: true,
+  hourlyForecast: true,
+  favorites: {}
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case CURRENT_LOCATION_IS_LOADING: {
       return { ...state, currentLocation: action.isLoading };
+    }
+
+    case DAILY_FORECAST_IS_LOADING: {
+      return { ...state, dailyForecast: action.isLoading };
+    }
+
+    case HOURLY_FORECAST_IS_LOADING: {
+      return { ...state, hourlyForecast: action.isLoading };
+    }
+
+    case FAVORITE_FORECAST_IS_LOADING: {
+      return { ...state, favorites: { ...state.favorites, [action.locationId]: action.isLoading } };
     }
 
     default: {

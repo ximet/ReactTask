@@ -14,14 +14,19 @@ import type {
   FavoriteCityForecastPropsType,
   FavoriteCityForecastOwnPropsType
 } from './FavoriteCityForecastPropsType';
+import Preloader from '../../Preloader/Preloader';
 
 function FavoriteCityForecast({
   location,
   setFavoriteCities,
   forecasts,
+  isLoadingStates,
   ...props
 }: FavoriteCityForecastPropsType): React$Node {
   const forecast = selectCurrentForecast(forecasts, location.id);
+  const isLoading = isLoadingStates[location.id];
+  console.log(isLoadingStates);
+
   const symbolUrl = getForecastSymbolUrl(forecast);
 
   React.useEffect(() => {
@@ -34,28 +39,35 @@ function FavoriteCityForecast({
 
   return (
     <div className={classes.item}>
-      <span className={classes.closeIcon} onClick={handleFavoriteCityDelete}>
-        <IconClose />
-      </span>
-      <div className={classes.itemInfo}>
-        <div className={classes.mainInfo}>
-          <img className={classes.icon} src={symbolUrl} alt="forecast" title="forecast" />
-          <div className={classes.temperature}>{forecast?.temperature}</div>
-        </div>
-        <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{location?.name}</div>
-          <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
-          <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
-          <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
-        </div>
-      </div>
+      {isLoading ? (
+        <>
+          <span className={classes.closeIcon} onClick={handleFavoriteCityDelete}>
+            <IconClose />
+          </span>
+          <div className={classes.itemInfo}>
+            <div className={classes.mainInfo}>
+              <img className={classes.icon} src={symbolUrl} alt="forecast" title="forecast" />
+              <div className={classes.temperature}>{forecast?.temperature}</div>
+            </div>
+            <div className={classes.additionalInfo}>
+              <div className={classes.cityName}>{location?.name}</div>
+              <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
+              <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
+              <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <Preloader />
+      )}
     </div>
   );
 }
 
-const mapStateToProps = ({ locationManager: { forecasts } }) => {
+const mapStateToProps = ({ locationManager: { forecasts }, ...state }) => {
   return {
-    forecasts: forecasts
+    forecasts: forecasts,
+    isLoadingStates: state.preloaderManager.favorites
   };
 };
 

@@ -7,10 +7,12 @@ import { setCurrentHourlyForecast } from '../../../../actions/locationsManagerAc
 import { connect } from 'react-redux';
 import * as React from 'react';
 import type { HourlyForecastPropsType } from './HourlyForecastChartPropsType';
+import Preloader from '../../../Preloader/Preloader';
 
 function HourlyForecastChart({
   locationId,
   currentHourlyForecast,
+  isLoading,
   setCurrentHourlyForecast
 }: HourlyForecastPropsType): React$Node {
   const [hourlyForecast, setHourlyForecast] = useState([]);
@@ -22,19 +24,24 @@ function HourlyForecastChart({
 
   return (
     <div>
-      <Line
-        height={250}
-        type="basic"
-        data={hourlyLineChartData(hours, temperatures)}
-        options={hourlyLineChartOptions}
-      />
+      {isLoading ? (
+        <Line
+          height={250}
+          type="basic"
+          data={hourlyLineChartData(hours, temperatures)}
+          options={hourlyLineChartOptions}
+        />
+      ) : (
+        <Preloader />
+      )}
     </div>
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentHourlyForecast } }) => {
+const mapStateToProps = ({ locationManager: { currentHourlyForecast }, ...state }) => {
   return {
-    currentHourlyForecast
+    currentHourlyForecast,
+    isLoading: state.preloaderManager.hourlyForecast
   };
 };
 
