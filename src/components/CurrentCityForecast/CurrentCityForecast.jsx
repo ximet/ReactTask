@@ -5,6 +5,7 @@ import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import ApiService from '../../services/ForecastApiService';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
+import Preloader from '../Preloader/Preloader';
 import {
   FORECAST_SYMBOL_EXT,
   FORECAST_SYMBOL_LINK,
@@ -12,7 +13,7 @@ import {
   CURRENT_CITY_FORECAST_TITLE_TEXT
 } from '../../utils/constants';
 
-function CurrentCityForecast({ currentLocation }) {
+function CurrentCityForecast({ currentLocation, isLoading }) {
   const [currentCityForecast, setCurrentCityForecast] = useState({});
 
   const currentLocationId = currentLocation.id;
@@ -21,6 +22,8 @@ function CurrentCityForecast({ currentLocation }) {
     : '';
   const forecastTime = formatTime(currentCityForecast.forecast?.time);
   const forecastDay = getDay(currentCityForecast.forecast?.time);
+
+  console.log(isLoading);
 
   useEffect(async () => {
     try {
@@ -40,36 +43,48 @@ function CurrentCityForecast({ currentLocation }) {
   return (
     <div className={classes.currentCityContainer}>
       <div className={classes.currentCityInfo}>
-        <div className={classes.forecastInfo}>
-          <div className={classes.mainInfo}>
-            <img
-              className={classes.icon}
-              src={symbolUrl}
-              alt={CURRENT_CITY_FORECAST_ALT_TEXT}
-              title={CURRENT_CITY_FORECAST_TITLE_TEXT}
-            />
-            <div className={classes.temperature}>{currentCityForecast.forecast?.temperature}</div>
-          </div>
-          <div className={classes.additionalInfo}>
-            <div className={classes.precitipate}>
-              Precitipate: {currentCityForecast.forecast?.precipProb}%
+        {isLoading ? (
+          <>
+            <div className={classes.forecastInfo}>
+              <div className={classes.mainInfo}>
+                <img
+                  className={classes.icon}
+                  src={symbolUrl}
+                  alt={CURRENT_CITY_FORECAST_ALT_TEXT}
+                  title={CURRENT_CITY_FORECAST_TITLE_TEXT}
+                />
+                <div className={classes.temperature}>
+                  {currentCityForecast.forecast?.temperature}
+                </div>
+              </div>
+              <div className={classes.additionalInfo}>
+                <div className={classes.precitipate}>
+                  Precitipate: {currentCityForecast.forecast?.precipProb}%
+                </div>
+                <div className={classes.humidity}>
+                  Humidity: {currentCityForecast.forecast?.relHumidity}%
+                </div>
+                <div className={classes.wind}>
+                  Wind: {currentCityForecast.forecast?.windSpeed} km/h
+                </div>
+              </div>
             </div>
-            <div className={classes.humidity}>
-              Humidity: {currentCityForecast.forecast?.relHumidity}%
+            <div className={classes.locationInfo}>
+              <div className={classes.cityName}>{currentCityForecast.city?.name}</div>
+              <div className={classes.areaName}>
+                {currentCityForecast.city?.adminArea} / {currentCityForecast.city?.country}
+              </div>
+              <div className={classes.forecastDate}>
+                {forecastDay} {forecastTime}
+              </div>
+              <div className={classes.forecastDate}>
+                {currentCityForecast.forecast?.symbolPhrase}
+              </div>
             </div>
-            <div className={classes.wind}>Wind: {currentCityForecast.forecast?.windSpeed} km/h</div>
-          </div>
-        </div>
-        <div className={classes.locationInfo}>
-          <div className={classes.cityName}>{currentCityForecast.city?.name}</div>
-          <div className={classes.areaName}>
-            {currentCityForecast.city?.adminArea} / {currentCityForecast.city?.country}
-          </div>
-          <div className={classes.forecastDate}>
-            {forecastDay} {forecastTime}
-          </div>
-          <div className={classes.forecastDate}>{currentCityForecast.forecast?.symbolPhrase}</div>
-        </div>
+          </>
+        ) : (
+          <Preloader />
+        )}
       </div>
 
       <HourlyForecastChart locationId={currentLocationId} />
@@ -78,9 +93,10 @@ function CurrentCityForecast({ currentLocation }) {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+const mapStateToProps = ({ locationManager: { currentLocation }, ...state }) => {
   return {
-    currentLocation
+    currentLocation,
+    isLoading: state.preloaderManager.currentLocation
   };
 };
 
