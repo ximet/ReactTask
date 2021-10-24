@@ -3,6 +3,7 @@ export const FORECAST_SYMBOL_EXT = '.png';
 
 export const CURRENT_LOCATION_STORAGE_CODE = 'cur_loc';
 export const FAVORITE_CITIES_STORAGE_CODE = 'fav_cities';
+export const THEME_STORAGE_CODE = 'theme';
 
 export const COOKIE_TOKEN_FIELD = 'token';
 

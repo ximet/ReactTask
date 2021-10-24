@@ -17,7 +17,13 @@ const hourlyLineChartOptions = {
   scales: {
     y: {
       ticks: {
+        color: '#00b2ff',
         stepSize: 10
+      }
+    },
+    x: {
+      ticks: {
+        color: '#00b2ff'
       }
     }
   }
