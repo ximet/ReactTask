@@ -13,3 +13,5 @@ export const DAILY_FORECAST_TITLE_TEXT = 'Daily forecast symbol for';
 
 export const CURRENT_CITY_FORECAST_ALT_TEXT = 'Current city forecast';
 export const CURRENT_CITY_FORECAST_TITLE_TEXT = 'Current city forecast';
+
+export const MAX_FORECAST_CACHE_TIME = 300000; //miliseconds

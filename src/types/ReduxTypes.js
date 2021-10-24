@@ -1,11 +1,16 @@
 // @flow
 import type { LocationType, LocationForecastType } from './LocationType';
-import type { HourlyForecastType, DailyForecastType } from './ForecastType';
+import type {
+  HourlyForecastType,
+  DailyForecastType,
+  CachedForecastCurrentType
+} from './ForecastType';
 import type {
   ChangeLocationActionType,
   HourlyForecastActionType,
   DailyForecastActionType,
-  FavoriteLocationsActionType
+  FavoriteLocationsActionType,
+  CachedForecastsActionType
 } from './ActionsTypes';
 
 export type GetStoreState = () => StoreState;
@@ -26,6 +31,10 @@ export type DispatchFavorite = (
   action: FavoriteLocationsActionType | ThunkActionFavorite | PromiseActionFavorite
 ) => any;
 
+export type DispatchCachedForecasts = (
+  action: CachedForecastsActionType | ThunkActionCachedForecasts | PromiseActionCachedForecasts
+) => any;
+
 export type ThunkActionLocation = (dispatch: DispatchLocation, getState: GetStoreState) => any;
 
 export type ThunkActionHourlyForecast = (
@@ -40,6 +49,11 @@ export type ThunkActionDailyForecast = (
 
 export type ThunkActionFavorite = (dispatch: DispatchFavorite, getState: GetStoreState) => any;
 
+export type ThunkActionCachedForecasts = (
+  dispatch: DispatchCachedForecasts,
+  getState: GetStoreState
+) => any;
+
 export type PromiseAction = Promise<ChangeLocationActionType>;
 
 export type PromiseActionHourlyForecast = Promise<HourlyForecastActionType>;
@@ -48,11 +62,13 @@ export type PromiseActionDailyForecast = Promise<DailyForecastActionType>;
 
 export type PromiseActionFavorite = Promise<FavoriteLocationsActionType>;
 
+export type PromiseActionCachedForecasts = Promise<CachedForecastsActionType>;
+
 export type StoreStateLocationManager = {
   currentLocation: LocationType,
   searchString: string,
   favoriteCitiesList: Array<LocationType>,
-  forecasts: Array<LocationForecastType>,
+  forecasts: CachedForecastCurrentType,
   currentHourlyForecast: HourlyForecastType,
   currentDailyForecast: DailyForecastType
 };

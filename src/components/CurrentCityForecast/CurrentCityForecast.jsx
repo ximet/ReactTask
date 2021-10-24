@@ -3,41 +3,28 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
-import ApiService from '../../services/ForecastApiService';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
 import Preloader from '../Preloader/Preloader';
+import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
   FORECAST_SYMBOL_EXT,
   FORECAST_SYMBOL_LINK,
   CURRENT_CITY_FORECAST_ALT_TEXT,
   CURRENT_CITY_FORECAST_TITLE_TEXT
 } from '../../utils/constants';
+import { selectCurrentForecast } from '../../selectors/selectorsForecast';
+import { getForecast } from '../../actions/locationsManagerActions';
+import ForecastCacheController from '../../controllers/ForecastCacheController';
 
-function CurrentCityForecast({ currentLocation, isLoading }) {
-  const [currentCityForecast, setCurrentCityForecast] = useState({});
-
+function CurrentCityForecast({ currentLocation, forecasts, isLoading, ...props }) {
   const currentLocationId = currentLocation.id;
-  const symbolUrl = currentCityForecast.forecast?.symbol
-    ? `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`
-    : '';
-  const forecastTime = formatTime(currentCityForecast.forecast?.time);
-  const forecastDay = getDay(currentCityForecast.forecast?.time);
+  const currentForecast = selectCurrentForecast(forecasts, currentLocationId);
+  const symbolUrl = getForecastSymbolUrl(currentForecast);
+  const forecastTime = formatTime(currentForecast?.time);
+  const forecastDay = getDay(currentForecast?.time);
 
-  console.log(isLoading);
-
-  useEffect(async () => {
-    try {
-      if (currentLocationId) {
-        const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
-
-        setCurrentCityForecast({
-          forecast: currentForecast.data.current,
-          city: currentLocation
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  useEffect(() => {
+    if (ForecastCacheController(currentLocationId, forecasts)) props.getForecast(currentLocationId);
   }, [currentLocation]);
 
   return (
@@ -93,13 +80,23 @@ function CurrentCityForecast({ currentLocation, isLoading }) {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation }, ...state }) => {
+const mapStateToProps = ({ locationManager: { currentLocation, forecasts }, ...state }) => {
   return {
     currentLocation,
+    forecasts,
     isLoading: state.preloaderManager.currentLocation
   };
 };
 
-const WrappedCurrentCityForecast = connect(mapStateToProps)(CurrentCityForecast);
+const mapDispatchToProps = dispatch => {
+  return {
+    getForecast: locationId => dispatch(getForecast(locationId))
+  };
+};
+
+const WrappedCurrentCityForecast = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CurrentCityForecast);
 
 export default WrappedCurrentCityForecast;

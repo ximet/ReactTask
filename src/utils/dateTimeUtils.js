@@ -45,4 +45,9 @@ function getDay(time, locale) {
   return dateObj.toLocaleDateString(locale, { weekday: 'long' });
 }
 
-export { getFormattedCurrentTime, formatTime, getDayShort, getDay, formatDate };
+function getCurrentTime() {
+  const dateObj = new Date();
+  return dateObj.getTime();
+}
+
+export { getFormattedCurrentTime, formatTime, getDayShort, getDay, formatDate, getCurrentTime };
