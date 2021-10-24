@@ -2,7 +2,8 @@
 import SearchBar from '../SearchBar/SearchBar';
 import SearchedLocations from '../SearchedLocations/SearchedLocations';
 import classes from './SearchDropDown.module.scss';
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { connect } from 'react-redux';
 import ApiService from '../../../../../../services/ForecastApiService';
 import type {
   LocationType,
@@ -11,15 +12,24 @@ import type {
 } from '../../../../../../types/LocationType';
 import type { SearchDropDownPropsType } from './SearchDropDownPropsType';
 import { COOKIE_TOKEN_FIELD } from '../../../../../../utils/constants';
+import Preloader from '../../../../../Preloader/Preloader';
+import { changeSearchState } from '../../../../../../actions/preloaderManagerActions';
 
-function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): React$Node {
-  const [searchString, setSearchString] = useState('');
-  const [locations, setLocations] = useState([]);
+function SearchDropDown({
+  isOpenDropDown,
+  isLoadingSearch,
+  changeSearchState,
+  ...props
+}: SearchDropDownPropsType): React$Node {
+  const [searchString, setSearchString] = React.useState('');
+  const [locations, setLocations] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
+    changeSearchState(false);
     const setLocationsValue = async (): Promise<void> => {
       const { data } = await ApiService.getLocationsSearch(searchString);
       setLocations(data.locations);
+      changeSearchState(true);
     };
 
     setLocationsValue();
@@ -30,9 +40,24 @@ function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): 
   return (
     <div className={classes.searchBarContainer}>
       <SearchBar onChangeSearchString={handleSetSearchString} />
-      <SearchedLocations locations={locations} />
+      {isLoadingSearch ? <SearchedLocations locations={locations} /> : <Preloader />}
     </div>
   );
 }
 
-export default SearchDropDown;
+const mapStateToProps = ({ preloaderManager: { search } }) => ({
+  isLoadingSearch: search
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeSearchState: state => dispatch(changeSearchState(state))
+  };
+};
+
+const WrappedSearchDropDown = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchDropDown): React.AbstractComponent<{}>);
+
+export default WrappedSearchDropDown;

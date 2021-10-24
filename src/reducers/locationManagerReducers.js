@@ -1,6 +1,5 @@
 import {
   CHANGE_LOCATION,
-  CHANGE_SEARCH_STRING,
   SET_HOURLY_FORECAST,
   SET_DAILY_FORECAST,
   SET_FORECAST,
@@ -25,10 +24,6 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case CHANGE_LOCATION: {
       return { ...state, currentLocation: action.currentLocation };
-    }
-
-    case CHANGE_SEARCH_STRING: {
-      return { ...state, searchString };
     }
 
     case SET_FORECAST: {

@@ -2,13 +2,15 @@ import {
   CURRENT_LOCATION_IS_LOADING,
   DAILY_FORECAST_IS_LOADING,
   HOURLY_FORECAST_IS_LOADING,
-  FAVORITE_FORECAST_IS_LOADING
+  FAVORITE_FORECAST_IS_LOADING,
+  SEARCH_IS_LOADING
 } from '../actions/preloaderManagerActions';
 
 const initialState = {
   currentLocation: true,
   dailyForecast: true,
   hourlyForecast: true,
+  search: true,
   favorites: {}
 };
 
@@ -28,6 +30,10 @@ export default function (state = initialState, action) {
 
     case FAVORITE_FORECAST_IS_LOADING: {
       return { ...state, favorites: { ...state.favorites, [action.locationId]: action.isLoading } };
+    }
+
+    case SEARCH_IS_LOADING: {
+      return { ...state, search: action.isLoading };
     }
 
     default: {
