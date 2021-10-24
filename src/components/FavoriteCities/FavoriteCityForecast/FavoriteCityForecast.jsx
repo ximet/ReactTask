@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
-import { setFavoriteCities } from '../../../actions/locationsManagerActions';
-import { getFavoriteForecast } from '../../../actions/locationsManagerActions';
+import { setFavoriteCities, getFavoriteForecast } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
 import ForecastCacheController from '../../../controllers/ForecastCacheController';
@@ -18,24 +17,22 @@ import Preloader from '../../Preloader/Preloader';
 
 function FavoriteCityForecast({
   location,
-  setFavoriteCities,
   forecasts,
   isLoadingStates,
+  setFavoriteCities,
   ...props
 }: FavoriteCityForecastPropsType): React$Node {
   const forecast = selectCurrentForecast(forecasts, location.id);
   const isLoading = isLoadingStates[location.id];
-  console.log(isLoadingStates);
-
   const symbolUrl = getForecastSymbolUrl(forecast);
-
-  React.useEffect(() => {
-    if (ForecastCacheController(location.id, forecasts)) props.getFavoriteForecast(location.id);
-  }, [location]);
 
   const handleFavoriteCityDelete = event => {
     setFavoriteCities(location, false);
   };
+
+  React.useEffect(() => {
+    if (ForecastCacheController(location.id, forecasts)) props.getFavoriteForecast(location.id);
+  }, [location]);
 
   return (
     <div className={classes.item}>

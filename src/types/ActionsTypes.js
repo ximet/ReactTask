@@ -11,11 +11,6 @@ export type ChangeLocationActionType = {
   currentLocation: LocationType
 };
 
-export type ChangeSearctStringActionType = {
-  type: string,
-  searchString: string
-};
-
 export type HourlyForecastActionType = {
   type: string,
   currentHourlyForecast: HourlyForecastType
@@ -26,13 +21,13 @@ export type DailyForecastActionType = {
   currentDailyForecast: DailyForecastType
 };
 
-export type FavoriteLocationsActionType = {
-  type: string,
-  favoriteCitiesList: Array<LocationType>
-};
-
 export type CachedForecastsActionType = {
   type: string,
   forecast: CachedForecastCurrentType,
   locationId: string
+};
+
+export type FavoriteLocationsActionType = {
+  type: string,
+  favoriteCitiesList: Array<LocationType>
 };

@@ -1,8 +1,6 @@
 // @flow
-
 import type {
   ChangeLocationActionType,
-  ChangeSearctStringActionType,
   HourlyForecastActionType,
   DailyForecastActionType,
   FavoriteLocationsActionType,
@@ -60,11 +58,6 @@ export const changeFavoriteLocation = (
   favoriteCitiesList: favoriteLocations
 });
 
-export const changeSearchString = (searchString: string): ChangeSearctStringActionType => ({
-  type: CHANGE_SEARCH_STRING,
-  searchString
-});
-
 export const changeCurrentDailyForecast = (
   dailyForecast: DailyForecastType
 ): DailyForecastActionType => ({
@@ -77,6 +70,15 @@ export const changeCurrentHourlyForecast = (
 ): HourlyForecastActionType => ({
   type: SET_HOURLY_FORECAST,
   currentHourlyForecast: hourlyForecast
+});
+
+export const changeForecasts = (
+  forecast: CachedForecastCurrentType,
+  locationId: string
+): CachedForecastsActionType => ({
+  type: SET_FORECAST,
+  forecast: forecast,
+  locationId: locationId
 });
 
 export const setFavoriteCities =
@@ -108,15 +110,6 @@ export const changeFavoriteLocationsList =
     Storage.setValue(FAVORITE_CITIES_STORAGE_CODE, locations);
     dispatch(changeFavoriteLocation(locations));
   };
-
-export const changeForecasts = (
-  forecast: CachedForecastCurrentType,
-  locationId: string
-): CachedForecastsActionType => ({
-  type: SET_FORECAST,
-  forecast: forecast,
-  locationId: locationId
-});
 
 export const getForecast =
   (locationId: string): ThunkActionCachedForecasts =>
