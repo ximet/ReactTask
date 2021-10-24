@@ -14,6 +14,6 @@ export type FavoriteCityForecastPropsType = {
   ...FavoriteCityForecastOwnPropsType,
   forecasts: CachedForecastCurrentType,
   isLoadingStates: IsLoadingStates,
-  getForecast: (locationId: number) => void,
+  getFavoriteForecast: (locationId: number) => void,
   setFavoriteCities: (location: LocationType, isFavorite: boolean) => void
 };

@@ -5,7 +5,7 @@ import classes from './FavoriteCityForecast.module.scss';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
 import { setFavoriteCities } from '../../../actions/locationsManagerActions';
-import { getForecast } from '../../../actions/locationsManagerActions';
+import { getFavoriteForecast } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
 import ForecastCacheController from '../../../controllers/ForecastCacheController';
@@ -30,7 +30,7 @@ function FavoriteCityForecast({
   const symbolUrl = getForecastSymbolUrl(forecast);
 
   React.useEffect(() => {
-    if (ForecastCacheController(location.id, forecasts)) props.getForecast(location.id);
+    if (ForecastCacheController(location.id, forecasts)) props.getFavoriteForecast(location.id);
   }, [location]);
 
   const handleFavoriteCityDelete = event => {
@@ -73,7 +73,7 @@ const mapStateToProps = ({ locationManager: { forecasts }, ...state }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getForecast: locationId => dispatch(getForecast(locationId)),
+    getFavoriteForecast: locationId => dispatch(getFavoriteForecast(locationId)),
     setFavoriteCities: (location, isFavorite) => dispatch(setFavoriteCities(location, isFavorite))
   };
 };
