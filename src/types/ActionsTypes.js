@@ -31,3 +31,8 @@ export type CachedForecastsActionType = {
   forecast: CachedForecastCurrentType,
   locationId: string
 };
+
+export type FavoriteLocationsActionType = {
+  type: string,
+  favoriteCitiesList: Array<LocationType>
+};
