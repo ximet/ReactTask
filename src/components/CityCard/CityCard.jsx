@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './CityCard.module.scss';
-import ExampleCityImg from '../../../../assets/images/city-example-img.png';
+import ExampleCityImg from '../../assets/images/city-example-img.png';
 
 function CityCard({ info }) {
   return (

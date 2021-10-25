@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { favCitiesSliderOptions } from '../../../constants/slider';
 import styles from './FavoriteCities.module.scss';
 import Slider from '../../../components/Slider/Slider';
-import CityCard from './CityCard/CityCard';
+import CityCard from '../../../components/CityCard/CityCard';
 
 function FavoriteCities({ favoriteCities, currentCity }) {
   const cityCards = favoriteCities.map(city => ({
