@@ -43,7 +43,7 @@ $temperature-font-size: 28px;
       .temperature {
         font-family: $main-font-family;
         font-size: $temperature-font-size;
-        font-weight: bold;
+        font-weight: $main-bold-font-weight;
         display: flex;
         align-items: flex-start;
 
@@ -59,7 +59,7 @@ $temperature-font-size: 28px;
       width: 50%;
 
       .cityName {
-        font-weight: bold;
+        font-weight: $main-bold-font-weight;
         font-size: $additional-text-font-size;
         text-align: right;
       }
