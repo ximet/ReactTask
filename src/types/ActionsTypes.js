@@ -1,11 +1,11 @@
 // @flow
-import type { LocationType } from '../types/LocationType';
-import type { WarningsType } from '../types/WarningsType';
+import type { LocationType } from './LocationType';
 import type {
   HourlyForecastType,
   DailyForecastType,
   CachedForecastCurrentType
-} from '../types/ForecastType';
+} from './ForecastType';
+import type { WarningsType } from './WarningsType';
 
 export type ChangeLocationActionType = {
   type: string,
@@ -27,13 +27,18 @@ export type DailyForecastActionType = {
   currentDailyForecast: DailyForecastType
 };
 
+export type CachedForecastsActionType = {
+  type: string,
+  forecast: CachedForecastCurrentType,
+  locationId: string
+};
+
 export type WarningsActionType = {
   type: string,
   warnings: WarningsType
 };
 
-export type CachedForecastsActionType = {
+export type FavoriteLocationsActionType = {
   type: string,
-  forecast: CachedForecastCurrentType,
-  locationId: string
+  favoriteCitiesList: Array<LocationType>
 };

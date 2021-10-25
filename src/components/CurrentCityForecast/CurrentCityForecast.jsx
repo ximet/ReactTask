@@ -6,25 +6,24 @@ import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecast
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
 import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
-  FORECAST_SYMBOL_EXT,
-  FORECAST_SYMBOL_LINK,
   CURRENT_CITY_FORECAST_ALT_TEXT,
-  CURRENT_CITY_FORECAST_TITLE_TEXT
+  CURRENT_CITY_FORECAST_TITLE_TEXT,
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
 } from '../../utils/constants';
 import { selectCurrentForecast } from '../../selectors/selectorsForecast';
 import { getForecast } from '../../actions/locationsManagerActions';
-import ForecastCacheController from '../../controllers/ForecastCacheController';
+import { useCacheForecast } from '../../hooks/forecastHooks';
 
-function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
-  const currentLocationId = currentLocation.id;
-  const currentForecast = selectCurrentForecast(forecasts, currentLocationId);
+function CurrentCityForecast(props) {
+  const currentLocationId = props.currentLocation.id;
+  const currentForecast = selectCurrentForecast(props.forecasts, currentLocationId);
   const symbolUrl = getForecastSymbolUrl(currentForecast);
   const forecastTime = formatTime(currentForecast?.time);
   const forecastDay = getDay(currentForecast?.time);
 
-  useEffect(() => {
-    if (ForecastCacheController(currentLocationId, forecasts)) props.getForecast(currentLocationId);
-  }, [currentLocation]);
+  useCacheForecast(props.forecasts, props.urrentLocation, props.getForecast);
 
   return (
     <div className={classes.currentCityContainer}>
@@ -40,15 +39,23 @@ function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
             <div className={classes.temperature}>{currentForecast?.temperature}</div>
           </div>
           <div className={classes.additionalInfo}>
-            <div className={classes.precitipate}>Precitipate: {currentForecast?.precipProb}%</div>
-            <div className={classes.humidity}>Humidity: {currentForecast?.relHumidity}%</div>
-            <div className={classes.wind}>Wind: {currentForecast?.windSpeed} km/h</div>
+            <div className={classes.precitipate}>
+              Precitipate: {currentForecast?.precipProb}
+              {PRECITIPATE_MEASURE}
+            </div>
+            <div className={classes.humidity}>
+              Humidity: {currentForecast?.relHumidity}
+              {HUMIDITY_MEASURE}
+            </div>
+            <div className={classes.wind}>
+              Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASURE}
+            </div>
           </div>
         </div>
         <div className={classes.locationInfo}>
-          <div className={classes.cityName}>{currentLocation?.name}</div>
+          <div className={classes.cityName}>{props.currentLocation?.name}</div>
           <div className={classes.areaName}>
-            {currentLocation?.adminArea} / {currentLocation?.country}
+            {props.currentLocation?.adminArea} / {props.currentLocation?.country}
           </div>
           <div className={classes.forecastDate}>
             {forecastDay} {forecastTime}

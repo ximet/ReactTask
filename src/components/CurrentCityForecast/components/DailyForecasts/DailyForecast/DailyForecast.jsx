@@ -3,15 +3,15 @@ import { getDayShort, getDay } from '../../../../../utils/dateTimeUtils';
 import { ReactComponent as WindCompasBg } from '../../../../../assets/img/svg/wind-compas-bg.svg';
 import { ReactComponent as WindCompas } from '../../../../../assets/img/svg/wind-compas.svg';
 import {
-  FORECAST_SYMBOL_EXT,
-  FORECAST_SYMBOL_LINK,
   DAILY_FORECAST_ALT_TEXT,
   DAILY_FORECAST_TITLE_TEXT,
-  LOCALE_DATE
+  LOCALE_DATE,
+  WIND_SPEED_MEASURE
 } from '../../../../../utils/constants';
+import { getForecastSymbolUrl } from '../../../../../utils/forecastUtils';
 
 function DailyForecast({ forecast }) {
-  const symbolUrl = `${FORECAST_SYMBOL_LINK}${forecast.symbol}${FORECAST_SYMBOL_EXT}`;
+  const symbolUrl = getForecastSymbolUrl(forecast);
   const dayName = getDayShort(forecast.date, LOCALE_DATE);
 
   return (
@@ -30,7 +30,7 @@ function DailyForecast({ forecast }) {
       <div className={classes.wind}>
         <div className={classes.windSpeed}>
           <div className={classes.value}>{forecast.maxWindSpeed}</div>
-          <div className={classes.measure}>km/h</div>
+          <div className={classes.measure}>{WIND_SPEED_MEASURE}</div>
         </div>
         <div className={classes.windDir}>
           <WindCompasBg />
