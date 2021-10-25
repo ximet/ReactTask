@@ -20,6 +20,6 @@ export const CHART_BACKGROUND_COLOR = 'rgb(0, 178, 255, 0.5)';
 export const CHART_BORDER_COLOR = 'rgba(248, 178, 0, 1)';
 export const CHART_LABEL_COLOR = '#00b2ff';
 
-export const WIND_SPEED_MEASHURE = 'km/h';
-export const PRECITIPATE_MEASHURE = '%';
-export const HUMIDITY_MEASHURE = '%';
+export const WIND_SPEED_MEASURE = 'km/h';
+export const PRECITIPATE_MEASURE = '%';
+export const HUMIDITY_MEASURE = '%';

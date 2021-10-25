@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
 import {
-  WIND_SPEED_MEASHURE,
-  PRECITIPATE_MEASHURE,
-  HUMIDITY_MEASHURE
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
 } from '../../../utils/constants';
 import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
@@ -47,15 +47,15 @@ function FavoriteCityForecast({
         <div className={classes.additionalInfo}>
           <div className={classes.cityName}>{location?.name}</div>
           <div className={classes.wind}>
-            Wind: {forecast?.windSpeed} {WIND_SPEED_MEASHURE}
+            Wind: {forecast?.windSpeed} {WIND_SPEED_MEASURE}
           </div>
           <div className={classes.humidity}>
             Humidity: {forecast?.relHumidity}
-            {HUMIDITY_MEASHURE}
+            {HUMIDITY_MEASURE}
           </div>
           <div className={classes.precitipate}>
             Precitipate: {forecast?.precipProb}
-            {PRECITIPATE_MEASHURE}
+            {PRECITIPATE_MEASURE}
           </div>
         </div>
       </div>

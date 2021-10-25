@@ -6,7 +6,7 @@ import {
   DAILY_FORECAST_ALT_TEXT,
   DAILY_FORECAST_TITLE_TEXT,
   LOCALE_DATE,
-  WIND_SPEED_MEASHURE
+  WIND_SPEED_MEASURE
 } from '../../../../../utils/constants';
 
 function DailyForecast({ forecast }) {
@@ -29,7 +29,7 @@ function DailyForecast({ forecast }) {
       <div className={classes.wind}>
         <div className={classes.windSpeed}>
           <div className={classes.value}>{forecast.maxWindSpeed}</div>
-          <div className={classes.measure}>{WIND_SPEED_MEASHURE}</div>
+          <div className={classes.measure}>{WIND_SPEED_MEASURE}</div>
         </div>
         <div className={classes.windDir}>
           <WindCompasBg />

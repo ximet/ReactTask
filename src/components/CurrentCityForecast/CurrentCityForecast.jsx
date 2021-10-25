@@ -8,9 +8,9 @@ import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
   CURRENT_CITY_FORECAST_ALT_TEXT,
   CURRENT_CITY_FORECAST_TITLE_TEXT,
-  WIND_SPEED_MEASHURE,
-  PRECITIPATE_MEASHURE,
-  HUMIDITY_MEASHURE
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
 } from '../../utils/constants';
 import { selectCurrentForecast } from '../../selectors/selectorsForecast';
 import { getForecast } from '../../actions/locationsManagerActions';
@@ -43,14 +43,14 @@ function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
           <div className={classes.additionalInfo}>
             <div className={classes.precitipate}>
               Precitipate: {currentForecast?.precipProb}
-              {PRECITIPATE_MEASHURE}
+              {PRECITIPATE_MEASURE}
             </div>
             <div className={classes.humidity}>
               Humidity: {currentForecast?.relHumidity}
-              {HUMIDITY_MEASHURE}
+              {HUMIDITY_MEASURE}
             </div>
             <div className={classes.wind}>
-              Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASHURE}
+              Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASURE}
             </div>
           </div>
         </div>
