@@ -31,6 +31,7 @@ class LocationWeather extends PureComponent {
         <LocationWeatherCurrentInfo
           currentLocationWeather={this.props.currentLocationWeather}
           currentLocationInfo={this.props.currentLocationInfo}
+          addToSelectedLocations={this.props.addToSelectedLocations}
         />
         <LocationWeatherDailyList
           currentLocationDailyWeather={this.props.currentLocationDailyWeather}
@@ -50,7 +51,8 @@ LocationWeather.propTypes = {
   currentLocationInfo: CurrentLocationInfoType,
   currentLocationWeather: CurrentLocationWeatherType,
   currentLocationDailyWeather: CurrentLocationDailyWeatherType,
-  currentLocationDetailedWeather: CurrentLocationDetailedWeatherType
+  currentLocationDetailedWeather: CurrentLocationDetailedWeatherType,
+  addToSelectedLocations: PropTypes.func.isRequired
 };
 
 LocationWeather.defaultProps = {

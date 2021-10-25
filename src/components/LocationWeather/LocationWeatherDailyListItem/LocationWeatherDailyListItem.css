@@ -12,18 +12,18 @@
 }
 
 .location-weather__daily-list-item-day-name {
-  font-size: 0.7rem;
+  font-size: var(--fz-small);
 }
 
 .location-weather__daily-list-item-day-number {
   margin-top: 0.1rem;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--fz-larger);
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__daily-list-item-month {
   margin-top: 0.1rem;
-  font-size: 0.8rem;
+  font-size: var(--fz-small);
 }
 
 .location-weather__daily-list-item-symbol-img {
@@ -36,6 +36,6 @@
   display: flex;
   margin-top: 0.2rem;
   padding: 0 0.2rem;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-bold);
 }

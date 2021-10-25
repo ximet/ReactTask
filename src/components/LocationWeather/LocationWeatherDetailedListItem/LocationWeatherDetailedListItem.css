@@ -5,8 +5,8 @@
 }
 
 .location-weather__detailed-list-item-time {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__detailed-list-item-symbol-img {
@@ -17,8 +17,8 @@
 
 .location-weather__detailed-list-item-temperature {
   margin-top: 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: var(--fz-small);
+  font-weight: var(--fw-bold);
 }
 
 .location-weather__detailed-list-item-wing-img {
@@ -29,5 +29,5 @@
 
 .location-weather__detailed-list-item-wind-speed {
   margin-top: 0.2rem;
-  font-size: 0.8rem;
+  font-size: var(--fz-small);
 }

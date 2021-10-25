@@ -3,15 +3,28 @@ import {
   API_SYMBOL_URL_PREFIX,
   API_WIND_IMG_URL_POSTFIX,
   API_WIND_IMG_URL_PREFIX,
-  WIND_DIRECTIONS_TO_IMG
+  DEGREES_FULL_TEXT,
+  WIND_DIRECTIONS_TO_IMG,
+  WIND_SPEED_TEXT
 } from '../../../constants/constants';
 import { CurrentLocationInfoType, CurrentLocationWeatherType } from '../../../types/types';
 import { formatTemperature } from '../../../utils/utils';
 import './LocationWeatherCurrentInfo.css';
+import PropTypes from 'prop-types';
 
-function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInfo }) {
+function LocationWeatherCurrentInfo({
+  currentLocationWeather,
+  currentLocationInfo,
+  addToSelectedLocations
+}) {
+  const locationId = currentLocationInfo ? currentLocationInfo.id : '';
   const locationName = currentLocationInfo ? currentLocationInfo.name : '';
   const locationCountry = currentLocationInfo ? currentLocationInfo.country : '';
+  const selectedLocationActionPayload = {
+    id: String(locationId),
+    locationInfo: currentLocationInfo,
+    locationWeather: currentLocationWeather
+  };
   const currentWeather = currentLocationWeather ? (
     <>
       <div className="location-weather__current-weather-item location-weather__current-weather-title">
@@ -23,7 +36,7 @@ function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInf
           <div className="location-weather__current-weather-temp-value">
             {formatTemperature(currentLocationWeather.temperature)}
           </div>
-          <div className="location-weather__current-weather-temp-degrees">°C</div>
+          <div className="location-weather__current-weather-temp-degrees">{DEGREES_FULL_TEXT}</div>
         </div>
       </div>
       <div className="location-weather__current-weather-symbol location-weather__current-weather-item">
@@ -42,11 +55,11 @@ function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInf
             WIND_DIRECTIONS_TO_IMG[currentLocationWeather.windDirString]
           }${API_WIND_IMG_URL_POSTFIX}
             `}
-          alt={`${currentLocationWeather.windDirString} ${currentLocationWeather.windSpeed} m/s`}
+          alt={`${currentLocationWeather.windDirString} ${currentLocationWeather.windSpeed} ${WIND_SPEED_TEXT}`}
           className="location-weather__current-weather-wing-img"
         />
         <div className="location-weather__current-weather-wind-value">
-          {currentLocationWeather.windSpeed} m/s
+          {currentLocationWeather.windSpeed} {WIND_SPEED_TEXT}
         </div>
       </div>
     </>
@@ -60,6 +73,14 @@ function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInf
         Weather in
         <br />
         {locationName}, {locationCountry}
+        <br />
+        <button
+          className="location-weather__add-btn"
+          type="button"
+          onClick={() => addToSelectedLocations(selectedLocationActionPayload)}
+        >
+          Add to selected
+        </button>
       </h2>
       <div className="location-weather__current-weather-box">{currentWeather}</div>
     </div>
@@ -68,7 +89,8 @@ function LocationWeatherCurrentInfo({ currentLocationWeather, currentLocationInf
 
 LocationWeatherCurrentInfo.propTypes = {
   currentLocationWeather: CurrentLocationWeatherType,
-  currentLocationInfo: CurrentLocationInfoType
+  currentLocationInfo: CurrentLocationInfoType,
+  addToSelectedLocations: PropTypes.func.isRequired
 };
 
 LocationWeatherCurrentInfo.defaultProps = {

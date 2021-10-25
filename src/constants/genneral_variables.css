@@ -1,3 +1,10 @@
 :root {
   --font: Verdana, Geneva, Tahoma, sans-serif;
+  --fz-normal: 1rem;
+  --fz-large: 1.2rem;
+  --fz-larger: 1.5rem;
+  --fz-small: 0.8rem;
+  --fz-smaller: 0.6rem;
+  --fw-normal: 400;
+  --fw-bold: 700;
 }
