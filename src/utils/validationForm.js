@@ -1,18 +1,18 @@
 export function validateEmailField(value) {
-  const validate = [];
+  const validatings = [];
 
-  validate.push(checkValidateRequire(value));
-  validate.push(checkValidateEmail(value));
+  validatings.push(validateRequire(value));
+  validatings.push(validateEmail(value));
 
-  return getErrors(validate);
+  return getErrors(validatings);
 }
 
 export function validateTextField(value) {
-  const validate = [];
+  const validatings = [];
 
-  validate.push(checkValidateRequire(value));
+  validatings.push(validateRequire(value));
 
-  return getErrors(validate);
+  return getErrors(validatings);
 }
 
 function getErrors(validate) {
@@ -23,7 +23,7 @@ function getErrors(validate) {
   return result;
 }
 
-function checkValidateEmail(value) {
+function validateEmail(value) {
   let error;
   const rule = '[a-z0-9]@.+[a-z0-9]+.[a-z]{2,4}';
   const regExp = new RegExp(rule, 'g');
@@ -35,7 +35,7 @@ function checkValidateEmail(value) {
   return error;
 }
 
-function checkValidateRequire(value) {
+function validateRequire(value) {
   let error;
   if (!value) error = 'Required';
 
