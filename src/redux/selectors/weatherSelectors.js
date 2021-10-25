@@ -1,7 +1,9 @@
 import { createSelector } from 'reselect';
 import { getFormattedHourlyData } from '../../utils/hourlyChartSettings';
+import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 const gethourlyCityForecast = state => state.weather.hourlyCityForecast;
+const getDailyForecast = state => state.weather.dailyCityForecast;
 export const getCityForecast = state => state.weather.cityForecast;
 
 export const getHourlyChartData = createSelector([gethourlyCityForecast], forecast =>
@@ -18,3 +20,10 @@ export const getShortCityForecast = createSelector(
     windSpeed
   })
 );
+
+export const getDailyForecastCards = createSelector([getDailyForecast], dailyForecast => {
+  return dailyForecast.map(forecast => ({
+    id: forecast.date,
+    slide: <WeatherCard weatherInfo={forecast} />
+  }));
+});
