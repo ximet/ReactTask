@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
-import RequestController from '../controllers/RequestsController';
+import ApiService from '../services/ForecastApiService';
 
 export function useLocationSearch(searchString) {
   const [locations, setLocations] = useState([]);
 
   useEffect(async () => {
-    const locations = RequestController.getLocationsSearch(searchString);
-    setLocations(locations);
+    let responseData = {};
+    try {
+      const { data } = await ApiService.getLocationsSearch(searchString);
+      responseData = data.locations;
+    } catch (error) {
+      console.error(error);
+    }
+
+    setLocations(responseData);
   }, [searchString]);
 
-  return [locations, setLocations];
+  return [locations];
 }
