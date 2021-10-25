@@ -11,7 +11,7 @@ $lighten-black: #1f2e4a;
 $transparent-darken-blue: rgba($darken-blue, 0.5);
 
 $font-size-xs: 14px;
-$font-size-sm: 16px;
+$font-size-sm: 18px;
 $font-size-md: 24px;
 $font-size-lg: 36px;
 $font-size-xl: 114px;
@@ -30,6 +30,7 @@ $primary-bg-color: var(--primary-bg-color);
 $secondary-bg-color: var(--secondary-bg-color);
 
 $chart-bg-color: var(--chart-bg-color);
+$card-bg-color: var(--card-bg-color);
 
 $light-btn-bg-color: $yellow;
 $dark-btn-bg-color: $blue;
