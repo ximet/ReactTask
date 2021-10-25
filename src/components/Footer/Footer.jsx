@@ -1,5 +1,7 @@
+import './Footer.css';
+
 function Footer() {
-  return <div>ReactTask &copy; {new Date().getFullYear()}</div>;
+  return <div className="footer">ReactTask &copy; {new Date().getFullYear()}</div>;
 }
 
 export default Footer;

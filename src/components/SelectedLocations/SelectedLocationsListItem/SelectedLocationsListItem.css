@@ -28,8 +28,8 @@
 }
 
 .selected-locations__list-item-temperature {
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fz-larger);
 }
 
 .selected-locations__list-item-wind-img {
@@ -39,7 +39,7 @@
 
 .selected-locations__list-item-wind-speed {
   margin-top: 0.2rem;
-  font-size: 0.8rem;
+  font-size: var(--fz-small);
   text-align: center;
 }
 

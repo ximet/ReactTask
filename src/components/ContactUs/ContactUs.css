@@ -1,0 +1,46 @@
+.contact-us {
+  max-width: 40rem;
+  border-top: 1px solid var(--primary-color);
+}
+
+.contact-us__title {
+  margin: 1rem 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.contact-us__thanks-message {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.contact-us__form {
+  margin-top: 1rem;
+}
+
+.contact-us__text-field {
+  display: block;
+  margin-top: 0.5rem;
+  width: 20rem;
+}
+
+.contact-us__message {
+  display: block;
+  margin-top: 0.5rem;
+  width: 38rem;
+  max-width: 100%;
+  min-height: 5rem;
+}
+
+.contact-us__validation-error {
+  margin-top: 0.1rem;
+  background-color: var(--error-bg-color);
+  font-size: var(--fz-small);
+}
+
+.contact-us__btn {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
