@@ -27,10 +27,5 @@ export const useCitiesSearch = initialState => {
     }
   };
 
-  return [
-    searchText,
-    setSearchText,
-    matchingCities,
-    setMatchingCities
-  ];
+  return [searchText, setSearchText, matchingCities, setMatchingCities];
 };

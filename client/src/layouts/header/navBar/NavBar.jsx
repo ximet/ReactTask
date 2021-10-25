@@ -6,12 +6,9 @@ import { routes } from '../../../routes/routes';
 function NavBar() {
   return (
     <div className={classes.container}>
-      <NavLink path={routes.info.path}>
-        {routes.info.text}
-      </NavLink>
-      <NavLink path={routes.feedback.path}>
-        {routes.feedback.text}
-      </NavLink>
+      <NavLink path={routes.home.path}>{routes.home.text}</NavLink>
+      <NavLink path={routes.info.path}>{routes.info.text}</NavLink>
+      <NavLink path={routes.feedback.path}>{routes.feedback.text}</NavLink>
     </div>
   );
 }

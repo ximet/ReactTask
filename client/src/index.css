@@ -10,6 +10,11 @@
   --font-size-m: 32px;
   --font-size-l: 42px;
   --font-size-xl: 68px;
+
+  --form-field-text-color: #ffffff;
+  --form-field-border-color: #ced4da;
+  --form-field-alert-color: red;
+  --submit-button-border-color: white;
 }
 
 [data-theme='dark'] {
@@ -30,6 +35,8 @@
   --sliderright-arrow-bg-image: url('../public//images/lightRightArrow.png');
 
   --preloader-background-color: #2f1c5a;
+
+  --submit-button-color: #5737b1;
 }
 
 [data-theme='light'] {
@@ -44,4 +51,6 @@
   --sliderright-arrow-bg-image: url('../public//images/darkRightArrow.png');
 
   --preloader-background-color: #b3cbff;
+
+  --submit-button-color: #23baef;
 }
