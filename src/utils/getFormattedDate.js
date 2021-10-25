@@ -1,10 +1,23 @@
-import { dateFormat, dateOptions, timeOptions } from '../constants/date';
+import {
+  dateFormat,
+  fullDateOptions,
+  dateOptions,
+  timeOptions,
+  dayOfWeekOptions
+} from '../constants/date';
 
-export function getFormattedDate() {
+export function getFormattedCurrentDate() {
   const currentDate = new Date();
-
-  const date = currentDate.toLocaleString(dateFormat, dateOptions);
+  const date = currentDate.toLocaleString(dateFormat, fullDateOptions, dateOptions);
   const time = currentDate.toLocaleString(dateFormat, timeOptions);
 
   return { date, time };
+}
+
+export function getFormattedDate(formDate) {
+  formDate = new Date(formDate);
+  const date = formDate.toLocaleString(dateFormat, dateOptions);
+  const dayOfWeek = date.toLocaleString(dateFormat, dayOfWeekOptions);
+
+  return { date, dayOfWeek };
 }
