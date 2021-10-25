@@ -49,6 +49,7 @@
   z-index: 20;
   overflow: auto;
   box-shadow: $default-box-shadow;
+  z-index: -5;
 
   .search-result-item {
     list-style: none;
@@ -90,6 +91,7 @@
 
 .search-wrapper:hover .search-results {
   opacity: 1;
+  z-index: 15;
   transform: translateY(0);
 }
 

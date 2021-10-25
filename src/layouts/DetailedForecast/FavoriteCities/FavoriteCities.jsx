@@ -2,57 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { favCitiesSliderOptions } from '../../../constants/slider';
+import styles from './FavoriteCities.module.scss';
 import Slider from '../../../components/Slider/Slider';
 import CityCard from './CityCard/CityCard';
 
-const info = {
-  minsk: {
-    name: 'Minsk'
-  },
-  lipel: {
-    name: 'Lipel'
-  },
-  gomel: {
-    name: 'Gomel'
-  }
-};
-
 function FavoriteCities({ favoriteCities, currentCity }) {
-  const slides = [
-    {
-      id: 1,
-      slide: <CityCard info={info.minsk} />
-    },
-    {
-      id: 2,
-      slide: <CityCard info={info.lipel} />
-    },
-    {
-      id: 3,
-      slide: <CityCard info={info.gomel} />
-    },
-    {
-      id: 4,
-      slide: <CityCard info={info.minsk} />
-    },
-    {
-      id: 5,
-      slide: <CityCard info={info.lipel} />
-    },
-    {
-      id: 6,
-      slide: <CityCard info={info.gomel} />
-    },
-    {
-      id: 7,
-      slide: <CityCard info={info.minsk} />
-    }
-  ];
+  const cityCards = favoriteCities.map(city => ({
+    id: city.id,
+    slide: <CityCard info={city} />
+  }));
 
   return (
-    <>
-      <Slider slides={slides} {...favCitiesSliderOptions} />
-    </>
+    <div>
+      <h2 className={styles.favCitiesTitle}>Favorite cities</h2>
+      <Slider slides={cityCards} {...favCitiesSliderOptions} />
+    </div>
   );
 }
 
