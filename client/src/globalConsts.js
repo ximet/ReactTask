@@ -49,7 +49,7 @@ const feedbackFormInitialValues = {
   name: '',
   email: '',
   feedbackText: ''
-}
+};
 
 export {
   themes,
