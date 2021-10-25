@@ -11,28 +11,21 @@ import {
 import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
-import ForecastCacheController from '../../../controllers/ForecastCacheController';
+import { useCacheForecast } from '../../../hooks/forecastHooks';
 
 import type {
   FavoriteCityForecastPropsType,
   FavoriteCityForecastOwnPropsType
 } from './FavoriteCityForecastPropsType';
 
-function FavoriteCityForecast({
-  location,
-  forecasts,
-  setFavoriteCities,
-  ...props
-}: FavoriteCityForecastPropsType): React$Node {
-  const forecast = selectCurrentForecast(forecasts, location.id);
+function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node {
+  const forecast = selectCurrentForecast(props.forecasts, props.location.id);
   const symbolUrl = getForecastSymbolUrl(forecast);
   const handleFavoriteCityDelete = event => {
-    setFavoriteCities(location, false);
+    props.setFavoriteCities(props.location, false);
   };
 
-  React.useEffect(() => {
-    if (ForecastCacheController(location.id, forecasts)) props.getForecast(location.id);
-  }, [location]);
+  useCacheForecast(props.forecasts, props.location, props.getForecast);
 
   return (
     <div className={classes.item}>
@@ -45,7 +38,7 @@ function FavoriteCityForecast({
           <div className={classes.temperature}>{forecast?.temperature}</div>
         </div>
         <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{location?.name}</div>
+          <div className={classes.cityName}>{props.location?.name}</div>
           <div className={classes.wind}>
             Wind: {forecast?.windSpeed} {WIND_SPEED_MEASURE}
           </div>

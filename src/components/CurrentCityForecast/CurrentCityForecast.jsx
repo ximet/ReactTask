@@ -14,18 +14,16 @@ import {
 } from '../../utils/constants';
 import { selectCurrentForecast } from '../../selectors/selectorsForecast';
 import { getForecast } from '../../actions/locationsManagerActions';
-import ForecastCacheController from '../../controllers/ForecastCacheController';
+import { useCacheForecast } from '../../hooks/forecastHooks';
 
-function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
-  const currentLocationId = currentLocation.id;
-  const currentForecast = selectCurrentForecast(forecasts, currentLocationId);
+function CurrentCityForecast(props) {
+  const currentLocationId = props.currentLocation.id;
+  const currentForecast = selectCurrentForecast(props.forecasts, currentLocationId);
   const symbolUrl = getForecastSymbolUrl(currentForecast);
   const forecastTime = formatTime(currentForecast?.time);
   const forecastDay = getDay(currentForecast?.time);
 
-  useEffect(() => {
-    if (ForecastCacheController(currentLocationId, forecasts)) props.getForecast(currentLocationId);
-  }, [currentLocation]);
+  useCacheForecast(props.forecasts, props.urrentLocation, props.getForecast);
 
   return (
     <div className={classes.currentCityContainer}>
@@ -55,9 +53,9 @@ function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
           </div>
         </div>
         <div className={classes.locationInfo}>
-          <div className={classes.cityName}>{currentLocation?.name}</div>
+          <div className={classes.cityName}>{props.currentLocation?.name}</div>
           <div className={classes.areaName}>
-            {currentLocation?.adminArea} / {currentLocation?.country}
+            {props.currentLocation?.adminArea} / {props.currentLocation?.country}
           </div>
           <div className={classes.forecastDate}>
             {forecastDay} {forecastTime}

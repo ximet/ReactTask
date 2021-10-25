@@ -8,9 +8,10 @@ import {
   LOCALE_DATE,
   WIND_SPEED_MEASURE
 } from '../../../../../utils/constants';
+import { getForecastSymbolUrl } from '../../../../../utils/forecastUtils';
 
 function DailyForecast({ forecast }) {
-  const symbolUrl = `${FORECAST_SYMBOL_LINK}${forecast.symbol}${FORECAST_SYMBOL_EXT}`;
+  const symbolUrl = getForecastSymbolUrl(forecast);
   const dayName = getDayShort(forecast.date, LOCALE_DATE);
 
   return (
