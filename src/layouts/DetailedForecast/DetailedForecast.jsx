@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './DetailedForecast.module.scss';
 import FavoriteCities from './FavoriteCities/FavoriteCities';
-import DailyForecast from './DailyForecast/DailyForecast';
+import DailyForecast from './DailyForecast/Container';
 import HourlyForecast from './HourlyForecast/Container';
 
 function DetailedForecast() {
