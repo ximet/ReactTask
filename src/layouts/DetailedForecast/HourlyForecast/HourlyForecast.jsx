@@ -13,7 +13,7 @@ function HourlyForecast({ chartData }) {
         id={styles.hourlyForecastChart}
         data={getHourlyChartData(chartData)}
         options={hourlyChartOptions}
-        height={90}
+        height={70}
       />
     </div>
   );
