@@ -20,5 +20,5 @@ export function useCacheForecast(forecasts, location, getForecast) {
 
       if (shouldUpdate) getForecast(currentLocationId);
     }
-  }, [location]);
+  }, [location, getForecast]);
 }
