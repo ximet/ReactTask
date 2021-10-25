@@ -3,7 +3,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
-import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
+import {
+  WIND_SPEED_MEASHURE,
+  PRECITIPATE_MEASHURE,
+  HUMIDITY_MEASHURE
+} from '../../../utils/constants';
 import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
@@ -42,9 +46,17 @@ function FavoriteCityForecast({
         </div>
         <div className={classes.additionalInfo}>
           <div className={classes.cityName}>{location?.name}</div>
-          <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
-          <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
-          <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
+          <div className={classes.wind}>
+            Wind: {forecast?.windSpeed} {WIND_SPEED_MEASHURE}
+          </div>
+          <div className={classes.humidity}>
+            Humidity: {forecast?.relHumidity}
+            {HUMIDITY_MEASHURE}
+          </div>
+          <div className={classes.precitipate}>
+            Precitipate: {forecast?.precipProb}
+            {PRECITIPATE_MEASHURE}
+          </div>
         </div>
       </div>
     </div>

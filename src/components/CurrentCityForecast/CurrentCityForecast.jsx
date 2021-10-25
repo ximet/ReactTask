@@ -6,10 +6,11 @@ import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecast
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
 import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
-  FORECAST_SYMBOL_EXT,
-  FORECAST_SYMBOL_LINK,
   CURRENT_CITY_FORECAST_ALT_TEXT,
-  CURRENT_CITY_FORECAST_TITLE_TEXT
+  CURRENT_CITY_FORECAST_TITLE_TEXT,
+  WIND_SPEED_MEASHURE,
+  PRECITIPATE_MEASHURE,
+  HUMIDITY_MEASHURE
 } from '../../utils/constants';
 import { selectCurrentForecast } from '../../selectors/selectorsForecast';
 import { getForecast } from '../../actions/locationsManagerActions';
@@ -40,9 +41,17 @@ function CurrentCityForecast({ currentLocation, forecasts, ...props }) {
             <div className={classes.temperature}>{currentForecast?.temperature}</div>
           </div>
           <div className={classes.additionalInfo}>
-            <div className={classes.precitipate}>Precitipate: {currentForecast?.precipProb}%</div>
-            <div className={classes.humidity}>Humidity: {currentForecast?.relHumidity}%</div>
-            <div className={classes.wind}>Wind: {currentForecast?.windSpeed} km/h</div>
+            <div className={classes.precitipate}>
+              Precitipate: {currentForecast?.precipProb}
+              {PRECITIPATE_MEASHURE}
+            </div>
+            <div className={classes.humidity}>
+              Humidity: {currentForecast?.relHumidity}
+              {HUMIDITY_MEASHURE}
+            </div>
+            <div className={classes.wind}>
+              Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASHURE}
+            </div>
           </div>
         </div>
         <div className={classes.locationInfo}>
