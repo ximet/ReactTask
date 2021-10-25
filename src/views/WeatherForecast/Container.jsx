@@ -1,27 +1,17 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-import { FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
 
 import WeatherForecast from './WeatherForecast';
+import WithPreloader from '../../components/WithPreloader/WithPreloader';
+import WithError from '../../components/WithError/WithError';
 
-class WeatherForecastContainer extends React.Component {
-  render() {
-    if (this.props.isFetching) {
-      return <span> Loading...</span>;
-    }
+function WeatherForecastContainer(props) {
+  const WeatherForecastWithPreloader = WithPreloader(WeatherForecast);
+  const WeatherForecastWithError = WithError(WeatherForecastWithPreloader, );
 
-    if (this.props.error) {
-      return (
-        <div>
-          <p>{this.props.error.message}.</p>
-          <p>{FETCHING_ERROR_TEXT}</p>
-        </div>
-      );
-    }
-
-    return <WeatherForecast />;
-  }
+  return (
+    <WeatherForecastWithError error={props.error} isPageLoading={props.isFetching} {...props} />
+  );
 }
 
 const mapStateToProps = state => ({
