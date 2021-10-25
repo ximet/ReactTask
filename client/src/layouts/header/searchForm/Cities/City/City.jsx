@@ -1,17 +1,24 @@
 import React from 'react';
 import classes from './City.module.css';
-import nightCloudyWeatherIcon from '../../../../../../public/images/nightCloudyWeatherIcon.png';
+import PropTypes from 'prop-types';
 
-function City({ city }) {
+function City({ city, onClick }) {
   return (
-    <div className={classes.container}>
-      <div className={classes.cityWeatherIconAndCity}>
-        <img src={nightCloudyWeatherIcon} alt="weather icon" className={classes.cityWeatherIcon} />
+    <div className={classes.container} onClick={() => onClick(city)}>
+      <div className={classes.textContent}>
         <span>{city.name}</span>
+        <span className={classes.country}>{city.country}</span>
       </div>
-      <span>{city.temperature}°C</span>
     </div>
   );
 }
+
+City.propTypes = {
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
+};
 
 export default City;

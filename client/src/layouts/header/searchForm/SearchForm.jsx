@@ -1,34 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import SearchBar from './searchBar/SearchBar';
-import Cities from './Cities/Cities';
+import Cities from './Cities/Container';
 import classes from './SearchForm.module.css';
-import { cities } from '../../../../arrayOfCities';
+import { useCitiesSearch } from '../../../hooks/hooks';
 
 function SearchForm() {
-  const [searchText, setSearchText] = useState('');
-  const [matchingCities, setMatchingCities] = useState([]);
+  const [
+    searchText,
+    setSearchText,
+    matchingCities,
+    setMatchingCities
+  ] = useCitiesSearch('');
+  const citiesRef = useRef(null);
 
   const handleSearchText = e => {
     setSearchText(e.target.value);
   };
 
-  const findMatchingCities = () => {
-    const tempMatchingCities =
-      searchText !== ''
-        ? cities.filter(city => city.name.toLowerCase().startsWith(searchText.toLowerCase()))
-        : [];
-
-    setMatchingCities(tempMatchingCities);
+  const handleClickOutsideCities = e => {
+    if (!citiesRef.current.contains(e.target)) {
+      setMatchingCities([]);
+      setSearchText('')
+    }
   };
 
   useEffect(() => {
-    findMatchingCities();
-  }, [searchText]);
+    document.addEventListener('mousedown', handleClickOutsideCities);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideCities);
+    };
+  }, []);
 
   return (
     <div className={classes.container}>
       <SearchBar searchText={searchText} handleSearchText={handleSearchText} />
-      {matchingCities.length > 0 && <Cities cities={matchingCities} />}
+      <div ref={citiesRef}>{matchingCities.length > 0 && <Cities cities={matchingCities} />}</div>
     </div>
   );
 }
