@@ -5,7 +5,6 @@ import { FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
 import ErrorImage from '../../assets/images/error-img.png';
 
 const Error = WrappedComponent => {
-  console.log(ErrorImage);
   const ErrorMessage = ({ error, ...otherProps }) => {
     return error ? (
       <div className={styles.error}>

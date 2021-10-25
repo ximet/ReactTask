@@ -7,7 +7,7 @@ import WithError from '../../components/WithError/WithError';
 
 function WeatherForecastContainer(props) {
   const WeatherForecastWithPreloader = WithPreloader(WeatherForecast);
-  const WeatherForecastWithError = WithError(WeatherForecastWithPreloader, );
+  const WeatherForecastWithError = WithError(WeatherForecastWithPreloader);
 
   return (
     <WeatherForecastWithError error={props.error} isPageLoading={props.isFetching} {...props} />
