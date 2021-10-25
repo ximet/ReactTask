@@ -1,0 +1,13 @@
+.container {
+  margin-top: 35px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.formTitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3rem;
+  line-height: 56px;
+}
