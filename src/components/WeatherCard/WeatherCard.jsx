@@ -18,7 +18,7 @@ function WeatherCard({ weatherInfo }) {
         alt="weather icon"
         className={styles.weatherIcon}
       />
-            <span className={styles.dayOfWeek}>{date.dayOfWeek}</span>
+      <span className={styles.dayOfWeek}>{date.dayOfWeek}</span>
 
       <div className={styles.addedWeatherInfo}>
         <span className={styles.temperature}>{weatherInfo.maxTemp}</span>
