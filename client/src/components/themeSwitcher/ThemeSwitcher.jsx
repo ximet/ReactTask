@@ -3,6 +3,7 @@ import classes from './themeSwitcher.module.css';
 import darkModeBtnImg from '../../../public/images/darkModeBtn.png';
 import lightModeBtnImg from '../../../public/images/lightModeBtn.png';
 import { themes } from '../../globalConsts';
+import PropTypes from 'prop-types';
 
 function ThemeSwitcher({ theme, themeToggle }) {
   const themeBtnImg = theme == themes.light ? darkModeBtnImg : lightModeBtnImg;
@@ -18,5 +19,10 @@ function ThemeSwitcher({ theme, themeToggle }) {
     </div>
   );
 }
+
+ThemeSwitcher.propTypes = {
+  theme: PropTypes.string.isRequired,
+  themeToggle: PropTypes.func.isRequired
+};
 
 export default ThemeSwitcher;

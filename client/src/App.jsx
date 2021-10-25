@@ -31,7 +31,7 @@ function App(props) {
 
   return (
     <BrowserRouter>
-      <BackgroundImage bgImage={bgImage} />
+      <BackgroundImage src={bgImage} />
       <Header theme={theme} themeToggle={themeToggle} />
       <CityForecastView theme={theme} />
     </BrowserRouter>
