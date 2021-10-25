@@ -5,10 +5,15 @@ import type {
   ChangeSearctStringActionType,
   HourlyForecastActionType,
   DailyForecastActionType,
+  CachedForecastsActionType,
   FavoriteLocationsActionType
 } from '../types/ActionsTypes';
+import type {
+  HourlyForecastType,
+  DailyForecastType,
+  CachedForecastCurrentType
+} from '../types/ForecastType';
 import type { LocationForecastType, LocationType, LocationsType } from '../types/LocationType';
-import type { HourlyForecastType, DailyForecastType } from '../types/ForecastType';
 import type {
   DispatchLocation,
   GetStoreState,
@@ -17,9 +22,12 @@ import type {
   ThunkActionHourlyForecast,
   DispatchDailyForecast,
   ThunkActionDailyForecast,
+  DispatchCachedForecasts,
+  ThunkActionCachedForecasts,
   DispatchFavorite,
   ThunkActionFavorite
 } from '../types/ReduxTypes';
+import { getCurrentTime } from '../utils/dateTimeUtils';
 import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../utils/constants';
 import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
@@ -32,6 +40,7 @@ export const CHANGE_FAVORITE_LOCATIONS = `${PREFIX}/CHANGE_FAVORITE_LOCATIONS`;
 export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
+export const SET_FORECAST = `${PREFIX}/SET_FORECAST`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
@@ -63,6 +72,31 @@ export const changeCurrentHourlyForecast = (
   type: SET_HOURLY_FORECAST,
   currentHourlyForecast: hourlyForecast
 });
+
+export const changeForecasts = (
+  forecast: CachedForecastCurrentType,
+  locationId: string
+): CachedForecastsActionType => ({
+  type: SET_FORECAST,
+  forecast: forecast,
+  locationId: locationId
+});
+
+export const getForecast =
+  (locationId: string): ThunkActionCachedForecasts =>
+  async (dispatch: DispatchCachedForecasts, getState: GetStoreState): Promise<void> => {
+    try {
+      const { data } = await ApiService.getCurrentForecast(locationId);
+      const locationForecast = {
+        cacheTimeStamp: getCurrentTime(),
+        forecast: data.current
+      };
+
+      dispatch(changeForecasts(locationForecast, locationId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 export const setFavoriteCities =
   (location: LocationType, isFavorite: boolean): ThunkActionFavorite =>

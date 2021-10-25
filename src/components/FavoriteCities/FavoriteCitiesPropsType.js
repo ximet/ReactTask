@@ -1,5 +1,10 @@
 // @flow
-import type { LocationsType } from '../../types/LocationType';
+import type { LocationType, LocationsType, LocationForecastType } from '../../types/LocationType';
+
+export type FavoriteLocationForecastType = {
+  ...LocationType,
+  forecast: LocationForecastType
+};
 
 export type FavoriteCitiesPropsType = {
   favoriteCitiesList: LocationsType

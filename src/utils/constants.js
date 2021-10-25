@@ -15,6 +15,11 @@ export const DAILY_FORECAST_TITLE_TEXT = 'Daily forecast symbol for';
 export const CURRENT_CITY_FORECAST_ALT_TEXT = 'Current city forecast';
 export const CURRENT_CITY_FORECAST_TITLE_TEXT = 'Current city forecast';
 
+export const MAX_FORECAST_CACHE_TIME = 300000; //miliseconds
 export const CHART_BACKGROUND_COLOR = 'rgb(0, 178, 255, 0.5)';
 export const CHART_BORDER_COLOR = 'rgba(248, 178, 0, 1)';
 export const CHART_LABEL_COLOR = '#00b2ff';
+
+export const WIND_SPEED_MEASURE = 'km/h';
+export const PRECITIPATE_MEASURE = '%';
+export const HUMIDITY_MEASURE = '%';

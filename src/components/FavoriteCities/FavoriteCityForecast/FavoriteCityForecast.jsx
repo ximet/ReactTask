@@ -2,43 +2,30 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
-import ApiService from '../../../services/ForecastApiService';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
-import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
-import { setFavoriteCities } from '../../../actions/locationsManagerActions';
+import {
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
+} from '../../../utils/constants';
+import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
+import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
+import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
+import { useCacheForecast } from '../../../hooks/forecastHooks';
+
 import type {
   FavoriteCityForecastPropsType,
   FavoriteCityForecastOwnPropsType
 } from './FavoriteCityForecastPropsType';
 
-function FavoriteCityForecast({
-  location,
-  setFavoriteCities
-}: FavoriteCityForecastPropsType): React$Node {
-  const [forecast, setForecast] = React.useState({});
-  const symbolUrl = forecast?.symbol
-    ? `${FORECAST_SYMBOL_LINK}${forecast?.symbol}${FORECAST_SYMBOL_EXT}`
-    : '';
-
-  React.useEffect(() => {
-    const setForecastValue = async (): Promise<void> => {
-      let currentForecast = {};
-      try {
-        const { data } = await ApiService.getCurrentForecast(location.id);
-        currentForecast = data.current;
-      } catch (error) {
-        console.error(error);
-      }
-
-      setForecast(currentForecast);
-    };
-
-    setForecastValue();
-  }, []);
-
+function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node {
+  const forecast = selectCurrentForecast(props.forecasts, props.location.id);
+  const symbolUrl = getForecastSymbolUrl(forecast);
   const handleFavoriteCityDelete = event => {
-    setFavoriteCities(location, false);
+    props.setFavoriteCities(props.location, false);
   };
+
+  useCacheForecast(props.forecasts, props.location, props.getForecast);
 
   return (
     <div className={classes.item}>
@@ -51,24 +38,39 @@ function FavoriteCityForecast({
           <div className={classes.temperature}>{forecast?.temperature}</div>
         </div>
         <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{location?.name}</div>
-          <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
-          <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
-          <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
+          <div className={classes.cityName}>{props.location?.name}</div>
+          <div className={classes.wind}>
+            Wind: {forecast?.windSpeed} {WIND_SPEED_MEASURE}
+          </div>
+          <div className={classes.humidity}>
+            Humidity: {forecast?.relHumidity}
+            {HUMIDITY_MEASURE}
+          </div>
+          <div className={classes.precitipate}>
+            Precitipate: {forecast?.precipProb}
+            {PRECITIPATE_MEASURE}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+const mapStateToProps = ({ locationManager: { forecasts } }) => {
+  return {
+    forecasts: forecasts
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
+    getForecast: locationId => dispatch(getForecast(locationId)),
     setFavoriteCities: (location, isFavorite) => dispatch(setFavoriteCities(location, isFavorite))
   };
 };
 
 const WrappedFavoriteCityForecast = (connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(FavoriteCityForecast): React.AbstractComponent<FavoriteCityForecastOwnPropsType>);
 

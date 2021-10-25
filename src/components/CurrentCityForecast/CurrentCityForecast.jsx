@@ -3,39 +3,27 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
-import ApiService from '../../services/ForecastApiService';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
+import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
-  FORECAST_SYMBOL_EXT,
-  FORECAST_SYMBOL_LINK,
   CURRENT_CITY_FORECAST_ALT_TEXT,
-  CURRENT_CITY_FORECAST_TITLE_TEXT
+  CURRENT_CITY_FORECAST_TITLE_TEXT,
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
 } from '../../utils/constants';
+import { selectCurrentForecast } from '../../selectors/selectorsForecast';
+import { getForecast } from '../../actions/locationsManagerActions';
+import { useCacheForecast } from '../../hooks/forecastHooks';
 
-function CurrentCityForecast({ currentLocation }) {
-  const [currentCityForecast, setCurrentCityForecast] = useState({});
+function CurrentCityForecast(props) {
+  const currentLocationId = props.currentLocation.id;
+  const currentForecast = selectCurrentForecast(props.forecasts, currentLocationId);
+  const symbolUrl = getForecastSymbolUrl(currentForecast);
+  const forecastTime = formatTime(currentForecast?.time);
+  const forecastDay = getDay(currentForecast?.time);
 
-  const currentLocationId = currentLocation.id;
-  const symbolUrl = currentCityForecast.forecast?.symbol
-    ? `${FORECAST_SYMBOL_LINK}${currentCityForecast.forecast?.symbol}${FORECAST_SYMBOL_EXT}`
-    : '';
-  const forecastTime = formatTime(currentCityForecast.forecast?.time);
-  const forecastDay = getDay(currentCityForecast.forecast?.time);
-
-  useEffect(async () => {
-    try {
-      if (currentLocationId) {
-        const currentForecast = await ApiService.getCurrentForecast(currentLocationId);
-
-        setCurrentCityForecast({
-          forecast: currentForecast.data.current,
-          city: currentLocation
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [currentLocation]);
+  useCacheForecast(props.forecasts, props.urrentLocation, props.getForecast);
 
   return (
     <div className={classes.currentCityContainer}>
@@ -48,27 +36,31 @@ function CurrentCityForecast({ currentLocation }) {
               alt={CURRENT_CITY_FORECAST_ALT_TEXT}
               title={CURRENT_CITY_FORECAST_TITLE_TEXT}
             />
-            <div className={classes.temperature}>{currentCityForecast.forecast?.temperature}</div>
+            <div className={classes.temperature}>{currentForecast?.temperature}</div>
           </div>
           <div className={classes.additionalInfo}>
             <div className={classes.precitipate}>
-              Precitipate: {currentCityForecast.forecast?.precipProb}%
+              Precitipate: {currentForecast?.precipProb}
+              {PRECITIPATE_MEASURE}
             </div>
             <div className={classes.humidity}>
-              Humidity: {currentCityForecast.forecast?.relHumidity}%
+              Humidity: {currentForecast?.relHumidity}
+              {HUMIDITY_MEASURE}
             </div>
-            <div className={classes.wind}>Wind: {currentCityForecast.forecast?.windSpeed} km/h</div>
+            <div className={classes.wind}>
+              Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASURE}
+            </div>
           </div>
         </div>
         <div className={classes.locationInfo}>
-          <div className={classes.cityName}>{currentCityForecast.city?.name}</div>
+          <div className={classes.cityName}>{props.currentLocation?.name}</div>
           <div className={classes.areaName}>
-            {currentCityForecast.city?.adminArea} / {currentCityForecast.city?.country}
+            {props.currentLocation?.adminArea} / {props.currentLocation?.country}
           </div>
           <div className={classes.forecastDate}>
             {forecastDay} {forecastTime}
           </div>
-          <div className={classes.forecastDate}>{currentCityForecast.forecast?.symbolPhrase}</div>
+          <div className={classes.forecastDate}>{currentForecast?.symbolPhrase}</div>
         </div>
       </div>
 
@@ -78,12 +70,22 @@ function CurrentCityForecast({ currentLocation }) {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+const mapStateToProps = ({ locationManager: { currentLocation, forecasts } }) => {
   return {
-    currentLocation
+    currentLocation,
+    forecasts
   };
 };
 
-const WrappedCurrentCityForecast = connect(mapStateToProps)(CurrentCityForecast);
+const mapDispatchToProps = dispatch => {
+  return {
+    getForecast: locationId => dispatch(getForecast(locationId))
+  };
+};
+
+const WrappedCurrentCityForecast = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CurrentCityForecast);
 
 export default WrappedCurrentCityForecast;

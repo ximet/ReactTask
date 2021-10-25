@@ -3,6 +3,7 @@ import {
   CHANGE_SEARCH_STRING,
   SET_HOURLY_FORECAST,
   SET_DAILY_FORECAST,
+  SET_FORECAST,
   CHANGE_FAVORITE_LOCATIONS
 } from '../actions/locationsManagerActions';
 import StorageConnection from '../services/StorageConnectionService';
@@ -28,6 +29,10 @@ export default function (state = initialState, action) {
 
     case CHANGE_SEARCH_STRING: {
       return { ...state, searchString };
+    }
+
+    case SET_FORECAST: {
+      return { ...state, forecasts: { ...state.forecasts, [action.locationId]: action.forecast } };
     }
 
     case CHANGE_FAVORITE_LOCATIONS: {
