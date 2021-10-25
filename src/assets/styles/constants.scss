@@ -3,6 +3,9 @@
   --color-secondary: #000;
   --color-primary-accent: #00b2ff;
   --color-secondary-accent: #f8b200;
+  --color-error: #e30000;
+  --color-success: #00d100;
+
   --additional-text-collor: #aaaaaa;
   --border-color: #dadada;
   --main-border-color: #dadada;
@@ -30,6 +33,8 @@ $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
 $color-primary-accent: var(--color-primary-accent);
 $color-secondary-accent: var(--color-secondary-accent);
+$color-error: var(--color-error);
+$color-success: var(--color-success);
 
 $main-font-size: 16px;
 $main-font-family: Arial;
@@ -56,6 +61,14 @@ $additional-text-font-size: 18px;
 $temperature-type-content: '℃';
 
 $preloader-main-color: $color-primary-accent;
+$preloader-additional-color: #00b2ff47;
+
+$error-font-size: 10px;
+
+$hover-btn-bg-color: $color-primary-accent;
+$hover-btn-color: $color-primary;
 $preloader-additional-color: var(--preloader-additional-color);
 
 $hover-item-color: var(--hover-item-color);
+
+$form-title-font-size: 18px;
