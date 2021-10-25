@@ -21,23 +21,23 @@ function validateForm(values) {
 }
 
 function ContactUs() {
-  const [isSuccessMessageActive, setIsSuccessMessageActive] = useState(false);
+  const [shouldShowSubmitMessage, setShouldShowSubmitMessage] = useState(false);
   return (
     <div className="contact-us">
       <h2 className="contact-us__title">Contact us</h2>
-      {isSuccessMessageActive ? (
+      {shouldShowSubmitMessage ? (
         <div className="contact-us__thanks-message">Thank you for contacting us</div>
       ) : (
         <Formik
           initialValues={{ name: '', email: '', message: '' }}
           validate={validateForm}
           onSubmit={(values, { setSubmitting }) => {
-            setIsSuccessMessageActive(true);
+            setShouldShowSubmitMessage(true);
             localStorage.setItem('feedback', JSON.stringify(values));
             setSubmitting(false);
 
             setTimeout(() => {
-              setIsSuccessMessageActive(false);
+              setShouldShowSubmitMessage(false);
             }, AFTER_SUBMITTING_TIMEOUT);
           }}
         >
