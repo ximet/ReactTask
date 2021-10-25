@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styles from './WeatherForecast.module.scss';
-
 import CityForecast from '../../layouts/CityForecast/Container';
 import DetailedForecast from '../../layouts/DetailedForecast/DetailedForecast';
 
