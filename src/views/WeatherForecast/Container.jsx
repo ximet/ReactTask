@@ -1,16 +1,11 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { CURRENT_CITY_ID, FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
-import { getWeatherInfo } from '../../redux/actions/weatherActions';
+import { FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
 
 import WeatherForecast from './WeatherForecast';
 
 class WeatherForecastContainer extends React.Component {
-  componentDidMount() {
-    this.props.getWeatherInfo(CURRENT_CITY_ID);
-  }
-
   render() {
     if (this.props.isFetching) {
       return <span> Loading...</span>;
@@ -36,10 +31,4 @@ const mapStateToProps = state => ({
   cityInfo: state.location.currentLocation
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getWeatherInfo: location => dispatch(getWeatherInfo(location))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(WeatherForecastContainer);
+export default connect(mapStateToProps)(WeatherForecastContainer);
