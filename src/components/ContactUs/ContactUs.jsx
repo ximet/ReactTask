@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import { handleFormSubmit, validateForm } from '../../utils/utils';
+import './ContactUs.css';
 
 function ContactUs() {
   const [shouldShowSubmitMessage, setShouldShowSubmitMessage] = useState(false);
@@ -45,7 +46,7 @@ function ContactUs() {
                 className="contact-us__validation-error"
               />
 
-              <button type="submit" disabled={isSubmitting}>
+              <button type="submit" disabled={isSubmitting} className="contact-us__btn">
                 Send
               </button>
             </Form>

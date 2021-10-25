@@ -4,10 +4,15 @@
 
 .menu__link {
   display: block;
-  font-size: 14px;
+  padding: 0.2rem;
+  font-size: var(--fz-normal);
   text-decoration: none;
   color: var(--primary-color);
-  transition: transform 0.3s, color 0.3s;
+  transition: transform 0.3s, color 0.3s, border-bottom 0.3s;
+}
+
+.menu__link_active {
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .menu__link:hover {
