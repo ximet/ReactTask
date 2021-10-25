@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from '../../assets/img/svg/icon-arrow.svg';
 import Link from '../Link/Link';
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
 import SocialLinks from '../SocialLinks/SocialLinks';
-import { getContactEmail } from '../../config/contacts';
+import { contactsConfig } from '../../config/contacts';
 
 function Contacts() {
   return (
@@ -12,8 +12,8 @@ function Contacts() {
       <div className={classes.contactsWrapper}>
         <div className={[classes.contactEmail, classes.contact].join(' ')}>
           <h3 className={classes.title}>You can contact us by email</h3>
-          <Link href={`mailto: ${getContactEmail()}`} className={classes.email}>
-            {getContactEmail()}
+          <Link href={`mailto: ${contactsConfig.email}`} className={classes.email}>
+            {contactsConfig.email}
           </Link>
         </div>
         <div className={[classes.contactSocial, classes.contact].join(' ')}>

@@ -1,12 +1,10 @@
 import classes from './SocialLinks.module.scss';
-import { getSocialsList } from '../../config/contacts';
-
-const socials = getSocialsList();
+import { contactsConfig } from '../../config/contacts';
 
 function SocialLinks() {
   return (
     <ul className={classes.socials}>
-      {socials.map(social => (
+      {contactsConfig.socials.map(social => (
         <li className={classes.social} key={social.code}>
           <a
             href={social.link}
