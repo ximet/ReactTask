@@ -2,40 +2,42 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import { AFTER_SUBMITTING_TIMEOUT } from '../../constants/constants';
 
+function validateForm(values) {
+  const errors = {};
+  if (!values.name) {
+    errors.name = 'Required';
+  }
+
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+  if (!values.message) {
+    errors.message = 'Required';
+  }
+  return errors;
+}
+
 function ContactUs() {
-  const [isAfterSubmittiningMessageActive, setIsAfterSubmittiningMessageActive] = useState(false);
+  const [isSuccessMessageActive, setIsSuccessMessageActive] = useState(false);
   return (
     <div className="contact-us">
       <h2 className="contact-us__title">Contact us</h2>
-      {isAfterSubmittiningMessageActive ? (
+      {isSuccessMessageActive ? (
         <div className="contact-us__thanks-message">Thank you for contacting us</div>
       ) : (
         <Formik
           initialValues={{ name: '', email: '', message: '' }}
-          validate={values => {
-            const errors = {};
-            if (!values.name) {
-              errors.name = 'Required';
-            }
-
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-              errors.email = 'Invalid email address';
-            }
-
-            if (!values.message) {
-              errors.message = 'Required';
-            }
-            return errors;
-          }}
+          validate={validateForm}
           onSubmit={(values, { setSubmitting }) => {
-            setIsAfterSubmittiningMessageActive(true);
+            setIsSuccessMessageActive(true);
             localStorage.setItem('feedback', JSON.stringify(values));
             setSubmitting(false);
 
             setTimeout(() => {
-              setIsAfterSubmittiningMessageActive(false);
+              setIsSuccessMessageActive(false);
             }, AFTER_SUBMITTING_TIMEOUT);
           }}
         >
