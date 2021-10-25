@@ -5,7 +5,16 @@ import { validateEmailField, validateTextField } from '../../utils/validationFor
 import Link from '../Link/Link';
 
 function FeedbackForm() {
-  const [isSended, setIsSended] = useState(true);
+  const [isSended, setIsSended] = useState(false);
+  const initialFormValues = {
+    name: '',
+    email: '',
+    message: ''
+  };
+  const handleSubmitForm = values => {
+    alert('Form was sended!');
+    setIsSended(true);
+  };
 
   return (
     <div className={classes.formWrapper}>
@@ -23,17 +32,7 @@ function FeedbackForm() {
           <div className={classes.description}>
             You can ask any questions and our support team will answer you.
           </div>
-          <Formik
-            initialValues={{
-              name: '',
-              email: '',
-              message: ''
-            }}
-            onSubmit={values => {
-              alert('Form was sended!');
-              setIsSended(true);
-            }}
-          >
+          <Formik initialValues={initialFormValues} onSubmit={handleSubmitForm}>
             {({ errors, touched, isValidating }) => (
               <Form>
                 <div
