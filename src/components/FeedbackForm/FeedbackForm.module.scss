@@ -1,7 +1,5 @@
 @import '../../assets/styles/constants.scss';
 
-$title-font-size: 18px;
-
 .formWrapper {
   max-width: 310px;
   width: 100%;
@@ -13,7 +11,7 @@ $title-font-size: 18px;
 
   .title {
     color: $color-primary-accent;
-    font-size: $title-font-size;
+    font-size: $form-title-font-size;
     text-align: center;
     text-transform: uppercase;
     margin: 20px 0;
