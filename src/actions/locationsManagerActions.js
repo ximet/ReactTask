@@ -96,7 +96,6 @@ export const getForecast =
         cacheTimeStamp: getCurrentTime(),
         forecast: data.current
       };
-
       dispatch(changeForecasts(locationForecast, locationId));
     } catch (error) {
       console.error(error);
@@ -191,12 +190,10 @@ export const setGeolocationCity =
     } catch (error) {
       console.error(error);
     }
-
-    dispatch(changeLocation(currentLocationData));
   };
 
 export const changeWarnings = (warnings: WarningsType): WarningsActionType => ({
-  type: CHANGE_LOCATION,
+  type: SET_WARNINGS,
   warnings: warnings
 });
 

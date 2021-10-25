@@ -4,8 +4,6 @@ import classes from './Warnings.module.scss';
 import Warning from './Warning/Warning';
 import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
 import { connect } from 'react-redux';
-import { useEffect, useState } from 'react';
-// import { useLocationWarnings } from '../../hooks/warningsHooks';
 import { setWarnings } from '../../actions/locationsManagerActions';
 import {
   EMPTY_WARNING_LIST_MAIN_MESSAGE,
@@ -15,7 +13,7 @@ import type { WarningsPropsType } from './WarningsPropsType';
 
 function Warnings({ currentLocation, warnings, setWarnings }: WarningsPropsType): React$Node {
   React.useEffect(() => {
-    setWarnings(currentLocation.id);
+    if(currentLocation?.id) setWarnings(currentLocation.id);
   }, [currentLocation]);
 
   return (
