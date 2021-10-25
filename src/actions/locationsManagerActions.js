@@ -35,7 +35,6 @@ import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../
 import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
 import ApiService from '../services/ForecastApiService';
-import RequestController from '../controllers/RequestController';
 
 const PREFIX = 'LOCATION_MANAGER';
 
@@ -201,8 +200,10 @@ export const setWarnings =
   (locationId: number | string): ThunkActionWarnings =>
   async (dispatch: DispatchWarnings, getState: GetStoreState): Promise<void> => {
     try {
-      const warnings = await RequestController.getWarnings(locationId);
-      dispatch(changeWarnings(warnings));
+      if (locationId) {
+        const { data } = await ApiService.getWarnings(locationId);
+        dispatch(changeWarnings(data.warnings));
+      }
     } catch (error) {
       console.error(error);
     }
