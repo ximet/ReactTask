@@ -6,14 +6,14 @@ import WeatherCard from '../../../components/WeatherCard/WeatherCard';
 
 function DailyForecast({ forecast }) {
   return (
-    <>
+    <div className={styles.dailyForecast}>
       <h2 className={styles.dailyForecastTitle}>Daily Forecast</h2>
-      <div className={styles.dailyForecast}>
+      <div className={styles.dailyForecastData}>
         {forecast.map(weatherInfo => (
           <WeatherCard key={weatherInfo.date} weatherInfo={weatherInfo} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

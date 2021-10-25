@@ -8,21 +8,19 @@ import { getFormattedDate } from '../../utils/getFormattedDate';
 function WeatherCard({ weatherInfo }) {
   const date = getFormattedDate(weatherInfo.date);
 
-  console.log(weatherInfo);
-
   return (
     <div className={styles.weatherCard}>
-      <span className={styles.date}>{date.date}</span>
       <img
         src={`${FORECAST_PATHS.getIconUrl}${weatherInfo.symbol}.png`}
         alt="weather icon"
         className={styles.weatherIcon}
       />
       <span className={styles.dayOfWeek}>{date.dayOfWeek}</span>
+      <span className={styles.date}>{date.date}</span>
 
       <div className={styles.addedWeatherInfo}>
         <span className={styles.temperature}>{weatherInfo.maxTemp}</span>
-        {/* <Line /> */}
+        <span>|</span>
         <span className={styles.temperature}>{weatherInfo.minTemp}</span>
       </div>
     </div>

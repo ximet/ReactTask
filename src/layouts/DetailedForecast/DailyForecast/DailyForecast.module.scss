@@ -1,12 +1,11 @@
 @import '../../../assets/styles/constants/main.scss';
 
-.daily-forecast {
+.daily-forecast-data {
   box-sizing: border-box;
   display: flex;
-  height: 25%;
+}
 
-  .daily-forecast-title {
-    font-size: $font-size-md;
-    margin-bottom: 10px;
-  }
+.daily-forecast-title {
+  font-size: $font-size-md;
+  margin-bottom: 10px;
 }
