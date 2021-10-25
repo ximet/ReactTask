@@ -1,10 +1,10 @@
 // @flow
-import type { LocationType } from '../types/LocationType';
+import type { LocationType } from './LocationType';
 import type {
   HourlyForecastType,
   DailyForecastType,
   CachedForecastCurrentType
-} from '../types/ForecastType';
+} from './ForecastType';
 
 export type ChangeLocationActionType = {
   type: string,

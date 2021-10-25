@@ -22,7 +22,6 @@ function FavoriteCityForecast({
 }: FavoriteCityForecastPropsType): React$Node {
   const forecast = selectCurrentForecast(forecasts, location.id);
   const symbolUrl = getForecastSymbolUrl(forecast);
-
   const handleFavoriteCityDelete = event => {
     setFavoriteCities(location, false);
   };

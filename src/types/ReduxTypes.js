@@ -1,12 +1,10 @@
 // @flow
 import type { LocationType, LocationForecastType } from './LocationType';
-
 import type {
   HourlyForecastType,
   DailyForecastType,
   CachedForecastCurrentType
 } from './ForecastType';
-
 import type {
   ChangeLocationActionType,
   HourlyForecastActionType,

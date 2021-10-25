@@ -97,6 +97,7 @@ export const getForecast =
       console.error(error);
     }
   };
+
 export const setFavoriteCities =
   (location: LocationType, isFavorite: boolean): ThunkActionFavorite =>
   (dispatch: DispatchFavorite, getState: GetStoreState): void => {
