@@ -13,7 +13,7 @@ $measure-font-size: 12px;
 
   .title {
     text-align: center;
-    font-weight: bold;
+    font-weight: $main-bold-font-weight;
     font-size: $additional-text-font-size;
     text-transform: uppercase;
   }
