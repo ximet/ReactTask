@@ -13,7 +13,7 @@ import type { WarningsPropsType } from './WarningsPropsType';
 
 function Warnings({ currentLocation, warnings, setWarnings }: WarningsPropsType): React$Node {
   React.useEffect(() => {
-    if(currentLocation?.id) setWarnings(currentLocation.id);
+    if (currentLocation?.id) setWarnings(currentLocation.id);
   }, [currentLocation]);
 
   return (
