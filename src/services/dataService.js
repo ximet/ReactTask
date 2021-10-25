@@ -24,10 +24,12 @@ export const dataService = {
   },
 
   getFullForecast: async function (id) {
-    const cityForecast = await this.getCurrentForecast(id);
-    const dailyCityForecast = await this.getForecast(FORECAST_TYPES.day, id);
-    const hourlyCityForecast = await this.getForecast(FORECAST_TYPES.hour, id);
-    const cityInfo = await this.getCityInfo(id);
+    const [cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo] = await Promise.all([
+      this.getCurrentForecast(id),
+      this.getForecast(FORECAST_TYPES.day, id),
+      this.getForecast(FORECAST_TYPES.hour, id),
+      this.getCityInfo(id)
+    ]);
 
     return {
       cityForecast: cityForecast.current,

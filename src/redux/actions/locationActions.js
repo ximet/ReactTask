@@ -13,5 +13,5 @@ export const setRecentCity = data => ({
 
 export const changeLocation = data => dispatch => {
   dispatch(setRecentCity(data));
-  dispatch(getAllData(data.id))
+  dispatch(getAllData(data.id));
 };
