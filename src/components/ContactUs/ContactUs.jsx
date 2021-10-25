@@ -1,24 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
-import { AFTER_SUBMITTING_TIMEOUT } from '../../constants/constants';
-
-function validateForm(values) {
-  const errors = {};
-  if (!values.name) {
-    errors.name = 'Required';
-  }
-
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-
-  if (!values.message) {
-    errors.message = 'Required';
-  }
-  return errors;
-}
+import { handleFormSubmit, validateForm } from '../../utils/utils';
 
 function ContactUs() {
   const [shouldShowSubmitMessage, setShouldShowSubmitMessage] = useState(false);
@@ -31,15 +13,9 @@ function ContactUs() {
         <Formik
           initialValues={{ name: '', email: '', message: '' }}
           validate={validateForm}
-          onSubmit={(values, { setSubmitting }) => {
-            setShouldShowSubmitMessage(true);
-            localStorage.setItem('feedback', JSON.stringify(values));
-            setSubmitting(false);
-
-            setTimeout(() => {
-              setShouldShowSubmitMessage(false);
-            }, AFTER_SUBMITTING_TIMEOUT);
-          }}
+          onSubmit={(values, { setSubmitting }) =>
+            handleFormSubmit(values, setSubmitting, setShouldShowSubmitMessage)
+          }
         >
           {({ isSubmitting }) => (
             <Form className="contact-us__form">
