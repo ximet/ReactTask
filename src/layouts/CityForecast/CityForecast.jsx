@@ -27,7 +27,7 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
         <span className={styles.temperatureDescription}>{symbolPhrase}</span>
         <div className={styles.cityLocation}>
           <img src={LocationIcon} alt="location icon" />
-          <span>{`${cityInfo.name}, ${cityInfo.country}`}</span>
+          <span className={styles.location}>{`${cityInfo.name}, ${cityInfo.country}`}</span>
         </div>
         <div className={styles.addedInfo}>
           <div className={styles.addedInfoType}>

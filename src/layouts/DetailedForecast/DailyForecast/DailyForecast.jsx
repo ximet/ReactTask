@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import WeatherCard from './WeatherCard/WeatherCard';
+
+import styles from './DailyForecast.module.scss';
+import WeatherCard from '../../../components/WeatherCard/WeatherCard';
 
 function DailyForecast({ forecast }) {
-  console.log(forecast);
   return (
-    <div>
-      {forecast.map(weatherInfo => (
-        <WeatherCard key={weatherInfo.date} weatherInfo={weatherInfo} />
-      ))}
-    </div>
+    <>
+      <h2 className={styles.dailyForecastTitle}>Daily Forecast</h2>
+      <div className={styles.dailyForecast}>
+        {forecast.map(weatherInfo => (
+          <WeatherCard key={weatherInfo.date} weatherInfo={weatherInfo} />
+        ))}
+      </div>
+    </>
   );
 }
 

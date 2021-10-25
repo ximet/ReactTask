@@ -17,7 +17,7 @@ export function getFormattedCurrentDate() {
 export function getFormattedDate(formDate) {
   formDate = new Date(formDate);
   const date = formDate.toLocaleString(dateFormat, dateOptions);
-  const dayOfWeek = date.toLocaleString(dateFormat, dayOfWeekOptions);
+  const dayOfWeek = formDate.toLocaleString(dateFormat, dayOfWeekOptions);
 
   return { date, dayOfWeek };
 }
