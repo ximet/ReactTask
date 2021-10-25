@@ -5,7 +5,7 @@ export const CurrentLocationInfoType = PropTypes.shape({
   name: string.isRequired,
   country: string.isRequired,
   timezone: string.isRequired,
-  adminArea: string.isRequired,
+  adminArea: string,
   lon: number.isRequired,
   lat: number.isRequired
 });

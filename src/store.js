@@ -4,6 +4,7 @@ import theme from './reducers/themeReducer';
 import geoDetection from './reducers/geoDetectionReducer';
 import currentLocation from './reducers/currentLocationReducer';
 import selectedLocations from './reducers/selectedLocationsReducer';
+import locationsSearch from './reducers/locationsSearchReducer';
 
 import thunkMiddleware from 'redux-thunk';
 
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   theme,
   geoDetection,
   currentLocation,
-  selectedLocations
+  selectedLocations,
+  locationsSearch
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
