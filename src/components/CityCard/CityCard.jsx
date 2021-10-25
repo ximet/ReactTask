@@ -1,15 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './CityCard.module.scss';
-import ExampleCityImg from '../../assets/images/city-example-img.png';
 
 function CityCard({ info }) {
   return (
     <div className={styles.cityCard}>
-      <img src={ExampleCityImg} alt="city card" className={styles.cityImg} />
-      <span className={styles.cityName}>{info.name}</span>
+      <span className={styles.cityName}>{`${info.country}, ${info.name}`}</span>
     </div>
   );
 }
+
+CityCard.propTypes = {
+  info: PropTypes.shape({
+    country: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  })
+};
 
 export default CityCard;

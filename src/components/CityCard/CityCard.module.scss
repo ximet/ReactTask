@@ -7,20 +7,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 130px;
-  height: 130px;
+  width: 210px;
   padding: 10px;
   margin-right: 20px;
   background-color: $card-bg-color;
   color: $primary-font-color;
-
-  .city-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    transform: scale(1);
-    transition: all $default-transition-delay ease;
-  }
+  overflow: auto;
 
   .city-name {
     font-size: $font-size-sm;
@@ -30,9 +22,5 @@
     background-color: $secondary-bg-color;
     color: $secondary-font-color;
     box-shadow: $default-box-shadow;
-
-    & .city-img {
-      transform: scale(1.1);
-    }
   }
 }
