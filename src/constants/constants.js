@@ -68,3 +68,4 @@ export const WEATHER_UPDATE_INTERVAL = 300000; // in milliseconds
 export const WEATHER_FIRST_UPDATE_INTERVAL = 100; // in milliseconds
 export const WEATHER_MIN_WAIT_INTERVAL = 100; // in milliseconds
 export const TOKEN_UPDATE_INTERVAL = 3600000; // in milliseconds
+export const AFTER_SUBMITTING_TIMEOUT = 2000; // in milliseconds
