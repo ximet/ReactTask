@@ -12,6 +12,20 @@
   --hover-item-color: #f9f9f9;
 }
 
+.dark_theme {
+  --color-primary: #3a3a3a;
+  --color-secondary: #fff;
+  --color-primary-accent: #00b2ff;
+  --color-secondary-accent: #f8b200;
+  --additional-text-collor: #aaaaaa;
+  --border-color: #dadada;
+  --main-border-color: #dadada;
+  --shadow-theme-color: rgba(255, 255, 255, 0.11);
+  --additional-text-collor: #aaaaaa;
+  --preloader-additional-color: #00b2ff47;
+  --hover-item-color: #282828;
+}
+
 $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
 $color-primary-accent: var(--color-primary-accent);

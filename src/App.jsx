@@ -7,10 +7,12 @@ import { useState, useEffect } from 'react';
 import Geolocation from './services/GeolocationService';
 import { changeLocation, setGeolocationCity } from './actions/locationsManagerActions';
 import Storage from './services/StorageConnectionService';
-import { CURRENT_LOCATION_STORAGE_CODE } from './utils/constants';
+import { CURRENT_LOCATION_STORAGE_CODE, THEME_STORAGE_CODE } from './utils/constants';
 import ThemeContext from './providers/themeContext';
 import { getDefaultTheme } from './config/themeConfig';
-import classes from './assets/styles/constants.scss';
+import constants from './assets/styles/constants.scss';
+import classes from './assets/styles/common.scss';
+import StorageService from './services/StorageConnectionService';
 
 function App(props) {
   const [theme, setTheme] = useState(() => getDefaultTheme());
@@ -18,6 +20,7 @@ function App(props) {
   const selectTheme = newTheme => {
     if (theme.code !== newTheme.code) {
       setTheme(newTheme);
+      StorageService.setValue(THEME_STORAGE_CODE, newTheme);
     }
   };
 
@@ -27,7 +30,7 @@ function App(props) {
 
   return (
     <ThemeContext.Provider value={{ theme, selectTheme }}>
-      <div id="themeContainer" className={classes[theme.code]}>
+      <div id="themeContainer" className={constants[theme.code]}>
         <BrowserRouter>
           <Header />
           <Switch>
