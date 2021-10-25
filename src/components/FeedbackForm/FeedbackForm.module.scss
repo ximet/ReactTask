@@ -1,0 +1,128 @@
+@import '../../assets/styles/constants.scss';
+
+.formWrapper {
+  max-width: 310px;
+  width: 100%;
+  margin-right: 40px;
+  border: 1px solid $main-border-color;
+  border-radius: 5px;
+  padding: 20px 40px;
+  min-height: 400px;
+
+  .title {
+    color: $color-primary-accent;
+    font-size: $form-title-font-size;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 80px 0;
+
+    .title {
+      margin: 10px 0;
+      color: $color-secondary-accent;
+    }
+  }
+
+  .description {
+    margin-bottom: 30px;
+    color: $additional-text-collor;
+    font-size: $additional-text-font-size;
+    text-align: center;
+  }
+
+  .fieldWrapper {
+    position: relative;
+
+    &::after {
+      content: attr(data-error);
+      background-color: $main-bg-color;
+      color: $color-error;
+      position: absolute;
+      bottom: -10;
+      left: 15px;
+      font-size: $error-font-size;
+    }
+
+    &.error {
+      .field {
+        border: 1px solid $color-error;
+      }
+
+      .label {
+        color: $color-error;
+      }
+    }
+
+    &.success {
+      .field {
+        border: 1px solid $color-success;
+      }
+
+      .label {
+        color: $color-success;
+      }
+    }
+
+    .label {
+      position: absolute;
+      left: 15px;
+      transform: translateY(-50%);
+      background-color: $main-bg-color;
+      padding: 0 10px;
+      color: $color-primary-accent;
+    }
+
+    .field {
+      display: block;
+      width: 100%;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      padding: 10px 15px;
+      outline: 0;
+      box-sizing: border-box;
+      resize: none;
+      -webkit-box-shadow: 0 0 0px 1000px $main-bg-color inset;
+
+      &:focus,
+      &:hover {
+        border: 1px solid $color-secondary-accent;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .btn {
+    border: 1px solid $color-primary-accent;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: $color-primary-accent;
+    background-color: $main-bg-color;
+    padding: 10px 15px;
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover-btn-bg-color;
+      color: $hover-btn-color;
+    }
+  }
+}

@@ -3,33 +3,28 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
-import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
+import {
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
+} from '../../../utils/constants';
 import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
-import ForecastCacheController from '../../../controllers/ForecastCacheController';
-
+import { useCacheForecast } from '../../../hooks/forecastHooks';
 import type {
   FavoriteCityForecastPropsType,
   FavoriteCityForecastOwnPropsType
 } from './FavoriteCityForecastPropsType';
 
-function FavoriteCityForecast({
-  location,
-  forecasts,
-  setFavoriteCities,
-  ...props
-}: FavoriteCityForecastPropsType): React$Node {
-  const forecast = selectCurrentForecast(forecasts, location.id);
+function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node {
+  const forecast = selectCurrentForecast(props.forecasts, props.location.id);
   const symbolUrl = getForecastSymbolUrl(forecast);
-
   const handleFavoriteCityDelete = event => {
-    setFavoriteCities(location, false);
+    props.setFavoriteCities(props.location, false);
   };
 
-  React.useEffect(() => {
-    if (ForecastCacheController(location.id, forecasts)) props.getForecast(location.id);
-  }, [location]);
+  useCacheForecast(props.forecasts, props.location, props.getForecast);
 
   return (
     <div className={classes.item}>
@@ -42,10 +37,18 @@ function FavoriteCityForecast({
           <div className={classes.temperature}>{forecast?.temperature}</div>
         </div>
         <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{location?.name}</div>
-          <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
-          <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
-          <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
+          <div className={classes.cityName}>{props.location?.name}</div>
+          <div className={classes.wind}>
+            Wind: {forecast?.windSpeed} {WIND_SPEED_MEASURE}
+          </div>
+          <div className={classes.humidity}>
+            Humidity: {forecast?.relHumidity}
+            {HUMIDITY_MEASURE}
+          </div>
+          <div className={classes.precitipate}>
+            Precitipate: {forecast?.precipProb}
+            {PRECITIPATE_MEASURE}
+          </div>
         </div>
       </div>
     </div>

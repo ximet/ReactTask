@@ -1,0 +1,47 @@
+@import '../../assets/styles/constants.scss';
+
+$contacts-title-font-size: 24px;
+
+.contactsContainer {
+  border: 1px solid $main-border-color;
+  border-radius: 10px;
+  padding: 30px 40px;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+
+  .contactsWrapper {
+    width: 100%;
+    .title {
+      font-size: $contacts-title-font-size;
+      font-weight: $main-bold-font-weight;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .contact:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    .contactEmail {
+      text-align: center;
+
+      .email {
+        font-weight: $main-bold-font-weight;
+      }
+    }
+
+    .contactFeedback {
+      position: relative;
+      padding: 0 100px;
+
+      .arrow {
+        position: absolute;
+        height: 41px;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
