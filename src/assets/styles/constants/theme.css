@@ -15,7 +15,7 @@
   --secondary-bg-color: var(--blue);
 
   --chart-bg-color: var(--lighten-blue);
-  --city-bg-color: var(--white);
+  --card-bg-color: var(--white);
 
   --arrow-btn-color: var(--aquamarine);
   --hover-arrow-btn-color: var(--blue);
@@ -29,7 +29,7 @@
   --secondary-bg-color: var(--darken-gray);
 
   --chart-bg-color: var(--darken-gray);
-  --city-bg-color: var(--darken-gray);
+  --card-bg-color: var(--darken-gray);
 
   --arrow-btn-color: var(--lighten-blue);
   --hover-arrow-btn-color: var(--darken-gray);

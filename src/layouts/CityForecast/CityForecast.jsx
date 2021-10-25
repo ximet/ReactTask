@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { CityForecastTypes, CityInfoTypes } from '../../types/WeatherDataTypes';
-
 import styles from './CityForecast.module.scss';
-import { THEMES, BG_IMAGES } from '../../constants/themes';
 import LocationIcon from '../../assets/images/location-icon.png';
 import WindIcon from '../../assets/images/wind-icon.png';
 import HumidityIcon from '../../assets/images/hum-icon.png';
@@ -14,10 +11,9 @@ import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
 import VerticalLine from '../../components/VerticalLine/VerticalLine';
 
-function CityForecast({ cityForecast, cityInfo, theme }) {
+function CityForecast({ cityForecast, cityInfo, themeBg }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
-  const themeBg = theme === THEMES.light ? BG_IMAGES.light : BG_IMAGES.dark;
 
   return (
     <div className={styles.cityForecast}>
@@ -31,7 +27,7 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
         <span className={styles.temperatureDescription}>{symbolPhrase}</span>
         <div className={styles.cityLocation}>
           <img src={LocationIcon} alt="location icon" />
-          <span>{`${cityInfo.name}, ${cityInfo.country}`}</span>
+          <span className={styles.location}>{`${cityInfo.name}, ${cityInfo.country}`}</span>
         </div>
         <div className={styles.addedInfo}>
           <div className={styles.addedInfoType}>
@@ -56,9 +52,18 @@ function CityForecast({ cityForecast, cityInfo, theme }) {
 }
 
 CityForecast.propTypes = {
-  cityForecast: CityForecastTypes,
-  cityInfo: CityInfoTypes,
-  theme: PropTypes.string.isRequired
+  cityForecast: PropTypes.shape({
+    relHumidity: PropTypes.number.isRequired,
+    symbol: PropTypes.string.isRequired,
+    symbolPhrase: PropTypes.string.isRequired,
+    temperature: PropTypes.number.isRequired,
+    windSpeed: PropTypes.number.isRequired
+  }),
+  cityInfo: PropTypes.shape({
+    country: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
+  themeBg: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

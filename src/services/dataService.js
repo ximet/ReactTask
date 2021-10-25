@@ -24,21 +24,19 @@ export const dataService = {
   },
 
   getFullForecast: async function (id) {
-    try {
-      const cityForecast = await this.getCurrentForecast(id);
-      const dailyCityForecast = await this.getForecast(FORECAST_TYPES.day, id);
-      const hourlyCityForecast = await this.getForecast(FORECAST_TYPES.hour, id);
-      const cityInfo = await this.getCityInfo(id);
+    const [cityForecast, dailyCityForecast, hourlyCityForecast, cityInfo] = await Promise.all([
+      this.getCurrentForecast(id),
+      this.getForecast(FORECAST_TYPES.day, id),
+      this.getForecast(FORECAST_TYPES.hour, id),
+      this.getCityInfo(id)
+    ]);
 
-      return {
-        cityForecast: cityForecast.current,
-        dailyCityForecast: dailyCityForecast.forecast,
-        hourlyCityForecast: hourlyCityForecast.forecast,
-        cityInfo
-      };
-    } catch (error) {
-      console.error(error);
-    }
+    return {
+      cityForecast: cityForecast.current,
+      dailyCityForecast: dailyCityForecast.forecast,
+      hourlyCityForecast: hourlyCityForecast.forecast,
+      cityInfo
+    };
   },
 
   searchCity: async function (city) {
@@ -70,30 +68,22 @@ export const dataService = {
   },
 
   getCurrentForecast: async function (id) {
-    try {
-      const response = await instance.get(`${FORECAST_PATHS.getCurrentWeatherUrl}${id}`, {
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      });
+    const response = await instance.get(`${FORECAST_PATHS.getCurrentWeatherUrl}${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.token}`
+      }
+    });
 
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
+    return response.data;
   },
 
   getForecast: async function (type, id) {
-    try {
-      const response = await instance.get(`${FORECAST_PATHS.getForecastUrl}${type}${id}`, {
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      });
+    const response = await instance.get(`${FORECAST_PATHS.getForecastUrl}${type}${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.token}`
+      }
+    });
 
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
+    return response.data;
   }
 };

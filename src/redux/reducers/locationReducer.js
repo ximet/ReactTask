@@ -1,19 +1,30 @@
-import { SET_CURRENT_LOCATION } from '../types/locationTypes';
+import { SET_CURRENT_CITY, SET_RECENT_CITY, REMOVE_RECENT_CITY } from '../types/locationTypes';
+import { addRecentCity, removeRecentCity } from '../../utils/changeLocationData';
+import { DEFAULT_RECENT_CITIES, DEFAULT_CURRENT_CITY } from '../../constants/forecaApi';
 
 const INITIAL_STATE = {
-  currentLocation: {
-    country: 'Belarus',
-    id: 100625144,
-    name: 'Minsk'
-  }
+  currentCity: DEFAULT_CURRENT_CITY,
+  recentCities: DEFAULT_RECENT_CITIES
 };
 
 const locationReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_CURRENT_LOCATION:
+    case SET_CURRENT_CITY:
       return {
         ...state,
-        currentLocation: action.payload
+        currentCity: action.payload
+      };
+
+    case SET_RECENT_CITY:
+      return {
+        ...state,
+        recentCities: addRecentCity(state.recentCities, action.payload)
+      };
+
+    case REMOVE_RECENT_CITY:
+      return {
+        ...state,
+        recentCities: removeRecentCity(state.recentCities, action.payload)
       };
 
     default:

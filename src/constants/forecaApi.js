@@ -14,5 +14,37 @@ export const FORECAST_TYPES = {
   hour: 'hourly/'
 };
 
-export const CURRENT_CITY_ID = 100625144;
-export const NUMBER_OF_RESULTS = 5;
+export const FETCHING_ERROR_TEXT = 'Sory. Have no acsess to server. Try to refresh page later.';
+
+const MINSK_CITY_DATA = {
+  id: 100625144,
+  name: 'Minsk',
+  country: 'Belarus'
+};
+
+const NEW_YORK_CITY_DATA = {
+  id: 105128581,
+  name: 'New York',
+  country: 'United States'
+};
+
+const MOSCOW_CITY_DATA = {
+  id: 100524901,
+  name: 'Moscow',
+  country: 'Russia'
+};
+
+const TOKYO_CITY_DATA = {
+  id: 101850147,
+  name: 'Tokyo',
+  country: 'Japan'
+};
+
+export const DEFAULT_CURRENT_CITY = MINSK_CITY_DATA;
+
+export const DEFAULT_RECENT_CITIES = [
+  MINSK_CITY_DATA,
+  MOSCOW_CITY_DATA,
+  NEW_YORK_CITY_DATA,
+  TOKYO_CITY_DATA
+];

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { favCitiesSliderOptions } from '../../../constants/slider';
 import Slider from '../../../components/Slider/Slider';
@@ -16,7 +17,7 @@ const info = {
   }
 };
 
-function FavoriteCities() {
+function FavoriteCities({ favoriteCities, currentCity }) {
   const slides = [
     {
       id: 1,
@@ -54,5 +55,20 @@ function FavoriteCities() {
     </>
   );
 }
+
+FavoriteCities.propTypes = {
+  favoriteCities: PropTypes.arrayOf(
+    PropTypes.shape({
+      country: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ),
+  currentCity: PropTypes.shape({
+    country: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  })
+};
 
 export default FavoriteCities;

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import styles from './CurrentDate.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
 import { updatingDateInterval } from '../../constants/date';
-import { getFormattedDate } from '../../utils/getFormattedDate';
+import { getFormattedCurrentDate } from '../../utils/getFormattedDate';
 
 function CurrentDate({ weatherImg }) {
-  const [currentDate, setCurrentDate] = useState(getFormattedDate);
+  const [currentDate, setCurrentDate] = useState(getFormattedCurrentDate);
 
   useEffect(() => {
     let timerId = setInterval(() => {
@@ -20,7 +20,7 @@ function CurrentDate({ weatherImg }) {
   });
 
   function changeTime() {
-    const currentDate = getFormattedDate();
+    const currentDate = getFormattedCurrentDate();
     setCurrentDate(currentDate);
   }
 
