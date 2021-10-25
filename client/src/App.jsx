@@ -25,13 +25,13 @@ function App(props) {
     setTheme(newTheme);
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     props.initializeApp();
-  }, []);
+  }, [props.initializeApp]);
 
   return (
     <BrowserRouter>
-      <BackgroundImage bgImage={bgImage} />
+      <BackgroundImage src={bgImage} />
       <Header theme={theme} themeToggle={themeToggle} />
       <CityForecastView theme={theme} />
     </BrowserRouter>

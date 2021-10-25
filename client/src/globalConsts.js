@@ -41,6 +41,10 @@ const dateFormat = 'en-US';
 
 const temperatureUnits = '°C';
 
+const searchCitiesTimout = 500;
+
+const startLengthToSearchCities = 2;
+
 export {
   themes,
   bgImages,
@@ -49,5 +53,7 @@ export {
   defaultTimeOptions,
   dateFormat,
   dailyWeatherDateOptions,
-  temperatureUnits
+  temperatureUnits,
+  searchCitiesTimout,
+  startLengthToSearchCities
 };
