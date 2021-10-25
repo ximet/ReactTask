@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './CurrentCityForecast.module.css';
 import moonWeatherIcon from '../../../../public/images/moonWeatherIcon.png';
 import { temperatureUnits } from '../../../globalConsts';
+import PropTypes from 'prop-types';
 
 function CurrentCityForecast({ location, weather }) {
   return (
@@ -19,5 +20,15 @@ function CurrentCityForecast({ location, weather }) {
     </div>
   );
 }
+
+CurrentCityForecast.propTypes = {
+  location: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }),
+  weather: PropTypes.shape({
+    temperature: PropTypes.number.isRequired,
+    symbolPhrase: PropTypes.string.isRequired
+  })
+};
 
 export default CurrentCityForecast;
