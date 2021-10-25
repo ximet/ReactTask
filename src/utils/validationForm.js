@@ -1,18 +1,18 @@
 export function validateEmailField(value) {
-  const validatings = [];
+  const validations = [];
 
-  validatings.push(validateRequire(value));
-  validatings.push(validateEmail(value));
+  validations.push(validateRequire(value));
+  validations.push(validateEmail(value));
 
-  return getErrors(validatings);
+  return getErrors(validations);
 }
 
 export function validateTextField(value) {
-  const validatings = [];
+  const validations = [];
 
-  validatings.push(validateRequire(value));
+  validations.push(validateRequire(value));
 
-  return getErrors(validatings);
+  return getErrors(validations);
 }
 
 function getErrors(validate) {
