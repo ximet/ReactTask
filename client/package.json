@@ -21,6 +21,7 @@
     "axios": "^0.21.4",
     "core-js": "3.2.1",
     "dotenv-webpack": "^7.0.3",
+    "formik": "^2.2.9",
     "history": "4.10.1",
     "ramda": "0.26.1",
     "react": "17.0.1",
@@ -33,7 +34,9 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "reselect": "4.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yap": "0.0.2",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

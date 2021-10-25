@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-top: 15px;
+}
+
+.formField {
+    margin-top: 10px;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 6px 15px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--form-field-text-color);
+    background: transparent;
+    border: 2px solid var(--form-field-border-color);
+    border-radius: 27px;
+}
+
+.textArea {
+    overflow: hidden;
+    resize: none;
+}
+
+.formField:hover, :focus, :active {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.formFieldlabel {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 28px;
+}
+
+.isInvalid {
+    border: 2px solid var(--form-field-alert-color);
+}
+
+.error {
+    color: var(--form-field-alert-color);
+    font-size: 1.2rem;
+}

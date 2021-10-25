@@ -41,7 +41,7 @@ function App(props) {
           <InfoView />
         </Route>
         <Route path={routes.feedback.path}>
-          <FeedBackView />
+          <FeedBackView theme={theme}/>
         </Route>
         <Route path={routes.home.path}>
           <CityForecastView theme={theme} />
