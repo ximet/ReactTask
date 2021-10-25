@@ -5,15 +5,18 @@ import Warning from './Warning/Warning';
 import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useLocationWarnings } from '../../hooks/warningsHooks';
+// import { useLocationWarnings } from '../../hooks/warningsHooks';
+import { setWarnings } from '../../actions/locationsManagerActions';
 import {
   EMPTY_WARNING_LIST_MAIN_MESSAGE,
   EMPTY_WARNING_LIST_ADDITIONAL_MESSAGE
 } from '../../utils/constants';
 import type { WarningsPropsType } from './WarningsPropsType';
 
-function Warnings({ currentLocation }: WarningsPropsType): React$Node {
-  const [warnings] = useLocationWarnings(currentLocation.id);
+function Warnings({ currentLocation, warnings, setWarnings }: WarningsPropsType): React$Node {
+  React.useEffect(() => {
+    setWarnings(currentLocation.id);
+  }, [currentLocation]);
 
   return (
     <div className={classes.warningsContainer}>
@@ -29,14 +32,20 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+const mapStateToProps = ({ locationManager: { currentLocation, warnings } }) => {
   return {
-    currentLocation
+    currentLocation,
+    warnings
   };
 };
 
-const WrappedWarnings = (connect(mapStateToProps)(
-  Warnings
-): React.AbstractComponent<WarningsPropsType>);
+const mapDispatchToProps = dispatch => ({
+  setWarnings: locationId => dispatch(setWarnings(locationId))
+});
+
+const WrappedWarnings = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Warnings): React.AbstractComponent<WarningsPropsType>);
 
 export default WrappedWarnings;

@@ -5,9 +5,11 @@ import type {
   ChangeSearctStringActionType,
   HourlyForecastActionType,
   DailyForecastActionType,
-  CachedForecastsActionType
+  CachedForecastsActionType,
+  WarningsActionType
 } from '../types/ActionsTypes';
 import type { LocationForecastType } from '../types/LocationType';
+import type { WarningsType } from '../types/WarningsType';
 import type {
   HourlyForecastType,
   DailyForecastType,
@@ -22,7 +24,9 @@ import type {
   DispatchDailyForecast,
   ThunkActionDailyForecast,
   DispatchCachedForecasts,
-  ThunkActionCachedForecasts
+  ThunkActionCachedForecasts,
+  DispatchWarnings,
+  ThunkActionWarnings
 } from '../types/ReduxTypes';
 import type { LocationType } from '../types/LocationType';
 import { CURRENT_LOCATION_STORAGE_CODE } from '../utils/constants';
@@ -30,6 +34,7 @@ import { getCurrentTime } from '../utils/dateTimeUtils';
 import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
 import ApiService from '../services/ForecastApiService';
+import RequestController from '../controllers/RequestController';
 
 const PREFIX = 'LOCATION_MANAGER';
 
@@ -38,6 +43,7 @@ export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
 export const SET_FORECAST = `${PREFIX}/SET_FORECAST`;
+export const SET_WARNINGS = `${PREFIX}/SET_WARNINGS`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
@@ -151,3 +157,19 @@ export const setGeolocationCity = async (
     dispatch(changeLocation(currentLocationData));
   }
 };
+
+export const changeWarnings = (warnings: WarningsType): WarningsActionType => ({
+  type: CHANGE_LOCATION,
+  warnings: warnings
+});
+
+export const setWarnings =
+  (locationId: number | string): ThunkActionWarnings =>
+  async (dispatch: DispatchWarnings, getState: GetStoreState): Promise<void> => {
+    try {
+      const warnings = await RequestController.getWarnings(locationId);
+      dispatch(changeWarnings(warnings));
+    } catch (error) {
+      console.error(error);
+    }
+  };

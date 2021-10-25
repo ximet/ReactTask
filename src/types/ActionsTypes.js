@@ -1,5 +1,6 @@
 // @flow
 import type { LocationType } from '../types/LocationType';
+import type { WarningsType } from '../types/WarningsType';
 import type {
   HourlyForecastType,
   DailyForecastType,
@@ -24,6 +25,11 @@ export type HourlyForecastActionType = {
 export type DailyForecastActionType = {
   type: string,
   currentDailyForecast: DailyForecastType
+};
+
+export type WarningsActionType = {
+  type: string,
+  warnings: WarningsType
 };
 
 export type CachedForecastsActionType = {
