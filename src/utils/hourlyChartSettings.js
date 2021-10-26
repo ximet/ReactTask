@@ -17,7 +17,7 @@ export function getFormattedHourlyData(data) {
   return { time, temperature, wind };
 }
 
-export const getHourlyChartData = data => ({
+export const selectHourlyChartData = data => ({
   labels: data.time,
   datasets: [
     {

@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 
 import CityForecast from './CityForecast';
 import { getCurrentBgImage } from '../../redux/selectors/themeSelectors';
-import { getShortCityForecast } from '../../redux/selectors/weatherSelectors';
-import { getCityTitle } from '../../redux/selectors/locationSelectors';
+import { selectShortCityForecast } from '../../redux/selectors/weatherSelectors';
+import { selectCityTitle } from '../../redux/selectors/locationSelectors';
 
 const mapStateToProps = state => {
   return {
-    cityForecast: getShortCityForecast(state),
-    cityInfo: getCityTitle(state),
+    cityForecast: selectShortCityForecast(state),
+    cityInfo: selectCityTitle(state),
     themeBg: getCurrentBgImage(state)
   };
 };

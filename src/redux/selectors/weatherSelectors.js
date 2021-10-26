@@ -6,11 +6,11 @@ const gethourlyCityForecast = state => state.weather.hourlyCityForecast;
 const getDailyForecast = state => state.weather.dailyCityForecast;
 export const getCityForecast = state => state.weather.cityForecast;
 
-export const getHourlyChartData = createSelector([gethourlyCityForecast], forecast =>
+export const selectHourlyChartData = createSelector([gethourlyCityForecast], forecast =>
   getFormattedHourlyData(forecast)
 );
 
-export const getShortCityForecast = createSelector(
+export const selectShortCityForecast = createSelector(
   [getCityForecast],
   ({ relHumidity, symbol, symbolPhrase, temperature, windSpeed }) => ({
     relHumidity,
@@ -21,9 +21,6 @@ export const getShortCityForecast = createSelector(
   })
 );
 
-export const getDailyForecastCards = createSelector([getDailyForecast], dailyForecast => {
-  return dailyForecast.map(forecast => ({
-    id: forecast.date,
-    slide: <WeatherCard weatherInfo={forecast} />
-  }));
+export const selectDailyForecastCards = createSelector([getDailyForecast], dailyForecast => {
+  return dailyForecast.map(forecast => <WeatherCard weatherInfo={forecast} />);
 });

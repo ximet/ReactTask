@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
-import { hourlyChartOptions, getHourlyChartData } from '../../../utils/hourlyChartSettings';
+import { hourlyChartOptions, selectHourlyChartData } from '../../../utils/hourlyChartSettings';
 import styles from './HourlyForecast.module.scss';
 
 function HourlyForecast({ chartData }) {
@@ -11,7 +11,7 @@ function HourlyForecast({ chartData }) {
       <h2 className={styles.hourlyForecastTitle}>Hourly Forecast</h2>
       <Line
         id={styles.hourlyForecastChart}
-        data={getHourlyChartData(chartData)}
+        data={selectHourlyChartData(chartData)}
         options={hourlyChartOptions}
         height={60}
       />

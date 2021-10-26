@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './Slider.module.scss';
 
-function Slider({ slides, slideWidth }) {
+function Slider({ slideComponents, slideWidth }) {
   const sliderRef = useRef();
 
   const [sliderWidth, setSliderWidth] = useState(0);
@@ -36,7 +38,7 @@ function Slider({ slides, slideWidth }) {
     const offsets = [];
     let increment = 0;
 
-    for (let i = 0; i < slides.length; i++) {
+    for (let i = 0; i < slideComponents.length; i++) {
       increment += slideWidth;
       offsets[i] = increment;
     }
@@ -77,9 +79,9 @@ function Slider({ slides, slideWidth }) {
       <button onClick={rightMove}>&#128898;</button>
       <div className={styles.slider} ref={sliderRef}>
         <div className={styles.sliderItems} style={{ transform: `translateX(${translateX}px)` }}>
-          {slides.map(item => (
-            <div key={item.id} className={styles.item}>
-              {item.slide}
+          {slideComponents.map(slide => (
+            <div key={uuidv4()} className={styles.item}>
+              {slide}
             </div>
           ))}
         </div>
@@ -87,5 +89,10 @@ function Slider({ slides, slideWidth }) {
     </div>
   );
 }
+
+Slider.propTypes = {
+  slideComponents: PropTypes.arrayOf(PropTypes.element.isRequired),
+  slideWidth: PropTypes.number.isRequired
+};
 
 export default Slider;

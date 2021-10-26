@@ -4,15 +4,12 @@ import CityCard from '../../components/CityCard/Container';
 export const getCityInfo = state => state.location.currentCity;
 const getFavoriteCities = state => state.location.recentCities;
 
-export const getCityTitle = createSelector([getCityInfo], ({ country, name, id }) => ({
+export const selectCityTitle = createSelector([getCityInfo], ({ country, name, id }) => ({
   country,
   name,
   id
 }));
 
-export const getCityCards = createSelector([getFavoriteCities], favoriteCities => {
-  return favoriteCities.map(city => ({
-    id: city.id,
-    slide: <CityCard info={city} />
-  }));
+export const selectCityCards = createSelector([getFavoriteCities], favoriteCities => {
+  return favoriteCities.map(city => <CityCard info={city} />);
 });

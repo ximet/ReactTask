@@ -10,19 +10,14 @@ function DailyForecast({ forecast }) {
     <div className={styles.dailyForecast}>
       <h2 className={styles.dailyForecastTitle}>Daily Forecast</h2>
       <div className={styles.dailyForecastData}>
-        <Slider slides={forecast} {...dailyForecastSliderOptions} />
+        <Slider slideComponents={forecast} {...dailyForecastSliderOptions} />
       </div>
     </div>
   );
 }
 
 DailyForecast.propTypes = {
-  forecast: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      slide: PropTypes.element.isRequired
-    })
-  )
+  forecast: PropTypes.arrayOf(PropTypes.element.isRequired)
 };
 
 export default DailyForecast;

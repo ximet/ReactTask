@@ -9,18 +9,13 @@ function FavoriteCities({ cityCards }) {
   return (
     <div>
       <h2 className={styles.favCitiesTitle}>Favorite cities</h2>
-      <Slider slides={cityCards} {...favCitiesSliderOptions} />
+      <Slider slideComponents={cityCards} {...favCitiesSliderOptions} />
     </div>
   );
 }
 
 FavoriteCities.propTypes = {
-  cityCards: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      slide: PropTypes.element.isRequired
-    })
-  ),
+  cityCards: PropTypes.arrayOf(PropTypes.element.isRequired),
   currentCity: PropTypes.shape({
     country: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

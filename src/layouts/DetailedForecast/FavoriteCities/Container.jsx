@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import FavoriteCities from './FavoriteCities';
-import { getCityCards } from '../../../redux/selectors/locationSelectors';
+import { selectCityCards } from '../../../redux/selectors/locationSelectors';
 
 const mapStateToProps = state => {
   return {
-    cityCards: getCityCards(state)
+    cityCards: selectCityCards(state)
   };
 };
 

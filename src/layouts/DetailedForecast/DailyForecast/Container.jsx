@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import DailyForecast from './DailyForecast';
-import { getDailyForecastCards } from '../../../redux/selectors/weatherSelectors';
+import { selectDailyForecastCards } from '../../../redux/selectors/weatherSelectors';
 
 const mapStateToProps = state => ({
-  forecast: getDailyForecastCards(state)
+  forecast: selectDailyForecastCards(state)
 });
 
 export default connect(mapStateToProps)(DailyForecast);
