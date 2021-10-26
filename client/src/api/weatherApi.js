@@ -3,7 +3,7 @@ import { urls } from '../globalConsts';
 
 export const getAndSetAccessToken = async () => {
   try {
-    configAxiosToGetTokenIfExpired();
+    configAxiosInterceptors();
     const token = await getAccessToken();
     await setAccessToken(token);
   } catch (e) {
@@ -29,7 +29,7 @@ export const setAccessToken = token => {
   });
 };
 
-export const configAxiosToGetTokenIfExpired = () => {
+export const configAxiosInterceptors = () => {
   weatherApi.interceptors.response.use(
     response => {
       return response;
