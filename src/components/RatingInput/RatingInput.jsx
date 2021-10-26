@@ -1,18 +1,15 @@
 import styles from './RatingInput.module.scss';
+import Star from '../Star/Star';
 
-function RatingInput({ onChange }) {
+function RatingInput({ onChange, number }) {
   return (
     <div className={styles.starRatingGroup} onChange={onChange}>
-      <input type="radio" id="rating-5" name="rating" value="5" />
-      <label htmlFor="rating-5"></label>
-      <input type="radio" id="rating-4" name="rating" value="4" />
-      <label htmlFor="rating-4"></label>
-      <input type="radio" id="rating-3" name="rating" value="3" />
-      <label htmlFor="rating-3"></label>
-      <input type="radio" id="rating-2" name="rating" value="2" />
-      <label htmlFor="rating-2"></label>
-      <input type="radio" id="rating-1" name="rating" value="1" />
-      <label htmlFor="rating-1"></label>
+      {[...Array(number).keys()]
+        .map(x => ++x)
+        .reverse()
+        .map(value => (
+          <Star value={value} key={value} />
+        ))}
     </div>
   );
 }

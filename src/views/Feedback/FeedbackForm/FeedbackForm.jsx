@@ -6,6 +6,7 @@ import RatingInput from '../../../components/RatingInput/RatingInput';
 import Line from '../../../components/Line/Line';
 
 const textAreaMaxLength = 200;
+const numberOfStars = 5;
 
 function FeedbackForm() {
   const {
@@ -29,7 +30,9 @@ function FeedbackForm() {
         control={control}
         name="rating"
         rules={{ required: true }}
-        render={({ field: { onChange } }) => <RatingInput onChange={onChange} />}
+        render={({ field: { onChange } }) => (
+          <RatingInput number={numberOfStars} onChange={onChange} />
+        )}
       />
       <Line type="horizontal" theme="dark" />
       {errors.rating && <p className={styles.inputError}>Please rate our app</p>}
