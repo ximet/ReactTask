@@ -4,9 +4,11 @@ import type {
   HourlyForecastActionType,
   DailyForecastActionType,
   FavoriteLocationsActionType,
+  WarningsActionType,
   CachedForecastsActionType
 } from '../types/ActionsTypes';
 import type { LocationForecastType, LocationType, LocationsType } from '../types/LocationType';
+import type { WarningsType } from '../types/WarningsType';
 import type {
   HourlyForecastType,
   DailyForecastType,
@@ -20,13 +22,13 @@ import type {
   ThunkActionHourlyForecast,
   DispatchDailyForecast,
   ThunkActionDailyForecast,
+  DispatchWarnings,
+  ThunkActionWarnings,
   DispatchFavorite,
   ThunkActionFavorite,
   DispatchCachedForecasts,
   ThunkActionCachedForecasts
 } from '../types/ReduxTypes';
-import { CURRENT_LOCATION_STORAGE_CODE, FAVORITE_CITIES_STORAGE_CODE } from '../utils/constants';
-import { getCurrentTime } from '../utils/dateTimeUtils';
 import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
 import ApiService from '../services/ForecastApiService';
@@ -36,14 +38,18 @@ import {
   changeHourlyForecastState,
   changeFavoriteForecastState
 } from './preloaderManagerActions';
+import { FAVORITE_CITIES_STORAGE_CODE, CURRENT_LOCATION_STORAGE_CODE } from '../utils/constants';
+import { getCurrentTime } from '../utils/dateTimeUtils';
 
 const PREFIX = 'LOCATION_MANAGER';
 
 export const CHANGE_LOCATION = `${PREFIX}/CHANGE`;
 export const CHANGE_FAVORITE_LOCATIONS = `${PREFIX}/CHANGE_FAVORITE_LOCATIONS`;
+export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
 export const SET_FORECAST = `${PREFIX}/SET_FORECAST`;
+export const SET_WARNINGS = `${PREFIX}/SET_WARNINGS`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
@@ -205,6 +211,24 @@ export const setGeolocationCity =
           `${position.coords.longitude},${position.coords.latitude}`
         );
         dispatch(changeLocation(currentLocationApi.data));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+export const changeWarnings = (warnings: WarningsType): WarningsActionType => ({
+  type: SET_WARNINGS,
+  warnings: warnings
+});
+
+export const setWarnings =
+  (locationId: number | string): ThunkActionWarnings =>
+  async (dispatch: DispatchWarnings, getState: GetStoreState): Promise<void> => {
+    try {
+      if (locationId) {
+        const { data } = await ApiService.getWarnings(locationId);
+        dispatch(changeWarnings(data.warnings));
       }
     } catch (error) {
       console.error(error);

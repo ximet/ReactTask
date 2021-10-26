@@ -4,36 +4,18 @@ import SearchedLocations from '../SearchedLocations/SearchedLocations';
 import classes from './SearchDropDown.module.scss';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import ApiService from '../../../../../../services/ForecastApiService';
-import type {
-  LocationType,
-  SearchedLocationsType,
-  LocationsResponseType
-} from '../../../../../../types/LocationType';
 import type { SearchDropDownPropsType } from './SearchDropDownPropsType';
-import { COOKIE_TOKEN_FIELD } from '../../../../../../utils/constants';
 import Preloader from '../../../../../Preloader/Preloader';
 import { changeSearchState } from '../../../../../../actions/preloaderManagerActions';
+import { useLocationSearch } from '../../../../../../hooks/searchHooks';
 
 function SearchDropDown({
   isOpenDropDown,
   isLoadingSearch,
-  changeSearchState,
   ...props
 }: SearchDropDownPropsType): React$Node {
   const [searchString, setSearchString] = React.useState('');
-  const [locations, setLocations] = React.useState([]);
-
-  React.useEffect(() => {
-    changeSearchState(false);
-    const setLocationsValue = async (): Promise<void> => {
-      const { data } = await ApiService.getLocationsSearch(searchString);
-      setLocations(data.locations);
-      changeSearchState(true);
-    };
-
-    setLocationsValue();
-  }, [searchString]);
+  const locations = useLocationSearch(searchString);
 
   const handleSetSearchString = async string => setSearchString(string);
 
