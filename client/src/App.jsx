@@ -36,22 +36,25 @@ function App(props) {
 
   return (
     <>
-      {needToShowPreloader || !props.isDataReceived ? <Preloader theme={theme} /> :  <BrowserRouter>
-        <BackgroundImage src={bgImage} />
-        <Header theme={theme} themeToggle={themeToggle} />
-        <Switch>
-          <Route path={routes.info.path}>
-            <InfoView />
-          </Route>
-          <Route path={routes.feedback.path}>
-            <FeedBackView theme={theme} />
-          </Route>
-          <Route path={routes.home.path}>
-            <CityForecastView theme={theme} />
-          </Route>
-        </Switch>
-      </BrowserRouter>}
-     
+      {needToShowPreloader || !props.isDataReceived ? (
+        <Preloader theme={theme} />
+      ) : (
+        <BrowserRouter>
+          <BackgroundImage src={bgImage} />
+          <Header theme={theme} themeToggle={themeToggle} />
+          <Switch>
+            <Route path={routes.info.path}>
+              <InfoView />
+            </Route>
+            <Route path={routes.feedback.path}>
+              <FeedBackView theme={theme} />
+            </Route>
+            <Route path={routes.home.path}>
+              <CityForecastView theme={theme} />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      )}
     </>
   );
 }
