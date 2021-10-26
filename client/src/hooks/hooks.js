@@ -29,3 +29,14 @@ export const useCitiesSearch = initialState => {
 
   return [searchText, setSearchText, matchingCities, setMatchingCities];
 };
+
+
+export const useLocalStorageTheme = initialTheme => {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  return [theme, setTheme];
+};

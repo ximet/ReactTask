@@ -3,7 +3,8 @@ import App from './App';
 import { initializeApp } from './redux/actions/appInitializationAction';
 
 const mapStateToProps = (state, ownProps) => ({
-  location: state.location.location
+  location: state.location.location,
+  isDataReceived: state.appState.isDataReceived
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {

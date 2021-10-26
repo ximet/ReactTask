@@ -51,6 +51,8 @@ const feedbackFormInitialValues = {
   feedbackText: ''
 };
 
+const showPreloaderTimeout = 1000;
+
 export {
   themes,
   bgImages,
@@ -62,5 +64,6 @@ export {
   temperatureUnits,
   searchCitiesTimout,
   startLengthToSearchCities,
-  feedbackFormInitialValues
+  feedbackFormInitialValues,
+  showPreloaderTimeout
 };

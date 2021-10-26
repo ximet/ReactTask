@@ -3,10 +3,12 @@ import { dailyWeather } from './dailyWeatherReducer';
 import { hourlyWeather } from './hourlyWeatherReducer';
 import { currentWeather } from './currentWeatherReducer';
 import { location } from './locationReducer';
+import { appState } from './appStateReducer';
 
 export const rootReducer = combineReducers({
   dailyWeather,
   hourlyWeather,
   currentWeather,
-  location
+  location,
+  appState
 });
