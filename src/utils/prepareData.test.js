@@ -1,4 +1,4 @@
-import { prepareChartData } from '../../utils/prepareData';
+import { prepareChartData } from './prepareData';
 
 test('Function should return current structure for chart', () => {
   expect(
