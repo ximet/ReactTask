@@ -1,20 +1,19 @@
 @import '../../assets/styles/constants/main.scss';
 
-.carousel-wrapper {
+.slider-wrapper {
   position: relative;
   margin: 0 auto;
   width: 90%;
 
-  .carousel {
+  .slider {
     display: flex;
     white-space: nowrap;
     overflow: hidden;
     padding: 0;
-    width: 60vw;
     align-items: center;
     width: 100%;
 
-    .carousel-items {
+    .slider-items {
       display: flex;
 
       & > div:first-child > div {
@@ -31,7 +30,7 @@
       display: none;
     }
 
-    .carousel {
+    .slider {
       width: 65vw;
     }
   }

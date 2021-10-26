@@ -72,11 +72,11 @@ function Slider({ slides, slideWidth }) {
   }
 
   return (
-    <div className={styles.carouselWrapper} data-overflowing={isOverflowing}>
+    <div className={styles.sliderWrapper} data-overflowing={isOverflowing}>
       <button onClick={leftMove}>&#128896;</button>
       <button onClick={rightMove}>&#128898;</button>
-      <div className={styles.carousel} ref={sliderRef}>
-        <div className={styles.carouselItems} style={{ transform: `translateX(${translateX}px)` }}>
+      <div className={styles.slider} ref={sliderRef}>
+        <div className={styles.sliderItems} style={{ transform: `translateX(${translateX}px)` }}>
           {slides.map(item => (
             <div key={item.id} className={styles.item}>
               {item.slide}
