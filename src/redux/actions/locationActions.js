@@ -8,7 +8,7 @@ export const setCurrentCity = data => ({
 
 export const setRecentCity = data => ({
   type: SET_RECENT_CITY,
-  payload: { ...data, isCurrentCity: true }
+  payload: { ...data }
 });
 
 export const changeLocation = data => dispatch => {
