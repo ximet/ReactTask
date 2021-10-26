@@ -10,11 +10,17 @@ function Slider({ slides, slideWidth }) {
   const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
+    updateSliderSettings();
+    window.addEventListener('resize', updateSliderSettings);
+    return () => window.removeEventListener('resize', updateSliderSettings);
+  }, []);
+
+  function updateSliderSettings() {
     const { sliderWidth, isOverflowing } = getSettings();
 
     setSliderWidth(sliderWidth);
     setIsOverflowing(isOverflowing);
-  }, []);
+  }
 
   function getSettings() {
     const offsets = getOffsets();
