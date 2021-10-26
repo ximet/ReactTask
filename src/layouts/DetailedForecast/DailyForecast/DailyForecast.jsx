@@ -20,7 +20,7 @@ DailyForecast.propTypes = {
   forecast: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      slide:PropTypes.element.isRequired
+      slide: PropTypes.element.isRequired
     })
   )
 };
