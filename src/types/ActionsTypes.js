@@ -5,6 +5,7 @@ import type {
   DailyForecastType,
   CachedForecastCurrentType
 } from './ForecastType';
+import type { WarningsType } from './WarningsType';
 
 export type ChangeLocationActionType = {
   type: string,
@@ -30,6 +31,11 @@ export type CachedForecastsActionType = {
   type: string,
   forecast: CachedForecastCurrentType,
   locationId: string
+};
+
+export type WarningsActionType = {
+  type: string,
+  warnings: WarningsType
 };
 
 export type FavoriteLocationsActionType = {

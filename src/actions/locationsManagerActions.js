@@ -1,13 +1,14 @@
 // @flow
-
 import type {
   ChangeLocationActionType,
   ChangeSearctStringActionType,
   HourlyForecastActionType,
   DailyForecastActionType,
   CachedForecastsActionType,
+  WarningsActionType,
   FavoriteLocationsActionType
 } from '../types/ActionsTypes';
+import type { WarningsType } from '../types/WarningsType';
 import type {
   HourlyForecastType,
   DailyForecastType,
@@ -24,6 +25,8 @@ import type {
   ThunkActionDailyForecast,
   DispatchCachedForecasts,
   ThunkActionCachedForecasts,
+  DispatchWarnings,
+  ThunkActionWarnings,
   DispatchFavorite,
   ThunkActionFavorite
 } from '../types/ReduxTypes';
@@ -41,6 +44,7 @@ export const CHANGE_SEARCH_STRING = `${PREFIX}/CHANGE_SEARCH_STRING`;
 export const SET_HOURLY_FORECAST = `${PREFIX}/SET_HOURLY_FORECAST`;
 export const SET_DAILY_FORECAST = `${PREFIX}/SET_DAILY_FORECAST`;
 export const SET_FORECAST = `${PREFIX}/SET_FORECAST`;
+export const SET_WARNINGS = `${PREFIX}/SET_WARNINGS`;
 
 export const changeLocation = (location: LocationType): ChangeLocationActionType => ({
   type: CHANGE_LOCATION,
@@ -91,7 +95,6 @@ export const getForecast =
         cacheTimeStamp: getCurrentTime(),
         forecast: data.current
       };
-
       dispatch(changeForecasts(locationForecast, locationId));
     } catch (error) {
       console.error(error);
@@ -182,6 +185,24 @@ export const setGeolocationCity =
           `${position.coords.longitude},${position.coords.latitude}`
         );
         dispatch(changeLocation(currentLocationApi.data));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+export const changeWarnings = (warnings: WarningsType): WarningsActionType => ({
+  type: SET_WARNINGS,
+  warnings: warnings
+});
+
+export const setWarnings =
+  (locationId: number | string): ThunkActionWarnings =>
+  async (dispatch: DispatchWarnings, getState: GetStoreState): Promise<void> => {
+    try {
+      if (locationId) {
+        const { data } = await ApiService.getWarnings(locationId);
+        dispatch(changeWarnings(data.warnings));
       }
     } catch (error) {
       console.error(error);

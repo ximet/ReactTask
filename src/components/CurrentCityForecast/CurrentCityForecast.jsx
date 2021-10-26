@@ -23,7 +23,7 @@ function CurrentCityForecast(props) {
   const forecastTime = formatTime(currentForecast?.time);
   const forecastDay = getDay(currentForecast?.time);
 
-  useCacheForecast(props.forecasts, props.urrentLocation, props.getForecast);
+  useCacheForecast(props.forecasts, props.currentLocation, props.getForecast);
 
   return (
     <div className={classes.currentCityContainer}>

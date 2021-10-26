@@ -4,6 +4,7 @@ import {
   SET_HOURLY_FORECAST,
   SET_DAILY_FORECAST,
   SET_FORECAST,
+  SET_WARNINGS,
   CHANGE_FAVORITE_LOCATIONS
 } from '../actions/locationsManagerActions';
 import StorageConnection from '../services/StorageConnectionService';
@@ -18,7 +19,8 @@ const initialState = {
   searchString: '',
   favoriteCitiesList: favoriteCitiesFromStore,
   forecasts: {},
-  currentHourlyForecustType: {}
+  currentHourlyForecustType: {},
+  warnings: []
 };
 
 export default function (state = initialState, action) {
@@ -45,6 +47,10 @@ export default function (state = initialState, action) {
 
     case SET_DAILY_FORECAST: {
       return { ...state, currentDailyForecast: action.currentDailyForecast };
+    }
+
+    case SET_WARNINGS: {
+      return { ...state, warnings: action.warnings };
     }
 
     default: {
