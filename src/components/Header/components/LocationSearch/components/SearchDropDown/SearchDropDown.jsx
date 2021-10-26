@@ -6,7 +6,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import type { SearchDropDownPropsType } from './SearchDropDownPropsType';
 import Preloader from '../../../../../Preloader/Preloader';
-import { changeSearchState } from '../../../../../../actions/preloaderManagerActions';
+import { toggleSearchPreloader } from '../../../../../../actions/preloaderManagerActions';
 import { useLocationSearch } from '../../../../../../hooks/searchHooks';
 
 function SearchDropDown({
@@ -33,7 +33,7 @@ const mapStateToProps = ({ preloaderManager: { search } }) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeSearchState: state => dispatch(changeSearchState(state))
+    toggleSearchPreloader: state => dispatch(toggleSearchPreloader(state))
   };
 };
 
