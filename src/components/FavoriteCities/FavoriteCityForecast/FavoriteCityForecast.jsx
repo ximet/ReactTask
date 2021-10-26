@@ -12,7 +12,6 @@ import { getForecast, setFavoriteCities } from '../../../actions/locationsManage
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
 import { useCacheForecast } from '../../../hooks/forecastHooks';
-
 import type {
   FavoriteCityForecastPropsType,
   FavoriteCityForecastOwnPropsType
