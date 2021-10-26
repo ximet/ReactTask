@@ -1,17 +1,17 @@
-import classes from './ContactsView.module.scss';
+import classes from './AboutView.module.scss';
 import ContentWrapper from '../../layouts/ContentWrapper/ContentWrapper';
-import Contacts from '../../components/Contacts/Contacts';
+import About from '../../components/About/About';
 
-function ContactsView() {
+function AboutView() {
   return (
     <div className={classes.viewContainer}>
       <div className={classes.content}>
         <ContentWrapper>
-          <Contacts />
+          <About />
         </ContentWrapper>
       </div>
     </div>
   );
 }
 
-export default ContactsView;
+export default AboutView;
