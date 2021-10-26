@@ -18,7 +18,9 @@ function FeedbackForm() {
 
   const onSubmit = (data, e) => {
     e.target.reset();
-    console.log(data);
+    console.log(
+      `User ${data.firstName} ${data.lastName} rate the app for ${data.rating} stars. Comment: '${data.feedback}'`
+    );
   };
 
   return (
@@ -42,7 +44,6 @@ function FeedbackForm() {
       <input type="text" className={styles.textInput} {...register('lastName')} />
       <label className={styles.inputLabel}>Tell us how we can inprove our app </label>
       <textarea
-        rows="5"
         className={styles.textareaInput}
         {...register('feedback', { maxLength: textAreaMaxLength })}
       />
