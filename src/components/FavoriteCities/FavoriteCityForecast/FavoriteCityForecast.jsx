@@ -10,6 +10,7 @@ import {
 } from '../../../utils/constants';
 import { getFavoriteForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
 import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
+import { selectFavoriteLoadingState } from '../../../selectors/selectorsFavorite';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
 import { useCacheForecast } from '../../../hooks/forecastHooks';
 import type {
@@ -20,7 +21,7 @@ import Preloader from '../../Preloader/Preloader';
 
 function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node {
   const forecast = selectCurrentForecast(props.forecasts, props.location.id);
-  const isLoading = props?.isLoadingStates[props.location?.id];
+  const isLoading = selectFavoriteLoadingState(props.isLoadingStates, props.location);
   const symbolUrl = getForecastSymbolUrl(forecast);
   const handleFavoriteCityDelete = event => {
     props.setFavoriteCities(props.location, false);
@@ -63,10 +64,10 @@ function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node 
   );
 }
 
-const mapStateToProps = ({ locationManager: { forecasts }, ...state }) => {
+const mapStateToProps = ({ locationManager: { forecasts }, preloaderManager: { favorites } }) => {
   return {
     forecasts: forecasts,
-    isLoadingStates: state.preloaderManager.favorites
+    isLoadingStates: favorites
   };
 };
 

@@ -77,11 +77,14 @@ function CurrentCityForecast(props) {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation, forecasts }, ...state }) => {
+const mapStateToProps = ({
+  locationManager: { currentLocation, forecasts },
+  preloaderManager: { currentLocation: currentLocationState }
+}) => {
   return {
     currentLocation,
     forecasts,
-    isLoading: state.preloaderManager.currentLocation
+    isLoading: currentLocationState
   };
 };
 

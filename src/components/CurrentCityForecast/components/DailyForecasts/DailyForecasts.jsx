@@ -32,10 +32,13 @@ function DailyForecasts({
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentDailyForecast }, ...state }) => {
+const mapStateToProps = ({
+  locationManager: { currentDailyForecast },
+  preloaderManager: { dailyForecast }
+}) => {
   return {
     currentDailyForecast,
-    isLoading: state.preloaderManager.dailyForecast
+    isLoading: dailyForecast
   };
 };
 

@@ -38,10 +38,13 @@ function HourlyForecastChart({
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentHourlyForecast }, ...state }) => {
+const mapStateToProps = ({
+  locationManager: { currentHourlyForecast },
+  preloaderManager: { hourlyForecast }
+}) => {
   return {
     currentHourlyForecast,
-    isLoading: state.preloaderManager.hourlyForecast
+    isLoading: hourlyForecast
   };
 };
 
