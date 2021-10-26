@@ -16,7 +16,5 @@ export const initializeApp = async dispatch => {
     dispatch(getWeatherAction(location)),
     dispatch(getHourlyWeatherAction(location)),
     dispatch(getDailyWeatherAction(location))
-  ]).then(
-    dispatch(setIsDataReceived(true))
-  )
+  ]).then(dispatch(setIsDataReceived(true)));
 };

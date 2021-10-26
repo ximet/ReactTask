@@ -14,7 +14,7 @@ import { useLocalStorageTheme } from './hooks/hooks';
 function App(props) {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
   const bgImage = bgImages[theme];
-  const [needToShowPreloader, setNeedToShowPreloader] = useState(true)
+  const [needToShowPreloader, setNeedToShowPreloader] = useState(true);
 
   function themeToggle() {
     const newTheme = theme == themes.light ? themes.dark : themes.light;
@@ -26,8 +26,8 @@ function App(props) {
     props.initializeApp();
 
     const timerId = setTimeout(() => {
-      setNeedToShowPreloader(false)
-    }, showPreloaderTimeout)
+      setNeedToShowPreloader(false);
+    }, showPreloaderTimeout);
 
     return () => {
       clearTimeout(timerId);
@@ -36,24 +36,22 @@ function App(props) {
 
   return (
     <>
-    {
-      (needToShowPreloader || !props.isDataReceived) ? <Preloader theme={theme}/> : null
-    }
-    <BrowserRouter>
-          <BackgroundImage src={bgImage} />
-          <Header theme={theme} themeToggle={themeToggle} />
-          <Switch>
-            <Route path={routes.info.path}>
-              <InfoView />
-            </Route>
-            <Route path={routes.feedback.path}>
-              <FeedBackView theme={theme} />
-            </Route>
-            <Route path={routes.home.path}>
-              <CityForecastView theme={theme} />
-            </Route>
-          </Switch>
-        </BrowserRouter> 
+      {needToShowPreloader || !props.isDataReceived ? <Preloader theme={theme} /> :  <BrowserRouter>
+        <BackgroundImage src={bgImage} />
+        <Header theme={theme} themeToggle={themeToggle} />
+        <Switch>
+          <Route path={routes.info.path}>
+            <InfoView />
+          </Route>
+          <Route path={routes.feedback.path}>
+            <FeedBackView theme={theme} />
+          </Route>
+          <Route path={routes.home.path}>
+            <CityForecastView theme={theme} />
+          </Route>
+        </Switch>
+      </BrowserRouter>}
+     
     </>
   );
 }

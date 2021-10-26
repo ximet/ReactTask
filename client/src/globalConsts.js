@@ -53,6 +53,8 @@ const feedbackFormInitialValues = {
 
 const showPreloaderTimeout = 1000;
 
+const updatingTimeInterval = 10000;
+
 export {
   themes,
   bgImages,
@@ -65,5 +67,6 @@ export {
   searchCitiesTimout,
   startLengthToSearchCities,
   feedbackFormInitialValues,
-  showPreloaderTimeout
+  showPreloaderTimeout,
+  updatingTimeInterval
 };

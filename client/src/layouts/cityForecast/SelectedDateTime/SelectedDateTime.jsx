@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './SelectedDateTime.module.css';
 import { formatDate } from '../../../services/dateService';
 import PropTypes from 'prop-types';
+import { updatingTimeInterval } from '../../../globalConsts';
+import { getCurrentTimeByTimeZone } from '../../../services/dateService';
 
-function SelectedDateTime({ currentDate }) {
-  const date = formatDate(currentDate);
+function SelectedDateTime({ timeZone }) {
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    setDate(getInitialDate());
+    const intervalId = setInterval(() => {
+      setDate(getInitialDate());
+    }, updatingTimeInterval);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timeZone]);
+
+  function getInitialDate() {
+    const date = getCurrentTimeByTimeZone(timeZone);
+
+    return formatDate(date);
+  }
 
   return (
     <div className={classes.container}>
@@ -17,7 +36,7 @@ function SelectedDateTime({ currentDate }) {
 }
 
 SelectedDateTime.propTypes = {
-  currentDate: PropTypes.string.isRequired
+  timeZone: PropTypes.string.isRequired
 };
 
 export default SelectedDateTime;
