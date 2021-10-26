@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './WithPreloader.module.scss';
 
-const Preloader = WrappedComponent => {
+const WithPreloader = WrappedComponent => {
   const Spinner = props => {
     return props.isFetching ? (
       <div className={styles.spinnerOverlay}>
@@ -21,8 +21,8 @@ const Preloader = WrappedComponent => {
   return Spinner;
 };
 
-Preloader.propTypes = {
+WithPreloader.propTypes = {
   WrappedComponent: PropTypes.element
 };
 
-export default Preloader;
+export default WithPreloader;

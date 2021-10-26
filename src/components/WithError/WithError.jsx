@@ -5,7 +5,7 @@ import styles from './WithError.module.scss';
 import { FETCHING_ERROR_TEXT } from '../../constants/forecaApi';
 import ErrorImage from '../../assets/images/error-img.png';
 
-const Error = WrappedComponent => {
+const WithError = WrappedComponent => {
   const ErrorMessage = props => {
     return props.error ? (
       <div className={styles.error}>
@@ -17,11 +17,19 @@ const Error = WrappedComponent => {
     );
   };
 
+  ErrorMessage.defaultProps = {
+    error: null
+  };
+
+  ErrorMessage.propTypes = {
+    error: PropTypes.instanceOf(Error)
+  };
+
   return ErrorMessage;
 };
 
-Error.propTypes = {
+WithError.propTypes = {
   WrappedComponent: PropTypes.element
 };
 
-export default Error;
+export default WithError;
