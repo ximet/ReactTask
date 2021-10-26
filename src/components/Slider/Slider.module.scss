@@ -16,6 +16,13 @@
 
     .carousel-items {
       display: flex;
+
+      & > div:first-child > div {
+        background-color: $hover-card-bg-color;
+        opacity: 0.9;
+        color: $secondary-font-color;
+        box-shadow: $default-box-shadow;
+      }
     }
   }
 
