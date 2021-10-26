@@ -8,7 +8,7 @@ import { useLocationSearch } from '../../../../../../hooks/searchHooks';
 
 function SearchDropDown({ isOpenDropDown, ...props }: SearchDropDownPropsType): React$Node {
   const [searchString, setSearchString] = useState('');
-  const [locations, setLocations] = useLocationSearch(searchString);
+  const locations = useLocationSearch(searchString);
 
   const handleSetSearchString = async string => setSearchString(string);
 

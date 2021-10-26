@@ -16,5 +16,5 @@ export function useLocationSearch(searchString) {
     setLocations(responseData);
   }, [searchString]);
 
-  return [locations];
+  return locations;
 }
