@@ -50,8 +50,8 @@ export const initApp = () => async dispatch => {
 
   const cityInfoPromises = DEFAULT_RECENT_CITIES_ID.map(id => dataService.getCityInfo(id));
 
-  const cityInfos = await Promise.all(cityInfoPromises);
-  cityInfos.forEach(info => {
+  const citiesInfo = await Promise.all(cityInfoPromises);
+  citiesInfo.forEach(info => {
     dispatch(setRecentCity(info));
   });
 
