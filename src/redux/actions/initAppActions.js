@@ -49,11 +49,11 @@ export const initApp = () => async dispatch => {
   await dataService.getForecastToken();
 
   const cityInfoPromises = DEFAULT_RECENT_CITIES_ID.map(id => dataService.getCityInfo(id));
-  
+
   const cityInfos = await Promise.all(cityInfoPromises);
-  cityInfos.forEach((info) => {
+  cityInfos.forEach(info => {
     dispatch(setRecentCity(info));
-  })
+  });
 
   dispatch(getAllData(location));
 };
