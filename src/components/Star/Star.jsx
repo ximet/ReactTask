@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Star({ value }) {
   const starId = ['rating', value].join('-');
 
@@ -8,5 +10,9 @@ function Star({ value }) {
     </>
   );
 }
+
+Star.propTypes = {
+  value: PropTypes.number.isRequired
+};
 
 export default Star;

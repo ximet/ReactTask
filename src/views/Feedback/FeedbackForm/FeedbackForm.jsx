@@ -2,11 +2,10 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import styles from './FeedbackForm.module.scss';
+import { TEXT_AREA_MAX_LENGTH } from '../../../constants/form';
+
 import RatingInput from '../../../components/RatingInput/RatingInput';
 import Line from '../../../components/Line/Line';
-
-const textAreaMaxLength = 200;
-const numberOfStars = 5;
 
 function FeedbackForm() {
   const {
@@ -30,9 +29,7 @@ function FeedbackForm() {
         control={control}
         name="rating"
         rules={{ required: true }}
-        render={({ field: { onChange } }) => (
-          <RatingInput number={numberOfStars} onChange={onChange} />
-        )}
+        render={({ field: { onChange } }) => <RatingInput onChange={onChange} />}
       />
       <Line type="horizontal" theme="dark" />
       {errors.rating && <p className={styles.inputError}>Please rate our app</p>}
@@ -48,7 +45,7 @@ function FeedbackForm() {
       <label className={styles.inputLabel}>Tell us how we can inprove our app </label>
       <textarea
         className={styles.textareaInput}
-        {...register('feedback', { maxLength: textAreaMaxLength })}
+        {...register('feedback', { maxLength: TEXT_AREA_MAX_LENGTH })}
       />
       {errors.feedback && (
         <p className={styles.inputError}>
