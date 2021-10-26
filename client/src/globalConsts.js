@@ -45,6 +45,12 @@ const searchCitiesTimout = 500;
 
 const startLengthToSearchCities = 2;
 
+const feedbackFormInitialValues = {
+  name: '',
+  email: '',
+  feedbackText: ''
+};
+
 export {
   themes,
   bgImages,
@@ -55,5 +61,6 @@ export {
   dailyWeatherDateOptions,
   temperatureUnits,
   searchCitiesTimout,
-  startLengthToSearchCities
+  startLengthToSearchCities,
+  feedbackFormInitialValues
 };

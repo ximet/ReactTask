@@ -5,12 +5,7 @@ import classes from './SearchForm.module.css';
 import { useCitiesSearch } from '../../../hooks/hooks';
 
 function SearchForm() {
-  const [
-    searchText,
-    setSearchText,
-    matchingCities,
-    setMatchingCities
-  ] = useCitiesSearch('');
+  const [searchText, setSearchText, matchingCities, setMatchingCities] = useCitiesSearch('');
   const citiesRef = useRef(null);
 
   const handleSearchText = e => {
@@ -20,7 +15,7 @@ function SearchForm() {
   const handleClickOutsideCities = e => {
     if (!citiesRef.current.contains(e.target)) {
       setMatchingCities([]);
-      setSearchText('')
+      setSearchText('');
     }
   };
 

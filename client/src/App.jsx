@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './layouts/header/Header';
 import { themes, bgImages } from './globalConsts';
 import BackgroundImage from './components/backgroundImage/BackgroundImage';
 import CityForecastView from './views/cityForecastView/CityForecastView';
+import { routes } from './routes/routes';
+import InfoView from './views/infoView/InfoView';
+import FeedBackView from './views/feedbackView/FeedbackView';
 
 const useLocalStorageTheme = initialTheme => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -33,7 +36,17 @@ function App(props) {
     <BrowserRouter>
       <BackgroundImage src={bgImage} />
       <Header theme={theme} themeToggle={themeToggle} />
-      <CityForecastView theme={theme} />
+      <Switch>
+        <Route path={routes.info.path}>
+          <InfoView />
+        </Route>
+        <Route path={routes.feedback.path}>
+          <FeedBackView theme={theme} />
+        </Route>
+        <Route path={routes.home.path}>
+          <CityForecastView theme={theme} />
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }
