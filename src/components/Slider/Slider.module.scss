@@ -47,7 +47,7 @@
     width: 50px;
     border: 0;
     z-index: 1;
-    font-size: 34px;
+    font-size: $btn-size;
     background-color: $primary-bg-color;
     color: $arrow-btn-color;
     cursor: pointer;
@@ -56,7 +56,7 @@
 
     &:hover {
       color: $hover-arrow-btn-color;
-      font-size: 40px;
+      font-size: $hover-btn-size;
     }
 
     &:first-child {
