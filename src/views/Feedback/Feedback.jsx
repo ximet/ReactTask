@@ -1,8 +1,8 @@
 import React from 'react';
 
 import styles from './Feedback.module.scss';
-import FeedbackComments from './FeedbackComments/FeedbackComments';
 import FeedbackForm from './FeedbackForm/FeedbackForm';
+import FeedbackImage from '../../assets/images/feedback-img.png';
 
 function Feedback() {
   return (
@@ -14,7 +14,7 @@ function Feedback() {
         </span>
         <FeedbackForm />
       </div>
-      <FeedbackComments />
+      <img className={styles.formImage} src={FeedbackImage} alt="feedback" />
     </div>
   );
 }
