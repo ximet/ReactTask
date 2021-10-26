@@ -45,6 +45,6 @@ export const initApp = () => async (dispatch, getState) => {
   const defaultLocation = getState().location.currentCity.id;
   const location = currenLocationFromGeo || defaultLocation;
 
-  // await dataService.getForecastToken();
+  await dataService.getForecastToken();
   dispatch(getAllData(location));
 };
