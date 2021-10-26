@@ -1,10 +1,9 @@
 import { SET_CURRENT_CITY, SET_RECENT_CITY, REMOVE_RECENT_CITY } from '../types/locationTypes';
 import { addRecentCity, removeRecentCity } from '../../utils/changeLocationData';
-import { DEFAULT_RECENT_CITIES, DEFAULT_CURRENT_CITY } from '../../constants/forecaApi';
 
 const INITIAL_STATE = {
-  currentCity: DEFAULT_CURRENT_CITY,
-  recentCities: DEFAULT_RECENT_CITIES
+  currentCity: {},
+  recentCities: []
 };
 
 const locationReducer = (state = INITIAL_STATE, action) => {
