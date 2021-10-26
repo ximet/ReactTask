@@ -1,37 +1,35 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { connect } from 'react-redux';
 import classes from './FavoriteCityForecast.module.scss';
-import ApiService from '../../../services/ForecastApiService';
 import { ReactComponent as IconClose } from '../../../assets/img/svg/close-icon.svg';
-import { FORECAST_SYMBOL_LINK, FORECAST_SYMBOL_EXT } from '../../../utils/constants';
-import type { FavoriteCityForecastPropsType } from './FavoriteCityForecastPropsType';
+import {
+  WIND_SPEED_MEASURE,
+  PRECITIPATE_MEASURE,
+  HUMIDITY_MEASURE
+} from '../../../utils/constants';
+import { getForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
+import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
+import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
+import { useCacheForecast } from '../../../hooks/forecastHooks';
 
-function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): React$Node {
-  const [forecast, setForecast] = useState({});
+import type {
+  FavoriteCityForecastPropsType,
+  FavoriteCityForecastOwnPropsType
+} from './FavoriteCityForecastPropsType';
 
-  useEffect(() => {
-    const setForecastValue = async (): Promise<void> => {
-      let currentForecast = {};
-      try {
-        const { data } = await ApiService.getCurrentForecast(location.id);
-        currentForecast = data.current;
-      } catch (error) {
-        console.error(error);
-      }
+function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node {
+  const forecast = selectCurrentForecast(props.forecasts, props.location.id);
+  const symbolUrl = getForecastSymbolUrl(forecast);
+  const handleFavoriteCityDelete = event => {
+    props.setFavoriteCities(props.location, false);
+  };
 
-      setForecast(currentForecast);
-    };
-
-    setForecastValue();
-  }, []);
-
-  const symbolUrl = forecast?.symbol
-    ? `${FORECAST_SYMBOL_LINK}${forecast?.symbol}${FORECAST_SYMBOL_EXT}`
-    : '';
+  useCacheForecast(props.forecasts, props.location, props.getForecast);
 
   return (
     <div className={classes.item}>
-      <span className={classes.closeIcon}>
+      <span className={classes.closeIcon} onClick={handleFavoriteCityDelete}>
         <IconClose />
       </span>
       <div className={classes.itemInfo}>
@@ -40,17 +38,40 @@ function FavoriteCityForecast({ location }: FavoriteCityForecastPropsType): Reac
           <div className={classes.temperature}>{forecast?.temperature}</div>
         </div>
         <div className={classes.additionalInfo}>
-          <div className={classes.cityName}>{location?.name}</div>
-          <div className={classes.wind}>Wind: {forecast?.windSpeed} km/h</div>
-          <div className={classes.humidity}>Humidity: {forecast?.relHumidity}%</div>
-          <div className={classes.precitipate}>Precitipate: {forecast?.precipProb}%</div>
-          <a className={classes.linkMore} href="#">
-            read more
-          </a>
+          <div className={classes.cityName}>{props.location?.name}</div>
+          <div className={classes.wind}>
+            Wind: {forecast?.windSpeed} {WIND_SPEED_MEASURE}
+          </div>
+          <div className={classes.humidity}>
+            Humidity: {forecast?.relHumidity}
+            {HUMIDITY_MEASURE}
+          </div>
+          <div className={classes.precitipate}>
+            Precitipate: {forecast?.precipProb}
+            {PRECITIPATE_MEASURE}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default FavoriteCityForecast;
+const mapStateToProps = ({ locationManager: { forecasts } }) => {
+  return {
+    forecasts: forecasts
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getForecast: locationId => dispatch(getForecast(locationId)),
+    setFavoriteCities: (location, isFavorite) => dispatch(setFavoriteCities(location, isFavorite))
+  };
+};
+
+const WrappedFavoriteCityForecast = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FavoriteCityForecast): React.AbstractComponent<FavoriteCityForecastOwnPropsType>);
+
+export default WrappedFavoriteCityForecast;

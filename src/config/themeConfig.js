@@ -1,3 +1,6 @@
+import StorageService from '../services/StorageConnectionService';
+import { THEME_STORAGE_CODE } from '../utils/constants';
+
 export const themeConfig = {
   defaultActive: 'light_theme',
   themeMap: {
@@ -20,7 +23,8 @@ export function getThemesList() {
 }
 
 export function getDefaultTheme() {
+  const savedTheme = StorageService.getValue(THEME_STORAGE_CODE);
   const defaultThemeKey = themeConfig.defaultActive;
 
-  return themeConfig.themeMap[defaultThemeKey];
+  return savedTheme ? savedTheme : themeConfig.themeMap[defaultThemeKey];
 }

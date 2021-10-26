@@ -53,7 +53,7 @@ $current-city-font-size: 36px;
     .locationInfo {
       .cityName {
         font-size: $current-city-font-size;
-        font-weight: bold;
+        font-weight: $main-bold-font-weight;
         text-align: right;
       }
 

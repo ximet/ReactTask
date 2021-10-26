@@ -6,9 +6,6 @@ const themesMap = themeConfig.themeMap;
 const defaultThemeData = themesMap[defaultThemeKey];
 
 export default React.createContext({
-  theme: {
-    name: defaultThemeData.name,
-    code: defaultThemeData.code
-  },
+  theme: defaultThemeData,
   selectTheme: () => {}
 });
