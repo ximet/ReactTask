@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import CityCard from '../../components/CityCard/CityCard';
+import CityCard from '../../components/CityCard/Container';
 
 export const getCityInfo = state => state.location.currentCity;
 const getFavoriteCities = state => state.location.recentCities;
