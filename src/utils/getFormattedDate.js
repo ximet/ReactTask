@@ -21,3 +21,7 @@ export function getFormattedDate(formDate) {
 
   return { date, dayOfWeek };
 }
+
+export function getCurrentYear() {
+  return new Date().getFullYear();
+}
