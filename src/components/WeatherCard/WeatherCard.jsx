@@ -5,10 +5,12 @@ import styles from './WeatherCard.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
 import { DEGREE_SYMBOL } from '../../constants/units';
 import { getFormattedDate } from '../../utils/getFormattedDate';
-import Line from '../Line/Line';
+import { getConvertedUnits } from '../../utils/temperatureData';
 
-function WeatherCard({ weatherInfo }) {
+function WeatherCard({ weatherInfo, unit }) {
   const date = getFormattedDate(weatherInfo.date);
+  const maxTemp = getConvertedUnits(weatherInfo.maxTemp, unit);
+  const minTemp = getConvertedUnits(weatherInfo.minTemp, unit);
 
   return (
     <div className={styles.weatherCard}>
@@ -22,11 +24,11 @@ function WeatherCard({ weatherInfo }) {
 
       <div className={styles.addedWeatherInfo}>
         <span className={styles.temperature}>
-          {weatherInfo.maxTemp} {DEGREE_SYMBOL}
+          {maxTemp} {DEGREE_SYMBOL}
         </span>
         <span>|</span>
         <span className={styles.temperature}>
-          {weatherInfo.minTemp} {DEGREE_SYMBOL}
+          {minTemp} {DEGREE_SYMBOL}
         </span>
       </div>
     </div>

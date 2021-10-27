@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { setTemperatureUnit } from '../../../redux/actions/weatherActions';
 import TemperatureUnitToggle from './TemperatureUnitToggle';
 import { UNIT_SYMBOLS } from '../../../constants/units';
@@ -21,6 +23,11 @@ const mapDispatchToProps = dispatch => {
   return {
     changeTemperatureUnit: unit => dispatch(setTemperatureUnit(unit))
   };
+};
+
+TemperatureUnitToggleContainer.propTypes = {
+  temperatureUnit: PropTypes.string.isRequired,
+  changeTemperatureUnit: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TemperatureUnitToggleContainer);

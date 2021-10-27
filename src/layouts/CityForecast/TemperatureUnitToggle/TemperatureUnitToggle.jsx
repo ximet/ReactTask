@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './TemperatureUnitToggle.module.scss';
 import { UNIT_SYMBOLS, DEGREE_SYMBOL } from '../../../constants/units';
@@ -24,5 +25,10 @@ function TemperatureUnitToggle({ unit, switchUnit }) {
     </div>
   );
 }
+
+TemperatureUnitToggle.propTypes = {
+  unit: PropTypes.string.isRequired,
+  switchUnit: PropTypes.func.isRequired
+};
 
 export default TemperatureUnitToggle;

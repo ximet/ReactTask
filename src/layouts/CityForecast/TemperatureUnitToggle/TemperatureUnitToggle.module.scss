@@ -2,8 +2,11 @@
 
 .unit {
   font-size: $font-size-sm;
+  color: $grey;
+  cursor: pointer;
 
   &.active {
+    color: $white;
     font-size: $font-size-md;
     font-weight: $font-weight-bold;
   }
