@@ -1,4 +1,4 @@
-import { selectFavoriteCityIds } from './selectorsFavorite';
+import { selectFavoriteCityIds } from './favoriteSelectors';
 
 describe('Selectors of favorite forecasts', () => {
   it('Selector should return location ids array', () => {
