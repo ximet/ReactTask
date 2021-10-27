@@ -31,7 +31,7 @@ function FavoriteCityForecast(props: FavoriteCityForecastPropsType): React$Node 
 
   return (
     <div className={classes.item}>
-      {isLoading ? (
+      {!isLoading ? (
         <>
           <span className={classes.closeIcon} onClick={handleFavoriteCityDelete}>
             <IconClose />
