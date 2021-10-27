@@ -16,7 +16,7 @@ function About() {
       </RouterLink>
       <p className={classes.textParagraph}>
         This application works together with external forecast API service named "Foreca wether
-        API". You can read more information on{' '}
+        API". You can read more information on
         <Link
           className={classes.link}
           target="__blank"
