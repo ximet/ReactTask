@@ -51,6 +51,16 @@ const feedbackFormInitialValues = {
   feedbackText: ''
 };
 
+const hoursOptions = {
+  hour: 'numeric'
+};
+
+const AnteMeridianAbbreviation = 'AM';
+
+const postMeridianAbbreviation = 'AM';
+
+const middayHours = 11;
+
 export {
   themes,
   bgImages,
@@ -62,5 +72,9 @@ export {
   temperatureUnits,
   searchCitiesTimout,
   startLengthToSearchCities,
-  feedbackFormInitialValues
+  feedbackFormInitialValues,
+  hoursOptions,
+  AnteMeridianAbbreviation,
+  postMeridianAbbreviation,
+  middayHours
 };

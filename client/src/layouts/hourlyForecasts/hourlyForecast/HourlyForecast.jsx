@@ -1,14 +1,15 @@
 import React from 'react';
 import classes from './hourlyForecast.module.css';
-import weatherIcon from '../../../../public/images/weatherIcon/moonAndCloudsIcon.png';
 import dropsIcon from '../../../../public/images/dropsIcon.png';
 import windIcon from '../../../../public/images/windIcon.png';
 import { formatDate } from '../../../services/dateService';
 import { temperatureUnits } from '../../../globalConsts';
 import PropTypes from 'prop-types';
+import { getWeatherIcon } from '../../../services/weatherIconService';
 
 function HourlyForecast({ forecast }) {
-  const time = formatDate(forecast.time).time;
+  const { time, hours, dayTime } = formatDate(forecast.time);
+  const weatherIcon = getWeatherIcon(forecast.symbolPhrase, hours, dayTime);
 
   return (
     <div className={classes.container}>
