@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import styles from './FeedbackForm.module.scss';
-import { TEXT_AREA_MAX_LENGTH } from '../../../constants/form';
+import { TEXT_AREA_MAX_LENGTH, NUMBER_OF_STARS } from '../../../constants/form';
 
 import RatingInput from '../../../components/RatingInput/RatingInput';
 import Line from '../../../components/Line/Line';
@@ -18,6 +18,7 @@ function FeedbackForm() {
 
   const onSubmit = (data, e) => {
     e.target.reset();
+
     console.log(
       `User ${data.firstName} ${data.lastName} rate the app for ${data.rating} stars. Comment: '${data.feedback}'`
     );
@@ -29,7 +30,9 @@ function FeedbackForm() {
         control={control}
         name="rating"
         rules={{ required: true }}
-        render={({ field: { onChange } }) => <RatingInput onChange={onChange} />}
+        render={({ field: { onChange, value } }) => (
+          <RatingInput onChange={onChange} value={value} maxRating={NUMBER_OF_STARS} />
+        )}
       />
       <Line type="horizontal" theme="dark" />
       {errors.rating && <p className={styles.inputError}>Please rate our app</p>}

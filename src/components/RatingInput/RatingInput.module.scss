@@ -1,52 +1,23 @@
 @import '../../assets/styles/constants/main.scss';
 
-.star-rating-group {
+.rating {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  border: none;
-  border-radius: 1px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  unicode-bidi: bidi-override;
-  direction: rtl;
+  justify-content: space-evenly;
+  margin: 10px 0;
 
-  & input {
-    display: none;
-
-    & + label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:before {
-        font-size: $star-symbol-size;
-        display: inline-block;
-        content: $unchecked-star;
-        color: $unchecked-star-color;
-      }
-    }
-
-    &:checked ~ label:before,
-    & + label:hover ~ label:before,
-    & + label:hover:before {
+  .star {
+    &.checked::after {
       content: $checked-star;
       color: $checked-star-color;
     }
-  }
 
-  &:hover > input + label:before {
-    content: $unchecked-star;
-    color: $unchecked-star-color;
-  }
-  &:hover > input + label:hover ~ label:before,
-  &:hover > input + label:hover:before {
-    content: $checked-star;
-    color: $checked-star-color;
+    &::after {
+      width: 40px;
+      height: 40px;
+      font-size: $star-symbol-size;
+      content: $unchecked-star;
+      color: $unchecked-star-color;
+      cursor: pointer;
+    }
   }
 }

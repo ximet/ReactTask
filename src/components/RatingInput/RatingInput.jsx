@@ -1,24 +1,29 @@
 import PropTypes from 'prop-types';
 
 import styles from './RatingInput.module.scss';
-import { NUMBER_OF_STARS } from '../../constants/form';
-import Star from '../Star/Star';
 
-function RatingInput({ onChange }) {
+function RatingInput({ onChange, maxRating, value }) {
   return (
-    <div className={styles.starRatingGroup} onChange={onChange}>
-      {[...Array(NUMBER_OF_STARS).keys()]
-        .map(x => ++x)
-        .reverse()
-        .map(value => (
-          <Star value={value} key={value} />
-        ))}
+    <div className={styles.rating}>
+      {[...new Array(maxRating)].map((_, index) => (
+        <span
+          className={[styles.star, value >= index + 1 ? styles.checked : ''].join(' ')}
+          key={index}
+          onClick={() => onChange(index + 1)}
+        ></span>
+      ))}
     </div>
   );
 }
 
+RatingInput.defaultProps = {
+  value: 0
+};
+
 RatingInput.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  maxRating: PropTypes.number.isRequired,
+  value: PropTypes.number
 };
 
 export default RatingInput;
