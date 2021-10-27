@@ -5,11 +5,9 @@ import { dailyWeatherDateOptions, temperatureUnits } from '../../../globalConsts
 import PropTypes from 'prop-types';
 import { getWeatherIcon } from '../../../services/weatherIconService';
 
-//later will add weatherIconService and icons will depend on symbolPhrase
-
 function DailyForecast({ forecast }) {
   const date = formatDate(forecast.date, dailyWeatherDateOptions).date;
-  const weatherIcon = getWeatherIcon(forecast.symbolPhrase);
+  const weatherIcon = getWeatherIcon(forecast.symbol);
 
   return (
     <div className={classes.container}>

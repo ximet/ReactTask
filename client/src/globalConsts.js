@@ -51,15 +51,7 @@ const feedbackFormInitialValues = {
   feedbackText: ''
 };
 
-const hoursOptions = {
-  hour: 'numeric'
-};
-
-const AnteMeridianAbbreviation = 'AM';
-
-const postMeridianAbbreviation = 'AM';
-
-const middayHours = 11;
+const API_WEATHER_ICON_URL = 'https://developer.foreca.com/static/images/symbols/'
 
 export {
   themes,
@@ -73,8 +65,5 @@ export {
   searchCitiesTimout,
   startLengthToSearchCities,
   feedbackFormInitialValues,
-  hoursOptions,
-  AnteMeridianAbbreviation,
-  postMeridianAbbreviation,
-  middayHours
+  API_WEATHER_ICON_URL
 };

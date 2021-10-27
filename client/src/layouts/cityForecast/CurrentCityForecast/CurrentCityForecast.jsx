@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getWeatherIcon } from '../../../services/weatherIconService';
 
 function CurrentCityForecast({ location, weather }) {
-  const weatherIcon = getWeatherIcon(weather.symbolPhrase);
+  const weatherIcon = getWeatherIcon(weather.symbol);
 
   return (
     <div className={classes.container}>

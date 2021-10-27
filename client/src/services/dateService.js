@@ -1,4 +1,4 @@
-import { defaultDateOptions, defaultTimeOptions, dateFormat, hoursOptions } from '../globalConsts';
+import { defaultDateOptions, defaultTimeOptions, dateFormat } from '../globalConsts';
 
 export const formatDate = (
   unformattedDate,
@@ -9,8 +9,7 @@ export const formatDate = (
 
   const date = fullDate.toLocaleString(dateFormat, dateOptions);
   const time = fullDate.toLocaleString(dateFormat, timeOptions);
-  const hours = fullDate.toLocaleString(dateFormat, hoursOptions).split([' ']);
-  return { date, time, hours: hours[0], dayTime: hours[1] };
+  return { date, time };
 };
 
 export const getCurrentTimeByTimeZone = timeZone => {
