@@ -1,14 +1,13 @@
 import React from 'react';
 import classes from './dailyForecast.module.css';
-import weatherIcon from '../../../../public/images/weatherIcon/sunAndCloudsIcon.png';
 import { formatDate } from '../../../services/dateService';
 import { dailyWeatherDateOptions, temperatureUnits } from '../../../globalConsts';
 import PropTypes from 'prop-types';
-
-//later will add weatherIconService and icons will depend on symbolPhrase
+import { getWeatherIcon } from '../../../services/weatherIconService';
 
 function DailyForecast({ forecast }) {
   const date = formatDate(forecast.date, dailyWeatherDateOptions).date;
+  const weatherIcon = getWeatherIcon(forecast.symbol);
 
   return (
     <div className={classes.container}>
