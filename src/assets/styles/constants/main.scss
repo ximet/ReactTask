@@ -18,6 +18,8 @@ $font-size-lg: 36px;
 $font-size-xl: 114px;
 
 $star-symbol-size: 34px;
+$btn-size: 34px;
+$hover-btn-size: 40px;
 
 $font-weight-normal: 400;
 $font-weight-bold: 600;
@@ -33,10 +35,14 @@ $primary-bg-color: var(--primary-bg-color);
 $secondary-bg-color: var(--secondary-bg-color);
 
 $chart-bg-color: var(--chart-bg-color);
+$hover-card-bg-color: var(--hover-card-bg-color);
 $card-bg-color: var(--card-bg-color);
 
 $light-btn-bg-color: $yellow;
 $dark-btn-bg-color: $blue;
+
+$arrow-btn-color: var(--arrow-btn-color);
+$hover-arrow-btn-color: var(--hover-arrow-btn-color);
 
 $default-transition-delay: 0.6s;
 $default-box-shadow: rgba($darken-blue, 0.2) 0px 7px 29px 0px;

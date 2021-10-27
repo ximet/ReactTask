@@ -1,0 +1,66 @@
+@import '../../assets/styles/constants/main.scss';
+
+.slider-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+
+  .slider {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0;
+    align-items: center;
+    width: 100%;
+
+    .slider-items {
+      display: flex;
+
+      & > div:first-child > div {
+        background-color: $hover-card-bg-color;
+        opacity: 0.9;
+        color: $secondary-font-color;
+        box-shadow: $default-box-shadow;
+      }
+    }
+  }
+
+  &[data-overflowing='false'] {
+    button {
+      display: none;
+    }
+
+    .slider {
+      width: 65vw;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -50px;
+    height: 50px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 50px;
+    border: 0;
+    font-size: $btn-size;
+    background-color: $primary-bg-color;
+    color: $arrow-btn-color;
+    cursor: pointer;
+    outline: none;
+    transition: font-size $default-transition-delay ease;
+
+    &:hover {
+      color: $hover-arrow-btn-color;
+      font-size: $hover-btn-size;
+    }
+
+    &:first-child {
+      right: auto;
+      left: -50px;
+    }
+  }
+}
