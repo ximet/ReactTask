@@ -7,9 +7,9 @@ function About() {
     <div className={classes.aboutContainer}>
       <h1>About us</h1>
       <p className={classes.textParagraph}>
-        This project was created to enable to people to monitor the weathet around the world. Also
-        it was training project. If you have any suggestions for the service work, you can contact
-        us using link bellow.
+        This project was created to let people monitoring the weathet around the world. Also it was
+        a training project. If you have any suggestions for the service work, you can contact us
+        using link below.
       </p>
       <RouterLink className={classes.link} to="/contacts">
         Contacts
