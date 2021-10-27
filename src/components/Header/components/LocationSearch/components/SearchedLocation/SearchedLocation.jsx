@@ -10,7 +10,7 @@ import {
   setCurrentLocation,
   setFavoriteCities
 } from '../../../../../../actions/locationsManagerActions';
-import { selectFavoriteCityIds } from '../../../../../../selectors/selectorsFavorite';
+import { selectFavoriteCityIds } from '../../../../../../selectors/favoriteSelectors';
 import { ReactComponent as HeartIcon } from '../../../../../../assets/img/svg/icon-heart.svg';
 
 const SearchedLocation = ({

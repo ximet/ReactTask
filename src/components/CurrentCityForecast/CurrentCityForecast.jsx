@@ -13,7 +13,7 @@ import {
   PRECITIPATE_MEASURE,
   HUMIDITY_MEASURE
 } from '../../utils/constants';
-import { selectCurrentForecast } from '../../selectors/selectorsForecast';
+import { selectCurrentForecast } from '../../utils/selectHelpers';
 import { getForecast } from '../../actions/locationsManagerActions';
 import { useCacheForecast } from '../../hooks/forecastHooks';
 
