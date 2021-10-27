@@ -38,7 +38,7 @@ function App(props) {
       <Header theme={theme} themeToggle={themeToggle} />
       <Switch>
         <Route path={routes.info.path}>
-          <InfoView />
+          <InfoView theme={theme} />
         </Route>
         <Route path={routes.feedback.path}>
           <FeedBackView theme={theme} />

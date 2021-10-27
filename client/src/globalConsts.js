@@ -51,6 +51,8 @@ const feedbackFormInitialValues = {
   feedbackText: ''
 };
 
+const API_WEATHER_ICON_URL = 'https://developer.foreca.com/static/images/symbols/'
+
 export {
   themes,
   bgImages,
@@ -62,5 +64,6 @@ export {
   temperatureUnits,
   searchCitiesTimout,
   startLengthToSearchCities,
-  feedbackFormInitialValues
+  feedbackFormInitialValues,
+  API_WEATHER_ICON_URL
 };

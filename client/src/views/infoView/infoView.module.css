@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoTitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4.3rem;
+  line-height: 77px;
+}
+
+.content {
+  width: 800px;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.mainText {
+  font-size: 1.4rem;
+}
