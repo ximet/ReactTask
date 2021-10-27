@@ -1,5 +1,6 @@
 :root {
   --lighten-blue: #f0f5ff;
+  --aquamarine: #a4c2ff;
   --blue: #5171b0;
   --black: #333333;
   --white: #ffffff;
@@ -9,17 +10,29 @@
 .light-theme {
   --primary-font-color: var(--black);
   --secondary-font-color: var(--white);
+
   --primary-bg-color: var(--lighten-blue);
   --secondary-bg-color: var(--blue);
+
   --chart-bg-color: var(--lighten-blue);
+  --hover-card-bg-color: var(--blue);
   --card-bg-color: var(--white);
+
+  --arrow-btn-color: var(--aquamarine);
+  --hover-arrow-btn-color: var(--blue);
 }
 
 .dark-theme {
   --primary-font-color: var(--white);
   --secondary-font-color: var(--white);
+
   --primary-bg-color: var(--black);
   --secondary-bg-color: var(--darken-gray);
+
   --chart-bg-color: var(--darken-gray);
+  --hover-card-bg-color: var(--blue);
   --card-bg-color: var(--darken-gray);
+
+  --arrow-btn-color: var(--lighten-blue);
+  --hover-arrow-btn-color: var(--darken-gray);
 }

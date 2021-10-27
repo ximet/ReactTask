@@ -7,7 +7,7 @@ import { changeLocation } from '../../redux/actions/locationActions.js';
 
 import styles from './SearchInput.module.scss';
 import SearchIcon from '../../assets/images/search-icon.png';
-import SearchLocationIcon from '../../assets/images/search-location-icon.png';
+import SearchLocationIcon from '../../assets/images/color-location-icon.png';
 
 function SearchInput({ setNewLocation }) {
   const [searchQuery, setSearchQuery] = useState('');

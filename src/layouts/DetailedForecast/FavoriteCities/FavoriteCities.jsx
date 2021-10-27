@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function FavoriteCities({ favoriteCities }) {
-  return <div>Favorite Cities</div>;
+import { favCitiesSliderOptions } from '../../../constants/slider';
+import styles from './FavoriteCities.module.scss';
+import Slider from '../../../components/Slider/Slider';
+
+function FavoriteCities({ cityCards }) {
+  return (
+    <div>
+      <h2 className={styles.favCitiesTitle}>Favorite cities</h2>
+      <Slider slideComponents={cityCards} {...favCitiesSliderOptions} />
+    </div>
+  );
 }
 
 FavoriteCities.defaultProps = {
@@ -10,13 +19,7 @@ FavoriteCities.defaultProps = {
 };
 
 FavoriteCities.propTypes = {
-  favoriteCities: PropTypes.arrayOf(
-    PropTypes.shape({
-      country: PropTypes.string,
-      id: PropTypes.number,
-      name: PropTypes.string
-    })
-  )
+  cityCards: PropTypes.arrayOf(PropTypes.element.isRequired)
 };
 
 export default FavoriteCities;
