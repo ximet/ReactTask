@@ -79,6 +79,8 @@
     "connect-history-api-fallback": "1.6.0",
     "cross-env": "6.0.3",
     "css-loader": "3.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "eslint-plugin-flowtype": "^6.1.0",
     "file-loader": "4.2.0",
     "flow-bin": "^0.161.0",
@@ -99,6 +101,7 @@
     "pretty-quick": "1.11.1",
     "react-hot-loader": "^4.13.0",
     "redux-immutable-state-invariant": "2.1.0",
+    "redux-mock-store": "^1.5.4",
     "sass-loader": "8.0.0",
     "script-ext-html-webpack-plugin": "2.1.4",
     "style-loader": "1.0.0",
@@ -109,5 +112,11 @@
     "webpack-cli": "3.3.9",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "4.2.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleModule.js",
+      "\\.(png|svg)$": "<rootDir>/__mocks__/fileModule.js"
+    }
   }
 }

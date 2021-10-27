@@ -9,8 +9,8 @@ import {
   HUMIDITY_MEASURE
 } from '../../../utils/constants';
 import { getFavoriteForecast, setFavoriteCities } from '../../../actions/locationsManagerActions';
-import { selectCurrentForecast } from '../../../selectors/selectorsForecast';
-import { selectFavoriteLoadingState } from '../../../selectors/selectorsFavorite';
+import { selectCurrentForecast } from '../../../utils/selectHelpers';
+import { selectFavoriteLoadingState } from '../../../utils/selectHelpers';
 import { getForecastSymbolUrl } from '../../../utils/forecastUtils';
 import { useCacheForecast } from '../../../hooks/forecastHooks';
 import type {
