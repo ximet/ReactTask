@@ -7,10 +7,10 @@ import {
 } from '../actions/preloaderManagerActions';
 
 const initialState = {
-  currentLocation: true,
-  dailyForecast: true,
-  hourlyForecast: true,
-  search: true,
+  currentLocation: false,
+  dailyForecast: false,
+  hourlyForecast: false,
+  search: false,
   favorites: {}
 };
 

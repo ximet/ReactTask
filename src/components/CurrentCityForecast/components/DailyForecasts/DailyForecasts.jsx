@@ -23,7 +23,7 @@ function DailyForecasts({
 
   return (
     <div className={classes.forecastsContainer}>
-      {isLoading ? (
+      {!isLoading ? (
         dailyForecastData.map(forecast => <DailyForecast key={uuidv4()} forecast={forecast} />)
       ) : (
         <Preloader />

@@ -29,7 +29,7 @@ function CurrentCityForecast(props) {
   return (
     <div className={classes.currentCityContainer}>
       <div className={classes.currentCityInfo}>
-        {props.isLoading ? (
+        {!props.isLoading ? (
           <>
             <div className={classes.forecastInfo}>
               <div className={classes.mainInfo}>

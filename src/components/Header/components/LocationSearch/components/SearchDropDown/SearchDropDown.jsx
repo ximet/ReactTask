@@ -6,34 +6,36 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import type { SearchDropDownPropsType } from './SearchDropDownPropsType';
 import Preloader from '../../../../../Preloader/Preloader';
-import { toggleSearchPreloader } from '../../../../../../actions/preloaderManagerActions';
 import { useLocationSearch } from '../../../../../../hooks/searchHooks';
+import { changeVisibleSearchPreloader } from '../../../../../../actions/preloaderManagerActions';
 
 function SearchDropDown({
   isOpenDropDown,
   isLoadingSearch,
+  changeVisibleSearchPreloader,
   ...props
 }: SearchDropDownPropsType): React$Node {
   const [searchString, setSearchString] = React.useState('');
-  const locations = useLocationSearch(searchString);
-
+  const locations = useLocationSearch(searchString, changeVisibleSearchPreloader);
   const handleSetSearchString = async string => setSearchString(string);
 
   return (
     <div className={classes.searchBarContainer}>
       <SearchBar onChangeSearchString={handleSetSearchString} />
-      {isLoadingSearch ? <SearchedLocations locations={locations} /> : <Preloader />}
+      {isLoadingSearch ? <Preloader /> : <SearchedLocations locations={locations} />}
     </div>
   );
 }
 
-const mapStateToProps = ({ preloaderManager: { search } }) => ({
-  isLoadingSearch: search
-});
+const mapStateToProps = ({ preloaderManager: { search } }) => {
+  return {
+    isLoadingSearch: search
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleSearchPreloader: state => dispatch(toggleSearchPreloader(state))
+    changeVisibleSearchPreloader: isLoading => dispatch(changeVisibleSearchPreloader(isLoading))
   };
 };
 

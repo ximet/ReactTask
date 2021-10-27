@@ -33,10 +33,10 @@ import Storage from '../services/StorageConnectionService';
 import Geolocation from '../services/GeolocationService';
 import ApiService from '../services/ForecastApiService';
 import {
-  toggleCurrrentLocationPreloader,
-  toggleDailyForecastPreloader,
-  toggleHourlyForecastPreloader,
-  toggleFavoriteForecastPreloader
+  changeVisibleCurrentLocationPreloader,
+  changeVisibleDailyForecastPreloader,
+  changeVisibleHourlyForecastPreloader,
+  changeVisibleFavoriteForecastPreloader
 } from './preloaderManagerActions';
 import { FAVORITE_CITIES_STORAGE_CODE, CURRENT_LOCATION_STORAGE_CODE } from '../utils/constants';
 import { getCurrentTime } from '../utils/dateTimeUtils';
@@ -119,7 +119,7 @@ export const changeFavoriteLocationsList =
 export const getForecast =
   (locationId: string): ThunkActionCachedForecasts =>
   async (dispatch: DispatchCachedForecasts, getState: GetStoreState): Promise<void> => {
-    dispatch(toggleCurrrentLocationPreloader(false));
+    dispatch(changeVisibleCurrentLocationPreloader(true));
     try {
       const { data } = await ApiService.getCurrentForecast(locationId);
       const locationForecast = {
@@ -131,13 +131,13 @@ export const getForecast =
     } catch (error) {
       console.error(error);
     }
-    dispatch(toggleCurrrentLocationPreloader(true));
+    dispatch(changeVisibleCurrentLocationPreloader(false));
   };
 
 export const getFavoriteForecast =
   (locationId: string): ThunkActionCachedForecasts =>
   async (dispatch: DispatchCachedForecasts, getState: GetStoreState): Promise<void> => {
-    dispatch(toggleFavoriteForecastPreloader(locationId, false));
+    dispatch(changeVisibleFavoriteForecastPreloader(locationId, true));
     try {
       const { data } = await ApiService.getCurrentForecast(locationId);
       const locationForecast = {
@@ -149,13 +149,13 @@ export const getFavoriteForecast =
     } catch (error) {
       console.error(error);
     }
-    dispatch(toggleFavoriteForecastPreloader(locationId, true));
+    dispatch(changeVisibleFavoriteForecastPreloader(locationId, false));
   };
 
 export const setCurrentHourlyForecast =
   (locationId: number | string): ThunkActionHourlyForecast =>
   async (dispatch: DispatchHourlyForecast, getState: GetStoreState): Promise<void> => {
-    dispatch(toggleHourlyForecastPreloader(false));
+    dispatch(changeVisibleHourlyForecastPreloader(true));
     try {
       if (locationId) {
         const { data } = await ApiService.getHourlyForecast(locationId);
@@ -165,13 +165,13 @@ export const setCurrentHourlyForecast =
     } catch (error) {
       console.error(error);
     }
-    dispatch(toggleHourlyForecastPreloader(true));
+    dispatch(changeVisibleHourlyForecastPreloader(false));
   };
 
 export const setCurrentDailyForecast =
   (locationId: number | string): ThunkActionDailyForecast =>
   async (dispatch: DispatchDailyForecast, getState: GetStoreState): Promise<void> => {
-    dispatch(toggleDailyForecastPreloader(false));
+    dispatch(changeVisibleDailyForecastPreloader(true));
     try {
       if (locationId) {
         const { data } = await ApiService.getDailyForecast(locationId);
@@ -181,7 +181,7 @@ export const setCurrentDailyForecast =
     } catch (error) {
       console.error(error);
     }
-    dispatch(toggleDailyForecastPreloader(true));
+    dispatch(changeVisibleDailyForecastPreloader(false));
   };
 
 export const setCurrentLocation =
@@ -203,7 +203,7 @@ export const setGeolocationCity =
   (isRefreshCurrentLocation: boolean = false): ThunkActionLocation =>
   async (dispatch: DispatchLocation, getState: GetStoreState): Promise<void> => {
     let currentLocationData = getState().locationManager.currentLocation;
-    dispatch(toggleCurrrentLocationPreloader(false));
+    dispatch(changeVisibleCurrentLocationPreloader(true));
     try {
       if (!currentLocationData.id || isRefreshCurrentLocation) {
         const position = await Geolocation.getCurrentPosition();
@@ -211,6 +211,7 @@ export const setGeolocationCity =
           `${position.coords.longitude},${position.coords.latitude}`
         );
         dispatch(changeLocation(currentLocationApi.data));
+        dispatch(changeVisibleCurrentLocationPreloader(false));
       }
     } catch (error) {
       console.error(error);
@@ -225,6 +226,7 @@ export const changeWarnings = (warnings: WarningsType): WarningsActionType => ({
 export const setWarnings =
   (locationId: number | string): ThunkActionWarnings =>
   async (dispatch: DispatchWarnings, getState: GetStoreState): Promise<void> => {
+    dispatch(changeVisibleCurrentLocationPreloader(true));
     try {
       if (locationId) {
         const { data } = await ApiService.getWarnings(locationId);
@@ -233,5 +235,5 @@ export const setWarnings =
     } catch (error) {
       console.error(error);
     }
-    dispatch(toggleCurrrentLocationPreloader(true));
+    dispatch(changeVisibleCurrentLocationPreloader(false));
   };

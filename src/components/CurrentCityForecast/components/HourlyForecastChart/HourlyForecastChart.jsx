@@ -24,7 +24,7 @@ function HourlyForecastChart({
 
   return (
     <div>
-      {isLoading ? (
+      {!isLoading ? (
         <Line
           height={250}
           type="basic"
