@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './CurrentCityForecast.module.css';
-import moonWeatherIcon from '../../../../public/images/moonWeatherIcon.png';
 import { temperatureUnits } from '../../../globalConsts';
 import PropTypes from 'prop-types';
 import { getWeatherIcon } from '../../../services/weatherIconService';
