@@ -1,5 +1,5 @@
 import {
-  toggleCurrrentLocationPreloader,
+  changeVisibleCurrentLocationPreloader,
   CURRENT_LOCATION_IS_LOADING
 } from './preloaderManagerActions';
 
@@ -9,6 +9,6 @@ describe('Preloader actions', () => {
       type: CURRENT_LOCATION_IS_LOADING,
       isLoading: true
     };
-    expect(toggleCurrrentLocationPreloader(true)).toEqual(expectResult);
+    expect(changeVisibleCurrentLocationPreloader(true)).toEqual(expectResult);
   });
 });
