@@ -14,7 +14,7 @@ import { useLocalStorageTheme } from './hooks/hooks';
 function App(props) {
   const [theme, setTheme] = useLocalStorageTheme(themes.light);
   const bgImage = bgImages[theme];
-  const [needToShowPreloader, setNeedToShowPreloader] = useState(true);
+  const [shouldShowPreloader, setShouldShowPreloader] = useState(true);
 
   function themeToggle() {
     const newTheme = theme == themes.light ? themes.dark : themes.light;
@@ -26,7 +26,7 @@ function App(props) {
     props.initializeApp();
 
     const timerId = setTimeout(() => {
-      setNeedToShowPreloader(false);
+      setShouldShowPreloader(false);
     }, showPreloaderTimeout);
 
     return () => {
@@ -36,7 +36,7 @@ function App(props) {
 
   return (
     <>
-      {needToShowPreloader || !props.isDataReceived ? (
+      {shouldShowPreloader || !props.isDataReceived ? (
         <Preloader theme={theme} />
       ) : (
         <BrowserRouter>
