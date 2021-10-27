@@ -1,0 +1,77 @@
+@import '../../../assets/styles/constants/main.scss';
+
+.feedback-form {
+  box-sizing: border-box;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .textInput,
+  .textareaInput {
+    margin-top: 5px;
+    border: 1px solid $secondary-bg-color;
+
+    &:focus {
+      border-color: $lighten-black;
+      outline: 1px solid $lighten-black;
+    }
+  }
+
+  .textInput {
+    height: 35px;
+    font-size: $font-size-sm;
+    padding: 0 5px;
+  }
+
+  .input-label {
+    margin-top: 10px;
+  }
+
+  .textareaInput {
+    resize: none;
+    height: 70px;
+  }
+
+  input[type='submit'],
+  input[type='reset'] {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    margin-top: 5px;
+    background-color: $secondary-bg-color;
+    color: $secondary-font-color;
+    outline: $secondary-bg-color;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: $active-btn-color;
+    }
+  }
+
+  input[type='submit'] {
+    margin-top: 20px;
+  }
+
+  input[type='reset'] {
+    background-color: $grey;
+  }
+
+  .resetBtn {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .input-prompt {
+    font-size: $font-size-xs;
+    margin-top: 5px;
+  }
+
+  .input-error {
+    margin: 0;
+    font-size: $font-size-xs;
+    color: $error-color;
+  }
+}

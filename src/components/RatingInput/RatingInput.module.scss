@@ -1,0 +1,23 @@
+@import '../../assets/styles/constants/main.scss';
+
+.rating {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0;
+
+  .star {
+    &.checked::after {
+      content: $checked-star;
+      color: $checked-star-color;
+    }
+
+    &::after {
+      width: 40px;
+      height: 40px;
+      font-size: $star-symbol-size;
+      content: $unchecked-star;
+      color: $unchecked-star-color;
+      cursor: pointer;
+    }
+  }
+}
