@@ -1,0 +1,21 @@
+@import '../../assets/styles/constants/main.scss';
+
+.vertical-line {
+  content: '';
+}
+
+.vertical {
+  width: 1px;
+}
+
+.horizontal {
+  height: 1px;
+}
+
+.dark {
+  background-color: $transparent-darken-blue;
+}
+
+.light {
+  background-color: $secondary-font-color;
+}

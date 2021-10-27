@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
 import HourlyForecast from './HourlyForecast';
-import { getHourlyChartData } from '../../../redux/selectors/weatherSelectors';
+import { selectHourlyChartData } from '../../../redux/selectors/weatherSelectors';
 
 const mapStateToProps = state => ({
-  chartData: getHourlyChartData(state)
+  chartData: selectHourlyChartData(state)
 });
 
 export default connect(mapStateToProps)(HourlyForecast);

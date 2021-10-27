@@ -3,4 +3,4 @@ export const UNIT_SYMBOLS = {
   fahrenheit: 'F'
 };
 
-export const DEGREE_SYMBOL = '°'
+export const DEGREE_SYMBOL = '°';
