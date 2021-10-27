@@ -31,7 +31,7 @@ function FeedbackForm() {
         name="rating"
         rules={{ required: true }}
         render={({ field: { onChange, value } }) => (
-          <RatingInput onChange={onChange} value={value} maxRating={NUMBER_OF_STARS} />
+          <RatingInput setValue={onChange} value={value} maxRating={NUMBER_OF_STARS} />
         )}
       />
       <Line type="horizontal" theme="dark" />
