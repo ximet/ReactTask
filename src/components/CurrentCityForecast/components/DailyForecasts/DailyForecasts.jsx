@@ -7,10 +7,12 @@ import { setCurrentDailyForecast } from '../../../../actions/locationsManagerAct
 import { connect } from 'react-redux';
 import * as React from 'react';
 import type { DailyForecastPropsType, DailyForecastOwnPropsType } from './DailyForecastPropsType';
+import Preloader from '../../../Preloader/Preloader';
 
 function DailyForecasts({
   locationId,
   currentDailyForecast,
+  isLoading,
   setCurrentDailyForecast
 }: DailyForecastPropsType): React$Node {
   const dailyForecastData = currentDailyForecast || [];
@@ -21,16 +23,22 @@ function DailyForecasts({
 
   return (
     <div className={classes.forecastsContainer}>
-      {dailyForecastData.map(forecast => (
-        <DailyForecast key={uuidv4()} forecast={forecast} />
-      ))}
+      {!isLoading ? (
+        dailyForecastData.map(forecast => <DailyForecast key={uuidv4()} forecast={forecast} />)
+      ) : (
+        <Preloader />
+      )}
     </div>
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentDailyForecast } }) => {
+const mapStateToProps = ({
+  locationManager: { currentDailyForecast },
+  preloaderManager: { dailyForecast }
+}) => {
   return {
-    currentDailyForecast
+    currentDailyForecast,
+    isLoading: dailyForecast
   };
 };
 

@@ -1,4 +1,6 @@
 // @flow
 export type SearchDropDownPropsType = {
-  isOpenDropDown: boolean
+  isOpenDropDown: boolean,
+  isLoadingSearch: boolean,
+  changeVisibleSearchPreloader: (isLoading: boolean) => void
 };

@@ -6,9 +6,14 @@ export type FavoriteCityForecastOwnPropsType = {
   location: LocationType
 };
 
+type IsLoadingStates = {
+  [locationId: string | number]: boolean
+};
+
 export type FavoriteCityForecastPropsType = {
   ...FavoriteCityForecastOwnPropsType,
   forecasts: CachedForecastCurrentType,
-  setFavoriteCities: (location: LocationType, isFavorite: boolean) => void,
-  getForecast: (locationId: number) => void
+  isLoadingStates: IsLoadingStates,
+  getFavoriteForecast: (locationId: number) => void,
+  setFavoriteCities: (location: LocationType, isFavorite: boolean) => void
 };

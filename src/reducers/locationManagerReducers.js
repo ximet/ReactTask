@@ -1,6 +1,5 @@
 import {
   CHANGE_LOCATION,
-  CHANGE_SEARCH_STRING,
   SET_HOURLY_FORECAST,
   SET_DAILY_FORECAST,
   SET_FORECAST,
@@ -29,8 +28,12 @@ export default function (state = initialState, action) {
       return { ...state, currentLocation: action.currentLocation };
     }
 
-    case CHANGE_SEARCH_STRING: {
-      return { ...state, searchString };
+    case SET_FORECAST: {
+      return { ...state, forecasts: { ...state.forecasts, [action.locationId]: action.forecast } };
+    }
+
+    case CHANGE_FAVORITE_LOCATIONS: {
+      return { ...state, favoriteCitiesList: action.favoriteCitiesList };
     }
 
     case SET_FORECAST: {
