@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import styles from './CityForecast.module.scss';
 import LocationIcon from '../../assets/images/location-icon.png';
@@ -8,7 +7,7 @@ import WindIcon from '../../assets/images/wind-icon.png';
 import HumidityIcon from '../../assets/images/hum-icon.png';
 
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
-import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
+import TemperatureUnitToggle from './TemperatureUnitToggle/Container';
 import VerticalLine from '../../components/VerticalLine/VerticalLine';
 
 function CityForecast({ cityForecast, cityInfo, themeBg }) {
@@ -22,7 +21,7 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
         <CurrentDate weatherImg={cityForecast.symbol} />
         <div className={styles.cityTemperature}>
           <span className={styles.temperatureDegrees}>{cityForecast.temperature}</span>
-          <TemperatureUniteToggle />
+          <TemperatureUnitToggle />
         </div>
         <span className={styles.temperatureDescription}>{symbolPhrase}</span>
         <div className={styles.cityLocation}>
@@ -66,8 +65,4 @@ CityForecast.propTypes = {
   themeBg: PropTypes.string.isRequired
 };
 
-const mapStateToProps = state => ({
-  theme: state.theme.currentTheme
-});
-
-export default connect(mapStateToProps)(CityForecast);
+export default CityForecast;

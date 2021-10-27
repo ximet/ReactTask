@@ -4,7 +4,8 @@ import {
   FETCH_WEATHER_FAILURE,
   SET_CITY_FORECAST,
   SET_DAILY_CITY_FORECAST,
-  SET_HOURLY_CITY_FORECAST
+  SET_HOURLY_CITY_FORECAST,
+  SET_TEMPERATURE_UNIT
 } from '../types/weatherTypes';
 
 const INITIAL_STATE = {
@@ -18,7 +19,8 @@ const INITIAL_STATE = {
     windSpeed: 0
   },
   dailyCityForecast: [],
-  hourlyCityForecast: []
+  hourlyCityForecast: [],
+  temperatureUnit: 'C'
 };
 
 const weatherReducer = (state = INITIAL_STATE, action) => {
@@ -59,6 +61,12 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         hourlyCityForecast: action.payload
+      };
+
+    case SET_TEMPERATURE_UNIT:
+      return {
+        ...state,
+        temperatureUnit: action.payload
       };
 
     default:
