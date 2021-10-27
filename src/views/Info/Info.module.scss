@@ -1,0 +1,43 @@
+@import '../../assets/styles/constants/main.scss';
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+
+  .info-item {
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45%;
+    overflow: hidden;
+
+    .info-text {
+      width: 50%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+
+      &:nth-child(2n) {
+        text-align: right;
+      }
+
+      .infoTitle {
+        font-size: $font-size-md;
+        margin-bottom: 10px;
+      }
+    }
+
+    .img-container {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+    }
+
+    .info-image {
+      width: 80%;
+      object-fit: cover;
+    }
+  }
+}
