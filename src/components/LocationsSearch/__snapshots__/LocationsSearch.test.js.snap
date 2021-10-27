@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LocationsSearch /> should render a LocationsSearch with LocationsSearchReuslts 1`] = `
+<div
+  className="locations-search"
+>
+  <h2
+    className="locations-search__title"
+  >
+    Search for location
+  </h2>
+  <input
+    className="locations-search__input"
+    onChange={[Function]}
+    placeholder="search query"
+    type="text"
+    value=""
+  />
+  <div
+    className="locations-search__input-description"
+  >
+    at least 
+    3
+     characters
+  </div>
+  <LocationsSearchReuslts
+    searchResults={Array []}
+  />
+</div>
+`;
+
+exports[`<LocationsSearch /> should render a LocationsSearch with Preloader 1`] = `
+<div
+  className="locations-search"
+>
+  <h2
+    className="locations-search__title"
+  >
+    Search for location
+  </h2>
+  <input
+    className="locations-search__input"
+    onChange={[Function]}
+    placeholder="search query"
+    type="text"
+    value=""
+  />
+  <div
+    className="locations-search__input-description"
+  >
+    at least 
+    3
+     characters
+  </div>
+  <Preloader />
+</div>
+`;
