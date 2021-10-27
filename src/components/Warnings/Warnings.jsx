@@ -4,32 +4,16 @@ import classes from './Warnings.module.scss';
 import Warning from './Warning/Warning';
 import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
 import { connect } from 'react-redux';
-import { useEffect, useState } from 'react';
-import ApiService from '../../services/ForecastApiService';
+import { setWarnings } from '../../actions/locationsManagerActions';
 import {
   EMPTY_WARNING_LIST_MAIN_MESSAGE,
   EMPTY_WARNING_LIST_ADDITIONAL_MESSAGE
 } from '../../utils/constants';
 import type { WarningsPropsType } from './WarningsPropsType';
 
-const makeWarningsList = warnings => warnings.map(warning => <Warning data={warning} />);
-
-function Warnings({ currentLocation }: WarningsPropsType): React$Node {
-  const [warnings, setWarnings] = useState([]);
-
-  useEffect(() => {
-    const getWarningsData = async (): Promise<void> => {
-      try {
-        if (currentLocation.id) {
-          const { data } = await ApiService.getWarnings(currentLocation.id);
-          setWarnings(data.warnings);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getWarningsData();
+function Warnings({ currentLocation, warnings, setWarnings }: WarningsPropsType): React$Node {
+  React.useEffect(() => {
+    if (currentLocation?.id) setWarnings(currentLocation.id);
   }, [currentLocation]);
 
   return (
@@ -37,7 +21,7 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
       <h2 className={classes.title}>Warnings</h2>
       <div>
         {warnings.length ? (
-          makeWarningsList(warnings)
+          warnings.map(warning => <Warning data={warning} />)
         ) : (
           <EmptyListMessage title="Warnings list is empty" message="Have a nice day!" />
         )}
@@ -46,14 +30,20 @@ function Warnings({ currentLocation }: WarningsPropsType): React$Node {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation } }) => {
+const mapStateToProps = ({ locationManager: { currentLocation, warnings } }) => {
   return {
-    currentLocation
+    currentLocation,
+    warnings
   };
 };
 
-const WrappedWarnings = (connect(mapStateToProps)(
-  Warnings
-): React.AbstractComponent<WarningsPropsType>);
+const mapDispatchToProps = dispatch => ({
+  setWarnings: locationId => dispatch(setWarnings(locationId))
+});
+
+const WrappedWarnings = (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Warnings): React.AbstractComponent<WarningsPropsType>);
 
 export default WrappedWarnings;

@@ -46,8 +46,8 @@ const SearchedLocation = ({
   );
 };
 
-const mapStateToProps = ({ locationManager: { favoriteCitiesList } }) => ({
-  favoriteCitiesIdList: selectFavoriteCityIds(favoriteCitiesList)
+const mapStateToProps = state => ({
+  favoriteCitiesIdList: selectFavoriteCityIds(state)
 });
 
 const mapDispatchToProps = dispatch => {

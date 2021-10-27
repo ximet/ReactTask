@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import DailyForecasts from './components/DailyForecasts/DailyForecasts';
 import HourlyForecastChart from './components/HourlyForecastChart/HourlyForecastChart';
 import { getDay, formatTime } from '../../utils/dateTimeUtils';
+import Preloader from '../Preloader/Preloader';
 import { getForecastSymbolUrl } from '../../utils/forecastUtils';
 import {
   CURRENT_CITY_FORECAST_ALT_TEXT,
@@ -23,45 +24,51 @@ function CurrentCityForecast(props) {
   const forecastTime = formatTime(currentForecast?.time);
   const forecastDay = getDay(currentForecast?.time);
 
-  useCacheForecast(props.forecasts, props.urrentLocation, props.getForecast);
+  useCacheForecast(props.forecasts, props.currentLocation, props.getForecast);
 
   return (
     <div className={classes.currentCityContainer}>
       <div className={classes.currentCityInfo}>
-        <div className={classes.forecastInfo}>
-          <div className={classes.mainInfo}>
-            <img
-              className={classes.icon}
-              src={symbolUrl}
-              alt={CURRENT_CITY_FORECAST_ALT_TEXT}
-              title={CURRENT_CITY_FORECAST_TITLE_TEXT}
-            />
-            <div className={classes.temperature}>{currentForecast?.temperature}</div>
-          </div>
-          <div className={classes.additionalInfo}>
-            <div className={classes.precitipate}>
-              Precitipate: {currentForecast?.precipProb}
-              {PRECITIPATE_MEASURE}
+        {props.isLoading ? (
+          <>
+            <div className={classes.forecastInfo}>
+              <div className={classes.mainInfo}>
+                <img
+                  className={classes.icon}
+                  src={symbolUrl}
+                  alt={CURRENT_CITY_FORECAST_ALT_TEXT}
+                  title={CURRENT_CITY_FORECAST_TITLE_TEXT}
+                />
+                <div className={classes.temperature}>{currentForecast?.temperature}</div>
+              </div>
+              <div className={classes.additionalInfo}>
+                <div className={classes.precitipate}>
+                  Precitipate: {currentForecast?.precipProb}
+                  {PRECITIPATE_MEASURE}
+                </div>
+                <div className={classes.humidity}>
+                  Humidity: {currentForecast?.relHumidity}
+                  {HUMIDITY_MEASURE}
+                </div>
+                <div className={classes.wind}>
+                  Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASURE}
+                </div>
+              </div>
             </div>
-            <div className={classes.humidity}>
-              Humidity: {currentForecast?.relHumidity}
-              {HUMIDITY_MEASURE}
+            <div className={classes.locationInfo}>
+              <div className={classes.cityName}>{props.currentLocation?.name}</div>
+              <div className={classes.areaName}>
+                {props.currentLocation?.adminArea} / {props.currentLocation?.country}
+              </div>
+              <div className={classes.forecastDate}>
+                {forecastDay} {forecastTime}
+              </div>
+              <div className={classes.forecastDate}>{currentForecast?.symbolPhrase}</div>
             </div>
-            <div className={classes.wind}>
-              Wind: {currentForecast?.windSpeed} {WIND_SPEED_MEASURE}
-            </div>
-          </div>
-        </div>
-        <div className={classes.locationInfo}>
-          <div className={classes.cityName}>{props.currentLocation?.name}</div>
-          <div className={classes.areaName}>
-            {props.currentLocation?.adminArea} / {props.currentLocation?.country}
-          </div>
-          <div className={classes.forecastDate}>
-            {forecastDay} {forecastTime}
-          </div>
-          <div className={classes.forecastDate}>{currentForecast?.symbolPhrase}</div>
-        </div>
+          </>
+        ) : (
+          <Preloader />
+        )}
       </div>
 
       <HourlyForecastChart locationId={currentLocationId} />
@@ -70,10 +77,14 @@ function CurrentCityForecast(props) {
   );
 }
 
-const mapStateToProps = ({ locationManager: { currentLocation, forecasts } }) => {
+const mapStateToProps = ({
+  locationManager: { currentLocation, forecasts },
+  preloaderManager: { currentLocation: currentLocationState }
+}) => {
   return {
     currentLocation,
-    forecasts
+    forecasts,
+    isLoading: currentLocationState
   };
 };
 
