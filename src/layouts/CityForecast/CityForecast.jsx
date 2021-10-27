@@ -51,6 +51,10 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
   );
 }
 
+CityForecast.defaultProps = {
+  cityInfo: {}
+};
+
 CityForecast.propTypes = {
   cityForecast: PropTypes.shape({
     relHumidity: PropTypes.number.isRequired,
@@ -60,8 +64,8 @@ CityForecast.propTypes = {
     windSpeed: PropTypes.number.isRequired
   }),
   cityInfo: PropTypes.shape({
-    country: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    country: PropTypes.string,
+    name: PropTypes.string
   }),
   themeBg: PropTypes.string.isRequired
 };

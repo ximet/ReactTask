@@ -14,13 +14,12 @@ function FavoriteCities({ cityCards }) {
   );
 }
 
+FavoriteCities.defaultProps = {
+  favoriteCities: []
+};
+
 FavoriteCities.propTypes = {
-  cityCards: PropTypes.arrayOf(PropTypes.element.isRequired),
-  currentCity: PropTypes.shape({
-    country: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired
-  })
+  cityCards: PropTypes.arrayOf(PropTypes.element.isRequired)
 };
 
 export default FavoriteCities;

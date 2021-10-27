@@ -6,8 +6,9 @@ import {
 
 import { dataService } from '../../services/dataService';
 import { setCityForecast, setDailyCityForecast, setHourlyCityForecast } from './weatherActions';
-import { setCurrentCity } from './locationActions';
+import { setCurrentCity, setRecentCity } from './locationActions';
 import { locationService } from '../../services/locationService';
+import { DEFAULT_RECENT_CITIES_ID, DEFAULT_CURRENT_CITY_ID } from '../../constants/forecaApi';
 
 const fetchWeatherStart = {
   type: FETCH_WEATHER_START
@@ -38,13 +39,21 @@ export const getAllData = location => async dispatch => {
   }
 };
 
-export const initApp = () => async (dispatch, getState) => {
+export const initApp = () => async dispatch => {
   dispatch(fetchWeatherStart);
 
   const currenLocationFromGeo = await locationService.getCurrentLocation();
-  const defaultLocation = getState().location.currentCity.id;
+  const defaultLocation = DEFAULT_CURRENT_CITY_ID;
   const location = currenLocationFromGeo || defaultLocation;
 
   await dataService.getForecastToken();
+
+  const cityInfoPromises = DEFAULT_RECENT_CITIES_ID.map(id => dataService.getCityInfo(id));
+
+  const citiesInfo = await Promise.all(cityInfoPromises);
+  citiesInfo.forEach(info => {
+    dispatch(setRecentCity(info));
+  });
+
   dispatch(getAllData(location));
 };

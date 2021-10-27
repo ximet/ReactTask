@@ -1,5 +1,5 @@
 export const favCitiesSliderOptions = {
-  slideWidth: 270
+  slideWidth: 290
 };
 
 export const dailyForecastSliderOptions = {
