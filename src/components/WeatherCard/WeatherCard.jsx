@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './WeatherCard.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
+import { DEGREE_SYMBOL } from '../../constants/units';
 import { getFormattedDate } from '../../utils/getFormattedDate';
+import Line from '../Line/Line';
 
 function WeatherCard({ weatherInfo }) {
   const date = getFormattedDate(weatherInfo.date);
@@ -19,9 +21,13 @@ function WeatherCard({ weatherInfo }) {
       <span className={styles.date}>{date.date}</span>
 
       <div className={styles.addedWeatherInfo}>
-        <span className={styles.temperature}>{weatherInfo.maxTemp}</span>
+        <span className={styles.temperature}>
+          {weatherInfo.maxTemp} {DEGREE_SYMBOL}
+        </span>
         <span>|</span>
-        <span className={styles.temperature}>{weatherInfo.minTemp}</span>
+        <span className={styles.temperature}>
+          {weatherInfo.minTemp} {DEGREE_SYMBOL}
+        </span>
       </div>
     </div>
   );

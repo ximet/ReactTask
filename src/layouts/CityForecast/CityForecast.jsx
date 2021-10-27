@@ -9,10 +9,13 @@ import HumidityIcon from '../../assets/images/hum-icon.png';
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUnitToggle from './TemperatureUnitToggle/Container';
 import Line from '../../components/Line/Line';
+import { getConvertedUnits } from '../../utils/temperatureData';
+import { WIND_SPEED_UNIT, HUMIDITY_UNIT } from '../../constants/units';
 
-function CityForecast({ cityForecast, cityInfo, themeBg }) {
+function CityForecast({ cityForecast, cityInfo, themeBg, weatherUnit }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
+  const temperature = getConvertedUnits(cityForecast.temperature, weatherUnit);
 
   return (
     <div className={styles.cityForecast}>
@@ -20,7 +23,7 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
       <div className={styles.content}>
         <CurrentDate weatherImg={cityForecast.symbol} />
         <div className={styles.cityTemperature}>
-          <span className={styles.temperatureDegrees}>{cityForecast.temperature}</span>
+          <span className={styles.temperatureDegrees}>{temperature}</span>
           <TemperatureUnitToggle />
         </div>
         <span className={styles.temperatureDescription}>{symbolPhrase}</span>
@@ -41,8 +44,12 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
           </div>
           <Line type="vertical" theme="light" />
           <div className={styles.addedInfoValue}>
-            <span className={styles.addedInfoValue}>{cityForecast.windSpeed} km/h</span>
-            <span className={styles.addedInfoValue}>{cityForecast.relHumidity} %</span>
+            <span className={styles.addedInfoValue}>
+              {cityForecast.windSpeed} {WIND_SPEED_UNIT}
+            </span>
+            <span className={styles.addedInfoValue}>
+              {cityForecast.relHumidity} {HUMIDITY_UNIT}
+            </span>
           </div>
         </div>
       </div>

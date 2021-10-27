@@ -4,3 +4,5 @@ export const UNIT_SYMBOLS = {
 };
 
 export const DEGREE_SYMBOL = '°';
+export const WIND_SPEED_UNIT = 'km/h';
+export const HUMIDITY_UNIT = '%';
