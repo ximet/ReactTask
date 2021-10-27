@@ -9,6 +9,7 @@
   background-color: $card-bg-color;
   margin-right: 20px;
   padding: 10px;
+  cursor: default;
 
   .date {
     font-size: $font-size-xs;
@@ -20,7 +21,7 @@
   }
 
   .weather-icon {
-    width: 60%;
+    width: 45%;
     margin: 10px 0;
   }
 

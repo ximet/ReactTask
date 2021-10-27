@@ -46,9 +46,10 @@
   border-radius: 6px;
   transform: translateY(-20px);
   transition: all $default-transition-delay ease;
-  z-index: 20;
   overflow: auto;
   box-shadow: $default-box-shadow;
+  z-index: 1;
+  visibility: hidden;
 
   .search-result-item {
     list-style: none;
@@ -90,6 +91,7 @@
 
 .search-wrapper:hover .search-results {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
 }
 

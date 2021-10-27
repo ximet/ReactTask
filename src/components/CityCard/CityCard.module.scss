@@ -1,0 +1,29 @@
+@import '../../assets/styles/constants/main.scss';
+
+.city-card {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  padding: 10px;
+  margin-right: 20px;
+  background-color: $card-bg-color;
+  color: $primary-font-color;
+  overflow: hidden;
+
+  img {
+    margin-right: 10px;
+  }
+
+  .city-name {
+    font-size: $font-size-sm;
+  }
+
+  &:hover {
+    background-color: $hover-card-bg-color;
+    color: $secondary-font-color;
+    box-shadow: $default-box-shadow;
+  }
+}
