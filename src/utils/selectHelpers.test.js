@@ -1,4 +1,4 @@
-import { selectCurrentForecast } from './selectorsForecast';
+import { selectCurrentForecast } from './selectHelpers';
 
 describe('Selectors of forecasts', () => {
   it('Selector should return forecast object', () => {
