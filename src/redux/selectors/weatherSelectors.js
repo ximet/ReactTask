@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { getFormattedHourlyData } from '../../utils/hourlyChartSettings';
+import { getCurrentTimeZone } from './locationSelectors';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 const gethourlyCityForecast = state => state.weather.hourlyCityForecast;
@@ -8,8 +9,8 @@ const getCityForecast = state => state.weather.cityForecast;
 export const getTemperatureUnit = state => state.weather.temperatureUnit;
 
 export const selectHourlyChartData = createSelector(
-  [gethourlyCityForecast, getTemperatureUnit],
-  (forecast, unit) => getFormattedHourlyData(forecast, unit)
+  [gethourlyCityForecast, getTemperatureUnit, getCurrentTimeZone],
+  (forecast, unit, timezone) => getFormattedHourlyData(forecast, unit, timezone)
 );
 
 export const selectShortCityForecast = createSelector(

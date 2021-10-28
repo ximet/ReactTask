@@ -1,17 +1,16 @@
-import { dateFormat, timeOptions } from '../constants/date';
 import { getConvertedTemperature } from './temperatureData';
 import { DEGREE_SYMBOL, WIND_SPEED_UNIT } from '../constants/units';
+import { getFormattedChartTime } from './getFormattedDate';
 
 export const CHART_HEIHGT = 70;
 
-export function getFormattedHourlyData(data, unit) {
+export function getFormattedHourlyData(data, unit, timeZone) {
   const time = [];
   const temperature = [];
   const wind = [];
 
   data.forEach(forecast => {
-    const date = new Date(forecast.time);
-    const forecastTime = date.toLocaleTimeString(dateFormat, timeOptions);
+    const forecastTime = getFormattedChartTime(forecast.time, timeZone);
 
     time.push(forecastTime);
     temperature.push(getConvertedTemperature(forecast.temperature, unit));
