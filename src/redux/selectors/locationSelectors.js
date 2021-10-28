@@ -13,4 +13,3 @@ export const selectCityTitle = createSelector([getCityInfo], ({ country, name, i
 export const selectCityCards = createSelector([getFavoriteCities], favoriteCities => {
   return favoriteCities.map(city => <CityCard info={city} />);
 });
-
