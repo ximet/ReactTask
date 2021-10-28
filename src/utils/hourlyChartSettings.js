@@ -2,6 +2,8 @@ import { dateFormat, timeOptions } from '../constants/date';
 import { getConvertedTemperature } from './temperatureData';
 import { DEGREE_SYMBOL, WIND_SPEED_UNIT } from '../constants/units';
 
+export const CHART_HEIHGT = 70;
+
 export function getFormattedHourlyData(data, unit) {
   const time = [];
   const temperature = [];
