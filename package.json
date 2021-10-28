@@ -81,7 +81,6 @@
     "cross-env": "6.0.3",
     "css-loader": "3.2.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "eslint-plugin-flowtype": "^6.1.0",
     "file-loader": "4.2.0",
     "flow-bin": "^0.161.0",
