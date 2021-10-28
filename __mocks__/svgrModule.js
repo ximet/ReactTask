@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
 const SvgrMock = React.forwardRef((props, ref) => <svg ref={ref} {...props} />);
 
