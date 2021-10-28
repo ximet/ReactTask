@@ -9,13 +9,13 @@ import HumidityIcon from '../../assets/images/hum-icon.png';
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
 import TemperatureUnitToggle from './TemperatureUnitToggle/Container';
 import Line from '../../components/Line/Line';
-import { getConvertedUnits } from '../../utils/temperatureData';
+import { getConvertedTemperature } from '../../utils/temperatureData';
 import { WIND_SPEED_UNIT, HUMIDITY_UNIT } from '../../constants/units';
 
 function CityForecast({ cityForecast, cityInfo, themeBg, weatherUnit }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
-  const temperature = getConvertedUnits(cityForecast.temperature, weatherUnit);
+  const temperature = getConvertedTemperature(cityForecast.temperature, weatherUnit);
 
   return (
     <div className={styles.cityForecast}>

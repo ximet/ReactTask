@@ -27,7 +27,7 @@
 
   .added-weather-info {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 
     .temperature {
       font-size: $font-size-sm;
@@ -36,6 +36,11 @@
       &:first-child {
         font-weight: $font-weight-bold;
       }
+    }
+
+    .unit {
+      font-size: $font-size-xs;
+      margin-right: 5px;
     }
   }
 }

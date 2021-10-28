@@ -4,11 +4,12 @@ import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 const gethourlyCityForecast = state => state.weather.hourlyCityForecast;
 const getDailyForecast = state => state.weather.dailyCityForecast;
-const getTemperatureUnit = state => state.weather.temperatureUnit;
 const getCityForecast = state => state.weather.cityForecast;
+export const getTemperatureUnit = state => state.weather.temperatureUnit;
 
-export const selectHourlyChartData = createSelector([gethourlyCityForecast], forecast =>
-  getFormattedHourlyData(forecast)
+export const selectHourlyChartData = createSelector(
+  [gethourlyCityForecast, getTemperatureUnit],
+  (forecast, unit) => getFormattedHourlyData(forecast, unit)
 );
 
 export const selectShortCityForecast = createSelector(
