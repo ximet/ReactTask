@@ -5,13 +5,13 @@
   "scripts": {
     "start": "npm run format && cross-env NODE_ENV=development webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack",
-    "test": "jest  --coverage",
+    "test": "jest --coverage",
     "format": "prettier --write ."
   },
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/__mock__/styleMock.js",
-      "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/__mock__/assetMock.js"
+      "\\.(gif|svg|png)$": "<rootDir>/__mock__/assetMock.js"
     }
   },
   "husky": {
