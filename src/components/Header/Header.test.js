@@ -1,5 +1,5 @@
 import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Header from './Header';
 import ThemeSelect from '../ThemeSelect/ThemeSelect';
 import MainNavigation from './components/MainNavigation/MainNavigation';
