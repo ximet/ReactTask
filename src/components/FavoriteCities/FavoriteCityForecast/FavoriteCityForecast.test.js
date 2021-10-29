@@ -40,7 +40,8 @@ describe('FavoriteCityForecast component', () => {
 
   it('Component should contain div with class additionalInfo', () => {
     const component = renderComponent(props);
+    const expectedResult = true;
 
-    expect(component.find('div.additionalInfo').exists()).toBe(true);
+    expect(component.find('div.additionalInfo').exists()).toBe(expectedResult);
   });
 });

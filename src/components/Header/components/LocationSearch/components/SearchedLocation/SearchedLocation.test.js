@@ -43,8 +43,9 @@ describe('SearchedLocation component', () => {
       }
     };
     const component = renderComponent(props);
+    const expectedResult = true;
 
-    expect(component.find('button.favoriteBtn').exists()).toBe(true);
+    expect(component.find('button.favoriteBtn').exists()).toBe(expectedResult);
   });
 
   it('Component should contain button with class active', () => {
@@ -58,8 +59,9 @@ describe('SearchedLocation component', () => {
       }
     };
     const component = renderComponent(props);
+    const expectedResult = true;
 
-    expect(component.find('button.favoriteBtn').exists()).toBe(true);
+    expect(component.find('button.favoriteBtn').exists()).toBe(expectedResult);
   });
 
   it('After click button should be active', () => {
@@ -74,8 +76,9 @@ describe('SearchedLocation component', () => {
     };
     const component = renderComponent(props);
     const button = component.find('button.favoriteBtn');
+    const expectedResult = true;
 
     button.simulate('click');
-    expect(component.find('button.favoriteBtn.active').exists()).toBe(true);
+    expect(component.find('button.favoriteBtn.active').exists()).toBe(expectedResult);
   });
 });

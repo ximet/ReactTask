@@ -11,8 +11,9 @@ describe('ThemeSelect component', () => {
 
   it('Component should contain html element with selectedTheme class', () => {
     const component = renderComponent();
+    const expectedResult = true;
 
-    expect(component.find('.selectedTheme').exists()).toBe(true);
+    expect(component.find('.selectedTheme').exists()).toBe(expectedResult);
   });
 
   it("Component shouldn't contain ThemeDropDown component", () => {
@@ -24,7 +25,8 @@ describe('ThemeSelect component', () => {
   it('Component should contain ThemeDropDown component', () => {
     const component = renderComponent();
     component.find('.selectedTheme').simulate('click');
+    const expectedResult = true;
 
-    expect(component.find(ThemeDropDown).exists()).toBe(true);
+    expect(component.find(ThemeDropDown).exists()).toBe(expectedResult);
   });
 });

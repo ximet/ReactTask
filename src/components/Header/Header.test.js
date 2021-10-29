@@ -13,21 +13,29 @@ describe('Header component', () => {
 
   it('Component should contain ThemeSelect component', () => {
     const component = renderComponent();
-    expect(component.find(ThemeSelect).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(component.find(ThemeSelect).exists()).toBe(expectedResult);
   });
 
   it('Component should contain MainNavigation component', () => {
     const component = renderComponent();
-    expect(component.find(MainNavigation).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(component.find(MainNavigation).exists()).toBe(expectedResult);
   });
 
   it('Component should contain LocationSearch component', () => {
     const component = renderComponent();
-    expect(component.find(LocationSearch).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(component.find(LocationSearch).exists()).toBe(expectedResult);
   });
 
   it('Component should contain CurrentTime component', () => {
     const component = renderComponent();
-    expect(component.find(CurrentTime).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(component.find(CurrentTime).exists()).toBe(expectedResult);
   });
 });
