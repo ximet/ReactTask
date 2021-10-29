@@ -6,10 +6,11 @@ import {
   dayOfWeekOptions
 } from '../constants/date';
 
-export function getFormattedCurrentDate() {
+export function getFormattedCurrentDate(timeZone) {
   const currentDate = new Date();
-  const date = currentDate.toLocaleString(dateFormat, fullDateOptions, dateOptions);
-  const time = currentDate.toLocaleString(dateFormat, timeOptions);
+
+  const date = currentDate.toLocaleString(dateFormat, { ...fullDateOptions, timeZone });
+  const time = currentDate.toLocaleString(dateFormat, { ...timeOptions, timeZone });
 
   return { date, time };
 }
@@ -20,6 +21,13 @@ export function getFormattedDate(formDate) {
   const dayOfWeek = formDate.toLocaleString(dateFormat, dayOfWeekOptions);
 
   return { date, dayOfWeek };
+}
+
+export function getFormattedChartTime(time, timeZone) {
+  const date = new Date(time);
+  const chartTime = date.toLocaleTimeString(dateFormat, { ...timeOptions, timeZone });
+
+  return chartTime;
 }
 
 export function getCurrentYear() {

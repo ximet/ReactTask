@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import styles from './CityForecast.module.scss';
 import LocationIcon from '../../assets/images/location-icon.png';
@@ -8,12 +7,15 @@ import WindIcon from '../../assets/images/wind-icon.png';
 import HumidityIcon from '../../assets/images/hum-icon.png';
 
 import CurrentDate from '../../components/CurrentDate/CurrentDate';
-import TemperatureUniteToggle from './TemperatureUniteToggle/TemperatureUniteToggle';
+import TemperatureUnitToggle from './TemperatureUnitToggle/Container';
 import Line from '../../components/Line/Line';
+import { getConvertedTemperature } from '../../utils/temperatureData';
+import { WIND_SPEED_UNIT, HUMIDITY_UNIT } from '../../constants/units';
 
-function CityForecast({ cityForecast, cityInfo, themeBg }) {
+function CityForecast({ cityForecast, cityInfo, themeBg, weatherUnit }) {
   const symbolPhrase =
     cityForecast.symbolPhrase[0].toUpperCase() + cityForecast.symbolPhrase.slice(1);
+  const temperature = getConvertedTemperature(cityForecast.temperature, weatherUnit);
 
   return (
     <div className={styles.cityForecast}>
@@ -21,8 +23,8 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
       <div className={styles.content}>
         <CurrentDate weatherImg={cityForecast.symbol} />
         <div className={styles.cityTemperature}>
-          <span className={styles.temperatureDegrees}>{cityForecast.temperature}</span>
-          <TemperatureUniteToggle />
+          <span className={styles.temperatureDegrees}>{temperature}</span>
+          <TemperatureUnitToggle />
         </div>
         <span className={styles.temperatureDescription}>{symbolPhrase}</span>
         <div className={styles.cityLocation}>
@@ -42,8 +44,12 @@ function CityForecast({ cityForecast, cityInfo, themeBg }) {
           </div>
           <Line type="vertical" theme="light" />
           <div className={styles.addedInfoValue}>
-            <span className={styles.addedInfoValue}>{cityForecast.windSpeed} km/h</span>
-            <span className={styles.addedInfoValue}>{cityForecast.relHumidity} %</span>
+            <span className={styles.addedInfoValue}>
+              {cityForecast.windSpeed} {WIND_SPEED_UNIT}
+            </span>
+            <span className={styles.addedInfoValue}>
+              {cityForecast.relHumidity} {HUMIDITY_UNIT}
+            </span>
           </div>
         </div>
       </div>
@@ -67,11 +73,8 @@ CityForecast.propTypes = {
     country: PropTypes.string,
     name: PropTypes.string
   }),
-  themeBg: PropTypes.string.isRequired
+  themeBg: PropTypes.string.isRequired,
+  weatherUnit: PropTypes.string.isRequired
 };
 
-const mapStateToProps = state => ({
-  theme: state.theme.currentTheme
-});
-
-export default connect(mapStateToProps)(CityForecast);
+export default CityForecast;

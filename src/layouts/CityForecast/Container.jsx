@@ -9,7 +9,8 @@ const mapStateToProps = state => {
   return {
     cityForecast: selectShortCityForecast(state),
     cityInfo: selectCityTitle(state),
-    themeBg: getCurrentBgImage(state)
+    themeBg: getCurrentBgImage(state),
+    weatherUnit: state.weather.temperatureUnit
   };
 };
 

@@ -1,7 +1,8 @@
 import {
   SET_CITY_FORECAST,
   SET_DAILY_CITY_FORECAST,
-  SET_HOURLY_CITY_FORECAST
+  SET_HOURLY_CITY_FORECAST,
+  SET_TEMPERATURE_UNIT
 } from '../types/weatherTypes';
 
 export const setCityForecast = forecast => ({
@@ -17,4 +18,9 @@ export const setDailyCityForecast = forecast => ({
 export const setHourlyCityForecast = forecast => ({
   type: SET_HOURLY_CITY_FORECAST,
   payload: forecast
+});
+
+export const setTemperatureUnit = unit => ({
+  type: SET_TEMPERATURE_UNIT,
+  payload: unit
 });

@@ -1,27 +1,30 @@
-import { dateFormat, timeOptions } from '../constants/date';
+import { getConvertedTemperature } from './temperatureData';
+import { DEGREE_SYMBOL, WIND_SPEED_UNIT } from '../constants/units';
+import { getFormattedChartTime } from './getFormattedDate';
 
-export function getFormattedHourlyData(data) {
+export const CHART_HEIHGT = 70;
+
+export function getFormattedHourlyData(data, unit, timeZone) {
   const time = [];
   const temperature = [];
   const wind = [];
 
   data.forEach(forecast => {
-    const date = new Date(forecast.time);
-    const forecastTime = date.toLocaleTimeString(dateFormat, timeOptions);
+    const forecastTime = getFormattedChartTime(forecast.time, timeZone);
 
     time.push(forecastTime);
-    temperature.push(forecast.temperature);
+    temperature.push(getConvertedTemperature(forecast.temperature, unit));
     wind.push(forecast.windSpeed);
   });
 
   return { time, temperature, wind };
 }
 
-export const getHourlyChartData = data => ({
+export const getHourlyChartData = (data, unit) => ({
   labels: data.time,
   datasets: [
     {
-      label: 'Temperature, ℃',
+      label: `Temperature, ${DEGREE_SYMBOL}${unit}`,
       data: data.temperature,
       fill: false,
       backgroundColor: 'rgb(255, 99, 132)',
@@ -34,7 +37,7 @@ export const getHourlyChartData = data => ({
       }
     },
     {
-      label: 'Wind, m/s',
+      label: `Wind, ${WIND_SPEED_UNIT}`,
       data: data.wind,
       fill: false,
       backgroundColor: 'rgb(81,113,176)',

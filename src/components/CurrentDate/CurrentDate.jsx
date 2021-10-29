@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,9 +6,10 @@ import styles from './CurrentDate.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
 import { updatingDateInterval } from '../../constants/date';
 import { getFormattedCurrentDate } from '../../utils/getFormattedDate';
+import { getCurrentTimeZone } from '../../redux/selectors/locationSelectors';
 
-function CurrentDate({ weatherImg }) {
-  const [currentDate, setCurrentDate] = useState(getFormattedCurrentDate);
+function CurrentDate({ weatherImg, timeZone }) {
+  const [currentDate, setCurrentDate] = useState(getFormattedCurrentDate(timeZone));
 
   useEffect(() => {
     let timerId = setInterval(() => {
@@ -20,7 +22,7 @@ function CurrentDate({ weatherImg }) {
   });
 
   function changeTime() {
-    const currentDate = getFormattedCurrentDate();
+    const currentDate = getFormattedCurrentDate(timeZone);
     setCurrentDate(currentDate);
   }
 
@@ -39,8 +41,17 @@ function CurrentDate({ weatherImg }) {
   );
 }
 
-CurrentDate.propTypes = {
-  weatherImg: PropTypes.string.isRequired
+CurrentDate.defaultProps = {
+  timeZone: 'Europe/Minsk'
 };
 
-export default CurrentDate;
+CurrentDate.propTypes = {
+  weatherImg: PropTypes.string.isRequired,
+  timeZone: PropTypes.string
+};
+
+const mapStateToProps = state => ({
+  timeZone: getCurrentTimeZone(state)
+});
+
+export default connect(mapStateToProps)(CurrentDate);
