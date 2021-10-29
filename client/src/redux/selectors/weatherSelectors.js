@@ -1,9 +1,11 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
 export const getWeather = state => state.currentWeather;
 
 export const selectCurrentCityForecast = createSelector(
-    [getWeather], 
-    ({ temperature, symbolPhrase }) => ({
-        temperature, symbolPhrase
-}))
+  [getWeather],
+  ({ temperature, symbolPhrase }) => ({
+    temperature,
+    symbolPhrase
+  })
+);

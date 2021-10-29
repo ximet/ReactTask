@@ -24,19 +24,20 @@ describe('Location Reduceer', () => {
       lat: 0
     };
 
-    const expectedState = {
+    const expectedResult = {
       id: 1,
       country: 'country',
       name: 'name',
       lon: 1,
       lat: 1
     };
-    expect(location(initialState, action)).toEqual(expectedState);
+    expect(location(initialState, action)).toEqual(expectedResult);
   });
 
   it(`should return the default state if action doesn't exist`, () => {
     const nonExistingAction = { type: 'NON_EXISTING_ACTION' };
+    const expectedResult = 'object';
 
-    expect(typeof location(undefined, nonExistingAction)).toEqual('object');
+    expect(typeof location(undefined, nonExistingAction)).toEqual(expectedResult);
   });
 });

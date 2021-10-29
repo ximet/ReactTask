@@ -34,7 +34,7 @@ describe('Daily weather Reducer', () => {
 
     const initialState = [];
 
-    const expectedState = [
+    const expectedResult = [
       {
         date: '20211-10-27',
         symbol: 'd001',
@@ -58,12 +58,13 @@ describe('Daily weather Reducer', () => {
       }
     ];
 
-    expect(dailyWeather(initialState, action)).toEqual(expectedState);
+    expect(dailyWeather(initialState, action)).toEqual(expectedResult);
   });
 
   it(`should return the default state if action doesn't exist`, () => {
     const nonExistingAction = { type: 'NON_EXISTING_ACTION' };
+    const expectedResult = 'object';
 
-    expect(typeof dailyWeather(undefined, nonExistingAction)).toEqual('object');
+    expect(typeof dailyWeather(undefined, nonExistingAction)).toEqual(expectedResult);
   });
 });
