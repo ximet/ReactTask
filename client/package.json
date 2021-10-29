@@ -21,6 +21,8 @@
     "axios": "^0.21.4",
     "core-js": "3.2.1",
     "dotenv-webpack": "^7.0.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "formik": "^2.2.9",
     "history": "4.10.1",
     "ramda": "0.26.1",
@@ -33,7 +35,7 @@
     "redux-devtools": "^3.7.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
-    "reselect": "4.0.0",
+    "reselect": "^4.0.0",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
@@ -94,5 +96,11 @@
     "webpack-cli": "3.3.9",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "4.2.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(png|svg)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
