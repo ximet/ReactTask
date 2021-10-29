@@ -10,7 +10,7 @@ describe('Location action', () => {
       lat: 1
     };
 
-    const expectResult = {
+    const expectedResult = {
       type: SET_LOCATION,
       payload: {
         location: {
@@ -22,6 +22,6 @@ describe('Location action', () => {
         }
       }
     };
-    expect(setLocationAction(location)).toEqual(expectResult);
+    expect(setLocationAction(location)).toEqual(expectedResult);
   });
 });
