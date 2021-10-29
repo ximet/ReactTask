@@ -7,6 +7,7 @@ import {
   SET_HOURLY_CITY_FORECAST,
   SET_TEMPERATURE_UNIT
 } from '../types/weatherTypes';
+import { UNIT_SYMBOLS } from '../../constants/units';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -20,7 +21,7 @@ const INITIAL_STATE = {
   },
   dailyCityForecast: [],
   hourlyCityForecast: [],
-  temperatureUnit: 'C'
+  temperatureUnit: UNIT_SYMBOLS.celsius
 };
 
 const weatherReducer = (state = INITIAL_STATE, action) => {

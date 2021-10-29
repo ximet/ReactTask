@@ -7,6 +7,7 @@ import {
   getHourlyChartData,
   CHART_HEIHGT
 } from '../../../utils/hourlyChartSettings';
+import { UNIT_SYMBOLS } from '../../../constants/units';
 import styles from './HourlyForecast.module.scss';
 
 function HourlyForecast({ chartData, temperatureUnit }) {
@@ -24,7 +25,7 @@ function HourlyForecast({ chartData, temperatureUnit }) {
 }
 
 HourlyForecast.defaultProps = {
-  temperatureUnit: 'C'
+  temperatureUnit: UNIT_SYMBOLS.celsius
 };
 
 HourlyForecast.propTypes = {
