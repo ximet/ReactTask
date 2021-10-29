@@ -13,16 +13,22 @@ describe('DetailedForecast component', () => {
 
   it('Component should contain FavoriteCities component', () => {
     const DetailedForecast = renderDetailedForecast();
-    expect(DetailedForecast.find(FavoriteCities).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(DetailedForecast.find(FavoriteCities).exists()).toBe(expectedResult);
   });
 
   it('Component should contain DailyForecast component', () => {
     const DetailedForecast = renderDetailedForecast();
-    expect(DetailedForecast.find(DailyForecast).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(DetailedForecast.find(DailyForecast).exists()).toBe(expectedResult);
   });
 
   it('Component should contain DailyForecast component', () => {
     const DetailedForecast = renderDetailedForecast();
-    expect(DetailedForecast.find(HourlyForecast).exists()).toBe(true);
+    const expectedResult = true;
+
+    expect(DetailedForecast.find(HourlyForecast).exists()).toBe(expectedResult);
   });
 });
