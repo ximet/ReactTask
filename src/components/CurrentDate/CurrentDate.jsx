@@ -6,6 +6,7 @@ import styles from './CurrentDate.module.scss';
 import { FORECAST_PATHS } from '../../constants/forecaApi';
 import { updatingDateInterval } from '../../constants/date';
 import { getFormattedCurrentDate } from '../../utils/getFormattedDate';
+import { getCurrentTimeZone } from '../../redux/selectors/locationSelectors';
 
 function CurrentDate({ weatherImg, timeZone }) {
   const [currentDate, setCurrentDate] = useState(getFormattedCurrentDate(timeZone));
@@ -50,7 +51,7 @@ CurrentDate.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  timeZone: state.location.currentCity.timezone
+  timeZone: getCurrentTimeZone(state)
 });
 
 export default connect(mapStateToProps)(CurrentDate);

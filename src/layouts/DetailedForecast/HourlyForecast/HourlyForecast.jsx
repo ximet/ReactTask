@@ -23,13 +23,17 @@ function HourlyForecast({ chartData, temperatureUnit }) {
   );
 }
 
+HourlyForecast.defaultProps = {
+  temperatureUnit: 'C'
+};
+
 HourlyForecast.propTypes = {
   chartData: PropTypes.shape({
     time: PropTypes.arrayOf(PropTypes.string).isRequired,
     temperature: PropTypes.arrayOf(PropTypes.number).isRequired,
-    wind: PropTypes.arrayOf(PropTypes.number).isRequired
-  }),
-  temperatureUnit: PropTypes.string.isRequired
+    wind: PropTypes.arrayOf(PropTypes.number).isRequired,
+    temperatureUnit: PropTypes.string
+  })
 };
 
 export default HourlyForecast;

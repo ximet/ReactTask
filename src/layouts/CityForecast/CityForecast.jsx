@@ -73,7 +73,8 @@ CityForecast.propTypes = {
     country: PropTypes.string,
     name: PropTypes.string
   }),
-  themeBg: PropTypes.string.isRequired
+  themeBg: PropTypes.string.isRequired,
+  weatherUnit: PropTypes.string.isRequired
 };
 
 export default CityForecast;
