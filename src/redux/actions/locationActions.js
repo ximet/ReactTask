@@ -3,12 +3,12 @@ import { getAllData } from './initAppActions';
 
 export const setCurrentCity = data => ({
   type: SET_CURRENT_CITY,
-  payload: { ...data }
+  payload: data
 });
 
 export const setRecentCity = data => ({
   type: SET_RECENT_CITY,
-  payload: { ...data }
+  payload: data
 });
 
 export const changeLocation = data => dispatch => {

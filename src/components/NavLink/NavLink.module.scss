@@ -3,4 +3,8 @@
 .link {
   color: $secondary-font-color;
   margin-right: 15px;
+
+  &.active {
+    text-decoration: underline;
+  }
 }

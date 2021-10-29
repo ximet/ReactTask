@@ -21,7 +21,7 @@ RatingInput.defaultProps = {
 };
 
 RatingInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  setValue: PropTypes.func.isRequired,
   maxRating: PropTypes.number.isRequired,
   value: PropTypes.number
 };
