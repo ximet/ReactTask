@@ -16,7 +16,7 @@ module.exports = function (api) {
     ['@babel/preset-react', { runtime: 'automatic' }]
   ];
   const plugins = [
-    '@babel/transform-react-constant-elements',    
+    '@babel/transform-react-constant-elements',
     'transform-react-pure-class-to-function',
     '@babel/plugin-transform-runtime',
     'react-hot-loader/babel',
