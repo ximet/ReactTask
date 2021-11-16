@@ -8,6 +8,7 @@
     "test": "jest --coverage",
     "format": "prettier --write ."
   },
+  "proxy": "http://localhost:4000",
   "husky": {
     "hooks": {
       "pre-commit": "npm run format"
