@@ -12,6 +12,7 @@ import Country from './components/Pages/Explore/Country';
 import Home from './components/Pages/Home/Home';
 
 function App() {
+
   const [data, setdata] = useState('');
   const [apiData, setApiData] = useState('');
   const [currentLocation, setcurrentLocation] = useState();
@@ -82,6 +83,17 @@ function App() {
         </Wrapper>
       </div>
     </Router>
+
+  const TestComponent = () => {
+    return <h1>PR Test</h1>;
+  };
+
+  return (
+    <div>
+      <div>Hello world!</div>
+      <TestComponent />
+    </div>
+
   );
 }
 
