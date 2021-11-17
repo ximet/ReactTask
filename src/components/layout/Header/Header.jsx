@@ -14,6 +14,9 @@ function Header() {
             <Link to="/">Home</Link>
           </Nav>
           <Nav>
+            <Link to="/explore">Explore</Link>
+          </Nav>
+          <Nav>
             <Link to="/information">Information</Link>
           </Nav>
           <Nav>

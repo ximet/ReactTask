@@ -7,6 +7,9 @@ import Wrapper from './components/layout/Wrapper/Wrapper';
 import Title from './components/layout/Typography/Title/Title';
 import Info from './components/Pages/Info/Info';
 import Feedback from './components/Pages/Feedback/Feedback';
+import Explore from './components/Pages/Explore/Explore';
+import Country from './components/Pages/Explore/Country';
+import Home from './components/Pages/Home/Home';
 
 function App() {
   const [data, setdata] = useState('');
@@ -45,20 +48,6 @@ function App() {
 
   // console.log('apiData FROM API: ', apiData);
 
-  var config = {
-    method: 'get',
-    url: 'https://countriesnow.space/api/v0.1/countries',
-    headers: {}
-  };
-
-  axios(config)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
   const toggleThemeHandler = () => {
     theme === '' ? setTheme('dark') : setTheme('');
   };
@@ -81,7 +70,13 @@ function App() {
               <Feedback />
             </Route>
             <Route path="/" exact>
-              <Title>Home</Title>
+              <Home />
+            </Route>
+            <Route path="/explore">
+              <Explore />
+            </Route>
+            <Route path={`/country/:country`}>
+              <Country />
             </Route>
           </Switch>
         </Wrapper>
