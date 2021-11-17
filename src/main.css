@@ -5,8 +5,30 @@
 .main {
   background-color: white;
   color: black;
+  height: 100vh;
 }
 .dark {
-  background-color: black;
+  background-color: rgb(41, 41, 41);
   color: white;
+}
+
+.ThemeToggler {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.ThemeTogglerButton {
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  background-color: rgb(167, 167, 167);
+  padding: 12px;
+  cursor: pointer;
+  transition: 180ms;
+}
+
+.dark .ThemeTogglerButton {
+  background-color: rgb(0, 0, 0);
 }

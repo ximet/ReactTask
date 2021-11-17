@@ -1,0 +1,19 @@
+.Nav {
+  list-style: none;
+}
+
+.Nav a {
+  text-decoration: none;
+  padding: 12px 22px;
+  color: inherit;
+  margin: 0 4px;
+  border-radius: 4px;
+  transition: 180ms;
+}
+
+.dark .Nav a:hover {
+  background-color: rgb(68, 68, 68);
+}
+.Nav a:hover {
+  background-color: rgb(199, 199, 199);
+}

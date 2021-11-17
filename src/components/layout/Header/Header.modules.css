@@ -1,0 +1,16 @@
+.Header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(223, 223, 223);
+  padding: 0 40px;
+}
+
+.dark > .Header {
+  background-color: rgb(24, 24, 24);
+}
+
+.Header nav ul {
+  display: flex;
+}
