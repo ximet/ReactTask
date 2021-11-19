@@ -44,7 +44,7 @@ function Feedback() {
           value={message}
           onChange={event => setmessage(event.target.value)}
         ></textarea>
-        <Button name="Login" click={event => handleSubmit(event)} />
+        <Button name="Send" click={event => handleSubmit(event)} />
       </form>
     </div>
   );
