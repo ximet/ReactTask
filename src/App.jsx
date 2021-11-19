@@ -10,7 +10,6 @@ import Home from './components/Pages/Home/Home';
 
 function App() {
   const [theme, setTheme] = useState('dark');
-
   const toggleThemeHandler = () => {
     theme === '' ? setTheme('dark') : setTheme('');
   };
