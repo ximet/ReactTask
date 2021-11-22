@@ -22,10 +22,10 @@ function Home() {
   };
 
   return (
-    <div>
-      <Title>Home, baby</Title>
+    <React.Fragment>
+      <Title>Home</Title>
       <WeatherReport />
-    </div>
+    </React.Fragment>
   );
 }
 
