@@ -1,44 +1,56 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from './constants';
 
 function getLocalData() {
   const [apiData, setApiData] = useState('');
   const [currentLocation, setcurrentLocation] = useState();
   const [token, setToken] = useState();
   const [weatherdata, setweatherData] = useState();
+
   const AUTH_TOKEN = token;
+  const AUTH = {
+    Authorization: `Bearer ${AUTH_TOKEN}`
+  };
+
+  // Calls server and gets a token
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api').then(result => setToken(result.data));
+    axios.get(LOCAL_SERVER).then(result => setToken(result.data));
   }, []);
+
+  // Gets weather data for corresponding city
 
   useEffect(() => {
     apiData
       ? axios
-          .get(`https://pfa.foreca.com/api/v1/observation/latest/${apiData.data.id}`, {
-            headers: {
-              Authorization: `Bearer ${AUTH_TOKEN}`
-            }
+          .get(`${API_ADDRESS + QUERY_TYPE.GET_LATEST_DATA + apiData.data.id}`, {
+            headers: AUTH
           })
           .then(result => setweatherData(result))
       : null;
   }, [apiData]);
 
+  // Gets the cooresponding city from the API based and client coordinates
+
   useEffect(() => {
-    console.log('currentLocation', currentLocation);
     currentLocation
       ? axios
           .get(
-            `https://pfa.foreca.com/api/v1/location/${currentLocation.long},${currentLocation.lat}`,
+            API_ADDRESS +
+              QUERY_TYPE.GET_LOCATION +
+              currentLocation.long +
+              ',' +
+              currentLocation.lat,
             {
-              headers: {
-                Authorization: `Bearer ${AUTH_TOKEN}`
-              }
+              headers: AUTH
             }
           )
           .then(result => setApiData(result))
       : null;
   }, [currentLocation, token]);
+
+  // Gets client coordinates
 
   useEffect(async () => {
     token &&
