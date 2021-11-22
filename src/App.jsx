@@ -7,6 +7,7 @@ import Info from './components/Pages/Info/Info';
 import Feedback from './components/Pages/Feedback/Feedback';
 import Explore from './components/Pages/Explore/Explore';
 import Home from './components/Pages/Home/Home';
+import ThemeToggler from './components/layout/ThemeToggler/ThemeToggler';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -19,11 +20,7 @@ function App() {
       <div className={`main ${theme}`}>
         <Header />
         <Wrapper>
-          <div className={styles.ThemeToggler}>
-            <button className={styles.ThemeTogglerButton} onClick={() => toggleThemeHandler()}>
-              Toggle theme
-            </button>
-          </div>
+          <ThemeToggler click={() => toggleThemeHandler()} />
           <Switch>
             <Route path="/information">
               <Info />
