@@ -1,8 +1,8 @@
-.Nav {
+.nav {
   list-style: none;
 }
 
-.Nav a {
+.nav a {
   text-decoration: none;
   padding: 10px 8px;
   color: inherit;
@@ -11,9 +11,9 @@
   transition: 180ms;
 }
 
-.dark .Nav a:hover {
+.dark .nav a:hover {
   background-color: rgb(68, 68, 68);
 }
-.Nav a:hover {
+.nav a:hover {
   background-color: rgb(199, 199, 199);
 }

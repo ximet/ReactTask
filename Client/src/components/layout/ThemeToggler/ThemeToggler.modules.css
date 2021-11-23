@@ -1,10 +1,10 @@
-.ThemeToggler {
+.theme-toggler {
   position: fixed;
   bottom: 20px;
   right: 20px;
 }
 
-.ThemeTogglerButton {
+.theme-toggler-button {
   outline: none;
   border: none;
   border-radius: 25px;
@@ -15,6 +15,6 @@
   transition: 180ms;
 }
 
-.dark .ThemeTogglerButton {
+.dark .theme-toggler-button {
   background-color: rgb(0, 0, 0);
 }

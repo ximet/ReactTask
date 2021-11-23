@@ -4,19 +4,18 @@ import FormElement from '../../layout/Form/FormElement';
 import Title from '../../layout/Typography/Title/Title';
 
 function Feedback() {
-  const [email, setemail] = useState('');
-  const [message, setmessage] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = () => {
     const user = {
       username: email,
       message: message
     };
-    console.log('SUBMIT BABY', user);
+    console.log('SUBMIT', user);
     localStorage.setItem('feedback', JSON.stringify(user));
-    setemail('');
-    setmessage('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
@@ -33,7 +32,7 @@ function Feedback() {
             name="email"
             value={email}
             placeholder="Email..."
-            onChange={event => setemail(event.target.value)}
+            onChange={event => setEmail(event.target.value)}
           />
         </FormElement>
         <textarea
@@ -42,9 +41,9 @@ function Feedback() {
           id="text"
           name="message"
           value={message}
-          onChange={event => setmessage(event.target.value)}
+          onChange={event => setMessage(event.target.value)}
         ></textarea>
-        <Button name="Send" click={event => handleSubmit(event)} />
+        <Button type='button' name="Send" onClick={() => handleSubmit()} />
       </form>
     </div>
   );

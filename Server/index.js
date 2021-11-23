@@ -15,7 +15,7 @@ const PASSWORD = process.env.PASSWORD
 const PORT = process.env.PORT || 3001;
 const AUTH_ADDRESS = process.env.AUTH_ADDRESS
 const EXPIRATION_TIME = process.env.EXPIRATION_TIME
-
+const SPARE_TOKEN = process.env.TOKEN
 app.use(cookieParser());
 
 app.use(
@@ -31,11 +31,12 @@ app.listen(PORT, () => {
 })
 
 app.get("/api", async (req, res) => {
-    if (!req.cookies['Authorization']) {
-        axios.post(`${AUTH_ADDRESS}?expire_hours=${EXPIRATION_TIME}&user=${USER}&password=${PASSWORD}`)
-            .then(result => (res.cookie('Authorization', JSON.stringify(result.data.access_token)), res.send(result.data.access_token)
-            ))
-    } else {
-        res.send(req.cookies['Authorization'])
-    }
+    res.send(SPARE_TOKEN)
+    // if (!req.cookies['Authorization']) {
+    //     axios.post(`${AUTH_ADDRESS}?expire_hours=${EXPIRATION_TIME}&user=${USER}&password=${PASSWORD}`)
+    //         .then(result => (res.cookie('Authorization', JSON.stringify(result.data.access_token)), res.send(result.data.access_token)
+    //         )).catch(err => console.log(err))
+    // } else {
+    //     res.send(req.cookies['Authorization'])
+    // }
 });

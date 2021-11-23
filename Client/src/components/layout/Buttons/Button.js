@@ -2,7 +2,7 @@ import React from 'react';
 
 function Button(props) {
   return (
-    <button className={'button'} onClick={props.click}>
+    <button type={props.type} className={'button'} onClick={props.onClick}>
       {props.name}
     </button>
   );

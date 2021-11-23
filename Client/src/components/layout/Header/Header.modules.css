@@ -1,4 +1,4 @@
-.Header {
+.header {
   height: 80px;
   display: flex;
   align-items: center;
@@ -7,10 +7,10 @@
   padding: 0 40px;
 }
 
-.dark > .Header {
+.dark > .header {
   background-color: rgb(24, 24, 24);
 }
 
-.Header nav ul {
+.header nav ul {
   display: flex;
 }

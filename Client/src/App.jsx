@@ -11,13 +11,20 @@ import ThemeToggler from './components/layout/ThemeToggler/ThemeToggler';
 
 function App() {
   const [theme, setTheme] = useState('dark');
+
+  const themes = {
+    DARK: 'dark',
+    LIGHT: 'light',
+    MAIN: 'main'
+  };
+
   const toggleThemeHandler = () => {
-    theme === '' ? setTheme('dark') : setTheme('');
+    theme === themes.LIGHT ? setTheme(themes.DARK) : setTheme(themes.LIGHT);
   };
 
   return (
     <Router>
-      <div className={`main ${theme}`}>
+      <div className={[themes.MAIN, theme].join(' ')}>
         <Header />
         <Wrapper>
           <ThemeToggler click={() => toggleThemeHandler()} />

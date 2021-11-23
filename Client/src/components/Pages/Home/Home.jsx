@@ -10,12 +10,10 @@ function Home() {
     return weatherData.data.observations.map(weather => {
       return (
         <div key={weather.station}>
-          <div key={weather.station}>Station: {weather.station}</div>
-          <div key={weather.temperature}>Temperature: {weather.temperature}</div>
-          <div key={weather.visibility}>Visibility: {weather.visibility}</div>
-          <div style={{ marginBottom: 20 }} key={weather.winddir}>
-            {weather.winddir}
-          </div>
+          <div>Station: {weather.station}</div>
+          <div>Temperature: {weather.temperature}</div>
+          <div>Visibility: {weather.visibility}</div>
+          <div style={{ marginBottom: 20 }}>{weather.winddir}</div>
         </div>
       );
     });

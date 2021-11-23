@@ -6,11 +6,10 @@ function getLocalData() {
   const [apiData, setApiData] = useState('');
   const [currentLocation, setcurrentLocation] = useState();
   const [token, setToken] = useState();
-  const [weatherdata, setweatherData] = useState();
+  const [weatherdata, setWeatherData] = useState();
 
-  const AUTH_TOKEN = token;
   const AUTH = {
-    Authorization: `Bearer ${AUTH_TOKEN}`
+    Authorization: `Bearer ${token}`
   };
 
   // Calls server and gets a token
@@ -27,7 +26,7 @@ function getLocalData() {
           .get(`${API_ADDRESS + QUERY_TYPE.GET_LATEST_DATA + apiData.data.id}`, {
             headers: AUTH
           })
-          .then(result => setweatherData(result))
+          .then(result => setWeatherData(result))
       : null;
   }, [apiData]);
 
@@ -37,11 +36,9 @@ function getLocalData() {
     currentLocation
       ? axios
           .get(
-            API_ADDRESS +
-              QUERY_TYPE.GET_LOCATION +
-              currentLocation.long +
-              ',' +
-              currentLocation.lat,
+            `${API_ADDRESS + QUERY_TYPE.GET_LOCATION + currentLocation.long},${
+              currentLocation.lat
+            }`,
             {
               headers: AUTH
             }
