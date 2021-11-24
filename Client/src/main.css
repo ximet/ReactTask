@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --black: black;
+  --white: white;
+  --background: rgb(41, 41, 41);
+}
+
+.main {
+  background-color: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+}
+.dark {
+  background-color: var(--background);
+  color: var(--white);
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.input-element label {
+  margin-bottom: 12px;
+}
+
+.input-element input {
+  width: 100%;
+  border: none;
+  margin-bottom: 10px;
+  height: 26px;
+  border-radius: 4px;
+  padding: 4px 4px 4px 10px;
+  outline: 1px solid var(--black);
+  color: var(--black);
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  padding: 4px 4px 4px 10px;
+  outline: 1px solid var(--black);
+  color: var(--black);
+}
+
+.dark .input-element input {
+  border: none;
+  margin-bottom: 10px;
+  height: 26px;
+  border-radius: 4px;
+  padding: 4px 4px 4px 10px;
+  background-color: var(--white);
+}
+
+.button {
+  padding: 12px 28px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
