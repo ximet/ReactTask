@@ -10,6 +10,9 @@ coverage
 # Logs
 *.log
 
+#env
+.env
+
 # npm & yarn
 node_modules/
 .npm
@@ -19,10 +22,10 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock*
 package-lock.json
-/build/bundle.js
-/build/index.html
-/build*
-/build/*
+client/build/bundle.js
+client/build/index.html
+client/build*
+client/build/*
 # Editor/IDE
 .idea
 packages/api/etc/

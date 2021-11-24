@@ -1,11 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const port = 8080;
 const app = express();
 const axios = require('axios');
 
 const auth_Data = {
-  user: 'kseniatulikova',
-  password: 'cDxqPhAlr5Rr'
+  user: process.env.USER_NAME,
+  password: process.env.PASSWORD,
 };
 
 const bp = require('body-parser');
