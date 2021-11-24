@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './ThemeToggler.modules.css';
 
 function ThemeToggler(props) {
@@ -10,5 +11,10 @@ function ThemeToggler(props) {
     </div>
   );
 }
+
+ThemeToggler.propTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func
+};
 
 export default ThemeToggler;

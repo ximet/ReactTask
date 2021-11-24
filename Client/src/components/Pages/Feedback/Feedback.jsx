@@ -43,7 +43,7 @@ function Feedback() {
           value={message}
           onChange={event => setMessage(event.target.value)}
         ></textarea>
-        <Button type='button' name="Send" onClick={() => handleSubmit()} />
+        <Button type="button" name="Send" onClick={() => handleSubmit()} />
       </form>
     </div>
   );

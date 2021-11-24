@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../Links/Nav/Nav';
-import Wrapper from '../Wrapper/Wrapper';
 import styles from './Header.modules.css';
+import PropTypes from 'prop-types';
 
 function Header() {
   return (
@@ -27,5 +27,9 @@ function Header() {
     </div>
   );
 }
+
+Header.propTypes = {
+  className: PropTypes.string
+};
 
 export default Header;
