@@ -1,3 +1,11 @@
+:root {
+  --black: black;
+  --white: white;
+  --background: rgb(41, 41, 41);
+  --dark: rgb(68, 68, 68);
+  --light: rgb(199, 199, 199);
+}
+
 .theme-toggler {
   position: fixed;
   bottom: 20px;
@@ -8,13 +16,13 @@
   outline: none;
   border: none;
   border-radius: 25px;
-  color: white;
-  background-color: rgb(167, 167, 167);
+  color: var(--white);
+  background-color: var(--light);
   padding: 12px;
   cursor: pointer;
   transition: 180ms;
 }
 
 .dark .theme-toggler-button {
-  background-color: rgb(0, 0, 0);
+  background-color: var(--black);
 }

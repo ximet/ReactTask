@@ -3,12 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(223, 223, 223);
   padding: 0 40px;
-}
-
-.dark > .header {
-  background-color: rgb(24, 24, 24);
 }
 
 .header nav ul {
