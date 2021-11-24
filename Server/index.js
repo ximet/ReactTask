@@ -32,11 +32,4 @@ app.listen(PORT, () => {
 
 app.get("/api", async (req, res) => {
     res.send(SPARE_TOKEN)
-    // if (!req.cookies['Authorization']) {
-    //     axios.post(`${AUTH_ADDRESS}?expire_hours=${EXPIRATION_TIME}&user=${USER}&password=${PASSWORD}`)
-    //         .then(result => (res.cookie('Authorization', JSON.stringify(result.data.access_token)), res.send(result.data.access_token)
-    //         )).catch(err => console.log(err))
-    // } else {
-    //     res.send(req.cookies['Authorization'])
-    // }
 });
