@@ -14,5 +14,8 @@
   "dependencies": {
     "axios": "^0.24.0",
     "concurrently": "^6.4.0"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
   }
 }
