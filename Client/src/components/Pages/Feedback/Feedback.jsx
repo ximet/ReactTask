@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from '../../layout/Buttons/Button';
 import FormElement from '../../layout/Form/FormElement';
+import Input from '../../layout/Form/Input/Input';
+import Textarea from '../../layout/Form/Textarea/Textarea';
 import Title from '../../layout/Typography/Title/Title';
 
 function Feedback() {
@@ -27,7 +29,7 @@ function Feedback() {
       </p>
       <form className="form" id="form">
         <FormElement>
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
@@ -35,14 +37,14 @@ function Feedback() {
             onChange={event => setEmail(event.target.value)}
           />
         </FormElement>
-        <textarea
+        <Textarea
           placeholder="Message..."
-          rows="15"
+          rows={15}
           id="text"
           name="message"
           value={message}
           onChange={event => setMessage(event.target.value)}
-        ></textarea>
+        />
         <Button type="button" name="Send" onClick={() => handleSubmit()} />
       </form>
     </div>
