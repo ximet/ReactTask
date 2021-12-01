@@ -1,13 +1,26 @@
+import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
+import React from 'react';
 
-
-function Main () {
+export function Main(props) {
   return (
     <>
-      <div>Hello Kseniya!</div>
-      <span>We will add some new components later</span>
+      {props.pages.map(page => {
+        return (
+          <Route key={page.name} component={page.component} path={page.path} exact={page.exact} />
+        );
+      })}
     </>
   );
 }
 
-export default Main;
-
+Main.propTypes = {
+  pages: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      component: PropTypes.elementType,
+      path: PropTypes.string,
+      exact: PropTypes.bool
+    })
+  )
+};
