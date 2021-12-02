@@ -4,15 +4,7 @@ import PropTypes from 'prop-types';
 
 function Textarea(props) {
   return (
-    <textarea
-      className={styles.textareaElement}
-      placeholder={props.placeholder}
-      rows={props.rows}
-      id={props.id}
-      name={props.name}
-      value={props.value}
-      onChange={props.onChange}
-    >
+    <textarea className={styles.textareaElement} {...props}>
       {props.children}
     </textarea>
   );

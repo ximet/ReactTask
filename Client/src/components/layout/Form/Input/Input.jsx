@@ -11,7 +11,7 @@ function Input(props) {
       value={props.value}
       placeholder={props.placeholder}
       onChange={props.onChange}
-    ></input>
+    />
   );
 }
 

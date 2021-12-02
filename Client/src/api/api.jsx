@@ -3,7 +3,7 @@ import axios from 'axios';
 import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from './constants';
 
 function getLocalData() {
-  const [apiData, setApiData] = useState('');
+  const [apiData, setApiData] = useState();
   const [currentLocation, setcurrentLocation] = useState();
   const [token, setToken] = useState();
   const [weatherdata, setWeatherData] = useState();

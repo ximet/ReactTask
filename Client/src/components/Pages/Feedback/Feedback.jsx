@@ -4,6 +4,7 @@ import FormElement from '../../layout/Form/FormElement';
 import Input from '../../layout/Form/Input/Input';
 import Textarea from '../../layout/Form/Textarea/Textarea';
 import Title from '../../layout/Typography/Title/Title';
+import { validateFeedbackForm } from '../../../services/validateFeedbackForm';
 
 function Feedback() {
   const [email, setEmail] = useState('');
@@ -14,10 +15,14 @@ function Feedback() {
       username: email,
       message: message
     };
-    console.log('SUBMIT', user);
-    localStorage.setItem('feedback', JSON.stringify(user));
-    setEmail('');
-    setMessage('');
+
+    if (validateFeedbackForm(email, message)) {
+      localStorage.setItem('feedback', JSON.stringify(user));
+      setEmail('');
+      setMessage('');
+    } else {
+      alert('incorrect');
+    }
   };
 
   return (
