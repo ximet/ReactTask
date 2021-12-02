@@ -34,6 +34,7 @@ function Feedback() {
       </p>
       <form className="form" id="form">
         <FormElement>
+
           <Input
             type="email"
             name="email"
