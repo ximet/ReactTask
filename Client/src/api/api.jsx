@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from './constants';
+import apiAuthenctication from './apiAuthentication';
 
 function getLocalData() {
   const [apiData, setApiData] = useState();
@@ -14,8 +15,12 @@ function getLocalData() {
 
   // Calls server and gets a token
 
-  useEffect(() => {
-    axios.get(LOCAL_SERVER).then(result => setToken(result.data));
+  useEffect(async () => {
+    let tokenData = await apiAuthenctication()
+      .then(result => result)
+      .catch(err => console.log(err));
+
+    setToken(tokenData);
   }, []);
 
   // Gets weather data for corresponding city

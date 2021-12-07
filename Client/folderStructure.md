@@ -1,14 +1,13 @@
 assets
+
 - images
 
 components
-  |- Layout
-    - Header
-    - Footer
-    - Wrapper
+|- Layout - Header - Footer - Wrapper
+
 - Button
-    - Button.jsx
-    - Button.modules.css
+  - Button.jsx
+  - Button.modules.css
 - Form
 - Links
 - ThemeToggler
@@ -23,11 +22,11 @@ containers
 hoc
 
 services
- |- api
-    -getUserLocation
-    -getCorrespondingCity
-    -getCityWeatherData
-    -sendSearchTerm 
+|- api
+-getUserLocation
+-getCorrespondingCity
+-getCityWeatherData
+-sendSearchTerm
 -saveFeedbackToStorage
 
 utility

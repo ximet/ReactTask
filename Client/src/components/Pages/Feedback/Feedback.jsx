@@ -34,7 +34,6 @@ function Feedback() {
       </p>
       <form className="form" id="form">
         <FormElement>
-
           <Input
             type="email"
             name="email"
@@ -51,7 +50,7 @@ function Feedback() {
           value={message}
           onChange={event => setMessage(event.target.value)}
         />
-        <Button type="button" name="Send" onClick={() => handleSubmit()} />
+        <Button type="button" name="Send" onClick={() => handleSubmit()} buttonIs="regular" />
       </form>
     </div>
   );

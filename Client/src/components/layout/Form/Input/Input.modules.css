@@ -1,7 +1,6 @@
 .inputElement {
   width: 100%;
   border: none;
-  margin-bottom: 10px;
   height: 26px;
   border-radius: 4px;
   padding: 4px 4px 4px 10px;
@@ -11,7 +10,6 @@
 
 .dark .inputElement {
   border: none;
-  margin-bottom: 10px;
   height: 26px;
   border-radius: 4px;
   padding: 4px 4px 4px 10px;
