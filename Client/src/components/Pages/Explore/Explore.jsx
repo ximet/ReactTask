@@ -7,7 +7,7 @@ function Explore() {
   return (
     <div>
       <Title>Explore</Title>
-      <PreviousCities/>
+      <PreviousCities />
       <Searchbar />
     </div>
   );

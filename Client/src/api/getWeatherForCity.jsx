@@ -8,7 +8,6 @@ const getWeatherForCity = async search => {
   const AUTH = {
     Authorization: `Bearer ${token}`
   };
-  console.log('search from search: ', search);
   return axios
     .get(`${API_ADDRESS}${QUERY_TYPE.GET_LATEST_DATA}${String(search)}`, {
       headers: AUTH
@@ -19,3 +18,4 @@ const getWeatherForCity = async search => {
 
 export default getWeatherForCity;
 
+``

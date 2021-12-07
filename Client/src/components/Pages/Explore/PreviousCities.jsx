@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import getCitiesFromLS from '../../../services/getCitiesFromLS';
 import SearchResult from '../../layout/Search/SearchResult';
-import styles from './PreviousCities.modules.css'
+import styles from './PreviousCities.modules.css';
 function PreviousCities() {
   const [lastCities, setLastCities] = useState();
 
@@ -12,7 +12,6 @@ function PreviousCities() {
 
   const LastCities = () => {
     if (lastCities) {
-      console.log('lastCities', lastCities);
       return lastCities.map(city => {
         return (
           <div key={city.cityId} className={styles.cityItem}>

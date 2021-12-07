@@ -1,7 +1,6 @@
 import React from 'react';
 import { WEATHER_ICON_ADDRESS } from '../../../constants';
 function CityResult({ cityData }) {
-  console.log('cityData: ', cityData);
 
   return (
     <div>

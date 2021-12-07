@@ -8,7 +8,6 @@ const getSearchedCity = async search => {
   const AUTH = {
     Authorization: `Bearer ${token}`
   };
-  console.log('search from search: ', search);
   return axios
     .get(`${API_ADDRESS}${QUERY_TYPE.GET_SEARCH}${String(search)}`, {
       headers: AUTH
@@ -18,4 +17,3 @@ const getSearchedCity = async search => {
 };
 
 export default getSearchedCity;
-
