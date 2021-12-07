@@ -8,6 +8,7 @@ import Feedback from './components/Pages/Feedback/Feedback';
 import Explore from './components/Pages/Explore/Explore';
 import Home from './components/Pages/Home/Home';
 import ThemeToggler from './components/layout/ThemeToggler/ThemeToggler';
+import City from './components/Pages/City/City';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path="/explore">
               <Explore />
+            </Route>
+            <Route path={`/cityweather/:city/:cityId`}>
+              <City />
             </Route>
           </Switch>
         </Wrapper>

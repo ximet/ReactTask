@@ -3,12 +3,7 @@ import styles from './Input.modules.css';
 import PropTypes from 'prop-types';
 
 function Input(props) {
-  return (
-    <input
-      className={styles.inputElement}
-      {...props}
-    />
-  );
+  return <input className={styles.inputElement} {...props} />;
 }
 
 Input.propTypes = {

@@ -2,7 +2,7 @@ import apiAuthenctication from './apiAuthentication';
 import axios from 'axios';
 import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from '../constants';
 
-const getSearchedCity = async search => {
+const getWeatherForCity = async search => {
   const token = await apiAuthenctication();
 
   const AUTH = {
@@ -10,12 +10,12 @@ const getSearchedCity = async search => {
   };
   console.log('search from search: ', search);
   return axios
-    .get(`${API_ADDRESS}${QUERY_TYPE.GET_SEARCH}${String(search)}`, {
+    .get(`${API_ADDRESS}${QUERY_TYPE.GET_LATEST_DATA}${String(search)}`, {
       headers: AUTH
     })
     .then(result => result)
     .catch(err => console.log(err));
 };
 
-export default getSearchedCity;
+export default getWeatherForCity;
 

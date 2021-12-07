@@ -1,0 +1,24 @@
+.lastCitiesContainer {
+  display: flex;
+}
+
+.cityItem {
+  margin-bottom: 20px;
+}
+
+.cityItem a {
+  text-decoration: none;
+  padding: 10px 8px;
+  color: inherit;
+  margin: 0 4px;
+  border-radius: 4px;
+  transition: 180ms;
+  border: 1px solid var(--light);
+}
+
+.dark .cityItem a:hover {
+  background-color: var(--dark);
+}
+.cityItem a:hover {
+  background-color: var(--light);
+}

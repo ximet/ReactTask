@@ -8,7 +8,7 @@ function Title({ children }) {
 
 Title.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.string.isRequired
+  children: PropTypes.any.isRequired
 };
 
 export default Title;

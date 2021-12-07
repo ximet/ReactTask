@@ -1,4 +1,4 @@
-import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from './constants';
+import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from '../constants';
 import axios from 'axios';
 
 const apiAuthenctication = () => {

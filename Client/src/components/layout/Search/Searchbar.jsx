@@ -35,6 +35,11 @@ function Searchbar() {
     }, timeoutVal);
   }
 
+  const handleSearchSubmit = async () => {
+    let cityResult = await getSearchedCity(search);
+    setSearchResult(cityResult);
+  }
+
   return (
     <React.Fragment>
       <div className={styles.searchbar}>
@@ -47,7 +52,7 @@ function Searchbar() {
           onKeyPress={event => handleKeyPress(event)}
           onKeyUp={event => handleKeyUp(event)}
         />
-        <Button type="submit" name="Search" buttonIs="searchButton" />
+        <Button type="button" name="Search" buttonIs="searchButton" onClick={() => handleSearchSubmit()}/>
       </div>
       {searchResult && <SearchResults searchResult={searchResult} />}
     </React.Fragment>
