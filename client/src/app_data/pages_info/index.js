@@ -3,8 +3,8 @@ import WorldWeather from '../../components/WorldWeather';
 import Feedback from '../../components/Feedback/';
 import AboutUs from '../../components/AboutUs/';
 
-export const app_name = 'Weather App';
-export const pages_info = [
+export const APP_NAME = 'Weather App';
+export const PAGES_INFO = [
   {
     name: 'Home',
     component: Home,

@@ -2,9 +2,7 @@ import { styled } from '@mui/material/styles';
 import BaseTypography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import BaseBox from '@mui/material/Box';
-
-const FOOTER_BG = `linear-gradient(-45deg, #0c9ed4 0%, #51c9f5 100%)`;
-const WHITE_COLOR_GENERAL = '#fff';
+import { WHITE_COLOR_GENERAL, FOOTER_BG } from '../../app_data/styles_info';
 
 export const Footer = styled('footer')(style => ({
   position: 'static',

@@ -6,11 +6,12 @@ import AppBar from '@mui/material/AppBar';
 import MenuUI from '@mui/material/Menu';
 import ButtonMUI from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
-
-const WHITE_COLOR_GENERAL = '#fff';
-const ACTIVE_LINK_COLOR = '#ffff19';
-const MOBILE_MENU_BG = `linear-gradient(135deg, #e079fc 0%, #7c44ff 100%)`;
-const HEADER_BG = `linear-gradient(-45deg, #0c9ed4 0%, #51c9f5 100%)`;
+import {
+  ACTIVE_LINK_COLOR,
+  HEADER_BG,
+  MOBILE_MENU_BG,
+  WHITE_COLOR_GENERAL
+} from '../../app_data/styles_info';
 
 export const AppBarMUI = styled(AppBar)({
   position: 'static',
