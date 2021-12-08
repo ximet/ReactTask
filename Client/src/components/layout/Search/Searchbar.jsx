@@ -5,32 +5,30 @@ import axios from 'axios';
 import styles from './Searchbar.modules.css';
 import getSearchedCity from '../../../api/getSearchedCity';
 import SearchResults from './SearchResults';
+import { MINIMUM_SEARCH_LENGTH, TIMEOUT_VALUE } from '../../../constants';
 
 function Searchbar() {
   const [search, setSearch] = useState('');
-  const [time, setTime] = useState(false);
-  const [searchResult, setSearchResult] = useState();
-
-  let timer,
-    timeoutVal = 1000;
+  const [shouldInitiateSearch, setShouldInitiateSearch] = useState(false);
+  const [searchResult, setSearchResult] = useState({});
 
   useEffect(async () => {
-    if (search.length >= 3 && time >= 1) {
+    if (search.length >= MINIMUM_SEARCH_LENGTH && shouldInitiateSearch) {
       let cityResult = await getSearchedCity(search);
       setSearchResult(cityResult);
     }
-  }, [time]);
+  }, [shouldInitiateSearch]);
 
   function handleKeyPress() {
-    clearTimeout(timer);
-    setTime(false);
+    clearTimeout();
+    setShouldInitiateSearch(false);
   }
 
   function handleKeyUp() {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      setTime(true);
-    }, timeoutVal);
+    clearTimeout();
+    setTimeout(() => {
+      setShouldInitiateSearch(true);
+    }, TIMEOUT_VALUE);
   }
 
   const handleSearchSubmit = async () => {
@@ -57,7 +55,7 @@ function Searchbar() {
           onClick={() => handleSearchSubmit()}
         />
       </div>
-      {searchResult && <SearchResults searchResult={searchResult} />}
+      {searchResult.length && <SearchResults searchResult={searchResult} />}
     </React.Fragment>
   );
 }

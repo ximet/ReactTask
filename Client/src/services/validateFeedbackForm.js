@@ -3,14 +3,6 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-// function validateFeedbackForm(email, message) {
-//   if (validateEmail(email) && message.length) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
 const validateFeedbackForm = (email, message) => validateEmail(email) && message.length;
 
 export { validateFeedbackForm };
