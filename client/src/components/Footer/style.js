@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import BaseTypography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import BaseBox from '@mui/material/Box';
-import { WHITE_COLOR_GENERAL, FOOTER_BG } from '../../app_data/styles_info';
+import { FOOTER_BG, WHITE_COLOR_GENERAL } from '../../app_data/styles_info';
 
 export const Footer = styled('footer')(style => ({
   position: 'static',
