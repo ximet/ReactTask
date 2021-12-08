@@ -1,9 +1,9 @@
-import apiAuthenctication from './apiAuthentication';
+import authenticate from './authenticate';
 import axios from 'axios';
 import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from '../constants';
 
 const getSearchedCity = async search => {
-  const token = await apiAuthenctication();
+  const token = await authenticate();
 
   const AUTH = {
     Authorization: `Bearer ${token}`

@@ -10,7 +10,7 @@ function Button(props) {
       search: styles.searchButton
     };
 
-    switch (props.buttonIs) {
+    switch (props.buttonType) {
       case 'regular':
         setButtonStyles(classes.regular);
         break;

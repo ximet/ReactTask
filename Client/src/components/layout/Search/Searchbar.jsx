@@ -8,30 +8,28 @@ import SearchResults from './SearchResults';
 
 function Searchbar() {
   const [search, setSearch] = useState('');
-  const [elapsedTime, setElapsedTime] = useState(Boolean);
-  const [token, setToken] = useState();
+  const [time, setTime] = useState(false);
   const [searchResult, setSearchResult] = useState();
 
   let timer,
     timeoutVal = 1000;
 
   useEffect(async () => {
-    if (search.length >= 3 && elapsedTime >= 1) {
-      console.log('Sending query...', typeof search, search);
+    if (search.length >= 3 && time >= 1) {
       let cityResult = await getSearchedCity(search);
       setSearchResult(cityResult);
     }
-  }, [elapsedTime]);
+  }, [time]);
 
   function handleKeyPress() {
-    window.clearTimeout(timer);
-    setElapsedTime(false);
+    clearTimeout(timer);
+    setTime(false);
   }
 
   function handleKeyUp() {
-    window.clearTimeout(timer);
-    timer = window.setTimeout(() => {
-      setElapsedTime(true);
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setTime(true);
     }, timeoutVal);
   }
 
@@ -55,7 +53,7 @@ function Searchbar() {
         <Button
           type="button"
           name="Search"
-          buttonIs="searchButton"
+          buttonType="searchButton"
           onClick={() => handleSearchSubmit()}
         />
       </div>

@@ -1,9 +1,9 @@
-import apiAuthenctication from './apiAuthentication';
+import authenticate from './authenticate';
 import axios from 'axios';
-import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from '../constants';
+import { API_ADDRESS, QUERY_TYPE } from '../constants';
 
 const getWeatherForCity = async search => {
-  const token = await apiAuthenctication();
+  const token = await authenticate();
 
   const AUTH = {
     Authorization: `Bearer ${token}`
@@ -17,5 +17,3 @@ const getWeatherForCity = async search => {
 };
 
 export default getWeatherForCity;
-
-``

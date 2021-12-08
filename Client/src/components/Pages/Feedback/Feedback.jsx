@@ -50,7 +50,7 @@ function Feedback() {
           value={message}
           onChange={event => setMessage(event.target.value)}
         />
-        <Button type="button" name="Send" onClick={() => handleSubmit()} buttonIs="regular" />
+        <Button type="button" name="Send" onClick={() => handleSubmit()} buttonType="regular" />
       </form>
     </div>
   );

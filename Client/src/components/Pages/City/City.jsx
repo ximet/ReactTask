@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import Title from '../../layout/Typography/Title/Title';
 import CityResult from './CityResult';
 import getWeatherForCity from '../../../api/getWeatherForCity';
-import saveLastCityToLS from '../../../services/saveLastCityToLS';
+import saveLastCityToLocalStorage  from '../../../services/saveLastCityToLocalStorage ';
+
 function City() {
   let urlParams = useParams();
   const [cityData, setCityData] = useState();
@@ -11,7 +12,7 @@ function City() {
   useEffect(async () => {
     let cityApiCityData = await getWeatherForCity(urlParams.cityId);
     setCityData(cityApiCityData.data.observations);
-    saveLastCityToLS(urlParams.city, urlParams.cityId);
+    saveLastCityToLocalStorage(urlParams.city, urlParams.cityId);
   }, []);
 
   return (

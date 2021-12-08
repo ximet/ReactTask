@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from '../constants';
-import apiAuthenctication from './apiAuthentication';
+import authenticate from './authenticate';
 
 function getLocalData() {
-  const [apiData, setApiData] = useState();
-  const [currentLocation, setcurrentLocation] = useState();
-  const [token, setToken] = useState();
-  const [weatherdata, setWeatherData] = useState();
+  const [apiData, setApiData] = useState('');
+  const [currentLocation, setcurrentLocation] = useState(0);
+  const [token, setToken] = useState('');
+  const [weatherdata, setWeatherData] = useState('');
 
   const AUTH = {
     Authorization: `Bearer ${token}`
@@ -16,7 +16,7 @@ function getLocalData() {
   // Calls server and gets a token
 
   useEffect(async () => {
-    let tokenData = await apiAuthenctication()
+    let tokenData = await authenticate()
       .then(result => result)
       .catch(err => console.log(err));
 
