@@ -1,0 +1,9 @@
+.textareaElement {
+  width: 100%;
+  border: none;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  padding: 4px 4px 4px 10px;
+  outline: 1px solid var(--black);
+  color: var(--black);
+}

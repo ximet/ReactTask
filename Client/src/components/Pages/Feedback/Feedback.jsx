@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Button from '../../layout/Buttons/Button';
 import FormElement from '../../layout/Form/FormElement';
+import Input from '../../layout/Form/Input/Input';
+import Textarea from '../../layout/Form/Textarea/Textarea';
 import Title from '../../layout/Typography/Title/Title';
+import { validateFeedbackForm } from '../../../services/validateFeedbackForm';
 
 function Feedback() {
   const [email, setEmail] = useState('');
@@ -12,10 +15,14 @@ function Feedback() {
       username: email,
       message: message
     };
-    console.log('SUBMIT', user);
-    localStorage.setItem('feedback', JSON.stringify(user));
-    setEmail('');
-    setMessage('');
+
+    if (validateFeedbackForm(email, message)) {
+      localStorage.setItem('feedback', JSON.stringify(user));
+      setEmail('');
+      setMessage('');
+    } else {
+      alert('incorrect');
+    }
   };
 
   return (
@@ -27,7 +34,7 @@ function Feedback() {
       </p>
       <form className="form" id="form">
         <FormElement>
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
@@ -35,15 +42,15 @@ function Feedback() {
             onChange={event => setEmail(event.target.value)}
           />
         </FormElement>
-        <textarea
+        <Textarea
           placeholder="Message..."
-          rows="15"
+          rows={15}
           id="text"
           name="message"
           value={message}
           onChange={event => setMessage(event.target.value)}
-        ></textarea>
-        <Button type="button" name="Send" onClick={() => handleSubmit()} />
+        />
+        <Button type="button" name="Send" onClick={() => handleSubmit()} buttonType="regular" />
       </form>
     </div>
   );
