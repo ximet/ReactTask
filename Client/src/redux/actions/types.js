@@ -1,0 +1,1 @@
+export const CHANGE_APP_TITLE = 'CHANGE_APP_TITLE';

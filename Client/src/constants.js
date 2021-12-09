@@ -7,5 +7,5 @@ export const QUERY_TYPE = {
   GET_SEARCH: '/location/search/'
 };
 
-export const MINIMUM_SEARCH_LENGTH = 3
-export const TIMEOUT_VALUE = 1000
+export const MINIMUM_SEARCH_LENGTH = 3;
+export const TIMEOUT_VALUE = 1000;

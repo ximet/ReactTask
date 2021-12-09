@@ -2,16 +2,33 @@ import React from 'react';
 import Title from '../../layout/Typography/Title/Title';
 import getLocalData from '../../../api/api';
 import WeatherReport from './WeatherReport';
+import { connect } from 'react-redux';
+import { changeAppTitle } from '../../../redux/actions/actions';
+import Button from '../../layout/Buttons/Button';
 
-function Home() {
+function Home(props) {
   const weatherData = getLocalData();
 
+  console.log(props);
   return (
     <React.Fragment>
-      <Title>Home</Title>
+      <Title>Home of {props.title}</Title>
+      <Button onClick={() => props.changeAppTitle()} name="Change the title" buttonType="regular" />
       <WeatherReport data={weatherData ? weatherData.data.observations[0] : null} />
     </React.Fragment>
   );
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    title: state.title.title
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeAppTitle: () => dispatch(changeAppTitle())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
