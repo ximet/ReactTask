@@ -1,8 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import Menu from '../Menu';
-
-import * as S from './style';
+import * as S from '../style';
+import Menu from '../../common/Menu';
 
 export function Footer(props) {
   return (
