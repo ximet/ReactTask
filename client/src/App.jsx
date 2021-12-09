@@ -1,14 +1,14 @@
-import { app_name, pages_info } from './app_data/pages_info';
+import { APP_NAME, PAGES_INFO } from './app_data/pages_info';
 import { useState } from 'react';
-import Main from './components/Main';
+import Main from './modules/Main';
 import { BrowserRouter } from 'react-router-dom';
-import Footer from './components/Footer';
+import Footer from './modules/Footer';
 import { CssBaseline } from '@mui/material';
-import AppBar from './components/AppBar';
+import AppBar from './modules/AppBar';
 
 function App() {
-  const [pages] = useState(pages_info);
-  const [appName] = useState(app_name);
+  const [pages] = useState(PAGES_INFO);
+  const [appName] = useState(APP_NAME);
   return (
     <BrowserRouter>
       <AppBar pages={pages} appName={appName} />

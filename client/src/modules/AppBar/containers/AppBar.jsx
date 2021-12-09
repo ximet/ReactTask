@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import Menu from '../Menu';
+import Menu from '../../common/Menu';
 import Container from '@mui/material/Container';
-import * as S from './style';
+import * as S from '../style';
 import PropTypes from 'prop-types';
-import MobileMenu from './components/MobileMenu';
+import MobileMenu from '../components/MobileMenu';
 
 export const AppBar = props => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

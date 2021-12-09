@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '../AppBar/style';
+import * as S from '../../AppBar/style';
 import PropTypes from 'prop-types';
 
 export function Menu(props) {
