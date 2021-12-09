@@ -9,7 +9,6 @@ import Button from '../../layout/Buttons/Button';
 function Home(props) {
   const weatherData = getLocalData();
 
-  console.log(props);
   return (
     <React.Fragment>
       <Title>Home of {props.title}</Title>
