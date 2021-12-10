@@ -9,6 +9,7 @@ import AppBar from './modules/AppBar';
 function App() {
   const [pages] = useState(PAGES_INFO);
   const [appName] = useState(APP_NAME);
+
   return (
     <BrowserRouter>
       <AppBar pages={pages} appName={appName} />
