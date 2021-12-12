@@ -7,6 +7,16 @@ function mapStateToProps(component) {
         };
       };
     }
+    case 'Feedback': {
+      return function (state) {
+        return {
+          name: state.feedback.name,
+          email: state.feedback.email,
+          phone: state.feedback.phone,
+          message: state.feedback.message
+        };
+      };
+    }
     default:
       return undefined;
   }
