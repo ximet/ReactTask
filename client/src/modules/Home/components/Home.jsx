@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  changeEmailAC,
+  changeMessageAC,
+  changeNameAC,
+  changePhoneAC,
+  sendMessageAC
+} from '../../Feedback/actions';
+import { changeTitleAC } from '../actions';
 
 export function Home(props) {
   return (
@@ -17,3 +25,15 @@ export function Home(props) {
     </>
   );
 }
+
+export const mapStateToProps = ({ home: { title } }) => {
+  return {
+    title
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    changeTitle: () => dispatch(changeTitleAC)
+  };
+};

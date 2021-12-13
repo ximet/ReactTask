@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+  changeEmailAC,
+  changeMessageAC,
+  changeNameAC,
+  changePhoneAC,
+  sendMessageAC
+} from '../actions';
 
 export function Feedback() {
   return (
@@ -8,3 +15,22 @@ export function Feedback() {
     </>
   );
 }
+
+export const mapStateToProps = ({ feedback: { name, email, phone, message } }) => {
+  return {
+    name,
+    email,
+    phone,
+    message
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    changeName: name => dispatch(changeNameAC(name)),
+    changeEmail: email => dispatch(changeEmailAC(email)),
+    changePhone: phone => dispatch(changePhoneAC(phone)),
+    changeMessage: message => dispatch(changeMessageAC(message)),
+    sendMessage: () => dispatch(sendMessageAC)
+  };
+};

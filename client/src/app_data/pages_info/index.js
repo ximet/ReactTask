@@ -1,7 +1,7 @@
-import Home from '../../modules/Home';
 import WorldWeather from '../../modules/WorldWeather';
-import Feedback from '../../modules/Feedback/';
 import AboutUs from '../../modules/AboutUs/';
+import Home from '../../modules/Home';
+import Feedback from '../../modules/Feedback';
 
 export const APP_NAME = 'Weather App';
 export const PAGES_INFO = [
