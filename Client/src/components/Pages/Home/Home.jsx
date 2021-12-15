@@ -1,33 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Title from '../../layout/Typography/Title/Title';
-import getLocalData from '../../../api/api';
 import WeatherReport from './WeatherReport';
 import { connect } from 'react-redux';
 import { changeAppTitle } from '../../../redux/actions/actions';
-import Button from '../../layout/Buttons/Button';
+import { getLocalWeather } from '../../../redux/actions/actions';
+import { authentication } from '../../../redux/actions/actions';
 
 function Home(props) {
-  const weatherData = getLocalData();
+  useEffect(async () => {
+    props.getLocalWeather();
+  }, []);
 
-  console.log(props);
   return (
     <React.Fragment>
       <Title>Home of {props.title}</Title>
-      <Button onClick={() => props.changeAppTitle()} name="Change the title" buttonType="regular" />
-      <WeatherReport data={weatherData ? weatherData.data.observations[0] : null} />
+      <WeatherReport
+        data={props.localWeather.data ? props.localWeather.data.observations[0] : null}
+      />
     </React.Fragment>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    title: state.title.title
+    title: state.title.title,
+    authentication: state.authentication,
+    localWeather: state.localWeather
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeAppTitle: () => dispatch(changeAppTitle())
+    changeAppTitle: () => dispatch(changeAppTitle()),
+    getLocalWeather: () => dispatch(getLocalWeather()),
+    authentication: () => dispatch(authentication())
   };
 };
 

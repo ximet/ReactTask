@@ -1,71 +1,30 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { LOCAL_SERVER, API_ADDRESS, QUERY_TYPE } from '../constants';
+import { API_ADDRESS, QUERY_TYPE } from '../constants';
 import authenticate from './authenticate';
 
-function getLocalData() {
-  const [apiData, setApiData] = useState('');
-  const [currentLocation, setcurrentLocation] = useState(0);
-  const [token, setToken] = useState('');
-  const [weatherdata, setWeatherData] = useState('');
-
+async function getLocalData(pos) {
+  const token = await authenticate();
   const AUTH = {
     Authorization: `Bearer ${token}`
   };
 
-  // Calls server and gets a token
+  let geolocatedCity = await axios
+    .get(`${API_ADDRESS + QUERY_TYPE.GET_LOCATION}${pos.long},${pos.lat}`, {
+      headers: AUTH
+    })
+    .then(result => {
+      return result.data.id;
+    });
 
-  useEffect(async () => {
-    let tokenData = await authenticate()
-      .then(result => result)
-      .catch(err => console.log(err));
+  const finalResult = await axios
+    .get(`${API_ADDRESS + QUERY_TYPE.GET_LATEST_DATA + geolocatedCity}`, {
+      headers: AUTH
+    })
+    .then(result => {
+      return result;
+    });
 
-    setToken(tokenData);
-  }, []);
-
-  // Gets weather data for corresponding city
-
-  useEffect(() => {
-    apiData
-      ? axios
-          .get(`${API_ADDRESS + QUERY_TYPE.GET_LATEST_DATA + apiData.data.id}`, {
-            headers: AUTH
-          })
-          .then(result => setWeatherData(result))
-      : null;
-  }, [apiData]);
-
-  // Gets the cooresponding city from the API based and client coordinates
-
-  useEffect(() => {
-    currentLocation
-      ? axios
-          .get(
-            `${API_ADDRESS + QUERY_TYPE.GET_LOCATION + currentLocation.long},${
-              currentLocation.lat
-            }`,
-            {
-              headers: AUTH
-            }
-          )
-          .then(result => setApiData(result))
-      : null;
-  }, [currentLocation, token]);
-
-  // Gets client coordinates
-
-  useEffect(async () => {
-    token &&
-      navigator.geolocation.getCurrentPosition(pos => {
-        const newUserPos = {
-          lat: pos.coords.latitude,
-          long: pos.coords.longitude
-        };
-        setcurrentLocation(newUserPos);
-      });
-  }, [token]);
-
-  return weatherdata;
+  return finalResult;
 }
 
 export default getLocalData;
