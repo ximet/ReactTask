@@ -1,4 +1,10 @@
-import { CHANGE_APP_TITLE, AUTHENTICATE, GET_LOCAL_WEATHER, GET_SEARCHED_CITY, CURRENT_SAVED_CITY } from './types';
+import {
+  CHANGE_APP_TITLE,
+  AUTHENTICATE,
+  GET_LOCAL_WEATHER,
+  GET_SEARCHED_CITY,
+  CURRENT_SAVED_CITY
+} from './types';
 import authenticate from '../../api/authenticate';
 import getLocalData from '../../api/api';
 import getClientCoordinates from '../../services/getClientCoordinates';
@@ -35,7 +41,7 @@ export const getSearchedCityData = city => async dispatch => {
   });
 };
 export const getCurrentSavedCity = city => async dispatch => {
-  let cityResults = await getWeatherForCity(city)
+  let cityResults = await getWeatherForCity(city);
   dispatch({
     type: CURRENT_SAVED_CITY,
     payload: cityResults.data

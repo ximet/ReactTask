@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Input from '../Form/Input/Input';
 import Button from '../Buttons/Button';
 import styles from './Searchbar.modules.css';
@@ -8,13 +8,16 @@ import { getSearchedCityData } from '../../../redux/actions/actions';
 import { MINIMUM_SEARCH_LENGTH, TIMEOUT_VALUE } from '../../../constants';
 
 function Searchbar(props) {
+ 
   const [search, setSearch] = useState('');
   const [shouldInitiateSearch, setShouldInitiateSearch] = useState(false);
-  const [searchResult, setSearchResult] = useState({});
+ 
+  const dispatch = useDispatch();
+  const cityData = useSelector(state => state.getSearchedCityData);
 
   useEffect(async () => {
     if (search.length >= MINIMUM_SEARCH_LENGTH && shouldInitiateSearch) {
-      props.getSearchedCityData(search);
+      dispatch(getSearchedCityData(search));
     }
   }, [shouldInitiateSearch]);
 
@@ -31,8 +34,7 @@ function Searchbar(props) {
   }
 
   const handleSearchSubmit = async () => {
-    let cityResult = await getSearchedCity(search);
-    setSearchResult(cityResult);
+    dispatch(getSearchedCityData(search));
   };
 
   return (
@@ -54,21 +56,9 @@ function Searchbar(props) {
           onClick={() => handleSearchSubmit()}
         />
       </div>
-      {props.cityData.data && <SearchResults searchResult={props.cityData.data} />}
+      {cityData.data && <SearchResults searchResult={cityData.data} />}
     </React.Fragment>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    cityData: state.getSearchedCityData
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getSearchedCityData: city => dispatch(getSearchedCityData(city))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
+export default Searchbar;

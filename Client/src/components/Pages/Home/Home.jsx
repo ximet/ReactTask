@@ -1,40 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Title from '../../layout/Typography/Title/Title';
 import WeatherReport from './WeatherReport';
-import { connect } from 'react-redux';
-import { changeAppTitle } from '../../../redux/actions/actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { getLocalWeather } from '../../../redux/actions/actions';
-import { authentication } from '../../../redux/actions/actions';
 
-function Home(props) {
+function Home() {
   useEffect(async () => {
-    props.getLocalWeather();
+    dispatch(getLocalWeather());
   }, []);
 
+  const dispatch = useDispatch();
+  const localWeather = useSelector(state => state.localWeather);
+  const title = useSelector(state => state.title.title);
   return (
     <React.Fragment>
-      <Title>Home of {props.title}</Title>
-      <WeatherReport
-        data={props.localWeather.data ? props.localWeather.data.observations[0] : null}
-      />
+      <Title>Home of {title}</Title>
+      <WeatherReport data={localWeather.data ? localWeather.data.observations[0] : null} />
     </React.Fragment>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    title: state.title.title,
-    authentication: state.authentication,
-    localWeather: state.localWeather
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    changeAppTitle: () => dispatch(changeAppTitle()),
-    getLocalWeather: () => dispatch(getLocalWeather()),
-    authentication: () => dispatch(authentication())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
