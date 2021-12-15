@@ -16,8 +16,8 @@ export const changePhone = (value = null) => baseActionCreator(CHANGE_PHONE, val
 export const changeMessage = (value = null) => baseActionCreator(CHANGE_MESSAGE, value);
 const sendMessageStart = (value = null) => baseActionCreator(SEND_MESSAGE_START, value);
 const sendMessageFinished = (value = null) => baseActionCreator(SEND_MESSAGE_FINISHED, value);
-export const sendMessage = (dispatch, getState) => {
-  dispatch(sendMessageStart(true));
+export const sendMessage = () => (dispatch, getState) => {
+  // dispatch(sendMessageStart(true));
   addFeedback(getFormData(getState()));
   dispatch(sendMessageFinished());
 };

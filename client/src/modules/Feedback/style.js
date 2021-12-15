@@ -2,9 +2,8 @@ import { styled } from '@mui/material/styles';
 import BaseBox from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import {
-  FEEDBACK_ICON_COLOR,
-  FEEDBACK_PARAGRAPH_COLOR,
-  FEEDBACK_TITLE,
+  FEEDBACK_ICON,
+  FEEDBACK_TITLE_PARAGRAPH,
   WHITE_COLOR_GENERAL
 } from '../../app_data/styles_info';
 import { Grid } from '@mui/material';
@@ -32,7 +31,7 @@ export const Container = styled(BaseBox)(style => ({
 export const Title = styled(Typography)(style => ({
   margin: style.m ? `${style.m}` : '0',
   display: style.display ? style.display : 'block',
-  color: `${FEEDBACK_TITLE}`,
+  color: `${FEEDBACK_TITLE_PARAGRAPH}`,
   textAlign: `${style.align}` ? `${style.align}` : 'initial',
   fontFamily: `Roboto Slab, Times New Roman, serif`,
   fontWeight: 700
@@ -43,8 +42,8 @@ export const Paragraph = styled(Typography)(style => ({
   margin: style.m ? `${style.m}` : '0px',
   fontFamily: `Roboto, Helvetica, Arial,sans-serif`,
   lineHeight: `1.5em`,
-  textAlign: `${style.align}` ? `${style.align}` : 'initial',
-  color: `${style.color}` ? `${style.color}` : `${FEEDBACK_PARAGRAPH_COLOR}`,
+  textAlign: style.align ? `${style.align}` : 'initial',
+  color: style.color ? `${style.color}` : `${FEEDBACK_TITLE_PARAGRAPH}`,
   fontWeight: 300
 }));
 
@@ -83,7 +82,7 @@ export const TextField = styled(InputField)(() => ({
 }));
 
 export const MuiSvgIconContainer = styled('div')(() => ({
-  color: `${FEEDBACK_ICON_COLOR}`,
+  color: `${FEEDBACK_ICON}`,
   float: 'left',
   marginTop: '24px',
   marginRight: '10px',
@@ -109,7 +108,7 @@ export const Button = styled(ButtonMUI)(style => ({
   borderRadius: '30px',
   boxShadow:
     '0 2px 2px 0 rgb(156 39 176 / 14%), 0 3px 1px -2px rgb(156 39 176 / 20%), 0 1px 5px 0 rgb(156 39 176 / 12%)',
-  backgroundColor: `${FEEDBACK_ICON_COLOR}`,
+  backgroundColor: `${FEEDBACK_ICON}`,
   border: 'none',
   cursor: 'pointer',
   padding: '12px 30px',

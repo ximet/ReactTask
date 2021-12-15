@@ -9,20 +9,24 @@ import {
 
 const INITIAL_STATE = {
   name: {
-    value: 'Your Name',
-    error: 'err'
+    value: '',
+    error: '',
+    defaultValue: 'Your Name'
   },
   email: {
-    value: 'Email address',
-    error: ''
+    value: '',
+    error: '',
+    defaultValue: 'Email address'
   },
   phone: {
-    value: 'Phone',
-    error: ''
+    value: '',
+    error: '',
+    defaultValue: 'Phone'
   },
   message: {
-    value: 'Your message',
-    error: ''
+    value: '',
+    error: '',
+    defaultValue: 'Your message'
   },
   isSending: false
 };
@@ -40,7 +44,7 @@ const feedbackReducer = (state = INITIAL_STATE, action) => {
     case SEND_MESSAGE_START:
       return { ...state, isSending: action.payload };
     case SEND_MESSAGE_FINISHED:
-      return INITIAL_STATE;
+      return { ...INITIAL_STATE };
     default:
       return state;
   }
