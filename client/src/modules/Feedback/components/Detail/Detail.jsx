@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from '../../style';
 import { FEEDBACK_TEXT } from '../../../../app_data/styles_info';
-
+import PropTypes from 'prop-types';
 
 export default function Detail(props) {
   return (
@@ -13,13 +13,21 @@ export default function Detail(props) {
         </S.Title>
         <div>
           <S.Paragraph component={'p'} m="0 0 10px" align="left" color={FEEDBACK_TEXT}>
-          {props.text
-            .split('\n')
-            .map((tx,key) => <React.Fragment key={key}>{tx}<br/></React.Fragment>)
-          }
+            {props.text.split('\n').map((txt, key) => (
+              <React.Fragment key={key}>
+                {txt}
+                <br />
+              </React.Fragment>
+            ))}
           </S.Paragraph>
         </div>
       </div>
     </S.DetailsContainer>
   );
 }
+
+Detail.propTypes = {
+  icon: PropTypes.object,
+  title: PropTypes.string,
+  text: PropTypes.string
+};

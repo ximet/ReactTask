@@ -13,11 +13,11 @@ export const SEND_MESSAGE_FINISHED = createActionType('SEND_MESSAGE_FINISHED');
 export const changeName = (value = null) => baseActionCreator(CHANGE_NAME, value);
 export const changeEmail = (value = null) => baseActionCreator(CHANGE_EMAIL, value);
 export const changePhone = (value = null) => baseActionCreator(CHANGE_PHONE, value);
-export const changeMessage = (value = null) => baseActionCreator(CHANGE_MESSAGE, value);
+export const changeFeedbackMessage = (value = null) => baseActionCreator(CHANGE_MESSAGE, value);
 const sendMessageStart = (value = null) => baseActionCreator(SEND_MESSAGE_START, value);
 const sendMessageFinished = (value = null) => baseActionCreator(SEND_MESSAGE_FINISHED, value);
 export const sendMessage = () => (dispatch, getState) => {
-  // dispatch(sendMessageStart(true));
+  dispatch(sendMessageStart(true));
   addFeedback(getFormData(getState()));
   dispatch(sendMessageFinished());
 };

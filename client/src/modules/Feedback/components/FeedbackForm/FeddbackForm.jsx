@@ -2,11 +2,12 @@ import React from 'react';
 import { Box } from '@mui/material';
 import * as S from '../../style';
 import TextField from '../TextField';
+import PropTypes from 'prop-types';
 
 export function FeedbackForm(props) {
   return (
     <S.GridItem sm={6} md={6} item>
-      <S.Paragraph component={'p'} m="0 0 10px 8px" align='justify'>
+      <S.Paragraph component={'p'} m="0 0 10px 8px" align="justify">
         You can contact us with anything related to our Products. We'll get in touch with you as
         soon as possible.
       </S.Paragraph>
@@ -33,8 +34,8 @@ export function FeedbackForm(props) {
           error={props.message.error}
           defaultValue={props.message.defaultValue}
           value={props.message.value}
-          onChangeHandler={props.changeMessage}
-          multiline='true'
+          onChangeHandler={props.changeFeedbackMessage}
+          multiline={true}
           rows={4}
         />
 
@@ -45,3 +46,32 @@ export function FeedbackForm(props) {
     </S.GridItem>
   );
 }
+
+FeedbackForm.propTypes = {
+  changeName: PropTypes.func.isRequired,
+  changePhone: PropTypes.func.isRequired,
+  changeEmail: PropTypes.func.isRequired,
+  changeFeedbackMessage: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
+  name: PropTypes.shape({
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
+    error: PropTypes.string
+  }),
+  email: PropTypes.shape({
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
+    error: PropTypes.string
+  }),
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
+    error: PropTypes.string
+  }),
+  message: PropTypes.shape({
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
+    error: PropTypes.string
+  }),
+  isSending: PropTypes.bool
+};

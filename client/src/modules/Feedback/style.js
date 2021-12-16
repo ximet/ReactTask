@@ -76,9 +76,6 @@ export const TextField = styled(InputField)(() => ({
   ['& .MuiInput-underline']: {
     marginTop: 0
   }
-  // [`& .MuiInput-underline:hover::before`]: {
-  //   pointerEvents: 'none'
-  // }
 }));
 
 export const MuiSvgIconContainer = styled('div')(() => ({

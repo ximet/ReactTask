@@ -46,7 +46,8 @@ export const DETAILS = [
   },
   {
     title: 'Legal Information',
-    text: 'Creative Tim Ltd. \n VAT · EN2341241 \n IBAN · EN8732ENGB2300099123 \n Bank · Great Britain Bank',
+    text:
+      'Creative Tim Ltd. \n VAT · EN2341241 \n IBAN · EN8732ENGB2300099123 \n Bank · Great Britain Bank',
     iconName: <BusinessCenterSharpIcon />
   }
 ];

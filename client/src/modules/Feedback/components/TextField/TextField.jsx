@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from '../../style';
+import PropTypes from 'prop-types';
 
 export default function TextField(props) {
   return (
@@ -20,3 +21,12 @@ export default function TextField(props) {
     />
   );
 }
+
+TextField.propTypes = {
+  onChangeHandler: PropTypes.func.isRequired,
+  rows: PropTypes.number,
+  multiline: PropTypes.bool,
+  error: PropTypes.string,
+  value: PropTypes.string,
+  defaultValue: PropTypes.string
+};
