@@ -1,5 +1,6 @@
 .lastCitiesContainer {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .cityItem {

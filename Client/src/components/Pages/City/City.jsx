@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Title from '../../layout/Typography/Title/Title';
 import CityResult from './CityResult';
-import getWeatherForCity from '../../../api/getWeatherForCity';
 import saveLastCityToLocalStorage from '../../../services/saveLastCityToLocalStorage ';
+import { getCurrentSavedCity } from '../../../redux/actions/actions';
 
 function City() {
   let urlParams = useParams();
-  const [cityData, setCityData] = useState();
 
+  const dispatch = useDispatch();
+  const currentSavedCity = useSelector(state => state.getCurrentSavedCity);
+  console.log(currentSavedCity)
   useEffect(async () => {
-    let cityApiCityData = await getWeatherForCity(urlParams.cityId);
-    setCityData(cityApiCityData.data.observations);
+    dispatch(getCurrentSavedCity(urlParams.cityId));
     saveLastCityToLocalStorage(urlParams.city, urlParams.cityId);
   }, []);
 
   return (
     <div>
       <Title>City's data: {urlParams.cityId}</Title>
-      {cityData && <CityResult cityData={cityData[0]} />}
+      {currentSavedCity.data.observations && <CityResult cityData={currentSavedCity.data.observations[0]} />}
     </div>
   );
 }
