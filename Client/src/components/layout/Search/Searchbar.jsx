@@ -8,10 +8,9 @@ import { getSearchedCityData } from '../../../redux/actions/actions';
 import { MINIMUM_SEARCH_LENGTH, TIMEOUT_VALUE } from '../../../constants';
 
 function Searchbar(props) {
- 
   const [search, setSearch] = useState('');
   const [shouldInitiateSearch, setShouldInitiateSearch] = useState(false);
- 
+
   const dispatch = useDispatch();
   const cityData = useSelector(state => state.getSearchedCityData);
 
@@ -56,7 +55,7 @@ function Searchbar(props) {
           onClick={() => handleSearchSubmit()}
         />
       </div>
-      {cityData.data && <SearchResults searchResult={cityData.data} />}
+      {cityData.data.locations && <SearchResults searchResult={cityData.data} />}
     </React.Fragment>
   );
 }

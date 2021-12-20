@@ -1,6 +1,7 @@
 .lastCitiesContainer {
   display: flex;
-flex-wrap: wrap;}
+  flex-wrap: wrap;
+}
 
 .cityItem {
   margin-bottom: 20px;

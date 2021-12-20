@@ -1,6 +1,8 @@
 import { CURRENT_SAVED_CITY } from '../../actions/types';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  data: {}
+};
 const getCurrentSavedCityReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CURRENT_SAVED_CITY:

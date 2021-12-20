@@ -10,11 +10,6 @@ import getLocalData from '../../api/api';
 import getClientCoordinates from '../../services/getClientCoordinates';
 import getSearchedCity from '../../api/getSearchedCity';
 import getWeatherForCity from '../../api/getWeatherForCity';
-export const changeAppTitle = () => {
-  return {
-    type: CHANGE_APP_TITLE
-  };
-};
 
 export const authentication = () => async dispatch => {
   const result = await authenticate();

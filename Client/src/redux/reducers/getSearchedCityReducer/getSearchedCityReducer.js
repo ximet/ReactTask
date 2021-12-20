@@ -1,6 +1,8 @@
 import { GET_SEARCHED_CITY } from '../../actions/types';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  data: {}
+};
 const getSearchedCityReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_SEARCHED_CITY:

@@ -4,13 +4,13 @@ import authenticate from './authenticate';
 
 async function getLocalData(pos) {
   const token = await authenticate();
-  const AUTH = {
+  const AUTHENTICATION_HEADER = {
     Authorization: `Bearer ${token}`
   };
 
   let geolocatedCity = await axios
     .get(`${API_ADDRESS + QUERY_TYPE.GET_LOCATION}${pos.long},${pos.lat}`, {
-      headers: AUTH
+      headers: AUTHENTICATION_HEADER
     })
     .then(result => {
       return result.data.id;
@@ -18,7 +18,7 @@ async function getLocalData(pos) {
 
   const finalResult = await axios
     .get(`${API_ADDRESS + QUERY_TYPE.GET_LATEST_DATA + geolocatedCity}`, {
-      headers: AUTH
+      headers: AUTHENTICATION_HEADER
     })
     .then(result => {
       return result;

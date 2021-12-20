@@ -1,6 +1,8 @@
 import { AUTHENTICATE } from '../../actions/types';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  data: {}
+};
 const authenticationReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AUTHENTICATE:

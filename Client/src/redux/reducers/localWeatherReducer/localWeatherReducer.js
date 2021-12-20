@@ -1,6 +1,8 @@
 import { GET_LOCAL_WEATHER } from '../../actions/types';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  data: {}
+};
 const localWeatherReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_LOCAL_WEATHER:
