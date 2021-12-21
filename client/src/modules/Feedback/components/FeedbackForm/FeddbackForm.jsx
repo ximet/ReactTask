@@ -4,6 +4,7 @@ import * as S from '../../style';
 import TextField from '../TextField';
 import PropTypes from 'prop-types';
 
+
 export function FeedbackForm(props) {
   return (
     <S.GridItem sm={6} md={6} item>
@@ -13,22 +14,28 @@ export function FeedbackForm(props) {
       </S.Paragraph>
       <Box component="form" noValidate autoComplete="off">
         <TextField
+          name="name"
           error={props.name.error}
           defaultValue={props.name.defaultValue}
           value={props.name.value}
           onChangeHandler={props.changeName}
+          onBlurHandler={props.validateField}
         />
         <TextField
+          name="phone"
           error={props.phone.error}
           defaultValue={props.phone.defaultValue}
           value={props.phone.value}
           onChangeHandler={props.changePhone}
+          onBlurHandler={props.validateField}
         />
         <TextField
+          name="email"
           error={props.email.error}
           defaultValue={props.email.defaultValue}
           value={props.email.value}
           onChangeHandler={props.changeEmail}
+          onBlurHandler={props.validateField}
         />
         <TextField
           error={props.message.error}
@@ -38,7 +45,6 @@ export function FeedbackForm(props) {
           multiline={true}
           rows={4}
         />
-
         <S.Button disabled={props.isSending} variant="contained" onClick={props.sendMessage}>
           CONTACT US
         </S.Button>
@@ -49,6 +55,7 @@ export function FeedbackForm(props) {
 
 FeedbackForm.propTypes = {
   changeName: PropTypes.func.isRequired,
+  validateField: PropTypes.func.isRequired,
   changePhone: PropTypes.func.isRequired,
   changeEmail: PropTypes.func.isRequired,
   changeFeedbackMessage: PropTypes.func.isRequired,
