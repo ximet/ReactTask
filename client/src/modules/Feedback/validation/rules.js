@@ -6,7 +6,7 @@ const errorMessages = {
   'string.email': 'Type a valid e-mail'
 };
 
-export const validation_rules = {
+export const rules = {
   name: Joi.object({
     name: Joi.string().min(2).max(20).required().messages(errorMessages)
   }),

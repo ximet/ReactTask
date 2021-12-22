@@ -1,12 +1,12 @@
 import { addFeedback } from '../../../feedbackManager';
 import { getFormData } from '../selectors';
-import { validation_rules } from '../validation/rules';
+import { rules } from '../validation/rules';
 import { sendMessageFinished, sendMessageStart, setValidationResult } from './index';
 
 const combineErrors = errors => errors.map(err => ({ name: err.context.key, error: err.message }));
 
 export const validateField = field => dispatch => {
-  const validationDetails = validation_rules[field.name].validate({
+  const validationDetails = rules[field.name].validate({
     [field.name]: field.value
   });
   const validationResult = validationDetails.error
@@ -20,7 +20,7 @@ export const sendMessage = name => (dispatch, getState) => {
   let validationDetails;
 
   const data = getFormData(getState());
-  validationDetails = validation_rules[name].validate(data);
+  validationDetails = rules[name].validate(data);
 
   if (!validationDetails.error) {
     dispatch(sendMessageStart(true));
