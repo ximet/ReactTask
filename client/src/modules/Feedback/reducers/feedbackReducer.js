@@ -4,7 +4,8 @@ import {
   CHANGE_PHONE,
   CHANGE_MESSAGE,
   SEND_MESSAGE_FINISHED,
-  SEND_MESSAGE_START, SET_VALIDATION_RESULT
+  SEND_MESSAGE_START,
+  SET_VALIDATION_RESULT
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -44,10 +45,11 @@ const feedbackReducer = (state = INITIAL_STATE, action) => {
     case SEND_MESSAGE_START:
       return { ...state, isSending: action.payload };
     case SET_VALIDATION_RESULT:
-      return {
-        ...state,
-        [action.payload.name]: {...state[action.payload.name],  value: action.payload.value, error: action.payload.error }
-      };
+      const newState = { ...state };
+      action.payload.forEach(({ name, error }) => {
+        newState[name] = { ...newState[name], error };
+      });
+      return newState;
     case SEND_MESSAGE_FINISHED:
       return { ...INITIAL_STATE };
     default:

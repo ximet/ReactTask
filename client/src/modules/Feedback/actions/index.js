@@ -1,22 +1,6 @@
 import { createActionType } from './actionCreator';
 import { baseActionCreator } from '../../../store/common_redux_utils/baseActionCreator';
-import { addFeedback } from '../../../feedbackManager';
-import { getFormData } from '../selectors';
-
-import Joi from 'joi';
-const validation_schema_rules = {
-  name: Joi.object({
-    name: Joi.string().min(2).max(20).required()
-  }),
-  phone: Joi.object({
-    phone: Joi.string().min(8).max(20).required()
-  }),
-  email: Joi.object({
-    email: Joi.string()
-      .email({ tlds: { allow: false } })
-      .required()
-  })
-};
+export { validateField, sendMessage } from './thunks';
 
 export const CHANGE_NAME = createActionType('CHANGE_NAME');
 export const CHANGE_EMAIL = createActionType('CHANGE_EMAIL');
@@ -30,26 +14,8 @@ export const changeName = (value = null) => baseActionCreator(CHANGE_NAME, value
 export const changeEmail = (value = null) => baseActionCreator(CHANGE_EMAIL, value);
 export const changePhone = (value = null) => baseActionCreator(CHANGE_PHONE, value);
 export const changeFeedbackMessage = (value = null) => baseActionCreator(CHANGE_MESSAGE, value);
-const sendMessageStart = (value = null) => baseActionCreator(SEND_MESSAGE_START, value);
-const sendMessageFinished = (value = null) => baseActionCreator(SEND_MESSAGE_FINISHED, value);
-const setValidationResult = (value = null) => baseActionCreator(SET_VALIDATION_RESULT, value);
-
-export const sendMessage = () => (dispatch, getState) => {
-  dispatch(sendMessageStart(true));
-  addFeedback(getFormData(getState()));
-  dispatch(sendMessageFinished());
-};
-
-export const validateField =  field => (dispatch) => {
-
-    const validationDetails =  validation_schema_rules[field.name].validate({ [field.name]: field.value });
-    const error = validationDetails.error ? validationDetails.error.message : '';
-
-  dispatch(
-    setValidationResult({
-      name: field.name,
-      value: field.value,
-      error
-    })
-  );
-};
+export const sendMessageStart = (value = null) => baseActionCreator(SEND_MESSAGE_START, value);
+export const sendMessageFinished = (value = null) =>
+  baseActionCreator(SEND_MESSAGE_FINISHED, value);
+export const setValidationResult = (value = null) =>
+  baseActionCreator(SET_VALIDATION_RESULT, value);

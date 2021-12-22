@@ -4,7 +4,6 @@ import * as S from '../../style';
 import TextField from '../TextField';
 import PropTypes from 'prop-types';
 
-
 export function FeedbackForm(props) {
   return (
     <S.GridItem sm={6} md={6} item>
@@ -38,14 +37,21 @@ export function FeedbackForm(props) {
           onBlurHandler={props.validateField}
         />
         <TextField
+          name="message"
           error={props.message.error}
           defaultValue={props.message.defaultValue}
           value={props.message.value}
           onChangeHandler={props.changeFeedbackMessage}
+          onBlurHandler={props.validateField}
           multiline={true}
           rows={4}
         />
-        <S.Button disabled={props.isSending} variant="contained" onClick={props.sendMessage}>
+        <S.Button
+          name="form"
+          disabled={props.isSending}
+          variant="contained"
+          onClick={e => props.sendMessage(e.target.name)}
+        >
           CONTACT US
         </S.Button>
       </Box>
