@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import * as Individual_S from '../../style';
 import * as S from '../../../../app_data/styles_info/common_styles';
 
 import TextField from '../TextField';
@@ -41,9 +40,13 @@ export function FeedbackForm(props) {
           rows={4}
         />
 
-        <Individual_S.Button disabled={props.isSending} variant="contained" onClick={props.sendMessage}>
+        <S.Button
+          disabled={props.isSending}
+          variant="contained"
+          onClick={props.sendMessage}
+        >
           CONTACT US
-        </Individual_S.Button>
+        </S.Button>
       </Box>
     </S.GridItem>
   );

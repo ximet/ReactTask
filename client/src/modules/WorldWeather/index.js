@@ -1,3 +1,3 @@
-import { WorldWeather } from './components/WorldWeather';
+import { WorldWeather } from './containers/WorldWeather';
 
 export default WorldWeather;
