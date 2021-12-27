@@ -9,7 +9,6 @@ import {
 import { Grid } from '@mui/material';
 import InputField from '@mui/material/TextField';
 
-
 export const TextField = styled(InputField)(() => ({
   margin: '0 0 17px 0',
   position: 'relative',
@@ -35,5 +34,3 @@ export const DetailsContainer = styled('div')(() => ({
   margin: '0 auto',
   maxWidth: '360px'
 }));
-
-

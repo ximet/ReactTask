@@ -9,7 +9,6 @@ export const CustomWeatherContainer = styled('div')(style => ({
   margin: style.m ? style.m : 0
 }));
 
-
 export const SearchButton = styled(S.Button)(() => ({
   width: '41px',
   height: '41px',
@@ -17,7 +16,7 @@ export const SearchButton = styled(S.Button)(() => ({
   padding: 0,
   minWidth: '41px',
   margin: '0.3125rem 1px',
-  touchAction: 'manipulation',
+  touchAction: 'manipulation'
 }));
 
 export const SearchIcon = styled(TravelExploreSharpIcon)(() => ({
@@ -28,4 +27,3 @@ export const SearchIcon = styled(TravelExploreSharpIcon)(() => ({
   position: 'relative',
   verticalAlign: 'middle'
 }));
-

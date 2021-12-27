@@ -7,21 +7,21 @@ Country.propTypes = {
   name: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
   temperature: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
+  icon: PropTypes.object.isRequired
 };
 
-export function Country (props) {
+export function Country(props) {
   return (
     <S.GridItem item xs={12} sm={6} md={3} width={'25%'}>
       <Individual_S.CustomWeatherContainer>
         <Individual_S.CustomWeatherContainer>
-          <S.MuiSvgIconContainer mtop={'0'}>
-            {props.icon}
-          </S.MuiSvgIconContainer>
+          <S.MuiSvgIconContainer mtop={'0'}>{props.icon}</S.MuiSvgIconContainer>
           <span>{props.temperature}</span>
         </Individual_S.CustomWeatherContainer>
         <Individual_S.CustomWeatherContainer m={'0 0 0 15px'}>
-          <span>{props.name}, {props.country}</span>
+          <span>
+            {props.name}, {props.country}
+          </span>
         </Individual_S.CustomWeatherContainer>
       </Individual_S.CustomWeatherContainer>
     </S.GridItem>

@@ -40,11 +40,7 @@ export function FeedbackForm(props) {
           rows={4}
         />
 
-        <S.Button
-          disabled={props.isSending}
-          variant="contained"
-          onClick={props.sendMessage}
-        >
+        <S.Button disabled={props.isSending} variant="contained" onClick={props.sendMessage}>
           CONTACT US
         </S.Button>
       </Box>

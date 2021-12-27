@@ -15,8 +15,8 @@ Countries.propTypes = {
 };
 
 export function Countries(props) {
-  const countries = props.countries ?
-    (props.countries.map(country => (
+  const countries = props.countries ? (
+    props.countries.map(country => (
       <Country
         key={country.name}
         name={country.name}
@@ -24,14 +24,15 @@ export function Countries(props) {
         icon={country.icon}
         temperature={country.temperature}
       />
-    ))) : (
-      <S.Title m={'0 22px'} variant="h6" align="left">
+    ))
+  ) : (
+    <S.Title m={'0 22px'} variant="h6" align="left">
       Try again
-    </S.Title>)
+    </S.Title>
+  );
   return (
     <S.GridContainer container spacing={2}>
       {countries}
     </S.GridContainer>
   );
 }
-
