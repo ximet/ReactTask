@@ -104,3 +104,125 @@ export const ABOUT_US = {
     }
   ]
 };
+export const COUNTRIES_TO_SEARCH = [
+  {
+    name: 'Paris',
+    lon: 2.348799944,
+    lat: 48.853408813
+  },
+  {
+    name: 'London',
+    lon: -0.125532746,
+    lat: 51.508415222
+  },
+  {
+    name: 'Beijing',
+    lon: 116.397232056,
+    lat: 39.907497406
+  },
+  {
+    name: 'Tokyo',
+    lon: 139.691680908,
+    lat: 35.689525604
+  },
+  {
+    name: 'Rome',
+    lon: 12.483333588,
+    lat: 41.900001526
+  },
+  {
+    name: 'Washington',
+    lon: -77.036369324,
+    lat: 38.895111084
+  },
+  {
+    name: 'Berlin',
+    lon: 13.399999619,
+    lat: 52.516666412
+  },
+  {
+    name: 'Buenos Aires',
+    lon: -58.408813477,
+    lat: -34.576126099
+  },
+  {
+    name: 'Bangkok',
+    lon: 100.516670227,
+    lat: 13.75
+  },
+  {
+    name: 'Rome',
+    lon: 12.483333588,
+    lat: 41.900001526
+  },
+  {
+    name: 'Cape Town',
+    lon: 18.416666031,
+    lat: -33.916667938
+  },
+  {
+    name: 'Wellington',
+    lon: 174.776641846,
+    lat: -41.27853775
+  },
+  {
+    name: 'Oslo',
+    lon: 10.738921165,
+    lat: 59.913246155
+  },
+  {
+    name: 'Riga',
+    lon: 24.100000381,
+    lat: 56.950000763
+  },
+  {
+    name: 'Panama City',
+    lon: -79.533332825,
+    lat: 8.966667175
+  },
+  {
+    name: 'Amsterdam',
+    lon: 4.899902344,
+    lat: 52.373085022
+  },
+  {
+    name: 'Stockholm',
+    lon: 18.064903259,
+    lat: 59.332576752
+  },
+  {
+    name: 'Ottawa',
+    lon: -75.690284729,
+    lat: 45.420940399
+  },
+  {
+    name: 'Moscow',
+    lon: 37.61555481,
+    lat: 55.752223969
+  },
+  {
+    name: 'Sofia',
+    lon: 23.324146271,
+    lat: 42.69751358
+  },
+  {
+    name: 'Minsk',
+    lon: 27.566667557,
+    lat: 53.900001526
+  },
+  {
+    name: 'Warsaw',
+    lon: 21,
+    lat: 52.25
+  },
+  {
+    name: 'Madrid',
+    lon: -3.70256424,
+    lat: 40.416503906
+  },
+  {
+    name: 'Berne',
+    lon: 7.447443008,
+    lat: 46.948093414
+  }
+];

@@ -15,7 +15,7 @@ Countries.propTypes = {
 };
 
 export function Countries(props) {
-  const countries = props.countries ? (
+  const countries = props.countries.length ? (
     props.countries.map(country => (
       <Country
         key={country.name}

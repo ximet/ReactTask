@@ -18,7 +18,8 @@ export function SearchInput(props) {
         inputProps={{
           type: 'text',
           value: props.searchValue,
-          placeholder: 'Search Weather...'
+          placeholder: 'Search Weather...',
+          onChange: (e) => props.changeSearchValue(e.target.value)
         }}
         buttonProps={{
           onSearchClick: props.onSearchClick
