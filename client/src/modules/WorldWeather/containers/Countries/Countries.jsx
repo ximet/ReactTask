@@ -6,10 +6,10 @@ import { Country } from '../../components/Country/';
 Countries.propTypes = {
   countries: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
       country: PropTypes.string.isRequired,
-      temperature: PropTypes.string.isRequired,
-      icon: PropTypes.object.isRequired
+      temperature: PropTypes.string.isRequired
+      // icon: PropTypes.object.isRequired
     })
   )
 };
@@ -18,10 +18,10 @@ export function Countries(props) {
   const countries = props.countries.length ? (
     props.countries.map(country => (
       <Country
-        key={country.name}
-        name={country.name}
+        key={country.id}
+        city={country.city}
         country={country.country}
-        icon={country.icon}
+        // icon={country.icon}
         temperature={country.temperature}
       />
     ))

@@ -4,7 +4,7 @@ import { FormControl, Input } from '@mui/material';
 
 export function CustomInput(props) {
   let buttonEnd = (
-    <S.SearchButton onClick={props.buttonProps.onSearchClick}>
+    <S.SearchButton {...props.buttonProps}>
       {props.endButton.icon !== undefined ? props.endButton.icon : null}
       {props.endButton.text !== undefined ? props.endButton.text : null}
     </S.SearchButton>

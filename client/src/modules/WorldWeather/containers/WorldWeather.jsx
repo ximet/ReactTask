@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import * as S from '../../../app_data/styles_info/common_styles';
 import { SearchInput } from '../components/SearchInput';
 import { Countries } from './Countries/';
-import { getCountryList, getSearchValue } from '../selectors';
+import { getCountry, getSearchValue } from '../selectors';
 import { COUNTRIES_TO_SEARCH } from '../../../app_data/pages_info';
+import { onSearchClick } from '../actions';
 
 export function WorldWeather(props) {
   console.log(props);
@@ -19,12 +20,10 @@ export function WorldWeather(props) {
         <SearchInput
           changeSearchValue={props.changeSearchValue}
           searchValue={props.searchValue}
-          // onSearchClick={props.searchCountry}
-          onSearchClick={null}
+          onSearchClick={props.onSearchClick}
         />
-        {/*<Countries countries={props.countries} />*/}
-        <Countries countries={COUNTRIES_TO_SEARCH} />
-
+        <Countries countries={props.country} />
+        {/*<Countries countries={COUNTRIES_TO_SEARCH} />*/}
       </S.Container>
     </S.Box>
   );
@@ -33,6 +32,6 @@ export function WorldWeather(props) {
 export const mapStateToProps = state => {
   return {
     searchValue: getSearchValue(state),
-    countries: getCountryList(state)
+    country: getCountry(state)
   };
 };

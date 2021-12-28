@@ -19,10 +19,10 @@ export function SearchInput(props) {
           type: 'text',
           value: props.searchValue,
           placeholder: 'Search Weather...',
-          onChange: (e) => props.changeSearchValue(e.target.value)
+          onChange: e => props.changeSearchValue(e.target.value)
         }}
         buttonProps={{
-          onSearchClick: props.onSearchClick
+          onClick: props.onSearchClick
         }}
         endButton={{
           icon: <Individual_S.SearchIcon />
