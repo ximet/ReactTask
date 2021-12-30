@@ -13,33 +13,45 @@ export function FeedbackForm(props) {
       </S.Paragraph>
       <Box component="form" noValidate autoComplete="off">
         <TextField
+          name="name"
           error={props.name.error}
           defaultValue={props.name.defaultValue}
           value={props.name.value}
           onChangeHandler={props.changeName}
+          onBlurHandler={props.validateField}
         />
         <TextField
+          name="phone"
           error={props.phone.error}
           defaultValue={props.phone.defaultValue}
           value={props.phone.value}
           onChangeHandler={props.changePhone}
+          onBlurHandler={props.validateField}
         />
         <TextField
+          name="email"
           error={props.email.error}
           defaultValue={props.email.defaultValue}
           value={props.email.value}
           onChangeHandler={props.changeEmail}
+          onBlurHandler={props.validateField}
         />
         <TextField
+          name="message"
           error={props.message.error}
           defaultValue={props.message.defaultValue}
           value={props.message.value}
           onChangeHandler={props.changeFeedbackMessage}
+          onBlurHandler={props.validateField}
           multiline={true}
           rows={4}
         />
-
-        <S.Button disabled={props.isSending} variant="contained" onClick={props.sendMessage}>
+        <S.Button
+          name="form"
+          disabled={props.isSending}
+          variant="contained"
+          onClick={e => props.sendMessage(e.target.name)}
+        >
           CONTACT US
         </S.Button>
       </Box>
@@ -49,6 +61,7 @@ export function FeedbackForm(props) {
 
 FeedbackForm.propTypes = {
   changeName: PropTypes.func.isRequired,
+  validateField: PropTypes.func.isRequired,
   changePhone: PropTypes.func.isRequired,
   changeEmail: PropTypes.func.isRequired,
   changeFeedbackMessage: PropTypes.func.isRequired,
