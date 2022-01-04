@@ -1,27 +1,42 @@
-import { getState } from 'core-js/modules/web.url-search-params';
-import { searchingFinished, searchingStart, SET_COUNTRY, setCountry } from './index';
+import {
+  changeSearchValue,
+  searchingFinished,
+  searchingStart,
+  setCountryList,
+  setSelectedCountry,
+  clearCountryList,
+  clearSearchValue
+} from './index';
 import { weatherApi } from '../../../weatherAPI';
-import { COUNTRIES_TO_SEARCH } from '../../../app_data/pages_info';
-import { getSearchValue } from '../selectors';
+import { getSearchValue, getSuitableCountry } from '../selectors';
 
-export const onSearchClick = () => async (dispatch, getState) => {
-  dispatch(searchingStart(true)); // searching start
-  // const res = await weatherApi.searchCityByQuery(getSearchValue(getState()));
-  // const country = res[0];
-
-  // const result = await weatherApi.getWeather({ lon: country.lon, lat: country.lat });
-  //
-  // console.log(result);
-  // console.log(country);
-  // const countryInfo = {id:country.id,city:country.name, country: country.country, temperature: result.temperature}
+export const onSearchClick = value => async (dispatch, getState) => {
+  dispatch(changeSearchValue(value));
+  dispatch(searchingStart(true));
 
   const result = await weatherApi.searchCityByQuery(getSearchValue(getState()));
-  // const result = await weatherApi.getFullCityForecast();
+  const countries = sortCountries([...new Set(result)]);
 
-  console.log(result);
-  dispatch(setCountry(sortCountries(result)));// seT COUNTRY
-  console.log(result);
-  dispatch(searchingFinished(false)); // searching end
+  dispatch(setCountryList(countries));
+  dispatch(searchingFinished(false));
+};
+
+
+export const onSelectCountry = () => async (dispatch, getState) => {
+  const country = getSuitableCountry(getState());
+  const weatherForecast = await weatherApi.getFullCityForecast({
+    lon: country.lon,
+    lat: country.lat
+  });
+
+  dispatch(setSelectedCountry(weatherForecast));
+  dispatch(clearCountryList());
+  dispatch(clearSearchValue());
+};
+
+export const getCurrentLocationWeather = () => async dispatch => {
+  const weatherForecast = await weatherApi.getFullCityForecast();
+  dispatch(setSelectedCountry(weatherForecast));
 };
 
 const sortCountries = countryList => {

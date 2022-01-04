@@ -1,27 +1,51 @@
 import PropTypes from 'prop-types';
 import * as S from '../../style';
-import { FormControl, Input } from '@mui/material';
+import { Autocomplete, TextField } from '@mui/material';
+
+function Fragment(props) {
+  return null;
+}
+
+Fragment.propTypes = { children: PropTypes.node };
 
 export function CustomInput(props) {
-  let buttonEnd = (
-    <S.SearchButton {...props.buttonProps}>
-      {props.endButton.icon !== undefined ? props.endButton.icon : null}
-      {props.endButton.text !== undefined ? props.endButton.text : null}
-    </S.SearchButton>
-  );
-
   return (
     <>
-      <FormControl {...props.formControlProps}>
-        <Input {...props.inputProps} endAdornment={buttonEnd} />
-      </FormControl>
+      <Autocomplete
+        filterOptions={x => x}
+        value={props.inputValue}
+        onChange={props.onSelectCountry}
+        inputValue={props.inputValue}
+        onInputChange={(event, newInputValue) => {
+          props.onSearchClick(newInputValue);
+        }}
+        freeSolo
+        id="search-weather"
+        disableClearable
+        // key={country => country.id}
+        options={
+          props.countries.length
+            ? props.countries.map(country => `${country.name},${country.country}`)
+            : props.countries
+        }
+        renderInput={params => (
+          <TextField
+            {...params}
+            label="Search weather"
+            variant="standard"
+            InputProps={{
+              ...params.InputProps,
+              type: 'search'
+            }}
+          />
+        )}
+      />
     </>
   );
 }
 
 CustomInput.propTypes = {
-  endButton: PropTypes.object,
-  inputProps: PropTypes.object,
-  formControlProps: PropTypes.object,
-  buttonProps: PropTypes.object
+  countries: PropTypes.object,
+  onSearchClick: PropTypes.func,
+  onSelectCountry: PropTypes.func
 };

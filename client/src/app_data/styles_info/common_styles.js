@@ -18,7 +18,7 @@ export const Container = styled(BaseBox)(style => ({
   width: '100%',
   maxWidth: style.maxWidth ? `${style.maxWidth}px` : '700px',
   textAlign: 'center',
-  padding: '40px 0',
+  padding: style.padding ? `${style.padding}` : '40px 0',
   boxShadow: `0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%)`,
   borderRadius: '6px'
 }));
@@ -48,28 +48,38 @@ export const GridContainer = styled(Grid)(() => ({
 }));
 
 export const GridItem = styled(Grid)(style => ({
-  margin: style.centering ? '0 auto' : '',
+  margin: style.margin ? `${style.margin}` : '',
   marginLeft: style.marginLeft ? style.marginLeft : '',
   width: style.width ? style.width : '100%',
   position: 'relative',
-  minHeight: '1px',
-  padding: style.padding ? `${style.padding}` : '0 15px',
+  minHeight: style.minHeight ? `${style.minHeight}` : '1px',
+  background: style.backgroundimg
+    ? // ? 'url(http://kunal24borah.files.wordpress.com/2013/10/rain.jpg)' // rain
+      'url(https://i.pinimg.com/564x/67/49/6c/67496cdd3184d85ca38e14506e161a0f.jpg)' // sun
+    : //     ? 'url(https://i.pinimg.com/564x/5f/f1/e4/5ff1e47f58309f841120723cceb6a2af.jpg)' // clouds
+      //   ? 'url(https://i.pinimg.com/564x/04/09/15/040915f14a8a1e861f23915b37fcd626.jpg)' //clouds
+
+      '',
+  backgroundPosition: 'center center',
+  backgroundSize: 'cover',
+  padding: style.padding ? style.padding : '0 15px',
   [style.theme.breakpoints.down('sm')]: {
     margin: '0'
   }
 }));
 
-export const MuiSvgIconContainer = styled('div')(style => ({
-  color: `${PURPLE_COLOR_GENERAL}`,
-  float: 'left',
-  marginTop: style.mtop ? `${style.mtop}` : '24px',
-  marginRight: '10px',
-  ['& .MuiSvgIcon-root']: {
-    width: '2.25rem',
-    height: '2.25rem',
-    fontSize: '2.25rem'
-  }
-}));
+export const MuiSvgIconContainer = styled(('div'))(style => ({
+    color: `${PURPLE_COLOR_GENERAL}`,
+    float: 'left',
+    marginTop: style.mtop ? `${style.mtop}` : '24px',
+    marginRight: '10px',
+    ['& .MuiSvgIcon-root']: {
+      width: '2.25rem',
+      height: '2.25rem',
+      fontSize: '2.25rem'
+    }
+  })
+);
 
 export const Button = styled(ButtonMUI)(style => ({
   margin: style.my ? `${style.my}px 0` : '0 auto',

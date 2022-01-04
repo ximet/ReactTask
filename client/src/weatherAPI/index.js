@@ -12,10 +12,30 @@ class WeatherAPI {
     this._searchCity = this._searchCity.bind(this);
   }
 
+  async getFullCityForecast(pos = null) {
+    if (!pos) {
+      pos = await this._getCurrentLocationCoords();
+    }
+
+    const countryInfo = await this._searchCity(pos);
+    const now = await this._getTodaysWeather(pos);
+    const daily = await this._getDailyWeather(pos);
+
+    return { now, daily, countryInfo };
+  }
+
+  async searchCityByQuery(query) {
+    try {
+      const response = await this.instance.get(`${QUERIES.LOCATION_BY_QUERY}${query}`);
+      return response.data.locations;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async _getTodaysWeather(pos) {
     try {
       const response = await this.instance.get(`${QUERIES.CURRENT_WEATHER}${pos.lon},${pos.lat}`);
-
       return response.data.current;
     } catch (error) {
       console.log(error);
@@ -27,15 +47,6 @@ class WeatherAPI {
       const response = await this.instance.get(`${QUERIES.DAILY_WEATHER}${pos.lon},${pos.lat}`);
 
       return response.data.forecast;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async searchCityByQuery(query) {
-    try {
-      const response = await this.instance.get(`${QUERIES.LOCATION_BY_QUERY}${query}`);
-      return response.data.locations;
     } catch (error) {
       console.log(error);
     }
@@ -61,18 +72,6 @@ class WeatherAPI {
     } catch (error) {
       console.log(error);
     }
-  }
-
-  async getFullCityForecast(pos = null) {
-    if (!pos) {
-      pos = await this._getCurrentLocationCoords();
-    }
-
-    const countryInfo = await this._searchCity(pos);
-    const now = await this._getTodaysWeather(pos);
-    const daily = await this._getDailyWeather(pos);
-
-    return { now, daily, countryInfo };
   }
 }
 

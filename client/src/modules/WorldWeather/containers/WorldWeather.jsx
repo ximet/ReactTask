@@ -1,29 +1,55 @@
 import React, { useEffect } from 'react';
 import * as S from '../../../app_data/styles_info/common_styles';
 import { SearchInput } from '../components/SearchInput';
-import { Countries } from './Countries/';
-import { getCountry, getSearchValue } from '../selectors';
-import { COUNTRIES_TO_SEARCH } from '../../../app_data/pages_info';
-import { onSearchClick } from '../actions';
+import {
+  getCountryList,
+  getSearchValue,
+  getSelectedCountry,
+  getWeatherDetails
+} from '../selectors';
+import PropTypes from 'prop-types';
+import { Country } from '../components/Country';
+
+WorldWeather.propTypes = {
+  selectedCountry: PropTypes.shape({
+    now: PropTypes.shape({
+      temperature: PropTypes.number,
+      symbol: PropTypes.string
+    }),
+    countryInfo: PropTypes.shape({
+      name: PropTypes.string,
+      country: PropTypes.string
+    })
+  }),
+  weatherDetails: PropTypes.shape({
+    windSpeed: PropTypes.number,
+    feelsLike: PropTypes.number,
+    cloudiness: PropTypes.number,
+    visibility: PropTypes.number,
+    pressure: PropTypes.number
+  }),
+  countryList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      country: PropTypes.string
+    })
+  ),
+  searchValue: PropTypes.string
+};
 
 export function WorldWeather(props) {
-  console.log(props);
-  useEffect(() => {
-    // call searchWeather api
-  }, []);
+  useEffect(async () => props.getCurrentLocationWeather(), []);
   return (
     <S.Box>
-      <S.Container maxWidth={1270}>
-        <S.Title m={'0 22px'} variant="h4" align="left">
-          Select country weather
-        </S.Title>
+      <S.Container maxWidth={970} padding="0">
         <SearchInput
-          changeSearchValue={props.changeSearchValue}
+          countries={props.countryList}
           searchValue={props.searchValue}
           onSearchClick={props.onSearchClick}
+          onSelectCountry={props.onSelectCountry}
         />
-        <Countries countries={props.country} />
-        {/*<Countries countries={COUNTRIES_TO_SEARCH} />*/}
+        <Country selectedCountry={props.selectedCountry} weatherDetails={props.weatherDetails} />
       </S.Container>
     </S.Box>
   );
@@ -32,6 +58,8 @@ export function WorldWeather(props) {
 export const mapStateToProps = state => {
   return {
     searchValue: getSearchValue(state),
-    country: getCountry(state)
+    countryList: getCountryList(state),
+    selectedCountry: getSelectedCountry(state),
+    weatherDetails: getWeatherDetails(state)
   };
 };

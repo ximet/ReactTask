@@ -2,7 +2,7 @@ import React from 'react';
 import * as Individual_S from '../../style';
 import * as S from '../../../../app_data/styles_info/common_styles';
 
-import { FEEDBACK_TEXT } from '../../../../app_data/styles_info';
+import { GRAY_COLOR_GENERAL } from '../../../../app_data/styles_info';
 import PropTypes from 'prop-types';
 
 export default function Detail(props) {
@@ -14,7 +14,7 @@ export default function Detail(props) {
           {props.title}
         </S.Title>
         <div>
-          <S.Paragraph component={'p'} m="0 0 10px" align="left" color={FEEDBACK_TEXT}>
+          <S.Paragraph component={'p'} m="0 0 10px" align="left" color={GRAY_COLOR_GENERAL}>
             {props.text.split('\n').map((txt, key) => (
               <React.Fragment key={key}>
                 {txt}

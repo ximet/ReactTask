@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 const StyledMain = styled('main')(() => ({
   flex: '1 0 auto'
 }));
+
 export function Main(props) {
   return (
     <StyledMain>

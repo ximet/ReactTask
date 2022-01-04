@@ -6,9 +6,13 @@ import Container from '@mui/material/Container';
 import * as S from '../style';
 import PropTypes from 'prop-types';
 import MobileMenu from '../components/MobileMenu';
+import { IconButton } from '@mui/material';
+import Sun from '@mui/icons-material/Brightness3';
+import Moon from '@mui/icons-material/Brightness7';
 
 export const AppBar = props => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const icon = !props.theme ? <Moon /> : <Sun />;
 
   const openNavMenuHandler = useCallback(
     event => {
@@ -44,6 +48,14 @@ export const AppBar = props => {
             md="flex"
             justify="flex-end"
           />
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="mode"
+            onClick={() => props.onSetTheme(!props.theme)}
+          >
+            {icon}
+          </IconButton>
         </Toolbar>
       </Container>
     </S.AppBarMUI>

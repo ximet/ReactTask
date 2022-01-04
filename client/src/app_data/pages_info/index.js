@@ -104,125 +104,80 @@ export const ABOUT_US = {
     }
   ]
 };
-export const COUNTRIES_TO_SEARCH = [
-  {
-    name: 'Paris',
-    lon: 2.348799944,
-    lat: 48.853408813
-  },
-  {
-    name: 'London',
-    lon: -0.125532746,
-    lat: 51.508415222
-  },
-  {
-    name: 'Beijing',
-    lon: 116.397232056,
-    lat: 39.907497406
-  },
-  {
-    name: 'Tokyo',
-    lon: 139.691680908,
-    lat: 35.689525604
-  }
-  // {
-  //   name: 'Rome',
-  //   lon: 12.483333588,
-  //   lat: 41.900001526
-  // },
-  // {
-  //   name: 'Washington',
-  //   lon: -77.036369324,
-  //   lat: 38.895111084
-  // },
-  // {
-  //   name: 'Berlin',
-  //   lon: 13.399999619,
-  //   lat: 52.516666412
-  // },
-  // {
-  //   name: 'Buenos Aires',
-  //   lon: -58.408813477,
-  //   lat: -34.576126099
-  // },
-  // {
-  //   name: 'Bangkok',
-  //   lon: 100.516670227,
-  //   lat: 13.75
-  // },
-  // {
-  //   name: 'Vilnius',
-  //   lon: 25.316667557,
-  //   lat: 54.683334351
-  // },
-  // {
-  //   name: 'Cape Town',
-  //   lon: 18.416666031,
-  //   lat: -33.916667938
-  // },
-  // {
-  //   name: 'Wellington',
-  //   lon: 174.776641846,
-  //   lat: -41.27853775
-  // },
-  // {
-  //   name: 'Oslo',
-  //   lon: 10.738921165,
-  //   lat: 59.913246155
-  // },
-  // {
-  //   name: 'Riga',
-  //   lon: 24.100000381,
-  //   lat: 56.950000763
-  // },
-  // {
-  //   name: 'Panama City',
-  //   lon: -79.533332825,
-  //   lat: 8.966667175
-  // },
-  // {
-  //   name: 'Amsterdam',
-  //   lon: 4.899902344,
-  //   lat: 52.373085022
-  // },
-  // {
-  //   name: 'Stockholm',
-  //   lon: 18.064903259,
-  //   lat: 59.332576752
-  // },
-  // {
-  //   name: 'Ottawa',
-  //   lon: -75.690284729,
-  //   lat: 45.420940399
-  // },
-  // {
-  //   name: 'Moscow',
-  //   lon: 37.61555481,
-  //   lat: 55.752223969
-  // },
-  // {
-  //   name: 'Sofia',
-  //   lon: 23.324146271,
-  //   lat: 42.69751358
-  // },
-  // {
-  //   name: 'Minsk',
-  //   lon: 27.566667557,
-  //   lat: 53.900001526
-  // },
-  // {
-  //   name: 'Warsaw',
-  //   lon: 21,
-  //   lat: 52.25
-  // },
-  // {
-  //   name: 'Madrid',
-  //   lon: -3.70256424,
-  //   lat: 40.416503906
-  // },
-  // {
-  //   name: 'Berne',
-  //   lon: 7.447443008,
-  //   lat: 46.948093414
-  // }
-];
+export const MEASUREMENT_TYPES = {
+  degrees: '°',
+  cloudiness: '%',
+  pressure: 'hPa',
+  visibility: 'm',
+  windSpeed: 'km/h'
+};
+
+export const FORECAST_DETAILS_LABEL = {
+  feelsLike: 'Feels Like',
+  cloudiness: 'Cloudiness',
+  pressure: 'Pressure',
+  visibility: 'Visibility',
+  windSpeed: 'Wind speed'
+};
+export const WEATHER_ICON_TOOLTIPS = {
+  d432: 'Overcast and snow',
+  d422: 'Overcast snow and showers',
+  d322: 'Cloudy and snow showers',
+  d222: 'Partly cloudy and snow showers',
+  d412: 'Overcast and light snow',
+  d312: 'Cloudy and light snow',
+  d431: 'Overcast and wet snow',
+  d421: 'Overcast and wet snow showers',
+  d321: 'Cloudy and wet snow showers',
+  d221: 'Partly cloudy and wet snow showers',
+  d411: 'Partly cloudy and light wet snow',
+  d311: 'Cloudy and light wet snow',
+  d211: 'Overcast and light wet snow',
+  d440: 'Overcast, thunderstorms with rain',
+  d340: 'Cloudy, thunderstorms with rain',
+  d240: 'Partly cloudy, thunderstorms with rain',
+  d430: 'Overcast and rain',
+  d420: 'Overcast and showers',
+  d320: 'Cloudy and showers',
+  d220: 'Partly cloudy and showers',
+  d410: 'Overcast and light rain',
+  d310: 'Cloudy and light rain',
+  d210: 'Partly cloudy and light rain',
+  d600: 'Fog',
+  d500: 'Thin upper cloud',
+  d400: 'Overcast',
+  d300: 'Cloudy',
+  d200: 'Partly cloudy',
+  d100: 'Mostly clear',
+  d000: 'Clear',
+  n432: 'Overcast and snow',
+  n422: 'Overcast snow and showers',
+  n322: 'Cloudy and snow showers',
+  n222: 'Partly cloudy and snow showers',
+  n412: 'Overcast and light snow',
+  n312: 'Cloudy and light snow',
+  n431: 'Overcast and wet snow',
+  n421: 'Overcast and wet snow showers',
+  n321: 'Cloudy and wet snow showers',
+  n221: 'Partly cloudy and wet snow showers',
+  n411: 'Partly cloudy and light wet snow',
+  n311: 'Cloudy and light wet snow',
+  n211: 'Overcast and light wet snow',
+  n440: 'Overcast, thunderstorms with rain',
+  n340: 'Cloudy, thunderstorms with rain',
+  n240: 'Partly cloudy, thunderstorms with rain',
+  n430: 'Overcast and rain',
+  n420: 'Overcast and showers',
+  n320: 'Cloudy and showers',
+  n220: 'Partly cloudy and showers',
+  n410: 'Overcast and light rain',
+  n310: 'Cloudy and light rain',
+  n210: 'Partly cloudy and light rain',
+  n600: 'Fog',
+  n500: 'Thin upper cloud',
+  n400: 'Overcast',
+  n300: 'Cloudy',
+  n200: 'Partly cloudy',
+  n100: 'Mostly clear',
+  n000: 'Clear'
+};
