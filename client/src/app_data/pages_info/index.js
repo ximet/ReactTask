@@ -1,6 +1,5 @@
 import WorldWeather from '../../modules/WorldWeather';
 import AboutUs from '../../modules/AboutUs/';
-import Home from '../../modules/Home';
 import Feedback from '../../modules/Feedback';
 import PinDropSharpIcon from '@mui/icons-material/PinDropSharp';
 import LocalPhoneSharpIcon from '@mui/icons-material/LocalPhoneSharp';
@@ -15,16 +14,10 @@ import BeachAccessSharpIcon from '@mui/icons-material/BeachAccessSharp';
 export const APP_NAME = 'Weather App';
 export const PAGES_INFO = [
   {
-    name: 'Home',
-    component: Home,
-    path: '/',
-    exact: true
-  },
-  {
     name: 'World weather',
     component: WorldWeather,
-    path: '/worldWeather',
-    exact: false
+    path: '/',
+    exact: true
   },
   {
     name: 'Feedback',
@@ -111,7 +104,6 @@ export const MEASUREMENT_TYPES = {
   visibility: 'm',
   windSpeed: 'km/h'
 };
-
 export const FORECAST_DETAILS_LABEL = {
   feelsLike: 'Feels Like',
   cloudiness: 'Cloudiness',

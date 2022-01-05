@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
-
-const getWorldWeather = state => state.worldWeather;
+import { getWorldWeather } from './baseSelector';
 
 export const getSearchValue = createSelector([getWorldWeather], ({ searchValue }) => searchValue);
 export const getCountryList = createSelector([getWorldWeather], ({ countryList }) => countryList);
