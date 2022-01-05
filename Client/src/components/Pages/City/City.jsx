@@ -11,7 +11,7 @@ function City() {
 
   const dispatch = useDispatch();
   const currentSavedCity = useSelector(state => state.getCurrentSavedCity);
-  console.log(currentSavedCity);
+
   useEffect(async () => {
     dispatch(getCurrentSavedCity(urlParams.cityId));
     saveLastCityToLocalStorage(urlParams.city, urlParams.cityId);

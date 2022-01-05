@@ -1,6 +1,7 @@
 import React from 'react';
 import { WEATHER_ICON_ADDRESS } from '../../../constants';
 function CityResult({ cityData }) {
+
   const CityInfromation = () => {
     if (!cityData) return 'no data for this city...';
 
