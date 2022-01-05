@@ -12,10 +12,9 @@ function App() {
   const [theme, setTheme] = useState(false);
   const appliedTheme = createTheme(theme ? LIGHT : DARK);
 
-
   return (
     <ThemeProvider theme={appliedTheme}>
-      <AppBar pages={pages} appName={appName} onSetTheme={setTheme} theme={theme}/>
+      <AppBar pages={pages} appName={appName} onSetTheme={setTheme} theme={theme} />
       <Main pages={pages} />
       <Footer pages={pages} appName={appName} />
       <CssBaseline />
@@ -24,6 +23,3 @@ function App() {
 }
 
 export default App;
-
-
-

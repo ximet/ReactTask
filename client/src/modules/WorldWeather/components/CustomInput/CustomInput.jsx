@@ -1,12 +1,5 @@
 import PropTypes from 'prop-types';
-import * as S from '../../style';
 import { Autocomplete, TextField } from '@mui/material';
-
-function Fragment(props) {
-  return null;
-}
-
-Fragment.propTypes = { children: PropTypes.node };
 
 export function CustomInput(props) {
   return (
@@ -22,7 +15,6 @@ export function CustomInput(props) {
         freeSolo
         id="search-weather"
         disableClearable
-        // key={country => country.id}
         options={
           props.countries.length
             ? props.countries.map(country => `${country.name},${country.country}`)

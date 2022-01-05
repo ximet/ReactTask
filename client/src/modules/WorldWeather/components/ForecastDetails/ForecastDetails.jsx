@@ -2,7 +2,6 @@ import React from 'react';
 import * as Individual_S from '../../style';
 import * as S from '../../../../app_data/styles_info/common_styles';
 import PropTypes from 'prop-types';
-import { WHITE_COLOR_GENERAL } from '../../../../app_data/styles_info';
 
 ForecastDetails.propTypes = {
   details: PropTypes.arrayOf(
@@ -29,7 +28,7 @@ export function ForecastDetails({ details }) {
                   }
                 >
                   <Individual_S.ForecastListItemText
-                    color={WHITE_COLOR_GENERAL}
+                    special_color={'true'}
                     regular={'400'}
                     primary={`${detail.label}`}
                   />

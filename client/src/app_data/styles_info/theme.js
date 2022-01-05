@@ -1,53 +1,60 @@
 import {
-  ACTIVE_LINK_COLOR,
-  BLACK_COLOR_GENERAL, BLACK_SHADOW_LAYER_GENERAL, FEEDBACK_TITLE_PARAGRAPH,
-  FOOTER_BG, GRAY_COLOR_GENERAL,
-  HEADER_BG,
-  MOBILE_MENU_BG, PURPLE_COLOR_GENERAL,
-  WHITE_COLOR_GENERAL
+  YELLOW,
+  BLACK,
+  BLACK_SHADOW_LAYER,
+  DARK_GREY,
+  GREY,
+  AQUAMARINE_GRADIENT,
+  PURPLE_GRADIENT,
+  PURPLE,
+  WHITE,
+  DARK_GOLD,
+  GREEN_BLUE_GRADIENT,
+  DARK_BLUE_GRADIENT,
+  DEEP_ORANGE,
+  DEEP_YELLOW
 } from './index';
 
 export const LIGHT = {
   palette: {
-    type: "light",
+    type: 'light',
     common: {
-      main:BLACK_COLOR_GENERAL,
-      additional:WHITE_COLOR_GENERAL,
-      active: ACTIVE_LINK_COLOR,
+      main: BLACK,
+      additional: WHITE,
+      active: YELLOW
     },
     gradient: {
-      footer: MOBILE_MENU_BG,
-      header: MOBILE_MENU_BG,
-      mobileMenu: FOOTER_BG,
+      footer: AQUAMARINE_GRADIENT,
+      header: AQUAMARINE_GRADIENT,
+      mobileMenu: PURPLE_GRADIENT
     },
     secondary: {
-      main: PURPLE_COLOR_GENERAL,
-      marks: GRAY_COLOR_GENERAL,
-      title: FEEDBACK_TITLE_PARAGRAPH
+      main: PURPLE,
+      notes: GREY,
+      title: DARK_GREY
     },
-    layerShadow: BLACK_SHADOW_LAYER_GENERAL
+    layerShadow: BLACK_SHADOW_LAYER
   }
 };
+
 export const DARK = {
   palette: {
-    type: "dark",
+    type: 'dark',
     common: {
-      main:BLACK_COLOR_GENERAL,
-      additional:WHITE_COLOR_GENERAL,
-      active: ACTIVE_LINK_COLOR,
+      main: DARK_GOLD,
+      additional: DEEP_ORANGE,
+      active: DEEP_YELLOW
     },
     gradient: {
-      footer: FOOTER_BG,
-      header: HEADER_BG,
-      mobileMenu: MOBILE_MENU_BG,
+      footer: DARK_BLUE_GRADIENT,
+      header: DARK_BLUE_GRADIENT,
+      mobileMenu: GREEN_BLUE_GRADIENT
     },
     secondary: {
-      main: PURPLE_COLOR_GENERAL,
-      marks: GRAY_COLOR_GENERAL,
-      title: FEEDBACK_TITLE_PARAGRAPH
+      main: BLACK,
+      notes: GREY,
+      title: DARK_GREY
     },
-    layerShadow: BLACK_SHADOW_LAYER_GENERAL
+    layerShadow: BLACK_SHADOW_LAYER
   }
 };
-
-

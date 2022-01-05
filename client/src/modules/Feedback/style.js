@@ -1,12 +1,4 @@
 import { styled } from '@mui/material/styles';
-import BaseBox from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import {
-  PURPLE_COLOR_GENERAL,
-  FEEDBACK_TITLE_PARAGRAPH,
-  WHITE_COLOR_GENERAL
-} from '../../app_data/styles_info';
-import { Grid } from '@mui/material';
 import InputField from '@mui/material/TextField';
 
 export const TextField = styled(InputField)(() => ({

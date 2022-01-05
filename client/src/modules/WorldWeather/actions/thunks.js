@@ -21,7 +21,6 @@ export const onSearchClick = value => async (dispatch, getState) => {
   dispatch(searchingFinished(false));
 };
 
-
 export const onSelectCountry = () => async (dispatch, getState) => {
   const country = getSuitableCountry(getState());
   const weatherForecast = await weatherApi.getFullCityForecast({

@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 import BaseBox from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { PURPLE_COLOR_GENERAL, FEEDBACK_TITLE_PARAGRAPH, WHITE_COLOR_GENERAL } from './index';
 import { Grid } from '@mui/material';
 import ButtonMUI from '@mui/material/Button';
 
@@ -26,7 +25,7 @@ export const Container = styled(BaseBox)(style => ({
 export const Title = styled(Typography)(style => ({
   margin: style.m ? `${style.m}` : '0',
   display: style.display ? style.display : 'block',
-  color: `${FEEDBACK_TITLE_PARAGRAPH}`,
+  color: style.theme.palette.secondary.title,
   textAlign: `${style.align}` ? `${style.align}` : 'initial',
   fontFamily: `Roboto Slab, Times New Roman, serif`,
   fontWeight: 700
@@ -38,7 +37,7 @@ export const Paragraph = styled(Typography)(style => ({
   fontFamily: `Roboto, Helvetica, Arial,sans-serif`,
   lineHeight: `1.5em`,
   textAlign: style.align ? `${style.align}` : 'initial',
-  color: style.color ? `${style.color}` : `${FEEDBACK_TITLE_PARAGRAPH}`,
+  color: style.color ? `${style.color}` : style.theme.palette.secondary.title,
   fontWeight: 300
 }));
 
@@ -68,27 +67,26 @@ export const GridItem = styled(Grid)(style => ({
   }
 }));
 
-export const MuiSvgIconContainer = styled(('div'))(style => ({
-    color: `${PURPLE_COLOR_GENERAL}`,
-    float: 'left',
-    marginTop: style.mtop ? `${style.mtop}` : '24px',
-    marginRight: '10px',
-    ['& .MuiSvgIcon-root']: {
-      width: '2.25rem',
-      height: '2.25rem',
-      fontSize: '2.25rem'
-    }
-  })
-);
+export const MuiSvgIconContainer = styled('div')(style => ({
+  color: style.theme.palette.secondary.main,
+  float: 'left',
+  marginTop: style.mtop ? `${style.mtop}` : '24px',
+  marginRight: '10px',
+  ['& .MuiSvgIcon-root']: {
+    width: '2.25rem',
+    height: '2.25rem',
+    fontSize: '2.25rem'
+  }
+}));
 
 export const Button = styled(ButtonMUI)(style => ({
   margin: style.my ? `${style.my}px 0` : '0 auto',
-  color: `${WHITE_COLOR_GENERAL}`,
+  color: style.theme.palette.common.main,
   display: style.display ? `${style.display}` : 'block',
   borderRadius: '30px',
   boxShadow:
     '0 2px 2px 0 rgb(156 39 176 / 14%), 0 3px 1px -2px rgb(156 39 176 / 20%), 0 1px 5px 0 rgb(156 39 176 / 12%)',
-  backgroundColor: `${PURPLE_COLOR_GENERAL}`,
+  backgroundColor: style.theme.palette.secondary.main,
   border: 'none',
   cursor: 'pointer',
   padding: '12px 30px',
