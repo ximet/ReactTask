@@ -3,7 +3,7 @@ import * as Individual_S from '../../style';
 import moment from 'moment';
 import * as S from '../../../../app_data/styles_info/common_styles';
 
-export function DateTime(props) {
+export function DateTime() {
   const [time, setTime] = useState(moment());
 
   useEffect(() => {

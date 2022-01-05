@@ -3,6 +3,7 @@ import BaseBox from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import ButtonMUI from '@mui/material/Button';
+import { weather_bg_image } from './index';
 
 export const Box = styled(BaseBox)(() => ({
   width: '100%',
@@ -53,12 +54,7 @@ export const GridItem = styled(Grid)(style => ({
   position: 'relative',
   minHeight: style.minHeight ? `${style.minHeight}` : '1px',
   background: style.backgroundimg
-    ? // ? 'url(http://kunal24borah.files.wordpress.com/2013/10/rain.jpg)' // rain
-      'url(https://i.pinimg.com/564x/67/49/6c/67496cdd3184d85ca38e14506e161a0f.jpg)' // sun
-    : //     ? 'url(https://i.pinimg.com/564x/5f/f1/e4/5ff1e47f58309f841120723cceb6a2af.jpg)' // clouds
-      //   ? 'url(https://i.pinimg.com/564x/04/09/15/040915f14a8a1e861f23915b37fcd626.jpg)' //clouds
-
-      '',
+    ?  weather_bg_image[style.backgroundimg] :'',
   backgroundPosition: 'center center',
   backgroundSize: 'cover',
   padding: style.padding ? style.padding : '0 15px',

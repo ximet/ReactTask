@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from '../../../../app_data/styles_info/common_styles';
 import * as Individual_S from '../../style';
-import { FORECAST_DETAILS_LABEL, MEASUREMENT_TYPES } from '../../../../app_data/pages_info';
+import { FORECAST_DETAILS_LABEL, MEASUREMENT_TYPES, WEATHER_ICONS_BY_GROUPS } from '../../../../app_data/pages_info';
 import { DateTime } from '../DateTime';
-import { ForecastDetails } from '../ForecastDetails';
+import { ForecastDetails } from '../../components/ForecastDetails';
 import { Temperature } from '../Temperature';
 
 TodayForecast.propTypes = {
@@ -30,6 +30,17 @@ TodayForecast.propTypes = {
 export function TodayForecast({ selectedCountry, weatherDetails }) {
   const [measurementTypes] = useState(MEASUREMENT_TYPES);
   const [forecastDetailsLabel] = useState(FORECAST_DETAILS_LABEL);
+  const [weatherGroups] = useState(WEATHER_ICONS_BY_GROUPS);
+  const [weatherBgImage, setBgImage] = useState('');
+
+  useEffect(() => {
+      setTimeout(()=> {
+        const symbol = selectedCountry ? selectedCountry.now.symbol: '';
+        for (const weather in weatherGroups) {
+          weatherGroups[weather].includes(symbol) ? setBgImage(weather): null;
+        }},100)
+  }, [selectedCountry]);
+
 
   const forecastDetails = weatherDetails
     ? Object.keys(weatherDetails).map(name => ({
@@ -40,7 +51,7 @@ export function TodayForecast({ selectedCountry, weatherDetails }) {
     : null;
 
   return selectedCountry ? (
-    <S.GridItem item xs={12} sm={6} backgroundimg={'true'} minHeight="480px" padding="0">
+    <S.GridItem item xs={12} sm={6} backgroundimg={weatherBgImage} minHeight="480px" padding="0">
       <Individual_S.ContentContainer margin="0">
         <S.GridContainer container spacing={2}>
           <Temperature selectedCountry={selectedCountry} measurement={measurementTypes.degrees} />

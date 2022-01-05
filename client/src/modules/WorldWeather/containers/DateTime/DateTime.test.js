@@ -1,6 +1,6 @@
 import { DateTime } from './DateTime';
 import React from 'react';
-import enableHooks, { withHooks } from 'jest-react-hooks-shallow';
+import enableHooks  from 'jest-react-hooks-shallow';
 import moment from 'moment';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

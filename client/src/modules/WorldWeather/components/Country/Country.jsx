@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from '../../../../app_data/styles_info/common_styles';
 
-import { DailyForecast } from '../DailyForecast';
-import { TodayForecast } from '../TodayForecast';
+import { DailyForecast } from '../../containers/DailyForecast';
+import { TodayForecast } from '../../containers/TodayForecast';
 
 Country.propTypes = {
   selectedCountry: PropTypes.shape({
