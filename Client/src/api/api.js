@@ -8,6 +8,8 @@ async function getLocalData(pos) {
     Authorization: `Bearer ${token}`
   };
 
+  console.log(pos);
+
   let geolocatedCity = await axios
     .get(`${API_ADDRESS + QUERY_TYPE.GET_LOCATION}${pos.long},${pos.lat}`, {
       headers: AUTHENTICATION_HEADER

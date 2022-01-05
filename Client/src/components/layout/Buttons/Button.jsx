@@ -23,7 +23,12 @@ function Button(props) {
   }, []);
 
   return (
-    <button type={props.type} className={buttonStyles} onClick={props.onClick}>
+    <button
+      data-testid="test-button"
+      type={props.type}
+      className={buttonStyles}
+      onClick={props.onClick}
+    >
       {props.name}
     </button>
   );

@@ -15,7 +15,9 @@ function Home() {
   return (
     <React.Fragment>
       <Title>Home of the weather</Title>
-      <WeatherReport data={localWeather.data.observations ? localWeather.data.observations[0] : null} />
+      <WeatherReport
+        data={localWeather.data.observations ? localWeather.data.observations[0] : null}
+      />
     </React.Fragment>
   );
 }

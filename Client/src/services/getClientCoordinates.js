@@ -7,6 +7,8 @@ export default async function getClientCoordinates() {
     return {
       long: pos.coords.longitude,
       lat: pos.coords.latitude
-    }
-  } catch (err) { console.log(err) }
+    };
+  } catch (err) {
+    console.log(err);
+  }
 }
