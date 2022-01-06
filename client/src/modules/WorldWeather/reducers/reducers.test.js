@@ -10,6 +10,7 @@ import {
 } from '../actions';
 
 describe('Test WorldWeather reducer', () => {
+
   it('Should change searchValue', () => {
     let action = changeSearchValue('Minsk');
     let state = {

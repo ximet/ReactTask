@@ -53,8 +53,7 @@ export const GridItem = styled(Grid)(style => ({
   width: style.width ? style.width : '100%',
   position: 'relative',
   minHeight: style.minHeight ? `${style.minHeight}` : '1px',
-  background: style.backgroundimg
-    ?  weather_bg_image[style.backgroundimg] :'',
+  background: style.backgroundimg ? weather_bg_image[style.backgroundimg] : '',
   backgroundPosition: 'center center',
   backgroundSize: 'cover',
   padding: style.padding ? style.padding : '0 15px',

@@ -32,8 +32,9 @@ export function CustomInput(props) {
           />
         )}
       />
-      </>)}
-
+    </>
+  );
+}
 
 CustomInput.propTypes = {
   countries: PropTypes.object,

@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from '../../../../app_data/styles_info/common_styles';
 import * as Individual_S from '../../style';
-import { FORECAST_DETAILS_LABEL, MEASUREMENT_TYPES, WEATHER_ICONS_BY_GROUPS } from '../../../../app_data/pages_info';
+import {
+  FORECAST_DETAILS_LABEL,
+  MEASUREMENT_TYPES,
+  WEATHER_ICONS_BY_GROUPS
+} from '../../../../app_data/pages_info';
 import { DateTime } from '../DateTime';
 import { ForecastDetails } from '../../components/ForecastDetails';
 import { Temperature } from '../Temperature';
@@ -34,13 +38,13 @@ export function TodayForecast({ selectedCountry, weatherDetails }) {
   const [weatherBgImage, setBgImage] = useState('');
 
   useEffect(() => {
-      setTimeout(()=> {
-        const symbol = selectedCountry ? selectedCountry.now.symbol: '';
-        for (const weather in weatherGroups) {
-          weatherGroups[weather].includes(symbol) ? setBgImage(weather): null;
-        }},100)
+    setTimeout(() => {
+      const symbol = selectedCountry ? selectedCountry.now.symbol : '';
+      for (const weather in weatherGroups) {
+        weatherGroups[weather].includes(symbol) ? setBgImage(weather) : null;
+      }
+    }, 100);
   }, [selectedCountry]);
-
 
   const forecastDetails = weatherDetails
     ? Object.keys(weatherDetails).map(name => ({

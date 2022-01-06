@@ -3,6 +3,7 @@ import { getWorldWeather } from './baseSelector';
 
 export const getSearchValue = createSelector([getWorldWeather], ({ searchValue }) => searchValue);
 export const getCountryList = createSelector([getWorldWeather], ({ countryList }) => countryList);
+
 export const getSelectedCountry = createSelector(
   [getWorldWeather],
   ({ selectedCountry }) => selectedCountry

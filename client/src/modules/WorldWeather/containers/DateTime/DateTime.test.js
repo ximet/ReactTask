@@ -1,19 +1,19 @@
 import { DateTime } from './DateTime';
 import React from 'react';
-import enableHooks  from 'jest-react-hooks-shallow';
 import moment from 'moment';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
-enableHooks(jest);
 
 describe('Testing DateTime component', () => {
   const render = () => shallow(<DateTime />);
+
   it('DateTime component should be rendered', () => {
     const component = render();
     expect(component).toBeTruthy();
   });
+
   it('DateTime component view right time', () => {
     const time = moment().format('h:mm');
     const component = render();
