@@ -2,6 +2,7 @@ import React from 'react';
 import * as Individual_S from '../../style';
 import * as S from '../../../../app_data/styles_info/common_styles';
 
+
 import { GREY } from '../../../../app_data/styles_info';
 import PropTypes from 'prop-types';
 

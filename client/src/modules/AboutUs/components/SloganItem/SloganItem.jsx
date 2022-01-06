@@ -19,3 +19,4 @@ export function SloganItem(props) {
     </S.GridItem>
   );
 }
+
