@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DETAILS } from '../../../app_data/pages_info';
 import Detail from '../components/Detail';
-import * as S from '../style';
+import * as S from '../../../app_data/styles_info/common_styles';
 
 export default function DetailsInfo() {
   const [details] = useState(DETAILS);

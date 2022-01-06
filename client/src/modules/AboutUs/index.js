@@ -1,3 +1,3 @@
-import { AboutUs } from './components/AboutUs';
+import { AboutUs } from './containers/AboutUs';
 
 export default AboutUs;

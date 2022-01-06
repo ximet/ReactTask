@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '../style';
+import * as S from '../../../app_data/styles_info/common_styles';
 import FeedbackForm from '../components/FeedbackForm';
 import DetailsInfo from './DetailsInfo';
 import { getEmail, getIsMessageSending, getMessage, getName, getPhone } from '../selectors';
