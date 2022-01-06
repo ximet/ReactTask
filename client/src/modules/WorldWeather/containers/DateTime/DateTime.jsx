@@ -9,11 +9,11 @@ export function DateTime() {
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(moment());
-
-      return () => {
-        clearInterval(timer);
-      };
     }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   return (
