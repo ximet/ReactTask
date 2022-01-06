@@ -13,10 +13,14 @@ export default function TextField(props) {
       value={props.value}
       helperText={props.error}
       variant="standard"
+      name={props.name}
       multiline={Boolean(props.multiline)}
       rows={props.rows}
       onChange={event => {
         props.onChangeHandler(event.target.value);
+      }}
+      onBlur={event => {
+        props.onBlurHandler(event.target);
       }}
     />
   );
