@@ -1,14 +1,12 @@
-@import "../../scss";
+@import '../../scss';
 
 .side {
-    border: $border;
-    padding: 10px;
+  border: $border;
+  padding: 10px;
 }
 
 .nav {
-    // color: red;
-    li {
-        padding: 5px 0;
-        
-    }
+  li {
+    padding: 5px 0;
+  }
 }

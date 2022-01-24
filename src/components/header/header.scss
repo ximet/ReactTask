@@ -1,13 +1,13 @@
-@import "../../scss";
+@import '../../scss';
 
 .header {
-    height: $header-height;
-    padding: 10px;
-    border: $border;
+  height: $header-height;
+  padding: 10px;
+  border: $border;
 
-    @include flex(center, space-between);
+  @include flex(center, space-between);
 
-    &__logo {
-        font-weight: $weight-bold;
-    }
+  &__logo {
+    font-weight: $weight-bold;
+  }
 }

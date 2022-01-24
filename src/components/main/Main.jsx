@@ -1,11 +1,13 @@
 import classes from './main.scss';
 
+import Routes from '../../config/Routes';
+
 function Main() {
-    return (
-        <div className={ classes.main }>
-            Main
-        </div>
-    );
+  return (
+    <div className={classes.main}>
+      <Routes />
+    </div>
+  );
 }
-  
+
 export default Main;
