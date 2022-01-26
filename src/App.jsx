@@ -2,18 +2,18 @@ import classes from './App.scss';
 
 import Header from './components/header/Header';
 import Side from './components/side/Side';
-import Main from './components/main/Main';
+import MainPage from './components/mainPage/MainPage';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className={`${classes.container} ${classes.container_vertical}`}>
+      <div className={`${classes.container} ${classes.app_container}`}>
         <Header />
-        <div className={`${classes.container} ${classes.container_horizontal}`}>
+        <div className={classes.container}>
           <Side />
-          <Main />
+          <MainPage />
         </div>
       </div>
     </BrowserRouter>

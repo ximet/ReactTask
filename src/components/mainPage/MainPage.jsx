@@ -1,8 +1,8 @@
-import classes from './main.scss';
+import classes from './mainPage.scss';
 
 import Routes from '../../config/Routes';
 
-function Main() {
+function MainPage() {
   return (
     <div className={classes.main}>
       <Routes />
@@ -10,4 +10,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainPage;

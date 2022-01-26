@@ -1,25 +1,25 @@
 import { Route, Switch } from 'react-router-dom';
 
-import Weather from '../pages/weather/Weather';
-import WorldWeather from '../pages/worldWeather/WorldWeather';
-import Contacts from '../pages/contacts/Contacts';
+import WeatherPage from '../pages/weatherPage/WeatherPage';
+import WorldWeatherPage from '../pages/worldWeatherPage/WorldWeatherPage';
+import FeedbackPage from '../pages/feedbackPage/FeedbackPage';
 
 const routes = [
     {
       display: 'Weather',
       path: '/',
-      component: Weather,
+      component: WeatherPage,
       isExact: true,
     },
     {
       display: 'World weather',
       path: '/worldWeather',
-      component: WorldWeather
+      component: WorldWeatherPage
     },
     {
-      display: 'Contact Us',
-      path: '/contactUs',
-      component: Contacts
+      display: 'Feedback',
+      path: '/feedback',
+      component: FeedbackPage
     }
 ];
 
@@ -32,22 +32,7 @@ function Routes() {
                     component={route.component}
                     exact={route.isExact}
                 />
-            ))}
-            {/* <Route 
-                path='/'
-                exact
-                component={Weather}
-            />
-            <Route 
-                path='/worldWeather'
-                exact
-                component={WorldWeather}
-            />
-            <Route 
-                path='/contactUs'
-                exact
-                component={Contacts}
-            /> */}
+            ))}    
         </Switch>
     )
 }

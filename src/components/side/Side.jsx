@@ -12,8 +12,8 @@ const nav = [
     path: '/worldWeather'
   },
   {
-    display: 'Contact Us',
-    path: '/contactUs'
+    display: 'Feedback',
+    path: '/feedback',
   }
 ];
 
