@@ -6,7 +6,15 @@ import { url, authData } from './constants';
 
 function App() {
   const [token, setToken] = useState('');
+  const [coords, setCoords] = useState({});
   const [searchedLocation, setSearchedLocation] = useState({});
+
+  navigator.geolocation.getCurrentPosition(
+    pos => {setCoords(pos)},
+    err => {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+  );
 
   const isSearchedLocationEmpty = Object.keys(searchedLocation).length === 0;
 
@@ -24,8 +32,9 @@ function App() {
       {isSearchedLocationEmpty ? (
         ''
       ) : (
-        <CurrentWeather token={token} locationId={searchedLocation.id} />
+        <CurrentWeather title={"Current weather from searched location"} token={token} locationId={searchedLocation.id} />
       )}
+      <CurrentWeather title={"Current weather from your location"} token={token} coords={coords} />
     </div>
   );
 }

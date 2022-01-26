@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getCurrentWeatherById } from '../api';
+import { getCurrentWeatherByCoords, getCurrentWeatherById } from '../api';
 import { url } from '../constants';
 
-const CurrentWeather = ({ token, locationId }) => {
+const CurrentWeather = ({ token, locationId, coords, title }) => {
   const [weather, setWeather] = useState({});
 
   useEffect(() => {
@@ -11,9 +11,15 @@ const CurrentWeather = ({ token, locationId }) => {
     );
   }, [locationId]);
 
+  useEffect(() => {
+    getCurrentWeatherByCoords(url, token, coords).then(currentWeather =>
+      setWeather(currentWeather)
+    );
+  }, [coords])
+
   return (
     <div>
-      <h2>Current Weather</h2>
+      <h2>{title}</h2>
       <pre>{JSON.stringify(weather, null, 2)}</pre>
     </div>
   );
