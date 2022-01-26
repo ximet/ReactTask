@@ -10,7 +10,9 @@ function App() {
   const [searchedLocation, setSearchedLocation] = useState({});
 
   navigator.geolocation.getCurrentPosition(
-    pos => {setCoords(pos)},
+    pos => {
+      setCoords(pos);
+    },
     err => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
@@ -32,9 +34,13 @@ function App() {
       {isSearchedLocationEmpty ? (
         ''
       ) : (
-        <CurrentWeather title={"Current weather from searched location"} token={token} locationId={searchedLocation.id} />
+        <CurrentWeather
+          title={'Current weather from searched location'}
+          token={token}
+          locationId={searchedLocation.id}
+        />
       )}
-      <CurrentWeather title={"Current weather from your location"} token={token} coords={coords} />
+      <CurrentWeather title={'Current weather from your location'} token={token} coords={coords} />
     </div>
   );
 }

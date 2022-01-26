@@ -15,7 +15,7 @@ const CurrentWeather = ({ token, locationId, coords, title }) => {
     getCurrentWeatherByCoords(url, token, coords).then(currentWeather =>
       setWeather(currentWeather)
     );
-  }, [coords])
+  }, [coords]);
 
   return (
     <div>
