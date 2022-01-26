@@ -3,7 +3,7 @@ const password = 'TXr1Bm3ShDik';
 const proxy = 'https://morning-cove-62020.herokuapp.com/';
 const url = `${proxy}https://pfa.foreca.com`;
 
-const WeatherApi = {
+const weatherApi = {
   async getToken(expire) {
     const currentUrl = `${url}/authorize/token?expire_hours=${expire}&user=${user}&password=${password}`;
 
@@ -28,4 +28,4 @@ const WeatherApi = {
   },
 };
 
-export default WeatherApi;
+export default weatherApi;

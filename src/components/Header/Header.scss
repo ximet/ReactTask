@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 10%);
+
+  &__logo {
+    color: rgb(87, 89, 233);
+    font-size: 2rem;
+    margin-right: 10%;
+  }
+
+  & .menu__list {
+    display: flex;
+
+    &-link {
+      color: #000;
+      padding: 1rem 3.5rem;
+      font-size: 1.2rem;
+      transition: all 0.2s linear;
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}

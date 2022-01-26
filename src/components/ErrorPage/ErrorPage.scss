@@ -1,0 +1,30 @@
+.error{
+  font-size: 2rem;
+  padding: 2rem;
+
+  &__text{
+    margin-bottom: 2rem;
+  }
+
+  &__link{
+    position: relative;
+    color: #0404c5;
+    transition: all 1s linear;
+
+    &:after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 0;
+      transform: translateX(-50%);
+      bottom: -.3rem;
+      background-color: #0404c5;
+      height: 2px;
+      transition: all .3s linear;
+    }
+
+    &:hover:after{
+      width: 100%;
+    }
+  }
+}
