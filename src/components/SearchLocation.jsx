@@ -3,22 +3,26 @@ import { searchLocation } from '../api';
 import { url } from '../constants';
 import SearchForm from './SearchForm';
 
-const SearchLocation = ({ token }) => {
+const SearchLocation = ({ token, getLocation }) => {
   const [location, setLocation] = useState({});
 
   const searchLocationInfo = locationName => {
-    searchLocation(url, token, locationName).then(location => setLocation(location));
+    searchLocation(url, token, locationName).then(location => {
+      if (location) {
+        setLocation(location);
+      }
+    });
   };
 
   useEffect(() => {
-    console.log('SearchLocation did mount.');
-  }, []);
+    getLocation(location);
+  }, [location]);
 
   return (
     <div>
       <h2>Search</h2>
       <SearchForm getLocation={searchLocationInfo} />
-      <pre>{JSON.stringify(location, null, 2)}</pre>
+      <pre>{Object.keys(location).length === 0 ? '' : JSON.stringify(location, null, 2)}</pre>
     </div>
   );
 };

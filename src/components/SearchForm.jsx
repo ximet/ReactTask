@@ -17,7 +17,7 @@ const SearchForm = ({ getLocation }) => {
         value={locationName}
         type="text"
         name="locationName"
-        placeholder="Type a name of the city..."
+        placeholder="Type a name of the location..."
       />
       <button>Search</button>
     </form>
