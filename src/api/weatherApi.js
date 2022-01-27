@@ -1,5 +1,5 @@
-const user = 'vitalya_daineko';
-const password = 'TXr1Bm3ShDik';
+import { user, password } from '../../env';
+
 const proxy = 'https://morning-cove-62020.herokuapp.com/';
 const url = `${proxy}https://pfa.foreca.com`;
 
