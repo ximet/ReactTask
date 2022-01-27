@@ -1,0 +1,16 @@
+@import '../../scss';
+
+.side {
+  border: $border;
+  padding: 10px;
+}
+
+.nav {
+  li {
+    padding: 5px 0;
+  }
+
+  .active {
+    color: #000;
+  }
+}
