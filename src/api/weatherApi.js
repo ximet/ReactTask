@@ -1,11 +1,11 @@
-import { user, password } from '../../env';
+import { USER, PASSWORD } from '../../env';
 
 const proxy = 'http://localhost:3000/';
 const url = `${proxy}https://pfa.foreca.com`;
 
 const weatherApi = {
   async getToken(expire) {
-    const currentUrl = `${url}/authorize/token?expire_hours=${expire}&user=${user}&password=${password}`;
+    const currentUrl = `${url}/authorize/token?expire_hours=${expire}&user=${USER}&password=${PASSWORD}`;
 
     return fetch(currentUrl)
       .then((response) => response.json())

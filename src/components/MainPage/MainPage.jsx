@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import weatherApi from '../../api/weatherApi';
 
 import './MainPage.scss';
 
-function MainPage() {
+function MainPage({ token }) {
   const [currentPosition, setCurrentPosition] = useState(null);
-  const [token, setToken] = useState(null);
   const [locationInfo, setLocationInfo] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
 
@@ -16,8 +16,6 @@ function MainPage() {
       const lon = position.coords.longitude;
       setCurrentPosition({ lat, lon });
     });
-
-    weatherApi.getToken(24).then((data) => setToken(data));
   }, []);
 
   useEffect(() => {
@@ -40,5 +38,9 @@ function MainPage() {
     </div>
   );
 }
+
+MainPage.propTypes = {
+  token: PropTypes.string.isRequired,
+};
 
 export default MainPage;
