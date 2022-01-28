@@ -1,6 +1,6 @@
 import { user, password } from '../../env';
 
-const proxy = 'https://morning-cove-62020.herokuapp.com/';
+const proxy = 'http://localhost:3000/';
 const url = `${proxy}https://pfa.foreca.com`;
 
 const weatherApi = {
