@@ -18,7 +18,7 @@ function Header() {
         <ul className="menu__list">
           <li className="menu__list-item">
             <Link
-              className={`menu__list-link ${hash === '/' ? 'active' : ''}`}
+              className={`menu__list-link ${hash === '/' ? 'menu__list-link--is-active' : ''}`}
               to="/"
             >
               Home
@@ -26,7 +26,7 @@ function Header() {
           </li>
           <li className="menu__list-item">
             <Link
-              className={`menu__list-link ${hash === '/info' ? 'active' : ''}`}
+              className={`menu__list-link ${hash === '/info' ? 'menu__list-link--is-active' : ''}`}
               to="/info"
             >
               Info
@@ -34,7 +34,7 @@ function Header() {
           </li>
           <li className="menu__list-item">
             <Link
-              className={`menu__list-link ${hash === '/feedback' ? 'active' : ''}`}
+              className={`menu__list-link ${hash === '/feedback' ? 'menu__list-link--is-active' : ''}`}
               to="/feedback"
             >
               Feedback
