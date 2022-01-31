@@ -28,7 +28,7 @@ function sendAuthorizationToken(req, res) {
       const token = response.data.access_token;
       res.status(200).send(token);
     })
-    .catch(error => res.status(500).send('Server error - 500'));
+    .catch(error => res.status(500).send(res.status));
 }
 
 function handleGetRequest(req, res) {
@@ -39,5 +39,5 @@ function handleGetRequest(req, res) {
     .then(response => {
       res.status(200).json(response.data);
     })
-    .catch(error => res.status(500).send('Server error - 500'));
+    .catch(error => res.status(500).send(res.status));
 }

@@ -3,25 +3,22 @@ import { searchLocation } from '../api';
 import { url } from '../constants';
 import SearchForm from './SearchForm';
 
-const SearchLocation = ({ token, getLocation }) => {
+const SearchLocation = ({ token, updateSearchedLocation }) => {
   const [location, setLocation] = useState({});
 
-  const searchLocationInfo = locationName => {
+  const updateLocation = (locationName) => {
     searchLocation(url, token, locationName).then(location => {
       if (location) {
         setLocation(location);
+        updateSearchedLocation(location);
       }
     });
-  };
-
-  useEffect(() => {
-    getLocation(location);
-  }, [location]);
+  }
 
   return (
     <div>
       <h2>Search</h2>
-      <SearchForm getLocation={searchLocationInfo} />
+      <SearchForm updateLocation={updateLocation} />
       <pre>{Object.keys(location).length === 0 ? '' : JSON.stringify(location, null, 2)}</pre>
     </div>
   );

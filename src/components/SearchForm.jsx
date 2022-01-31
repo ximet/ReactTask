@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
-const SearchForm = ({ getLocation }) => {
+const SearchForm = ({ updateLocation }) => {
   const [locationName, setLocationName] = useState('');
 
-  const getLocationName = e => {
+  const onSearchSubmit = e => {
     e.preventDefault();
 
-    getLocation(locationName);
+    updateLocation(locationName);
     setLocationName('');
   };
 
   return (
-    <form onSubmit={getLocationName}>
+    <form onSubmit={onSearchSubmit}>
       <input
         onChange={e => setLocationName(e.target.value)}
         value={locationName}

@@ -9,7 +9,9 @@ function App() {
   const [coords, setCoords] = useState({});
   const [searchedLocation, setSearchedLocation] = useState({});
 
-  const getSearchedLocation = location => {
+  const isSearchedLocationEmpty = Object.keys(searchedLocation).length === 0;
+
+  const updateSearchedLocation = location => {
     setSearchedLocation(location);
   };
 
@@ -27,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <SearchLocation token={token} getLocation={getSearchedLocation} />
+      <SearchLocation token={token} updateSearchedLocation={updateSearchedLocation} />
       {isSearchedLocationEmpty ? (
         ''
       ) : (
