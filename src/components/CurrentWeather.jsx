@@ -6,16 +6,26 @@ const CurrentWeather = ({ token, locationId, coords, title }) => {
   const [weather, setWeather] = useState({});
 
   useEffect(() => {
-    getCurrentWeatherById(url, token, locationId).then(currentWeather =>
-      setWeather(currentWeather)
-    );
+    if (locationId) {
+      getCurrentWeatherById(url, token, locationId).then(currentWeather =>
+        setWeather(currentWeather)
+      );
+    }
   }, [locationId]);
 
   useEffect(() => {
-    getCurrentWeatherByCoords(url, token, coords).then(currentWeather =>
-      setWeather(currentWeather)
-    );
-  }, [coords]);
+    if (!coords) {
+      return;
+    }
+
+    const isLocationValid = Boolean(coords.longitude && coords.latitude);
+
+    if (isLocationValid && token) {
+      getCurrentWeatherByCoords(url, token, coords).then(currentWeather =>
+        setWeather(currentWeather)
+      );
+    }
+  }, [coords, token]);
 
   return (
     <div>

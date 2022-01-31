@@ -5,9 +5,9 @@ const searchLocation = async (url, token, locationName) => {
     }
   });
 
-  const data = await res.json(); // ?? is the name "data" ok in this case?
+  const data = await res.json();
 
-  return data.locations[0]; // ?? ok or magic number?
+  return data.locations[0];
 };
 
 export default searchLocation;

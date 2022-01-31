@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from 'react'; // нужно ли импортировать в каждый файл?
-import { getToken, searchLocation } from './api';
+import React, { useEffect, useState } from 'react';
+import { url } from './constants';
+import { getToken } from './api';
 import CurrentWeather from './components/CurrentWeather';
 import SearchLocation from './components/SearchLocation';
-import { url, authData } from './constants';
 
 function App() {
   const [token, setToken] = useState('');
   const [coords, setCoords] = useState({});
   const [searchedLocation, setSearchedLocation] = useState({});
 
-  navigator.geolocation.getCurrentPosition(
-    pos => {
-      setCoords(pos);
-    },
-    err => {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-  );
-
-  const isSearchedLocationEmpty = Object.keys(searchedLocation).length === 0;
-
   const getSearchedLocation = location => {
     setSearchedLocation(location);
   };
 
   useEffect(() => {
-    getToken(url, authData).then(token => setToken(token));
+    getToken(url).then(token => setToken(token));
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        setCoords(pos.coords);
+      },
+      err => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+    );
   }, []);
 
   return (
