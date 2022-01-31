@@ -3,7 +3,6 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import weatherApi from '../../api/weatherApi';
 import { getCookie, setCookie } from '../../utils/cookies';
-import { TOKEN_LIFE_TIME } from '../../../env';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -23,9 +22,9 @@ function App() {
     if (accessToken) {
       setToken(accessToken);
     } else {
-      weatherApi.getToken(TOKEN_LIFE_TIME).then((data) => {
+      weatherApi.getToken(process.env.TOKEN_LIFE_TIME).then((data) => {
         setToken(data);
-        setCookie('token', data, TOKEN_LIFE_TIME);
+        setCookie('token', data, process.env.TOKEN_LIFE_TIME);
       });
     }
   }, []);

@@ -28,4 +28,4 @@ package-lock.json
 packages/api/etc/
 
 #env
-env.js
+.env
