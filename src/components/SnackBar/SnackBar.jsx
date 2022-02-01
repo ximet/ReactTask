@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import { SnackbarContext } from '../../core/contexts';
@@ -15,20 +14,15 @@ function SnackBar({ duration }) {
     }
   }, [snackbar.isOpen]);
 
-  const template = snackbar.isOpen
-    ? (
-      <div className="snackbar">
-        {snackbar.message}
-        <span>&#10004;</span>
-      </div>
-    )
-    : <span />;
-
   return (
-    ReactDOM.createPortal(
-      template,
-      document.getElementById('modal-root'),
-    )
+    snackbar.isOpen
+      ? (
+        <div className="snackbar">
+          {snackbar.message}
+          <span>&#10004;</span>
+        </div>
+      )
+      : <span />
   );
 }
 

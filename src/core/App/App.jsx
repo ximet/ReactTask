@@ -11,6 +11,7 @@ import InfoPage from '../../components/InfoPage/InfoPage';
 import FeedbackPage from '../../components/FeedbackPage/FeedbackPage';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import SnackBar from '../../components/SnackBar/SnackBar';
+import Portal from '../../components/Portal/Portal';
 
 import './App.scss';
 
@@ -52,7 +53,7 @@ function App() {
         </div>
         <Footer />
       </Router>
-      <SnackBar />
+      <Portal><SnackBar /></Portal>
     </div>
   );
 }
