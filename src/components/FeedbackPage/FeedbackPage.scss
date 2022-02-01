@@ -1,0 +1,98 @@
+.feedback{
+  &-page{
+    text-align: center;
+    padding: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #3b3b3b;
+  }
+
+  &__title{
+    padding: 1.3rem;
+    font-size: 2rem;
+    color: #000;
+  }
+
+  &__description{
+    position: relative;
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
+
+    &::after{
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background-color: #3b3b3b;
+      bottom: -1rem;
+      left: 0;
+    }
+  }
+
+  &__form{
+
+    &-inputs{
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    &-label{
+      display: block;
+      font-size: 1.2rem;
+      color: #000;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+  
+    &-textarea{
+      display: block;
+      margin: 1rem auto 0 auto;
+      min-width: 100%;
+      resize: vertical;
+      height: 200px;
+      min-height: 100px;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+
+    &-input{
+      margin: 1rem auto 0 1rem;
+      width: 220px;
+      padding: .5rem 1rem;
+    }
+
+    &-buttons{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    &-button, &-link{
+      border: none;
+      margin: 0 auto 1rem;
+      font-size: 1.2rem;
+      padding: .5rem;
+      max-width: 300px;
+      width: 100%;
+      cursor: pointer;
+      background-color: #1976d2;
+      color: #fff;
+
+      &:hover{
+      background-color: #007FFF;
+      }
+    }
+
+    &-link{
+      color: #000;
+      border: 1px solid #3b3b3b;
+      background-color: #f5f4f4;
+
+      &:hover{
+        background-color: #fff;
+      }
+    }
+  }
+}

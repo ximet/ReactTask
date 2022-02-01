@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+
+import weatherApi from '../../api/weatherApi';
+import { getCookie, setCookie } from '../../utils/cookies';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -7,8 +10,27 @@ import MainPage from '../../components/MainPage/MainPage';
 import InfoPage from '../../components/InfoPage/InfoPage';
 import FeedbackPage from '../../components/FeedbackPage/FeedbackPage';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
+import SnackBar from '../../components/SnackBar/SnackBar';
+import Portal from '../../components/Portal/Portal';
+
+import './App.scss';
 
 function App() {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const accessToken = getCookie('token');
+
+    if (accessToken) {
+      setToken(accessToken);
+    } else {
+      weatherApi.getToken(process.env.TOKEN_LIFE_TIME).then((data) => {
+        setToken(data);
+        setCookie('token', data, process.env.TOKEN_LIFE_TIME);
+      });
+    }
+  }, []);
+
   return (
     <div className="app">
       <Router>
@@ -16,7 +38,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <MainPage />
+              <MainPage token={token} />
             </Route>
             <Route path="/info">
               <InfoPage />
@@ -31,6 +53,7 @@ function App() {
         </div>
         <Footer />
       </Router>
+      <Portal><SnackBar /></Portal>
     </div>
   );
 }
