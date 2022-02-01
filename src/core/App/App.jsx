@@ -10,6 +10,7 @@ import MainPage from '../../components/MainPage/MainPage';
 import InfoPage from '../../components/InfoPage/InfoPage';
 import FeedbackPage from '../../components/FeedbackPage/FeedbackPage';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
+import SnackBar from '../../components/SnackBar/SnackBar';
 
 import './App.scss';
 
@@ -51,6 +52,7 @@ function App() {
         </div>
         <Footer />
       </Router>
+      <SnackBar />
     </div>
   );
 }

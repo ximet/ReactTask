@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { SnackbarContext } from '../../core/contexts';
 import { setLocalstorageItem } from '../../utils/localStorage';
 
 import './FeedbackPage.scss';
@@ -9,11 +10,13 @@ const initialFormData = { name: '', email: '', message: '' };
 
 function FeedbackPage() {
   const [formData, setFormData] = useState(initialFormData);
+  const setSnackbar = useContext(SnackbarContext)[1];
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setLocalstorageItem(formData.email, formData);
     setFormData(initialFormData);
+    setSnackbar({ isOpen: true, message: 'Feedback sent successfully' });
   };
 
   const handleChange = ({ target: { name, value } }) => {
