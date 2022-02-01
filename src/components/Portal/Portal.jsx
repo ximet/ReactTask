@@ -10,6 +10,6 @@ function Portal({ children }) {
   );
 }
 
-Portal.propTypes = { childre: PropTypes.element.isRequired };
+Portal.propTypes = { children: PropTypes.element.isRequired };
 
 export default Portal;
