@@ -29,7 +29,7 @@ function MainPage({ token }) {
         .then((data) => setCurrentWeather(data));
 
       weatherApi.getTodaysWeather(currentPosition, token)
-        .then((data) => setTodaysWeather(data.forecast));
+        .then((data) => setTodaysWeather(data));
     }
   }, [currentPosition, token]);
 

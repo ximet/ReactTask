@@ -31,7 +31,7 @@ const weatherApi = {
     const currentUrl = `${url}/api/v1/forecast/3hourly/:location?periods=7&location=${position}&token=${token}`;
     return fetch(currentUrl)
       .then((response) => response.json())
-      .then((data) => data);
+      .then((data) => data.forecast);
   },
 };
 
