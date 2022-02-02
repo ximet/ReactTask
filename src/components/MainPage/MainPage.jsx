@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import weatherApi from '../../api/weatherApi';
 
 import './MainPage.scss';
+
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
 function MainPage({ token }) {
