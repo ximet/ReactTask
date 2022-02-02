@@ -11,12 +11,12 @@ function MainPage({ token }) {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [locationInfo, setLocationInfo] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [todaysWeather, setTodaysWeather] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      setCurrentPosition({ lat, lon });
+      const currentPos = `${position.coords.longitude},${position.coords.latitude}`;
+      setCurrentPosition(currentPos);
     });
   }, []);
 
@@ -27,12 +27,21 @@ function MainPage({ token }) {
 
       weatherApi.getCurrentWeather(currentPosition, token)
         .then((data) => setCurrentWeather(data));
+
+      weatherApi.getTodaysWeather(currentPosition, token)
+        .then((data) => setTodaysWeather(data.forecast));
     }
   }, [currentPosition, token]);
 
   return (
-    (locationInfo && currentWeather)
-      ? <SelectedCityInfo locationInfo={locationInfo} currentWeather={currentWeather} />
+    (locationInfo && currentWeather && todaysWeather)
+      ? (
+        <SelectedCityInfo
+          locationInfo={locationInfo}
+          currentWeather={currentWeather}
+          todaysWeather={todaysWeather}
+        />
+      )
       : <div>PRELOADER...</div>
   );
 }

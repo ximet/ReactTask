@@ -5,8 +5,9 @@ import img from '../../assets/images/d000.png';
 import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';
 
 import './SelectedCityInfo.scss';
+import TodaysWeatherItem from '../TodaysWeatherItem/TodaysWeatherItem';
 
-function SelectedCityInfo({ locationInfo, currentWeather }) {
+function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather }) {
   const dateOptions = { weekday: 'long', day: 'numeric', month: 'long' };
   const date = new Intl.DateTimeFormat('en-US', dateOptions).format(currentWeather.date);
 
@@ -32,6 +33,11 @@ function SelectedCityInfo({ locationInfo, currentWeather }) {
           <CurrentWeatherItem name="Wind gust" data={`${currentWeather.windGust} m/s`} />
         </div>
       </div>
+
+      <div className="city__header">Weather for the next 24 hours:</div>
+      <div className="city__todays">
+        {todaysWeather.map((item) => <TodaysWeatherItem data={item} key={item.time} />)}
+      </div>
     </div>
   );
 }
@@ -39,6 +45,7 @@ function SelectedCityInfo({ locationInfo, currentWeather }) {
 SelectedCityInfo.propTypes = {
   locationInfo: PropTypes.objectOf(PropTypes.any).isRequired,
   currentWeather: PropTypes.objectOf(PropTypes.any).isRequired,
+  todaysWeather: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default SelectedCityInfo;
