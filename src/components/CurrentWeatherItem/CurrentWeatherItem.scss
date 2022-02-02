@@ -1,0 +1,13 @@
+.current__weather-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.5rem;
+
+  &-bold{
+    font-size: 2rem;
+    margin-bottom: .2rem;
+    font-weight: 900;
+  }
+}

@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import weatherApi from '../../api/weatherApi';
 
 import './MainPage.scss';
+import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
 function MainPage({ token }) {
   const [currentPosition, setCurrentPosition] = useState(null);
-  const [locationInfo, setLocationInfo] = useState({});
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [locationInfo, setLocationInfo] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -29,13 +30,9 @@ function MainPage({ token }) {
   }, [currentPosition, token]);
 
   return (
-    <div className="main-page">
-      <p className="main-page__text">{`Country: ${locationInfo.country}`}</p>
-      <p className="main-page__text">{`City: ${locationInfo.name}`}</p>
-      <p className="main-page__text">{`Timezone: ${locationInfo.timezone}`}</p>
-      <p className="main-page__text">{`Time: ${currentWeather.time}`}</p>
-      <p className="main-page__text">{`Temperature: ${currentWeather.temperature}`}</p>
-    </div>
+    (locationInfo && currentWeather)
+      ? <SelectedCityInfo locationInfo={locationInfo} currentWeather={currentWeather} />
+      : <div>PRELOADER...</div>
   );
 }
 
