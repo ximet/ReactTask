@@ -7,10 +7,13 @@ import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';
 import './SelectedCityInfo.scss';
 
 function SelectedCityInfo({ locationInfo, currentWeather }) {
+  const dateOptions = { weekday: 'long', day: 'numeric', month: 'long' };
+  const date = new Intl.DateTimeFormat('en-US', dateOptions).format(currentWeather.date);
+
   return (
     <div className="city">
       <div className="city__title">{`${locationInfo.name}, ${locationInfo.country}`}</div>
-      <div className="city__date">{currentWeather.time}</div>
+      <div className="city__date">{date}</div>
 
       <div className="city__current">
         <div className="city__current-weather">
@@ -21,12 +24,12 @@ function SelectedCityInfo({ locationInfo, currentWeather }) {
           </div>
         </div>
         <div className="city__current-info">
-          <CurrentWeatherItem name="Wind speed" data={currentWeather.windSpeed} />
-          <CurrentWeatherItem name="Cloudiness" data={currentWeather.cloudiness} />
-          <CurrentWeatherItem name="Pressure" data={currentWeather.pressure} />
-          <CurrentWeatherItem name="Visibility" data={currentWeather.visibility} />
-          <CurrentWeatherItem name="Humidity" data={currentWeather.relHumidity} />
-          <CurrentWeatherItem name="Wind gust" data={currentWeather.windGust} />
+          <CurrentWeatherItem name="Wind speed" data={`${currentWeather.windSpeed} mph`} />
+          <CurrentWeatherItem name="Cloudiness" data={`${currentWeather.cloudiness}%`} />
+          <CurrentWeatherItem name="Pressure" data={`${Math.round(currentWeather.pressure)} hPa`} />
+          <CurrentWeatherItem name="Visibility" data={`${currentWeather.visibility} m`} />
+          <CurrentWeatherItem name="Humidity" data={`${currentWeather.relHumidity}%`} />
+          <CurrentWeatherItem name="Wind gust" data={`${currentWeather.windGust} m/s`} />
         </div>
       </div>
     </div>
