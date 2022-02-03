@@ -13,7 +13,7 @@ const weatherApi = {
   },
 
   async getLocationInfo(position, token) {
-    const currentUrl = `${url}/api/v1/location/:location?location=${position.lon},${position.lat}&token=${token}`;
+    const currentUrl = `${url}/api/v1/location/:location?location=${position}&token=${token}`;
 
     return fetch(currentUrl)
       .then((response) => response.json())
@@ -21,10 +21,17 @@ const weatherApi = {
   },
 
   async getCurrentWeather(position, token) {
-    const currentUrl = `${url}/api/v1/current/:location?location=${position.lon},${position.lat}&token=${token}`;
+    const currentUrl = `${url}/api/v1/current/:location?location=${position}&token=${token}`;
     return fetch(currentUrl)
       .then((response) => response.json())
       .then((data) => data.current);
+  },
+
+  async getTodaysWeather(position, token) {
+    const currentUrl = `${url}/api/v1/forecast/3hourly/:location?periods=7&location=${position}&token=${token}`;
+    return fetch(currentUrl)
+      .then((response) => response.json())
+      .then((data) => data.forecast);
   },
 };
 

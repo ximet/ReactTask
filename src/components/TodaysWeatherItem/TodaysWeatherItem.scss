@@ -1,0 +1,17 @@
+.todays__card{
+  padding: 1.2rem;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  background-color: #fff;
+
+  &-title{
+    margin-bottom: 1rem;
+  }
+
+  &-img{
+    width: 80px;
+    margin-bottom: 1rem;
+  }
+}

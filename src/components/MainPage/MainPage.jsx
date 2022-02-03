@@ -5,16 +5,18 @@ import weatherApi from '../../api/weatherApi';
 
 import './MainPage.scss';
 
+import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
+
 function MainPage({ token }) {
   const [currentPosition, setCurrentPosition] = useState(null);
-  const [locationInfo, setLocationInfo] = useState({});
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [locationInfo, setLocationInfo] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [todaysWeather, setTodaysWeather] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      setCurrentPosition({ lat, lon });
+      const currentPos = `${position.coords.longitude},${position.coords.latitude}`;
+      setCurrentPosition(currentPos);
     });
   }, []);
 
@@ -25,17 +27,22 @@ function MainPage({ token }) {
 
       weatherApi.getCurrentWeather(currentPosition, token)
         .then((data) => setCurrentWeather(data));
+
+      weatherApi.getTodaysWeather(currentPosition, token)
+        .then((data) => setTodaysWeather(data));
     }
   }, [currentPosition, token]);
 
   return (
-    <div className="main-page">
-      <p className="main-page__text">{`Country: ${locationInfo.country}`}</p>
-      <p className="main-page__text">{`City: ${locationInfo.name}`}</p>
-      <p className="main-page__text">{`Timezone: ${locationInfo.timezone}`}</p>
-      <p className="main-page__text">{`Time: ${currentWeather.time}`}</p>
-      <p className="main-page__text">{`Temperature: ${currentWeather.temperature}`}</p>
-    </div>
+    (locationInfo && currentWeather && todaysWeather)
+      ? (
+        <SelectedCityInfo
+          locationInfo={locationInfo}
+          currentWeather={currentWeather}
+          todaysWeather={todaysWeather}
+        />
+      )
+      : <div>PRELOADER...</div>
   );
 }
 
