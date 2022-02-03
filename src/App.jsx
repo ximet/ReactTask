@@ -3,6 +3,9 @@ import { url } from './constants';
 import { getToken } from './api';
 import CurrentWeather from './components/CurrentWeather';
 import SearchLocation from './components/SearchLocation';
+import './App.css';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [token, setToken] = useState('');
@@ -28,7 +31,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className='app'>
+      <Header />
+      <MainPage />
+      <Footer />
       <SearchLocation token={token} updateSearchedLocation={updateSearchedLocation} />
       {isSearchedLocationEmpty ? (
         ''

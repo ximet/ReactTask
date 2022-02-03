@@ -6,14 +6,14 @@ import SearchForm from './SearchForm';
 const SearchLocation = ({ token, updateSearchedLocation }) => {
   const [location, setLocation] = useState({});
 
-  const updateLocation = (locationName) => {
+  const updateLocation = locationName => {
     searchLocation(url, token, locationName).then(location => {
       if (location) {
         setLocation(location);
         updateSearchedLocation(location);
       }
     });
-  }
+  };
 
   return (
     <div>
