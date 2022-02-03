@@ -3,3 +3,18 @@
   align-items: $align-items;
   justify-content: $justify-content;
 }
+
+@mixin primaryTitle {
+  font-weight: $weight-bold;
+  font-size: $font-size * 1.5;
+}
+
+@mixin secondaryTitle {
+  font-weight: $weight-bold;
+  font-size: $font-size;
+}
+
+@mixin description {
+  font-size: $font-size * 0.8;
+  $weight-regular: 400;
+}
