@@ -4,8 +4,7 @@ import { upperCaseLetter } from '../../assets';
 import DataService from '../../dataService/DataService';
 
 function WeatherCard(props) {
-  const { data, detailsKeys } = props;
-  const weatherData = data;
+  const { weatherData, detailsKeys } = props;
   const locationData = weatherData.location;
 
   return (

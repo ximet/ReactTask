@@ -5,7 +5,7 @@ import DataService from '../../dataService/DataService';
 import ForecastCard from '../../components/forecastCard/ForecastCard';
 
 function WeatherPage() {
-  const [data, setData] = useState({});
+  const [weatherData, setWeatherData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
 
   const detailsKeys = ['cloudiness', 'precipProb', 'relHumidity', 'windSpeed', 'thunderProb'];
@@ -13,11 +13,11 @@ function WeatherPage() {
   useEffect(async () => {
     const data = await DataService.getCurrentWeather();
 
-    setData(data);
+    setWeatherData(data);
     setIsLoaded(true);
   }, []);
 
-  return isLoaded ? <ForecastCard data={data} detailsKeys={detailsKeys}/> : 'Loading...';
+  return isLoaded ? <ForecastCard weatherData={weatherData} detailsKeys={detailsKeys} /> : 'Loading...';
 }
 
 export default WeatherPage;
