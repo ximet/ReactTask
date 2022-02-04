@@ -3,5 +3,10 @@
 .main {
   width: 100%;
   background-color: $main-bg;
-  padding: 15px;
+  padding: 30px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  color: $text-color-dark;
+  background-size: 100vh auto;
+  background-repeat: no-repeat;
 }

@@ -3,7 +3,6 @@
 .header {
   height: $header-height;
   padding: 10px;
-  border: $border;
 
   @include flex(center, space-between);
 

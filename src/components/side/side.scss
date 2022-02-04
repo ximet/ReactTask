@@ -1,16 +1,52 @@
 @import '../../scss';
 
 .side {
-  border: $border;
-  padding: 10px;
+  margin-top: 50px;
 }
 
 .nav {
   li {
-    padding: 5px 0;
+    a {
+      padding: 10px;
+      display: block;
+      color: $text-color;
+      position: relative;
+    }
   }
 
   .active {
-    color: #000;
+    background-color: $main-bg;
+    color: $text-color-dark;
+    transition: color 1s ease-out;
+  }
+
+  .active:target {
+    color: rgb(80, 60, 60);
+    background-color: $main-bg;
+  }
+
+  .active::after,
+  .active::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    right: -5px;
+    border-radius: 0 0 50% 0;
+    z-index: -1;
+  }
+
+  .active::after {
+    border-right: 5px solid $main-bg;
+    border-bottom: 5px solid $main-bg;
+  }
+
+  .active::before {
+    top: auto;
+    bottom: -20px;
+    border-radius: 0 50% 0 0;
+    border-right: 5px solid $main-bg;
+    border-top: 5px solid $main-bg;
   }
 }
