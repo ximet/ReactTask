@@ -33,6 +33,13 @@ const weatherApi = {
       .then((response) => response.json())
       .then((data) => data.forecast);
   },
+
+  async getNextWeekWeather(position, token) {
+    const currentUrl = `${url}/api/v1/forecast/daily/:location?periods=7&location=${position}&token=${token}`;
+    return fetch(currentUrl)
+      .then((response) => response.json())
+      .then((data) => data.forecast);
+  },
 };
 
 export default weatherApi;

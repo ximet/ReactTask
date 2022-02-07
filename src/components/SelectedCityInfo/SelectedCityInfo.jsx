@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import img from '../../assets/images/d000.png';
+import TodaysWeatherItem from '../TodaysWeatherItem/TodaysWeatherItem';
+import NextWeekWeatherItem from '../NextWeekWeatherItem/NextWeekWeatherItem';
 import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';
 
 import './SelectedCityInfo.scss';
-import TodaysWeatherItem from '../TodaysWeatherItem/TodaysWeatherItem';
 
-function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather }) {
+function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather, nextWeekWeather }) {
   const dateOptions = { weekday: 'long', day: 'numeric', month: 'long' };
   const date = new Intl.DateTimeFormat('en-US', dateOptions).format(currentWeather.date);
 
@@ -18,7 +18,7 @@ function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather }) {
 
       <div className="city__current">
         <div className="city__current-weather">
-          <img className="city__current-img" src={img} alt="weather" />
+          <img className="city__current-img" src={`https://developer.foreca.com/static/images/symbols/${currentWeather.symbol}.png`} alt="weather" />
           <div className="city__current-temperature">
             <div className="city__current-temperature-item">{currentWeather.temperature}</div>
             <div className="city__current-temperature-description">{currentWeather.symbolPhrase}</div>
@@ -38,6 +38,11 @@ function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather }) {
       <div className="city__todays">
         {todaysWeather.map((item) => <TodaysWeatherItem data={item} key={item.time} />)}
       </div>
+
+      <div className="city__header">Weather for the next 7 days:</div>
+      <div className="city__nextweek">
+        {nextWeekWeather.map((item) => <NextWeekWeatherItem data={item} key={item.date} />)}
+      </div>
     </div>
   );
 }
@@ -45,7 +50,8 @@ function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather }) {
 SelectedCityInfo.propTypes = {
   locationInfo: PropTypes.objectOf(PropTypes.any).isRequired,
   currentWeather: PropTypes.objectOf(PropTypes.any).isRequired,
-  todaysWeather: PropTypes.arrayOf(PropTypes.any).isRequired,
+  todaysWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
+  nextWeekWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SelectedCityInfo;

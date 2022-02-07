@@ -1,0 +1,17 @@
+.nextweek__card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  &-img{
+    width: 100px;
+  }
+
+  &-item{
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
