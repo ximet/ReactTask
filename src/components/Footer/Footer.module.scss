@@ -1,8 +1,11 @@
+@import '../../scss';
+
 .footer {
   flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #fdd;
+  background-color: $base-color;
+  color: $font-color;
 }
