@@ -1,21 +1,21 @@
 import React from 'react';
-import classes from './Navbar.module.css'
+import classes from './Navbar.module.scss';
 
 function Navbar() {
   return (
-    <nav >
-      <ul>
-        <li>
-          <a href=""></a>
+    <nav className={classes.nav}>
+      <ul className={classes.nav__list}>
+        <li className={classes.nav__item}>
+          <a href="">Home</a>
         </li>
-        <li>
-          <a href=""></a>
+        <li className={classes.nav__item}>
+          <a href="">Weather</a>
         </li>
-        <li>
-          <a href=""></a>
+        <li className={classes.nav__item}>
+          <a href="">About</a>
         </li>
-        <li>
-          <a href=""></a>
+        <li className={classes.nav__item}>
+          <a href="">Feedback</a>
         </li>
       </ul>
     </nav>

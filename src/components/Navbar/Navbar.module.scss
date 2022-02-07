@@ -1,0 +1,28 @@
+.nav {
+  flex: 1 0 auto;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.nav__item {
+  padding: 2rem;
+  transition: background-color 0.3s;
+  color: aliceblue;
+}
+
+.nav__item:hover {
+  background-color: #4a45ac;
+  cursor: pointer;
+}
+/* 
+.nav__item:after {
+  content: ' | ';
+  background: rgb(255, 255, 255, 0);
+  height: 50%;
+  width: 3px;
+} */
