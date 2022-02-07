@@ -3,9 +3,10 @@ import { url } from './constants';
 import { getToken } from './api';
 import CurrentWeather from './components/CurrentWeather';
 import SearchLocation from './components/SearchLocation';
-import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import MainPage from './views/MainPage/MainPage';
+import classes from './App.module.scss';
 
 function App() {
   const [token, setToken] = useState('');
@@ -31,21 +32,26 @@ function App() {
   }, []);
 
   return (
-    <div className='app'>
+    <div className={classes.app}>
       <Header />
-      <MainPage />
-      <Footer />
-      <SearchLocation token={token} updateSearchedLocation={updateSearchedLocation} />
-      {isSearchedLocationEmpty ? (
-        ''
-      ) : (
+      <MainPage>
+        <SearchLocation token={token} updateSearchedLocation={updateSearchedLocation} />
+        {isSearchedLocationEmpty ? (
+          ''
+        ) : (
+          <CurrentWeather
+            title={'Current weather from searched location'}
+            token={token}
+            locationId={searchedLocation.id}
+          />
+        )}
         <CurrentWeather
-          title={'Current weather from searched location'}
+          title={'Current weather from your location'}
           token={token}
-          locationId={searchedLocation.id}
+          coords={coords}
         />
-      )}
-      <CurrentWeather title={'Current weather from your location'} token={token} coords={coords} />
+      </MainPage>
+      <Footer />
     </div>
   );
 }
