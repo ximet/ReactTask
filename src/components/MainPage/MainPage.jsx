@@ -6,8 +6,6 @@ import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
 import './MainPage.scss';
 
-import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
-
 function MainPage({ token }) {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [locationInfo, setLocationInfo] = useState(null);
