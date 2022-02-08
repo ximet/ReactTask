@@ -1,0 +1,39 @@
+.world__card{
+  background-color: #fff;
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  &-title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid gray;
+
+    &-text{
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    &-button{
+      border: none;
+      font-size: 1.2rem;
+      padding: .5rem;
+      max-width: 160px;
+      width: 100%;
+      cursor: pointer;
+      background-color: #1976d2;
+      color: #fff;
+
+      &:hover{
+      background-color: #007FFF;
+      }
+    }
+  }
+
+  &-content{
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

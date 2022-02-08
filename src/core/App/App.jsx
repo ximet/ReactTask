@@ -10,6 +10,7 @@ import MainPage from '../../components/MainPage/MainPage';
 import InfoPage from '../../components/InfoPage/InfoPage';
 import FeedbackPage from '../../components/FeedbackPage/FeedbackPage';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
+import WorldWeatherPage from '../../components/WorldWeatherPage/WorldWeatherPage';
 import SnackBar from '../../components/SnackBar/SnackBar';
 import Portal from '../../components/Portal/Portal';
 
@@ -43,8 +44,11 @@ function App() {
             <Route path="/info">
               <InfoPage />
             </Route>
-            <Route exact path="/feedback">
+            <Route path="/feedback">
               <FeedbackPage />
+            </Route>
+            <Route path="/world">
+              <WorldWeatherPage />
             </Route>
             <Route>
               <ErrorPage />

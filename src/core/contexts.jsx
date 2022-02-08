@@ -1,3 +1,6 @@
 import { createContext } from 'react';
 
-export const SnackbarContext = createContext({ isOpen: false, message: ''});
+const SnackbarContext = createContext({ isOpen: false, message: '' });
+const WorldWeatherContext = createContext({ worldWeather: [], setWeather: () => {} });
+
+export { SnackbarContext, WorldWeatherContext };
