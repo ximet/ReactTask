@@ -4,6 +4,7 @@ import weatherApi from '../../api/weatherApi';
 
 import { WorldWeatherContext } from '../../core/contexts';
 import { getCookie } from '../../utils/cookies';
+import Preloader from '../Preloader/Preloader';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
 function SelectedCityPage() {
@@ -44,7 +45,7 @@ function SelectedCityPage() {
           nextWeekWeather={nextWeekWeather}
         />
       )
-      : <div>PRELOADER...</div>
+      : <Preloader />
   );
 }
 

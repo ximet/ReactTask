@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import weatherApi from '../../api/weatherApi';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
+import Preloader from '../Preloader/Preloader';
 
 import './MainPage.scss';
 
@@ -47,7 +48,7 @@ function MainPage({ token }) {
           nextWeekWeather={nextWeekWeather}
         />
       )
-      : <div>PRELOADER...</div>
+      : <Preloader />
   );
 }
 

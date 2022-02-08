@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import weatherApi from '../../api/weatherApi';
 import { WorldWeatherContext } from '../../core/contexts';
 import { getCookie } from '../../utils/cookies';
+import Preloader from '../Preloader/Preloader';
 import WorldWeatherItem from '../WorldWeatherItem/WorldWeatherItem';
 
 import './WorldWeatherPage.scss';
@@ -45,9 +46,13 @@ function WorldWeatherPage() {
 
   return (
     <div className="world__weather">
-      {worldWeather && worldWeather.map((cityData) => (
-        <WorldWeatherItem cityData={cityData} key={cityData.id} />
-      ))}
+      {
+        worldWeather.length
+          ? worldWeather.map((cityData) => (
+            <WorldWeatherItem cityData={cityData} key={cityData.id} />
+          ))
+          : <Preloader />
+      }
     </div>
   );
 }
