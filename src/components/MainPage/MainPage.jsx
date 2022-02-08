@@ -6,11 +6,14 @@ import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
 import './MainPage.scss';
 
+import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
+
 function MainPage({ token }) {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [locationInfo, setLocationInfo] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [todaysWeather, setTodaysWeather] = useState(null);
+
   const [nextWeekWeather, setNextWeekWeather] = useState(null);
 
   useEffect(() => {
