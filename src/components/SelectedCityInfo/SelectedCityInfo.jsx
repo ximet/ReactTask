@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 import TodaysWeatherItem from '../TodaysWeatherItem/TodaysWeatherItem';
 import NextWeekWeatherItem from '../NextWeekWeatherItem/NextWeekWeatherItem';
 import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';
@@ -38,7 +39,6 @@ function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather, nextWee
       <div className="city__todays">
         {todaysWeather.map((item) => <TodaysWeatherItem data={item} key={item.time} />)}
       </div>
-
       <div className="city__header">Weather for the next 7 days:</div>
       <div className="city__nextweek">
         {nextWeekWeather.map((item) => <NextWeekWeatherItem data={item} key={item.date} />)}
