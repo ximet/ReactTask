@@ -24,7 +24,7 @@ function Header() {
               Home
             </Link>
             <Link
-              className={`menu__list-link ${hash === '/world/' ? 'menu__list-link--is-active' : ''}`}
+              className={`menu__list-link ${hash && hash.includes('/world/') ? 'menu__list-link--is-active' : ''}`}
               to="/world/"
             >
               World weather
