@@ -1,0 +1,6 @@
+@import '../../scss';
+
+.weather-page {
+  height: 100%;
+  @include flex(flex-start, space-between, column);
+}
