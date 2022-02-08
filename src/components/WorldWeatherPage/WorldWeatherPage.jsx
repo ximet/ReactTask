@@ -45,15 +45,15 @@ function WorldWeatherPage() {
   }, []);
 
   return (
-    <div className="world__weather">
-      {
-        worldWeather.length
-          ? worldWeather.map((cityData) => (
+    worldWeather.length
+      ? (
+        <div className="world__weather">
+          { worldWeather.map((cityData) => (
             <WorldWeatherItem cityData={cityData} key={cityData.id} />
-          ))
-          : <Preloader />
-      }
-    </div>
+          ))}
+        </div>
+      )
+      : <Preloader />
   );
 }
 
