@@ -1,8 +1,9 @@
 const endpointHost = 'https://pfa.foreca.com';
 const WEATHER_ENDPOINT = {
   token: '/authorize/token',
-  locationInfo: '/api/v1/location/',
-  currentWeather: '/api/v1/current/'
+  locationInfo: '/api/v1/location/:location',
+  currentWeather: '/api/v1/current/:location',
+  dailyForecast: '/api/v1/forecast/daily/:location'
 };
 const EXPIRATION_OFFSET = 10;
 const AUTH_DATA = {
@@ -19,10 +20,12 @@ const weatherApi = {
       redirect: 'follow'
     };
 
-    return fetch(currentUrl, requestOptions)
+    const token = await fetch(currentUrl, requestOptions)
       .then(response => response.json())
       .then(data => data.access_token)
-      .catch(error => console.log('error', error));
+      .catch(error => error);
+
+    return token;
   },
 
   async getLocationInfo(position, token) {
@@ -33,12 +36,14 @@ const weatherApi = {
       headers: myHeaders,
       redirect: 'follow'
     };
-    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.locationInfo}/:location?location=${position.lon},${position.lat}`;
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.locationInfo}?location=${position.lon},${position.lat}`;
 
-    return fetch(currentUrl, requestOptions)
+    const locationInfo = await fetch(currentUrl, requestOptions)
       .then(response => response.json())
       .then(data => data)
-      .catch(error => console.log('error', error));
+      .catch(error => error);
+
+    return locationInfo;
   },
 
   async getCurrentWeather(position, token) {
@@ -49,12 +54,32 @@ const weatherApi = {
       headers: myHeaders,
       redirect: 'follow'
     };
-    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.currentWeather}/:location=${position.lon},${position.lat}`;
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.currentWeather}=${position.lon},${position.lat}`;
 
-    return fetch(currentUrl, requestOptions)
+    const currentWeather = fetch(currentUrl, requestOptions)
       .then(response => response.json())
       .then(data => data.current)
-      .catch(error => console.log('error', error));
+      .catch(error => error);
+
+    return currentWeather;
+  },
+
+  async getDailyForecast(position, token) {
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${token}`);
+    const requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.dailyForecast}=${position.lon},${position.lat}`;
+
+    const dailyForecast = await fetch(currentUrl, requestOptions)
+      .then(response => response.json())
+      .then(data => data.forecast)
+      .catch(error => error);
+
+    return dailyForecast;
   }
 };
 
