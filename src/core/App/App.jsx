@@ -16,6 +16,7 @@ import SnackBar from '../../components/SnackBar/SnackBar';
 import Portal from '../../components/Portal/Portal';
 
 import './App.scss';
+import Preloader from '../../components/Preloader/Preloader';
 
 function App() {
   const [token, setToken] = useState('');
@@ -38,26 +39,32 @@ function App() {
       <Router>
         <Header />
         <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <MainPage token={token} />
-            </Route>
-            <Route path="/info">
-              <InfoPage />
-            </Route>
-            <Route path="/feedback">
-              <FeedbackPage />
-            </Route>
-            <Route exact path="/world">
-              <WorldWeatherPage />
-            </Route>
-            <Route path="/world/:name">
-              <SelectedCityPage />
-            </Route>
-            <Route>
-              <ErrorPage />
-            </Route>
-          </Switch>
+          {
+          token
+            ? (
+              <Switch>
+                <Route exact path="/">
+                  <MainPage />
+                </Route>
+                <Route path="/info">
+                  <InfoPage />
+                </Route>
+                <Route path="/feedback">
+                  <FeedbackPage />
+                </Route>
+                <Route exact path="/world">
+                  <WorldWeatherPage />
+                </Route>
+                <Route path="/world/:name">
+                  <SelectedCityPage />
+                </Route>
+                <Route>
+                  <ErrorPage />
+                </Route>
+              </Switch>
+            )
+            : <Preloader />
+          }
         </div>
         <Footer />
       </Router>

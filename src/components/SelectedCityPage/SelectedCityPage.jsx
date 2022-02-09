@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import weatherApi from '../../api/weatherApi';
 
 import { WorldWeatherContext } from '../../core/contexts';
-import { getCookie } from '../../utils/cookies';
 import Preloader from '../Preloader/Preloader';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
@@ -20,18 +19,17 @@ function SelectedCityPage() {
     const cityName = params.name.replaceAll('_', ' ');
     const cityData = worldWeather.find((city) => city.name === cityName);
     const location = `${cityData.lon},${cityData.lat}`;
-    const token = getCookie('token');
 
-    weatherApi.getLocationInfo(location, token)
+    weatherApi.getLocationInfo(location)
       .then((data) => setLocationInfo(data));
 
-    weatherApi.getCurrentWeather(location, token)
+    weatherApi.getCurrentWeather(location)
       .then((data) => setCurrentWeather(data));
 
-    weatherApi.getTodaysWeather(location, token)
+    weatherApi.getTodaysWeather(location)
       .then((data) => setTodaysWeather(data));
 
-    weatherApi.getNextWeekWeather(location, token)
+    weatherApi.getNextWeekWeather(location)
       .then((data) => setNextWeekWeather(data));
   }, []);
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 import TodaysWeatherItem from '../TodaysWeatherItem/TodaysWeatherItem';
 import NextWeekWeatherItem from '../NextWeekWeatherItem/NextWeekWeatherItem';
 import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';

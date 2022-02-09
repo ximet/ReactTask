@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 
 import weatherApi from '../../api/weatherApi';
 import { WorldWeatherContext } from '../../core/contexts';
-import { getCookie } from '../../utils/cookies';
 import Preloader from '../Preloader/Preloader';
 import WorldWeatherItem from '../WorldWeatherItem/WorldWeatherItem';
 
@@ -28,12 +27,11 @@ function WorldWeatherPage() {
   // using setTimeout to bypass 429 error from server (Too Many Requests);
   useEffect(() => {
     if (!worldWeather.length) {
-      const token = getCookie('token');
       locationDisplayedCities.forEach((cityLocation, index) => {
         setTimeout(() => {
-          weatherApi.getLocationInfo(cityLocation, token)
+          weatherApi.getLocationInfo(cityLocation)
             .then((data) => {
-              weatherApi.getCurrentWeather(cityLocation, token)
+              weatherApi.getCurrentWeather(cityLocation)
                 .then((weather) => {
                   const fullData = { ...data, ...weather };
                   setWorldWeather((prev) => ([...prev, fullData]));
