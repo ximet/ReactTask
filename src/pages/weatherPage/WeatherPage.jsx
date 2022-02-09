@@ -5,12 +5,13 @@ import DataService from '../../dataService/DataService';
 import ForecastCard from '../../components/forecastCard/ForecastCard';
 import DailyForecast from '../../components/dailyForecast/DailyForecast';
 
+const detailsKeys = ['cloudiness', 'precipProb', 'relHumidity', 'windSpeed', 'thunderProb'];
+
 function WeatherPage() {
   const [weatherData, setWeatherData] = useState({});
   const [dailyData, setDailyData] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const detailsKeys = ['cloudiness', 'precipProb', 'relHumidity', 'windSpeed', 'thunderProb'];
 
   useEffect(async () => {
     const weatherData = await DataService.getCurrentWeather();
