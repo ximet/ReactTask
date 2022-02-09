@@ -4,12 +4,14 @@ const SYMBOL_URL = 'https://developer.foreca.com/static/images/symbols/';
 
 const PATHS = {
   location: '/api/v1/location/',
-  weather: '/api/v1/current/'
+  weather: '/api/v1/current/',
+  daily: '/api/v1/forecast/daily/',
 };
 
 export default {
   getCurrentWeather,
-  getSymbolUrl
+  getSymbolUrl,
+  getDailyForecast,
 };
 
 async function getAccessTokenFromAPI() {
@@ -39,7 +41,6 @@ function getSymbolUrl(symbolCode) {
 
 async function getCurrentWeather() {
   const locationData = await getLocationData();
-
   const weatherData = await request(WEATHER_API_URL, PATHS.weather, `${locationData.id}`);
 
   weatherData.current.location = {
@@ -50,7 +51,23 @@ async function getCurrentWeather() {
   return weatherData.current;
 }
 
+async function getDailyForecast() {
+  const locationData = await getLocationData();
+  const dailyData = await request(WEATHER_API_URL, PATHS.daily, `${locationData.id}&dataset=full`);
+
+  return dailyData.forecast;
+}
+
 async function getLocationData() {
+  const locationData = getCookie('location');
+
+  if (locationData) return JSON.parse(locationData);
+
+  await setLocationData();
+  return JSON.parse(getCookie('location'));
+}
+
+async function setLocationData() {
   const position = await getCurrentPosition();
   const locationData = await request(
     WEATHER_API_URL,
@@ -58,7 +75,7 @@ async function getLocationData() {
     `${position.longitude},${position.latitude}`
   );
 
-  return locationData;
+  setCookie('location', JSON.stringify(locationData));
 }
 
 async function request(url, path, params) {

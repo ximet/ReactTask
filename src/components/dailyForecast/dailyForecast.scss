@@ -1,0 +1,56 @@
+@import '../../scss';
+
+.daily-forecast {
+  @include flex(flex-end, space-between);
+  margin-top: 30px;
+
+  .day-forecast {
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 15px;
+    display: inline-block;
+    background-color: #68bde733;
+    cursor: pointer;
+
+    .date {
+      @include secondaryTitle;
+      text-align: center;
+    }
+
+    .symbol {
+      display: block;
+      width: 70px;
+      margin: 0 auto;
+    }
+
+    .temperature {
+      padding: 15px 0 0 $font-size * 1.3;
+      color: $text-color;
+      @include description;
+
+      &_day,
+      &_night {
+        padding: 0 3px;
+        position: relative;
+      }
+
+      &_day::before,
+      &_night::before {
+        content: '';
+        width: $font-size;
+        height: $font-size;
+        position: absolute;
+        left: -$font-size * 1.2;
+        top: 0;
+      }
+
+      &_night::before {
+        background-image: url('../../images/moon.png');
+      }
+
+      &_day::before {
+        background-image: url('../../images/sun.png');
+      }
+    }
+  }
+}
