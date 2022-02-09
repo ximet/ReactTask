@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 const commonPaths = require('./paths');
 
@@ -37,5 +38,5 @@ module.exports = {
     hot: true,
     port: 9020
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()]
 };

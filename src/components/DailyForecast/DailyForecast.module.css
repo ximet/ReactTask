@@ -1,0 +1,17 @@
+.daily_weather__wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.daily_weather__item {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgba(245, 245, 245, 0.5);
+  width: inherit;
+}
