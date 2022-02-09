@@ -1,14 +1,13 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import weatherApi from '../../api/weatherApi';
 
-import { WorldWeatherContext } from '../../core/contexts';
 import Preloader from '../Preloader/Preloader';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
+import { worldCitiesInfo } from '../WorldWeatherPage/WorldWeatherPage';
 
 function SelectedCityPage() {
   const params = useParams();
-  const [worldWeather] = useContext(WorldWeatherContext);
 
   const [locationInfo, setLocationInfo] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -17,8 +16,8 @@ function SelectedCityPage() {
 
   useEffect(() => {
     const cityName = params.name.replaceAll('_', ' ');
-    const cityData = worldWeather.find((city) => city.name === cityName);
-    const location = `${cityData.lon},${cityData.lat}`;
+    const cityData = worldCitiesInfo.find((city) => city.name === cityName);
+    const { location } = cityData;
 
     weatherApi.getLocationInfo(location)
       .then((data) => setLocationInfo(data));
