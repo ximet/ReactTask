@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
+import SwitcherTheme from '../ThemeSwitcher/ThemeSwitcher';
+
 import './Header.scss';
 
 function Header() {
@@ -13,41 +15,44 @@ function Header() {
 
   return (
     <div className="header">
-      <Link className="header__logo" to="/">WeatherApp</Link>
-      <nav className="menu">
-        <ul className="menu__list">
-          <li className="menu__list-item">
-            <Link
-              className={`menu__list-link ${hash === '/' ? 'menu__list-link--is-active' : ''}`}
-              to="/"
-            >
-              Home
-            </Link>
-            <Link
-              className={`menu__list-link ${hash && hash.includes('/world/') ? 'menu__list-link--is-active' : ''}`}
-              to="/world/"
-            >
-              World weather
-            </Link>
-          </li>
-          <li className="menu__list-item">
-            <Link
-              className={`menu__list-link ${hash === '/info' ? 'menu__list-link--is-active' : ''}`}
-              to="/info"
-            >
-              Info
-            </Link>
-          </li>
-          <li className="menu__list-item">
-            <Link
-              className={`menu__list-link ${hash === '/feedback' ? 'menu__list-link--is-active' : ''}`}
-              to="/feedback"
-            >
-              Feedback
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="header-wrapper">
+        <Link className="header__logo" to="/">WeatherApp</Link>
+        <nav className="menu">
+          <ul className="menu__list">
+            <li className="menu__list-item">
+              <Link
+                className={`menu__list-link ${hash === '/' ? 'menu__list-link--is-active' : ''}`}
+                to="/"
+              >
+                Home
+              </Link>
+              <Link
+                className={`menu__list-link ${hash && hash.includes('/world/') ? 'menu__list-link--is-active' : ''}`}
+                to="/world/"
+              >
+                World weather
+              </Link>
+            </li>
+            <li className="menu__list-item">
+              <Link
+                className={`menu__list-link ${hash === '/info' ? 'menu__list-link--is-active' : ''}`}
+                to="/info"
+              >
+                Info
+              </Link>
+            </li>
+            <li className="menu__list-item">
+              <Link
+                className={`menu__list-link ${hash === '/feedback' ? 'menu__list-link--is-active' : ''}`}
+                to="/feedback"
+              >
+                Feedback
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <SwitcherTheme />
     </div>
   );
 }

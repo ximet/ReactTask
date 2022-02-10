@@ -1,7 +1,9 @@
 .world__card{
-  background-color: #fff;
+  background-color: var(#{--cards-background});
   margin-bottom: 2rem;
   padding: 1rem;
+  color: var(--text-color);
+  transition: color .3s linear;
 
   &-title{
     display: flex;

@@ -1,8 +1,15 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 10%);
+  justify-content: space-between;
+  padding: .5rem 2rem;
+  box-shadow: var(#{--header-shadow});
+
+  &-wrapper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 
   &__logo {
     color: rgb(87, 89, 233);
@@ -12,22 +19,23 @@
 
   & .menu__list {
     display: flex;
+    margin-right: 2rem;
 
     &-link {
-      color: #000;
+      color: var(--text-color);
       padding: 1rem 3.5rem;
       font-size: 1.2rem;
       transition: color 0.2s linear;
 
       &--is-active {
-        color: #000;
         padding: 1rem 3.5rem;
         font-size: 1.2rem;
-        border-bottom: 2px solid rgb(0, 51, 192);
+        border-bottom: 2px solid #007FFF;
       }
 
       &:hover {
-        background-color: #fff;
+        background-color: var(--nav-button-hover);
+        transition: background-color .3s linear;
       }
     }
   }

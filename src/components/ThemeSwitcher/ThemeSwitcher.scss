@@ -1,0 +1,15 @@
+.switcher{
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--switcher-background);
+  transition: background-color .3s linear;
+  user-select: none;
+
+  &:hover{
+    cursor: pointer;
+  }
+}

@@ -4,13 +4,13 @@
     padding: 1rem;
     max-width: 700px;
     margin: 0 auto;
-    color: #3b3b3b;
+    color: var(--text-color);
+    transition: color .3s linear;
   }
 
   &__title{
     padding: 1.3rem;
     font-size: 2rem;
-    color: #000;
   }
 
   &__description{
@@ -23,7 +23,8 @@
       position: absolute;
       height: 1px;
       width: 100%;
-      background-color: #3b3b3b;
+      background-color: var(--text-color);
+      transition: background-color .3s linear;
       bottom: -1rem;
       left: 0;
     }
@@ -41,7 +42,6 @@
     &-label{
       display: block;
       font-size: 1.2rem;
-      color: #000;
       margin-bottom: 1rem;
       user-select: none;
     }
@@ -55,6 +55,8 @@
       min-height: 100px;
       padding: 1rem;
       font-size: 1.2rem;
+      background-color: var(--fields-background);
+      transition: background-color .3s linear;
     }
 
     &-input{
