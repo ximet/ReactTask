@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import weatherApi from '../../api/weatherApi';
+import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
+import Preloader from '../Preloader/Preloader';
 
 import './MainPage.scss';
 
-import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
-
-function MainPage({ token }) {
+function MainPage() {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [locationInfo, setLocationInfo] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [todaysWeather, setTodaysWeather] = useState(null);
+
+  const [nextWeekWeather, setNextWeekWeather] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -21,33 +22,33 @@ function MainPage({ token }) {
   }, []);
 
   useEffect(() => {
-    if (currentPosition && token) {
-      weatherApi.getLocationInfo(currentPosition, token)
+    if (currentPosition) {
+      weatherApi.getLocationInfo(currentPosition)
         .then((data) => setLocationInfo(data));
 
-      weatherApi.getCurrentWeather(currentPosition, token)
+      weatherApi.getCurrentWeather(currentPosition)
         .then((data) => setCurrentWeather(data));
 
-      weatherApi.getTodaysWeather(currentPosition, token)
+      weatherApi.getTodaysWeather(currentPosition)
         .then((data) => setTodaysWeather(data));
+
+      weatherApi.getNextWeekWeather(currentPosition)
+        .then((data) => setNextWeekWeather(data));
     }
-  }, [currentPosition, token]);
+  }, [currentPosition]);
 
   return (
-    (locationInfo && currentWeather && todaysWeather)
+    (locationInfo && currentWeather && todaysWeather && nextWeekWeather)
       ? (
         <SelectedCityInfo
           locationInfo={locationInfo}
           currentWeather={currentWeather}
           todaysWeather={todaysWeather}
+          nextWeekWeather={nextWeekWeather}
         />
       )
-      : <div>PRELOADER...</div>
+      : <Preloader />
   );
 }
-
-MainPage.propTypes = {
-  token: PropTypes.string.isRequired,
-};
 
 export default MainPage;

@@ -23,6 +23,12 @@ function Header() {
             >
               Home
             </Link>
+            <Link
+              className={`menu__list-link ${hash && hash.includes('/world/') ? 'menu__list-link--is-active' : ''}`}
+              to="/world/"
+            >
+              World weather
+            </Link>
           </li>
           <li className="menu__list-item">
             <Link

@@ -1,3 +1,6 @@
+/* eslint-disable import/prefer-default-export */
 import { createContext } from 'react';
 
-export const SnackbarContext = createContext({ isOpen: false, message: ''});
+const SnackbarContext = createContext({ isOpen: false, message: '' });
+
+export { SnackbarContext };
