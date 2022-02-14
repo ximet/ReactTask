@@ -3,10 +3,10 @@
 .header {
   height: 6rem;
   background: $base-color;
+  padding: 0 4rem;
 }
 
 .header__container {
-  @include container;
   height: 100%;
   display: flex;
   align-items: center;

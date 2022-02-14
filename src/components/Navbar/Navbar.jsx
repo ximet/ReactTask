@@ -7,17 +7,25 @@ function Navbar() {
     <nav className={classes.nav}>
       <ul className={classes.nav__list}>
         <li>
-          <Link className={classes.nav__item} to="/">Home</Link>
+          <Link className={classes.nav__item} to="/">
+            Home
+          </Link>
         </li>
         <li>
-          <Link className={classes.nav__item} to="/weather">Weather</Link>
+          <Link className={classes.nav__item} to="/weather">
+            Weather
+          </Link>
         </li>
         <li>
-          <Link className={classes.nav__item} to="/about">About</Link>
+          <Link className={classes.nav__item} to="/about">
+            About
+          </Link>
         </li>
         <li>
-          <Link className={classes.nav__item} to="/feedback">Feedback</Link>
-        </li> 
+          <Link className={classes.nav__item} to="/feedback">
+            Feedback
+          </Link>
+        </li>
       </ul>
     </nav>
   );

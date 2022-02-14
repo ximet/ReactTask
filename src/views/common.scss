@@ -1,0 +1,7 @@
+@import '../scss';
+
+.page {
+  flex: 1 0 auto;
+  margin: 0 auto;
+  @include container;
+}
