@@ -1,36 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { getCurrentWeatherByCoords, getCurrentWeatherById } from '../api';
 import { url } from '../constants';
+import LocationHeader from './LocationHeader/LocationHeader';
+import WeatherCard from './WeatherCard/WeatherCard';
 
-const CurrentWeather = ({ token, locationId, coords, title }) => {
+const CurrentWeather = ({ token, location }) => {
   const [weather, setWeather] = useState({});
 
   useEffect(() => {
-    if (locationId) {
-      getCurrentWeatherById(url, token, locationId).then(currentWeather =>
-        setWeather(currentWeather)
-      );
-    }
-  }, [locationId]);
+    const isLocationEmpty = Object.keys(location).length === 0;
 
-  useEffect(() => {
-    if (!coords) {
+    if (isLocationEmpty) {
       return;
     }
 
-    const isLocationValid = Boolean(coords.longitude && coords.latitude);
-
-    if (isLocationValid && token) {
-      getCurrentWeatherByCoords(url, token, coords).then(currentWeather =>
-        setWeather(currentWeather)
-      );
+    if (token) {
+      console.log(location);
+      getCurrentWeatherById(url, token, location.id).then(currentWeather => {
+        setWeather(currentWeather);
+      });
     }
-  }, [coords, token]);
+  }, [location, token]);
 
   return (
     <div>
-      <h2>{title}</h2>
-      <pre>{JSON.stringify(weather, null, 2)}</pre>
+      <LocationHeader name={location.name} country={location.country} />
+      <WeatherCard weather={weather} />
     </div>
   );
 };
