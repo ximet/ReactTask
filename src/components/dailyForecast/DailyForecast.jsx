@@ -1,20 +1,23 @@
 import classes from './dailyForecast.scss';
-import DataService from '../../dataService/DataService';
-import { getDayOfWeek } from '../../assets';
+import PropTypes from 'prop-types';
 
 function DailyForecast(props) {
-  const { dailyData } = props;
+  const { dailyData, onClick, activeCardId } = props;
 
   return (
     <div className={classes.dailyForecast}>
       {dailyData.map(dayData => (
-        <div key={dayData.date} className={classes.dayForecast}>
-          <p className={classes.date}>{getDayOfWeek(dayData.date)}</p>
-          <img
-            className={classes.symbol}
-            src={DataService.getSymbolUrl(dayData.symbol)}
-            alt={dayData.symbol}
-          ></img>
+        <div
+          key={dayData.id}
+          className={
+            activeCardId === dayData.id
+              ? `${classes.dayForecast} ${classes.active}`
+              : `${classes.dayForecast}`
+          }
+          onClick={() => onClick(dayData.id)}
+        >
+          <p className={classes.date}>{dayData.dayOfWeek[0]}</p>
+          <img className={classes.symbol} src={dayData.symbolUrl} alt={dayData.symbol}></img>
           <div className={classes.temperature}>
             <p className={classes.temperature_day}>
               {dayData.maxTemp}
@@ -30,5 +33,11 @@ function DailyForecast(props) {
     </div>
   );
 }
+
+DailyForecast.propTypes = {
+  dailyData: PropTypes.array,
+  onClick: PropTypes.func,
+  activeCardId: PropTypes.string
+};
 
 export default DailyForecast;
