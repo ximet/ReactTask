@@ -4,7 +4,7 @@ import weatherApi from '../../api/weatherApi';
 
 import Preloader from '../Preloader/Preloader';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
-import { worldCitiesInfo } from '../WorldWeatherPage/WorldWeatherPage';
+import worldCitiesInfo from '../../MOCK/mock_worldCitiesInfo';
 
 function SelectedCityPage() {
   const params = useParams();
