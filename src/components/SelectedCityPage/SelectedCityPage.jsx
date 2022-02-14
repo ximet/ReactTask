@@ -19,17 +19,10 @@ function SelectedCityPage() {
     const cityData = worldCitiesInfo.find((city) => city.name === cityName);
     const { location } = cityData;
 
-    weatherApi.getLocationInfo(location)
-      .then((data) => setLocationInfo(data));
-
-    weatherApi.getCurrentWeather(location)
-      .then((data) => setCurrentWeather(data));
-
-    weatherApi.getTodaysWeather(location)
-      .then((data) => setTodaysWeather(data));
-
-    weatherApi.getNextWeekWeather(location)
-      .then((data) => setNextWeekWeather(data));
+    weatherApi.getLocationInfo(location).then(setLocationInfo);
+    weatherApi.getCurrentWeather(location).then(setCurrentWeather);
+    weatherApi.getTodaysWeather(location).then(setTodaysWeather);
+    weatherApi.getNextWeekWeather(location).then(setNextWeekWeather);
   }, []);
 
   return (
