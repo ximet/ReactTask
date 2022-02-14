@@ -9,7 +9,9 @@
   .precipProb,
   .relHumidity,
   .windSpeed,
-  .thunderProb {
+  .thunderProb,
+  .sunrise,
+  .sunset {
     padding: 0 3px;
     position: relative;
 
@@ -23,7 +25,9 @@
   .precipProb::before,
   .relHumidity::before,
   .windSpeed::before,
-  .thunderProb::before {
+  .thunderProb::before,
+  .sunrise::before,
+  .sunset::before {
     content: '';
     width: $font-size;
     height: $font-size;
@@ -50,5 +54,13 @@
 
   .thunderProb::before {
     background-image: url('../../images/thunder.png');
+  }
+
+  .sunrise::before {
+    background-image: url('../../images/sunrise.png');
+  }
+
+  .sunset::before {
+    background-image: url('../../images/sunset.png');
   }
 }

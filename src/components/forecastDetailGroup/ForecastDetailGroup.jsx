@@ -1,4 +1,5 @@
 import classes from './forecastDetailGroup.scss';
+import PropTypes from 'prop-types';
 
 const details = {
   cloudiness: {
@@ -20,21 +21,31 @@ const details = {
   thunderProb: {
     unit: '%',
     desc: 'Probability of thunder nearby'
+  },
+  sunrise: {
+    desc: 'Sunrise'
+  },
+  sunset: {
+    desc: 'Sunset'
   }
 };
 
-function ForecastDetails(props) {
-  const { detailsKeys, detailsData } = props;
+function ForecastDetailsGroup(props) {
+  const { detailsData } = props;
 
   return (
     <ul className={classes.forecastDetails}>
-      {detailsKeys.map(key => (
+      {Object.keys(detailsData).map(key => (
         <li key={key} className={classes[key]}>
-          <span>{detailsData[key] + details[key].unit}</span> {details[key].desc}
+          <span>{detailsData[key] + (details[key].unit || '')}</span> {details[key].desc}
         </li>
       ))}
     </ul>
   );
 }
 
-export default ForecastDetails;
+ForecastDetailsGroup.propTypes = {
+  detailsData: PropTypes.object
+};
+
+export default ForecastDetailsGroup;
