@@ -2,6 +2,8 @@
   &__title {
     padding: 1rem 0;
     text-align: center;
+    color: var(--text-color);
+    transition: color .3s linear;
   }
 
   &__text {
@@ -9,9 +11,13 @@
     font-size: 1.2rem;
     padding: 0.3rem 0;
     margin-bottom: 2rem;
+    color: var(--text-color);
+    transition: color .3s linear;
   }
 
   &__email {
+    color: var(--text-color);
+    transition: color .3s linear;
     font-size: 1.2rem;
     &-link {
       padding: 0 0.7rem;

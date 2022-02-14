@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #fff;
+  background-color: var(#{--cards-background});
+  transition: background-color .3s linear;
   margin-bottom: 1rem;
   padding: 1rem;
 
