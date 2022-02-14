@@ -1,7 +1,8 @@
 import React from 'react';
+import commonClasses from '../common.scss';
 
-const MainPage = () => {
-  return <div></div>;
+const InfoPage = () => {
+  return <main className={commonClasses.page}>Infopage</main>;
 };
 
-export default MainPage;
+export default InfoPage;
