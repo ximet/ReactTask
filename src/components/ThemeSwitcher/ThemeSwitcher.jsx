@@ -13,14 +13,14 @@ function SwitcherTheme() {
   const handleClick = () => changeTheme();
 
   return (
-    <div className="switcher" onClick={handleClick} role="button" tabIndex={0}>
+    <button className="switcher" onClick={handleClick} type="button">
       <img
         className="switcher-icon"
         src={theme === 'light' ? moonIcon : sunIcon}
         alt="theme"
         style={{ width: '40px' }}
       />
-    </div>
+    </button>
   );
 }
 
