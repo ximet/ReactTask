@@ -19,3 +19,39 @@ export function getDayOfWeek(date, dataset = 'concise') {
 
   return dataset === 'full' ? DAYS_NAMES_FULL[dayIndex] : DAYS_NAMES_CONCISE[dayIndex];
 }
+
+export function getDayOfMonth(date) {
+  const MONTHS_NAMES = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+
+  const newDate = new Date(date);
+  const month = MONTHS_NAMES[newDate.getMonth()];
+  const day = newDate.getDate();
+
+  return `${day} ${month}`;
+}
+
+export function formatTime(time) {
+  const index = time.lastIndexOf(':');
+
+  return time.slice(0, index);
+}
+
+export function formatDate(date) {
+  const firstIndex = date.indexOf('T');
+  const lastIndex = date.lastIndexOf('+');
+
+  return date.slice(firstIndex + 1, lastIndex);
+}
