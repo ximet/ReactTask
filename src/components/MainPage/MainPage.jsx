@@ -23,17 +23,10 @@ function MainPage() {
 
   useEffect(() => {
     if (currentPosition) {
-      weatherApi.getLocationInfo(currentPosition)
-        .then((data) => setLocationInfo(data));
-
-      weatherApi.getCurrentWeather(currentPosition)
-        .then((data) => setCurrentWeather(data));
-
-      weatherApi.getTodaysWeather(currentPosition)
-        .then((data) => setTodaysWeather(data));
-
-      weatherApi.getNextWeekWeather(currentPosition)
-        .then((data) => setNextWeekWeather(data));
+      weatherApi.getLocationInfo(currentPosition).then(setLocationInfo);
+      weatherApi.getCurrentWeather(currentPosition).then(setCurrentWeather);
+      weatherApi.getTodaysWeather(currentPosition).then(setTodaysWeather);
+      weatherApi.getNextWeekWeather(currentPosition).then(setNextWeekWeather);
     }
   }, [currentPosition]);
 

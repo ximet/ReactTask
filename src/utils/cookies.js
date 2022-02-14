@@ -15,8 +15,11 @@ const deleteCookie = (key) => {
   document.cookie = `${key}=''; max-age=0`;
 };
 
+const getAccessToken = () => getCookie('token');
+
 export {
   setCookie,
   getCookie,
   deleteCookie,
+  getAccessToken,
 };

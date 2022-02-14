@@ -1,50 +1,44 @@
-import { getCookie } from '../utils/cookies';
+import request from '../utils/request';
 
 const proxy = 'http://localhost:3000/';
-const url = `${proxy}https://pfa.foreca.com`;
+const apiUrl = `${proxy}https://pfa.foreca.com`;
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 
 const weatherApi = {
   async getToken(expire) {
-    const currentUrl = `${url}/authorize/token?expire_hours=${expire}&user=${user}&password=${password}`;
+    const currentUrl = `${apiUrl}/authorize/token?expire_hours=${expire}&user=${user}&password=${password}`;
 
-    return fetch(currentUrl)
-      .then((response) => response.json())
-      .then((data) => data.access_token);
+    const token = await request(currentUrl);
+    return token.access_token;
   },
 
   async getLocationInfo(position) {
-    const token = getCookie('token');
-    const currentUrl = `${url}/api/v1/location/:location?location=${position}&token=${token}`;
+    const currentUrl = `${apiUrl}/api/v1/location/:location?location=${position}`;
 
-    return fetch(currentUrl)
-      .then((response) => response.json())
-      .then((data) => data);
+    const locationInfo = await request(currentUrl, true);
+    return locationInfo;
   },
 
   async getCurrentWeather(position) {
-    const token = getCookie('token');
-    const currentUrl = `${url}/api/v1/current/:location?location=${position}&token=${token}`;
-    return fetch(currentUrl)
-      .then((response) => response.json())
-      .then((data) => data.current);
+    const currentUrl = `${apiUrl}/api/v1/current/:location?location=${position}`;
+
+    const currentWeather = await request(currentUrl, true);
+    return currentWeather.current;
   },
 
   async getTodaysWeather(position) {
-    const token = getCookie('token');
-    const currentUrl = `${url}/api/v1/forecast/3hourly/:location?periods=7&location=${position}&token=${token}`;
-    return fetch(currentUrl)
-      .then((response) => response.json())
-      .then((data) => data.forecast);
+    const currentUrl = `${apiUrl}/api/v1/forecast/3hourly/:location?periods=7&location=${position}`;
+
+    const todaysWeather = await request(currentUrl, true);
+    return todaysWeather.forecast;
   },
 
   async getNextWeekWeather(position) {
-    const token = getCookie('token');
-    const currentUrl = `${url}/api/v1/forecast/daily/:location?periods=7&location=${position}&token=${token}`;
-    return fetch(currentUrl)
-      .then((response) => response.json())
-      .then((data) => data.forecast);
+    const currentUrl = `${apiUrl}/api/v1/forecast/daily/:location?periods=7&location=${position}`;
+
+    const nextWeekWeather = await request(currentUrl, true);
+    return nextWeekWeather.forecast;
   },
 };
 
