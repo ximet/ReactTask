@@ -23,6 +23,7 @@
       }
     ],
     "jsx-a11y/label-has-associated-control": [ 2, { }],
-    "dot-notation": 0
+    "dot-notation": 0,
+    "no-nested-ternary": 0
   }
 }
