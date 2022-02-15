@@ -1,14 +1,13 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import starBlack from '../../../public/images/starBlack.png';
 import starYellow from '../../../public/images/starYellow.png';
+import classes from './Star.module.css';
 
 function Star({ filled, onClick }) {
   return (
-    <span>
-      <img alt="starIcon" src={filled ? starYellow : starBlack} onClick={onClick} />
-    </span>
+    <button type="button" className={classes.star_button} onClick={onClick}>
+      <img alt="starIcon" src={filled ? starYellow : starBlack} />
+    </button>
   );
 }
 
