@@ -1,0 +1,21 @@
+@import '../../scss';
+
+.header {
+  height: 6rem;
+  background: $base-color;
+  padding: 0 4rem;
+}
+
+.header__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  margin: 0 3rem;
+  font-family: Staatliches, Roboto, Verdana, Geneva, Tahoma, sans-serif;
+  flex: 0 0 auto;
+  color: aliceblue;
+}

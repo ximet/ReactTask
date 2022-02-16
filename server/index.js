@@ -20,7 +20,11 @@ app.listen(PORT, () => {
 });
 
 function sendAuthorizationToken(req, res) {
-  const authData = { user: process.env.API_USERNAME, password: process.env.API_PASSWORD };
+
+  const authData = {
+    user: process.env.API_USERNAME,
+    password: process.env.API_PASSWORD
+  };
 
   axios
     .post(API_URL + req.path, authData)
