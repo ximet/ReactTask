@@ -5,11 +5,7 @@
   padding: 15px 0 0 $font-size * 1.3;
   color: $text-color;
 
-  .cloudiness,
-  .precipProb,
-  .relHumidity,
-  .windSpeed,
-  .thunderProb {
+  .detail {
     padding: 0 3px;
     position: relative;
 
@@ -19,11 +15,7 @@
     }
   }
 
-  .cloudiness::before,
-  .precipProb::before,
-  .relHumidity::before,
-  .windSpeed::before,
-  .thunderProb::before {
+  .detail::before {
     content: '';
     width: $font-size;
     height: $font-size;
@@ -50,5 +42,13 @@
 
   .thunderProb::before {
     background-image: url('../../images/thunder.png');
+  }
+
+  .sunrise::before {
+    background-image: url('../../images/sunrise.png');
+  }
+
+  .sunset::before {
+    background-image: url('../../images/sunset.png');
   }
 }

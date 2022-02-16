@@ -1,0 +1,23 @@
+@import '../../scss';
+
+.hourly-forecast {
+  @include flex(center, space-between);
+  width: fit-content;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $card-bg;
+  color: $text-color;
+  text-align: center;
+  @include description;
+
+  .hour-forecast {
+    padding: 0 10px;
+
+    .symbol {
+      margin: 0 auto;
+      width: 30px;
+      margin: 10px 0;
+    }
+  }
+}

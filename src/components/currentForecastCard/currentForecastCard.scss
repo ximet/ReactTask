@@ -1,0 +1,26 @@
+@import '../../scss';
+
+.card {
+  border-radius: 20px;
+
+  &_header {
+    .flexContainer {
+      @include flex(center, flex-start);
+
+      .symbol {
+        width: 100px;
+      }
+    }
+
+    &__title {
+      @include primaryTitle;
+      margin-right: 20px;
+    }
+
+    &__description {
+      margin-top: 10px;
+      @include secondaryTitle;
+      color: $text-color;
+    }
+  }
+}

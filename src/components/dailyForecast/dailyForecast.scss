@@ -2,14 +2,15 @@
 
 .daily-forecast {
   @include flex(flex-end, space-between);
-  margin-top: 30px;
 
   .day-forecast {
+    width: 100px;
+    height: 190px;
     padding: 10px;
     border-radius: 5px;
     margin-right: 15px;
     display: inline-block;
-    background-color: #68bde733;
+    background-color: $card-bg;
     cursor: pointer;
 
     .date {
@@ -50,6 +51,21 @@
 
       &_day::before {
         background-image: url('../../images/sun.png');
+      }
+    }
+  }
+
+  .active {
+    margin-bottom: 30px;
+    background-color: $body-bg;
+    color: $text-color-light;
+
+    .temperature {
+      color: $text-color-light;
+
+      &_day::before,
+      &_night::before {
+        filter: invert(100%);
       }
     }
   }
