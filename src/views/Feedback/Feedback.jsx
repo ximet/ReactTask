@@ -1,13 +1,19 @@
 import React from 'react';
-import classes from '../../App.module.css';
-import Form from '../../atomic-components/Form/Form';
+import classes from './Feedback.module.css';
+import FeedbackForm from '../../components/FeedbackForm/FeedbackForm';
 
 function Feedback() {
   return (
-    <div className={classes.image_container}>
-      <img alt="" />
-      <h1 className={classes.feedback}>Feedback Form</h1>
-      <Form />
+    <div className={classes.feedback}>
+      <div className={classes.image_container} alt="background">
+        <div className={classes.form__wrapper}>
+          <h2 className={classes.feedback_title}>Feedback Form</h2>
+          <span className={classes.feedback_subtitle}>
+            What do you think about our app? Rate your experience
+          </span>
+          <FeedbackForm />
+        </div>
+      </div>
     </div>
   );
 }

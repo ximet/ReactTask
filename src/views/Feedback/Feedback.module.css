@@ -1,0 +1,41 @@
+.image_container {
+  background: url('../../../public/images/feedbackImage.jpg') center center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+  position: relative;
+}
+
+.form__wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  top: 20%;
+  position: absolute;
+}
+
+.feedback {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.feedback_title {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.feedback_subtitle {
+  font-size: 1.2em;
+  text-align: center;
+}

@@ -1,0 +1,10 @@
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.star_rating {
+  text-align: center;
+}
