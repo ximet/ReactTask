@@ -5,12 +5,12 @@ function CurrentForecastButton(props) {
   const { onClick, isActive } = props;
 
   return (
-    <div
+    <button
       className={isActive ? `${classes.button} ${classes.active}` : classes.button}
       onClick={onClick}
     >
-      <p>Now</p>
-    </div>
+      Now
+    </button>
   );
 }
 

@@ -21,23 +21,8 @@ export function getDayOfWeek(date, dataset = 'concise') {
 }
 
 export function getDayOfMonth(date) {
-  const MONTHS_NAMES = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
-
   const newDate = new Date(date);
-  const month = MONTHS_NAMES[newDate.getMonth()];
+  const month = newDate.toLocaleString('default', { month: 'long' })
   const day = newDate.getDate();
 
   return `${day} ${month}`;

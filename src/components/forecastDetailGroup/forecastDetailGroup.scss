@@ -5,13 +5,7 @@
   padding: 15px 0 0 $font-size * 1.3;
   color: $text-color;
 
-  .cloudiness,
-  .precipProb,
-  .relHumidity,
-  .windSpeed,
-  .thunderProb,
-  .sunrise,
-  .sunset {
+  .detail {
     padding: 0 3px;
     position: relative;
 
@@ -21,13 +15,7 @@
     }
   }
 
-  .cloudiness::before,
-  .precipProb::before,
-  .relHumidity::before,
-  .windSpeed::before,
-  .thunderProb::before,
-  .sunrise::before,
-  .sunset::before {
+  .detail::before {
     content: '';
     width: $font-size;
     height: $font-size;

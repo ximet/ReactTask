@@ -9,6 +9,7 @@
   display: inline-block;
   background-color: $card-bg;
   @include secondaryTitle;
+  font-family: $font-family;
   text-align: center;
   cursor: pointer;
 }

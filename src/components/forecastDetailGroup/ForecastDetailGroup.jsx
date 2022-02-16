@@ -36,7 +36,7 @@ function ForecastDetailsGroup(props) {
   return (
     <ul className={classes.forecastDetails}>
       {Object.keys(detailsData).map(key => (
-        <li key={key} className={classes[key]}>
+        <li key={key} className={`${classes.detail} ${classes[key]}`}>
           <span>{detailsData[key] + (details[key].unit || '')}</span> {details[key].desc}
         </li>
       ))}
