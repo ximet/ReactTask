@@ -29,6 +29,12 @@ a {
   text-decoration: none;
 }
 
+input, 
+textarea {
+  border: none;
+  outline: none;
+}
+
 button {
   border: none;
 }

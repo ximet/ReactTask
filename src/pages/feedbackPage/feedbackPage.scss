@@ -1,0 +1,27 @@
+@import '../../scss';
+
+.feedback-page {
+  text-align: center;
+
+  .title {
+    @include primaryTitle;
+    position: relative;
+    display: inline-block;
+  }
+
+  .title::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('../../images/heart.png');
+    background-size: contain;
+    top: 12px;
+    right: -33px;
+  }
+
+  .description {
+    @include secondaryTitle;
+    color: $text-color;
+  }
+}
