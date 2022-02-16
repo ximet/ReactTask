@@ -1,4 +1,4 @@
-const searchLocation = async (url, token, locationName) => {
+const getLocationInfoByName = async (url, token, locationName) => {
   const res = await fetch(url + `/api/v1/location/search/${locationName}`, {
     headers: {
       Authorization: token
@@ -10,4 +10,4 @@ const searchLocation = async (url, token, locationName) => {
   return data.locations[0];
 };
 
-export default searchLocation;
+export default getLocationInfoByName;

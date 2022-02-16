@@ -1,11 +1,11 @@
 import getToken from './getToken';
-import searchLocation from './searchLocation';
+import getLocationInfoByName from './getLocationInfoByName';
 import getCurrentWeatherById from './getCurrentWeatherById';
 import getCurrentWeatherByCoords from './getCurrentWeatherByCoords';
 import getLocationInfoByCoords from './getLocationInfoByCoords';
 
 export {
-  searchLocation,
+  getLocationInfoByName,
   getToken,
   getCurrentWeatherById,
   getCurrentWeatherByCoords,
