@@ -1,7 +1,7 @@
 import classes from './side.scss';
 
 import { NavLink } from 'react-router-dom';
-import { routes } from '../../config/Routes';
+import { routes } from '../../config/RoutesLinks';
 
 function Side() {
   return (

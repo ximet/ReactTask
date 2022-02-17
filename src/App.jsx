@@ -5,11 +5,11 @@ import Side from './components/side/Side';
 import MainPage from './components/mainPage/MainPage';
 import Footer from './components/footer/Footer';
 
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className={`${classes.container} ${classes.app_container}`}>
         <Header />
         <div className={classes.container}>
@@ -18,7 +18,7 @@ function App() {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

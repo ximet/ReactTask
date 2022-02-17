@@ -4,7 +4,8 @@ import { getLocationData, getCurrentWeatherFromApi, getDailyForecastFromApi, get
 export default {
   getCurrentForecast,
   getDailyForecast,
-  getHourlyForecast
+  getHourlyForecast,
+  setReview
 };
 
 async function getCurrentForecast() {
@@ -28,4 +29,11 @@ async function getHourlyForecast() {
   const formattedData = formatHourlyForecastData(hourlyData);
 
   return formattedData;
+}
+
+function setReview(review) {
+  const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  reviews.push(review);
+  
+  localStorage.setItem('reviews', JSON.stringify(reviews));
 }

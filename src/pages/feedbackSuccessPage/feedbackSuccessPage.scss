@@ -1,6 +1,6 @@
 @import '../../scss';
 
-.feedback-page {
+.success-page {
   @include flex(center, center, column);
   height: 100%;
   text-align: center;
@@ -22,8 +22,12 @@
     right: -33px;
   }
 
-  .description {
+  .link {
     @include secondaryTitle;
     color: $text-color;
+  }
+
+  .link:hover {
+    color: $text-color-dark;
   }
 }
