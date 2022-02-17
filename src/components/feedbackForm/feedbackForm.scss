@@ -36,11 +36,17 @@
       font-weight: $weight-regular;
       font-size: 1rem;
       border-radius: 5px;
+      outline: none;
     }
-
+    
     .textarea {
       resize: none;
       height: 100px;
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border: 2px solid $body-bg;
     }
   }
 
