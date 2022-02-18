@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import weatherApi from '../../api/weatherApi';
+import React, { useEffect, useState, useRef } from 'react';
 
+import weatherApi from '../../api/weatherApi';
 import searchIcon from '../../assets/images/search.png';
 import SearchAutocompleteItem from '../SearchAutocompleteItem/SearchAutocompleteItem';
 
@@ -10,6 +10,7 @@ function Search() {
   const [inputValue, setInputValue] = useState('');
   const [isOpenAutocomplete, setIsOpenAutocomplete] = useState(false);
   const [cities, setCities] = useState(null);
+  const input = useRef(null);
 
   useEffect(() => {
     const delayBeforeSearching = setTimeout(() => {
@@ -21,10 +22,7 @@ function Search() {
     return () => clearTimeout(delayBeforeSearching);
   }, [inputValue]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsOpenAutocomplete(false);
-  };
+  const handleClick = () => setTimeout(() => { input.current.focus(); }, 100);
 
   const handleChange = ({ target }) => setInputValue(target.value);
 
@@ -32,7 +30,7 @@ function Search() {
   const handleBlur = () => setTimeout(() => { setIsOpenAutocomplete(false); }, 100);
 
   return (
-    <form className="search" onSubmit={handleSubmit}>
+    <div className="search">
       <input
         className="search-input"
         placeholder="City search"
@@ -40,8 +38,9 @@ function Search() {
         onFocus={handleFocus}
         onChange={handleChange}
         onBlur={handleBlur}
+        ref={input}
       />
-      <button className="search-button" type="submit">
+      <button className="search-button" type="button" onClick={handleClick}>
         <img className="search-submit" src={searchIcon} alt="search" />
       </button>
       {isOpenAutocomplete && cities
@@ -59,7 +58,7 @@ function Search() {
           </ul>
         )
         : null}
-    </form>
+    </div>
   );
 }
 
