@@ -1,0 +1,8 @@
+.search__autocomplete-item{
+  padding: 1rem;
+  border-bottom: 1px solid var(--text-color);
+  cursor: pointer;
+  &:hover{
+    background-color: #f5f5f5;
+  }
+}

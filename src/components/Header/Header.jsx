@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import Search from '../Search/Search';
 
 import SwitcherTheme from '../ThemeSwitcher/ThemeSwitcher';
 
@@ -51,6 +52,7 @@ function Header() {
             </li>
           </ul>
         </nav>
+        <Search />
       </div>
       <SwitcherTheme />
     </div>

@@ -55,7 +55,7 @@ function App() {
                 <Route exact path="/world">
                   <WorldWeatherPage />
                 </Route>
-                <Route path="/world/:name">
+                <Route path="/world/:id">
                   <SelectedCityPage />
                 </Route>
                 <Route>

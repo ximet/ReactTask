@@ -20,6 +20,20 @@ const weatherApi = {
     return locationInfo;
   },
 
+  async getLocationInfoUsingId(id) {
+    const currentUrl = `${apiUrl}/api/v1/location/${id}`;
+
+    const locationInfo = await request(currentUrl, true);
+    return locationInfo;
+  },
+
+  async getLocationSearch(name) {
+    const currentUrl = `${apiUrl}/api/v1/location/search/${name}`;
+
+    const locationSearch = await request(currentUrl, true);
+    return locationSearch.locations;
+  },
+
   async getCurrentWeather(position) {
     const currentUrl = `${apiUrl}/api/v1/current/:location?location=${position}`;
 
