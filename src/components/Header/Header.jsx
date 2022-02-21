@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import Search from '../Search/Search';
 
 import SwitcherTheme from '../ThemeSwitcher/ThemeSwitcher';
@@ -7,13 +7,6 @@ import SwitcherTheme from '../ThemeSwitcher/ThemeSwitcher';
 import './Header.scss';
 
 function Header() {
-  const [hash, setHash] = useState(null);
-  const currentHash = useLocation().pathname;
-
-  useEffect(() => {
-    setHash(currentHash);
-  }, [currentHash]);
-
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -21,34 +14,19 @@ function Header() {
         <nav className="menu">
           <ul className="menu__list">
             <li className="menu__list-item">
-              <Link
-                className={`menu__list-link ${hash === '/' ? 'menu__list-link--is-active' : ''}`}
-                to="/"
-              >
-                Home
-              </Link>
-              <Link
-                className={`menu__list-link ${hash && hash.includes('/world/') ? 'menu__list-link--is-active' : ''}`}
-                to="/world/"
-              >
-                World weather
-              </Link>
+              <NavLink exact className="menu__list-link" activeClassName="menu__list-link--is-active" to="/">
+                My location
+              </NavLink>
             </li>
             <li className="menu__list-item">
-              <Link
-                className={`menu__list-link ${hash === '/info' ? 'menu__list-link--is-active' : ''}`}
-                to="/info"
-              >
+              <NavLink exact className="menu__list-link" activeClassName="menu__list-link--is-active" to="/info">
                 Info
-              </Link>
+              </NavLink>
             </li>
             <li className="menu__list-item">
-              <Link
-                className={`menu__list-link ${hash === '/feedback' ? 'menu__list-link--is-active' : ''}`}
-                to="/feedback"
-              >
+              <NavLink exact className="menu__list-link" activeClassName="menu__list-link--is-active" to="/feedback">
                 Feedback
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

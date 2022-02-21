@@ -19,23 +19,27 @@ function Search() {
       }
     }, 500);
 
+    if (inputValue) {
+      setIsOpenAutocomplete(true);
+    } else {
+      setIsOpenAutocomplete(false);
+    }
+
     return () => clearTimeout(delayBeforeSearching);
   }, [inputValue]);
 
-  const handleClick = () => setTimeout(() => { input.current.focus(); }, 100);
+  const handleClick = () => input.current.focus();
 
   const handleChange = ({ target }) => setInputValue(target.value);
 
-  const handleFocus = () => setIsOpenAutocomplete(true);
-  const handleBlur = () => setTimeout(() => { setIsOpenAutocomplete(false); }, 100);
+  const handleBlur = () => !inputValue && setIsOpenAutocomplete(false);
 
   return (
-    <div className="search">
+    <form className="search">
       <input
         className="search-input"
         placeholder="City search"
         value={inputValue}
-        onFocus={handleFocus}
         onChange={handleChange}
         onBlur={handleBlur}
         ref={input}
@@ -52,13 +56,14 @@ function Search() {
                   cityData={city}
                   key={city.id}
                   setInputValue={setInputValue}
+                  setIsOpenAutocomplete={setIsOpenAutocomplete}
                 />
               ))
               : <div className="search__loading">No matches</div>}
           </ul>
         )
         : null}
-    </div>
+    </form>
   );
 }
 
