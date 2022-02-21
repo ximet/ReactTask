@@ -30,49 +30,37 @@ async function setAccessToken() {
   setCookie('token', token);
 }
 
-export async function getCurrentWeatherFromApi() {
-  const locationData = await getLocationData();
+export async function getCurrentWeatherFromApi(location) {
+  const locationData = await getLocationData(location);
   const weatherData = await request(WEATHER_API_URL, PATHS.weather, `${locationData.id}`);
 
-  return weatherData.current;
+  return [weatherData.current, locationData];
 }
 
-export async function getDailyForecastFromApi() {
-  const locationData = await getLocationData();
-  const dailyData = await request(WEATHER_API_URL, PATHS.daily, `${locationData.id}&dataset=full`);
+export async function getDailyForecastFromApi(location) {
+  const dailyData = await request(WEATHER_API_URL, PATHS.daily, `${location}&dataset=full`);
 
   return dailyData.forecast;
 }
 
-export async function getHourlyForecastFromApi() {
-  const locationData = await getLocationData();
-  const hourlyData = await request(WEATHER_API_URL, PATHS.hourly, `${locationData.id}&periods=56`);
+export async function getHourlyForecastFromApi(location) {
+  const hourlyData = await request(WEATHER_API_URL, PATHS.hourly, `${location}&periods=56`);
 
   return hourlyData.forecast;
 }
 
 export function getSymbolUrl(symbolCode) {
-    return SYMBOL_URL + symbolCode + '.png';
-} 
-
-export async function getLocationData() {
-  const locationData = getCookie('location');
-
-  if (locationData) return JSON.parse(locationData);
-
-  await setLocationData();
-  return JSON.parse(getCookie('location'));
+  return SYMBOL_URL + symbolCode + '.png';
 }
 
-async function setLocationData() {
-  const position = await getCurrentPosition();
+async function getLocationData(position) {
   const locationData = await request(
     WEATHER_API_URL,
     PATHS.location,
-    `${position.longitude},${position.latitude}`
+    `${position}`
   );
 
-  setCookie('location', JSON.stringify(locationData));
+  return locationData;
 }
 
 async function request(url, path, params) {
@@ -97,14 +85,10 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-async function getCurrentPosition() {
+export async function getCurrentPosition() {
   const geolocation = await getCoordinates();
-  const position = {
-    latitude: geolocation.coords.latitude,
-    longitude: geolocation.coords.longitude
-  };
 
-  return position;
+  return `${geolocation.coords.longitude}, ${geolocation.coords.latitude}`
 }
 
 function getCoordinates() {
