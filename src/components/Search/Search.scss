@@ -1,7 +1,12 @@
+@import '../../variables.scss';
+
 .search{
   display: flex;
   margin-right: 50px;
   position: relative;
+  @include breakpoint (xl) {
+    margin-right: 30px;
+  }
 
   &-input{
     font-size: 1.2rem;
@@ -9,6 +14,9 @@
     border: 1px solid var(--text-color);
     background-color: var(--fields-background);
     transition: background-color .3s linear;
+    @media(max-width: 1080px) {
+      width: 230px;
+    }
   }
 
   &-button{

@@ -19,6 +19,9 @@ $fields-background-dark: #ccc;
 $switcher-background-light: #000;
 $switcher-background-dark: #fff;
 
+$burger-background-light: #eee;
+$burger-background-dark: #1d1d1d;
+
 :root {
   --body-background-light: #{$body-background-light};
   --body-background-dark: #{$body-background-dark};
@@ -47,4 +50,26 @@ $switcher-background-dark: #fff;
   --switcher-background-light: #{$switcher-background-light};
   --switcher-background-dark: #{$switcher-background-dark};
   --switcher-background: var(#{--switcher-background-light});
+
+  --burger-background-light: #{$burger-background-light};
+  --burger-background-dark: #{$burger-background-dark};
+  --burger-background: var(#{--burger-background-light});
+}
+
+@mixin breakpoint($point) {
+  @if $point == xl {
+    @media(max-width: 1439px) {@content;}
+  }
+  @if $point == lg {
+    @media(max-width: 1023px) {@content;}
+  }
+  @if $point == md {
+    @media(max-width: 767px) {@content;}
+  }
+  @if $point == sm {
+    @media(max-width: 424px) {@content;}
+  }
+  @if $point == xs {
+    @media(max-width: 319px) {@content;}
+  }
 }
