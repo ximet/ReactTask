@@ -1,0 +1,11 @@
+@import '../../scss';
+
+.full-forecast {
+  height: 100%;
+  @include flex(flex-start, space-between, column);
+
+  .daily-forecast {
+    @include flex(flex-end, center);
+    margin-top: 30px;
+  }
+}

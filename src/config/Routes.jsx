@@ -4,6 +4,7 @@ import WeatherPage from '../pages/weatherPage/WeatherPage';
 import WorldWeatherPage from '../pages/worldWeatherPage/WorldWeatherPage';
 import FeedbackPage from '../pages/feedbackPage/FeedbackPage';
 import FeedbackSuccessPage from '../pages/feedbackSuccessPage/FeedbackSuccessPage';
+import CitiesListPage from '../pages/citiesListPage/CitiesListPage';
 
 export const routes = [
   {
@@ -12,8 +13,9 @@ export const routes = [
     isExact: true
   },
   {
-    path: '/worldWeather',
-    component: WorldWeatherPage
+    path: '/world_weather',
+    component: CitiesListPage,
+    isExact: true
   },
   {
     path: '/feedback',
@@ -23,6 +25,10 @@ export const routes = [
   {
     path: '/feedback/success',
     component: FeedbackSuccessPage
+  },
+  {
+    path: '/world_weather/*',
+    component: WorldWeatherPage
   }
 ];
 
