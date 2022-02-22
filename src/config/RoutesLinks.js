@@ -6,7 +6,7 @@ export const routes = [
   },
   {
     display: 'World weather',
-    path: '/worldWeather'
+    path: '/world_weather'
   },
   {
     display: 'Feedback',
