@@ -6,6 +6,7 @@ const variables = [
   '--nav-button-hover',
   '--fields-background',
   '--switcher-background',
+  '--burger-background',
 ];
 
 const changeCssRootVariables = (theme) => {

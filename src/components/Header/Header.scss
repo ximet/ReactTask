@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .header {
   display: flex;
   align-items: center;
@@ -5,38 +7,16 @@
   padding: .5rem 2rem;
   box-shadow: var(#{--header-shadow});
 
-  &-wrapper{
-    display: flex;
-    align-items: center;
-    width: 100%;
+  @media(max-width: 1080px) {
+    padding: .5rem 1rem;
   }
 
-  &__logo {
-    color: rgb(87, 89, 233);
-    font-size: 2rem;
-    margin-right: 10%;
-  }
-
-  & .menu__list {
-    display: flex;
-    margin-right: 2rem;
-
-    &-link {
-      color: var(--text-color);
-      padding: 1rem 3.5rem;
-      font-size: 1.2rem;
-      transition: color 0.2s linear;
-
-      &--is-active {
-        padding: 1rem 3.5rem;
-        font-size: 1.2rem;
-        border-bottom: 2px solid #007FFF;
-      }
-
-      &:hover {
-        background-color: var(--nav-button-hover);
-        transition: background-color .3s linear;
-      }
+  @include breakpoint (lg) {
+    .menu{
+      display: none;
+    }
+    .mobile-navigation{
+      display: block;
     }
   }
 }

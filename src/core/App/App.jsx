@@ -10,7 +10,6 @@ import MainPage from '../../components/MainPage/MainPage';
 import InfoPage from '../../components/InfoPage/InfoPage';
 import FeedbackPage from '../../components/FeedbackPage/FeedbackPage';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
-import WorldWeatherPage from '../../components/WorldWeatherPage/WorldWeatherPage';
 import SelectedCityPage from '../../components/SelectedCityPage/SelectedCityPage';
 import SnackBar from '../../components/SnackBar/SnackBar';
 import Portal from '../../components/Portal/Portal';
@@ -46,16 +45,13 @@ function App() {
                 <Route exact path="/">
                   <MainPage />
                 </Route>
-                <Route path="/info">
+                <Route exact path="/info">
                   <InfoPage />
                 </Route>
-                <Route path="/feedback">
+                <Route exact path="/feedback">
                   <FeedbackPage />
                 </Route>
-                <Route exact path="/world">
-                  <WorldWeatherPage />
-                </Route>
-                <Route path="/world/:name">
+                <Route path="/:id">
                   <SelectedCityPage />
                 </Route>
                 <Route>

@@ -4,7 +4,6 @@ import weatherApi from '../../api/weatherApi';
 
 import Preloader from '../Preloader/Preloader';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
-import worldCitiesInfo from '../../MOCK/mock_worldCitiesInfo';
 
 function SelectedCityPage() {
   const params = useParams();
@@ -15,15 +14,16 @@ function SelectedCityPage() {
   const [nextWeekWeather, setNextWeekWeather] = useState(null);
 
   useEffect(() => {
-    const cityName = params.name.replaceAll('_', ' ');
-    const cityData = worldCitiesInfo.find((city) => city.name === cityName);
-    const { location } = cityData;
+    const cityId = params.id;
 
-    weatherApi.getLocationInfo(location).then(setLocationInfo);
-    weatherApi.getCurrentWeather(location).then(setCurrentWeather);
-    weatherApi.getTodaysWeather(location).then(setTodaysWeather);
-    weatherApi.getNextWeekWeather(location).then(setNextWeekWeather);
-  }, []);
+    weatherApi.getLocationInfoUsingId(cityId).then((data) => {
+      const location = `${data.lon},${data.lat}`;
+      setLocationInfo(data);
+      weatherApi.getCurrentWeather(location).then(setCurrentWeather);
+      weatherApi.getTodaysWeather(location).then(setTodaysWeather);
+      weatherApi.getNextWeekWeather(location).then(setNextWeekWeather);
+    });
+  }, [params]);
 
   return (
     (locationInfo && currentWeather && todaysWeather && nextWeekWeather)

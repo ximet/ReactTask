@@ -11,13 +11,17 @@ function NextWeekWeatherItem({ data }) {
 
   return (
     <div className="nextweek__card">
-      <div className="nextweek__card-item">{date}</div>
-      <img className="nextweek__card-img" src={`https://developer.foreca.com/static/images/symbols/${data.symbol}.png`} alt="weather" />
-      <CurrentWeatherItem name="Max Temp" data={`${data.maxTemp}°C`} />
-      <CurrentWeatherItem name="Min Temp" data={`${data.minTemp}°C`} />
-      <CurrentWeatherItem name="Max Wind" data={`${data.maxWindSpeed} m/s`} />
-      <CurrentWeatherItem name="Precipitation" data={`${data.precipAccum} mm`} />
-      <CurrentWeatherItem name="Wind direction" data={`${data.windDir} deg`} />
+      <div className="nextweek__card-title">
+        <div className="nextweek__card-item">{date}</div>
+        <img className="nextweek__card-img" src={`https://developer.foreca.com/static/images/symbols/${data.symbol}.png`} alt="weather" />
+      </div>
+      <div className="nextweek__card-content">
+        <CurrentWeatherItem name="Max Temp" data={`${data.maxTemp}°C`} />
+        <CurrentWeatherItem name="Min Temp" data={`${data.minTemp}°C`} />
+        <CurrentWeatherItem name="Max Wind" data={`${data.maxWindSpeed} m/s`} />
+        <CurrentWeatherItem name="Precipitation" data={`${data.precipAccum} mm`} />
+        <CurrentWeatherItem name="Wind direction" data={`${data.windDir} deg`} />
+      </div>
     </div>
   );
 }
