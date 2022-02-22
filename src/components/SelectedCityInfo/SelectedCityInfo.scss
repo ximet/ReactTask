@@ -1,11 +1,25 @@
+@import '../../variables.scss';
+
 .city{
   padding: 1rem;
   color: var(--text-color);
   transition: color .3s linear;
 
+  @include breakpoint (lg) {
+    padding: 0;
+  }
+
   &__title{
     font-size: 4rem;
     font-weight: bold;
+  
+    @include breakpoint (md) {
+      font-size: 3rem;
+    }
+
+    @include breakpoint (sm) {
+      font-size: 2rem;
+    }
   }
 
   &__date{
@@ -32,19 +46,30 @@
     margin-bottom: 5rem;
 
     &-weather{
-      width: 50%;
-      min-width: 330px;
+      max-width: 470px;
+      width: 100%;
       margin-bottom: 2rem;
+      margin-right: 20px;
       border-right: 2px solid var(--text-color);
       transition: border .3s linear;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @include breakpoint (lg) {
+        border-right: none;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+      }
     }
 
     &-img{
       height: 100%;
       margin-right: 3rem;
+
+      @include breakpoint (sm) {
+        margin-right: 1rem;
+      }
     }
 
     &-temperature{
@@ -52,6 +77,10 @@
         position: relative;
         font-size: 8rem;
         margin-right: 4rem;
+
+        @include breakpoint (sm) {
+          font-size: 6rem;
+        }
 
         &::after{
           position: absolute;
@@ -71,11 +100,20 @@
     }
 
     &-info{
-      width: 50%;
-      min-width: 330px;
+      width: 100%;
+      max-width: 470px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 1rem;
+
+      @include breakpoint (lg) {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+      }
+
+      @include breakpoint (sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   }
 
@@ -88,6 +126,10 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+
+    @include breakpoint (sm) {
+      justify-content: space-around;
+    }
   }
 
   &__nextweek{

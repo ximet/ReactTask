@@ -1,10 +1,20 @@
+@import '../../variables.scss';
+
 .todays__card{
   padding: 1.2rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: center;
+  max-width: 120px;
+  width: 100%;
   margin-bottom: 1rem;
   margin-right: 1rem;
   background-color: var(#{--cards-background});
+
+  @include breakpoint (md) {
+    padding: 1rem;
+    font-size: 1.6rem;
+    max-width: 110px;
+  }
 
   &-title{
     margin-bottom: 1rem;

@@ -70,6 +70,6 @@ $burger-background-dark: #1d1d1d;
     @media(max-width: 424px) {@content;}
   }
   @if $point == xs {
-    @media(max-width: 319px) {@content;}
+    @media(max-width: 374px) {@content;}
   }
 }

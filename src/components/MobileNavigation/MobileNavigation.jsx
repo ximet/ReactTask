@@ -7,7 +7,7 @@ import burgerCloseIcon from '../../assets/images/burger-close.png';
 import './MobileNavigation.scss';
 
 function MobileNavigation() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => setIsOpen((prev) => !prev);
 
