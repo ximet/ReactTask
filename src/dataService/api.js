@@ -1,6 +1,10 @@
 const WEATHER_API_URL = 'https://pfa.foreca.com';
 const TOKEN_URL = 'http://localhost:5000/token';
-const SYMBOL_URL = 'https://developer.foreca.com/static/images/symbols/';
+
+const IMAGES_URL = {
+  symbol: 'https://developer.foreca.com/static/images/symbols/',
+  flag: 'https://flagcdn.com/32x24/'
+}
 
 const PATHS = {
   location: '/api/v1/location/',
@@ -49,8 +53,8 @@ export async function getHourlyForecastFromApi(location) {
   return hourlyData.forecast;
 }
 
-export function getSymbolUrl(symbolCode) {
-  return SYMBOL_URL + symbolCode + '.png';
+export function getImagesURL(type, param) {
+  return IMAGES_URL[type] + param + '.png';
 }
 
 async function getLocationData(position) {

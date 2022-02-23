@@ -1,5 +1,10 @@
 import { getDayOfMonth, getDayOfWeek, formatTime, formatDate, upperCaseLetter } from '../assets';
-import { getSymbolUrl } from './api'; 
+import { getImagesURL } from './api'; 
+
+const IMAGES_TYPE = {
+  flag: 'flag',
+  symbol: 'symbol'
+}
 
 export function formatCurrentForecastData(forecastData, locationData) {
   const {
@@ -20,7 +25,7 @@ export function formatCurrentForecastData(forecastData, locationData) {
     city: name,
     temperature,
     feelsLikeTemp,
-    symbolUrl: getSymbolUrl(symbol),
+    symbolUrl: getImagesURL(IMAGES_TYPE.symbol, symbol),
     symbol: symbol,
     symbolPhrase: upperCaseLetter(symbolPhrase),
     time: formatDate(time),
@@ -69,7 +74,7 @@ function formatDailyForecastItemData(data) {
     dayOfWeek: [getDayOfWeek(date), getDayOfWeek(date, 'full')],
     maxTemp,
     minTemp,
-    symbolUrl: getSymbolUrl(symbol),
+    symbolUrl: getImagesURL(IMAGES_TYPE.symbol, symbol),
     symbol: symbol,
     symbolPhrase: upperCaseLetter(symbolPhrase),
     details: {
@@ -103,7 +108,7 @@ function formatHourlyForecastItemData(data) {
   const formattedData = {
     date: time,
     time: formatDate(time),
-    symbolUrl: getSymbolUrl(symbol),
+    symbolUrl: getImagesURL(IMAGES_TYPE.symbol, symbol),
     symbol: symbol,
     temperature
   };
@@ -121,4 +126,37 @@ export function filterHourForecastData(hourlyData, id) {
   const formattedDate = hourlyData.filter(data => data.date.includes(id));
 
   return formattedDate;
+}
+
+export function formatLocationsInfo(locationsInfo, flagsDomain) {
+  const countries = getCountries(locationsInfo);
+  const formattedLocationsInfo = [];
+
+  countries.forEach(country => {
+    formattedLocationsInfo.push({country, flagURL: getImagesURL(IMAGES_TYPE.flag, flagsDomain[country])});
+  })
+
+  formattedLocationsInfo.forEach(formattedLocationInfo => addCities(formattedLocationInfo, locationsInfo))
+
+  return formattedLocationsInfo;
+}
+
+function getCountries(locationsInfo) {
+  const countries = new Set();
+
+  locationsInfo.forEach(locationInfo => {
+      countries.add(locationInfo.country);
+  })
+
+  return countries;
+}
+
+function addCities(formattedLocationInfo, locationsInfo) {
+  const cities = [];
+
+  locationsInfo.forEach(locationInfo => {
+      if(locationInfo.country === formattedLocationInfo.country) cities.push(locationInfo.city);
+  })
+
+  formattedLocationInfo.cities = cities;
 }

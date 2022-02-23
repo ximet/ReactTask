@@ -1,0 +1,23 @@
+@import '../../scss';
+
+.countryContainer {
+    margin-bottom: 10px;
+
+    .country {
+        margin-left: 5px;
+        @include primaryTitle;
+    }
+
+    .cities {
+        margin-left: 50px;
+        @include secondaryTitle;
+
+        .link {
+            color: $text-color;
+        }
+    
+        .link:hover {
+            color: $text-color-dark;
+        }
+    }
+}
