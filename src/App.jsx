@@ -17,7 +17,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      <NavBar token={token} />
       <Switch>
         <Route path="/info" component={Info} />
         <Route path="/feedback" component={Feedback} />
