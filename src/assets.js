@@ -22,7 +22,7 @@ export function getDayOfWeek(date, dataset = 'concise') {
 
 export function getDayOfMonth(date) {
   const newDate = new Date(date);
-  const month = newDate.toLocaleString('default', { month: 'long' })
+  const month = newDate.toLocaleString('default', { month: 'long' });
   const day = newDate.getDate();
 
   return `${day} ${month}`;
@@ -39,4 +39,24 @@ export function formatDate(date) {
   const lastIndex = date.lastIndexOf('+');
 
   return date.slice(firstIndex + 1, lastIndex);
+}
+
+export function sortLocationsInfo(locationsInfo) {
+  sortCountries(locationsInfo);
+
+  locationsInfo.forEach(locationInfo => sortCities(locationInfo.cities));
+}
+
+function sortCountries(locationsInfo) {
+  locationsInfo.sort((firstCountry, secondCountry) =>
+    compareStrings(firstCountry.country, secondCountry.country)
+  );
+}
+
+function sortCities(cities) {
+  cities.sort((firstCity, secondCity) => compareStrings(firstCity, secondCity));
+}
+
+function compareStrings(a, b) {
+  return a > b ? 1 : a < b ? -1 : 0;
 }

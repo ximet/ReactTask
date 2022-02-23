@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import classes from './citiesListPage.scss';
+import classes from './citiesListPage.scss'
 import { locationsInfo, flagsDomain } from './locationsInfo';
+import { sortLocationsInfo } from '../../assets';
 import { formatLocationsInfo } from '../../dataService/formatter';
 
 const countriesInfo = formatLocationsInfo(locationsInfo, flagsDomain);
+sortLocationsInfo(countriesInfo);
 
 function Countries(props) {
-  const { countriesInfo } = props;
+  const {countriesInfo} = props;
 
   return (
     <ul>
@@ -18,11 +20,11 @@ function Countries(props) {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 function Cities(props) {
-  const { citiesInfo } = props;
+  const {citiesInfo} = props;
 
   return (
     <ul className={classes.cities}>
@@ -30,15 +32,18 @@ function Cities(props) {
         <li key={city} className={classes.city}>
           <Link to={`/world_weather/${city}`} className={classes.link}>
             {city}
-          </Link>
+          </Link> 
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 function CitiesListPage() {
-  return <Countries countriesInfo={countriesInfo} />;
+  
+  return (
+    <Countries countriesInfo={countriesInfo} />
+  );
 }
 
 export default CitiesListPage;
