@@ -26,7 +26,7 @@
 
     .temperature {
       padding: 15px 0 0 $font-size * 1.3;
-      color: $text-color;
+      color: var(#{--text-color-secondary-default});
       @include description;
 
       &_day,
@@ -43,6 +43,7 @@
         position: absolute;
         left: -$font-size * 1.2;
         top: 0;
+        filter: var(#{--icon-filter-default});
       }
 
       &_night::before {
@@ -57,11 +58,11 @@
 
   .active {
     margin-bottom: 30px;
-    background-color: $body-bg;
-    color: $text-color-light;
+    background-color: var(#{--body-bg-default});
+    color: var(#{--text-color-active-default});
 
     .temperature {
-      color: $text-color-light;
+      color: var(#{--text-color-active-default});
 
       &_day::before,
       &_night::before {

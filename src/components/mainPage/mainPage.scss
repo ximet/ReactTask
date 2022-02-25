@@ -2,11 +2,11 @@
 
 .main {
   width: 100%;
-  background-color: $main-bg;
+  background-color: var(#{--main-bg-default});
   padding: 30px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  color: $text-color-dark;
+  color: var(#{--text-color-primary-default});
   background-size: 100vh auto;
   background-repeat: no-repeat;
 }

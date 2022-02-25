@@ -9,20 +9,20 @@
     a {
       padding: 10px;
       display: block;
-      color: $text-color;
+      color: var(#{--text-color-secondary-default});
       position: relative;
     }
   }
 
   .active {
-    background-color: $main-bg;
-    color: $text-color-dark;
+    background-color: var(#{--main-bg-default});
+    color: var(#{--text-color-primary-default});
     transition: color 1s ease-out;
   }
 
   .active:target {
     color: rgb(80, 60, 60);
-    background-color: $main-bg;
+    background-color: var(#{--main-bg-default});
   }
 
   .active::after,
@@ -38,15 +38,15 @@
   }
 
   .active::after {
-    border-right: 5px solid $main-bg;
-    border-bottom: 5px solid $main-bg;
+    border-right: 5px solid var(#{--main-bg-default});
+    border-bottom: 5px solid var(#{--main-bg-default});
   }
 
   .active::before {
     top: auto;
     bottom: -20px;
     border-radius: 0 50% 0 0;
-    border-right: 5px solid $main-bg;
-    border-top: 5px solid $main-bg;
+    border-right: 5px solid var(#{--main-bg-default});
+    border-top: 5px solid var(#{--main-bg-default});
   }
 }

@@ -14,8 +14,8 @@ html {
 
 body {
   height: 100%;
-  background-color: $body-bg;
-  color: $text-color;
+  background-color: var(#{--body-bg-default});
+  color: var(#{--text-color-secondary-default});
   font-family: $font-family;
   font-weight: $weight-regular;
   font-size: $font-size;

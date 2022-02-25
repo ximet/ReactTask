@@ -20,7 +20,7 @@
     &__description {
       margin-top: 10px;
       @include secondaryTitle;
-      color: $text-color;
+      color: var(#{--text-color-secondary-default});
     }
   }
 }
