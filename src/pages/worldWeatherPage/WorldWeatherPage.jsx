@@ -1,6 +1,6 @@
 import classes from './worldWeatherPage.scss';
 import { useHistory } from 'react-router-dom';
-import { citiesInfo } from '../citiesListPage/CitiesListPage';
+import { locationsInfo } from '../citiesListPage/locationsInfo';
 import FullForecast from '../../components/fullForecast/FullForecast';
 
 function getCity(path) {
@@ -11,7 +11,7 @@ function getCity(path) {
 
 function getLocationByCity(path) {
   const city = getCity(path);
-  const cityData = citiesInfo.filter(cityData => cityData.city === city);
+  const cityData = locationsInfo.filter(cityData => cityData.city === city);
 
   return cityData[0].location;
 }
