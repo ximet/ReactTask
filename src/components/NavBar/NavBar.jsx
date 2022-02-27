@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './NavBar.module.css';
+import weatherLogo from '../../../public/images/weatherLogo.png';
 
 function NavBar() {
   return (
     <div className={classes.navBar}>
       <div className={classes.navBar_container}>
         <Link to="/" className={classes.navBar_logo}>
-          WeatherLogo <i className={classes['fas fa-typo3']} />
+          <img src={weatherLogo} alt="weather logo" className={classes.weather_logo} />
+          FakeForeca
         </Link>
         <ul className={classes.navBar_menu}>
           <li className={classes.navBar_item}>
