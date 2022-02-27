@@ -1,16 +1,16 @@
 .daily_weather__main_text {
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
 .daily_weather__phrase {
-  font-size: 11px;
+  font-size: 0.8rem;
   padding-top: 2px;
   padding-bottom: 2px;
   color: rgba(37, 37, 37, 0.7);
 }
 
 img {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
 }

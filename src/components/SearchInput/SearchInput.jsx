@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './SearchInput.module.css';
 import weatherApi from '../../services/WeatherApi';
 import searchIcon from '../../../public/icons/search.png';
+import cancelIcon from '../../../public/icons/x.png';
 import { debounce } from '../../helpers/debounceHelper';
 
 const sortSearchResults = searchResults => {
@@ -11,9 +12,17 @@ const sortSearchResults = searchResults => {
   const sortByCity = sortByCountry.sort(function (firstCity, secondCity) {
     return firstCity.name.localeCompare(secondCity.name);
   });
-  const sortedData = sortByCity;
+  const sortedDataFirstTen = sortByCity.slice(0, 10);
 
-  return sortedData;
+  return sortedDataFirstTen;
+};
+
+const formatCityTile = city => {
+  const formattedTile = `${city.name}, ${city.country}`;
+  if (city.state) {
+    return formattedTile.concat(`, ${city.state}`);
+  }
+  return formattedTile;
 };
 
 function SearchInput({ token }) {
@@ -42,9 +51,17 @@ function SearchInput({ token }) {
     setSearchQuery(newValue);
   };
 
+  const handleClear = () => {
+    setSearchResults([]);
+    setSearchQuery('');
+  };
+
   return (
     <div className={classes.search_wrapper}>
       <div className={classes.search_form}>
+        <button type="button" className={classes.search_button}>
+          <img src={searchIcon} alt="search icon" className={classes.search_icon} />
+        </button>
         <label htmlFor="searchInput" className={classes.search_label}>
           <input
             id="searchInput"
@@ -55,15 +72,15 @@ function SearchInput({ token }) {
             className={classes.search_input}
             onChange={handleChange}
           />
-          <img src={searchIcon} alt="search icon" className={classes.search_icon} />
         </label>
+        <button type="button" className={classes.star_button} onClick={handleClear}>
+          <img src={cancelIcon} alt="cancel icon" className={classes.cancel_icon} />
+        </button>
       </div>
       <div className={classes.search_dropdown}>
         {sortSearchResults(searchResults).map(item => (
           <div key={item.id} className={classes.search_dropdown_item}>
-            <div>
-              {item.name}, {item.country}
-            </div>
+            <div>{formatCityTile(item)}</div>
           </div>
         ))}
       </div>

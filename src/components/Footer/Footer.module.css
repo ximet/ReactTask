@@ -1,6 +1,6 @@
 .footer_container {
   background-color: #242424;
-  padding: 4rem 0 2rem 0;
+  padding: 2rem 0 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,5 @@
 
 .footer_text {
   color: rgb(255, 255, 255);
-  margin-bottom: 24px;
   font-size: 20px;
 }

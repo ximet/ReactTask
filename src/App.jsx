@@ -7,6 +7,7 @@ import Home from './views/Home/Home';
 import Info from './views/Info/Info';
 import Feedback from './views/Feedback/Feedback';
 import weatherApi from './services/WeatherApi';
+import ScrollToTop from './helpers/scrollToTop';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <NavBar token={token} />
       <Switch>
         <Route path="/info" component={Info} />

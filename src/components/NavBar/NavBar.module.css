@@ -52,6 +52,10 @@
   font-size: 1.3em;
 }
 
+.navBar_active_link {
+  border-bottom: 2px solid #fff;
+}
+
 .menu_icon {
   display: none;
   @media screen and (max-width: 960px) {

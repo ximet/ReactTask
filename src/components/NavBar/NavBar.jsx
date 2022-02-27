@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SearchInput from '../SearchInput/SearchInput';
 import classes from './NavBar.module.css';
 
@@ -8,9 +8,9 @@ function NavBar({ token }) {
     <div className={classes.navBar}>
       <div className={classes.navBar_container}>
         <div>
-          <Link to="/" className={classes.navBar_logo}>
+          <NavLink to="/" className={classes.navBar_logo}>
             WeatherLogo <i className="fas fa-typo3" />
-          </Link>
+          </NavLink>
         </div>
 
         <div className={classes.search_menu}>
@@ -18,19 +18,32 @@ function NavBar({ token }) {
 
           <ul className={classes.navBar_menu}>
             <li className={classes.navBar_item}>
-              <Link to="/" className={classes.navBar_link}>
+              <NavLink
+                exact
+                to="/"
+                className={classes.navBar_link}
+                activeClassName={classes.navBar_active_link}
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className={classes.navBar_item}>
-              <Link to="/info" className={classes.navBar_link}>
+              <NavLink
+                to="/info"
+                className={classes.navBar_link}
+                activeClassName={classes.navBar_active_link}
+              >
                 Info
-              </Link>
+              </NavLink>
             </li>
             <li className={classes.navBar_item}>
-              <Link to="/feedback" className={classes.navBar_link}>
+              <NavLink
+                to="/feedback"
+                className={classes.navBar_link}
+                activeClassName={classes.navBar_active_link}
+              >
                 Feedback
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
