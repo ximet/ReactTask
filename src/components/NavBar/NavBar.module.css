@@ -1,8 +1,6 @@
 .navBar {
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
   height: 80px;
-  display: flex;
-  justify-content: center;
   align-items: center;
   position: sticky;
   top: 0;
@@ -11,10 +9,15 @@
 
 .navBar_container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 80px;
   max-width: 1500px;
+}
+
+.search_menu {
+  display: inline-flex;
+  align-items: center;
 }
 
 .navBar_logo {
@@ -28,19 +31,10 @@
   align-items: center;
 }
 
-.fas.fa-typo3 {
-  margin-left: 0.5rem;
-  font-size: 1.8rem;
-}
-
 .navBar_menu {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 10px;
+  display: inline-flex;
   list-style: none;
   text-align: center;
-  width: 60vw;
-  justify-content: end;
   margin-right: 2rem;
 }
 
@@ -55,5 +49,22 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
-  font-size: 1.1em;
+  font-size: 1.3em;
+}
+
+.navBar_active_link {
+  border-bottom: 2px solid #fff;
+}
+
+.menu_icon {
+  display: none;
+  @media screen and (max-width: 960px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
 }
