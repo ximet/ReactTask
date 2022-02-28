@@ -1,12 +1,14 @@
 import { ThemeTypes, ThemeContext } from '../context/ThemeContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { changeVariables } from '../model/ChangeVariables';
 import { Storage } from '../dataService/storage';
 
 function ThemeProvider({ children, ...props }) {
   const [theme, setTheme] = useState(Storage.getTheme() || ThemeTypes.light);
 
-  changeVariables(theme);
+  useEffect(() => {
+    changeVariables(theme);
+  }, []) 
 
   function changeTheme(theme) {
     Storage.setTheme(theme);
