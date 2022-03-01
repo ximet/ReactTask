@@ -1,7 +1,7 @@
 import classes from './feedbackForm.scss';
 import { useHistory } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
-import DataService from '../../dataService/DataService';
+import { Storage } from '../../dataService/storage';
 
 function FeedbackForm() {
   const email = useInput('', { isEmpty: true, email: true });
@@ -19,7 +19,7 @@ function FeedbackForm() {
       review: review.value
     };
 
-    DataService.setReview(formData);
+    Storage.setReview(formData);
 
     history.push('/feedback/success');
   }

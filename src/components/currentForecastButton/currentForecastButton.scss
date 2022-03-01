@@ -9,6 +9,7 @@
   display: inline-block;
   background-color: $card-bg;
   @include secondaryTitle;
+  color: var(#{--text-color-primary-default});
   font-family: $font-family;
   text-align: center;
   cursor: pointer;
@@ -16,6 +17,6 @@
 
 .active {
   margin-bottom: 20px;
-  background-color: $body-bg;
-  color: $text-color-light;
+  background-color: var(#{--body-bg-default});
+  color: var(#{--text-color-active-default});
 }

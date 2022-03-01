@@ -1,11 +1,25 @@
-$body-bg: #68bde7;
-$main-bg: #eefaff;
+$body-bg-light: #68bde7;
+$body-bg-dark: #3e748f;
+
+$main-bg-light: #eefaff;
+$main-bg-dark: #303132;
+
 $card-bg: #68bde733;
 
-$text-color-light: #eefaff;
-$text-color-dark: #3f3d56;
-$text-color: #34799b;
-$color-danger: #cc0000;
+$text-color-active-light: #eefaff;
+$text-color-active-dark: #eefaff;
+
+$text-color-primary-light: #3f3d56;
+$text-color-primary-dark: #eefaff;
+
+$text-color-secondary-light: #34799b;
+$text-color-secondary-dark: #b7d6e4;
+
+$icon-filter-light: invert(0);
+$icon-filter-dark: invert(1);
+
+$color-danger-light: #cc0000;
+$color-danger-dark: #ff0505;
 
 $font-size: 1.5rem;
 $font-family: 'Nunito';
@@ -14,3 +28,33 @@ $weight-regular: 400;
 $weight-light: 500;
 
 $header-height: 10vh;
+
+:root {
+  --body-bg-dark: #{$body-bg-dark};
+  --body-bg-light: #{$body-bg-light};
+  --body-bg-default: var(#{--body-bg-light});
+
+  --main-bg-dark: #{$main-bg-dark};
+  --main-bg-light: #{$main-bg-light};
+  --main-bg-default: var(#{--main-bg-light});
+
+  --text-color-active-light: #{$text-color-active-light};
+  --text-color-active-dark: #{$text-color-active-dark};
+  --text-color-active-default: #{$text-color-active-light};
+
+  --text-color-primary-light: #{$text-color-primary-light};
+  --text-color-primary-dark: #{$text-color-primary-dark};
+  --text-color-primary-default: #{$text-color-primary-light};
+
+  --text-color-secondary-light: #{$text-color-secondary-light};
+  --text-color-secondary-dark: #{$text-color-secondary-dark};
+  --text-color-secondary-default: #{$text-color-secondary-light};
+
+  --icon-filter-light: #{$icon-filter-light};
+  --icon-filter-dark: #{$icon-filter-dark};
+  --icon-filter-default: #{$icon-filter-light};
+
+  --color-danger-light: #{$color-danger-light};
+  --color-danger-dark: #{$color-danger-dark};
+  --color-danger-default: #{$color-danger-light};
+}

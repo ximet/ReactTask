@@ -24,6 +24,6 @@
 
   .description {
     @include secondaryTitle;
-    color: $text-color;
+    color: var(#{--text-color-secondary-default});
   }
 }

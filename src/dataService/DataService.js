@@ -13,7 +13,6 @@ export default {
   getCurrentForecast,
   getDailyForecast,
   getHourlyForecast,
-  setReview
 };
 
 async function getCurrentForecast(location) {
@@ -38,9 +37,3 @@ async function getHourlyForecast(location) {
   return formattedData;
 }
 
-function setReview(review) {
-  const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-  reviews.push(review);
-
-  localStorage.setItem('reviews', JSON.stringify(reviews));
-}

@@ -24,10 +24,10 @@
 
   .link {
     @include secondaryTitle;
-    color: $text-color;
+    color: var(#{--text-color-secondary-default});
   }
 
   .link:hover {
-    color: $text-color-dark;
+    color: var(#{--text-color-primary-default});
   }
 }

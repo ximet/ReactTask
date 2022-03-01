@@ -7,7 +7,7 @@
   padding: 10px;
   border-radius: 5px;
   background-color: $card-bg;
-  color: $text-color;
+  color: var(#{--text-color-secondary-default});
   text-align: center;
   @include description;
 

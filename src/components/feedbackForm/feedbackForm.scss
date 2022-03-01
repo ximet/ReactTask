@@ -17,14 +17,14 @@
 
     label::after {
       content: '*';
-      color: $color-danger;
+      color: var(#{--color-danger-default});
       position: absolute;
       right: -10px;
       top: 0;
     }
 
     .error {
-      color: $color-danger;
+      color: var(#{--color-danger-default});
       font-size: 1rem;
     }
 
@@ -46,7 +46,7 @@
 
     .input:focus,
     .textarea:focus {
-      border: 2px solid $body-bg;
+      border: 2px solid var(#{--body-bg-default});
     }
   }
 
@@ -54,9 +54,9 @@
     padding: 5px;
     width: 100%;
     border-radius: 5px;
-    background-color: $body-bg;
+    background-color: var(#{--body-bg-default});
     @include secondaryTitle;
-    color: $text-color-light;
+    color: var(#{--text-color-active-default});
   }
 
   .button:disabled {
