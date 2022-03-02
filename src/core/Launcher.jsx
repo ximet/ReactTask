@@ -1,32 +1,20 @@
 import React, { StrictMode, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
 
-import { SnackbarContext, ThemeContext } from './contexts';
-import { getLocalstorageItem, setLocalstorageItem } from '../utils/localStorage';
-import changeCssRootVariables from '../utils/changeCssRootVariables';
+import store from '../store/store';
+import { SnackbarContext } from './contexts';
 
 function Launcher({ children }) {
   const [snackbar, setSnackbar] = useState({ isOpen: false, message: '' });
   const memoizedSnackbar = useMemo(() => [snackbar, setSnackbar], [snackbar]);
 
-  const [theme, setTheme] = useState(getLocalstorageItem('theme') || 'light');
-
-  changeCssRootVariables(theme);
-
-  const changeTheme = () => {
-    const newTheme = (theme === 'light') ? 'dark' : 'light';
-
-    setTheme(newTheme);
-    changeCssRootVariables(newTheme);
-    setLocalstorageItem('theme', newTheme);
-  };
-
   return (
     <StrictMode>
       <SnackbarContext.Provider value={memoizedSnackbar}>
-        <ThemeContext.Provider value={{ theme, changeTheme }}>
+        <Provider store={store}>
           {children}
-        </ThemeContext.Provider>
+        </Provider>
       </SnackbarContext.Provider>
     </StrictMode>
   );
