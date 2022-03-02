@@ -32,11 +32,11 @@ $header-height: 10vh;
 :root {
   --body-bg-dark: #{$body-bg-dark};
   --body-bg-light: #{$body-bg-light};
-  --body-bg-default: var(#{--body-bg-light});
+  --body-bg-default: #{--body-bg-light};
 
   --main-bg-dark: #{$main-bg-dark};
   --main-bg-light: #{$main-bg-light};
-  --main-bg-default: var(#{--main-bg-light});
+  --main-bg-default: #{--main-bg-light};
 
   --text-color-active-light: #{$text-color-active-light};
   --text-color-active-dark: #{$text-color-active-dark};

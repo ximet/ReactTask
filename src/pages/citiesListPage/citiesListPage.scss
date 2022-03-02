@@ -1,23 +1,5 @@
 @import '../../scss';
 
-.countryContainer {
-    margin-bottom: 10px;
-
-    .country {
-        margin-left: 5px;
-        @include primaryTitle;
-    }
-
-    .cities {
-        margin-left: 50px;
-        @include secondaryTitle;
-
-        .link {
-            color: var(#{--text-color-secondary-default});
-        }
-    
-        .link:hover {
-            color: var(#{--text-color-primary-default});
-        }
-    }
+.search {
+    margin-bottom: 30px;
 }

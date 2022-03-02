@@ -1,49 +1,31 @@
-import { Link } from 'react-router-dom';
-import classes from './citiesListPage.scss'
-import { locationsInfo, flagsDomain } from './locationsInfo';
-import { sortLocationsInfo } from '../../assets';
-import { formatLocationsInfo } from '../../dataService/formatter';
+import classes from './citiesListPage.scss';
+import React from 'react';
+import { connect } from 'react-redux';
+import { getFoundedLocations } from '../../redux/selectors';
+import Countries from '../../components/countries/countries';
+import Search from '../../components/search/Search';
 
-const countriesInfo = formatLocationsInfo(locationsInfo, flagsDomain);
-sortLocationsInfo(countriesInfo);
+class CitiesListPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-function Countries(props) {
-  const {countriesInfo} = props;
-
-  return (
-    <ul>
-      {countriesInfo.map(countryInfo => (
-        <li key={countryInfo.country} className={classes.countryContainer}>
-          <img src={countryInfo.flagURL}></img>
-          <span className={classes.country}>{countryInfo.country}</span>
-          <Cities citiesInfo={countryInfo.cities} />
-        </li>
-      ))}
-    </ul>
-  )
+  render() {
+    return (
+      <div>
+        <div className={classes.search}>
+          <Search />
+        </div>
+        {this.props.foundedCountries.length ? <Countries countriesInfo={this.props.foundedCountries} /> : 'No data found'}
+     </div>
+    )
+  }
 }
 
-function Cities(props) {
-  const {citiesInfo} = props;
-
-  return (
-    <ul className={classes.cities}>
-      {citiesInfo.map(city => (
-        <li key={city} className={classes.city}>
-          <Link to={`/world_weather/${city}`} className={classes.link}>
-            {city}
-          </Link> 
-        </li>
-      ))}
-    </ul>
-  )
+const mapStateToProps = state => {
+  return {
+    foundedCountries: getFoundedLocations(state),
+  };
 }
 
-function CitiesListPage() {
-  
-  return (
-    <Countries countriesInfo={countriesInfo} />
-  );
-}
-
-export default CitiesListPage;
+export default connect(mapStateToProps, null)(CitiesListPage); 

@@ -1,0 +1,10 @@
+@import '../../scss';
+
+.countryContainer {
+    margin-bottom: 10px;
+
+    .country {
+        margin-left: 5px;
+        @include primaryTitle;
+    }
+}

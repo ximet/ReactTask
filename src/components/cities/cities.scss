@@ -1,0 +1,14 @@
+@import '../../scss';
+
+.cities {
+    margin-left: 50px;
+    @include secondaryTitle;
+
+    .link {
+        color: var(#{--text-color-secondary-default});
+    }
+
+    .link:hover {
+        color: var(#{--text-color-primary-default});
+    }
+}
