@@ -1,4 +1,4 @@
-const tokenSelector = (store) => store.token.token;
-const themeSelector = (store) => store.theme.theme;
+const tokenSelector = (store) => store.token;
+const themeSelector = (store) => store.theme;
 
 export { tokenSelector, themeSelector };

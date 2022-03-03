@@ -4,7 +4,7 @@ import { SET_THEME, SET_TOKEN } from './types';
 function themeReducer(state = '', action) {
   switch (action.type) {
     case SET_THEME:
-      return { theme: action.payload };
+      return action.payload;
 
     default: return state;
   }
@@ -13,7 +13,7 @@ function themeReducer(state = '', action) {
 function tokenReducer(state = '', action) {
   switch (action.type) {
     case SET_TOKEN:
-      return { token: action.payload };
+      return action.payload;
 
     default: return state;
   }

@@ -46,7 +46,7 @@ SwitcherTheme.propTypes = {
 };
 SwitcherTheme.defaultProps = { theme: '', setTheme: () => {} };
 
-const mapStateToProps = (state) => ({ theme: state.theme.theme });
+const mapStateToProps = (state) => ({ theme: state.theme });
 const mapDispatchToProps = (dispatch) => ({ setTheme: (theme) => dispatch(setThemeAction(theme)) });
 
 export default connect(
