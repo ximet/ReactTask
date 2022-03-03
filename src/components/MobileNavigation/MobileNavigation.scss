@@ -47,6 +47,10 @@
     padding: 15px;
     font-size: 1.2rem;
 
+    &--is-active{
+      background-color: red;
+    }
+
     &:hover{
       background-color: var(--nav-button-hover);
     }

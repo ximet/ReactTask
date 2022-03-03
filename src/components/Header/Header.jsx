@@ -5,8 +5,6 @@ import Search from '../Search/Search';
 
 import SwitcherTheme from '../ThemeSwitcher/ThemeSwitcher';
 
-import SwitcherTheme from '../ThemeSwitcher/ThemeSwitcher';
-
 import './Header.scss';
 
 function Header() {
