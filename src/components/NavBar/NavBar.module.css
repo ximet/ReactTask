@@ -7,6 +7,11 @@
   z-index: 999;
 }
 
+.weather_logo {
+  width: 70px;
+  height: inherit;
+}
+
 .navBar_container {
   display: flex;
   justify-content: space-between;
@@ -21,12 +26,14 @@
 }
 
 .navBar_logo {
-  color: #fff;
+  background: -webkit-linear-gradient(45deg, #c886f4, #8cb5f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
 }
