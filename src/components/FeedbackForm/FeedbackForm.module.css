@@ -32,7 +32,7 @@ form {
 }
 
 .input_submit:hover {
-  background: dodgerblue;
+  background: coral;
   color: white;
 }
 
@@ -47,9 +47,9 @@ p {
 
 .input_error {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bolder;
-  color: rgb(255, 0, 0);
+  color: rgb(235, 0, 0);
   padding: 3px;
 }
 

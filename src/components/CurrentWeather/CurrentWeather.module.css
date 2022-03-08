@@ -11,12 +11,12 @@
 }
 
 .current_weather__location {
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: 600;
 }
 
 .current_weather__text {
-  font-size: 15px;
+  font-size: 1rem;
   padding-top: 5px;
   padding-bottom: 5px;
   color: rgba(37, 37, 37, 0.7);
