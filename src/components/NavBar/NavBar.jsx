@@ -1,31 +1,52 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import SearchInput from '../SearchInput/SearchInput';
 import classes from './NavBar.module.css';
 
-function NavBar() {
+function NavBar({ token }) {
   return (
     <div className={classes.navBar}>
       <div className={classes.navBar_container}>
-        <Link to="/" className={classes.navBar_logo}>
-          WeatherLogo <i className={classes['fas fa-typo3']} />
-        </Link>
-        <ul className={classes.navBar_menu}>
-          <li className={classes.navBar_item}>
-            <Link to="/" className={classes.navBar_link}>
-              Home
-            </Link>
-          </li>
-          <li className={classes.navBar_item}>
-            <Link to="/info" className={classes.navBar_link}>
-              Info
-            </Link>
-          </li>
-          <li className={classes.navBar_item}>
-            <Link to="/feedback" className={classes.navBar_link}>
-              Feedback
-            </Link>
-          </li>
-        </ul>
+        <div>
+          <NavLink to="/" className={classes.navBar_logo}>
+            WeatherLogo <i className="fas fa-typo3" />
+          </NavLink>
+        </div>
+
+        <div className={classes.search_menu}>
+          <SearchInput token={token} />
+
+          <ul className={classes.navBar_menu}>
+            <li className={classes.navBar_item}>
+              <NavLink
+                exact
+                to="/"
+                className={classes.navBar_link}
+                activeClassName={classes.navBar_active_link}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className={classes.navBar_item}>
+              <NavLink
+                to="/info"
+                className={classes.navBar_link}
+                activeClassName={classes.navBar_active_link}
+              >
+                Info
+              </NavLink>
+            </li>
+            <li className={classes.navBar_item}>
+              <NavLink
+                to="/feedback"
+                className={classes.navBar_link}
+                activeClassName={classes.navBar_active_link}
+              >
+                Feedback
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

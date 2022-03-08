@@ -9,7 +9,7 @@
 }
 
 .daily_weather__item {
-  margin: 10px;
+  margin: 10px 5px;
   padding: 5px;
   border-radius: 10px;
   background: rgba(245, 245, 245, 0.5);

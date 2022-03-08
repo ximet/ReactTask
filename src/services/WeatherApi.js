@@ -1,9 +1,10 @@
 const endpointHost = 'https://pfa.foreca.com';
 const WEATHER_ENDPOINT = {
   token: '/authorize/token',
-  locationInfo: '/api/v1/location/:location',
-  currentWeather: '/api/v1/current/:location',
-  dailyForecast: '/api/v1/forecast/daily/:location'
+  currentWeather: '/api/v1/current/',
+  dailyForecast: '/api/v1/forecast/daily/',
+  locationInfo: '/api/v1/location/',
+  searchLocation: '/api/v1/location/search/'
 };
 const EXPIRATION_OFFSET = 10;
 const AUTH_DATA = {
@@ -36,7 +37,7 @@ const weatherApi = {
       headers: myHeaders,
       redirect: 'follow'
     };
-    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.locationInfo}?location=${position.lon},${position.lat}`;
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.locationInfo}${position.lon},${position.lat}`;
 
     const locationInfo = await fetch(currentUrl, requestOptions)
       .then(response => response.json())
@@ -54,7 +55,7 @@ const weatherApi = {
       headers: myHeaders,
       redirect: 'follow'
     };
-    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.currentWeather}=${position.lon},${position.lat}`;
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.currentWeather}${position.lon},${position.lat}`;
 
     const currentWeather = fetch(currentUrl, requestOptions)
       .then(response => response.json())
@@ -72,7 +73,7 @@ const weatherApi = {
       headers: myHeaders,
       redirect: 'follow'
     };
-    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.dailyForecast}=${position.lon},${position.lat}`;
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.dailyForecast}${position.lon},${position.lat}`;
 
     const dailyForecast = await fetch(currentUrl, requestOptions)
       .then(response => response.json())
@@ -80,6 +81,24 @@ const weatherApi = {
       .catch(error => error);
 
     return dailyForecast;
+  },
+
+  async searchLocation(city, token) {
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${token}`);
+    const requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.searchLocation}${city}`;
+
+    const citySearchResult = await fetch(currentUrl, requestOptions)
+      .then(response => response.json())
+      .then(data => data.locations)
+      .catch(error => error);
+
+    return citySearchResult;
   }
 };
 

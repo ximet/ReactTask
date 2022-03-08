@@ -4,11 +4,15 @@ import classes from '../../App.module.css';
 import weatherApi from '../../services/WeatherApi';
 import CurrentLocationForecast from '../../components/CurrentLocationForecast/CurrentLocationForecast';
 
-function Home({ token }) {
+function Home({ token, city }) {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [locationInfo, setLocationInfo] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
   const [dailyForecast, setDailyForecast] = useState([]);
+
+  if (city) {
+    weatherApi.getLocationInfo(currentPosition, token).then(data => setLocationInfo(data));
+  }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -29,15 +33,13 @@ function Home({ token }) {
   const currentDate = moment(currentWeather.time).format('dddd, Do MMMM');
 
   return (
-    <div className="mainSection">
-      <div className={classes.image_container}>
-        <CurrentLocationForecast
-          locationInfo={locationInfo}
-          currentWeather={currentWeather}
-          currentDate={currentDate}
-          dailyForecast={dailyForecast}
-        />
-      </div>
+    <div className={classes.image_container}>
+      <CurrentLocationForecast
+        locationInfo={locationInfo}
+        currentWeather={currentWeather}
+        currentDate={currentDate}
+        dailyForecast={dailyForecast}
+      />
     </div>
   );
 }

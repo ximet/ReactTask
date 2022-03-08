@@ -1,5 +1,6 @@
 .image_container {
-  background: url('../../../public/images/feedbackImage.jpg') center center/cover no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+    url('../../../public/images/feedbackImage.jpg') center center/cover no-repeat;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -18,7 +19,7 @@
   align-items: center;
   justify-content: center;
   width: 50%;
-  top: 20%;
+  top: 15%;
   position: absolute;
 }
 

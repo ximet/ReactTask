@@ -1,8 +1,6 @@
 .card {
-  justify-content: center;
-  align-items: center;
   padding: 20px;
-  width: 50%;
+  margin-top: 10%;
 }
 
 .card_container {
@@ -10,7 +8,7 @@
   flex-flow: column;
   align-items: center;
   max-width: 1120px;
-  width: 90%;
+  width: auto;
   margin: 0 auto;
 }
 
