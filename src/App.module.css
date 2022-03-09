@@ -5,6 +5,11 @@
   /* font-family: 'PT Sans', sans-serif; */
 }
 
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 .home,
 .info,
 .feedback {
@@ -24,15 +29,18 @@ h1 {
   color: white;
 }
 
-.image_container {
-  background: url('../public/images/light_bg.jpg') center center/cover no-repeat;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
-  object-fit: contain;
-  position: relative;
+body {
+  --text-white: #ffffff;
+
+  --bg-grey-light: #ffffff;
+  --bg-white: #ffffff;
+  --bg-blue-dark: #142136;
+}
+
+[data-theme='dark'] {
+  --text-white: #7577e1;
+
+  --bg-grey-light: #d7dde9;
+  --bg-white: #22395d;
+  --bg-blue-dark: #090f18;
 }

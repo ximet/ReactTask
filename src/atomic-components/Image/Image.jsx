@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './Image.module.css';
 
-function Image() {
+function Image({ image }) {
   return (
-    <div className={classes.image_container}>
-      <img alt="" />
+    <div className={classes.container}>
+      <img src={image} alt="" className={classes.image_container} />
     </div>
   );
 }

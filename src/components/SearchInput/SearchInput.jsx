@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classes from './SearchInput.module.css';
-import weatherApi from '../../services/WeatherApi';
+import { weatherApi } from '../../services/WeatherApi';
 import searchIcon from '../../../public/icons/search.png';
 import cancelIcon from '../../../public/icons/x.png';
 import { debounce } from '../../helpers/debounceHelper';
@@ -25,7 +25,7 @@ const formatCityTile = city => {
   return formattedTile;
 };
 
-function SearchInput({ token }) {
+function SearchInput({ token, theme }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -57,7 +57,7 @@ function SearchInput({ token }) {
   };
 
   return (
-    <div className={classes.search_wrapper}>
+    <div className={classes.search_wrapper} data-theme={theme}>
       <div className={classes.search_form}>
         <button type="button" className={classes.search_button}>
           <img src={searchIcon} alt="search icon" className={classes.search_icon} />

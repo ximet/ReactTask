@@ -1,5 +1,5 @@
 .navBar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background-color: var(--bg-blue-dark);
   height: 80px;
   align-items: center;
   position: sticky;
@@ -12,7 +12,6 @@
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  max-width: 1500px;
 }
 
 .search_menu {
@@ -35,7 +34,7 @@
   display: inline-flex;
   list-style: none;
   text-align: center;
-  margin-right: 2rem;
+  margin-right: 1.4rem;
 }
 
 .navBar_item {
@@ -43,7 +42,7 @@
 }
 
 .navBar_link {
-  color: #fff;
+  color: var(--text-white);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -53,18 +52,5 @@
 }
 
 .navBar_active_link {
-  border-bottom: 2px solid #fff;
-}
-
-.menu_icon {
-  display: none;
-  @media screen and (max-width: 960px) {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
+  border-bottom: 2px solid var(--text-white);
 }
