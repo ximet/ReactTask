@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { SET_THEME, SET_TOKEN } from './types';
 
-function themeReducer(state = '', action) {
+export function themeReducer(state = '', action) {
   switch (action.type) {
     case SET_THEME:
       return action.payload;
@@ -10,7 +10,7 @@ function themeReducer(state = '', action) {
   }
 }
 
-function tokenReducer(state = '', action) {
+export function tokenReducer(state = '', action) {
   switch (action.type) {
     case SET_TOKEN:
       return action.payload;

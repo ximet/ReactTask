@@ -6,8 +6,8 @@ import './CurrentWeatherItem.scss';
 function CurrentWeatherItem({ name, data }) {
   return (
     <div className="current__weather-item">
-      <span className="current__weather-item-bold">{data}</span>
-      <span>{name}</span>
+      <span className="current__weather-item-bold" data-testid="data">{data}</span>
+      <span data-testid="name">{name}</span>
     </div>
   );
 }

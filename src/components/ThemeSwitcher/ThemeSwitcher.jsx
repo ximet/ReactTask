@@ -34,6 +34,7 @@ class SwitcherTheme extends React.Component {
           src={this.theme === 'light' ? moonIcon : sunIcon}
           alt="theme"
           style={{ width: '40px' }}
+          data-testid="switcher-icon"
         />
       </button>
     );
