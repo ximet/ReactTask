@@ -1,7 +1,7 @@
 import React from 'react';
-import daySymbols from '../../../public/icons/day/index';
 import DailyItem from '../../atomic-components/DailyItem/DailyItem';
 import classes from './DailyForecast.module.css';
+import { getImagesURL } from '../../services/WeatherApi';
 import { DAILY_FORECAST } from './mock';
 
 function DailyForecast() {
@@ -11,7 +11,7 @@ function DailyForecast() {
       month: 'short',
       day: 'numeric'
     });
-    const weatherSymbol = daySymbols[day.symbol];
+    const weatherSymbol = getImagesURL(day.symbol);
 
     return (
       <li key={day.id} className={classes.daily_weather__item}>
