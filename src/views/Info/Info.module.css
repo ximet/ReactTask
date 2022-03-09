@@ -1,0 +1,46 @@
+.info_wrapper {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.info_item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  top: 20%;
+  position: absolute;
+}
+
+.info_title {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info_subtitle {
+  font-size: 1.4em;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  font: bold;
+}
+
+.image_container {
+  background: url('../../../public/images/light_bg.jpg') center center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+  position: relative;
+}

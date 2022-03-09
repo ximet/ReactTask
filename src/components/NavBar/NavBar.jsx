@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchInput from '../SearchInput/SearchInput';
 import classes from './NavBar.module.css';
+import weatherLogo from '../../../public/images/weatherLogo.png';
 
 function NavBar({ token }) {
   return (
@@ -9,7 +10,8 @@ function NavBar({ token }) {
       <div className={classes.navBar_container}>
         <div>
           <NavLink to="/" className={classes.navBar_logo}>
-            WeatherLogo <i className="fas fa-typo3" />
+            <img src={weatherLogo} alt="weather logo" className={classes.weather_logo} />
+            FakeForeca
           </NavLink>
         </div>
 
