@@ -13,7 +13,11 @@ const AUTH_DATA = {
   expire_hours: EXPIRATION_OFFSET
 };
 
-const weatherApi = {
+const IMAGES_URL = 'https://developer.foreca.com/static/images/symbols/';
+
+export const getImagesURL = weatherSymbol => `${IMAGES_URL + weatherSymbol}.png`;
+
+export const weatherApi = {
   async getToken() {
     const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.token}?user=${AUTH_DATA.user}&password=${AUTH_DATA.password}&expire_hours=${AUTH_DATA.expire_hours}`;
     const requestOptions = {
@@ -101,5 +105,3 @@ const weatherApi = {
     return citySearchResult;
   }
 };
-
-export default weatherApi;

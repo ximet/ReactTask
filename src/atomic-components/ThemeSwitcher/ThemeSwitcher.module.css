@@ -1,0 +1,12 @@
+.theme_button {
+  margin-right: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.theme_button img {
+  height: 25px;
+  width: 25px;
+}

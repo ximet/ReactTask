@@ -6,11 +6,23 @@ import Footer from './components/Footer/Footer';
 import Home from './views/Home/Home';
 import Info from './views/Info/Info';
 import Feedback from './views/Feedback/Feedback';
-import weatherApi from './services/WeatherApi';
+import { weatherApi } from './services/WeatherApi';
 import ScrollToTop from './helpers/scrollToTop';
+import { THEME, getDefaultTheme } from './helpers/toggleTheme';
 
 function App() {
   const [token, setToken] = useState(null);
+  const [theme, setTheme] = useState(getDefaultTheme);
+
+  function toggleTheme() {
+    const newTheme = localStorage.getItem('theme') === THEME.dark ? THEME.light : THEME.dark;
+
+    setTheme(newTheme);
+  }
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     weatherApi.getToken().then(accessToken => setToken(accessToken));
@@ -19,15 +31,17 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <NavBar token={token} />
+      <NavBar token={token} theme={theme} onToggleTheme={toggleTheme} />
       <Switch>
-        <Route path="/info" component={Info} />
+        <Route path="/info">
+          <Info theme={theme} />
+        </Route>
         <Route path="/feedback" component={Feedback} />
         <Route exact path="/">
-          <Home token={token} />
+          <Home token={token} theme={theme} />
         </Route>
       </Switch>
-      <Footer />
+      <Footer theme={theme} />
     </Router>
   );
 }
