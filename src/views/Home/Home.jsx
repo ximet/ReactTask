@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { weatherApi } from '../../services/WeatherApi';
 import CurrentLocationForecast from '../../components/CurrentLocationForecast/CurrentLocationForecast';
 import { BG_IMAGE } from '../../helpers/toggleTheme';
 import Image from '../../atomic-components/Image/Image';
+import { setCurrentLocation } from '../../redux/actions/locationActions';
+import { locationSelector } from '../../redux/selectors/locationSelector';
 
-function Home({ token, city, theme }) {
-  const [currentPosition, setCurrentPosition] = useState(null);
+function Home({ token, theme }) {
+  const dispatch = useDispatch();
+  const { location } = useSelector(locationSelector);
+
   const [locationInfo, setLocationInfo] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
   const [dailyForecast, setDailyForecast] = useState([]);
   const bgImage = BG_IMAGE[theme];
 
-  if (city) {
-    weatherApi.getLocationInfo(currentPosition, token).then(data => setLocationInfo(data));
-  }
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
-      setCurrentPosition({ lat, lon });
+      dispatch(setCurrentLocation({ lat, lon }));
     });
   }, []);
 
   useEffect(() => {
-    if (currentPosition && token) {
-      weatherApi.getLocationInfo(currentPosition, token).then(data => setLocationInfo(data));
-      weatherApi.getCurrentWeather(currentPosition, token).then(data => setCurrentWeather(data));
-      weatherApi.getDailyForecast(currentPosition, token).then(data => setDailyForecast(data));
+    if (token && location) {
+      weatherApi.getLocationInfo(location, token).then(data => setLocationInfo(data));
+      weatherApi.getCurrentWeather(location, token).then(data => setCurrentWeather(data));
+      weatherApi.getDailyForecast(location, token).then(data => setDailyForecast(data));
     }
-  }, [currentPosition, token]);
+  }, [location, token]);
 
   const currentDate = moment(currentWeather.time).format('dddd, Do MMMM');
 
