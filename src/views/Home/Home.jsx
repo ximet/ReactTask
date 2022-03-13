@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import classes from '../../App.module.css';
-import weatherApi from '../../services/WeatherApi';
+import { weatherApi } from '../../services/WeatherApi';
 import CurrentLocationForecast from '../../components/CurrentLocationForecast/CurrentLocationForecast';
+import { BG_IMAGE } from '../../helpers/toggleTheme';
+import Image from '../../atomic-components/Image/Image';
 
-function Home({ token, city }) {
+function Home({ token, city, theme }) {
   const [currentPosition, setCurrentPosition] = useState(null);
   const [locationInfo, setLocationInfo] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
   const [dailyForecast, setDailyForecast] = useState([]);
+  const bgImage = BG_IMAGE[theme];
 
   if (city) {
     weatherApi.getLocationInfo(currentPosition, token).then(data => setLocationInfo(data));
@@ -33,7 +35,8 @@ function Home({ token, city }) {
   const currentDate = moment(currentWeather.time).format('dddd, Do MMMM');
 
   return (
-    <div className={classes.image_container}>
+    <div>
+      <Image image={bgImage} />
       <CurrentLocationForecast
         locationInfo={locationInfo}
         currentWeather={currentWeather}

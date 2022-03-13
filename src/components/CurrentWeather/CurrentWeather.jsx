@@ -1,12 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import classes from './CurrentWeather.module.css';
-import weatherSymbols from '../../../public/icons/index';
+import { getImagesURL } from '../../services/WeatherApi';
 
 function CurrentWeather({ locationInfo, currentWeather, currentDate }) {
   const currentHour = moment().format('HH');
   const dayTime = currentHour >= 6 && currentHour < 18 ? 'dayIcons' : 'nightIcons';
-  const weatherSymbol = weatherSymbols[dayTime][currentWeather.symbol];
+  const weatherSymbol = getImagesURL(`${currentWeather.symbol}`);
 
   return (
     <div className={classes.current_weather__wrapper}>

@@ -3,7 +3,7 @@
   margin: 0 32px 0 32px;
   height: 2rem;
   width: 16rem;
-  background: #fff;
+  background: var(--bg-grey-light);
   border-radius: 4px 4px 0px 0px;
 }
 
@@ -36,16 +36,18 @@
   font-weight: 500;
   font-size: 1em;
   padding: 15px;
+  background-color: var(--bg-grey-light);
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
 
 .search_dropdown {
   position: relative;
   display: inline-block;
-  background-color: #f6f6f6;
+  background-color: var(--bg-grey-light);
   width: inherit;
 }
 

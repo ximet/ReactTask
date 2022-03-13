@@ -2,11 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchInput from '../SearchInput/SearchInput';
 import classes from './NavBar.module.css';
+import ThemeSwitcher from '../../atomic-components/ThemeSwitcher/ThemeSwitcher';
 import weatherLogo from '../../../public/images/weatherLogo.png';
 
-function NavBar({ token }) {
+function NavBar({ token, theme, onToggleTheme }) {
   return (
-    <div className={classes.navBar}>
+    <div className={classes.navBar} data-theme={theme}>
       <div className={classes.navBar_container}>
         <div>
           <NavLink to="/" className={classes.navBar_logo}>
@@ -16,7 +17,7 @@ function NavBar({ token }) {
         </div>
 
         <div className={classes.search_menu}>
-          <SearchInput token={token} />
+          <SearchInput token={token} theme={theme} />
 
           <ul className={classes.navBar_menu}>
             <li className={classes.navBar_item}>
@@ -48,6 +49,8 @@ function NavBar({ token }) {
               </NavLink>
             </li>
           </ul>
+
+          <ThemeSwitcher theme={theme} onToggleTheme={onToggleTheme} />
         </div>
       </div>
     </div>
