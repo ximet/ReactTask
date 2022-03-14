@@ -1,9 +1,5 @@
-const getLocationInfoByName = async (url, token, locationName) => {
-  const res = await fetch(url + `/api/v1/location/search/${locationName}`, {
-    headers: {
-      Authorization: token
-    }
-  });
+const getLocationInfoByName = async (url, locationName) => {
+  const res = await fetch(url + `/api/v1/location/search/${locationName}`);
 
   const data = await res.json();
 

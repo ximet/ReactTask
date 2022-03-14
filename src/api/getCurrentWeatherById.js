@@ -1,9 +1,5 @@
-const getCurrentWeatherById = async (url, token, locationId) => {
-  const res = await fetch(url + `/api/v1/current/${locationId}`, {
-    headers: {
-      Authorization: token
-    }
-  });
+const getCurrentWeatherById = async (url, locationId) => {
+  const res = await fetch(url + `/api/v1/current/${locationId}`);
 
   const data = await res.json();
 
