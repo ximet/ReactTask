@@ -1,8 +1,10 @@
 .info_wrapper {
   box-sizing: border-box;
   display: flex;
-  align-items: center;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .info_item {
@@ -24,23 +26,10 @@
 
 .info_subtitle {
   font-size: 1.4em;
-  text-align: left;
+  text-align: center;
 }
 
 a {
   text-decoration: none;
   font: bold;
-}
-
-.image_container {
-  background: url('../../../public/images/light_bg.jpg') center center/cover no-repeat;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
-  object-fit: contain;
-  position: relative;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.module.css';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
@@ -9,10 +10,13 @@ import Feedback from './views/Feedback/Feedback';
 import { weatherApi } from './services/WeatherApi';
 import ScrollToTop from './helpers/scrollToTop';
 import { THEME, getDefaultTheme } from './helpers/toggleTheme';
+import { tokenSelector } from './redux/selectors/tokenSelector';
+import { setToken } from './redux/actions/tokenActions';
 
 function App() {
-  const [token, setToken] = useState(null);
+  const { token } = useSelector(tokenSelector);
   const [theme, setTheme] = useState(getDefaultTheme);
+  const dispatch = useDispatch();
 
   function toggleTheme() {
     const newTheme = localStorage.getItem('theme') === THEME.dark ? THEME.light : THEME.dark;
@@ -25,7 +29,7 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
-    weatherApi.getToken().then(accessToken => setToken(accessToken));
+    weatherApi.getToken().then(accessToken => dispatch(setToken(accessToken)));
   }, []);
 
   return (
