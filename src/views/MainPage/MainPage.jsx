@@ -5,7 +5,7 @@ import CurrentWeather from '../../components/CurrentWeather';
 import { getLocationInfoByCoords } from '../../api';
 import { url } from '../../constants';
 
-const MainPage = ({ token }) => {
+const MainPage = () => {
   const [coords, setCoords] = useState({});
   const [location, setLocation] = useState({});
 
@@ -18,19 +18,15 @@ const MainPage = ({ token }) => {
         console.warn(`ERROR(${err.code}): ${err.message}`);
       }
     );
-
-    // setLocation()
   }, []);
 
   useEffect(() => {
-    if (token) {
-      getLocationInfoByCoords(url, token, coords).then(location => setLocation(location));
-    }
-  }, [coords, token]);
+    getLocationInfoByCoords(url, coords).then(location => setLocation(location));
+  }, [coords]);
 
   return (
     <main className={`${commonClasses.page} ${classes.main}`}>
-      <CurrentWeather token={token} location={location} />
+      <CurrentWeather location={location} />
     </main>
   );
 };

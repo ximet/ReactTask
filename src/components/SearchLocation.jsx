@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { searchLocation } from '../api';
+import { getLocationInfoByName } from '../api';
 import { url } from '../constants';
 import SearchForm from './SearchForm';
 
-const SearchLocation = ({ token, updateSearchedLocation }) => {
+const SearchLocation = ({ updateSearchedLocation }) => {
   const [location, setLocation] = useState({});
 
   const updateLocation = locationName => {
-    searchLocation(url, token, locationName).then(location => {
+    getLocationInfoByName(url, locationName).then(location => {
       if (location) {
         setLocation(location);
         updateSearchedLocation(location);

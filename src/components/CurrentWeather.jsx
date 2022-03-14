@@ -4,7 +4,7 @@ import { url } from '../constants';
 import LocationHeader from './LocationHeader/LocationHeader';
 import WeatherCard from './WeatherCard/WeatherCard';
 
-const CurrentWeather = ({ token, location }) => {
+const CurrentWeather = ({ location }) => {
   const [weather, setWeather] = useState({});
 
   useEffect(() => {
@@ -14,13 +14,11 @@ const CurrentWeather = ({ token, location }) => {
       return;
     }
 
-    if (token) {
-      console.log(location);
-      getCurrentWeatherById(url, token, location.id).then(currentWeather => {
-        setWeather(currentWeather);
-      });
-    }
-  }, [location, token]);
+    console.log(location);
+    getCurrentWeatherById(url, location.id).then(currentWeather => {
+      setWeather(currentWeather);
+    });
+  }, [location]);
 
   return (
     <div>
