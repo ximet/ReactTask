@@ -9,3 +9,4 @@ export {
   getCurrentWeatherByCoords,
   getLocationInfoByCoords
 };
+
