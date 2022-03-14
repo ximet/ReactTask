@@ -27,14 +27,22 @@ class SwitcherTheme extends React.Component {
   }
 
   render() {
+    const { theme } = this.props;
+
     return (
-      <button className="switcher" onClick={this.handleClick} type="button">
+      <button
+        className="switcher"
+        onClick={this.handleClick}
+        type="button"
+        data-testid="switcher-button"
+      >
         <img
           className="switcher-icon"
-          src={this.theme === 'light' ? moonIcon : sunIcon}
+          src={theme === 'light' ? moonIcon : sunIcon}
           alt="theme"
           style={{ width: '40px' }}
           data-testid="switcher-icon"
+          data-theme={theme}
         />
       </button>
     );
