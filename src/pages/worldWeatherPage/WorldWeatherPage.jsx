@@ -20,7 +20,7 @@ function WorldWeatherPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div className={classes.worldWeatherPage}>
       <FullForecast location={getLocationByCity(history.location.pathname)} />
     </div>
   );

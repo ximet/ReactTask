@@ -21,3 +21,32 @@
     }
   }
 }
+
+@include media('max', 'md') {
+  .hourly-forecast {
+    padding: 5px;
+    @include description('md');
+
+    .hour-forecast {
+      padding: 0 5px;
+
+      .symbol {
+        width: 20px;
+        margin: 8px 0;
+      }
+    }
+  }
+}
+
+@include media('max', 'sm') {
+  .hourly-forecast {
+    @include description('sm');
+
+    .hour-forecast {
+      .symbol {
+        width: 20px;
+        margin: 8px 0;
+      }
+    }
+  }
+}

@@ -1,3 +1,20 @@
+$sizes: (
+  'xs': 320px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px
+);
+
+$font-params: (
+  'xs': 320,
+  'sm': 576,
+  'md': 768,
+  'lg': 992,
+  'xl': 1200,
+  'default': 1000
+);
+
 @mixin flex($align-items, $justify-content, $flex-direction: row) {
   display: flex;
   flex-direction: $flex-direction;
@@ -5,17 +22,35 @@
   justify-content: $justify-content;
 }
 
-@mixin primaryTitle {
+@mixin primaryTitle($param: 'default') {
   font-weight: $weight-bold;
-  font-size: $font-size * 1.5;
+  @include fontSize($font-size * 1.5, $param);
 }
 
-@mixin secondaryTitle {
+@mixin secondaryTitle($param: 'default') {
   font-weight: $weight-bold;
-  font-size: $font-size;
+  @include fontSize($font-size, $param);
 }
 
-@mixin description {
-  font-size: $font-size * 0.8;
+@mixin description($param: 'default') {
   $weight-regular: 400;
+  @include fontSize($font-size * 0.8, $param);
+}
+
+@mixin fontSize($font-size, $param) {
+  @each $font-param, $value in $font-params {
+    @if $param == $font-param {
+      font-size: $font-size * ($value / 1000);
+    }
+  }
+}
+
+@mixin media($minmax, $media) {
+  @each $size, $resolution in $sizes {
+    @if $media == $size {
+      @media only screen and (#{$minmax}-width: $resolution) {
+        @content;
+      }
+    }
+  }
 }

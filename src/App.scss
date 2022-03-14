@@ -46,3 +46,11 @@ button {
 .app_container {
   flex-direction: column;
 }
+
+@include media('max', 'md') {
+  $font-size: 1.2rem;
+
+  body {
+    font-size: $font-size;
+  }
+}

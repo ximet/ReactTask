@@ -1,10 +1,41 @@
 @import '../../scss';
 
 .countryContainer {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+
+  .country {
+    margin-left: 5px;
+    @include primaryTitle;
+  }
+}
+
+@include media('max', 'lg') {
+  .countryContainer {
+    margin-bottom: 8px;
 
     .country {
-        margin-left: 5px;
-        @include primaryTitle;
+      margin-left: 5px;
+      @include primaryTitle('lg');
     }
+  }
+}
+
+@include media('max', 'md') {
+  .countryContainer {
+    margin-bottom: 7px;
+
+    .country {
+      @include primaryTitle('md');
+    }
+  }
+}
+
+@include media('max', 'sm') {
+  .countryContainer {
+    margin-bottom: 5px;
+
+    .country {
+      @include primaryTitle('sm');
+    }
+  }
 }

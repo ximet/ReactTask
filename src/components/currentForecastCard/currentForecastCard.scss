@@ -1,8 +1,6 @@
 @import '../../scss';
 
 .card {
-  border-radius: 20px;
-
   &_header {
     .flexContainer {
       @include flex(center, flex-start);
@@ -21,6 +19,26 @@
       margin-top: 10px;
       @include secondaryTitle;
       color: var(#{--text-color-secondary-default});
+    }
+  }
+}
+
+@include media('max', 'md') {
+  .card {
+    &_header {
+      .flexContainer {
+        .symbol {
+          width: 80px;
+        }
+      }
+
+      &__title {
+        @include primaryTitle('md');
+      }
+
+      &__description {
+        @include secondaryTitle('md');
+      }
     }
   }
 }

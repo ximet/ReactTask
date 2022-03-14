@@ -1,0 +1,25 @@
+@import '../../scss';
+
+.logo {
+  text-transform: uppercase;
+  @include primaryTitle;
+  color: var(#{--text-color-active-default});
+}
+
+@include media('max', 'lg') {
+  .logo {
+    @include primaryTitle('lg');
+  }
+}
+
+@include media('max', 'md') {
+  .logo {
+    @include primaryTitle('md');
+  }
+}
+
+@include media('max', 'sm') {
+  .logo {
+    @include primaryTitle('sm');
+  }
+}

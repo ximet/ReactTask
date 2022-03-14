@@ -31,3 +31,48 @@
     color: var(#{--text-color-primary-default});
   }
 }
+
+@include media('max', 'lg') {
+  .success-page {
+    .title {
+      @include primaryTitle('lg');
+    }
+  }
+}
+
+@include media('max', 'md') {
+  .success-page {
+    .title {
+      @include primaryTitle('md');
+    }
+
+    .title::after {
+      width: 20px;
+      height: 20px;
+      right: -25px;
+    }
+
+    .link {
+      @include secondaryTitle('md');
+    }
+  }
+}
+
+@include media('max', 'sm') {
+  .success-page {
+    .title {
+      @include primaryTitle('sm');
+    }
+
+    .title::after {
+      width: 17px;
+      height: 17px;
+      right: -20px;
+      top: 7px;
+    }
+
+    .link {
+      @include secondaryTitle('sm');
+    }
+  }
+}

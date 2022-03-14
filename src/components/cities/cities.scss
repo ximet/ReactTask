@@ -1,14 +1,33 @@
 @import '../../scss';
 
 .cities {
+  margin-left: 50px;
+  @include secondaryTitle;
+
+  .link {
+    color: var(#{--text-color-secondary-default});
+  }
+
+  .link:hover {
+    color: var(#{--text-color-primary-default});
+  }
+}
+
+@include media('max', 'lg') {
+  .cities {
     margin-left: 50px;
-    @include secondaryTitle;
+    @include secondaryTitle('lg');
+  }
+}
 
-    .link {
-        color: var(#{--text-color-secondary-default});
-    }
+@include media('max', 'md') {
+  .cities {
+    @include secondaryTitle('md');
+  }
+}
 
-    .link:hover {
-        color: var(#{--text-color-primary-default});
-    }
+@include media('max', 'sm') {
+  .cities {
+    @include secondaryTitle('sm');
+  }
 }

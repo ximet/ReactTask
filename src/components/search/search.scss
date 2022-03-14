@@ -1,14 +1,31 @@
 @import '../../scss';
 
 .search-input {
-    width: 250px;
-    padding: 12px 12px 12px 35px;
-    font-weight: 400;
-    font-size: 1rem;
-    border-radius: 5px;
-    background-image: url('../../images/search.png');
-    background-position: left 5px center;
-    background-size: 25px;
-    background-repeat: no-repeat;
-    border: 2px solid var(#{--body-bg-light});
+  width: 250px;
+  padding: 12px 12px 12px 35px;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-image: url('../../images/search.png');
+  background-position: left 5px center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  border: 2px solid var(#{--body-bg-light});
+}
+
+@include media('max', 'lg') {
+  .search-input {
+    width: 210px;
+    padding: 10px 10px 10px 25px;
+    font-size: 0.8rem;
+    background-size: 17px;
+  }
+}
+
+@include media('max', 'md') {
+  .search-input {
+    width: 200px;
+    padding: 8px 8px 8px 25px;
+    background-size: 15px;
+  }
 }
