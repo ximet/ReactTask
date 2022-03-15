@@ -7,15 +7,13 @@ const commonPaths = require('./paths');
 
 module.exports = {
   entry: commonPaths.entryPath,
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /(\.js$|\.jsx?$)/,
-        loader: 'babel-loader',
+        test: /(\.tsx?$|\.jsx?$)/,
+        loader: 'ts-loader',
         exclude: [/node_modules/],
-        options: {
-          sourceMap: true
-        }
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -66,7 +64,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.css', '.scss']
   },
   plugins: [
     new webpack.ProgressPlugin(),
