@@ -9,8 +9,7 @@ const API_URL = 'https://pfa.foreca.com';
 
 const app = express();
 
-const AUTH_TOKEN = getToken(API_URL);
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+getToken(API_URL).then(token => (axios.defaults.headers.common['Authorization'] = token));
 
 app.use(cors());
 
@@ -23,9 +22,11 @@ app.listen(PORT, () => {
 function handleGetRequest(req, res) {
   const { path } = url.parse(req.originalUrl, true);
   axios
-    .get(API_URL + path, { headers: { Authorization: AUTH_TOKEN } })
+    .get(API_URL + path)
     .then(response => {
       res.status(200).json(response.data);
     })
     .catch(error => res.status(500).send(res.status));
 }
+
+function registerControllers() {}

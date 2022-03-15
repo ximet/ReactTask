@@ -5,7 +5,6 @@ import classes from './App.module.scss';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import InfoPage from './views/InfoPage/InfoPage';
 import FeedbackPage from './views/FeedbackPage/FeedbackPage';
-import ListPage from './views/ListPage/ListPage';
 import MainPage from './views/MainPage/MainPage';
 
 function App() {
@@ -16,9 +15,6 @@ function App() {
         <Switch>
           <Route exact path="/">
             <MainPage />
-          </Route>
-          <Route path="/weather">
-            <ListPage />
           </Route>
           <Route path="/about">
             <InfoPage />

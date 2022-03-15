@@ -8,11 +8,6 @@ function Navbar() {
       <ul className={classes.nav__list}>
         <li>
           <Link className={classes.nav__item} to="/">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link className={classes.nav__item} to="/weather">
             Weather
           </Link>
         </li>

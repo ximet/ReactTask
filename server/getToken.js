@@ -9,7 +9,7 @@ const getToken = async url => {
 
   const res = await axios.post(url + '/authorize/token', authData);
 
-  return res.data;
+  return 'Bearer ' + res.data.access_token;
 };
 
 module.exports = getToken;
