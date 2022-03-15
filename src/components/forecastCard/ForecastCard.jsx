@@ -7,8 +7,7 @@ function ForecastCard(props) {
   const { forecastData, hourlyData } = props;
 
   return (
-    <div>
-      <div className={classes.card}>
+    <div className={classes.card}>
         <header className={classes.card_header}>
           <div className={classes.flexContainer}>
             <div className={classes.card_header__info}>
@@ -23,7 +22,6 @@ function ForecastCard(props) {
           </div>
         </header>
         <ForecastDetailsGroup detailsData={forecastData.details} />
-      </div>
       <HourlyForecast hourlyData={hourlyData} />
     </div>
   );

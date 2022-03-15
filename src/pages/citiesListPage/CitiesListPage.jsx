@@ -12,20 +12,24 @@ class CitiesListPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={classes.citiesListPage}>
         <div className={classes.search}>
           <Search />
         </div>
-        {this.props.foundedCountries.length ? <Countries countriesInfo={this.props.foundedCountries} /> : 'No data found'}
-     </div>
-    )
+        {this.props.foundedCountries.length ? (
+          <Countries countriesInfo={this.props.foundedCountries} />
+        ) : (
+          'No data found'
+        )}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    foundedCountries: getFoundedLocations(state),
+    foundedCountries: getFoundedLocations(state)
   };
-}
+};
 
-export default connect(mapStateToProps, null)(CitiesListPage); 
+export default connect(mapStateToProps, null)(CitiesListPage);

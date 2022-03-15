@@ -1,5 +1,11 @@
 @import '../../scss';
 
 .search {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+@include media('max', 'md') {
+  .cities-list-page {
+    text-align: center;
+  }
 }

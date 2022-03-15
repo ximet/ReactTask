@@ -27,3 +27,52 @@
     color: var(#{--text-color-secondary-default});
   }
 }
+
+@include media('max', 'lg') {
+  .feedback-page {
+    .title {
+      @include primaryTitle('lg');
+    }
+
+    .description {
+      @include secondaryTitle('lg');
+    }
+  }
+}
+
+@include media('max', 'md') {
+  .feedback-page {
+    .title {
+      @include primaryTitle('md');
+    }
+
+    .title::after {
+      width: 20px;
+      height: 20px;
+      right: -25px;
+    }
+
+    .description {
+      @include secondaryTitle('md');
+    }
+  }
+}
+
+@include media('max', 'sm') {
+  .feedback-page {
+    .title {
+      @include primaryTitle('sm');
+    }
+
+    .title::after {
+      width: 17px;
+      height: 17px;
+      right: -20px;
+      top: 7px;
+    }
+
+    .description {
+      @include secondaryTitle('sm');
+    }
+  }
+}

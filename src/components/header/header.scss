@@ -1,12 +1,23 @@
 @import '../../scss';
 
 .header {
-  height: $header-height;
-  padding: 10px;
+  height: 10vh;
+  &_container {
+    padding: 10px;
+    @include flex(center, space-between);
+  }
+}
 
-  @include flex(center, space-between);
+.navigation {
+  display: none;
+}
 
-  &__logo {
-    font-weight: $weight-bold;
+@include media('max', 'md') {
+  .header {
+    height: 20vh;
+  }
+
+  .navigation {
+    display: block;
   }
 }

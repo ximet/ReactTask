@@ -2,11 +2,20 @@
 
 .main {
   width: 100%;
+  height: 90vh;
+  overflow-y: scroll;
   background-color: var(#{--main-bg-default});
   padding: 30px;
   border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
   color: var(#{--text-color-primary-default});
   background-size: 100vh auto;
   background-repeat: no-repeat;
+}
+
+@include media('max', 'md') {
+  .main {
+    padding: 15px;
+    border-top-left-radius: 0px;
+    height: 85vh;
+  }
 }

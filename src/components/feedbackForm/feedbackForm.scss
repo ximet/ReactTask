@@ -38,7 +38,7 @@
       border-radius: 5px;
       outline: none;
     }
-    
+
     .textarea {
       resize: none;
       height: 100px;
@@ -61,5 +61,67 @@
 
   .button:disabled {
     filter: opacity(50%);
+  }
+}
+
+@include media('max', 'lg') {
+  .form {
+    width: 60%;
+
+    .form-field {
+      @include description('lg');
+    }
+  }
+
+  .button {
+    @include secondaryTitle('lg');
+  }
+}
+
+@include media('max', 'md') {
+  .form {
+    .form-field {
+      @include description('md');
+
+      .error {
+        font-size: 0.8rem;
+      }
+
+      .input,
+      .textarea {
+        margin: 5px 0 10px 0;
+        padding: 8px;
+        font-size: 0.8rem;
+      }
+    }
+
+    .button {
+      @include secondaryTitle('md');
+    }
+  }
+}
+
+@include media('max', 'sm') {
+  .form {
+    width: 80%;
+
+    .form-field {
+      @include description('sm');
+
+      .error {
+        font-size: 0.6rem;
+      }
+
+      .input,
+      .textarea {
+        margin: 4px 0 8px 0;
+        padding: 6px;
+        font-size: 0.6rem;
+      }
+    }
+
+    .button {
+      @include secondaryTitle('sm');
+    }
   }
 }

@@ -1,11 +1,7 @@
 @import '../../scss';
 
 .weather-page {
+  width: 100%;
   height: 100%;
   @include flex(flex-start, space-between, column);
-
-  .daily-forecast {
-    @include flex(flex-end, center);
-    margin-top: 30px;
-  }
 }

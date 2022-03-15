@@ -1,7 +1,10 @@
 @import '../../scss';
 
 .card {
-  border-radius: 20px;
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 
   &_header {
     .symbol {
@@ -25,4 +28,24 @@
 
 .flexContainer {
   @include flex(center, flex-start);
+}
+
+@include media('max', 'md') {
+  .card {
+    &_header {
+      .symbol {
+        width: 80px;
+      }
+
+      &__info {
+        .title {
+          @include primaryTitle('md');
+        }
+
+        .description {
+          @include secondaryTitle('md');
+        }
+      }
+    }
+  }
 }

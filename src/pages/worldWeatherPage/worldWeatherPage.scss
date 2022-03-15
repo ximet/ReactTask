@@ -1,0 +1,7 @@
+@import '../../scss';
+
+.world-weather-page {
+    width: 100%;
+    height: 100%;
+    @include flex(flex-start, space-between, column);
+}

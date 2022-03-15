@@ -1,0 +1,86 @@
+@import '../../scss';
+
+.side-navigation {
+  li {
+    a {
+      @include secondaryTitle;
+      padding: 15px;
+      display: block;
+      color: var(#{--text-color-active-default});
+      position: relative;
+    }
+  }
+
+  .active {
+    background-color: var(#{--main-bg-default});
+    color: var(#{--text-color-secondary-default});
+    transition: color 1s ease-out;
+  }
+
+  .active:target {
+    background-color: var(#{--main-bg-default});
+  }
+
+  .active::after,
+  .active::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    right: -5px;
+    border-radius: 0 0 50% 0;
+    z-index: -1;
+  }
+
+  .active::after {
+    border-right: 5px solid var(#{--main-bg-default});
+    border-bottom: 5px solid var(#{--main-bg-default});
+  }
+
+  .active::before {
+    top: auto;
+    bottom: -20px;
+    border-radius: 0 50% 0 0;
+    border-right: 5px solid var(#{--main-bg-default});
+    border-top: 5px solid var(#{--main-bg-default});
+  }
+}
+
+.top-navigation {
+  width: 100%;
+  @include flex(center, flex-start);
+  li {
+    a {
+      @include secondaryTitle('md');
+      color: var(#{--text-color-primary-default});
+      padding: 5px;
+    }
+  }
+
+  .active {
+    border-bottom: 2px solid black;
+  }
+}
+
+@media screen and (max-width: 1200) {
+  .nav {
+    li {
+      a {
+        padding: 10px;
+        @include secondaryTitle(1200);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .nav {
+    li {
+      a {
+        padding: 10px;
+        @include secondaryTitle(991);
+      }
+    }
+  }
+}

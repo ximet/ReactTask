@@ -1,26 +1,26 @@
 @import '../../scss';
 
 .daily-forecast {
+  margin-top: 35px;
+  width: 70%;
   @include flex(flex-end, space-between);
 
   .day-forecast {
-    width: 100px;
-    height: 190px;
+    @include flex(center, space-between, column);
+    width: 12%;
     padding: 10px;
     border-radius: 5px;
-    margin-right: 15px;
-    display: inline-block;
+    text-align: center;
     background-color: $card-bg;
     cursor: pointer;
 
     .date {
       @include secondaryTitle;
-      text-align: center;
     }
 
     .symbol {
       display: block;
-      width: 70px;
+      width: 50%;
       margin: 0 auto;
     }
 
@@ -41,7 +41,7 @@
         width: $font-size;
         height: $font-size;
         position: absolute;
-        left: -$font-size * 1.2;
+        left: -$font-size;
         top: 0;
         filter: var(#{--icon-filter-default});
       }
@@ -57,7 +57,6 @@
   }
 
   .active {
-    margin-bottom: 30px;
     background-color: var(#{--body-bg-default});
     color: var(#{--text-color-active-default});
 
@@ -67,6 +66,52 @@
       &_day::before,
       &_night::before {
         filter: invert(100%);
+      }
+    }
+  }
+}
+
+@include media('max', 'xl') {
+  .daily-forecast {
+    width: 100%;
+  }
+}
+
+@include media('max', 'lg') {
+  .daily-forecast {
+    .day-forecast {
+      padding: 3px;
+
+      .symbol {
+        width: 30px;
+      }
+
+      .date {
+        @include secondaryTitle('md');
+      }
+
+      .temperature {
+        padding: 5px 0 0 20px;
+        @include description('md');
+
+        &_day::before,
+        &_night::before {
+          width: $font-size * (767 / 1000);
+          height: $font-size * (767 / 1000);
+          background-size: $font-size * (767 / 1000);
+          left: -$font-size * (767 / 1000);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .daily-forecast {
+    .day-forecast {
+      .symbol,
+      .temperature {
+        display: none;
       }
     }
   }
