@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import classes from './MainPage.module.scss';
 import commonClasses from '../common.scss';
-import CurrentWeather from '../../components/CurrentWeather';
+import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
+import LocationHeader from '../../components/LocationHeader/LocationHeader';
 import { getLocationInfoByCoords } from '../../api';
 import { url } from '../../constants';
+import DailyForecast from '../../components/DailyForecast/DailyForecast';
 
 const MainPage = () => {
   const [coords, setCoords] = useState({});
@@ -21,13 +23,21 @@ const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    getLocationInfoByCoords(url, coords).then(location => setLocation(location));
+    getLocationInfoByCoords(url, coords).then(location => {
+      if (location) {
+        setLocation(location);
+      }
+    });
   }, [coords]);
 
   return (
-    <main className={`${commonClasses.page} ${classes.main}`}>
-      <CurrentWeather location={location} />
-    </main>
+    <>
+      <main className={`${commonClasses.page} ${classes.main}`}>
+        <LocationHeader name={location.name} country={location.country} />
+        <CurrentWeather location={location} />
+        <DailyForecast location={location} />
+      </main>
+    </>
   );
 };
 
