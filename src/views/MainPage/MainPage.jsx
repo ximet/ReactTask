@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import classes from './MainPage.module.scss';
 import commonClasses from '../common.scss';
-import CurrentWeather from '../../components/CurrentWeather';
+import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
+import LocationHeader from '../../components/LocationHeader/LocationHeader';
 import { getLocationInfoByCoords } from '../../api';
 import { url } from '../../constants';
+import DailyForecast from '../../components/DailyForecast/DailyForecast';
 
-const MainPage = ({ token }) => {
+const MainPage = () => {
   const [coords, setCoords] = useState({});
   const [location, setLocation] = useState({});
 
@@ -18,20 +20,24 @@ const MainPage = ({ token }) => {
         console.warn(`ERROR(${err.code}): ${err.message}`);
       }
     );
-
-    // setLocation()
   }, []);
 
   useEffect(() => {
-    if (token) {
-      getLocationInfoByCoords(url, token, coords).then(location => setLocation(location));
-    }
-  }, [coords, token]);
+    getLocationInfoByCoords(url, coords).then(location => {
+      if (location) {
+        setLocation(location);
+      }
+    });
+  }, [coords]);
 
   return (
-    <main className={`${commonClasses.page} ${classes.main}`}>
-      <CurrentWeather token={token} location={location} />
-    </main>
+    <>
+      <main className={`${commonClasses.page} ${classes.main}`}>
+        <LocationHeader name={location.name} country={location.country} />
+        <CurrentWeather location={location} />
+        <DailyForecast location={location} />
+      </main>
+    </>
   );
 };
 
