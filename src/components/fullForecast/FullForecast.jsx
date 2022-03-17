@@ -8,6 +8,7 @@ import CurrentForecastCard from '../currentForecastCard/CurrentForecastCard';
 import DailyForecast from '../dailyForecast/DailyForecast';
 import ForecastCard from '../forecastCard/ForecastCard';
 import CurrentForecastButton from '../currentForecastButton/CurrentForecastButton';
+import Loader from '../loader/Loader';
 
 function FullForecast(props) {
   const { location } = props;
@@ -72,7 +73,9 @@ function FullForecast(props) {
       </div>
     </div>
   ) : (
-    'Loading...'
+    <div className={classes.loader}>
+      <Loader />
+    </div>
   );
 }
 

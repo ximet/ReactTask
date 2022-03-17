@@ -2,6 +2,7 @@ import classes from './weatherPage.scss';
 import { useEffect, useState } from 'react';
 import FullForecast from '../../components/fullForecast/FullForecast';
 import { getCurrentPosition } from '../../dataService/api';
+import Loader from '../../components/loader/Loader';
 
 function WeatherPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,7 +20,9 @@ function WeatherPage() {
       <FullForecast location={currentLocation} />
     </div>
   ) : (
-    '...Loading'
+    <div className={classes.loader}>
+      <Loader />
+    </div>
   );
 }
 

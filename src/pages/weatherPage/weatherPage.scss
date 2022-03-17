@@ -5,3 +5,8 @@
   height: 100%;
   @include flex(flex-start, space-between, column);
 }
+
+.loader {
+  height: 100%;
+  @include flex(center, center);
+}

@@ -12,6 +12,12 @@
   }
 }
 
+.loader {
+  height: 100%;
+  width: 100%;
+  @include flex(center, center);
+}
+
 @include media('max', 'md') {
   .full-forecast {
     height: 100%;
