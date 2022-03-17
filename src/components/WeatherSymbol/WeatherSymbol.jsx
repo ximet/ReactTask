@@ -3,10 +3,12 @@ import classes from './WeatherSymbol.module.scss';
 
 const WeatherSymbol = ({ symbol, symbolPhrase }) => {
   return (
-    <div className={classes.wrapper}>
-      <img src={require(`../../assets/${symbol}.png`)} alt={symbolPhrase} />
-      {/* <h4 className={classes.status}>Status: {symbolPhrase}</h4> */}
-    </div>
+    <>
+      <img
+        src={`https://developer.foreca.com/static/images/symbols/${symbol}.png`}
+        alt={symbolPhrase}
+      />
+    </>
   );
 };
 
