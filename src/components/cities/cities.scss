@@ -4,12 +4,16 @@
   margin-left: 50px;
   @include secondaryTitle;
 
-  .link {
-    color: var(#{--text-color-secondary-default});
-  }
-
-  .link:hover {
-    color: var(#{--text-color-primary-default});
+  .city {
+    margin-bottom: 8px;
+    .link {
+      color: var(#{--text-color-secondary-default});
+      @include link;
+    }
+  
+    .link:hover {
+      background-color: #68bde788;
+    }
   }
 }
 
@@ -23,6 +27,10 @@
 @include media('max', 'md') {
   .cities {
     @include secondaryTitle('md');
+
+    .city {
+      margin-bottom: 6px;
+    }
   }
 }
 

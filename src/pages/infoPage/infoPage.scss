@@ -1,0 +1,148 @@
+@import '../../scss';
+
+.infoPage {
+    &_item {
+        margin-bottom: 20px;
+
+        &__header {
+            @include flex(center, start);
+
+            .title {
+                @include primaryTitle;
+            }
+    
+            .button-open {
+                margin-left: 10px;
+                width: 0;
+                height: 0;
+                background-color: transparent;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-top: 16px solid var(--text-color-primary-default);
+                cursor: pointer;
+            }
+
+            .button-close {
+                margin-left: 10px;
+                width: 0;
+                height: 0;
+                background-color: transparent;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;;
+                border-bottom: 16px solid var(--text-color-primary-default);
+                cursor: pointer;
+            }
+        }
+
+        &__main {
+            @include description;
+            color: var(#{--text-color-secondary-default});
+
+            p {
+                margin-top: 10px;
+            }
+
+            span {
+                color: var(#{--text-color-primary-default});
+                font-weight: bold;
+            }
+
+            a {
+                @include link;
+            }
+
+            a:hover {
+                background-color: #68bde788;
+            }
+        }
+    }
+}
+
+@include media('max', 'lg') {
+    .infoPage {
+        &_item {
+            &__header {
+                .title {
+                    @include primaryTitle('lg');
+                }
+            }
+    
+            &__main {
+                @include description('lg');
+            }
+        }
+    }
+}
+  
+@include media('max', 'md') {
+    .infoPage {
+        &_item {
+            margin-bottom: 15px;
+    
+            &__header {
+                .title {
+                    @include primaryTitle('md');
+                }
+        
+                .button-open {
+                    margin-left: 8px;
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-top: 12px solid var(--text-color-primary-default);
+                }
+    
+                .button-close {
+                    margin-left: 8px;
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;;
+                    border-bottom: 12px solid var(--text-color-primary-default);
+                }
+            }
+    
+            &__main {
+                @include description('md');
+    
+                p {
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+}
+  
+@include media('max', 'sm') {
+    .infoPage {
+        &_item {
+            margin-bottom: 10px;
+    
+            &__header {
+                .title {
+                    @include primaryTitle('sm');
+                }
+        
+                .button-open {
+                    margin-left: 6px;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-top: 10px solid var(--text-color-primary-default);
+                }
+    
+                .button-close {
+                    margin-left: 6px;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;;
+                    border-bottom: 10px solid var(--text-color-primary-default);
+                    cursor: pointer;
+                }
+            }
+    
+            &__main {
+                @include description('sm');
+    
+                p {
+                    margin-top: 6px;
+                }
+            }
+        }
+    }
+}

@@ -11,5 +11,9 @@ export const routes = [
   {
     display: 'Feedback',
     path: '/feedback'
-  }
+  },
+  {
+    display: 'About us',
+    path: '/info_page'
+  },
 ];

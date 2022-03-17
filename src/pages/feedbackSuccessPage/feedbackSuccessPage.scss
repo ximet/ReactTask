@@ -24,11 +24,11 @@
 
   .link {
     @include secondaryTitle;
-    color: var(#{--text-color-secondary-default});
+    @include link;
   }
 
   .link:hover {
-    color: var(#{--text-color-primary-default});
+    background-color: #68bde788;
   }
 }
 

@@ -22,6 +22,12 @@ $font-params: (
   justify-content: $justify-content;
 }
 
+@mixin link {
+  background-color: #68bde733;
+  color: var(#{--text-color-primary-default});
+  border-bottom: 1px solid var(#{--text-color-primary-default});
+}
+
 @mixin primaryTitle($param: 'default') {
   font-weight: $weight-bold;
   @include fontSize($font-size * 1.5, $param);
