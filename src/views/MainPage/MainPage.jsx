@@ -6,6 +6,7 @@ import LocationHeader from '../../components/LocationHeader/LocationHeader';
 import { getLocationInfoByCoords } from '../../api';
 import { url } from '../../constants';
 import DailyForecast from '../../components/DailyForecast/DailyForecast';
+import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
 
 const MainPage = () => {
   const [coords, setCoords] = useState({});
@@ -36,6 +37,7 @@ const MainPage = () => {
         <LocationHeader name={location.name} country={location.country} />
         <CurrentWeather location={location} />
         <DailyForecast location={location} />
+        <WeeklyForecast location={location} />
       </main>
     </>
   );

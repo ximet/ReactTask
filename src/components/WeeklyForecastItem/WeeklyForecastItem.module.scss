@@ -1,0 +1,23 @@
+.weeklyForecastItem {
+  padding: 1rem;
+  border: 1px solid black;
+
+  &__header {
+    font-size: 2rem;
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
+    border-bottom: 1px solid black;
+  }
+
+  &:first-child {
+    border-radius: 5px 5px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: none;
+  }
+}
