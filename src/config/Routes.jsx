@@ -5,6 +5,7 @@ import WorldWeatherPage from '../pages/worldWeatherPage/WorldWeatherPage';
 import FeedbackPage from '../pages/feedbackPage/FeedbackPage';
 import FeedbackSuccessPage from '../pages/feedbackSuccessPage/FeedbackSuccessPage';
 import CitiesListPage from '../pages/citiesListPage/CitiesListPage';
+import ErrorPage from '../pages/errorPage/ErrorPage';
 
 export const routes = [
   {
@@ -29,6 +30,10 @@ export const routes = [
   {
     path: '/world_weather/*',
     component: WorldWeatherPage
+  },
+  {
+    path: '/*',
+    component: ErrorPage
   }
 ];
 

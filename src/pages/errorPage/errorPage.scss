@@ -1,0 +1,52 @@
+@import '../../scss';
+
+.error-page {
+    @include flex(center, start, column);
+    height: 100%;
+    text-align: center;
+
+    .title {
+        @include primaryTitle;
+    }
+
+    .description {
+        @include secondaryTitle;
+        color: var(#{--text-color-secondary-default});
+    }
+}
+
+@include media('max', 'lg') {
+    .error-page {
+        .title {
+            @include primaryTitle('lg');
+        }
+    
+        .description {
+            @include secondaryTitle('lg');
+        }
+    }
+}
+
+@include media('max', 'md') {
+    .error-page {
+        .title {
+            @include primaryTitle('md');
+        }
+    
+        .description {
+            @include secondaryTitle('md');
+        }
+    }
+}
+
+@include media('max', 'sm') {
+    .error-page {
+        .title {
+            @include primaryTitle('sm');
+        }
+    
+        .description {
+            @include secondaryTitle('sm');
+        }
+    }
+}
