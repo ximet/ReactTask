@@ -6,8 +6,10 @@ import WeatherSymbol from '../WeatherSymbol/WeatherSymbol';
 import Timepiece from '../Timepiece/Timepiece';
 import classes from './CurrentWeather.scss';
 
+
 const CurrentWeather = ({ location }) => {
   const [weather, setWeather] = useState({});
+
 
   const updateCurrentWeather = useCallback(async () => {
     const currentWeather = await getCurrentWeatherByCoords(url, location.id);
