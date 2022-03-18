@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import ForecastDetailsGroup from '../forecastDetailGroup/ForecastDetailGroup';
 
 function CurrentForecastCard(props) {
-  const { forecastData } = props;
+  const { forecastData, locationData } = props;
 
   return (
     <div className={classes.card}>
       <header className={classes.card_header}>
         <div className={classes.flexContainer}>
           <div className={classes.card_header__title}>
-            <p>{forecastData.city}</p>
+            <p>{locationData.city}</p>
             <p>
               {forecastData.temperature} <span>&#176;C</span>
             </p>

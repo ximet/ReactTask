@@ -1,7 +1,7 @@
 import classes from './fullForecast.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useFetch } from '../../hooks/useFetch';
 
-import DataService from '../../dataService/DataService';
 import { filterDayForecastData, filterHourForecastData } from '../../dataService/formatter';
 
 import CurrentForecastCard from '../currentForecastCard/CurrentForecastCard';
@@ -9,37 +9,30 @@ import DailyForecast from '../dailyForecast/DailyForecast';
 import ForecastCard from '../forecastCard/ForecastCard';
 import CurrentForecastButton from '../currentForecastButton/CurrentForecastButton';
 import Loader from '../loader/Loader';
+import Error from '../error/Error';
 
 function FullForecast(props) {
   const { location } = props;
-
-  const [currentData, setCurrentData] = useState({});
-  const [dailyData, setDailyData] = useState([]);
-  const [hourlyData, setHourlyData] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  
+  const [locationData, locationDataLoading, locationDataError] = useFetch('location', location);
+  const [currentData, currentDataLoading, currentDataError] = useFetch('current', location);
+  const [dailyData, dailyDataLoading, dailyDataError] = useFetch('daily', location);
+  const [hourlyData, hourlyDataLoading, hourlyDataError] = useFetch('hourly', location);
 
   const [isCurrent, setIsCurrent] = useState(true);
   const [actualDayData, setActualDayData] = useState(null);
   const [actualHourlyData, setActualHourlyData] = useState([]);
 
-  useEffect(async () => {
-    const currentData = await DataService.getCurrentForecast(location);
-    const dailyData = await DataService.getDailyForecast(location);
-    const hourlyData = await DataService.getHourlyForecast(location);
+  const isLoading = locationDataLoading || currentDataLoading || dailyDataLoading || hourlyDataLoading;
+  const isError = locationDataError || currentDataError || dailyDataError || hourlyDataError;
 
-    setCurrentData(currentData);
-    setDailyData(dailyData);
-    setHourlyData(hourlyData);
-    setIsLoaded(true);
-  }, []);
+  if(isLoading) {
+    return <div className={classes.loader}> <Loader /></div>
+  }
 
-  useEffect(async () => {
-    if (isCurrent) {
-      const currentData = await DataService.getCurrentForecast(location);
-
-      setCurrentData(currentData);
-    }
-  }, [isCurrent]);
+  if(isError) {
+    return <Error />
+  }
 
   function onDayForecastCardClick(id) {
     const actualDayData = filterDayForecastData(dailyData, id);
@@ -56,10 +49,10 @@ function FullForecast(props) {
     setIsCurrent(true);
   }
 
-  return isLoaded ? (
+  return (
     <div className={classes.fullForecast}>
       {isCurrent ? (
-        <CurrentForecastCard forecastData={currentData} />
+        <CurrentForecastCard forecastData={currentData} locationData={locationData} />
       ) : (
         <ForecastCard forecastData={actualDayData} hourlyData={actualHourlyData} />
       )}
@@ -72,11 +65,7 @@ function FullForecast(props) {
         />
       </div>
     </div>
-  ) : (
-    <div className={classes.loader}>
-      <Loader />
-    </div>
-  );
+  )
 }
 
 export default FullForecast;

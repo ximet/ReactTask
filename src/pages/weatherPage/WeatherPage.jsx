@@ -1,7 +1,7 @@
 import classes from './weatherPage.scss';
 import { useEffect, useState } from 'react';
 import FullForecast from '../../components/fullForecast/FullForecast';
-import { getCurrentPosition } from '../../dataService/api';
+import { getCurrentPosition } from '../../dataService/geolocation';
 import Loader from '../../components/loader/Loader';
 
 function WeatherPage() {

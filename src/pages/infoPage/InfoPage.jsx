@@ -3,8 +3,8 @@ import classes from './infoPage.scss';
 import { useState } from 'react';
 
 const initialState = {
-    aboutUs: true,
-    contacts: false,
+    aboutUs: false,
+    contacts: true,
     history: true
 }
 

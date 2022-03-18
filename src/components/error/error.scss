@@ -1,0 +1,34 @@
+@import '../../scss';
+
+.error-container {
+    text-align: center;
+
+    .error {
+        @include primaryTitle;
+        color: var(#{--color-danger-default});
+    }
+}
+
+@include media('max', 'lg') {
+    .error-container {
+        .error {
+            @include primaryTitle('lg');
+        }
+    }
+}
+
+@include media('max', 'md') {
+    .error-container {
+        .error {
+            @include primaryTitle('md');
+        }
+    }
+}
+
+@include media('max', 'sm') {
+    .error-container {
+        .error {
+            @include primaryTitle('md');
+        }
+    }
+}

@@ -6,7 +6,7 @@ const IMAGES_TYPE = {
   symbol: 'symbol'
 }
 
-export function formatCurrentForecastData(forecastData, locationData) {
+export function formatCurrentForecastData(forecastData) {
   const {
     temperature,
     feelsLikeTemp,
@@ -18,11 +18,9 @@ export function formatCurrentForecastData(forecastData, locationData) {
     precipProb,
     windSpeed,
     thunderProb
-  } = forecastData;
-  const { name } = locationData;
+  } = forecastData.current;
   
   const formattedForecastData = {
-    city: name,
     temperature,
     feelsLikeTemp,
     symbolUrl: getImagesURL(IMAGES_TYPE.symbol, symbol),
@@ -41,10 +39,16 @@ export function formatCurrentForecastData(forecastData, locationData) {
   return formattedForecastData;
 }
 
+export function formatLocationData(locationData) {
+  const { name } = locationData;
+
+  return {city: name};
+}
+
 export function formatDailyForecastData(forecastData) {
   const formattedForecastData = [];
 
-  forecastData.forEach(item => {
+  forecastData.forecast.forEach(item => {
     const formattedForecastItemData = formatDailyForecastItemData(item);
 
     formattedForecastData.push(formattedForecastItemData);
@@ -93,7 +97,7 @@ function formatDailyForecastItemData(data) {
 export function formatHourlyForecastData(forecastData) {
   const formattedForecastData = [];
 
-  forecastData.forEach(item => {
+  forecastData.forecast.forEach(item => {
     const formattedForecastItemData = formatHourlyForecastItemData(item);
 
     formattedForecastData.push(formattedForecastItemData);
