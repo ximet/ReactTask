@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { getCurrentWeatherByCoords } from '../../api';
 import { url } from '../../constants';
-import WeatherInfo from '../WeatherInfo/WeatherInfo';
+import CurrentWeatherInfo from '../CurrentWeatherInfo/CurrentWeatherInfo';
 import WeatherSymbol from '../WeatherSymbol/WeatherSymbol';
+import Timepiece from '../Timepiece/Timepiece';
+import classes from './CurrentWeather.scss';
 
 const CurrentWeather = ({ location }) => {
   const [weather, setWeather] = useState({});
 
-  const getCurrentWeather = useCallback(async () => {
+  const updateCurrentWeather = useCallback(async () => {
     const currentWeather = await getCurrentWeatherByCoords(url, location.id);
     setWeather(currentWeather);
   }, [location]);
@@ -19,14 +21,15 @@ const CurrentWeather = ({ location }) => {
       return;
     }
 
-    getCurrentWeather();
-  }, [location, getCurrentWeather]);
+    updateCurrentWeather();
+  }, [location, updateCurrentWeather]);
 
   return (
-    <>
+    <div className={classes.currentWeather}>
+      <Timepiece />
       <WeatherSymbol symbol={weather.symbol ?? 'n400'} symbolPhrase={weather.symbolPhrase} />
-      <WeatherInfo weather={weather} />
-    </>
+      <CurrentWeatherInfo weather={weather} />
+    </div>
   );
 };
 
