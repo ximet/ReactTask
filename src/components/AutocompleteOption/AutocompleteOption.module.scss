@@ -1,0 +1,11 @@
+@import '../../scss';
+
+.option {
+  padding: 5px;
+
+  &:hover {
+    background: $base-color;
+    color: $font-color;
+    cursor: pointer;
+  }
+}
