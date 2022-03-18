@@ -1,12 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';
+import { NextWeekWeatherItemInterface } from '../../interfaces/interfaces';
 
 import './NextWeekWeatherItem.scss';
 
-function NextWeekWeatherItem({ data }) {
-  const dateOptions = { weekday: 'long' };
+interface INextWeekWeatherItemProps {
+  data: NextWeekWeatherItemInterface,
+}
+
+function NextWeekWeatherItem({ data }: INextWeekWeatherItemProps) {
+  const dateOptions: Intl.DateTimeFormatOptions = { weekday: 'long' };
   const date = new Intl.DateTimeFormat('en-US', dateOptions).format(new Date(data.date));
 
   return (
@@ -25,9 +29,5 @@ function NextWeekWeatherItem({ data }) {
     </div>
   );
 }
-
-NextWeekWeatherItem.propTypes = {
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-};
 
 export default NextWeekWeatherItem;

@@ -2,18 +2,19 @@ import React, { useEffect, useState, useRef } from 'react';
 
 import weatherApi from '../../api/weatherApi';
 import searchIcon from '../../assets/images/search.png';
+import { LocationSearchItemInterface } from '../../interfaces/interfaces';
 import SearchAutocompleteItem from '../SearchAutocompleteItem/SearchAutocompleteItem';
 
 import './Search.scss';
 
 function Search() {
-  const [inputValue, setInputValue] = useState('');
-  const [isOpenAutocomplete, setIsOpenAutocomplete] = useState(false);
-  const [cities, setCities] = useState(null);
-  const input = useRef(null);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [isOpenAutocomplete, setIsOpenAutocomplete] = useState<boolean>(false);
+  const [cities, setCities] = useState<LocationSearchItemInterface[] | null>(null);
+  const input = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const delayBeforeSearching = setTimeout(() => {
+    const delayBeforeSearching = setTimeout((): void => {
       if (inputValue) {
         weatherApi.getLocationSearch(inputValue).then(setCities);
       }
@@ -30,7 +31,7 @@ function Search() {
 
   const handleClick = () => input.current.focus();
 
-  const handleChange = ({ target }) => setInputValue(target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) : void => setInputValue(e.target.value);
 
   const handleBlur = () => !inputValue && setIsOpenAutocomplete(false);
 
@@ -56,7 +57,6 @@ function Search() {
                   cityData={city}
                   key={city.id}
                   setInputValue={setInputValue}
-                  setIsOpenAutocomplete={setIsOpenAutocomplete}
                 />
               ))
               : <div className="search__loading">No matches</div>}

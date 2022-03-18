@@ -1,25 +1,32 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { SnackbarContext } from '../../core/contexts';
+import { SnackbarContext, SnackbarContextInterface } from '../../core/contexts';
 import { setLocalstorageItem } from '../../utils/localStorage';
 
 import './FeedbackPage.scss';
 
-const initialFormData = { name: '', email: '', message: '' };
+type FormData = {
+  name: string,
+  email: string,
+  message: string,
+}
+
+const initialFormData : FormData = { name: '', email: '', message: '' };
 
 function FeedbackPage() {
-  const [formData, setFormData] = useState(initialFormData);
-  const setSnackbar = useContext(SnackbarContext)[1];
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const { setSnackbar } = useContext<SnackbarContextInterface>(SnackbarContext);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) : void => {
+    e.preventDefault();
     setLocalstorageItem(formData.email, formData);
     setFormData(initialFormData);
     setSnackbar({ isOpen: true, message: 'Feedback sent successfully' });
   };
 
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) : void => {
+    const { target: { name, value } } = e;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -32,10 +39,11 @@ function FeedbackPage() {
       </p>
 
       <form className="feedback__form" onSubmit={handleSubmit}>
-        <label className="feedback__form-label">
+        <label htmlFor="feedback-text" className="feedback__form-label">
           Describe Your Feedback:
           <span style={{ color: 'red' }}>*</span>
           <textarea
+            id="feedback-text"
             className="feedback__form-textarea"
             required
             value={formData.message}
@@ -44,10 +52,11 @@ function FeedbackPage() {
           />
         </label>
         <div className="feedback__form-inputs">
-          <label className="feedback__form-label">
+          <label htmlFor="feedback-name" className="feedback__form-label">
             Name
             <span style={{ color: 'red' }}>*</span>
             <input
+              id="feedback-name"
               className="feedback__form-input"
               required
               value={formData.name}
@@ -55,10 +64,11 @@ function FeedbackPage() {
               name="name"
             />
           </label>
-          <label className="feedback__form-label">
+          <label htmlFor="feedback-email" className="feedback__form-label">
             Email
             <span style={{ color: 'red' }}>*</span>
             <input
+              id="feedback-email"
               className="feedback__form-input"
               required
               value={formData.email}

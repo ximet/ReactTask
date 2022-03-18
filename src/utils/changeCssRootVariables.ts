@@ -1,4 +1,4 @@
-const variables = [
+const variables: string[] = [
   '--body-background',
   '--header-shadow',
   '--cards-background',
@@ -9,10 +9,10 @@ const variables = [
   '--burger-background',
 ];
 
-const changeCssRootVariables = (theme) => {
-  const root = document.querySelector(':root');
+const changeCssRootVariables = (theme: string) : void => {
+  const root = document.querySelector<HTMLElement>(':root');
 
-  variables.forEach((variableName) => {
+  variables.forEach((variableName: string) => {
     root.style.setProperty(variableName, `var(${variableName}-${theme})`);
   });
 };

@@ -1,18 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
 import './SearchAutocompleteItem.scss';
+import { LocationSearchItemInterface } from '../../interfaces/interfaces';
 
-function SearchAutocompleteItem({ cityData, setInputValue }) {
+interface SearchAutocompleteItemProps {
+  cityData: LocationSearchItemInterface;
+  setInputValue: (newState: string) => void;
+}
+
+function SearchAutocompleteItem({ cityData, setInputValue } : SearchAutocompleteItemProps) {
   const history = useHistory();
-  const handleClick = () => {
+
+  const handleClick = (): void => {
     history.push(`/${cityData.id}`);
     setInputValue('');
   };
 
-  const handleKeyUp = ({ key }) => {
-    if (key === 'Enter') {
+  const handleKeyUp = (e: React.KeyboardEvent): void => {
+    if (e.key === 'Enter') {
       handleClick();
     }
   };
@@ -31,10 +37,5 @@ function SearchAutocompleteItem({ cityData, setInputValue }) {
     </li>
   );
 }
-
-SearchAutocompleteItem.propTypes = {
-  cityData: PropTypes.objectOf(PropTypes.any).isRequired,
-  setInputValue: PropTypes.func.isRequired,
-};
 
 export default SearchAutocompleteItem;

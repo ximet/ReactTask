@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './Error.scss';
 
-function Error({ errors }) {
+interface IErrorProps {
+  errors: Array<string>;
+}
+
+function Error({ errors }: IErrorProps) {
   return (
     <div className="server-errors">
       <div className="server-errors-title">Something went wrong :</div>
@@ -15,7 +18,5 @@ function Error({ errors }) {
     </div>
   );
 }
-
-Error.propTypes = { errors: PropTypes.arrayOf(PropTypes.string).isRequired };
 
 export default Error;

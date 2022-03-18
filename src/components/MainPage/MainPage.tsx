@@ -5,15 +5,21 @@ import useRequest from '../../hooks/useRequest';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 import Preloader from '../Preloader/Preloader';
 import Error from '../Error/Error';
+import {
+  CurrentWeatherinterface,
+  LocationInfoInterface,
+  NextWeekWeatherItemInterface,
+  TodaysWeatherItemInterface,
+} from '../../interfaces/interfaces';
 
 import './MainPage.scss';
 
 function MainPage() {
-  const [location, setLocation] = useState(null);
-  const [locationInfo, locationInfoError] = useRequest(weatherApi.getLocationInfo, location);
-  const [currentWeather, currentWeatherError] = useRequest(weatherApi.getCurrentWeather, location);
-  const [todaysWeather, todaysWeatherError] = useRequest(weatherApi.getTodaysWeather, location);
-  const [dailyWeather, dailyWeatherError] = useRequest(weatherApi.getNextWeekWeather, location);
+  const [location, setLocation] = useState<string | null>(null);
+  const [locationInfo, locationInfoError] = useRequest<LocationInfoInterface>(weatherApi.getLocationInfo, location);
+  const [currentWeather, currentWeatherError] = useRequest<CurrentWeatherinterface>(weatherApi.getCurrentWeather, location);
+  const [todaysWeather, todaysWeatherError] = useRequest<TodaysWeatherItemInterface[]>(weatherApi.getTodaysWeather, location);
+  const [dailyWeather, dailyWeatherError] = useRequest<NextWeekWeatherItemInterface[]>(weatherApi.getNextWeekWeather, location);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {

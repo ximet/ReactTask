@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import weatherApi from '../../api/weatherApi';
 
+import weatherApi from '../../api/weatherApi';
+import {
+  CurrentWeatherinterface,
+  LocationInfoInterface,
+  NextWeekWeatherItemInterface,
+  TodaysWeatherItemInterface,
+} from '../../interfaces/interfaces';
 import Preloader from '../Preloader/Preloader';
 import SelectedCityInfo from '../SelectedCityInfo/SelectedCityInfo';
 
-function SelectedCityPage() {
-  const params = useParams();
+type ParamsType = {
+  id: string;
+};
 
-  const [locationInfo, setLocationInfo] = useState(null);
-  const [currentWeather, setCurrentWeather] = useState(null);
-  const [todaysWeather, setTodaysWeather] = useState(null);
-  const [nextWeekWeather, setNextWeekWeather] = useState(null);
+function SelectedCityPage() {
+  const params = useParams<ParamsType>();
+
+  const [locationInfo, setLocationInfo] = useState<LocationInfoInterface | null>(null);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherinterface | null>(null);
+  const [todaysWeather, setTodaysWeather] = useState<TodaysWeatherItemInterface[] |null>(null);
+  const [nextWeekWeather, setNextWeekWeather] = useState<NextWeekWeatherItemInterface[] | null>(null);
 
   useEffect(() => {
     const cityId = params.id;

@@ -1,8 +1,8 @@
-const setCookie = (key, value, lifeTime) => {
+const setCookie = (key: string, value: string, lifeTime: number): void => {
   document.cookie = `${key}=${value}; max-age=${lifeTime * 3600}`;
 };
 
-const getCookie = (key) => {
+const getCookie = (key: string): string | null => {
   const { cookie } = document;
   const result = cookie.split('; ').filter((element) => element.includes(key));
 
@@ -11,11 +11,11 @@ const getCookie = (key) => {
     : null;
 };
 
-const deleteCookie = (key) => {
+const deleteCookie = (key: string): void => {
   document.cookie = `${key}=''; max-age=0`;
 };
 
-const getAccessToken = () => getCookie('token');
+const getAccessToken = (): string => getCookie('token');
 
 export {
   setCookie,

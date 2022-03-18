@@ -1,6 +1,6 @@
 import { getAccessToken } from './cookies';
 
-async function request(requestUrl, isTokenRequired = false) {
+async function request(requestUrl: string, isTokenRequired: boolean = false) {
   try {
     const token = getAccessToken();
     const headers = {};

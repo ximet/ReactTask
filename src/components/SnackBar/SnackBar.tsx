@@ -1,12 +1,15 @@
 import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
-import { SnackbarContext } from '../../core/contexts';
+import { SnackbarContext, SnackbarContextInterface } from '../../core/contexts';
 
 import './SnackBar.scss';
 
-function SnackBar({ duration }) {
-  const [snackbar, setSnackbar] = useContext(SnackbarContext);
+interface SnackBarInterface {
+  duration: number;
+}
+
+function SnackBar({ duration = 3000 }: SnackBarInterface) {
+  const { snackbar, setSnackbar } = useContext<SnackbarContextInterface>(SnackbarContext);
 
   useEffect(() => {
     if (snackbar.isOpen) {
@@ -25,8 +28,5 @@ function SnackBar({ duration }) {
       : <span />
   );
 }
-
-SnackBar.propTypes = { duration: PropTypes.number };
-SnackBar.defaultProps = { duration: 3000 };
 
 export default SnackBar;

@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './CurrentWeatherItem.scss';
 
-function CurrentWeatherItem({ name, data }) {
+interface ICurrentWeatherItemProps {
+  name: string;
+  data: string;
+}
+
+function CurrentWeatherItem({ name, data }: ICurrentWeatherItemProps) {
   return (
     <div className="current__weather-item">
       <span className="current__weather-item-bold" data-testid="data">{data}</span>
@@ -11,10 +15,5 @@ function CurrentWeatherItem({ name, data }) {
     </div>
   );
 }
-
-CurrentWeatherItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-};
 
 export default CurrentWeatherItem;

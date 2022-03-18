@@ -1,7 +1,10 @@
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
-function Portal({ children }) {
+interface LauncherProps {
+  children?: JSX.Element | JSX.Element[],
+}
+
+function Portal({ children } : LauncherProps) {
   return (
     ReactDOM.createPortal(
       children,
@@ -9,7 +12,5 @@ function Portal({ children }) {
     )
   );
 }
-
-Portal.propTypes = { children: PropTypes.element.isRequired };
 
 export default Portal;

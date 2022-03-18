@@ -48,7 +48,10 @@
     font-size: 1.2rem;
 
     &--is-active{
-      background-color: red;
+      pointer-events: none;
+      cursor: default;
+      color: #888;
+      background-color: #f5f5f5;
     }
 
     &:hover{

@@ -1,15 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import TodaysWeatherItem from '../TodaysWeatherItem/TodaysWeatherItem';
 import NextWeekWeatherItem from '../NextWeekWeatherItem/NextWeekWeatherItem';
 import CurrentWeatherItem from '../CurrentWeatherItem/CurrentWeatherItem';
+import {
+  CurrentWeatherinterface,
+  LocationInfoInterface,
+  NextWeekWeatherItemInterface,
+  TodaysWeatherItemInterface,
+} from '../../interfaces/interfaces';
 
 import './SelectedCityInfo.scss';
 
-function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather, nextWeekWeather }) {
-  const dateOptions = { weekday: 'long', day: 'numeric', month: 'long' };
-  const date = new Intl.DateTimeFormat('en-US', dateOptions).format(currentWeather.date);
+interface ISelectedCityInfoProps {
+  locationInfo: LocationInfoInterface;
+  currentWeather: CurrentWeatherinterface;
+  todaysWeather: TodaysWeatherItemInterface[];
+  nextWeekWeather: NextWeekWeatherItemInterface[];
+}
+
+function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather, nextWeekWeather }: ISelectedCityInfoProps) {
+  const dateOptions: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
+  const date = new Intl.DateTimeFormat('en-US', dateOptions).format(currentWeather.time);
 
   return (
     <div className="city">
@@ -36,7 +48,7 @@ function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather, nextWee
 
       <div className="city__header">Weather for the next 24 hours:</div>
       <div className="city__todays">
-        {todaysWeather.map((item) => <TodaysWeatherItem data={item} key={item.time} />)}
+        {todaysWeather.map((item) => <TodaysWeatherItem data={item} key={String(item.time)} />)}
       </div>
       <div className="city__header">Weather for the next 7 days:</div>
       <div className="city__nextweek">
@@ -45,12 +57,5 @@ function SelectedCityInfo({ locationInfo, currentWeather, todaysWeather, nextWee
     </div>
   );
 }
-
-SelectedCityInfo.propTypes = {
-  locationInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-  currentWeather: PropTypes.objectOf(PropTypes.any).isRequired,
-  todaysWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
-  nextWeekWeather: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default SelectedCityInfo;

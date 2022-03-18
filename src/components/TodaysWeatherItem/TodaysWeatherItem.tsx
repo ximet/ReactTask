@@ -1,10 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { TodaysWeatherItemInterface } from '../../interfaces/interfaces';
 
 import './TodaysWeatherItem.scss';
 
-function TodaysWeatherItem({ data: { time, temperature, symbol } }) {
-  const dateOptions = { hour: 'numeric' };
+interface TodaysWeatherItemProps {
+  data: TodaysWeatherItemInterface;
+}
+
+function TodaysWeatherItem({ data: { time, temperature, symbol } }: TodaysWeatherItemProps) {
+  const dateOptions: Intl.DateTimeFormatOptions = { hour: 'numeric' };
   const date = new Intl.DateTimeFormat('en-US', dateOptions).format(new Date(time));
 
   return (
@@ -15,9 +19,5 @@ function TodaysWeatherItem({ data: { time, temperature, symbol } }) {
     </div>
   );
 }
-
-TodaysWeatherItem.propTypes = {
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-};
 
 export default TodaysWeatherItem;
