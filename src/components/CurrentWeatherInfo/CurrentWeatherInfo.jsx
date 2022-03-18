@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import classes from './WeatherInfo.module.scss';
+import classes from './CurrentWeatherInfo.module.scss';
 
-const WeatherInfo = ({ weather }) => {
+const CurrentWeatherInfo = ({ weather }) => {
   // useEffect(() => {
   //   console.log(temperature);
   // }, [temperature])
@@ -36,4 +36,4 @@ const WeatherInfo = ({ weather }) => {
   );
 };
 
-export default WeatherInfo;
+export default CurrentWeatherInfo;
