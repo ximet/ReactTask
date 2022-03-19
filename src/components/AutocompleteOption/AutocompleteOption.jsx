@@ -5,14 +5,13 @@ import classes from './AutocompleteOption.module.scss';
 const AutocompleteOption = ({ location, selected }) => {
   const history = useHistory();
 
-  const handleClick = () => {
-    history.push(`/${location.id}`);
+  const handleMouseDown = () => {
+    history.push(`/location/${location.id}`);
     selected();
-    // setInputValue('');
   };
 
   return (
-    <div className={classes.option} onClick={handleClick}>
+    <div onMouseDown={handleMouseDown} className={classes.option}>
       <span>{`${location.name}, ${location.country}`}</span>
     </div>
   );

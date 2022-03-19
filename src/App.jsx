@@ -16,6 +16,9 @@ function App() {
           <Route exact path="/">
             <MainPage />
           </Route>
+          <Route path="/location/:id">
+            <MainPage />
+          </Route>
           <Route path="/about">
             <InfoPage />
           </Route>

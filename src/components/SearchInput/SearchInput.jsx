@@ -25,7 +25,9 @@ const SearchInput = () => {
   const handleChange = event => {
     setValue(event.target.value);
   };
-  const handleBlur = () => setDisplay(false);
+  const handleBlur = () => {
+    setDisplay(false);
+  };
   const handleFocus = () => !!value && setDisplay(true);
   const handleSubmit = event => {
     event.preventDefault();
@@ -34,6 +36,7 @@ const SearchInput = () => {
   };
   const handleOptionSelect = () => {
     setDisplay(false);
+    setValue('');
   };
 
   useEffect(() => {
