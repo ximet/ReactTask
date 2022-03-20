@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { getCurrentWeatherByCoords } from '../../api';
+import { getCurrentWeatherById } from '../../api';
 import { url } from '../../constants';
 import CurrentWeatherInfo from '../CurrentWeatherInfo/CurrentWeatherInfo';
 import WeatherSymbol from '../WeatherSymbol/WeatherSymbol';
@@ -10,7 +10,7 @@ const CurrentWeather = ({ location }) => {
   const [weather, setWeather] = useState({});
 
   const updateCurrentWeather = useCallback(async () => {
-    const currentWeather = await getCurrentWeatherByCoords(url, location.id);
+    const currentWeather = await getCurrentWeatherById(url, location.id);
     setWeather(currentWeather);
   }, [location]);
 
