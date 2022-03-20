@@ -8,22 +8,12 @@ import { url } from '../../constants';
 import DailyForecast from '../../components/DailyForecast/DailyForecast';
 import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
 import { useParams } from 'react-router-dom';
+import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
 
 const MainPage = () => {
   const [coords, setCoords] = useState({});
   const [location, setLocation] = useState({});
   const params = useParams();
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        setCoords(pos.coords);
-      },
-      err => {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
-    );
-  }, []);
 
   useEffect(() => {
     if (params.id) {
@@ -51,6 +41,7 @@ const MainPage = () => {
   return (
     <>
       <main className={`${commonClasses.page} ${classes.main}`}>
+        <ThemeSwitcher />
         <LocationHeader name={location.name} country={location.country} />
         <CurrentWeather location={location} />
         <DailyForecast location={location} />
