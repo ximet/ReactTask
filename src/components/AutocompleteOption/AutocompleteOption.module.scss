@@ -2,10 +2,11 @@
 
 .option {
   padding: 5px;
+  border-bottom: 1px solid $borderColor;
+  transition: background 0.3s;
 
   &:hover {
-    background: $base-color;
-    color: $font-color;
+    background: $primary;
     cursor: pointer;
   }
 }

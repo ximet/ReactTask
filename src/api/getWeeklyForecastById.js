@@ -3,8 +3,6 @@ const getWeeklyForecastById = async (url, locationId) => {
 
   const data = await res.json();
 
-  console.log(data);
-
   return data.forecast;
 };
 

@@ -7,8 +7,6 @@ const WeeklyForecastItem = ({ forecastItem }) => {
   const options = { weekday: 'long', month: 'long', day: 'numeric' };
   const dateString = date.toLocaleDateString('en-US', options);
 
-  console.log(forecastItem);
-
   return (
     <div className={classes.weeklyForecastItem}>
       <h2 className={classes.weeklyForecastItem__header}>{dateString}</h2>

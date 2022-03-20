@@ -1,5 +1,7 @@
+@import '../../scss';
+
 .dailyForecastItem {
-  border: 1px solid black;
+  border: 1px solid $borderColor;
   border-radius: 5px;
   padding: 10px;
   margin: 5px;

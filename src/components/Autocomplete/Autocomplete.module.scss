@@ -1,5 +1,8 @@
+@import '../../scss';
+
 .autocomplete {
   position: absolute;
-  background: #fff;
+  background: $backgroundColor;
+  color: $textColor;
   align-self: baseline;
 }

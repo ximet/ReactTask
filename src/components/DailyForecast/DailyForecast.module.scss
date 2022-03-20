@@ -1,4 +1,5 @@
 .dailyForecast {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  overflow-x: scroll;
 }
