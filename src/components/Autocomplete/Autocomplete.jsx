@@ -3,8 +3,6 @@ import AutocompleteOption from '../AutocompleteOption/AutocompleteOption';
 import classes from './Autocomplete.module.scss';
 
 const Autocomplete = ({ display, options, onOptionSelect }) => {
-  // useEffect(() => {}, [display, options]);
-
   return (
     <div className={classes.autocomplete}>
       {display &&
