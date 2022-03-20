@@ -1,12 +1,14 @@
+@import '../../scss';
+
 .weeklyForecastItem {
   padding: 1rem;
-  border: 1px solid black;
+  border: 1px solid $borderColor;
 
   &__header {
     font-size: 2rem;
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 200;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $borderColor;
   }
 
   &:first-child {

@@ -3,5 +3,6 @@
 .page {
   flex: 1 0 auto;
   margin: 0 auto;
+  background: $backgroundColor;
   @include container;
 }

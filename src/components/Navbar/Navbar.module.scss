@@ -1,3 +1,5 @@
+@import '../../scss';
+
 .nav {
   flex: 1 0 auto;
 }
@@ -12,7 +14,7 @@
 .nav__item {
   padding: 2rem;
   transition: background-color 0.3s;
-  color: aliceblue;
+  color: $textColor;
 }
 
 .nav__item:hover {

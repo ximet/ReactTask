@@ -2,7 +2,7 @@
 
 .header {
   height: 6rem;
-  background: $base-color;
+  background: $primary;
   padding: 0 4rem;
 }
 
@@ -17,5 +17,5 @@
   margin: 0 3rem;
   font-family: Staatliches, Roboto, Verdana, Geneva, Tahoma, sans-serif;
   flex: 0 0 auto;
-  color: aliceblue;
+  color: $textColor;
 }
