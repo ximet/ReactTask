@@ -10,8 +10,10 @@ const CurrentWeather = ({ location }) => {
   const [weather, setWeather] = useState({});
 
   const updateCurrentWeather = useCallback(async () => {
-    const currentWeather = await getCurrentWeatherById(url, location.id);
-    setWeather(currentWeather);
+    if (location?.id) {
+      const currentWeather = await getCurrentWeatherById(url, location.id);
+      setWeather(currentWeather);
+    }
   }, [location]);
 
   useEffect(() => {

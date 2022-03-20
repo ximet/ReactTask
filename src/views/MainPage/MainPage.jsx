@@ -9,15 +9,20 @@ import DailyForecast from '../../components/DailyForecast/DailyForecast';
 import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
 import { useParams } from 'react-router-dom';
 import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
+import { useSelector, useDispatch } from 'react-redux';
+import { locationSelector } from '../../store/selectors';
+import { setLocation } from '../../store/actions';
 
 const MainPage = () => {
   const [coords, setCoords] = useState({});
-  const [location, setLocation] = useState({});
+  // const [location, setLocation] = useState({});
   const params = useParams();
+  const dispatch = useDispatch();
+  const location = useSelector(locationSelector);
 
   useEffect(() => {
     if (params.id) {
-      getLocationInfoById(url, params.id).then(setLocation);
+      getLocationInfoById(url, params.id).then(location => dispatch(setLocation(location)));
     } else {
       navigator.geolocation.getCurrentPosition(
         pos => {
@@ -33,7 +38,7 @@ const MainPage = () => {
   useEffect(() => {
     getLocationInfoByCoords(url, coords).then(location => {
       if (location) {
-        setLocation(location);
+        dispatch(setLocation(location));
       }
     });
   }, [coords]);
