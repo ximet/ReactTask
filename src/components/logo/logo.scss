@@ -1,7 +1,6 @@
 @import '../../scss';
 
 .logo {
-  // text-transform: uppercase;
   @include primaryTitle;
   color: var(#{--text-color-active-default});
 }

@@ -1,7 +1,10 @@
 @import '../../scss';
 
 .footer {
-  height: 10vh;
+  height: 5vh;
   padding: 10px;
   height: 100px;
+  @include description('sm');
+  color: var(#{--text-color-active-default});
+  text-align: center;
 }
