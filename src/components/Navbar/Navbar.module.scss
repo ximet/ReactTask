@@ -13,18 +13,12 @@
 
 .nav__item {
   padding: 2rem;
-  transition: background-color 0.3s;
-  color: $textColor;
+  transition: background-color 0.5s, color 0.3s;
+  color: $primaryFontColor;
 }
 
 .nav__item:hover {
-  background-color: #4a45ac;
+  background-color: $interactiveColor;
+  color: $backgroundColor;
   cursor: pointer;
 }
-/* 
-.nav__item:after {
-  content: ' | ';
-  background: rgb(255, 255, 255, 0);
-  height: 50%;
-  width: 3px;
-} */

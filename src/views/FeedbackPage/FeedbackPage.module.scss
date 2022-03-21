@@ -1,0 +1,19 @@
+@import '../../scss';
+
+.feedbackPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $primaryFontColor;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+
+  &__header {
+    color: $secondaryFontColor;
+  }
+
+  &__description {
+    max-width: 60%;
+    text-align: center;
+  }
+}

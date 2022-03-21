@@ -3,6 +3,15 @@
 .autocomplete {
   position: absolute;
   background: $backgroundColor;
-  color: $textColor;
+  color: $primaryFontColor;
   align-self: baseline;
+  width: 200px;
+  max-height: 420px;
+  overflow-y: scroll;
+}
+
+.noMatches {
+  padding: 5px;
+  border: 1px solid $borderColor;
+  border-top: none;
 }

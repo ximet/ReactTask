@@ -2,11 +2,13 @@
 
 .option {
   padding: 5px;
-  border-bottom: 1px solid $borderColor;
+  border: 1px solid $borderColor;
+  border-top: none;
   transition: background 0.3s;
 
   &:hover {
-    background: $primary;
+    background: $interactiveColor;
+    color: $backgroundColor;
     cursor: pointer;
   }
 }

@@ -1,0 +1,36 @@
+@import '../../scss';
+
+.searchInput,
+.button {
+  height: 3rem;
+}
+
+.searchInput {
+  border-radius: 5px 0 0 5px;
+  border: 1px solid $borderColor;
+  border-right: none;
+  background: $backgroundColor;
+  padding: 5px;
+  color: $primaryFontColor;
+  outline: 0;
+
+  &::placeholder {
+    color: $secondaryFontColor;
+    opacity: 1;
+  }
+}
+
+.button {
+  border-radius: 0 5px 5px 0;
+  border: 1px solid $borderColor;
+  background: $backgroundColor;
+  padding: 5px;
+  color: $primaryFontColor;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background: $interactiveColor;
+    color: $backgroundColor;
+    cursor: pointer;
+  }
+}

@@ -1,5 +1,22 @@
+@import '../../scss';
+
 .dailyForecast {
   display: flex;
   // flex-wrap: wrap;
   overflow-x: scroll;
+  margin: 2rem 0;
+}
+
+.dailyForecastHeader {
+  border-bottom: 1px solid $borderColor;
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  background: $primary;
+}
+::-webkit-scrollbar-thumb {
+  background: $interactiveColor;
+  border-radius: 10px;
 }

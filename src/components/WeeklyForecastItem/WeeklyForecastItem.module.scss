@@ -1,13 +1,13 @@
 @import '../../scss';
 
 .weeklyForecastItem {
-  padding: 1rem;
-  border: 1px solid $borderColor;
+  border: 3px solid $borderColor;
 
   &__header {
     font-size: 2rem;
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 200;
+    padding: 1rem;
     border-bottom: 1px solid $borderColor;
   }
 
@@ -21,5 +21,26 @@
 
   &:not(:last-child) {
     border-bottom: none;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+}
+
+.infoPiece {
+  height: 3rem;
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+  flex: 1;
+
+  &__text {
+    margin-left: 0.5rem;
   }
 }

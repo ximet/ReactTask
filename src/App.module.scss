@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  transition: background-color 0.3s;
 }
 
 html {
@@ -23,7 +24,8 @@ body {
   padding: 0;
   font-size: 1.6rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: $textColor;
+  color: $primaryFontColor;
+  background: $backgroundColor;
 }
 
 a {

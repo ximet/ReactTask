@@ -5,12 +5,10 @@
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
-  width: 23%;
-}
-
-.dailyForecastItem__header {
-}
-
-.symbol {
-  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 150px;
+  margin-bottom: 10px;
 }
