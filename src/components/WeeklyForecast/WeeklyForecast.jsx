@@ -16,7 +16,7 @@ const WeeklyForecast = ({ location }) => {
   return (
     <>
       <h2>Next week</h2>
-      <div className={classes.dailyForecast}>
+      <div className={classes.weeklyForecast}>
         {weeklyForecast.map(forecastItem => (
           <WeeklyForecastItem forecastItem={forecastItem} key={forecastItem.date} />
         ))}
