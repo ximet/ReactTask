@@ -1,0 +1,75 @@
+$body-background-light: #f5f5f5;
+$body-background-dark: #131516;
+
+$header-shadow-light: 0px 0px 10px 0px #0000001a;
+$header-shadow-dark: 0px 0px 10px 0px #ffffff;
+
+$cards-background-light: #fff;
+$cards-background-dark: #000;
+
+$text-color-light: #000;
+$text-color-dark: #d1d0d0;
+
+$nav-button-hover-light: #fff;
+$nav-button-hover-dark: #ffffff11;
+
+$fields-background-light: #fff;
+$fields-background-dark: #ccc;
+
+$switcher-background-light: #000;
+$switcher-background-dark: #fff;
+
+$burger-background-light: #eee;
+$burger-background-dark: #1d1d1d;
+
+:root {
+  --body-background-light: #{$body-background-light};
+  --body-background-dark: #{$body-background-dark};
+  --body-background: var(#{--body-background-light});
+
+  --header-shadow-light: #{$header-shadow-light};
+  --header-shadow-dark: #{$header-shadow-dark};
+  --header-shadow: var(#{--header-shadow-light});
+
+  --cards-background-light: #{$cards-background-light};
+  --cards-background-dark: #{$cards-background-dark};
+  --cards-background: var(#{--cards-background-light});
+
+  --text-color-light: #{$text-color-light};
+  --text-color-dark: #{$text-color-dark};
+  --text-color: var(#{--text-color-light});
+
+  --nav-button-hover-light: #{$nav-button-hover-light};
+  --nav-button-hover-dark: #{$nav-button-hover-dark};
+  --nav-button-hover: var(#{--nav-button-hover-light});
+
+  --fields-background-light: #{$fields-background-light};
+  --fields-background-dark: #{$fields-background-dark};
+  --fields-background: var(#{--fields-background-light});
+
+  --switcher-background-light: #{$switcher-background-light};
+  --switcher-background-dark: #{$switcher-background-dark};
+  --switcher-background: var(#{--switcher-background-light});
+
+  --burger-background-light: #{$burger-background-light};
+  --burger-background-dark: #{$burger-background-dark};
+  --burger-background: var(#{--burger-background-light});
+}
+
+@mixin breakpoint($point) {
+  @if $point == xl {
+    @media(max-width: 1439px) {@content;}
+  }
+  @if $point == lg {
+    @media(max-width: 1023px) {@content;}
+  }
+  @if $point == md {
+    @media(max-width: 767px) {@content;}
+  }
+  @if $point == sm {
+    @media(max-width: 424px) {@content;}
+  }
+  @if $point == xs {
+    @media(max-width: 374px) {@content;}
+  }
+}

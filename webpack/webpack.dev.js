@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 const commonPaths = require('./paths');
 
@@ -21,9 +22,6 @@ module.exports = {
             options: {
               sourceMap: true,
               localsConvention: 'camelCase'
-              /* modules: {
-                localIdentName: '[local]___[hash:base64:5]'
-              } */
             }
           },
           'sass-loader'
@@ -37,5 +35,8 @@ module.exports = {
     hot: true,
     port: 9020
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv()
+  ]
 };

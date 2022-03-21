@@ -1,0 +1,29 @@
+@import '../../variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  height: 100%;
+  background-color: var(#{--body-background});
+  transition: background-color .3s linear;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 1 auto;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}

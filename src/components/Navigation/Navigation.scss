@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.menu{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  
+  &__logo {
+    color: rgb(87, 89, 233);
+    font-size: 2rem;
+    margin-right: 10%;
+    
+    @include breakpoint (xl) {
+      margin-right: 30px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin-right: 2rem;
+    width: 100%;
+  
+    &-link {
+      color: var(--text-color);
+      padding: 1rem 3.5rem;
+      font-size: 1.2rem;
+      transition: color 0.2s linear;
+      @include breakpoint (xl) {
+        padding: 1rem 2rem;
+      }
+  
+      &--is-active {
+        padding: 1rem 3.5rem;
+        font-size: 1.2rem;
+        border-bottom: 2px solid #007FFF;
+        @include breakpoint (xl) {
+          padding: 1rem 2rem;
+        }
+      }
+  
+      &:hover {
+        background-color: var(--nav-button-hover);
+        transition: background-color .3s linear;
+      }
+    }
+  }
+}

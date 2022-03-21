@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+
+.nextweek__card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(#{--cards-background});
+  transition: background-color .3s linear;
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  &-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 230px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &-img{
+    width: 100px;
+  }
+
+  &-item{
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  @include breakpoint (lg) {
+    flex-wrap: wrap;
+  }
+}

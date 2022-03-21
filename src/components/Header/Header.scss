@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 2rem;
+  box-shadow: var(#{--header-shadow});
+
+  @media(max-width: 1080px) {
+    padding: .5rem 1rem;
+  }
+
+  @include breakpoint (lg) {
+    .menu{
+      display: none;
+    }
+    .mobile-navigation{
+      display: block;
+    }
+  }
+}
