@@ -1,4 +1,4 @@
-import { SET_LOCATION } from './types';
+import { SET_LOCATION } from '../types';
 
 const defaultState = {};
 

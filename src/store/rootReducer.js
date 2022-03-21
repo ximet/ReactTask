@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import locationReducer from './locationReducer';
+import { themeReducer, locationReducer } from './reducers';
 
 export const rootReducer = combineReducers({
+  theme: themeReducer,
   location: locationReducer
 });

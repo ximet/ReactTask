@@ -1,16 +1,39 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { themes } from '../../contexts/themes';
+import { setTheme as setThemeAction } from '../../store/actions';
+import { setCSSVariables } from '../../utils';
+import { setLocalStorageItem } from '../../utils/localStorage';
+import classes from './ThemeSwitcher.module.scss';
 
-import { ThemeSelectorContext } from '../../contexts/themeContext';
+class ThemeSwitcher extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-const ThemeSwitcher = () => {
-  const { theme, toggleTheme } = useContext(ThemeSelectorContext);
+  handleClick() {
+    const { theme, setTheme } = this.props;
+    const themeName = theme === 'light' ? 'dark' : 'light';
 
-  return (
-    <>
-      <div>{theme}</div>
-      <button onClick={toggleTheme}>Change Theme!</button>
-    </>
-  );
-};
+    setTheme(themeName);
+    setCSSVariables(themes[themeName]);
+    setLocalStorageItem('theme', themeName);
+  }
 
-export default ThemeSwitcher;
+  render() {
+    return (
+      <div className={classes.themeSwitcher} onClick={this.handleClick}>
+        {this.props.theme === 'dark' ? <FaSun /> : <FaMoon />}
+      </div>
+    );
+  }
+}
+
+// ThemeSwitcher.defaultProps = { theme: '', setTheme: () => {} };
+
+const mapDispatchToProps = dispatch => ({ setTheme: theme => dispatch(setThemeAction(theme)) });
+const mapStateToProps = state => ({ theme: state.theme });
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitcher);

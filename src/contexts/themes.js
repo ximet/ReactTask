@@ -1,14 +1,18 @@
 export const themes = {
   dark: {
-    primary: '#2821A3',
+    primary: '#222222',
     borderColor: '#ffffff',
-    textColor: '#ffffff',
-    backgroundColor: '#000000'
+    primaryFontColor: '#ffffff',
+    secondaryFontColor: '#b0bec5',
+    backgroundColor: '#37474f',
+    interactiveColor: '#ffffff'
   },
   light: {
-    primary: '#6c64fb',
-    borderColor: 'rgb(185, 185, 185)',
-    textColor: '#faebd7',
-    backgroundColor: '#ffffff'
+    primary: '#cfd8dc',
+    borderColor: '#222222',
+    primaryFontColor: '#222222',
+    secondaryFontColor: '#455a64',
+    backgroundColor: '#ffffff',
+    interactiveColor: '#026ebe'
   }
 };

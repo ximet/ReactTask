@@ -8,7 +8,6 @@ import { url } from '../../constants';
 import DailyForecast from '../../components/DailyForecast/DailyForecast';
 import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
 import { useParams } from 'react-router-dom';
-import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
 import { useSelector, useDispatch } from 'react-redux';
 import { locationSelector } from '../../store/selectors';
 import { setLocation } from '../../store/actions';
@@ -33,7 +32,7 @@ const MainPage = () => {
         }
       );
     }
-  }, [params]);
+  }, [params, dispatch]);
 
   useEffect(() => {
     getLocationInfoByCoords(url, coords).then(location => {
@@ -41,12 +40,11 @@ const MainPage = () => {
         dispatch(setLocation(location));
       }
     });
-  }, [coords]);
+  }, [coords, dispatch]);
 
   return (
     <>
       <main className={`${commonClasses.page} ${classes.main}`}>
-        <ThemeSwitcher />
         <LocationHeader name={location.name} country={location.country} />
         <CurrentWeather location={location} />
         <DailyForecast location={location} />
