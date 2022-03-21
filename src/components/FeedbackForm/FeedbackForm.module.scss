@@ -1,0 +1,72 @@
+@import '../../scss';
+
+.form {
+  width: 50%;
+
+  &__controllers {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__label {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    min-width: 70%;
+    border-radius: 5px;
+    border: 1px solid $borderColor;
+    padding: 0.5rem 1rem;
+    background-color: $secondaryFontColor;
+    color: $backgroundColor;
+  }
+
+  &__textarea {
+    height: 200px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid $borderColor;
+    background-color: $secondaryFontColor;
+    resize: vertical;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &__button,
+  &__link {
+    border: $borderColor;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    max-width: 300px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: $primary;
+    color: $primaryFontColor;
+
+    &:hover {
+      background-color: $interactiveColor;
+      color: $backgroundColor;
+    }
+  }
+
+  &__link {
+    color: $primaryFontColor;
+    border: 1px solid $borderColor;
+    background-color: $primary;
+
+    &:hover {
+      background-color: $interactiveColor;
+      color: $backgroundColor;
+    }
+  }
+}
