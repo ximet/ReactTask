@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { getSearchLocations } from '../../api';
 import { url } from '../../constants';
 import Autocomplete from '../Autocomplete/Autocomplete';
+import classes from './SeachInput.module.scss';
 
 const SearchInput = () => {
   const [value, setValue] = useState('');
@@ -45,11 +46,12 @@ const SearchInput = () => {
     }, 500);
 
     return () => clearTimeout(searchDelayTimeoutId);
-  }, [value, updateOptions]);
+  }, [updateOptions]);
 
   return (
     <form action="" onSubmit={handleSubmit}>
       <input
+        className={classes.searchInput}
         placeholder="location name"
         value={value}
         onInput={handleChange}
@@ -57,7 +59,9 @@ const SearchInput = () => {
         onFocus={handleFocus}
         ref={inputRef}
       />
-      <button type="submit">Search</button>
+      <button className={classes.button} type="submit">
+        Search
+      </button>
       <Autocomplete display={display} options={options} onOptionSelect={handleOptionSelect} />
     </form>
   );
