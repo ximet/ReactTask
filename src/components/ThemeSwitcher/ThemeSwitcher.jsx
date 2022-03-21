@@ -31,8 +31,6 @@ class ThemeSwitcher extends React.Component {
   }
 }
 
-// ThemeSwitcher.defaultProps = { theme: '', setTheme: () => {} };
-
 const mapDispatchToProps = dispatch => ({ setTheme: theme => dispatch(setThemeAction(theme)) });
 const mapStateToProps = state => ({ theme: state.theme });
 

@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './CurrentWeatherInfo.module.scss';
 
 const CurrentWeatherInfo = ({ weather }) => {
-  // useEffect(() => {
-  //   console.log(temperature);
-  // }, [temperature])
-
   return (
     <div className={classes.wrapper}>
       <div className={classes.tile}>
