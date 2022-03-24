@@ -6,8 +6,9 @@ import StarRating from '../StarRating/StarRating';
 function FeedbackForm() {
   const {
     control,
-    register,
     handleSubmit,
+    register,
+    setValue,
     watch,
     formState: { errors }
   } = useForm();
@@ -15,6 +16,7 @@ function FeedbackForm() {
 
   const onSubmit = (data, e) => {
     e.target.reset();
+    setValue('rating', 0);
 
     localStorage.setItem(
       'user',
@@ -89,20 +91,19 @@ function FeedbackForm() {
             ? 'What was disappointing in your experience with us?'
             : 'What features do you value the most?'}
         </p>
-        <textarea className={classes.textarea_input} {...register('feedback', {
-          maxLength: {
-            value: 255,
-            message: 'This input exceed maxLength'
-          }
-        })} />
+        <textarea
+          className={classes.textarea_input}
+          {...register('feedback', {
+            maxLength: {
+              value: 255,
+              message: 'This input exceed maxLength'
+            }
+          })}
+        />
         {errors.feedback && <p className={classes.error}>{errors.feedback.message}</p>}
       </div>
 
-      <input
-        type="submit"
-        value="Send feedback"
-        className={classes.input_submit}
-      />
+      <input type="submit" value="Send feedback" className={classes.input_submit} />
     </form>
   );
 }

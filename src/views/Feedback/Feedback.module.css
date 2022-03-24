@@ -1,8 +1,5 @@
 .form__wrapper {
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.4)
-  );
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
   border-radius: 1%;
   box-sizing: border-box;
   display: flex;
