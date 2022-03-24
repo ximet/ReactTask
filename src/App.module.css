@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* font-family: 'PT Sans', sans-serif; */
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
   --bg-blue-dark: #142136;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --text-white: #7577e1;
 
   --bg-grey-light: #d7dde9;

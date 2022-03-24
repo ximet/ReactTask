@@ -1,28 +1,39 @@
 .form__wrapper {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.4)
+  );
+  border-radius: 1%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 35em;
   top: 15%;
   position: absolute;
 }
 
-.feedback {
+.feedback_wrapper {
   box-sizing: border-box;
   display: flex;
-  align-items: center;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .feedback_title {
   font-size: 1.4rem;
   text-align: center;
-  margin-bottom: 10px;
+  margin: 18px;
 }
 
 .feedback_subtitle {
   font-size: 1.2em;
   text-align: center;
+}
+
+p {
+  margin: 5px;
 }
