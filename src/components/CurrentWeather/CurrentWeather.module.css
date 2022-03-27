@@ -1,5 +1,7 @@
 .current_weather__wrapper {
   display: flex;
+  justify-content: space-between;
+  margin: 0px 30px 20px 20px;
 }
 
 .current_weather__header {
