@@ -1,14 +1,17 @@
 .form__wrapper {
   background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
-  border-radius: 1%;
+  border-radius: 4px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 35em;
-  top: 15%;
-  position: absolute;
+  margin-top: 5%;
+}
+
+.feedback {
+  position: relative;
 }
 
 .feedback_wrapper {

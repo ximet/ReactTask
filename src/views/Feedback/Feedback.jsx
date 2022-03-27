@@ -4,7 +4,7 @@ import FeedbackForm from '../../components/FeedbackForm/FeedbackForm';
 
 function Feedback() {
   return (
-    <div>
+    <div className={classes.feedback}>
       <div className={classes.feedback_wrapper}>
         <div className={classes.form__wrapper}>
           <h2 className={classes.feedback_title}>Feedback Form</h2>
