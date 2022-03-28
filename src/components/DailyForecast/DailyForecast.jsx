@@ -13,7 +13,7 @@ function DailyForecast({ dailyForecast }) {
     const weatherSymbol = getImagesURL(day.symbol);
 
     return (
-      <li key={day.id} className={classes.daily_weather__item}>
+      <li key={day.date} className={classes.daily_weather__item}>
         <DailyItem date={date} weatherSymbol={weatherSymbol} day={day} />
       </li>
     );

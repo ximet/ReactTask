@@ -5,7 +5,14 @@ import searchIcon from '../../../public/icons/search.png';
 import cancelIcon from '../../../public/icons/x.png';
 import { debounce } from '../../helpers/debounceHelper';
 
-const sortSearchResults = searchResults => {
+const sortSearchResults = (searchResults, searchQuery) => {
+  if (searchQuery.length > 3 && searchResults.length === 0) {
+    return [
+      {
+        name: 'Location not found'
+      }
+    ];
+  }
   const sortByCountry = searchResults.sort(function (firstCountry, secondCountry) {
     return firstCountry.country.localeCompare(secondCountry.country);
   });
@@ -18,6 +25,9 @@ const sortSearchResults = searchResults => {
 };
 
 const formatCityTile = city => {
+  if (city.country === undefined) {
+    return `${city.name}`;
+  }
   const formattedTile = `${city.name}, ${city.country}`;
   if (city.state) {
     return formattedTile.concat(`, ${city.state}`);
@@ -29,7 +39,7 @@ function SearchInput({ token, theme }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const debouncedSearchQuery = debounce(searchQuery, 1000);
+  const debouncedSearchQuery = debounce(searchQuery, 50);
 
   function searchCities(city) {
     try {
@@ -56,29 +66,35 @@ function SearchInput({ token, theme }) {
     setSearchQuery('');
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    // inputRef.current.focus();
+    // updateOptions();
+  };
+
   return (
     <div className={classes.search_wrapper} data-theme={theme}>
-      <div className={classes.search_form}>
-        <button type="button" className={classes.search_button}>
+      <form action="" onSubmit={handleSubmit}>
+        <button type="button">
           <img src={searchIcon} alt="search icon" className={classes.search_icon} />
         </button>
-        <label htmlFor="searchInput" className={classes.search_label}>
-          <input
-            id="searchInput"
-            type="text"
-            placeholder="Search"
-            autoComplete="off"
-            value={searchQuery}
-            className={classes.search_input}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="button" className={classes.star_button} onClick={handleClear}>
+
+        <input
+          className={classes.search_input}
+          placeholder="Search location"
+          value={searchQuery}
+          onChange={handleChange}
+          // onBlur={handleBlur}
+          // onFocus={handleFocus}
+          // ref={inputRef}
+        />
+
+        <button type="button" onClick={handleClear}>
           <img src={cancelIcon} alt="cancel icon" className={classes.cancel_icon} />
         </button>
-      </div>
+      </form>
       <div className={classes.search_dropdown}>
-        {sortSearchResults(searchResults).map(item => (
+        {sortSearchResults(searchResults, searchQuery).map(item => (
           <div key={item.id} className={classes.search_dropdown_item}>
             <div>{formatCityTile(item)}</div>
           </div>
