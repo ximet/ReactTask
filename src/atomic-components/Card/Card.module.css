@@ -1,8 +1,6 @@
 .card {
   padding: 20px;
-  margin-top: 10%;
-  position: absolute;
-  left: 30%;
+  margin: 10% auto;
 }
 
 .card_container {

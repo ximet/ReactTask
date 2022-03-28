@@ -44,6 +44,9 @@ function App() {
         <Route exact path="/">
           <Home token={token} theme={theme} />
         </Route>
+        <Route exact path="/location/:id">
+          <Home token={token} theme={theme} />
+        </Route>
       </Switch>
       <Footer theme={theme} />
     </Router>

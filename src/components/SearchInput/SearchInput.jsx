@@ -1,45 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classes from './SearchInput.module.css';
 import { weatherApi } from '../../services/WeatherApi';
 import searchIcon from '../../../public/icons/search.png';
 import cancelIcon from '../../../public/icons/x.png';
 import { debounce } from '../../helpers/debounceHelper';
-
-const sortSearchResults = (searchResults, searchQuery) => {
-  if (searchQuery.length > 3 && searchResults.length === 0) {
-    return [
-      {
-        name: 'Location not found'
-      }
-    ];
-  }
-  const sortByCountry = searchResults.sort(function (firstCountry, secondCountry) {
-    return firstCountry.country.localeCompare(secondCountry.country);
-  });
-  const sortByCity = sortByCountry.sort(function (firstCity, secondCity) {
-    return firstCity.name.localeCompare(secondCity.name);
-  });
-  const sortedDataFirstTen = sortByCity.slice(0, 10);
-
-  return sortedDataFirstTen;
-};
-
-const formatCityTile = city => {
-  if (city.country === undefined) {
-    return `${city.name}`;
-  }
-  const formattedTile = `${city.name}, ${city.country}`;
-  if (city.state) {
-    return formattedTile.concat(`, ${city.state}`);
-  }
-  return formattedTile;
-};
+import LocationDropdown from '../LocationDropdown/LocationDropdown';
 
 function SearchInput({ token, theme }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [display, setDisplay] = useState(false);
 
-  const debouncedSearchQuery = debounce(searchQuery, 50);
+  const debouncedSearchQuery = debounce(searchQuery, 500);
+
+  useEffect(() => {
+    if (searchResults.length) {
+      setDisplay(true);
+    }
+  }, [searchResults]);
 
   function searchCities(city) {
     try {
@@ -64,12 +42,15 @@ function SearchInput({ token, theme }) {
   const handleClear = () => {
     setSearchResults([]);
     setSearchQuery('');
+    setDisplay(false);
+  };
+
+  const handleLocationSelect = () => {
+    handleClear();
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    // inputRef.current.focus();
-    // updateOptions();
   };
 
   return (
@@ -84,22 +65,14 @@ function SearchInput({ token, theme }) {
           placeholder="Search location"
           value={searchQuery}
           onChange={handleChange}
-          // onBlur={handleBlur}
-          // onFocus={handleFocus}
-          // ref={inputRef}
         />
 
         <button type="button" onClick={handleClear}>
           <img src={cancelIcon} alt="cancel icon" className={classes.cancel_icon} />
         </button>
       </form>
-      <div className={classes.search_dropdown}>
-        {sortSearchResults(searchResults, searchQuery).map(item => (
-          <div key={item.id} className={classes.search_dropdown_item}>
-            <div>{formatCityTile(item)}</div>
-          </div>
-        ))}
-      </div>
+
+      <LocationDropdown display={display} searchResults={searchResults} onLocationSelect={handleLocationSelect} />
     </div>
   );
 }

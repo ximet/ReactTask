@@ -4,7 +4,7 @@ import classes from './DailyForecast.module.css';
 import { getImagesURL } from '../../services/WeatherApi';
 
 function DailyForecast({ dailyForecast }) {
-  const daily = dailyForecast.slice(2).map(day => {
+  const daily = dailyForecast.slice(1, 6).map(day => {
     const date = new Date(day.date).toLocaleDateString('en-us', {
       weekday: 'short',
       month: 'short',
