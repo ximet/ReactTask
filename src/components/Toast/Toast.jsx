@@ -55,8 +55,4 @@ function Toast() {
   );
 }
 
-// Toast.propTypes = {
-//   toastList: PropTypes.array.isRequired
-// };
-
 export default Toast;
