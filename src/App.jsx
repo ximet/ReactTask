@@ -12,10 +12,12 @@ import ScrollToTop from './helpers/scrollToTop';
 import { THEME, getDefaultTheme } from './helpers/toggleTheme';
 import { tokenSelector } from './redux/selectors/tokenSelector';
 import { setToken } from './redux/actions/tokenActions';
+import BackgroundImage from './atomic-components/BackgroundImage/BackgroundImage';
 
 function App() {
   const { token } = useSelector(tokenSelector);
   const [theme, setTheme] = useState(getDefaultTheme);
+  const [bgTheme, setBgImage] = useState(THEME.light);
   const dispatch = useDispatch();
 
   function toggleTheme() {
@@ -25,6 +27,7 @@ function App() {
   }
 
   useEffect(() => {
+    setBgImage(theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 
@@ -34,13 +37,16 @@ function App() {
 
   return (
     <Router>
+      <BackgroundImage theme={bgTheme} />
       <ScrollToTop />
       <NavBar token={token} theme={theme} onToggleTheme={toggleTheme} />
       <Switch>
         <Route path="/info">
-          <Info theme={theme} />
+          <Info />
         </Route>
-        <Route path="/feedback" component={Feedback} />
+        <Route path="/feedback">
+          <Feedback />
+        </Route>
         <Route exact path="/">
           <Home token={token} theme={theme} />
         </Route>

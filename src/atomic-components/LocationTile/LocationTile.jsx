@@ -20,9 +20,7 @@ const LocationTile = ({ location, selected }) => {
     selected();
   };
 
-  return (
-    <div onMouseDown={handleMouseDown}>{formatCityTile(location)}</div>
-  );
+  return <div onMouseDown={handleMouseDown}>{formatCityTile(location)}</div>;
 };
 
 export default LocationTile;

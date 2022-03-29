@@ -28,7 +28,7 @@
 
 .search_input {
   width: inherit;
-  font-size: 0.9em;
+  font-size: 1em;
   background-color: var(--bg-grey-light);
   border: 1px solid var(--bg-grey-light);
   background: var(--bg-grey-light);

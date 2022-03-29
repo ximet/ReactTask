@@ -72,7 +72,11 @@ function SearchInput({ token, theme }) {
         </button>
       </form>
 
-      <LocationDropdown display={display} searchResults={searchResults} onLocationSelect={handleLocationSelect} />
+      <LocationDropdown
+        display={display}
+        searchResults={searchResults}
+        onLocationSelect={handleLocationSelect}
+      />
     </div>
   );
 }

@@ -1,14 +1,9 @@
 import React from 'react';
 import classes from './Info.module.css';
-import { BG_IMAGE } from '../../helpers/toggleTheme';
-import Image from '../../atomic-components/Image/Image';
 
-function Info({ theme }) {
-  const bgImage = BG_IMAGE[theme];
-
+function Info() {
   return (
     <div>
-      <Image image={bgImage} />
       <div className={classes.info_wrapper}>
         <div className={classes.info_item}>
           <h2 className={classes.info_title}>About Us</h2>
