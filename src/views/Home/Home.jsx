@@ -3,19 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { weatherApi } from '../../services/WeatherApi';
 import CurrentLocationForecast from '../../components/CurrentLocationForecast/CurrentLocationForecast';
-import { BG_IMAGE } from '../../helpers/toggleTheme';
-import Image from '../../atomic-components/Image/Image';
 import { setCurrentLocation } from '../../redux/actions/locationActions';
 import { locationSelector } from '../../redux/selectors/locationSelector';
 
-function Home({ token, theme }) {
+function Home({ token }) {
   const dispatch = useDispatch();
   const { location } = useSelector(locationSelector);
 
   const [locationInfo, setLocationInfo] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
   const [dailyForecast, setDailyForecast] = useState([]);
-  const bgImage = BG_IMAGE[theme];
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -37,7 +34,6 @@ function Home({ token, theme }) {
 
   return (
     <div>
-      <Image image={bgImage} />
       <CurrentLocationForecast
         locationInfo={locationInfo}
         currentWeather={currentWeather}
