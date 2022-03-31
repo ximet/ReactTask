@@ -55,7 +55,7 @@ function SearchInput({ token, theme }) {
 
   return (
     <div className={classes.search_wrapper} data-theme={theme}>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <button type="button">
           <img src={searchIcon} alt="search icon" className={classes.search_icon} />
         </button>

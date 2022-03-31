@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchInput from '../SearchInput/SearchInput';
 import classes from './NavBar.module.css';
 import ThemeSwitcher from '../../atomic-components/ThemeSwitcher/ThemeSwitcher';
 import weatherLogo from '../../../public/images/weatherLogo.png';
+import { ThemeContext } from '../../providers/themeContext';
 
-function NavBar({ token, theme, onToggleTheme }) {
+function NavBar({ token  }) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <div className={classes.navBar} data-theme={theme}>
       <div className={classes.navBar_container}>
@@ -53,7 +56,7 @@ function NavBar({ token, theme, onToggleTheme }) {
               </li>
             </ul>
 
-            <ThemeSwitcher theme={theme} onToggleTheme={onToggleTheme} />
+            <ThemeSwitcher theme={theme} onToggleTheme={toggleTheme} />
           </div>
         </div>
       </div>

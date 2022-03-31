@@ -42,7 +42,7 @@ function Home({ token }) {
   const currentDate = moment(currentWeather.time).format('dddd, Do MMMM');
 
   return (
-    <div>
+    <div className={classes.home_view_wrapper}>
       <CurrentLocationForecast
         locationInfo={locationInfo}
         currentWeather={currentWeather}

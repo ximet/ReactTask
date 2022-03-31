@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 const formatCityTile = city => {
-  if (city.country === undefined) {
+  if (!city.country) {
     return `${city.name}`;
   }
   const formattedTile = `${city.name}, ${city.country}`;

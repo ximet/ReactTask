@@ -1,35 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.module.css';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+import Feedback from './views/Feedback/Feedback';
 import Home from './views/Home/Home';
 import Info from './views/Info/Info';
-import Feedback from './views/Feedback/Feedback';
-import { weatherApi } from './services/WeatherApi';
 import ScrollToTop from './helpers/scrollToTop';
-import { THEME, getDefaultTheme } from './helpers/toggleTheme';
+import { weatherApi } from './services/WeatherApi';
 import { tokenSelector } from './redux/selectors/tokenSelector';
 import { setToken } from './redux/actions/tokenActions';
 import BackgroundImage from './atomic-components/BackgroundImage/BackgroundImage';
+import { ThemeContext } from './providers/themeContext';
 
 function App() {
   const { token } = useSelector(tokenSelector);
-  const [theme, setTheme] = useState(getDefaultTheme);
-  const [bgTheme, setBgImage] = useState(THEME.light);
   const dispatch = useDispatch();
-
-  function toggleTheme() {
-    const newTheme = localStorage.getItem('theme') === THEME.dark ? THEME.light : THEME.dark;
-
-    setTheme(newTheme);
-  }
-
-  useEffect(() => {
-    setBgImage(theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  const { bgTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     weatherApi.getToken().then(accessToken => dispatch(setToken(accessToken)));
@@ -39,7 +27,7 @@ function App() {
     <Router>
       <BackgroundImage theme={bgTheme} />
       <ScrollToTop />
-      <NavBar token={token} theme={theme} onToggleTheme={toggleTheme} />
+      <NavBar token={token} />
       <Switch>
         <Route path="/info">
           <Info />
@@ -48,13 +36,13 @@ function App() {
           <Feedback />
         </Route>
         <Route exact path="/">
-          <Home token={token} theme={theme} />
+          <Home token={token} />
         </Route>
         <Route exact path="/location/:id">
-          <Home token={token} theme={theme} />
+          <Home token={token} />
         </Route>
       </Switch>
-      <Footer theme={theme} />
+      <Footer />
     </Router>
   );
 }
