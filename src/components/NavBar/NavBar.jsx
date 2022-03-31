@@ -7,7 +7,7 @@ import weatherLogo from '../../../public/images/weatherLogo.png';
 import { ThemeContext } from '../../providers/themeContext';
 
 function NavBar({ token  }) {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div className={classes.navBar} data-theme={theme}>
@@ -56,7 +56,7 @@ function NavBar({ token  }) {
               </li>
             </ul>
 
-            <ThemeSwitcher theme={theme} onToggleTheme={toggleTheme} />
+            <ThemeSwitcher />
           </div>
         </div>
       </div>
