@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { weatherApi } from '../../services/WeatherApi';
 import CurrentLocationForecast from '../../components/CurrentLocationForecast/CurrentLocationForecast';
+import Loader from '../../atomic-components/Loader/Loader';
 import { setCurrentLocation } from '../../redux/actions/locationActions';
 import { locationSelector } from '../../redux/selectors/locationSelector';
 
 function Home({ token }) {
   const dispatch = useDispatch();
   const { location } = useSelector(locationSelector);
+  const [isLoading, setLoading] = useState(true);
 
   const [locationInfo, setLocationInfo] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
@@ -27,12 +29,15 @@ function Home({ token }) {
       weatherApi.getLocationInfo(location, token).then(data => setLocationInfo(data));
       weatherApi.getCurrentWeather(location, token).then(data => setCurrentWeather(data));
       weatherApi.getDailyForecast(location, token).then(data => setDailyForecast(data));
+      setLoading(false);
     }
   }, [location, token]);
 
   const currentDate = moment(currentWeather.time).format('dddd, Do MMMM');
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div>
       <CurrentLocationForecast
         locationInfo={locationInfo}
