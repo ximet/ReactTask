@@ -51,6 +51,24 @@ export const weatherApi = {
     return locationInfo;
   },
 
+  async getLocationInfoById(locationId, token) {
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${token}`);
+    const requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    const currentUrl = `${endpointHost}${WEATHER_ENDPOINT.locationInfo}${locationId}`;
+
+    const locationInfoById = await fetch(currentUrl, requestOptions)
+      .then(response => response.json())
+      .then(data => data)
+      .catch(error => error);
+
+    return locationInfoById;
+  },
+
   async getCurrentWeather(position, token) {
     const myHeaders = new Headers();
     myHeaders.append('Authorization', `Bearer ${token}`);

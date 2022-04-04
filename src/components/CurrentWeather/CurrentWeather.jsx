@@ -33,9 +33,8 @@ function CurrentWeather({ locationInfo, currentWeather, currentDate }) {
           </div>
         </div>
       </div>
-      <div className={classes.image_wrapper}>
-        <img className={classes.image} alt="symbol" src={weatherSymbol} />
-      </div>
+
+      <img className={classes.image} alt="symbol" src={weatherSymbol} />
     </div>
   );
 }
