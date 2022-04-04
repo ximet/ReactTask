@@ -12,5 +12,9 @@ export const TokenProvider = ({ children }) => {
     weatherApi.getToken().then(accessToken => dispatch(setToken(accessToken)));
   }, []);
 
-  return <TokenContext.Provider value={{ token }}>{children}</TokenContext.Provider>;
+  return (
+    <TokenContext.Provider value={{token}}>
+      {children}
+    </TokenContext.Provider>
+  );
 };
