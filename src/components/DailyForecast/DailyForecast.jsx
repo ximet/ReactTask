@@ -2,10 +2,9 @@ import React from 'react';
 import DailyItem from '../../atomic-components/DailyItem/DailyItem';
 import classes from './DailyForecast.module.css';
 import { getImagesURL } from '../../services/WeatherApi';
-import { DAILY_FORECAST } from './mock';
 
-function DailyForecast() {
-  const daily = DAILY_FORECAST.map(day => {
+function DailyForecast({ dailyForecast }) {
+  const daily = dailyForecast.slice(1, 6).map(day => {
     const date = new Date(day.date).toLocaleDateString('en-us', {
       weekday: 'short',
       month: 'short',
@@ -14,7 +13,7 @@ function DailyForecast() {
     const weatherSymbol = getImagesURL(day.symbol);
 
     return (
-      <li key={day.id} className={classes.daily_weather__item}>
+      <li key={day.date} className={classes.daily_weather__item}>
         <DailyItem date={date} weatherSymbol={weatherSymbol} day={day} />
       </li>
     );

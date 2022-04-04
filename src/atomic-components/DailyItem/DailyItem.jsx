@@ -7,13 +7,11 @@ function DailyItem(props) {
   return (
     <>
       <p className={classes.daily_weather__main_text}>{date}</p>
-      <div className={classes.image_wrapper}>
-        <img className={classes.image} alt="symbol" src={weatherSymbol} />
-      </div>
+      <img className={classes.image} alt="symbol" src={weatherSymbol} />
       <p className={classes.daily_weather__main_text}>
         {`${day.maxTemp}`}&deg; {`${day.minTemp}`}&deg;
       </p>
-      <p className={classes.daily_weather__phrase}>{`${day.symbolPhrase}`}</p>
+      <p className={classes.daily_weather__secondary_text}>Speed: {day.maxWindSpeed} m/s</p>
     </>
   );
 }
