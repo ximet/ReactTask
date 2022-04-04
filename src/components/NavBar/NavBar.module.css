@@ -5,6 +5,11 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  width: 100%;
+}
+
+.search_navBar_wrapper {
+  display: flex;
 }
 
 .weather_logo {
@@ -19,7 +24,9 @@
   height: 80px;
 }
 
-.search_menu {
+.navBar_logo_wrapper,
+.search_menu,
+.navBar_menu_wrapper {
   display: inline-flex;
   align-items: center;
 }
@@ -28,8 +35,7 @@
   background: -webkit-linear-gradient(45deg, #c886f4, #8cb5f3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  justify-self: start;
-  margin-left: 20px;
+  margin-left: 10px;
   cursor: pointer;
   text-decoration: none;
   font-size: 1.8rem;
@@ -55,7 +61,7 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 
 .navBar_active_link {

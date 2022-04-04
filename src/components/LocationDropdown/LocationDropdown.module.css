@@ -1,0 +1,21 @@
+.search_dropdown {
+  position: relative;
+  background-color: var(--bg-grey-light);
+  width: inherit;
+}
+
+.search_dropdown_item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  padding: 15px 12px;
+  font-size: 1em;
+}
+
+.search_dropdown_item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.search_dropdown_item:hover {
+  background: rgba(218, 209, 247, 0.7);
+}
