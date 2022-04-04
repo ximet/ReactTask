@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import SearchInput from '../SearchInput/SearchInput';
 import classes from './NavBar.module.css';
 import ThemeSwitcher from '../../atomic-components/ThemeSwitcher/ThemeSwitcher';
-import weatherLogo from '../../../public/images/weatherLogo.png';
 import { ThemeContext } from '../../providers/themeContext';
+import weatherLogo from '../../../public/images/weatherLogo.png';
 
-function NavBar({ token  }) {
+function NavBar() {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -21,7 +21,7 @@ function NavBar({ token  }) {
 
         <div className={classes.search_navBar_wrapper}>
           <div className={classes.search_menu}>
-            <SearchInput token={token} theme={theme} />
+            <SearchInput />
           </div>
 
           <div className={classes.navBar_menu_wrapper}>

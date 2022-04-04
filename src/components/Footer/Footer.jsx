@@ -4,7 +4,7 @@ import classes from './Footer.module.css';
 
 function Footer() {
   const { theme } = useContext(ThemeContext);
-  
+
   return (
     <div className={classes.footer} data-theme={theme}>
       <div className={classes.footer_container}>
