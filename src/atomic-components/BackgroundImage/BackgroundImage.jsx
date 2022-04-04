@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BG_IMAGE } from '../../helpers/toggleTheme';
+import { ThemeContext } from '../../providers/themeContext';
 import classes from './BackgroundImage.module.css';
 
-function BackgroundImage({ theme }) {
+function BackgroundImage() {
+  const { theme } = useContext(ThemeContext);
   const bgImage = BG_IMAGE[theme];
 
   return (

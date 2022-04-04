@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import classes from './SearchInput.module.css';
 import { weatherApi } from '../../services/WeatherApi';
 import searchIcon from '../../../public/icons/search.png';
 import cancelIcon from '../../../public/icons/x.png';
 import { debounce } from '../../helpers/debounceHelper';
 import LocationDropdown from '../LocationDropdown/LocationDropdown';
+import { ThemeContext } from '../../providers/themeContext';
+import { TokenContext } from '../../providers/tokenContext';
 
-function SearchInput({ token, theme }) {
+function SearchInput() {
+  const { token } = useContext(TokenContext);
+  const { theme } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [display, setDisplay] = useState(false);
@@ -21,7 +25,7 @@ function SearchInput({ token, theme }) {
 
   function searchCities(city) {
     try {
-      weatherApi.searchLocation(city, token).then(locations => setSearchResults(locations));
+      weatherApi.searchLocation(city, token.token).then(locations => setSearchResults(locations));
     } catch (error) {
       console.log(error);
     }
