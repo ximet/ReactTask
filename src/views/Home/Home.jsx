@@ -27,9 +27,11 @@ function Home({ token }) {
   useEffect(() => {
     if (token && location) {
       weatherApi.getLocationInfo(location, token).then(data => setLocationInfo(data));
-      weatherApi.getCurrentWeather(location, token).then(data => setCurrentWeather(data));
+      weatherApi.getCurrentWeather(location, token).then(data => {
+        setCurrentWeather(data);
+        setLoading(false);
+      });
       weatherApi.getDailyForecast(location, token).then(data => setDailyForecast(data));
-      setLoading(false);
     }
   }, [location, token]);
 
