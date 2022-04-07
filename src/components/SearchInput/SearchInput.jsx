@@ -25,7 +25,7 @@ function SearchInput() {
 
   function searchCities(city) {
     try {
-      weatherApi.searchLocation(city, token.token).then(locations => setSearchResults(locations));
+      weatherApi.searchLocation(city, token).then(locations => setSearchResults(locations));
     } catch (error) {
       console.log(error);
     }

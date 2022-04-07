@@ -38,9 +38,9 @@ function Home() {
 
   useEffect(() => {
     if (token && location) {
-      weatherApi.getLocationInfo(location, token.token).then(data => setLocationInfo(data));
-      weatherApi.getCurrentWeather(location, token.token).then(data => setCurrentWeather(data));
-      weatherApi.getDailyForecast(location, token.token).then(data => setDailyForecast(data));
+      weatherApi.getLocationInfo(location, token).then(data => setLocationInfo(data));
+      weatherApi.getCurrentWeather(location, token).then(data => setCurrentWeather(data));
+      weatherApi.getDailyForecast(location, token).then(data => setDailyForecast(data));
     }
   }, [location, token]);
 
