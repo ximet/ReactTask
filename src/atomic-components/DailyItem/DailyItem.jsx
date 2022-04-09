@@ -11,7 +11,7 @@ function DailyItem(props) {
       <p className={classes.daily_weather__main_text}>
         {`${day.maxTemp}`}&deg; {`${day.minTemp}`}&deg;
       </p>
-      <p className={classes.daily_weather__secondary_text}>Wind speed: {day.maxWindSpeed} m/s</p>
+      <p className={classes.daily_weather__secondary_text}>Speed: {day.maxWindSpeed} m/s</p>
     </>
   );
 }
