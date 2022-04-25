@@ -3,7 +3,7 @@
 
 function App() {
   const test = () => {
-    const token = ''
+    const token = '';
     // const weatherAPIKey = process.env.REACT_APP_WEATHER_API_KEY;
     fetch('https://pfa.foreca.com/api/v1/forecast/daily/100598316', {
       headers: {
