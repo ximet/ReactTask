@@ -23,6 +23,8 @@ package-lock.json
 /build/index.html
 /build*
 /build/*
+.env
+/src/config/constants.jsx
 # Editor/IDE
 .idea
 packages/api/etc/
