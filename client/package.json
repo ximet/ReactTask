@@ -20,6 +20,8 @@
   "dependencies": {
     "axios": "0.21.4",
     "core-js": "3.2.1",
+    "dotenv": "^16.0.0",
+    "dotenv-webpack": "^7.1.0",
     "history": "4.10.1",
     "prop-types": "15.7.2",
     "ramda": "0.26.1",

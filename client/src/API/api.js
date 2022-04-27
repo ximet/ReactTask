@@ -2,6 +2,15 @@ import axios from 'axios';
 
 import token from '../configs/token';
 
+const weatherAPIToken = axios.create({
+  baseURL: 'http://localhost:8000/'
+});
+
+export const getToken = async () => {
+  const { data: token } = await weatherAPIToken.get('/token');
+  console.log(token);
+};
+
 const weatherAPI = axios.create({
   baseURL: 'https://pfa.foreca.com/api/v1/',
   headers: { authorization: `Bearer ${token}` }
