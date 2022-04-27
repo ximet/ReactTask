@@ -63,7 +63,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const HeaderRight = styled.div`
+export const NavLinks = styled.div`
   float: right;
   @media screen and (max-width: 500px) {
     float: none;

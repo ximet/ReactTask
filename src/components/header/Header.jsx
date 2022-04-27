@@ -18,14 +18,14 @@ const Header = () => {
           </Link>
           <span onClick={() => openBar(open)}>{open ? '+' : '-'}</span>
         </S.Wrapper>
-        <S.HeaderRight show={open}>
+        <S.NavLinks show={open}>
           <Link to="/about" onClick={() => openBar(open)}>
             About
           </Link>
           <Link to="/contacts" onClick={() => openBar(open)}>
             Contacts
           </Link>
-        </S.HeaderRight>
+        </S.NavLinks>
       </S.Header>
     </S.HeaderWrapper>
   );

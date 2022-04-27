@@ -6,7 +6,7 @@ export const SpinnerWrapper = styled.div`
   text-align: center;
 `;
 
-export const StyledSpinner = styled.svg`
+export const Spinner = styled.svg`
   animation: rotate 2s linear infinite;
   width: 10rem;
   height: 10rem;

@@ -4,9 +4,7 @@ import { TOKEN_URL, MAIN_URL } from '../config/constants';
 
 const token = Cookie.getToken();
 
-if (token === undefined) {
-  getAccessTokenFromAPI();
-}
+!token && getAccessTokenFromAPI();
 
 export const publicApiInstance = axios.create({
   baseURL: MAIN_URL,
@@ -14,6 +12,10 @@ export const publicApiInstance = axios.create({
 });
 
 async function getAccessTokenFromAPI() {
-  const response = await axios.get(TOKEN_URL);
-  Cookie.setToken(response.data.tokens[0].access_token);
+  try {
+    const response = await axios.get(TOKEN_URL);
+    Cookie.setToken(response.data.tokens[0].access_token);
+  } catch (error) {
+    console.warn(error);
+  }
 }
