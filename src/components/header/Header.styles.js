@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
-  background-color: rgb(241, 241, 241);
+  background-color: var(--grey-color);
   width: 100%;
-  height: 5rem;
+  height: var(--f20);
   @media screen and (max-width: 500px) {
     height: auto;
   }
@@ -14,24 +14,23 @@ export const Header = styled.div`
   padding: 1rem 0;
   width: calc(80% + 1rem);
   & #logo {
-    font-size: 1.5rem;
+    font-size: var(--f5);
     font-weight: bold;
     @media screen and (max-width: 500px) {
-      font-size: 1.2rem;
+      font-size: var(--f4);
     }
   }
   a {
     float: left;
-    color: black;
+    color: var(--black-color);
     text-align: center;
     padding: 0.6rem;
     text-decoration: none;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: var(--f5);
     border-radius: 0.5rem;
     &:hover {
-      background-color: #ddd;
-      color: black;
+      background-color: var(--dark-grey-color);
+      color: var(--black-color);
     }
     @media screen and (max-width: 500px) {
       margin: 0;
@@ -56,9 +55,9 @@ export const Wrapper = styled.div`
     display: flex;
     & span {
       display: block;
-      line-height: 2rem;
+      line-height: var(--f7);
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: var(--f5);
       padding: 0 1rem;
     }
   }

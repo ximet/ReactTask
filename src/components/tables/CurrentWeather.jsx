@@ -1,34 +1,32 @@
 import React from 'react';
 import { Spinner } from '../';
+import { symbol } from '../../config/constants';
 import * as S from './CurrentWeather.styles';
 
 const Currentweather = ({ data }) => {
+  const weatherData = data[0];
   return (
     <div>
-      <h1>Current Weather Now</h1>
       {data.length !== 0 ? (
-        <S.TableContainer>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Temperature °C</th>
-              <th>Cloudiness %</th>
-              <th>Wind speed m/s</th>
-              <th>Pressure hPa</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.time.slice(0, 10)}</td>
-                <td>{item.temperature}</td>
-                <td>{item.cloudiness}</td>
-                <td>{item.windSpeed}</td>
-                <td>{item.pressure}</td>
-              </tr>
-            ))}
-          </tbody>
-        </S.TableContainer>
+        <S.Container>
+          <S.ImageContainer>
+            <img src={symbol(weatherData.symbol)} alt={weatherData.symbolPhrase} />
+          </S.ImageContainer>
+          <S.WeatherInfoContainer>
+            <S.Temperature>
+              <span>{weatherData.temperature}&deg;</span>
+            </S.Temperature>
+            <div>
+              <S.Conditions>{weatherData.symbolPhrase}</S.Conditions>
+              <S.About>
+                <p>Wind: {weatherData.windSpeed} m/s</p>
+                <p>Cloudiness: {weatherData.cloudiness} %</p>
+                <p>Pressure: {weatherData.pressure} hPa</p>
+              </S.About>
+            </div>
+          </S.WeatherInfoContainer>
+          <S.Date>{weatherData.time.slice(0, 10)}</S.Date>
+        </S.Container>
       ) : (
         <Spinner />
       )}

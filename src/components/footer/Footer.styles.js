@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const FooterStyles = styled.footer`
-  background-color: rgb(241, 241, 241);
-  height: 3rem;
+  background-color: var(--grey-color);
+  height: var(--f11);
   width: 100%;
-  line-height: 3rem;
+  line-height: var(--f11);
   text-align: center;
   position: fixed;
   bottom: 0;
   @media screen and (max-width: 500px) {
-    height: 2rem;
+    height: var(--f7);
     width: 100%;
-    line-height: 2rem;
+    line-height: var(--f7);
     font-size: 0.6rem;
   }
 `;

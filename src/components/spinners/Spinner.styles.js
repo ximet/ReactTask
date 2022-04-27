@@ -11,7 +11,7 @@ export const StyledSpinner = styled.svg`
   width: 10rem;
   height: 10rem;
   & .path {
-    stroke: rgb(250, 45, 45);
+    stroke: var(--spinner-color);
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }
