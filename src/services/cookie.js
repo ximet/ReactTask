@@ -1,4 +1,4 @@
-import { newReg } from '../config/constants';
+import { generateRegex } from '../services/functions';
 
 export const Cookie = {
   getToken,
@@ -19,7 +19,7 @@ function setCookie(name, value) {
 
 function getCookie(name) {
   const cookies = document.cookie;
-  const regExp = newReg(name);
+  const regExp = generateRegex(name);
   const token = cookies.match(regExp);
   return token ? decodeURIComponent(token[1]) : undefined;
 }

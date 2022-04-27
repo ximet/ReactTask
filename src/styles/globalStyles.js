@@ -13,6 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     --black-color: rgb(37, 37, 37);
     --dark-grey-color: rgb(166, 166, 166);
     --text: rgb(255, 255, 255);
+    --warning-color:rgb(204,51,0);
 
 
     --card-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)

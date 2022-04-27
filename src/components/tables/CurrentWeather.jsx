@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spinner } from '../';
-import { symbol } from '../../config/constants';
+import { getWeatherIcon } from '../../services/functions';
 import * as S from './CurrentWeather.styles';
 
 const Currentweather = ({ data }) => {
@@ -10,7 +10,7 @@ const Currentweather = ({ data }) => {
       {data.length !== 0 ? (
         <S.Container>
           <S.ImageContainer>
-            <img src={symbol(weatherData.symbol)} alt={weatherData.symbolPhrase} />
+            <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbolPhrase} />
           </S.ImageContainer>
           <S.WeatherInfoContainer>
             <S.Temperature>

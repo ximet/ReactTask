@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { CurrentWeather } from '../../components';
-import { publicApiInstance } from '../../utils/api';
+import { publicApiInstance, getAccessTokenFromAPI } from '../../utils/api';
+import { Cookie } from '../../services/cookie';
 import endpoints from '../../config/enpoints';
+import * as S from './Home.styles';
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const [location, setLocation] = useState({
-    lon: 25.2657137,
-    lat: 54.7569713
-  });
+  const [location, setLocation] = useState(null);
 
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -19,6 +18,9 @@ const Home = () => {
   };
 
   const getWeatherData = async () => {
+    if (!location) {
+      return;
+    }
     try {
       const { data } = await publicApiInstance.get(endpoints.GET_CURRENT_LOCATION(location));
       setData([data.current]);
@@ -27,7 +29,15 @@ const Home = () => {
     }
   };
 
+  const tokenHandler = async () => {
+    if (!Cookie.getToken()) {
+      const res = await getAccessTokenFromAPI();
+      return Cookie.setToken(res);
+    }
+  };
+
   useEffect(() => {
+    tokenHandler();
     getLocation();
   }, []);
 
@@ -37,7 +47,11 @@ const Home = () => {
 
   return (
     <div>
-      <CurrentWeather data={data} />
+      {location ? (
+        <CurrentWeather data={data} />
+      ) : (
+        <S.Message>We need to set you location!</S.Message>
+      )}
     </div>
   );
 };

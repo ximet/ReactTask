@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './Footer.styles';
 
 const Footer = () => {
-  return <S.FooterStyles>Weather System &copy; Gedas Inčirauskas</S.FooterStyles>;
+  return <S.FooterWrapper>Weather System &copy; Gedas Inčirauskas</S.FooterWrapper>;
 };
 
 export default Footer;

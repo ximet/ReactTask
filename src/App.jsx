@@ -1,4 +1,3 @@
-import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
 import { Home, About, Contact } from './pages';
