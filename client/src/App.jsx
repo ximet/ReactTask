@@ -6,7 +6,6 @@ import {
   getDailyWeatherInfo,
   getToken
 } from './API/api';
-import { getLocation } from './Utils/geoLocator';
 
 function App() {
   return (
@@ -15,6 +14,7 @@ function App() {
       <button onClick={getHourlyWeatherInfo}>Click me for hourly weather</button>
       <button onClick={getDailyWeatherInfo}>Click me for daily weather</button>
       <button onClick={getToken}>Click me to generate Token</button>
+      <br />
     </div>
   );
 }

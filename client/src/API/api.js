@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import getLocation from '../Utils/geoLocator';
 import token from '../configs/token';
 
 const weatherAPIToken = axios.create({
@@ -16,8 +16,12 @@ const weatherAPI = axios.create({
   headers: { authorization: `Bearer ${token}` }
 });
 
-const lon = '23.9036';
-const lat = '54.8985';
+document.cookie = token;
+
+const coords = getLocation()
+
+const lon = coords.longitude
+const lat = coords.latitude
 
 export const getCurrentWeatherInfo = async () => {
   const { data: weatherData } = await weatherAPI.get(`current/location=${lon},${lat}`);
