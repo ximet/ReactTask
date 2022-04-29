@@ -6,3 +6,6 @@ export { default as WeatherCard } from './cards/WeatherCard';
 export { default as SearchInput } from './inputs/searchInput/SearchInput';
 export { default as SearchBar } from './searchBar/SearchBar';
 export { default as Tooltip } from './tooltip/Tooltip';
+export { default as Accordion } from './accordion/Accordion';
+export { default as AccordionItem } from './accordionItem/AccordionItem';
+export { default as Dropdown } from './dropdown/Dropdown';
