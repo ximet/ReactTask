@@ -19,6 +19,9 @@ const Header = () => {
           <span onClick={() => openBar(open)}>{open ? '+' : '-'}</span>
         </S.Wrapper>
         <S.NavLinks show={open}>
+          <Link to="/weather" onClick={() => openBar(open)}>
+            City Weather
+          </Link>
           <Link to="/about" onClick={() => openBar(open)}>
             About
           </Link>

@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --primary: cyan;
     --text: rgb(250, 250, 250);
-    --borders: #EBF0F8;
+    --borders: #80ff91;
     --page-background: rgb(250, 250, 250);
     --container-background: rgb(64, 99, 127);
     --card-background: rgb(112, 193, 179);
@@ -12,7 +12,6 @@ export const GlobalStyles = createGlobalStyle`
     --grey-color: rgb(241,241,241);
     --black-color: rgb(37, 37, 37);
     --dark-grey-color: rgb(166, 166, 166);
-    --text: rgb(255, 255, 255);
     --warning-color:rgb(204,51,0);
 
 

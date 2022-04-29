@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
-import { Home, About, Contact } from './pages';
+import { Home, About, Contact, CityWeather } from './pages';
 import * as S from './App.styles';
 
 const App = () => {
@@ -10,6 +10,7 @@ const App = () => {
       <S.PageContainer>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/weather" exact component={CityWeather} />
           <Route path="/about" component={About} />
           <Route path="/contacts" component={Contact} />
         </Switch>
