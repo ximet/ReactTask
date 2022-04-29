@@ -53,13 +53,11 @@ const CityWeather = () => {
         />
       </Tooltip>
       {cityName.length > 3 && results.length === 0 && (
-        <S.ErrorWrappper>No results find...</S.ErrorWrappper>
+        <S.ErrorWrappper>No results found...</S.ErrorWrappper>
       )}
       {cityName.length > 3 ? (
         <SearchBar results={results} onClick={city => getCurrentCity(city)} />
-      ) : (
-        ''
-      )}
+      ) : null}
       {chooseCityForecast && (
         <section>
           <S.PlaceDescriotion>{selectedCity}</S.PlaceDescriotion>

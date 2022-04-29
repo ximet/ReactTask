@@ -1,7 +1,7 @@
 import { getWeatherIcon } from '../../services/functions';
 import * as S from './WeatherCard.styles';
 
-const WeatherCardStyles = ({ data }) => {
+const WeatherCard = ({ data }) => {
   return (
     <S.Container>
       {data.map((info, index) => (
@@ -20,4 +20,4 @@ const WeatherCardStyles = ({ data }) => {
   );
 };
 
-export default WeatherCardStyles;
+export default WeatherCard;

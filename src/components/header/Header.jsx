@@ -13,19 +13,19 @@ const Header = () => {
     <S.HeaderWrapper>
       <S.Header>
         <S.Wrapper>
-          <Link to="/" id="logo" onClick={() => openBar(open)}>
+          <Link to="/" id="logo" onClick={openBar}>
             Weather System
           </Link>
-          <span onClick={() => openBar(open)}>{open ? '+' : '-'}</span>
+          <span onClick={openBar}>{open ? '+' : '-'}</span>
         </S.Wrapper>
         <S.NavLinks show={open}>
-          <Link to="/weather" onClick={() => openBar(open)}>
+          <Link to="/weather" onClick={openBar}>
             City Weather
           </Link>
-          <Link to="/about" onClick={() => openBar(open)}>
+          <Link to="/about" onClick={openBar}>
             About
           </Link>
-          <Link to="/contacts" onClick={() => openBar(open)}>
+          <Link to="/contacts" onClick={openBar}>
             Contacts
           </Link>
         </S.NavLinks>
