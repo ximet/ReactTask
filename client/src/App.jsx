@@ -1,43 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 
-import {
-  getCurrentWeatherInfo,
-  getHourlyWeatherInfo,
-  getDailyWeatherInfo,
-  getToken,
-  weatherAPI
-} from './API/api';
-
-import getLocation from './Utils/geoLocator';
-
-import endpoints from './Utils/endpoints';
-import Currentweather from './Components/Card';
+import Home from './Pages/Home';
+import About from './Pages/About';
+import Contact from './Pages/Contact';
 
 function App() {
-  const [data, setData] = useState([]);
-  const [location, setLocation] = useState(null);
+  return (
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/contact">Contact</Link>
 
-  const getWeather = async () => {
-    if (!location) {
-      return;
-    }
-    try {
-      const { data } = await weatherAPI.get(endpoints.CURRENT_LOCATION(location));
-      setData([data.current]);
-    } catch (error) {
-      console.warn(error);
-    }
-  };
-
-  useEffect(() => {
-    getLocation(setLocation);
-  }, []);
-
-  useEffect(() => {
-    getWeather();
-  }, [location]);
-
-  return <div>{location ? <Currentweather data={data} /> : <p>Allow location</p>}</div>;
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about" exact component={About} />
+        <Route path="/contact" exact component={Contact} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
