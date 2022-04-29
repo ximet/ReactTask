@@ -1,3 +1,2 @@
-const token =
-  '';
+const token = '';
 export default token;
