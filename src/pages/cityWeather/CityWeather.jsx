@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { publicApiInstance } from '../../utils/api';
 import { WeatherCard, SearchInput, SearchBar, Tooltip } from '../../components';
 import endpoints from '../../config/enpoints';
+import { numberThree, numberZero, numberOne } from '../../config/constants';
 import * as S from './CityWeather.styles';
 
 const CityWeather = () => {
@@ -11,8 +12,10 @@ const CityWeather = () => {
   const [chooseCityForecast, setChooseCityForecast] = useState([]);
 
   useEffect(() => {
-    cityName.length > 3 && loadCities();
-  }, [cityName]);
+    if (cityName.length > numberThree) {
+      loadCities();
+    }
+  }, [cityName, loadCities]);
 
   const cityValueHandler = value => {
     setCityName(value);
@@ -44,7 +47,7 @@ const CityWeather = () => {
       <S.Title>Find forecast for your favorite city!</S.Title>
       <Tooltip
         text="Enter at least 4 letters!"
-        tooltip={cityName.length >= 1 && cityName.length <= 3}
+        tooltip={cityName.length >= numberOne && cityName.length <= numberThree}
       >
         <SearchInput
           placeholder="Enter city name"
@@ -52,10 +55,10 @@ const CityWeather = () => {
           onChange={e => cityValueHandler(e.target.value)}
         />
       </Tooltip>
-      {cityName.length > 3 && results.length === 0 && (
+      {cityName.length > numberThree && results.length === numberZero && (
         <S.ErrorWrappper>No results found...</S.ErrorWrappper>
       )}
-      {cityName.length > 3 ? (
+      {cityName.length > numberThree ? (
         <SearchBar results={results} onClick={city => getCurrentCity(city)} />
       ) : null}
       {chooseCityForecast && (
