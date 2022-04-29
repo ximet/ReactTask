@@ -17,7 +17,6 @@ export const weatherAPI = axios.create({
 
 document.cookie = token;
 
-
 export const getCurrentWeatherInfo = async () => {
   const { data: weatherData } = await weatherAPI.get(
     `current/location=${coords.longitude},${coords.latitude}`

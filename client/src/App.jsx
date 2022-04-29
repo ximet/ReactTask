@@ -37,11 +37,7 @@ function App() {
     getWeather();
   }, [location]);
 
-  return (
-    <div>
-      {location ? <Currentweather data={data} /> : <p>Allow location</p>}
-    </div>
-  );
+  return <div>{location ? <Currentweather data={data} /> : <p>Allow location</p>}</div>;
 }
 
 export default App;
