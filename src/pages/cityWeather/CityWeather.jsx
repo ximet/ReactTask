@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { publicApiInstance } from '../../utils/api';
 import { WeatherCard, SearchInput, SearchBar, Tooltip } from '../../components';
 import endpoints from '../../config/enpoints';
-import { numberThree, numberZero, numberOne } from '../../config/constants';
+import { minSearchCharacters } from '../../config/constants';
 import * as S from './CityWeather.styles';
 
 const CityWeather = () => {
@@ -12,7 +12,7 @@ const CityWeather = () => {
   const [chooseCityForecast, setChooseCityForecast] = useState([]);
 
   useEffect(() => {
-    if (cityName.length > numberThree) {
+    if (cityName.length > minSearchCharacters) {
       loadCities();
     }
   }, [cityName, loadCities]);
@@ -46,8 +46,8 @@ const CityWeather = () => {
     <div>
       <S.Title>Find forecast for your favorite city!</S.Title>
       <Tooltip
-        text="Enter at least 4 letters!"
-        tooltip={cityName.length >= numberOne && cityName.length <= numberThree}
+        text={`Enter at least ${minSearchCharacters} letters!`}
+        tooltip={cityName.length > 0 && cityName.length <= minSearchCharacters}
       >
         <SearchInput
           placeholder="Enter city name"
@@ -55,15 +55,15 @@ const CityWeather = () => {
           onChange={e => cityValueHandler(e.target.value)}
         />
       </Tooltip>
-      {cityName.length > numberThree && results.length === numberZero && (
-        <S.ErrorWrappper>No results found...</S.ErrorWrappper>
+      {cityName.length > minSearchCharacters && results.length === 0 && (
+        <S.ErrorWrapper>No results found...</S.ErrorWrapper>
       )}
-      {cityName.length > numberThree ? (
+      {cityName.length > minSearchCharacters ? (
         <SearchBar results={results} onClick={city => getCurrentCity(city)} />
       ) : null}
       {chooseCityForecast && (
         <section>
-          <S.PlaceDescriotion>{selectedCity}</S.PlaceDescriotion>
+          <S.PlaceDescription>{selectedCity}</S.PlaceDescription>
           <WeatherCard data={chooseCityForecast} />
         </section>
       )}
