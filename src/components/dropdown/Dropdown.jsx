@@ -3,11 +3,11 @@ import * as S from './Dropdown.styles';
 const Dropdown = ({ data }) => {
   return (
     <S.Dropdown>
-      {data.map(el => (
+      {data.map(({ id, description }) => (
         <S.ElementStyle
-          key={el.id}
+          key={id}
           dangerouslySetInnerHTML={{
-            __html: el.description
+            __html: description
           }}
         ></S.ElementStyle>
       ))}

@@ -3,15 +3,18 @@ import { Dropdown } from '../index';
 import * as S from './AccordionItem.styles';
 
 const AccordionItem = ({ data, toggle, clicked }) => {
+  const { id, title, about } = data;
+  const isClicked = clicked === id;
+
   return (
-    <React.Fragment>
-      <S.Wrap onClick={() => toggle(data.id)}>
-        <S.Element>{data.id}</S.Element>
-        <h2>{data.title}</h2>
-        <S.BorderLine active={clicked === data.id} />
+    <>
+      <S.Wrap onClick={() => toggle(id)}>
+        <S.Element>{id}</S.Element>
+        <h2>{title}</h2>
+        <S.BorderLine active={isClicked} />
       </S.Wrap>
-      {clicked === data.id && <Dropdown data={data.about} />}
-    </React.Fragment>
+      {isClicked && <Dropdown data={about} />}
+    </>
   );
 };
 

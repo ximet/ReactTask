@@ -1,4 +1,4 @@
-export const data = [
+export const companyServiceData = [
   {
     id: 1,
     title: 'Current weather forecast regarding your location.',

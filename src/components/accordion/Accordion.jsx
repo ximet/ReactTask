@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { data } from '../../utils/data';
 import { AccordionItem, Spinner } from '../index';
 import * as S from './Accordion.styles';
 
-const Accordion = () => {
+const Accordion = ({ data }) => {
   const [clicked, setClicked] = useState(null);
 
   const toggle = id => {
@@ -15,7 +14,7 @@ const Accordion = () => {
 
   return (
     <S.Container>
-      {data.length > 0 ? (
+      {data.length ? (
         data.map(item => (
           <AccordionItem data={item} toggle={toggle} clicked={clicked} key={item.id} />
         ))
