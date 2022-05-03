@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
 
-import { weatherAPI } from '../API/api';
+import { weatherAPI, getTokenFromAPI } from '../API/api';
+import { Cookie } from '../Utils/CookieHandler';
 
 import getLocation from '../Utils/geoLocator';
 
@@ -23,6 +23,13 @@ const Home = () => {
       console.warn(error);
     }
   };
+
+  useEffect(async () => {
+    const token = Cookie.getToken() || (await getTokenFromAPI());
+    if (token) {
+      Cookie.setToken(token);
+    }
+  }, []);
 
   useEffect(() => {
     getLocation(setLocation);

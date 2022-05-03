@@ -30,7 +30,7 @@ server.get('/token', async (req, res) => {
                 method: 'post',
                 data: {
                     ...authInfo,
-                    expire_hours: 2
+                    expire_hours: -1
                 }
             });
             server.locals.token = response.data
