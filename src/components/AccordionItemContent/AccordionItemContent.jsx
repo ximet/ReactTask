@@ -1,4 +1,4 @@
-import * as S from './Dropdown.styles';
+import * as S from './AccordionItemContent.styles';
 
 const Dropdown = ({ data }) => {
   return (

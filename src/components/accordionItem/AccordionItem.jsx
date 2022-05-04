@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from '../index';
+import { AccordionItemContent } from '../index';
 import * as S from './AccordionItem.styles';
 
 const AccordionItem = ({ data, toggle, clicked }) => {
@@ -13,7 +13,7 @@ const AccordionItem = ({ data, toggle, clicked }) => {
         <h2>{title}</h2>
         <S.BorderLine active={isClicked} />
       </S.Wrap>
-      {isClicked && <Dropdown data={about} />}
+      {isClicked && <AccordionItemContent data={about} />}
     </>
   );
 };
