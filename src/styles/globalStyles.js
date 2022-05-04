@@ -13,6 +13,9 @@ export const GlobalStyles = createGlobalStyle`
     --black-color: rgb(37, 37, 37);
     --dark-grey-color: rgb(166, 166, 166);
     --warning-color:rgb(204,51,0);
+    --input-error: rgb(180,14,14);
+    --success-message: rgb(129, 246, 158);
+    --star-color: rgb(255, 222, 43);
 
 
     --card-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)
