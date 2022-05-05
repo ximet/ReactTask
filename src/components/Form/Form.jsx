@@ -12,6 +12,7 @@ const isTextarea = value => value.length;
 const BasicForm = () => {
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(0);
+
   const {
     value: userName,
     isValid: userNameIsValid,
@@ -31,40 +32,36 @@ const BasicForm = () => {
   } = useInput(isEmail);
 
   const {
-    value: textareaValue,
-    isValid: textareaIsValid,
-    hasError: textareaHasError,
-    valueChangeHandler: textareaChangeHandler,
-    inputBlurHandler: textareaBlurHandler,
-    reset: resetTextarea
+    value: reviewValue,
+    isValid: reviewIsValid,
+    hasError: reviewHasError,
+    valueChangeHandler: reviewChangeHandler,
+    inputBlurHandler: reviewBlurHandler,
+    reset: resetReview
   } = useInput(isTextarea);
 
   let formIsValid = false;
 
-  if (userNameIsValid && emailIsValid && textareaIsValid) {
+  if (userNameIsValid && emailIsValid && reviewIsValid) {
     formIsValid = true;
   }
 
   const submitHandler = event => {
     event.preventDefault();
-
     if (!formIsValid) {
       return;
     }
 
-    const usersFeedback = {
-      id: Math.floor(Math.random() * 10000) * 1,
+    Storage.setReview({
       userName,
       emailValue,
-      textareaValue,
+      reviewValue,
       rating
-    };
-
-    Storage.setReview(usersFeedback);
+    });
 
     resetName();
     resetEmail();
-    resetTextarea();
+    resetReview();
     setMessage('Your form submitted!');
   };
 
@@ -79,34 +76,34 @@ const BasicForm = () => {
   return (
     <S.FormWrapper onSubmit={submitHandler} onBlur={formBlurHandler}>
       <Input
-        inputValue={userName}
-        changeHandler={nameChangeHandler}
-        blurHandler={nameBlurHandler}
+        value={userName}
+        onChange={nameChangeHandler}
+        onBlur={nameBlurHandler}
         labelName="name"
         labelTitle="Your name"
         errorMessage="Please enter your name"
         isError={userNameHasError}
       />
       <Input
-        inputValue={emailValue}
-        changeHandler={emailChangeHandler}
-        blurHandler={emailBlurHandler}
+        value={emailValue}
+        onChange={emailChangeHandler}
+        onBlur={emailBlurHandler}
         labelName="email"
         labelTitle="Email address"
         errorMessage="Please enter a valid email address."
         isError={emailHasError}
       />
       <TextArea
-        textValue={textareaValue}
-        changeHandler={textareaChangeHandler}
-        blurHandler={textareaBlurHandler}
+        value={reviewValue}
+        onChange={reviewChangeHandler}
+        onBlur={reviewBlurHandler}
         labelName="feedback"
         labelTitle="Enter your feedback below:"
         errorMessage="Please leave feedback!"
-        isError={textareaHasError}
+        isError={reviewHasError}
       />
       <Rate stars={userStarRating} />
-      <Button type="submit" color="destructive">
+      <Button type="submit" color="primary">
         Submit
       </Button>
       <S.SubmitMessageWrapper>{message}</S.SubmitMessageWrapper>

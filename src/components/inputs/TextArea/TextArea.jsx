@@ -1,22 +1,14 @@
 import * as S from './TextArea.styles';
 
-const Textarea = ({
-  labelName,
-  labelTitle,
-  textValue,
-  changeHandler,
-  blurHandler,
-  isError,
-  errorMessage
-}) => {
+const Textarea = ({ labelName, labelTitle, value, onChange, onBlur, isError, errorMessage }) => {
   return (
     <S.TextareaWrapper showError={isError}>
       <label htmlFor={labelName || 'textarea'}>{labelTitle}</label>
       <textarea
         id={labelName || 'textarea'}
-        value={textValue}
-        onChange={changeHandler}
-        onBlur={blurHandler}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
       ></textarea>
       {isError && <S.ErrorMessage>{errorMessage || null}</S.ErrorMessage>}
     </S.TextareaWrapper>

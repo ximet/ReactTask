@@ -1,35 +1,23 @@
 import styled from 'styled-components';
+import { label, display, input, inputFocus, errorMessage } from '../Inputs.styles';
 
 export const TextareaWrapper = styled.div`
   margin-bottom: var(--f3);
-
   & label {
-    font-weight: bold;
-    margin-bottom: var(--f1);
+    ${label}
   }
-
   & textarea,
   label {
-    display: block;
+    ${display}
   }
-
   & textarea {
-    padding: var(--f1);
-    border-radius: var(--x1);
-    border: 0.01rem solid var(--dark-grey-color);
-    width: 100%;
-    min-height: var(--f20);
-    box-sizing: border-box;
+    ${input}
   }
-
   & textarea:focus {
-    outline: none;
-    border-color: ${props => (props.showError ? '#8f0000' : '#26e300')};
-    background-color: ${props => (props.showError ? '#ff7878' : '#F1F1F1')};
+    ${inputFocus}
   }
 `;
 
 export const ErrorMessage = styled.p`
-  color: var(--input-error);
-  margin: var(--f1) auto;
+  ${errorMessage}
 `;

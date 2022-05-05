@@ -11,6 +11,6 @@ export { default as AccordionItem } from './AccordionItem/AccordionItem';
 export { default as AccordionItemContent } from './AccordionItemContent/AccordionItemContent';
 export { default as Button } from './Button/Button';
 export { default as Form } from './Form/Form';
-export { default as Input } from './Inputs/SimpleInput/SimpleInput';
+export { default as Input } from './Inputs/Input/Input';
 export { default as TextArea } from './Inputs/TextArea/TextArea';
 export { default as Rate } from './StarRating/StarRating';
