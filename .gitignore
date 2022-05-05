@@ -24,6 +24,8 @@ package-lock.json
 /build*
 /build/*
 .env
+.eslintignore
+.eslintrc.js
 # Editor/IDE
 .idea
 packages/api/etc/
