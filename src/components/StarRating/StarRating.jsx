@@ -31,7 +31,7 @@ class StarRating extends Component {
   }
 
   getStarRate(star) {
-    this.props.stars(star);
+    this.props.onChange(star);
   }
 
   render() {

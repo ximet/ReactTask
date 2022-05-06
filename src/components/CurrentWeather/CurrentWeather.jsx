@@ -1,10 +1,12 @@
 import React from 'react';
 import { Spinner } from '../';
 import { getWeatherIcon } from '../../services/functions';
+import { translations } from '../../utils/translations';
 import * as S from './CurrentWeather.styles';
 
-const Currentweather = ({ data }) => {
-  const weatherData = data[0];
+const CurrentWeather = ({ data }) => {
+  const [weatherData] = data;
+
   return (
     <div>
       {data.length !== 0 ? (
@@ -19,9 +21,18 @@ const Currentweather = ({ data }) => {
             <div>
               <S.Conditions>{weatherData.symbolPhrase}</S.Conditions>
               <S.About>
-                <p>Wind: {weatherData.windSpeed} m/s</p>
-                <p>Cloudiness: {weatherData.cloudiness} %</p>
-                <p>Pressure: {weatherData.pressure} hPa</p>
+                <p>
+                  {translations.msg_wind}
+                  {weatherData.windSpeed} m/s
+                </p>
+                <p>
+                  {translations.msg_cloudiness}
+                  {weatherData.cloudiness} %
+                </p>
+                <p>
+                  {translations.msg_pressure}
+                  {weatherData.pressure} hPa
+                </p>
               </S.About>
             </div>
           </S.WeatherInfoContainer>
@@ -34,4 +45,4 @@ const Currentweather = ({ data }) => {
   );
 };
 
-export default Currentweather;
+export default CurrentWeather;

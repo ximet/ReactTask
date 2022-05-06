@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useInput from '../../hooks/useInput';
 import { Button, Input, TextArea, Rate } from '../';
 import { EMAIL_REGEXP } from '../../config/constants';
 import { Storage } from '../../services/localStorage';
+import { translations } from '../../utils/translations/';
 import * as S from './Form.styles';
 
 const isNotEmpty = value => value.trim() !== '';
 const isEmail = value => value.match(EMAIL_REGEXP);
-const isTextarea = value => value.length;
+const isFeedbackEmpty = value => value.length;
 
 const BasicForm = () => {
   const [message, setMessage] = useState('');
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(null);
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const {
     value: userName,
@@ -38,13 +40,11 @@ const BasicForm = () => {
     valueChangeHandler: reviewChangeHandler,
     inputBlurHandler: reviewBlurHandler,
     reset: resetReview
-  } = useInput(isTextarea);
+  } = useInput(isFeedbackEmpty);
 
-  let formIsValid = false;
-
-  if (userNameIsValid && emailIsValid && reviewIsValid) {
-    formIsValid = true;
-  }
+  useEffect(() => {
+    setFormIsValid(userNameIsValid && emailIsValid && reviewIsValid);
+  }, [userName, emailValue, reviewValue]);
 
   const submitHandler = event => {
     event.preventDefault();
@@ -52,24 +52,19 @@ const BasicForm = () => {
       return;
     }
 
-    Storage.setReview({
-      userName,
-      emailValue,
-      reviewValue,
-      rating
-    });
+    Storage.setReview({ userName, emailValue, reviewValue, rating });
 
     resetName();
     resetEmail();
     resetReview();
-    setMessage('Your form submitted!');
+    setMessage(translations.msg_success_submit);
   };
 
   const formBlurHandler = () => {
     setMessage('');
   };
 
-  const userStarRating = rate => {
+  const getUserRating = rate => {
     setRating(rate);
   };
 
@@ -80,8 +75,8 @@ const BasicForm = () => {
         onChange={nameChangeHandler}
         onBlur={nameBlurHandler}
         labelName="name"
-        labelTitle="Your name"
-        errorMessage="Please enter your name"
+        labelTitle={translations.msg_user_name_label}
+        errorMessage={translations.msg_user_name_error}
         isError={userNameHasError}
       />
       <Input
@@ -89,8 +84,8 @@ const BasicForm = () => {
         onChange={emailChangeHandler}
         onBlur={emailBlurHandler}
         labelName="email"
-        labelTitle="Email address"
-        errorMessage="Please enter a valid email address."
+        labelTitle={translations.msg_user_email_label}
+        errorMessage={translations.msg_user_email_error}
         isError={emailHasError}
       />
       <TextArea
@@ -98,13 +93,13 @@ const BasicForm = () => {
         onChange={reviewChangeHandler}
         onBlur={reviewBlurHandler}
         labelName="feedback"
-        labelTitle="Enter your feedback below:"
-        errorMessage="Please leave feedback!"
+        labelTitle={translations.msg_user_review_label}
+        errorMessage={translations.msg_user_review_error}
         isError={reviewHasError}
       />
-      <Rate stars={userStarRating} />
-      <Button type="submit" color="primary">
-        Submit
+      <Rate onChange={getUserRating} />
+      <Button type="submit" color="destructive">
+        {translations.msg_button_submit}
       </Button>
       <S.SubmitMessageWrapper>{message}</S.SubmitMessageWrapper>
     </S.FormWrapper>

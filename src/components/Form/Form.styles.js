@@ -15,7 +15,7 @@ export const FormWrapper = styled.form`
 export const SubmitMessageWrapper = styled.p`
   text-align: center;
   color: var(--success-message);
-  font-size: var(--f4);
+  font-size: var(--f3);
   padding: 0.25rem 0.5rem;
   border-radius: var(--f4);
   margin: 0.5rem auto;

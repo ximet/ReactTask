@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { publicApiInstance } from '../../utils/api';
 import { WeatherCard, SearchInput, SearchBar, Tooltip } from '../../components';
-import endpoints from '../../config/enpoints';
+import endpoints from '../../config/endpoints';
 import { minSearchCharacters } from '../../config/constants';
+import { translations } from '../../utils/translations';
 import * as S from './CityWeather.styles';
 
 const CityWeather = () => {
@@ -44,19 +45,20 @@ const CityWeather = () => {
 
   return (
     <div>
-      <S.Title>Find forecast for your favorite city!</S.Title>
+      <S.Title>{translations.msg_page_city_weather_title}</S.Title>
       <Tooltip
-        text={`Enter at least ${minSearchCharacters} letters!`}
+        text={`${translations.msg_page_tooltip_title}
+        ${minSearchCharacters}${translations.msg_page_tooltip_letters}`}
         tooltip={cityName.length > 0 && cityName.length <= minSearchCharacters}
       >
         <SearchInput
-          placeholder="Enter city name"
+          placeholder={translations.msg_search_input_title}
           value={cityName}
           onChange={e => cityValueHandler(e.target.value)}
         />
       </Tooltip>
       {cityName.length > minSearchCharacters && results.length === 0 && (
-        <S.ErrorWrapper>No results found...</S.ErrorWrapper>
+        <S.ErrorWrapper>{translations.msg_page_city_weather_no_result}</S.ErrorWrapper>
       )}
       {cityName.length > minSearchCharacters ? (
         <SearchBar results={results} onClick={city => getCurrentCity(city)} />

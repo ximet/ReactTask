@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  background: ${props =>
-    props.color === 'primary' ? 'var(--warning-color)' : 'var(--success-message)'};
+  background: ${props => `var(--${props.color}-color)`};
   border: none;
   color: var(--text);
   cursor: pointer;

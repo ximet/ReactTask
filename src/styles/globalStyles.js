@@ -2,9 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --primary: cyan;
     --text: rgb(250, 250, 250);
-    --borders: #80ff91;
+    --borders: rgb(128,255,145);
     --page-background: rgb(250, 250, 250);
     --container-background: rgb(64, 99, 127);
     --card-background: rgb(112, 193, 179);
@@ -20,6 +19,9 @@ export const GlobalStyles = createGlobalStyle`
     --border-success-color: rgb(38,227,0);
     --input-bg-error-color: rgb(255,120,120);
     --input-bg-success-color: rgb(241,241,241);
+    --success-color: rgb(102,187,106);
+    --default-color: rgb(0,99,204);
+    --destructive-color: rgb(204,51,0);
 
 
     --card-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)
