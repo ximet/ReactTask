@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { CurrentWeather } from '../../components';
 import { publicApiInstance, getAccessTokenFromAPI } from '../../utils/api';
 import { Cookie } from '../../services/cookie';
-import endpoints from '../../config/enpoints';
+import { translations } from '../../utils/translations';
+import endpoints from '../../config/endpoints';
 import * as S from './Home.styles';
 
 const Home = () => {
@@ -50,7 +51,7 @@ const Home = () => {
       {location ? (
         <CurrentWeather data={data} />
       ) : (
-        <S.Message>We need to set you location!</S.Message>
+        <S.Message>{translations.msg_page_home_location_error}</S.Message>
       )}
     </div>
   );
