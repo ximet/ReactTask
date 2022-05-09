@@ -7,12 +7,10 @@ class StarRating extends Component {
     super(props);
 
     this.state = {
-      stars: [],
+      stars: [...Array.from({ length: 5 }, (_, i) => i + 1)],
       rating: 0,
       hovered: 0
     };
-
-    this.state.stars.push(...Array.from({ length: 5 }, (_, i) => i + 1));
   }
 
   changeRating(newRating) {
