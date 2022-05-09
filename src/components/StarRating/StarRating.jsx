@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { icons } from '../../utils/icons';
 import * as S from './StarRating.styles';
 
 class StarRating extends Component {
@@ -8,16 +9,10 @@ class StarRating extends Component {
     this.state = {
       stars: [],
       rating: 0,
-      hovered: 0,
-      selectedIcon: '★',
-      deselectedIcon: '☆'
+      hovered: 0
     };
 
-    let outOf = props.outOf ? props.outOf : 5;
-
-    for (let i = 0; i < outOf; i++) {
-      this.state.stars.push(i + 1);
-    }
+    this.state.stars.push(...Array.from({ length: 5 }, (_, i) => i + 1));
   }
 
   changeRating(newRating) {
@@ -35,7 +30,7 @@ class StarRating extends Component {
   }
 
   render() {
-    const { stars, rating, hovered, deselectedIcon, selectedIcon } = this.state;
+    const { stars, rating, hovered } = this.state;
 
     return (
       <S.RateWrapper>
@@ -47,7 +42,7 @@ class StarRating extends Component {
               onMouseEnter={() => this.hoverRating(star)}
               onMouseLeave={() => this.hoverRating(0)}
             >
-              {rating < star ? (hovered < star ? deselectedIcon : selectedIcon) : selectedIcon}
+              {rating < star && hovered < star ? icons.deselectedIcon : icons.selectedIcon}
             </S.Star>
           ))}
         </S.StarWrapper>
