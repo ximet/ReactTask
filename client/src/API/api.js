@@ -11,7 +11,7 @@ export async function getTokenFromAPI() {
   try {
     const response = await axios.get(TOKEN_URL);
     console.log(response);
-    return response.data.tokens[0].access_token;
+    return response.data.access_token;
   } catch (error) {
     console.warn(error);
   }
