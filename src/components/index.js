@@ -14,3 +14,4 @@ export { default as Form } from './Form/Form';
 export { default as Input } from './Inputs/Input/Input';
 export { default as TextArea } from './Inputs/TextArea/TextArea';
 export { default as Rate } from './StarRating/StarRating';
+export { default as ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';

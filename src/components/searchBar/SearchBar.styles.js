@@ -20,4 +20,5 @@ export const ResultWrapper = styled.div`
 
 export const ResultItems = styled.div`
   padding: 0.5rem;
+  color: var(--dark-grey-color);
 `;

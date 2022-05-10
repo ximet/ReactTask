@@ -33,5 +33,9 @@ export const translations = {
   //CurrentWeather
   msg_wind: 'Wind: ',
   msg_cloudiness: 'Cloudiness: ',
-  msg_pressure: 'Pressure: '
+  msg_pressure: 'Pressure: ',
+
+  //Theme
+  msg_dark: 'DARK',
+  msg_light: 'LIGHT'
 };

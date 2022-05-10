@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { GlobalStyles } from './styles/globalStyles';
+import DarkModeProvider from './contexts/darkMode';
 import App from './App.jsx';
 
 ReactDOM.render(
-  <Router>
-    <GlobalStyles />
-    <App />
-  </Router>,
+  <DarkModeProvider>
+    <Router>
+      <App />
+    </Router>
+  </DarkModeProvider>,
   document.getElementById('app')
 );

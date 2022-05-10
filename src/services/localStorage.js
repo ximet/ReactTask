@@ -1,6 +1,8 @@
 export const Storage = {
   setReview,
-  getItem
+  getItem,
+  setTheme,
+  getTheme
 };
 
 function setReview(review) {
@@ -16,4 +18,12 @@ function setItem(name, item) {
 
 function getItem(name) {
   return JSON.parse(localStorage.getItem(name));
+}
+
+function setTheme(theme) {
+  return setItem('isDarkTheme', theme);
+}
+
+function getTheme() {
+  return getItem('isDarkTheme');
 }

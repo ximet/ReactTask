@@ -4,13 +4,13 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --text: rgb(250, 250, 250);
     --borders: rgb(128,255,145);
-    --page-background: rgb(250, 250, 250);
+    --page-background: ${props => (props.isDarkMode ? 'rgb(37, 37, 37)' : 'rgb(250, 250, 250)')};
     --container-background: rgb(64, 99, 127);
     --card-background: rgb(112, 193, 179);
     --spinner-color: rgb(69, 36, 216);
-    --grey-color: rgb(241,241,241);
-    --black-color: rgb(37, 37, 37);
-    --dark-grey-color: rgb(166, 166, 166);
+    --grey-color: ${props => (props.isDarkMode ? 'rgb(37, 37, 37)' : 'rgb(241, 241, 241)')};
+    --black-color: ${props => (props.isDarkMode ? 'rgb(250,250,250)' : 'rgb(37, 37, 37)')};
+    --dark-grey-color: ${props => (props.isDarkMode ? 'rgb(0,0,0)' : 'rgb(166, 166, 166)')};
     --warning-color:rgb(204,51,0);
     --input-error: rgb(180,14,14);
     --success-message: rgb(129, 246, 158);
@@ -24,8 +24,8 @@ export const GlobalStyles = createGlobalStyle`
     --destructive-color: rgb(204,51,0);
 
 
-    --card-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15)
-    --card-second-shadow: rgba(0, 0, 0, 0.15)
+    --card-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+    --card-second-shadow: rgba(0, 0, 0, 0.15);
 
     --x1: 4px;
     --x2: 8px;
@@ -48,5 +48,15 @@ export const GlobalStyles = createGlobalStyle`
     --f12: 3.25rem;
     --f13: 3.5rem;
     --f20: 5rem;
+  };
+
+  body {
+    background: ${props => (props.isDarkMode ? 'rgb(56,56,56)' : 'rgb(255,255,255)')};
+    color: ${props => props.isDarkMode && 'rgb(250, 250, 250)'};
+  };
+
+  input,textarea {
+    background-color: ${props => props.isDarkMode && 'rgb(28 28 28);'};
+    color:  ${props => props.isDarkMode && 'rgb(250, 250, 250)'};
   }
 `;
