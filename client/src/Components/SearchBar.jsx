@@ -1,4 +1,6 @@
 import { useState } from "react";
+import * as Style from './Searchbar.styles';
+
 const data = require("../data.json");
 
 export default function SearchBar() {
@@ -14,38 +16,37 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="SearchBar">
-      <h1>Search</h1>
+    <Style.Container>
+      <h1>Search by City</h1>
 
-      <div className="search-container">
-        <div className="search-inner">
-          <input type="text" value={value} onChange={onChange} />
+      <Style.Search>
+        <Style.SearchInner>
+          <Style.Input type="text" value={value} onChange={onChange} />
           <button onClick={() => onSearch(value)}> Search </button>
-        </div>
-        <div className="dropdown">
+        </Style.SearchInner>
+        <Style.Dropdown>
           {data
             .filter((item) => {
               const searchTerm = value.toLowerCase();
-              const fullName = item.name.toLowerCase();
+              const cityName = item.name.toLowerCase();
 
               return (
                 searchTerm &&
-                fullName.startsWith(searchTerm) &&
-                fullName !== searchTerm
+                cityName.startsWith(searchTerm) &&
+                cityName !== searchTerm
               );
             })
             .slice(0, 10)
             .map((item) => (
-              <div
+              <Style.DropdownRow
                 onClick={() => onSearch(item.name)}
-                className="dropdown-row"
                 key={item.name}
               >
                 {item.name}
-              </div>
+              </Style.DropdownRow>
             ))}
-        </div>
-      </div>
-    </div>
+        </Style.Dropdown>
+      </Style.Search>
+    </Style.Container>
   );
 }
