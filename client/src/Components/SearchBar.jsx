@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./Searchbar.css";
 const data = require("../data.json");
 
 export default function SearchBar() {
