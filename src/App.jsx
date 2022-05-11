@@ -7,8 +7,7 @@ import { GlobalStyles } from './styles/globalStyles';
 import * as S from './App.styles';
 
 const App = () => {
-  const darkModeContext = useContext(DarkModeContext);
-  const { isDarkMode } = darkModeContext;
+  const { isDarkMode } = useContext(DarkModeContext);
 
   return (
     <HashRouter>

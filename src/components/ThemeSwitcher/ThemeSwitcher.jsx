@@ -5,8 +5,7 @@ import { Storage } from '../../services/localStorage';
 import * as S from './ThemeSwitcher.styles';
 
 const ThemeSwitcher = () => {
-  const darkModeContext = useContext(DarkModeContext);
-  const { isDarkMode, setIsDarkMode } = darkModeContext;
+  const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext);
 
   const themeChange = () => {
     setIsDarkMode(!isDarkMode);

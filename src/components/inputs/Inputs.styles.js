@@ -15,6 +15,7 @@ export const input = css`
   border: 0.01rem solid var(--dark-grey-color);
   width: 100%;
   box-sizing: border-box;
+  color: var(--black-color);
 `;
 
 export const inputFocus = css`
@@ -22,7 +23,7 @@ export const inputFocus = css`
   border-color: ${props =>
     props.showError ? 'var(--border-error-color)' : 'var(--border-success-color)'};
   background-color: ${props =>
-    props.showError ? 'var(--input-bg-error-color)' : 'var(--input-bg-success-color)'};
+    props.showError ? 'var(--input-bg-error-color)' : 'var(--page-background)'};
 `;
 
 export const errorMessage = css`
