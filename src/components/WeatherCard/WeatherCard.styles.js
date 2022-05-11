@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  background-color: rgb(204, 204, 204);
+  background-color: var(--grey-color);
   padding: 1rem 1rem 0 1rem;
   border-radius: 0.5rem 0.5rem 0 0;
 `;

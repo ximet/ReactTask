@@ -1,12 +1,18 @@
-import { Switch, Route } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import { Header, Footer } from './components';
 import { Home, About, Contact, CityWeather } from './pages';
+import { DarkModeContext } from './contexts/darkMode';
+import { GlobalStyles } from './styles/globalStyles';
 import * as S from './App.styles';
 
 const App = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div>
+    <HashRouter>
       <Header />
+      <GlobalStyles isDarkMode={isDarkMode} />
       <S.PageContainer>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -16,7 +22,7 @@ const App = () => {
         </Switch>
       </S.PageContainer>
       <Footer />
-    </div>
+    </HashRouter>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { translations } from '../../utils/translations/';
+import { ThemeSwitcher } from '../';
 import * as S from './Header.styles.js';
 
 const Header = () => {
@@ -29,6 +30,7 @@ const Header = () => {
           <Link to="/contacts" onClick={openBar}>
             {translations.msg_page_contacts_label}
           </Link>
+          <ThemeSwitcher />
         </S.NavLinks>
       </S.Header>
     </S.HeaderWrapper>
