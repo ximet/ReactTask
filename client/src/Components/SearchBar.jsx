@@ -1,18 +1,46 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import * as Style from './Searchbar.styles';
+import { weatherAPI } from '../API/api';
+import endpoints from '../Utils/endpoints'
+import { minCharacters } from '../Utils/minChars'
+import Currentweather from './Card'
 
-const data = require("../data.json");
 
 export default function SearchBar() {
-  const [value, setValue] = useState("");
+  const [cityName, setCityName] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [results, setResults] = useState([]);
+  const [chooseCityForecast, setChooseCityForecast] = useState([]);
 
-  const onChange = (event) => {
-    setValue(event.target.value);
+  useEffect(() => {
+    if (cityName.length > minCharacters) {
+      loadCities()
+    }
+  }, [cityName, loadCities])
+
+  const cityValueHandler = value => {
+    setCityName(value);
+  };  
+
+  const loadCities = async () => {
+    try {
+      const res = await weatherAPI.get(endpoints.GET_CITY(cityName));
+      setResults(res.data.locations);
+    } catch (error) {
+      alert(error);
+    }
   };
 
-  const onSearch = (searchTerm) => {
-    setValue(searchTerm);
-    console.log("search ", searchTerm);
+  const getCurrentCity = async city => {
+    try {
+      const res = await weatherAPI.get(endpoints.GET_DAILY_ID(city.id));
+      setChooseCityForecast(res.data.forecast);
+      setCityName('');
+      setResults([]);
+      setSelectedCity(city.name);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -21,32 +49,28 @@ export default function SearchBar() {
 
       <Style.Search>
         <Style.SearchInner>
-          <Style.Input type="text" value={value} onChange={onChange} />
-          <button onClick={() => onSearch(value)}> Search </button>
+          <Style.Input type="text" value={cityName} onChange={e => cityValueHandler(e.target.value)} />
+          {/* <button onClick={() => onSearch(value)}> Search </button> */}
         </Style.SearchInner>
         <Style.Dropdown>
-          {data
-            .filter((item) => {
-              const searchTerm = value.toLowerCase();
-              const cityName = item.name.toLowerCase();
+          {cityName.length > minCharacters ? (
+            <Style.DropdownRow results={results} onClick={city => getCurrentCity(city)}>
+              {results.map(result => (
+                <div key={result.id} onClick={() => onClick(result)}>
+                  <span>{`${result.name}, ${result.country}`}</span>
+                </div>
+              ))}
+          </Style.DropdownRow>
 
-              return (
-                searchTerm &&
-                cityName.startsWith(searchTerm) &&
-                cityName !== searchTerm
-              );
-            })
-            .slice(0, 10)
-            .map((item) => (
-              <Style.DropdownRow
-                onClick={() => onSearch(item.name)}
-                key={item.name}
-              >
-                {item.name}
-              </Style.DropdownRow>
-            ))}
+          ) : null}
+
         </Style.Dropdown>
       </Style.Search>
+      {chooseCityForecast && (
+      <section>
+      <Currentweather data={chooseCityForecast} />
+      </section>
+      )}
     </Style.Container>
   );
 }
