@@ -12,8 +12,11 @@ const isFeedbackEmpty = value => value.length;
 
 const BasicForm = () => {
   const [message, setMessage] = useState('');
-  const [rating, setRating] = useState(null);
   const [formIsValid, setFormIsValid] = useState(false);
+  const [starReview, setStarReview] = useState({
+    stars: [...Array.from({ length: 5 }, (_, i) => i + 1)],
+    rating: 0
+  });
 
   const {
     value: userName,
@@ -52,7 +55,7 @@ const BasicForm = () => {
       return;
     }
 
-    Storage.setReview({ userName, emailValue, reviewValue, rating });
+    Storage.setReview({ userName, emailValue, reviewValue, rating: starReview.rating });
 
     resetName();
     resetEmail();
@@ -64,8 +67,8 @@ const BasicForm = () => {
     setMessage('');
   };
 
-  const getUserRating = rate => {
-    setRating(rate);
+  const getUserRating = rateValue => {
+    setStarReview(prevState => ({ ...prevState, rating: rateValue }));
   };
 
   return (
@@ -97,7 +100,7 @@ const BasicForm = () => {
         errorMessage={translations.msg_user_review_error}
         isError={reviewHasError}
       />
-      <Rate onChange={getUserRating} />
+      <Rate value={starReview} onChange={getUserRating} />
       <Button type="submit" color="destructive">
         {translations.msg_button_submit}
       </Button>
