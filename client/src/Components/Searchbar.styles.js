@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  padding: 1rem;
   font-family: sans-serif;
   text-align: center;
   display: flex;
