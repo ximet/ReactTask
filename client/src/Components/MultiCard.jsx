@@ -1,4 +1,5 @@
 import * as Style from './MultiCard.styles';
+import dateHelper from '../Utils/dateHelper';
 
 const MultiWeather = ({ data }) => {
   return (
@@ -8,7 +9,7 @@ const MultiWeather = ({ data }) => {
           <section>
             <Style.Description>Low:{info.minTemp}C High:{info.maxTemp} C</Style.Description>
             <Style.Description>{info.maxWindSpeed} m/s</Style.Description>
-            <Style.Description>{info.date}</Style.Description>
+            <Style.Description>{dateHelper(info.date)}</Style.Description>
           </section>
         </Style.CardContainer>
       ))}
