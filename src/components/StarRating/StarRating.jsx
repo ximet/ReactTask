@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { icons } from '../../utils/icons';
+import { minStarLength } from '../../config/constants';
 import * as S from './StarRating.styles';
 
 class StarRating extends Component {
@@ -19,13 +20,13 @@ class StarRating extends Component {
   }
 
   render() {
-    const { stars, rating } = this.props.value;
+    const rating = this.props.value;
     const { hoverAnimation } = this.state;
 
     return (
       <S.RateWrapper>
         <S.StarWrapper>
-          {stars.map(star => (
+          {minStarLength.map(star => (
             <S.Star
               key={star}
               onClick={() => this.getStarRate(star)}

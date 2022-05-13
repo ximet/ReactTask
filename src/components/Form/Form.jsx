@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useInput from '../../hooks/useInput';
 import { Button, Input, TextArea, Rate } from '../';
-import { EMAIL_REGEXP } from '../../config/constants';
+import { EMAIL_REGEXP, minStarLength } from '../../config/constants';
 import { Storage } from '../../services/localStorage';
 import { translations } from '../../utils/translations/';
 import * as S from './Form.styles';
@@ -13,10 +13,9 @@ const isFeedbackEmpty = value => value.length;
 const BasicForm = () => {
   const [message, setMessage] = useState('');
   const [formIsValid, setFormIsValid] = useState(false);
-  const [starReview, setStarReview] = useState({
-    stars: [...Array.from({ length: 5 }, (_, i) => i + 1)],
-    rating: 0
-  });
+  const [starReview, setStarReview] = useState({ rating: 0 });
+
+  const { rating } = starReview;
 
   const {
     value: userName,
@@ -55,7 +54,7 @@ const BasicForm = () => {
       return;
     }
 
-    Storage.setReview({ userName, emailValue, reviewValue, rating: starReview.rating });
+    Storage.setReview({ userName, emailValue, reviewValue, rating });
 
     resetName();
     resetEmail();
@@ -100,7 +99,7 @@ const BasicForm = () => {
         errorMessage={translations.msg_user_review_error}
         isError={reviewHasError}
       />
-      <Rate value={starReview} onChange={getUserRating} />
+      <Rate value={rating} onChange={getUserRating} />
       <Button type="submit" color="destructive">
         {translations.msg_button_submit}
       </Button>
