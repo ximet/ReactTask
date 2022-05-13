@@ -13,9 +13,7 @@ const isFeedbackEmpty = value => value.length;
 const BasicForm = () => {
   const [message, setMessage] = useState('');
   const [formIsValid, setFormIsValid] = useState(false);
-  const [starReview, setStarReview] = useState({ rating: 0 });
-
-  const { rating } = starReview;
+  const [rating, setRating] = useState(0);
 
   const {
     value: userName,
@@ -59,6 +57,7 @@ const BasicForm = () => {
     resetName();
     resetEmail();
     resetReview();
+    setRating(0);
     setMessage(translations.msg_success_submit);
   };
 
@@ -67,7 +66,7 @@ const BasicForm = () => {
   };
 
   const getUserRating = rateValue => {
-    setStarReview(prevState => ({ ...prevState, rating: rateValue }));
+    setRating(rateValue);
   };
 
   return (
