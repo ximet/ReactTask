@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useInput from '../../hooks/useInput';
 import { Button, Input, TextArea, Rate } from '../';
-import { EMAIL_REGEXP } from '../../config/constants';
+import { EMAIL_REGEXP, minStarLength } from '../../config/constants';
 import { Storage } from '../../services/localStorage';
 import { translations } from '../../utils/translations/';
 import * as S from './Form.styles';
@@ -12,8 +12,8 @@ const isFeedbackEmpty = value => value.length;
 
 const BasicForm = () => {
   const [message, setMessage] = useState('');
-  const [rating, setRating] = useState(null);
   const [formIsValid, setFormIsValid] = useState(false);
+  const [rating, setRating] = useState(0);
 
   const {
     value: userName,
@@ -57,6 +57,7 @@ const BasicForm = () => {
     resetName();
     resetEmail();
     resetReview();
+    setRating(0);
     setMessage(translations.msg_success_submit);
   };
 
@@ -64,8 +65,8 @@ const BasicForm = () => {
     setMessage('');
   };
 
-  const getUserRating = rate => {
-    setRating(rate);
+  const getUserRating = rateValue => {
+    setRating(rateValue);
   };
 
   return (
@@ -97,7 +98,7 @@ const BasicForm = () => {
         errorMessage={translations.msg_user_review_error}
         isError={reviewHasError}
       />
-      <Rate onChange={getUserRating} />
+      <Rate value={rating} onChange={getUserRating} />
       <Button type="submit" color="destructive">
         {translations.msg_button_submit}
       </Button>

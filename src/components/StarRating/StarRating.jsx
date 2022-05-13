@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { icons } from '../../utils/icons';
+import { minStarLength } from '../../config/constants';
 import * as S from './StarRating.styles';
 
 class StarRating extends Component {
@@ -7,40 +8,32 @@ class StarRating extends Component {
     super(props);
 
     this.state = {
-      stars: [...Array.from({ length: 5 }, (_, i) => i + 1)],
-      rating: 0,
-      hovered: 0
+      hoverAnimation: 0
     };
   }
-
-  changeRating(newRating) {
-    this.setState({ rating: newRating }, () => {
-      this.getStarRate(this.state.rating);
-    });
-  }
-
-  hoverRating(rating) {
-    this.setState({ hovered: rating });
-  }
-
   getStarRate(star) {
     this.props.onChange(star);
   }
 
+  hoverRating(star) {
+    this.setState({ hoverAnimation: star });
+  }
+
   render() {
-    const { stars, rating, hovered } = this.state;
+    const rating = this.props.value;
+    const { hoverAnimation } = this.state;
 
     return (
       <S.RateWrapper>
         <S.StarWrapper>
-          {stars.map(star => (
+          {minStarLength.map(star => (
             <S.Star
               key={star}
-              onClick={() => this.changeRating(star)}
+              onClick={() => this.getStarRate(star)}
               onMouseEnter={() => this.hoverRating(star)}
               onMouseLeave={() => this.hoverRating(0)}
             >
-              {rating < star && hovered < star ? icons.deselectedIcon : icons.selectedIcon}
+              {rating < star && hoverAnimation < star ? icons.deselectedIcon : icons.selectedIcon}
             </S.Star>
           ))}
         </S.StarWrapper>
