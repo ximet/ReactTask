@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { publicApiInstance } from '../../utils/api';
-import { WeatherCard, SearchInput, SearchBar, Tooltip } from '../../components';
+import { WeatherCard, SearchInput, SearchBar, Tooltip, Button } from '../../components';
 import endpoints from '../../config/endpoints';
-import { minSearchCharacters } from '../../config/constants';
+import { minSearchCharacters, SAVE_SEARCH, DELETE_SEARCH } from '../../config/constants';
 import { translations } from '../../utils/translations';
 import * as S from './CityWeather.styles';
 
 const CityWeather = () => {
   const [cityName, setCityName] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedCity, setSelectedCity] = useState({});
   const [results, setResults] = useState([]);
   const [chooseCityForecast, setChooseCityForecast] = useState([]);
+
+  const dispatch = useDispatch();
+  const searchResults = useSelector(state => state.savedSearch);
 
   useEffect(() => {
     if (cityName.length > minSearchCharacters) {
@@ -24,8 +28,8 @@ const CityWeather = () => {
 
   const loadCities = async () => {
     try {
-      const res = await publicApiInstance.get(endpoints.GET_CITIES(cityName));
-      setResults(res.data.locations);
+      const { data } = await publicApiInstance.get(endpoints.GET_CITIES(cityName));
+      setResults(data.locations);
     } catch (error) {
       alert(error);
     }
@@ -33,29 +37,64 @@ const CityWeather = () => {
 
   const getCurrentCity = async city => {
     try {
-      const res = await publicApiInstance.get(endpoints.GET_CITY_BY_ID(city.id));
-      setChooseCityForecast(res.data.forecast);
+      const { data } = await publicApiInstance.get(endpoints.GET_CITY_BY_ID(city.id));
+      setChooseCityForecast(data.forecast);
+      setSelectedCity(city);
       setCityName('');
       setResults([]);
-      setSelectedCity(city.name);
     } catch (error) {
       alert(error);
     }
   };
 
+  const saveFavoriteCity = () => {
+    dispatch({ type: SAVE_SEARCH, value: selectedCity });
+  };
+
+  const deleteFavoriteCity = id => {
+    dispatch({ type: DELETE_SEARCH, id });
+    setSelectedCity({});
+    setChooseCityForecast([]);
+  };
+
+  const findFavoriteCity = city => {
+    getCurrentCity(city);
+  };
+
+  const isCityExist = cityTitle => {
+    const isExist = searchResults.some(({ name }) => name === cityTitle);
+    return isExist;
+  };
+
   return (
     <div>
       <S.Title>{translations.msg_page_city_weather_title}</S.Title>
+      <S.Wrapper>
+        {searchResults.map(({ id, name }) => (
+          <S.CityContainer key={id}>
+            <span onClick={() => findFavoriteCity({ id, name })}>{name}</span>
+            <S.DeleteWrapper onClick={() => deleteFavoriteCity(id)}>X</S.DeleteWrapper>
+          </S.CityContainer>
+        ))}
+      </S.Wrapper>
       <Tooltip
         text={`${translations.msg_page_tooltip_title}
         ${minSearchCharacters}${translations.msg_page_tooltip_letters}`}
         tooltip={cityName.length > 0 && cityName.length <= minSearchCharacters}
       >
-        <SearchInput
-          placeholder={translations.msg_search_input_title}
-          value={cityName}
-          onChange={e => cityValueHandler(e.target.value)}
-        />
+        <S.InputContainer>
+          <SearchInput
+            placeholder={translations.msg_search_input_title}
+            value={cityName}
+            onChange={e => cityValueHandler(e.target.value)}
+          />
+          {isCityExist(selectedCity.name) ||
+            (selectedCity.name && (
+              <Button color="destructive" handleClick={saveFavoriteCity}>
+                {`${translations.msg_button_save_city}${selectedCity.name}`}
+              </Button>
+            ))}
+        </S.InputContainer>
       </Tooltip>
       {cityName.length > minSearchCharacters && results.length === 0 && (
         <S.ErrorWrapper>{translations.msg_page_city_weather_no_result}</S.ErrorWrapper>
@@ -65,7 +104,7 @@ const CityWeather = () => {
       ) : null}
       {chooseCityForecast && (
         <section>
-          <S.PlaceDescription>{selectedCity}</S.PlaceDescription>
+          <S.PlaceDescription>{selectedCity.name}</S.PlaceDescription>
           <WeatherCard data={chooseCityForecast} />
         </section>
       )}
