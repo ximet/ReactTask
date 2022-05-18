@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import { SAVE_SEARCH, DELETE_SEARCH } from '../config/constants';
+import { SAVE_SEARCH, DELETE_SEARCH } from './actionTypes';
 
 const initialState = {
-  savedSearch: []
+  favoriteCities: []
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -10,14 +10,14 @@ const searchReducer = (state = initialState, action) => {
     case SAVE_SEARCH:
       return {
         ...state,
-        savedSearch: [...state.savedSearch, action.value]
+        favoriteCities: [...state.favoriteCities, action.value]
       };
     case DELETE_SEARCH:
-      const searches = [...state.savedSearch];
+      const searches = [...state.favoriteCities];
       const updatedCities = searches.filter(city => city.id !== action.id);
       return {
         ...state,
-        savedSearch: updatedCities
+        favoriteCities: updatedCities
       };
   }
   return state;

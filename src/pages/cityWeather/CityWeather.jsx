@@ -3,33 +3,34 @@ import { useSelector, useDispatch } from 'react-redux';
 import { publicApiInstance } from '../../utils/api';
 import { WeatherCard, SearchInput, SearchBar, Tooltip, Button } from '../../components';
 import endpoints from '../../config/endpoints';
-import { minSearchCharacters, SAVE_SEARCH, DELETE_SEARCH } from '../../config/constants';
+import { minSearchCharacters } from '../../config/constants';
+import { SAVE_SEARCH, DELETE_SEARCH } from '../../store/actionTypes';
 import { translations } from '../../utils/translations';
 import * as S from './CityWeather.styles';
 
 const CityWeather = () => {
-  const [cityName, setCityName] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [selectedCity, setSelectedCity] = useState({});
-  const [results, setResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [chooseCityForecast, setChooseCityForecast] = useState([]);
 
   const dispatch = useDispatch();
-  const searchResults = useSelector(state => state.savedSearch);
+  const favoriteCitiesData = useSelector(state => state.favoriteCities);
 
   useEffect(() => {
-    if (cityName.length > minSearchCharacters) {
+    if (inputValue.length > minSearchCharacters) {
       loadCities();
     }
-  }, [cityName, loadCities]);
+  }, [inputValue, loadCities]);
 
   const cityValueHandler = value => {
-    setCityName(value);
+    setInputValue(value);
   };
 
   const loadCities = async () => {
     try {
-      const { data } = await publicApiInstance.get(endpoints.GET_CITIES(cityName));
-      setResults(data.locations);
+      const { data } = await publicApiInstance.get(endpoints.GET_CITIES(inputValue));
+      setSearchResults(data.locations);
     } catch (error) {
       alert(error);
     }
@@ -40,8 +41,8 @@ const CityWeather = () => {
       const { data } = await publicApiInstance.get(endpoints.GET_CITY_BY_ID(city.id));
       setChooseCityForecast(data.forecast);
       setSelectedCity(city);
-      setCityName('');
-      setResults([]);
+      setInputValue('');
+      setSearchResults([]);
     } catch (error) {
       alert(error);
     }
@@ -62,15 +63,14 @@ const CityWeather = () => {
   };
 
   const isCityExist = cityTitle => {
-    const isExist = searchResults.some(({ name }) => name === cityTitle);
-    return isExist;
+    return favoriteCitiesData.some(({ name }) => name === cityTitle);
   };
 
   return (
     <div>
       <S.Title>{translations.msg_page_city_weather_title}</S.Title>
       <S.Wrapper>
-        {searchResults.map(({ id, name }) => (
+        {favoriteCitiesData.map(({ id, name }) => (
           <S.CityContainer key={id}>
             <span onClick={() => findFavoriteCity({ id, name })}>{name}</span>
             <S.DeleteWrapper onClick={() => deleteFavoriteCity(id)}>X</S.DeleteWrapper>
@@ -80,12 +80,12 @@ const CityWeather = () => {
       <Tooltip
         text={`${translations.msg_page_tooltip_title}
         ${minSearchCharacters}${translations.msg_page_tooltip_letters}`}
-        tooltip={cityName.length > 0 && cityName.length <= minSearchCharacters}
+        tooltip={inputValue.length > 0 && inputValue.length <= minSearchCharacters}
       >
         <S.InputContainer>
           <SearchInput
             placeholder={translations.msg_search_input_title}
-            value={cityName}
+            value={inputValue}
             onChange={e => cityValueHandler(e.target.value)}
           />
           {isCityExist(selectedCity.name) ||
@@ -96,11 +96,11 @@ const CityWeather = () => {
             ))}
         </S.InputContainer>
       </Tooltip>
-      {cityName.length > minSearchCharacters && results.length === 0 && (
+      {inputValue.length > minSearchCharacters && searchResults.length === 0 && (
         <S.ErrorWrapper>{translations.msg_page_city_weather_no_result}</S.ErrorWrapper>
       )}
-      {cityName.length > minSearchCharacters ? (
-        <SearchBar results={results} onClick={city => getCurrentCity(city)} />
+      {inputValue.length > minSearchCharacters ? (
+        <SearchBar results={searchResults} onClick={city => getCurrentCity(city)} />
       ) : null}
       {chooseCityForecast && (
         <section>
