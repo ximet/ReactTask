@@ -6,6 +6,7 @@ import endpoints from '../../config/endpoints';
 import { minSearchCharacters } from '../../config/constants';
 import { SAVE_SEARCH, DELETE_SEARCH } from '../../store/actionTypes';
 import { translations } from '../../utils/translations';
+import { useDebounce } from '../../hooks';
 import * as S from './CityWeather.styles';
 
 const CityWeather = () => {
@@ -16,12 +17,15 @@ const CityWeather = () => {
 
   const dispatch = useDispatch();
   const favoriteCitiesData = useSelector(state => state.favoriteCities);
+  const debounce = useDebounce(800);
 
   useEffect(() => {
     if (inputValue.length > minSearchCharacters) {
-      loadCities();
+      debounce(() => {
+        loadCities();
+      });
     }
-  }, [inputValue, loadCities]);
+  }, [inputValue, loadCities, debounce]);
 
   const cityValueHandler = value => {
     setInputValue(value);
