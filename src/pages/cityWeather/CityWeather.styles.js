@@ -17,3 +17,42 @@ export const Title = styled.h1`
     font-size: var(--f2);
   }
 `;
+
+export const CityContainer = styled.span`
+  margin-right: var(--x1);
+  background: var(--grey-color);
+  border-radius: var(--x2);
+  padding: var(--x2) var(--x3);
+  cursor: pointer;
+  @media screen and (max-width: 500px) {
+    padding: var(--x1) var(--x2);
+    font-size: var(--f1);
+  }
+`;
+
+export const DeleteWrapper = styled.span`
+  color: var(--destructive-color);
+  font-size: var(--x3);
+  font-weight: bold;
+  margin-left: var(--x2);
+
+  @media screen and (max-width: 500px) {
+    font-size: var(--f1);
+  }
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: var(--x2);
+  @media screen and (max-width: 500px) {
+    gap: var(--x1);
+  }
+`;
+
+export const Wrapper = styled.div`
+  margin: var(--x2) auto var(--x3) auto;
+  @media screen and (max-width: 500px) {
+    margin-top: var(--x3);
+  }
+`;

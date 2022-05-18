@@ -5,7 +5,13 @@ export const StyledButton = styled.button`
   border: none;
   color: var(--text);
   cursor: pointer;
-  border-radius: 0.4rem;
-  padding: 0.5rem 1.5rem;
+  border-radius: var(--x2);
+  padding: var(--x1) var(--x2);
   font-weight: bold;
+
+  @media screen and (max-width: 500px) {
+    padding: var(--x1) var(--x2);
+    font-size: var(--f1);
+    font-weight: normal;
+  }
 `;

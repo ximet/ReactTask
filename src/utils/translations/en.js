@@ -29,6 +29,7 @@ export const translations = {
 
   //Button
   msg_button_submit: 'Submit',
+  msg_button_save_city: 'Save ',
 
   //CurrentWeather
   msg_wind: 'Wind: ',
