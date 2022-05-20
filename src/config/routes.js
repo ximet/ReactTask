@@ -1,8 +1,7 @@
-import { Route, Switch } from 'react-router-dom';
-import { Home, About, Contact, CityWeather, NotFound } from '../../pages';
-import { translations } from '../../utils/translations';
+import { Home, About, Contact, CityWeather, NotFound } from '../pages';
+import { translations } from '../utils/translations';
 
-const routes = [
+export const routes = [
   {
     path: '/',
     Component: Home,
@@ -34,23 +33,3 @@ const routes = [
     title: translations.msg_page_not_found_404_error
   }
 ];
-
-const Routes = () => {
-  return (
-    <Switch>
-      {routes.map(({ path, Component, isExact, title }) => (
-        <Route
-          key={path}
-          path={path}
-          exact={isExact}
-          render={() => {
-            document.title = title;
-            return <Component />;
-          }}
-        />
-      ))}
-    </Switch>
-  );
-};
-
-export default Routes;
