@@ -75,7 +75,7 @@ const ContactForm = () => {
       </Style.FormControl>
 
       <Style.FormControl>
-        <label htmlFor="comments"></label>
+        <label htmlFor="comments">Comment</label>
         <Style.TextArea
           name="comments"
           id="comments"
