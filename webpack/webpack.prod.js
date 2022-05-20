@@ -10,7 +10,8 @@ module.exports = {
   output: {
     filename: `${commonPaths.jsFolder}/[name].[hash].js`,
     path: commonPaths.outputPath,
-    chunkFilename: `${commonPaths.jsFolder}/[name].[chunkhash].js`
+    chunkFilename: `${commonPaths.jsFolder}/[name].[chunkhash].js`,
+    publicPath: '/'
   },
   optimization: {
     minimizer: [
