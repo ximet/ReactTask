@@ -20,6 +20,8 @@ const validate = values => {
 
   if(!values.name) {
       errors.name = 'Required'
+  } else if (values.name.length < 3) {
+    errors.name = 'Must be atleast 3 characters'
   }
 
   if (!values.email) {
@@ -30,6 +32,8 @@ const validate = values => {
 
   if(!values.comments) {
       errors.comments = 'Required'
+  } else if (values.comments.length < 20) {
+    errors.comments = 'Must be atleast 20 characters'
   }
 
   return errors
