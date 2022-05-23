@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { translations } from '../../utils/translations/';
 import { ThemeSwitcher } from '../';
 import * as S from './Header.styles.js';
@@ -15,21 +14,21 @@ const Header = () => {
     <S.HeaderWrapper>
       <S.Header>
         <S.Wrapper>
-          <Link to="/" id="logo" onClick={openBar}>
+          <S.LinkElem activeClassName="true" to="/" id="logo" exact onClick={openBar}>
             {translations.msg_page_weather_system_label}
-          </Link>
+          </S.LinkElem>
           <span onClick={openBar}>{open ? '+' : '-'}</span>
         </S.Wrapper>
         <S.NavLinks show={open}>
-          <Link to="/weather" onClick={openBar}>
+          <S.LinkElem activeClassName="true" to="/weather" onClick={openBar}>
             {translations.msg_page_city_weather_label}
-          </Link>
-          <Link to="/about" onClick={openBar}>
+          </S.LinkElem>
+          <S.LinkElem activeClassName="true" to="/about" onClick={openBar}>
             {translations.msg_page_about_label}
-          </Link>
-          <Link to="/contacts" onClick={openBar}>
+          </S.LinkElem>
+          <S.LinkElem activeClassName="true" to="/contacts" onClick={openBar}>
             {translations.msg_page_contacts_label}
-          </Link>
+          </S.LinkElem>
           <ThemeSwitcher />
         </S.NavLinks>
       </S.Header>

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
@@ -6,6 +7,13 @@ export const HeaderWrapper = styled.div`
   height: var(--f20);
   @media screen and (max-width: 500px) {
     height: auto;
+  }
+`;
+
+export const LinkElem = styled(NavLink)`
+  &.${props => props.activeClassName} {
+    background-color: var(--dark-grey-color);
+    color: var(--black-color);
   }
 `;
 
