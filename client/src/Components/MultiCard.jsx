@@ -1,17 +1,18 @@
 import * as Style from './MultiCard.styles';
-import dateHelper from '../Utils/dateHelper';
+
+import dateToWeekdayHelper from '../Utils/dateHelper';
 
 const MultiWeather = ({ data }) => {
   return (
     <Style.Container>
-      {data.map((info, index) => (
+      {data.map(({minTemp, maxTemp, maxWindSpeed, date} , index) => (
         <Style.CardContainer key={index}>
           <section>
             <Style.Description>
-              Low:{info.minTemp}C High:{info.maxTemp} C
+              Low:{minTemp}C High:{maxTemp} C
             </Style.Description>
-            <Style.Description>{info.maxWindSpeed} m/s</Style.Description>
-            <Style.Description>{dateHelper(info.date)}</Style.Description>
+            <Style.Description>{maxWindSpeed} m/s</Style.Description>
+            <Style.Description>{dateToWeekdayHelper(date)}</Style.Description>
           </section>
         </Style.CardContainer>
       ))}
