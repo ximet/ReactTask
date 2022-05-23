@@ -10,7 +10,6 @@ export const weatherAPI = axios.create({
 export async function getTokenFromAPI() {
   try {
     const response = await axios.get(TOKEN_URL);
-    console.log(response);
     return response.data.access_token;
   } catch (error) {
     console.warn(error);

@@ -1,4 +1,4 @@
-function dateHelper(date) {
+function dateToWeekdayHelper(date) {
   const weekDay = new Date(date).getDay();
 
   const weekDayMap = {
@@ -14,4 +14,4 @@ function dateHelper(date) {
   return weekDayMap[weekDay];
 }
 
-export default dateHelper;
+export default dateToWeekdayHelper;

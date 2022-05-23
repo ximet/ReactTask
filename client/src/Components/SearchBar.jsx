@@ -14,7 +14,7 @@ export default function SearchBar() {
     let timerID
 
     if (inputValue.length > minCharacters) {
-     timerID = setTimeout(async () =>{
+      timerID = setTimeout(async () => {
         try {
           const res = await weatherAPI.get(endpoints.GET_CITY(inputValue));
           setResults(res.data.locations);
@@ -22,11 +22,11 @@ export default function SearchBar() {
           alert(error);
         }
       }
-    , 1500)}
+        , 900)
+    }
     return () => {
-      console.log(timerID)
       clearTimeout(timerID)
-    } 
+    }
   }, [inputValue]);
 
   const cityValueHandler = value => {
@@ -36,7 +36,6 @@ export default function SearchBar() {
   const getCurrentCity = async city => {
     try {
       const res = await weatherAPI.get(endpoints.GET_DAILY_BY_ID(city.id));
-      console.log(res);
       setChooseCityForecast(res.data.forecast);
       setInputValue('');
       setResults([]);
