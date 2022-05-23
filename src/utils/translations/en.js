@@ -14,6 +14,10 @@ export const translations = {
   msg_page_contacts_phone_title: 'Phone:',
   msg_page_contacts_feedback_title: 'Would you like to improve us?',
   msg_page_home_location_error: 'We need to set you location!',
+  msg_page_not_found_404_error: 'Page not found',
+  msg_page_not_found_link: 'Back to home page',
+  msg_page_not_found_description: 'Maybe this page moved? Got deleted?',
+  msg_page_not_found_try_again: ' and try from there.',
 
   //Input
   msg_user_name_label: 'Your name',

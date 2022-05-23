@@ -71,7 +71,8 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
-      template: commonPaths.templatePath
+      template: commonPaths.templatePath,
+      favicon: './src/utils/icons/weather.png'
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
