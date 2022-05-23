@@ -5,7 +5,7 @@ import dateToWeekdayHelper from '../Utils/dateHelper';
 const MultiWeather = ({ data }) => {
   return (
     <Style.Container>
-      {data.map(({minTemp, maxTemp, maxWindSpeed, date} , index) => (
+      {data.map(({ minTemp, maxTemp, maxWindSpeed, date }, index) => (
         <Style.CardContainer key={index}>
           <section>
             <Style.Description>
