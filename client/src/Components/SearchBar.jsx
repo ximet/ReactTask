@@ -11,7 +11,7 @@ export default function SearchBar() {
   const [chooseCityForecast, setChooseCityForecast] = useState([]);
 
   useEffect(() => {
-    let timerID
+    let timerID;
 
     if (inputValue.length > minCharacters) {
       timerID = setTimeout(async () => {
@@ -21,12 +21,11 @@ export default function SearchBar() {
         } catch (error) {
           alert(error);
         }
-      }
-        , 900)
+      }, 900);
     }
     return () => {
-      clearTimeout(timerID)
-    }
+      clearTimeout(timerID);
+    };
   }, [inputValue]);
 
   const cityValueHandler = value => {

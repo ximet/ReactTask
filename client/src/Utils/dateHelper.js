@@ -1,7 +1,5 @@
 function dateToWeekdayHelper(date) {
-  const weekDay = new Date(date).toLocaleString('en-US', { weekday: 'long' });
-
-  return weekDay
+  return new Date(date).toLocaleString('en-US', { weekday: 'long' });
 }
 
 export default dateToWeekdayHelper;
