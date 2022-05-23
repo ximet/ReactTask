@@ -1,4 +1,5 @@
 import * as Style from './MultiCard.styles';
+
 import dateToWeekdayHelper from '../Utils/dateHelper';
 
 const MultiWeather = ({ data }) => {
