@@ -40,7 +40,7 @@ const validate = values => {
 };
 
 const ContactForm = () => {
-  const {handleSubmit, errors, touched, getFieldProps} = useFormik({
+  const { handleSubmit, errors, touched, getFieldProps } = useFormik({
     initialValues,
     onSubmit,
     validate
@@ -56,26 +56,17 @@ const ContactForm = () => {
             type="text"
             name="name"
             id="name"
-            {...getFieldProps('name')} 
+            {...getFieldProps('name')}
             //getFieldProps method can help to reduce code, by eliminating the need to use handleBlur, handleChange and values methods
           />
           {/* We also add conditional rendering of the error, checking if all requirements in the input field has been fullfiled */}
-          {touched.name && errors.name ? (
-            <Style.Error>{errors.name}</Style.Error>
-          ) : null}
+          {touched.name && errors.name ? <Style.Error>{errors.name}</Style.Error> : null}
         </Style.FormControl>
 
         <Style.FormControl>
           <label htmlFor="email">Email</label>
-          <Style.Input
-            type="text"
-            name="email"
-            id="email"
-            {...getFieldProps('email')}
-          />
-          {touched.email && errors.email ? (
-            <Style.Error>{errors.email}</Style.Error>
-          ) : null}
+          <Style.Input type="text" name="email" id="email" {...getFieldProps('email')} />
+          {touched.email && errors.email ? <Style.Error>{errors.email}</Style.Error> : null}
         </Style.FormControl>
 
         <Style.FormControl>
@@ -86,7 +77,6 @@ const ContactForm = () => {
             cols="30"
             rows="10"
             {...getFieldProps('comments')}
-
           ></Style.TextArea>
           {touched.comments && errors.comments ? (
             <Style.Error>{errors.comments}</Style.Error>
