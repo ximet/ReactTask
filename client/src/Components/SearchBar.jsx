@@ -4,11 +4,15 @@ import { weatherAPI } from '../API/api';
 import endpoints from '../Utils/endpoints';
 import { minCharacters } from '../Utils/minChars';
 import MultiWeather from './MultiCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { CITY_SELECT } from '../store/actionType'
+
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
   const [results, setResults] = useState([]);
-  const [chooseCityForecast, setChooseCityForecast] = useState([]);
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     let timerID;
@@ -35,9 +39,10 @@ export default function SearchBar() {
   const getCurrentCity = async city => {
     try {
       const res = await weatherAPI.get(endpoints.GET_DAILY_BY_ID(city.id));
-      setChooseCityForecast(res.data.forecast);
+      console.log('log from api', res.data.forecast)
       setInputValue('');
       setResults([]);
+      dispatch({ type: CITY_SELECT, value: res.data.forecast})
     } catch (error) {
       alert(error);
     }
@@ -69,11 +74,6 @@ export default function SearchBar() {
           ) : null}
         </Style.Dropdown>
       </Style.Search>
-      {chooseCityForecast && (
-        <section>
-          <MultiWeather data={chooseCityForecast} />
-        </section>
-      )}
     </Style.Container>
   );
 }
