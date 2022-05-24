@@ -39,7 +39,6 @@ export default function SearchBar() {
   const getCurrentCity = async city => {
     try {
       const res = await weatherAPI.get(endpoints.GET_DAILY_BY_ID(city.id));
-      console.log('log from api', res.data.forecast)
       setInputValue('');
       setResults([]);
       dispatch({ type: CITY_SELECT, value: res.data.forecast})
