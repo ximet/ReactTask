@@ -9,8 +9,8 @@ export const publicApiInstance = axios.create({
 
 export async function getAccessTokenFromAPI() {
   try {
-    const response = await axios.get(TOKEN_URL);
-    return response.data.tokens[0].access_token;
+    const { data } = await axios.get(TOKEN_URL);
+    return data.access_token;
   } catch (error) {
     console.warn(error);
   }
