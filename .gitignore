@@ -9,6 +9,7 @@ coverage
 
 # Logs
 *.log
+.env
 
 # npm & yarn
 node_modules/
