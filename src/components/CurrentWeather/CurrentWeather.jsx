@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Spinner } from '../';
 import { getWeatherIcon } from '../../services/functions';
 import { translations } from '../../utils/translations';
@@ -43,6 +44,20 @@ const CurrentWeather = ({ data }) => {
       )}
     </div>
   );
+};
+
+CurrentWeather.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      symbolPhrase: PropTypes.string.isRequired,
+      temperature: PropTypes.number.isRequired,
+      windSpeed: PropTypes.number.isRequired,
+      cloudiness: PropTypes.number.isRequired,
+      pressure: PropTypes.number.isRequired,
+      time: PropTypes.string.isRequired
+    })
+  )
 };
 
 export default CurrentWeather;

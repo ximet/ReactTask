@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as S from './SearchBar.styles';
 
 const SearchBar = ({ results, onClick }) => {
@@ -11,6 +12,21 @@ const SearchBar = ({ results, onClick }) => {
       ))}
     </S.ResultWrapper>
   );
+};
+
+SearchBar.defaultProps = {
+  results: []
+};
+
+SearchBar.propTypes = {
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired
+    })
+  ),
+  onClick: PropTypes.func
 };
 
 export default SearchBar;
