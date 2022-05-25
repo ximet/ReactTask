@@ -2,12 +2,10 @@ import * as Style from './MultiCard.styles';
 
 import dateToWeekdayHelper from '../Utils/dateHelper';
 
-import { useSelector }  from 'react-redux'
-
+import { useSelector } from 'react-redux';
 
 const MultiWeather = () => {
-
-  const data = useSelector(state => state.selectedCity)
+  const data = useSelector(state => state.selectedCity);
 
   return (
     <Style.Container>
