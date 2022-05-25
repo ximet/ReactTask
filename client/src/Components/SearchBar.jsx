@@ -4,14 +4,13 @@ import { weatherAPI } from '../API/api';
 import endpoints from '../Utils/endpoints';
 import { minCharacters } from '../Utils/minChars';
 import { useDispatch } from 'react-redux';
-import { CITY_SELECT } from '../store/actionType'
-
+import { CITY_SELECT } from '../store/actionTypes'
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
   const [results, setResults] = useState([]);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let timerID;
@@ -40,7 +39,7 @@ export default function SearchBar() {
       const res = await weatherAPI.get(endpoints.GET_DAILY_BY_ID(city.id));
       setInputValue('');
       setResults([]);
-      dispatch({ type: CITY_SELECT, value: res.data.forecast})
+      dispatch({ type: CITY_SELECT, value: res.data.forecast });
     } catch (error) {
       alert(error);
     }

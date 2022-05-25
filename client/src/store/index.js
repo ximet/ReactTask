@@ -1,19 +1,19 @@
 import { createStore } from 'redux';
 
 const initialState = {
-    selectedCity: []
+  selectedCity: []
 };
 
 const selectionReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'CITY_SELECT':
-            return {
-                ...state,
-                selectedCity: [...state.selectedCity, ...action.value]
-            };
-        }
-    return state;
-}
+  switch (action.type) {
+    case 'CITY_SELECT':
+      return {
+        ...state,
+        selectedCity: [...state.selectedCity, ...action.value]
+      };
+  }
+  return state;
+};
 
 const store = createStore(selectionReducer);
 

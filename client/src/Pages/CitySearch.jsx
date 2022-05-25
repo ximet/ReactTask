@@ -6,7 +6,7 @@ const CitySearch = () => {
   return (
     <div>
       <SearchBar />
-      <MultiWeather/>
+      <MultiWeather />
     </div>
   );
 };
