@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import * as S from './AccordionItemContent.styles';
 
 const Dropdown = ({ data }) => {
@@ -13,6 +14,19 @@ const Dropdown = ({ data }) => {
       ))}
     </S.Dropdown>
   );
+};
+
+Dropdown.defaultProps = {
+  data: []
+};
+
+Dropdown.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired
+    })
+  )
 };
 
 export default Dropdown;

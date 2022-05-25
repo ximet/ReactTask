@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as S from './SearchInput.styles';
 
 const SearchInput = ({ placeholder, value, onChange }) => {
@@ -9,6 +10,12 @@ const SearchInput = ({ placeholder, value, onChange }) => {
       </S.InputWrapper>
     </div>
   );
+};
+
+SearchInput.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func
 };
 
 export default SearchInput;

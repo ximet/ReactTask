@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { icons } from '../../utils/icons';
 import { minStarLength } from '../../config/constants';
 import * as S from './StarRating.styles';
@@ -41,5 +42,10 @@ class StarRating extends Component {
     );
   }
 }
+
+StarRating.propTypes = {
+  value: PropTypes.number.isRequired,
+  onClick: PropTypes.func
+};
 
 export default StarRating;
