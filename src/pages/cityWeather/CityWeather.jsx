@@ -109,6 +109,13 @@ const CityWeather = () => {
       {chooseCityForecast && (
         <section>
           <S.PlaceDescription>{selectedCity.name}</S.PlaceDescription>
+          {chooseCityForecast.length > 0 && (
+            <S.LinkWrapper>
+              <S.LinkElement to={`weather/${selectedCity.name}/${selectedCity.id}`}>
+                {translations.msg_page_city_weather_hourly}
+              </S.LinkElement>
+            </S.LinkWrapper>
+          )}
           <WeatherCard data={chooseCityForecast} />
         </section>
       )}
