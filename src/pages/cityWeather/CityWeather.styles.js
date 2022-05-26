@@ -1,4 +1,18 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const LinkElement = styled(Link)`
+  color: var(--warning-color);
+  text-decoration: none;
+  background-color: var(--grey-color);
+  padding: var(--x2) var(--x3);
+  font-weight: bold;
+  border-radius: var(--x2);
+`;
+
+export const LinkWrapper = styled.section`
+  margin: var(--x3) auto;
+`;
 
 export const ErrorWrapper = styled.p`
   color: var(--warning-color);

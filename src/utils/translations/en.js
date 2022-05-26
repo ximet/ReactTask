@@ -18,6 +18,9 @@ export const translations = {
   msg_page_not_found_link: 'Back to home page',
   msg_page_not_found_description: 'Maybe this page moved? Got deleted?',
   msg_page_not_found_try_again: ' and try from there.',
+  msg_page_hourly_forecast_title: 'Hourly Forecast',
+  msg_page_hourly_forecast_h1: 'Hourly forecast',
+  msg_page_city_weather_hourly: 'Hourly forecast',
 
   //Input
   msg_user_name_label: 'Your name',
@@ -42,5 +45,9 @@ export const translations = {
 
   //Theme
   msg_dark: 'DARK',
-  msg_light: 'LIGHT'
+  msg_light: 'LIGHT',
+
+  //Table
+  msg_table_temperature_title: 'Temperature:',
+  msg_table_wind_title: 'Wind speed:'
 };

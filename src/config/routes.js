@@ -1,4 +1,4 @@
-import { Home, About, Contact, CityWeather, NotFound } from '../pages';
+import { Home, About, Contact, CityWeather, NotFound, HourlyForecast } from '../pages';
 import { translations } from '../utils/translations';
 
 export const routes = [
@@ -15,6 +15,12 @@ export const routes = [
     title: translations.msg_page_city_weather_label
   },
   {
+    path: '/weather/:city/:id',
+    Component: HourlyForecast,
+    isExact: true,
+    title: translations.msg_page_hourly_forecast_title
+  },
+  {
     path: '/about',
     Component: About,
     isExact: true,
@@ -26,7 +32,6 @@ export const routes = [
     isExact: true,
     title: translations.msg_page_contacts_label
   },
-
   {
     path: '/*',
     Component: NotFound,
