@@ -1,5 +1,5 @@
 import React from 'react';
-import Spinner from './Spinner';
+import Spinner from '../Spinner/Spinner';
 import * as Style from './Card.styles';
 
 const Currentweather = ({ data }) => {

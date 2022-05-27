@@ -1,6 +1,6 @@
 import * as Style from './MultiCard.styles';
 
-import dateToWeekdayHelper from '../Utils/dateHelper';
+import dateToWeekdayHelper from '../../Utils/dateHelper';
 
 import { useSelector } from 'react-redux';
 
