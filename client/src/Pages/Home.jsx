@@ -6,7 +6,7 @@ import { Cookie } from '../Utils/CookieHandler';
 import getLocation from '../Utils/geoLocator';
 
 import endpoints from '../Utils/endpoints';
-import Currentweather from '../Components/Card';
+import Currentweather from '../Components/Card/Card';
 
 const Home = () => {
   const [data, setData] = useState([]);
