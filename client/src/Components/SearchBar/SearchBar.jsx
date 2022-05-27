@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as Style from './Searchbar.styles';
-import { weatherAPI } from '../API/api';
-import endpoints from '../Utils/endpoints';
-import { minCharacters } from '../Utils/minChars';
+import { weatherAPI } from '../../API/api';
+import endpoints from '../../Utils/endpoints';
+import { minCharacters } from '../../Utils/minChars';
 import { useDispatch } from 'react-redux';
-import { CITY_SELECT } from '../store/actionTypes'
+import { CITY_SELECT } from '../../store/actionType';
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
