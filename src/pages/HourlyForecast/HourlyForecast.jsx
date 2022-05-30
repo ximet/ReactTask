@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Spinner, Table } from '../../components';
+import { Spinner, ForecastTable } from '../../components';
 import endpoints from '../../config/endpoints';
 import { publicApiInstance } from '../../utils/api';
 import { translations } from '../../utils/translations';
@@ -30,7 +30,7 @@ const HourlyForecast = () => {
         <>
           <h2>{`${translations.msg_page_hourly_forecast_h1} ${city}`}</h2>
           {hourlyForecast?.map(({ symbol, time, temperature, windSpeed }, index) => (
-            <Table
+            <ForecastTable
               key={index}
               symbol={symbol}
               time={time}

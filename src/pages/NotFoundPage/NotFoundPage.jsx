@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { translations } from '../../utils/translations';
-import pageNotFoundIcon from '../../utils/icons/notfound.png';
 import * as S from './NotFoundPage.styles';
 
 const NotFoundPage = () => {
+  const pageNotFoundIcon = require('../../utils/icons/notfound.png');
   return (
     <S.Wrapper>
       <S.ImageWrapper src={pageNotFoundIcon} alt="404 page" />
