@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import theme from 'styled-theming';
+
+export const searchTextColor = theme('theme', {
+  light: '#2d2d2d',
+  dark: '#fff'
+});
 
 export const Container = styled.div`
   padding: 1rem;
@@ -16,7 +22,8 @@ export const Search = styled.div`
 `;
 
 export const Dropdown = styled.div`
-  background-color: white;
+  color: ${searchTextColor};
+  opacity: 0.5;
   display: flex;
   flex-direction: column;
   border: 1px solid gray;

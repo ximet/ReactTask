@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import store from './store/index.js';
+import store from './store/store.js';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
