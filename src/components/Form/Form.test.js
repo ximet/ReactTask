@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Form from './Form';
 import { translations } from '../../utils/translations';
-import '@testing-library/jest-dom/extend-expect';
 
 describe('Form component', () => {
   test('render inputs and button', () => {
