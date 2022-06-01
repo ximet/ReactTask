@@ -1,22 +1,23 @@
 import { combineReducers } from 'redux';
 
-const initialCitySelectState = {
-  selectedCity: []
-};
-
 const initialModeState = {
   darkThemeEnabled: false
 };
 
-const selectionReducer = (state = initialCitySelectState, action) => {
-  switch (action.type) {
+const selectionReducer = (action, cities, selectedCity) => {
+  console.log(action, cities, selectedCity)
+  switch (action) {
     case 'CITY_SELECT':
       return {
-        ...state,
-        selectedCity: [...state.selectedCity, ...action.value]
+        cities,
+        selectedCity
       };
+      default:
+        return {
+          cities: [],
+          selectedCity:[]
+        }
   }
-  return state;
 };
 
 const darkModeReducer = (state = initialModeState, action) => {

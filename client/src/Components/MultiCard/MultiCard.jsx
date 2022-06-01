@@ -6,10 +6,11 @@ import { useSelector } from 'react-redux';
 
 const MultiWeather = () => {
   const data = useSelector(state => state.selectedCity);
+  console.log('log from redux', data);
 
   return (
     <Style.Container>
-      {data.map(({ minTemp, maxTemp, maxWindSpeed, date }, index) => (
+      {data?.cities?.value.map(({ minTemp, maxTemp, maxWindSpeed, date }, index) => (
         <Style.CardContainer key={index}>
           <section>
             <Style.Description>

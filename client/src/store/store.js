@@ -5,7 +5,9 @@ const localStorageKey = 'theme';
 const persistedTheme = localStorage.getItem(localStorageKey);
 
 let initialState = {
-  darkModeReducer: persistedTheme ? JSON.parse(persistedTheme) : {}
+  darkModeReducer: persistedTheme ? JSON.parse(persistedTheme) : {},
+  selectedCity: [],
+  cities: []
 };
 
 const store = createStore(rootReducer, initialState);
