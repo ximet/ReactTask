@@ -39,7 +39,7 @@ export default function SearchBar() {
       const res = await weatherAPI.get(endpoints.GET_DAILY_BY_ID(city.id));
       setInputValue('');
       setResults([]);
-      dispatch({ type: CITY_SELECT, cities: res.data.forecast, selectedCity: city });
+      dispatch({ type: CITY_SELECT, cities: res.data.forecast });
     } catch (error) {
       alert(error);
     }

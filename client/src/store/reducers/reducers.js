@@ -4,21 +4,22 @@ const initialModeState = {
   darkThemeEnabled: false
 };
 
-const selectionReducer = (action, cities, selectedCity) => {
-  console.log(action, cities, selectedCity)
-  switch (action) {
+const initStateCity = {
+  citiesForecast: []
+}
+
+const selectForecast = (state = initStateCity, action) => {
+  switch (action.type) {
     case 'CITY_SELECT':
+      console.log('log from reducer' ,action)
       return {
-        cities,
-        selectedCity
+        ...state,
+        citiesForecast: [...state.citiesForecast, ...action.cities] 
       };
-      default:
-        return {
-          cities: [],
-          selectedCity:[]
-        }
+    default:
+      return state;
   }
-};
+}
 
 const darkModeReducer = (state = initialModeState, action) => {
   switch (action.type) {
@@ -31,4 +32,4 @@ const darkModeReducer = (state = initialModeState, action) => {
   return state;
 };
 
-export default combineReducers({ selectionReducer, darkModeReducer });
+export default combineReducers({ selectForecast, darkModeReducer });
