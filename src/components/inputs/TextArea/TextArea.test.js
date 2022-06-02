@@ -1,15 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import Input from './Input';
+import TextArea from './TextArea';
 
-describe('When user enter some text in the input', () => {
-  test('should display the text in the input', () => {
-    render(<Input />);
+describe('When user enter some text in the textarea', () => {
+  test('should display the text in the textarea', () => {
+    render(<TextArea />);
     fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Test' } });
     expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
   test('should display an error', () => {
-    render(<Input isError={true} errorMessage={'Error message'} />);
+    render(<TextArea isError={true} errorMessage={'Error message'} />);
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '' } });
     fireEvent.blur(screen.getByRole('textbox'));
     expect(screen.getByText(/Error message/)).toBeInTheDocument();
