@@ -5,8 +5,7 @@ import dateToWeekdayHelper from '../../Utils/dateHelper';
 import { useSelector } from 'react-redux';
 
 const MultiWeather = () => {
-  const data = useSelector((state) => state.selectForecast.citiesForecast);
-  console.log('log from redux', data);
+  const data = useSelector(state => state.selectForecast.citiesForecast);
 
   return (
     <Style.Container>

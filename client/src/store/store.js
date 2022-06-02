@@ -4,17 +4,16 @@ import rootReducer from './reducers/reducers';
 const localStorageKey = 'theme';
 const persistedTheme = localStorage.getItem(localStorageKey);
 
-let initialState = {
-  darkModeReducer: persistedTheme ? JSON.parse(persistedTheme) : {}
-};
+let initialState = {darkModeToggle: persistedTheme ? JSON.parse(persistedTheme) : {}}
 
 const store = createStore(rootReducer, initialState);
 
 store.subscribe(() => {
-  const darkModeReducer = store.getState().darkModeReducer;
-  if (!darkModeReducer) return;
+  const { darkModeToggle } = store.getState();
 
-  localStorage.setItem(localStorageKey, JSON.stringify(darkModeReducer));
+  if (!darkModeToggle) return;
+
+  localStorage.setItem(localStorageKey, JSON.stringify(darkModeToggle));
 });
 
 export default store;
