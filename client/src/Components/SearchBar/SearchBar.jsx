@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as Style from './Searchbar.styles';
-import { weatherAPI } from '../API/api';
-import endpoints from '../Utils/endpoints';
-import { minCharacters } from '../Utils/minChars';
+import { weatherAPI } from '../../API/api';
+import endpoints from '../../Utils/endpoints';
+import { minCharacters } from '../../Utils/minChars';
 import { useDispatch } from 'react-redux';
-import { CITY_SELECT } from '../store/actionType';
+import { CITY_SELECT } from '../../store/actionType';
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
@@ -39,7 +39,7 @@ export default function SearchBar() {
       const res = await weatherAPI.get(endpoints.GET_DAILY_BY_ID(city.id));
       setInputValue('');
       setResults([]);
-      dispatch({ type: CITY_SELECT, value: res.data.forecast });
+      dispatch({ type: CITY_SELECT, cities: res.data.forecast });
     } catch (error) {
       alert(error);
     }
