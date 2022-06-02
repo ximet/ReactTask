@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { getWeatherIcon, formatDate } from '../../services/functions';
 import { translations } from '../../utils/translations';
-import * as S from './Table.styles';
+import * as S from './ForecastTable.styles';
 
-const Table = ({ symbol, time, temperature, windSpeed }) => {
+const ForecastTable = ({ symbol, time, temperature, windSpeed }) => {
   return (
     <S.TableContainer>
       <tbody>
@@ -28,11 +28,11 @@ const Table = ({ symbol, time, temperature, windSpeed }) => {
   );
 };
 
-Table.propTypes = {
+ForecastTable.propTypes = {
   symbol: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   temperature: PropTypes.number.isRequired,
   windSpeed: PropTypes.number.isRequired
 };
 
-export default Table;
+export default ForecastTable;
