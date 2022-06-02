@@ -6,20 +6,20 @@ const initialModeState = {
 
 const initStateCity = {
   citiesForecast: []
-}
+};
 
 const selectForecast = (state = initStateCity, action) => {
   switch (action.type) {
     case 'CITY_SELECT':
-      console.log('log from reducer' ,action)
+      console.log('log from reducer', action);
       return {
         ...state,
-        citiesForecast: [...state.citiesForecast, ...action.cities] 
+        citiesForecast: [...state.citiesForecast, ...action.cities]
       };
     default:
       return state;
   }
-}
+};
 
 const darkModeReducer = (state = initialModeState, action) => {
   switch (action.type) {
