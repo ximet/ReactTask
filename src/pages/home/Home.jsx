@@ -19,9 +19,7 @@ const Home = () => {
   };
 
   const getWeatherData = async () => {
-    if (!location) {
-      return;
-    }
+    if (!location) return;
     try {
       const { data } = await publicApiInstance.get(endpoints.GET_CURRENT_LOCATION(location));
       setData([data.current]);
@@ -46,15 +44,11 @@ const Home = () => {
     getWeatherData();
   }, [location]);
 
-  return (
-    <div>
-      {location ? (
-        <CurrentWeather data={data} />
-      ) : (
-        <S.Message>{translations.msg_page_home_location_error}</S.Message>
-      )}
-    </div>
-  );
+  if (!location) {
+    return <S.Message>{translations.msg_page_home_location_error}</S.Message>;
+  }
+
+  return <CurrentWeather data={data} />;
 };
 
 export default Home;

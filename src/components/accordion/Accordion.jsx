@@ -13,15 +13,13 @@ const Accordion = ({ data }) => {
     setClicked(id);
   };
 
+  if (!data) return <Spinner />;
+
   return (
     <S.Container>
-      {data.length ? (
-        data.map(item => (
-          <AccordionItem data={item} toggle={toggle} clicked={clicked} key={item.id} />
-        ))
-      ) : (
-        <Spinner />
-      )}
+      {data?.map(item => (
+        <AccordionItem data={item} toggle={toggle} clicked={clicked} key={item.id} />
+      ))}
     </S.Container>
   );
 };

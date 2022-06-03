@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { icons } from '../../utils/icons';
-import { minStarLength } from '../../config/constants';
+import { MIN_STAR_LENGTH } from '../../config/constants';
 import * as S from './StarRating.styles';
 
 class StarRating extends Component {
@@ -27,7 +27,7 @@ class StarRating extends Component {
     return (
       <S.RateWrapper>
         <S.StarWrapper>
-          {minStarLength.map(star => (
+          {MIN_STAR_LENGTH.map(star => (
             <S.Star
               key={star}
               onClick={() => this.getStarRate(star)}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useInput from '../../hooks/useInput';
 import { Button, Input, TextArea, Rate } from '../';
-import { EMAIL_REGEXP, minStarLength } from '../../config/constants';
+import { EMAIL_REGEXP } from '../../config/constants';
 import { Storage } from '../../services/localStorage';
 import { translations } from '../../utils/translations/';
 import * as S from './Form.styles';
@@ -42,15 +42,9 @@ const BasicForm = () => {
     reset: resetReview
   } = useInput(isFeedbackEmpty);
 
-  useEffect(() => {
-    setFormIsValid(userNameIsValid && emailIsValid && reviewIsValid);
-  }, [userName, emailValue, reviewValue]);
-
-  const submitHandler = event => {
-    event.preventDefault();
-    if (!formIsValid) {
-      return;
-    }
+  const submitHandler = e => {
+    e.preventDefault();
+    if (!formIsValid) return;
 
     Storage.setReview({ userName, emailValue, reviewValue, rating });
 
@@ -68,6 +62,10 @@ const BasicForm = () => {
   const getUserRating = rateValue => {
     setRating(rateValue);
   };
+
+  useEffect(() => {
+    setFormIsValid(userNameIsValid && emailIsValid && reviewIsValid);
+  }, [userName, emailValue, reviewValue]);
 
   return (
     <S.FormWrapper onSubmit={submitHandler} onBlur={formBlurHandler}>
