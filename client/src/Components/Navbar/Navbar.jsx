@@ -1,5 +1,7 @@
 import React from 'react';
 import { Nav, NavLink, ThemeButton } from './Navbar.styles';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
+
 const Navbar = () => {
   return (
     <Nav>
@@ -7,6 +9,7 @@ const Navbar = () => {
       <NavLink to="/about">About</NavLink>
       <NavLink to="/contact">Contact</NavLink>
       <NavLink to="/cities">Search</NavLink>
+      <ToggleSwitch />
     </Nav>
   );
 };

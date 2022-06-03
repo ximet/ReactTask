@@ -5,11 +5,11 @@ import dateToWeekdayHelper from '../../Utils/dateHelper';
 import { useSelector } from 'react-redux';
 
 const MultiWeather = () => {
-  const data = useSelector(state => state.selectedCity);
+  const data = useSelector(state => state.selectForecast.citiesForecast);
 
   return (
     <Style.Container>
-      {data.map(({ minTemp, maxTemp, maxWindSpeed, date }, index) => (
+      {data?.map(({ minTemp, maxTemp, maxWindSpeed, date }, index) => (
         <Style.CardContainer key={index}>
           <section>
             <Style.Description>
