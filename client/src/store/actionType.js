@@ -1,2 +1,3 @@
 export const CITY_SELECT = 'CITY_SELECT';
 export const TOGGLE_DARKMODE = 'TOGGLE_DARKMODE';
+export const CITY_REMOVE = 'CITY_REMOVE';

@@ -15,6 +15,11 @@ const selectForecast = (state = initStateCity, action) => {
         ...state,
         citiesForecast: [...state.citiesForecast, ...action.cities]
       };
+    case 'CITY_REMOVE':
+      return {
+        ...state,
+        citiesForecast: state.citiesForecast.filter(city => city.id !== action.id)
+      };
     default:
       return state;
   }
