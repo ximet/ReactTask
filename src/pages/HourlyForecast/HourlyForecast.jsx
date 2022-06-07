@@ -24,23 +24,23 @@ const HourlyForecast = () => {
     }
   };
 
-  if (!hourlyForecast) {
-    return <Spinner />;
-  }
-
   return (
     <>
       <h2>{`${translations.msg_page_hourly_forecast_h1} ${city}`}</h2>
-      {hourlyForecast?.map(({ symbol, time, temperature, windSpeed }, index) => (
-        <ForecastTable
-          key={index}
-          symbol={symbol}
-          time={time}
-          temperature={temperature}
-          windSpeed={windSpeed}
-          index={index}
-        />
-      ))}
+      {!hourlyForecast ? (
+        <Spinner />
+      ) : (
+        hourlyForecast.map(({ symbol, time, temperature, windSpeed }, index) => (
+          <ForecastTable
+            key={index}
+            symbol={symbol}
+            time={time}
+            temperature={temperature}
+            windSpeed={windSpeed}
+            index={index}
+          />
+        ))
+      )}
     </>
   );
 };

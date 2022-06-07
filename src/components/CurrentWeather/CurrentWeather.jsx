@@ -8,7 +8,7 @@ import * as S from './CurrentWeather.styles';
 const CurrentWeather = ({ data }) => {
   const [weatherData] = data;
 
-  if (data.length === 0) return <Spinner />;
+  if (!weatherData) return <Spinner />;
 
   return (
     <S.Container>
