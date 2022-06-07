@@ -4,7 +4,7 @@ import * as S from './Contact.styles';
 
 const Contact = () => {
   return (
-    <div>
+    <>
       <S.ContactContainer>
         <S.ContactTitleWrapper>{translations.msg_page_contacts_title}</S.ContactTitleWrapper>
         <S.ContactWrapper>
@@ -16,7 +16,7 @@ const Contact = () => {
       </S.ContactContainer>
       <S.TitleWrapper>{translations.msg_page_contacts_feedback_title}</S.TitleWrapper>
       <Form />
-    </div>
+    </>
   );
 };
 
