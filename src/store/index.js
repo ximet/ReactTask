@@ -5,7 +5,7 @@ const initialState = {
   favoriteCities: []
 };
 
-const searchReducer = (state = initialState, action) => {
+export const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_SEARCH:
       return {
@@ -14,7 +14,12 @@ const searchReducer = (state = initialState, action) => {
       };
     case DELETE_SEARCH:
       const searches = [...state.favoriteCities];
+
+      console.log('kopija', searches);
       const updatedCities = searches.filter(city => city.id !== action.id);
+      console.log('update', updatedCities);
+      console.log('id', action.id);
+
       return {
         ...state,
         favoriteCities: updatedCities
