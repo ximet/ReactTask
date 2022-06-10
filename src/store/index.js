@@ -5,7 +5,7 @@ const initialState = {
   favoriteCities: []
 };
 
-const searchReducer = (state = initialState, action) => {
+export const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_SEARCH:
       return {
