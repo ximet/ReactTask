@@ -1,3 +1,5 @@
+notes.txt
+
 # Cruft
 *~
 *#
@@ -26,3 +28,6 @@ package-lock.json
 # Editor/IDE
 .idea
 packages/api/etc/
+
+#Backend
+.env
