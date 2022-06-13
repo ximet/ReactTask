@@ -65,6 +65,7 @@ export const Wrapper = styled.div`
   }
   @media screen and (max-width: 500px) {
     display: flex;
+    margin-top: 0;
     & span {
       display: block;
       font-weight: bold;

@@ -3,8 +3,8 @@ import * as S from './Clock.styles';
 
 const Clock = () => {
   const [date, setDate] = useState(new Date());
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const dayName = days[date.getDay()];
+  const currentTime = date.toLocaleTimeString(window.navigator.language);
+  const dayName = date.toLocaleString(window.navigator.language, { weekday: 'long' });
 
   const refreshClock = () => {
     setDate(new Date());
@@ -17,7 +17,7 @@ const Clock = () => {
 
   return (
     <S.Wrapper>
-      <h1>{date.toLocaleTimeString('lt-LT')}</h1>
+      <h1>{currentTime}</h1>
       <h2>{dayName}</h2>
     </S.Wrapper>
   );
