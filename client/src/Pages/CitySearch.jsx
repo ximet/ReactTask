@@ -56,21 +56,11 @@ const CitySearch = () => {
     dispatch({ type: CITY_SAVE, payload: { selectedCity, weatherData } });
   };
 
-  const getSavedCity = () => {
-    getCurrentCity(savedCitiesData.selectedCity.id);
-  };
-
-  const deleteSavedCity = id => {
-    dispatch({ type: CITY_REMOVE, payload: id });
-    setSelectedCity({});
-    setWeatherData([]);
-  };
-
   return (
     <div>
       <Style.Container>
         <h1>Search by City</h1>
-        <h2>Selected City: {selectedCity.name}</h2>
+        <h2>Last saved City: {selectedCity.name}</h2>
         <Style.CityContainer></Style.CityContainer>
         <Style.SaveButton onClick={saveCityToStore}>Save City</Style.SaveButton>
         <Style.Search>
