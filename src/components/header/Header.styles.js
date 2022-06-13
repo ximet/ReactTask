@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.div`
   background-color: var(--grey-color);
   width: 100%;
   height: var(--f20);
+  box-sizing: border-box;
   @media screen and (max-width: 500px) {
     height: auto;
   }
@@ -17,10 +18,14 @@ export const LinkElem = styled(NavLink)`
   }
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   margin: 0 auto;
   padding: 1rem 0;
-  width: calc(80% + 1rem);
+  width: 80%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+
   & #logo {
     font-size: var(--f5);
     font-weight: bold;
@@ -29,13 +34,12 @@ export const Header = styled.div`
     }
   }
   a {
-    float: left;
     color: var(--black-color);
-    text-align: center;
     padding: 0.6rem;
     text-decoration: none;
     line-height: var(--f5);
     border-radius: 0.5rem;
+    margin-left: var(--x1);
     &:hover {
       background-color: var(--dark-grey-color);
       color: var(--black-color);
@@ -47,15 +51,15 @@ export const Header = styled.div`
     }
   }
   @media screen and (max-width: 500px) {
+    flex-direction: column;
     & a {
-      float: none;
       display: block;
-      text-align: left;
     }
   }
 `;
 
 export const Wrapper = styled.div`
+  margin-top: var(--f1);
   & span {
     display: none;
   }
@@ -63,18 +67,15 @@ export const Wrapper = styled.div`
     display: flex;
     & span {
       display: block;
-      line-height: var(--f7);
       font-weight: bold;
       font-size: var(--f5);
-      padding: 0 1rem;
+      margin-left: var(--f5);
     }
   }
 `;
 
-export const NavLinks = styled.div`
-  float: right;
+export const NavLinks = styled.nav`
   @media screen and (max-width: 500px) {
-    float: none;
     display: ${props => (props.show ? 'none' : 'block')};
   }
 `;

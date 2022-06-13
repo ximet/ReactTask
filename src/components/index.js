@@ -17,3 +17,4 @@ export { default as Rate } from './StarRating/StarRating';
 export { default as ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
 export { default as Routes } from './Routes/Routes';
 export { default as ForecastTable } from './ForecastTable/ForecastTable';
+export { default as Clock } from './Clock/Clock';

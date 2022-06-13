@@ -1,13 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const Container = styled.article`
-  margin: 2rem auto 0 auto;
-  width: 60%;
-  box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+const slideInTop = keyframes`
+from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+`;
 
-  @media screen and (max-width: 500px) {
-    width: 90%;
-  }
+export const Container = styled.section`
+  margin: 0 auto;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  animation: ${slideInTop} 1s ease-in;
 `;
 
 export const ImageContainer = styled.div`
@@ -17,6 +25,12 @@ export const ImageContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   padding: 1rem 0;
+
+  @media screen and (max-width: 500px) {
+    img {
+      width: var(--f20);
+    }
+  }
 `;
 
 export const WeatherInfoContainer = styled.div`
@@ -40,6 +54,10 @@ export const Conditions = styled.div`
   font-size: var(--f5);
   font-weight: 100;
   margin: 0.75rem 0 0 0;
+
+  @media screen and (max-width: 500px) {
+    font-size: var(--f3);
+  }
 `;
 
 export const About = styled.div`
@@ -51,7 +69,7 @@ export const About = styled.div`
 
   @media screen and (max-width: 500px) {
     & p {
-      font-size: var(--f3);
+      font-size: var(--f1);
     }
   }
 `;

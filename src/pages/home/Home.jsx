@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CurrentWeather } from '../../components';
+import { CurrentWeather, Clock } from '../../components';
 import { publicApiInstance, getAccessTokenFromAPI } from '../../utils/api';
 import { Cookie } from '../../services/cookie';
 import { translations } from '../../utils/translations';
@@ -48,7 +48,12 @@ const Home = () => {
     return <S.Message>{translations.msg_page_home_location_error}</S.Message>;
   }
 
-  return <CurrentWeather data={data} />;
+  return (
+    <S.Container>
+      <CurrentWeather data={data} />
+      <Clock />
+    </S.Container>
+  );
 };
 
 export default Home;
