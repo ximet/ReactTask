@@ -4,7 +4,6 @@ import * as Style from './Card.styles';
 
 const Currentweather = ({ data }) => {
   const [weatherData] = data;
-  console.log(weatherData);
 
   if (!weatherData) return <Spinner />;
 

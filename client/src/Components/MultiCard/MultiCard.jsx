@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CITY_REMOVE } from '../../store/actionType';
 
 const MultiWeather = () => {
-  const citiesAndWeatherInfoFromRedux = useSelector(state => state.savedCitiesReducer.savedCities);
+  const citiesAndWeatherInfo = useSelector(state => state.savedCitiesReducer.savedCities);
 
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const MultiWeather = () => {
 
   return (
     <Style.Container>
-      {citiesAndWeatherInfoFromRedux?.map(({ weatherData, selectedCity }) => (
+      {citiesAndWeatherInfo?.map(({ weatherData, selectedCity }) => (
         <Style.CardContainer key={selectedCity.id}>
           <Style.DeleteButton onClick={() => deleteCity(selectedCity)}>X</Style.DeleteButton>
 
