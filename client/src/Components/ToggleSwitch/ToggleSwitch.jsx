@@ -3,8 +3,7 @@ import * as Style from './ToggleSwitch.styles';
 import { TOGGLE_DARKMODE } from '../../store/actionType';
 
 const ToggleSwitch = () => {
-  const darkThemeEnabled = useSelector((state) => state.darkModeToggle.darkThemeEnabled);
-
+  const darkThemeEnabled = useSelector(state => state.darkModeToggle.darkThemeEnabled);
 
   const dispatch = useDispatch();
 

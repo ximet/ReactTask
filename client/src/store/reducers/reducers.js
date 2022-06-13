@@ -4,21 +4,23 @@ const initialModeState = {
   darkThemeEnabled: false
 };
 
-const initStateCity = {
-  citiesForecast: []
+const initSavedCity = {
+  savedCities: []
 };
 
-const selectForecast = (state = initStateCity, action) => {
+const savedCitiesReducer = (state = initSavedCity, action) => {
   switch (action.type) {
-    case 'CITY_SELECT':
+    case 'CITY_SAVE':
       return {
         ...state,
-        citiesForecast: [...state.citiesForecast, ...action.cities]
+        savedCities: [...state.savedCities, action.payload]
       };
     case 'CITY_REMOVE':
       return {
         ...state,
-        citiesForecast: state.citiesForecast.filter(city => city.id !== action.id)
+        savedCities: state.savedCities.filter(
+          reducerObject => reducerObject.selectedCity.id !== action.payload.id
+        )
       };
     default:
       return state;
@@ -36,4 +38,4 @@ const darkModeToggle = (state = initialModeState, action) => {
   return state;
 };
 
-export default combineReducers({ selectForecast, darkModeToggle });
+export default combineReducers({ darkModeToggle, savedCitiesReducer });

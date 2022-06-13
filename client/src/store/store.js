@@ -4,7 +4,7 @@ import rootReducer from './reducers/reducers';
 const localStorageKey = 'theme';
 const persistedTheme = localStorage.getItem(localStorageKey);
 
-let initialState = {darkModeToggle: persistedTheme ? JSON.parse(persistedTheme) : {}}
+let initialState = { darkModeToggle: persistedTheme ? JSON.parse(persistedTheme) : {} };
 
 const store = createStore(rootReducer, initialState);
 
