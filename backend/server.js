@@ -11,7 +11,8 @@ const port = process.env.PORT;
 
 const account = {
     user: process.env.USERNAME,
-    password: process.env.PASSWORD
+    password: process.env.PASSWORD,
+    expire_hours: 24,
 };
 
 async function tokenRequest() {
