@@ -18,14 +18,18 @@ export const AccordionSection = styled.div`
   justify-content: center;
   position: relative;
   background: #fff;
+  transition: all 0.50s linear;
 `;
 
 export const Container = styled.div`
   position: absolute;
   top: 30%;
+  transition: all 0.50s linear;
+  width: 50%;
 `;
 
 export const Wrap = styled.div`
+  transition: all 0.50s linear;
   background: ${backgroundColor};
   color: ${textColor};
   display: flex;
@@ -52,8 +56,10 @@ export const Dropdown = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #00ffb9;
-  border-top: 1px solid #00ffb9;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  transition: all 0.50s linear;
+
   p {
     font-size: 2rem;
   }

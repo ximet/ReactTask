@@ -21,7 +21,7 @@ const Accordion = () => {
             <>
               <Style.Wrap onClick={() => toggle(index)} key={index}>
                 <h1>{item.question}</h1>
-                <span>{clicked === index ? '+' : '-'}</span>
+                <span>{clicked === index ? '-' : '+'}</span>
               </Style.Wrap>
               {clicked === index ? (
                 <Style.Dropdown>
