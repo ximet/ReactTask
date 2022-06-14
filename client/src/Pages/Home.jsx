@@ -13,9 +13,8 @@ const Home = () => {
   const [location, setLocation] = useState(null);
 
   const getWeather = async () => {
-    if (!location) {
-      return;
-    }
+    if (!location) return;
+
     try {
       const { data } = await weatherAPI.get(endpoints.CURRENT_LOCATION(location));
       setData([data.current]);
@@ -24,22 +23,32 @@ const Home = () => {
     }
   };
 
-  useEffect(async () => {
-    const token = Cookie.getToken() || (await getTokenFromAPI());
-    if (token) {
-      Cookie.setToken(token);
-    }
-  }, []);
-
   useEffect(() => {
     getLocation(setLocation);
+    const handleToken = async () => {
+      if (!Cookie.getToken()) {
+        const res = await getTokenFromAPI();
+        return Cookie.setToken(res);
+      }
+    };
+    handleToken();
   }, []);
 
   useEffect(() => {
     getWeather();
   }, [location]);
 
-  return <div>{location ? <Currentweather data={data} /> : <p>Allow location in browser</p>}</div>;
+  if (location)
+    return (
+      <>
+        <Currentweather data={data} />{' '}
+      </>
+    );
+  return <p>Allow location in browser</p>;
+
+  // return <>
+  // {location ? <Currentweather data={data} /> : <p>Allow location in browser</p>}
+  // </>;
 };
 
 export default Home;

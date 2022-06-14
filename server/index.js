@@ -24,21 +24,23 @@ server.listen(PORT, () => console.log(`Server running on ${PORT}`))
 
 server.get('/token', async (req, res) => {
     try {
+        console.log('Getting token...')
         if(!server.locals.token) {
             const response = await axios({
                 url: `${WEATHER_API_BASEURL}/authorize/token`,
                 method: 'post',
                 data: {
-                    ...authInfo,
-                    expire_hours: -1
+                    ...authInfo
                 }
             });
             server.locals.token = response.data
         }
 
         res.status(200).json(server.locals.token)
+        console.log('Token received!')
     } catch (error) {
         res.status(500).json({ message: error })
+        console.log('failed to get token')
     }
 })
 
