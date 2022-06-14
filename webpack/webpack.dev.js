@@ -32,7 +32,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: commonPaths.outputPath,
+    static: commonPaths.outputPath,
     compress: true,
     hot: true,
     port: 9020

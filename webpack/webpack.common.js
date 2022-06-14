@@ -18,6 +18,11 @@ module.exports = {
         }
       },
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        loader: ['ts-loader']
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
@@ -66,7 +71,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts', '.css', '.scss']
   },
   plugins: [
     new webpack.ProgressPlugin(),
