@@ -1,4 +1,4 @@
-export const Data = [
+export const questionData = [
   {
     question: 'Test question 1',
     answer: 'Test Answer 1',

@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
 import * as Style from './Accordion.styles';
-import { Data } from './accordionData';
+import { questionData } from './accordionData';
 
 const Accordion = () => {
   const [clicked, setClicked] = useState(false);
 
-  const toggle = index => {
-    if (clicked === index) {
-      return setClicked(null);
-    }
-
-    setClicked(index);
-  };
+  const toggle = clickValue => {
+    setClicked(clickValue);
+  }
 
   return (
     <Style.AccordionSection>
       <Style.Container>
-        {Data.map((item, index) => {
+        {questionData.map((item, clickValue) => {
           return (
             <>
-              <Style.Wrap onClick={() => toggle(index)} key={index}>
+              <Style.Wrap onClick={() => toggle(clickValue)} key={clickValue}>
                 <h1>{item.question}</h1>
-                <span>{clicked === index ? '-' : '+'}</span>
+                <span>{clicked === clickValue ? '-' : '+'}</span>
               </Style.Wrap>
-              {clicked === index ? (
+              {clicked === clickValue ? (
                 <Style.Dropdown>
                   <p>{item.answer}</p>
                 </Style.Dropdown>

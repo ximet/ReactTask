@@ -23,14 +23,15 @@ const Home = () => {
     }
   };
 
+  const handleToken = async () => {
+    if (!Cookie.getToken()) {
+      const res = await getTokenFromAPI();
+      return Cookie.setToken(res);
+    }
+  };
+
   useEffect(() => {
     getLocation(setLocation);
-    const handleToken = async () => {
-      if (!Cookie.getToken()) {
-        const res = await getTokenFromAPI();
-        return Cookie.setToken(res);
-      }
-    };
     handleToken();
   }, []);
 
@@ -45,10 +46,6 @@ const Home = () => {
       </>
     );
   return <p>Allow location in browser</p>;
-
-  // return <>
-  // {location ? <Currentweather data={data} /> : <p>Allow location in browser</p>}
-  // </>;
 };
 
 export default Home;

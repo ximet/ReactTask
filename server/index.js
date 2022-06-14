@@ -37,10 +37,8 @@ server.get('/token', async (req, res) => {
         }
 
         res.status(200).json(server.locals.token)
-        console.log('Token received!')
     } catch (error) {
         res.status(500).json({ message: error })
-        console.log('failed to get token')
     }
 })
 
