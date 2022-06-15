@@ -12,12 +12,13 @@ describe('ContactForm', () => {
     );
 
     test('should not submit empty form', () => {
-        render(<ContactForm />);
-        const submitButton = screen.getByTestId('button-submit');
-        const errorText = screen.getByTestId('error');
+        const onSubmit = jest.fn();
         
+        render(<ContactForm onSubmit={onSubmit}/>);
+        const submitButton = screen.getByTestId('button-submit');
+
         fireEvent.click(submitButton);
-        expect(errorText).toBeInTheDocument();
+        expect(onSubmit).not.toHaveBeenCalled();
     }
     );
 
