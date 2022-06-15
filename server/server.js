@@ -1,7 +1,12 @@
-import { port, user, password } from './config.js';
-import express from 'express';
-import cors from 'cors';
-import fetch from 'node-fetch';
+const express = require('express');
+const cors = require('cors');
+const fetch = require('node-fetch');
+const dotenv = require('dotenv');
+
+dotenv.config();
+const port = process.env.PORT;
+const user = process.env.USER;
+const password = process.env.PASSWORD;
 
 const app = express();
 app.use(express.json());
