@@ -23,8 +23,7 @@ function App() {
 
     useEffect(async () => {
         const res = await instance.get(`${resourceType}`);
-        console.log(res.data.locations);
-        console.log(res.data.current);
+        console.log(res.data);
 
         // setItems(res.data);
     }, [resourceType]);
@@ -32,7 +31,7 @@ function App() {
     return (
         <div>
             <button onClick={() => setResourceType('location/search/Bucharest')}>Location</button>
-            <button onClick={() => setResourceType('observation/latest/Bucharest')}>
+            <button onClick={() => setResourceType('observation/latest/100683506')}>
                 Observations
             </button>
             <button onClick={() => setResourceType('current/100683506')}>
