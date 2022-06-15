@@ -26,7 +26,7 @@ const Home = () => {
   const handleToken = async () => {
     if (!Cookie.getToken()) {
       const res = await getTokenFromAPI();
-      return Cookie.setToken(res);
+      Cookie.setToken(res);
     }
   };
 

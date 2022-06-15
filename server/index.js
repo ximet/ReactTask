@@ -24,7 +24,6 @@ server.listen(PORT, () => console.log(`Server running on ${PORT}`))
 
 server.get('/token', async (req, res) => {
     try {
-        console.log('Getting token...')
         if(!server.locals.token) {
             const response = await axios({
                 url: `${WEATHER_API_BASEURL}/authorize/token`,
