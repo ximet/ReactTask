@@ -1,10 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+// const proxy = require('http-proxy-middleware');
 const axios = require('axios');
 
 const server = express();
 dotenv.config();
+
 server.use(cors(`${process.env.HOST}:${process.env.PORT}`));
 
 const port = process.env.PORT;
@@ -12,7 +14,7 @@ const port = process.env.PORT;
 const account = {
     user: process.env.USERNAME,
     password: process.env.PASSWORD,
-    expire_hours: 24
+    expire_hours: 24,
 };
 
 async function tokenRequest() {
