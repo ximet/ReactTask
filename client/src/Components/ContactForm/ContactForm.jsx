@@ -49,7 +49,6 @@ const ContactForm = () => {
 
   return (
     <Style.Container data-testid="contact-form">
-
       <form onSubmit={handleSubmit}>
         <Style.FormControl>
           <label htmlFor="name">Name</label>

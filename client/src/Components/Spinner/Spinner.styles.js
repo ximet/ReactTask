@@ -1,11 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SpinnerContainer = styled.div`
   width: 100%;
   margin: 1rem auto;
   text-align: center;
 `;
-
 
 export const StyledSpinner = styled.svg`
   width: 50px;

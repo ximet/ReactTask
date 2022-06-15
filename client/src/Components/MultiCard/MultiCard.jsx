@@ -24,16 +24,21 @@ const MultiWeather = () => {
             <Style.weatherCard>
               <Style.currentTemp>
                 <Style.currentTempText>{weatherData.temperature}&deg;</Style.currentTempText>
-                  <Style.LocationInfo>
-                    {selectedCity.name}
-                    <Style.currentConditionsText>{weatherData.symbolPhrase}</Style.currentConditionsText>
-                  </Style.LocationInfo>
+                <Style.LocationInfo>
+                  {selectedCity.name}
+                  <Style.currentConditionsText>
+                    {weatherData.symbolPhrase}
+                  </Style.currentConditionsText>
+                </Style.LocationInfo>
               </Style.currentTemp>
 
               <Style.currentWeather>
-                <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbol}/>
+                <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbol} />
               </Style.currentWeather>
-              <Style.ConditionsInfo>Wind:{weatherData.windSpeed}m/s Pressure:{weatherData.pressure}hPa uV Index:{weatherData.uvIndex}</Style.ConditionsInfo>
+              <Style.ConditionsInfo>
+                Wind:{weatherData.windSpeed}m/s Pressure:{weatherData.pressure}hPa uV Index:
+                {weatherData.uvIndex}
+              </Style.ConditionsInfo>
             </Style.weatherCard>
           </section>
         </Style.WeatherWrapper>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
 
-
 export const backgroundColor = theme('theme', {
   light: '#00bfff',
   dark: '#243145'

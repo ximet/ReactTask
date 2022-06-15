@@ -18,7 +18,7 @@ const Currentweather = ({ data }) => {
           <div>
             <Style.Conditions>{weatherData.symbolPhrase}</Style.Conditions>
             <Style.Conditions>
-              <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbol}/>
+              <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbol} />
             </Style.Conditions>
 
             <Style.Details>
