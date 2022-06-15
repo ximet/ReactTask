@@ -61,7 +61,9 @@ const ContactForm = () => {
             //getFieldProps method can help to reduce code, by eliminating the need to use handleBlur, handleChange and values methods
           />
           {/* We also add conditional rendering of the error, checking if all requirements in the input field has been fullfiled */}
-          {touched.name && errors.name ? <Style.Error data-testid="error">{errors.name}</Style.Error> : null}
+          {touched.name && errors.name ? (
+            <Style.Error data-testid="error">{errors.name}</Style.Error>
+          ) : null}
         </Style.FormControl>
 
         <Style.FormControl>
@@ -73,7 +75,9 @@ const ContactForm = () => {
             id="email"
             {...getFieldProps('email')}
           />
-          {touched.email && errors.email ? <Style.Error data-testid="error">{errors.email}</Style.Error> : null}
+          {touched.email && errors.email ? (
+            <Style.Error data-testid="error">{errors.email}</Style.Error>
+          ) : null}
         </Style.FormControl>
 
         <Style.FormControl>
