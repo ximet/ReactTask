@@ -4,7 +4,7 @@ import * as Style from './CitySearch.styles';
 import { weatherAPI } from '../API/api';
 import endpoints from '../Utils/endpoints';
 import { minCharacters } from '../Utils/minChars';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { CITY_SAVE } from '../store/actionType';
 
 const CitySearch = () => {

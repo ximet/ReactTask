@@ -7,7 +7,7 @@ const ToggleSwitch = () => {
 
   const dispatch = useDispatch();
 
-  const handleChange = e => {
+  const handleChange = () => {
     dispatch({ type: TOGGLE_DARKMODE });
   };
 

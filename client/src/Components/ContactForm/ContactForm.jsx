@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Style from './ContactForm.styles';
-import { StyledSpinner } from '../Spinner/Spinner.styles';
 
 //Here we set up the initial settings and functions to handle and validate the forms while using Formik.
 const initialValues = {

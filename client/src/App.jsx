@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import { Container, GlobalStyles } from './themes/Themes';
 import DarkThemeProvider from './themes/DarkThemeProvider';
 

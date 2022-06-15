@@ -1,6 +1,5 @@
 import * as Style from './MultiCard.styles';
 
-import dateToWeekdayHelper from '../../Utils/dateHelper';
 import { getWeatherIcon } from '../../Utils/weatherIcon';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,7 +17,7 @@ const MultiWeather = () => {
   return (
     <Style.Container>
       {citiesAndWeatherInfo?.map(({ weatherData, selectedCity }) => (
-        <Style.WeatherWrapper key={selectedCity.id}>
+        <Style.WeatherWrapper key={weatherData}>
           <Style.DeleteButton onClick={() => deleteCity(selectedCity)}>X</Style.DeleteButton>
           <section>
             <Style.weatherCard>
