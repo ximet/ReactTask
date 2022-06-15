@@ -1,14 +1,18 @@
 export const questionData = [
   {
-    question: 'Test question 1',
-    answer: 'Test Answer 1'
+    question: 'What is the name of the app?',
+    answer: 'It is called Weather App',
   },
   {
-    question: 'Longer question 2',
-    answer: 'Longer question 2.'
+    question: 'How it works?',
+    answer: 'Using the Foreca API, you can get the current weather in any city in the world.',
   },
   {
-    question: 'Even longer question 3 to test the sizing of the component',
-    answer: 'Even longer answer 3 to test the sizing of the component'
+    question: 'Is it free?',
+    answer: 'Yes and no. Foreca offers a 1 month trial for free.',
+  },
+  {
+    question: 'Why is the design so...interesting?',
+    answer: 'Because I can not afford a UX designer.',
   }
 ];
