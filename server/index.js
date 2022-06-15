@@ -29,8 +29,7 @@ server.get('/token', async (req, res) => {
                 url: `${WEATHER_API_BASEURL}/authorize/token`,
                 method: 'post',
                 data: {
-                    ...authInfo,
-                    expire_hours: -1
+                    ...authInfo
                 }
             });
             server.locals.token = response.data

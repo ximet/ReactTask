@@ -47,12 +47,13 @@ const ContactForm = () => {
   });
 
   return (
-    <div>
+    <div data-testid="contact-form">
       <form onSubmit={handleSubmit}>
         <Style.FormControl>
           <label htmlFor="name">Name</label>
           {/* in each Input field we add properties from formik to see if it has been visited or has value inside */}
           <Style.Input
+            data-testid="name-input"
             type="text"
             name="name"
             id="name"
@@ -60,18 +61,29 @@ const ContactForm = () => {
             //getFieldProps method can help to reduce code, by eliminating the need to use handleBlur, handleChange and values methods
           />
           {/* We also add conditional rendering of the error, checking if all requirements in the input field has been fullfiled */}
-          {touched.name && errors.name ? <Style.Error>{errors.name}</Style.Error> : null}
+          {touched.name && errors.name ? (
+            <Style.Error data-testid="error">{errors.name}</Style.Error>
+          ) : null}
         </Style.FormControl>
 
         <Style.FormControl>
           <label htmlFor="email">Email</label>
-          <Style.Input type="text" name="email" id="email" {...getFieldProps('email')} />
-          {touched.email && errors.email ? <Style.Error>{errors.email}</Style.Error> : null}
+          <Style.Input
+            data-testid="email-input"
+            type="text"
+            name="email"
+            id="email"
+            {...getFieldProps('email')}
+          />
+          {touched.email && errors.email ? (
+            <Style.Error data-testid="error">{errors.email}</Style.Error>
+          ) : null}
         </Style.FormControl>
 
         <Style.FormControl>
           <label htmlFor="comments">Comment</label>
           <Style.TextArea
+            data-testid="comments-input"
             name="comments"
             id="comments"
             cols="30"
@@ -79,11 +91,13 @@ const ContactForm = () => {
             {...getFieldProps('comments')}
           ></Style.TextArea>
           {touched.comments && errors.comments ? (
-            <Style.Error>{errors.comments}</Style.Error>
+            <Style.Error data-testid="error">{errors.comments}</Style.Error>
           ) : null}
         </Style.FormControl>
 
-        <button type="submit">Submit</button>
+        <button data-testid="button-submit" type="submit">
+          Submit
+        </button>
         {/* it can be noted, that the <button> tag can be written without the submit type attribute, since it is wrapped
       inside the form tag, Formik automatically assigns the submit tag. */}
       </form>

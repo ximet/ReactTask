@@ -1,7 +1,8 @@
 import React from 'react';
+import Accordion from '../Components/Accordion/Accordion';
 
 const About = () => {
-  return <div>About placeholder</div>;
+  return <Accordion />;
 };
 
 export default About;

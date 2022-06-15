@@ -1,6 +1,5 @@
 export default function getLocation(onSuccess) {
   const successCallback = position => {
-    console.log(position);
     onSuccess({ lon: position.coords.longitude, lat: position.coords.latitude });
   };
 

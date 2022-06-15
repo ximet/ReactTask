@@ -14,7 +14,7 @@ function getToken() {
 }
 
 function setCookie(name, value) {
-  document.cookie = `${name}=${value}`;
+  document.cookie = `${name}=${value};max-age=3600`;
 }
 
 function getCookie(name) {
