@@ -14,5 +14,9 @@ export const questionData = [
   {
     question: 'Why is the design so...interesting?',
     answer: 'Because I can not afford a UX designer.',
+  },
+  {
+    question: 'Your co-worker has a better designed app. Why?',
+    answer: 'Because he is (maybe) better than me.',
   }
 ];

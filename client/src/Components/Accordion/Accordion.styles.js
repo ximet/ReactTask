@@ -40,7 +40,7 @@ export const Wrap = styled.div`
   cursor: pointer;
   h1 {
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   span {
     margin-right: 1.5rem;
@@ -61,6 +61,6 @@ export const Dropdown = styled.div`
   transition: all 0.5s linear;
 
   p {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `;
