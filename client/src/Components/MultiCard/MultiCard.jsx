@@ -1,6 +1,7 @@
 import * as Style from './MultiCard.styles';
 
 import dateToWeekdayHelper from '../../Utils/dateHelper';
+import { getWeatherIcon } from '../../Utils/weatherIcon';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { CITY_REMOVE } from '../../store/actionType';
@@ -17,20 +18,25 @@ const MultiWeather = () => {
   return (
     <Style.Container>
       {citiesAndWeatherInfo?.map(({ weatherData, selectedCity }) => (
-        <Style.CardContainer key={selectedCity.id}>
+        <Style.WeatherWrapper key={selectedCity.id}>
           <Style.DeleteButton onClick={() => deleteCity(selectedCity)}>X</Style.DeleteButton>
-
           <section>
-            name:{selectedCity.name}
-            <Style.Description>{weatherData.temperature}C</Style.Description>
-            <Style.Description>{weatherData.windSpeed} m/s</Style.Description>
-            <Style.Description>{weatherData.symbolPhrase} </Style.Description>
-            <Style.Description>{weatherData.relHumidity} Humidity</Style.Description>
-            <Style.Description>{weatherData.uvIndex} uV Index</Style.Description>
-            <Style.Description>{weatherData.pressure} hPA</Style.Description>
-            <Style.Description>{dateToWeekdayHelper(weatherData.time)}</Style.Description>
+            <Style.weatherCard>
+              <Style.currentTemp>
+                <Style.currentTempText>{weatherData.temperature}&deg;</Style.currentTempText>
+                  <Style.LocationInfo>
+                    {selectedCity.name}
+                    <Style.currentConditionsText>{weatherData.symbolPhrase}</Style.currentConditionsText>
+                  </Style.LocationInfo>
+              </Style.currentTemp>
+
+              <Style.currentWeather>
+                <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbol}/>
+              </Style.currentWeather>
+              <Style.ConditionsInfo>Wind:{weatherData.windSpeed}m/s Pressure:{weatherData.pressure}hPa uV Index:{weatherData.uvIndex}</Style.ConditionsInfo>
+            </Style.weatherCard>
           </section>
-        </Style.CardContainer>
+        </Style.WeatherWrapper>
       ))}
     </Style.Container>
   );

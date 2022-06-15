@@ -1,6 +1,7 @@
 import React from 'react';
 import Spinner from '../Spinner/Spinner';
 import * as Style from './Card.styles';
+import { getWeatherIcon } from '../../Utils/weatherIcon';
 
 const Currentweather = ({ data }) => {
   const [weatherData] = data;
@@ -16,6 +17,10 @@ const Currentweather = ({ data }) => {
           </Style.Temperature>
           <div>
             <Style.Conditions>{weatherData.symbolPhrase}</Style.Conditions>
+            <Style.Conditions>
+              <img src={getWeatherIcon(weatherData.symbol)} alt={weatherData.symbol}/>
+            </Style.Conditions>
+
             <Style.Details>
               <p>Wind: {weatherData.windSpeed} m/s</p>
               <p>Cloudiness: {weatherData.cloudiness} %</p>

@@ -22,4 +22,3 @@ export const getCurrentWeatherInfo = async () => {
   );
   console.log(weatherData);
 };
-
