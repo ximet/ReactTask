@@ -7,7 +7,7 @@ const Accordion = () => {
 
   const toggle = clickValue => {
     setClicked(clickValue);
-  }
+  };
 
   return (
     <Style.AccordionSection>
