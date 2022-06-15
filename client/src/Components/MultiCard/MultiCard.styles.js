@@ -1,4 +1,15 @@
 import styled from 'styled-components';
+import theme from 'styled-theming';
+
+export const backgroundColor = theme('theme', {
+  light: '#00bfff',
+  dark: '#48628a'
+});
+
+export const textColor = theme('theme', {
+  light: '#000',
+  dark: '#fafafa'
+});
 
 export const Container = styled.div`
   display: flex;
@@ -42,7 +53,7 @@ export const weatherCard = styled.div`
 export const currentTemp = styled.div`
   width: 220px;
   height: 200px;
-  background: rgb(41, 41, 41);
+  background: ${backgroundColor};
   position: absolute;
   top: 0;
   left: 0;
@@ -69,7 +80,7 @@ export const currentConditionsText = styled.div`
 export const currentWeather = styled.div`
   width: 180px;
   height: 200px;
-  background: gray;
+  background: #6f9bad;
   margin: 0;
   position: absolute;
   top: 0;

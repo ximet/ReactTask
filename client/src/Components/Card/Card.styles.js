@@ -3,7 +3,7 @@ import theme from 'styled-theming';
 
 export const backgroundColor = theme('theme', {
   light: '#00bfff',
-  dark: '#243145'
+  dark: '#48628a'
 });
 
 export const textColor = theme('theme', {
