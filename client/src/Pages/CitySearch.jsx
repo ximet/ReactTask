@@ -5,15 +5,13 @@ import { weatherAPI } from '../API/api';
 import endpoints from '../Utils/endpoints';
 import { minCharacters } from '../Utils/minChars';
 import { useDispatch, useSelector } from 'react-redux';
-import { CITY_SAVE, CITY_REMOVE } from '../store/actionType';
+import { CITY_SAVE } from '../store/actionType';
 
 const CitySearch = () => {
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedCity, setSelectedCity] = useState({});
   const [weatherData, setWeatherData] = useState([]);
-
-  const savedCitiesData = useSelector(state => state.savedCitiesReducer.savedCities);
 
   const dispatch = useDispatch();
 

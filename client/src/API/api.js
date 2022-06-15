@@ -23,12 +23,3 @@ export const getCurrentWeatherInfo = async () => {
   console.log(weatherData);
 };
 
-export const getHourlyWeatherInfo = async () => {
-  const { data: weatherData } = await weatherAPI.get(`forecast/hourly/location=${lon},${lat}`);
-  console.log(weatherData);
-};
-
-export const getDailyWeatherInfo = async () => {
-  const { data: weatherData } = await weatherAPI.get(`forecast/daily/location=${lon},${lat}`);
-  console.log(weatherData);
-};
