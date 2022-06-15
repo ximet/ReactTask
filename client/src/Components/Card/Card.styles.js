@@ -56,7 +56,7 @@ export const Details = styled.div`
   margin: 0.5rem 0;
   & p {
     margin: 0.25rem 0 0;
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
   @media screen and (max-width: 500px) {
     & p {
