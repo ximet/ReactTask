@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-type Props = {};
-
-const Header = (props: Props): JSX.Element => {
+const Header = () => {
   return (
     <header style={{ padding: 20 }}>
       <h1>Nice Weather App</h1>

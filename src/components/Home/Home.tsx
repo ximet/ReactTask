@@ -1,37 +1,34 @@
 import React, { useEffect, useState } from 'react';
+import { getMultipleData, URL } from '../../helpers/api';
+import { getUserLocation } from '../../helpers/geolocation';
+import CurrentWeather from './CurrentWeather/CurrentWeather';
+import DailyForecast from './DailyForecast/DailyForecast';
+import Search from './Search/Search';
 
-type Props = {};
-
-const Home = (props: Props): JSX.Element => {
-  const [city, setCity] = useState('London');
-  const [data, setData] = useState('');
+const Home = () => {
+  const [city, setCity] = useState<string>();
+  const [currentData, setCurrentData] = useState('current data');
+  const [dailyForecastData, setDailyForecastData] = useState('daily forecast');
 
   useEffect(() => {
-    (async () => {
-      try {
-        const accessToken = localStorage.getItem('token');
-        const options = {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        };
-        const response = await fetch(
-          `https://pfa.foreca.com/api/v1/location/search/${city}`,
-          options
-        );
-        const json = await response.json();
-        setData(JSON.stringify(json.locations));
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    setTimeout(getUserLocation, 50);
+    setTimeout(() => {
+      const userLocation = sessionStorage.getItem('userLocation')!;
+      getMultipleData([URL.locationInfo, URL.current, URL.daily], userLocation).then(data => {
+        setCity(data[0].name);
+        setCurrentData(JSON.stringify(data[1]));
+        setDailyForecastData(JSON.stringify(data[2]));
+      });
+    }, 60);
   }, []);
 
   return (
     <div>
-      <h2>{city} info</h2>
-      <div>{data}</div>
+      <Search />
+      <h2>{city} current weather info</h2>
+      <CurrentWeather currentData={currentData} />
+      <h2>7 day forecast</h2>
+      <DailyForecast dailyForecastData={dailyForecastData} />
     </div>
   );
 };

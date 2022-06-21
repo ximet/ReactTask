@@ -1,33 +1,37 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Cities from '../Cities/Cities';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { URL } from '../../helpers/api';
 import About from '../About/About';
+import Cities from '../Cities/Cities';
 import Contacts from '../Contacts/Contacts';
 import Error404 from '../Error404/Error404';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import Home from '../Home/Home';
+// import { useTheme, useThemeUpdate } from '../../hooks/themeContext';
 
-const App = (): JSX.Element => {
+axios.defaults.withCredentials = true;
+
+const App = () => {
+  // const darkTheme = useTheme();
+  // const toggleTheme = useThemeUpdate();
+  // const themeStyles = {
+  //   backgroundColor: darkTheme ? 'black' : 'white',
+  //   color: darkTheme ? 'white' : 'black'
+  // };
+
   useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      (async () => {
-        const options = {
-          method: 'POST',
-          body: '',
-          requestMode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' }
-        };
-        const response = await fetch('http://localhost:3000/auth', options);
-        const json = await response.json();
-        localStorage.setItem('token', json.access_token);
-      })();
+    if (!document.cookie) {
+      axios.get(URL.auth);
     }
   }, []);
 
   return (
     <>
       <BrowserRouter>
+        {/* <div style={themeStyles}> */}
+        {/* <button onClick={() => toggleTheme}>Toggle theme</button> */}
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,6 +41,7 @@ const App = (): JSX.Element => {
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
+        {/* </div> */}
       </BrowserRouter>
     </>
   );
