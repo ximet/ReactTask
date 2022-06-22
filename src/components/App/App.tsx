@@ -10,12 +10,12 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 
-axios.defaults.withCredentials = true;
-
 const App = () => {
   useEffect(() => {
     if (!document.cookie) {
-      axios.get(URL.auth);
+      axios.get(URL.auth, {
+        withCredentials: true
+      });
     }
   }, []);
 
