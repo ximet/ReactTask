@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = (): JSX.Element => {
+const Footer: React.FunctionComponent = () => {
   return <div style={{ padding: 20 }}>Footer</div>;
 };
 

@@ -5,20 +5,22 @@ import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyForecast from './DailyForecast/DailyForecast';
 import Search from './Search/Search';
 
-const Home = () => {
+const Home: React.FunctionComponent = () => {
   const [city, setCity] = useState<string>();
-  const [currentData, setCurrentData] = useState('current data');
-  const [dailyForecastData, setDailyForecastData] = useState('daily forecast');
+  const [currentData, setCurrentData] = useState<string>('current data');
+  const [dailyForecastData, setDailyForecastData] = useState<string>('daily forecast');
 
   useEffect(() => {
     setTimeout(getUserLocation, 50);
     setTimeout(() => {
-      const userLocation = sessionStorage.getItem('userLocation')!;
-      getMultipleData([URL.locationInfo, URL.current, URL.daily], userLocation).then(data => {
-        setCity(data[0].name);
-        setCurrentData(JSON.stringify(data[1]));
-        setDailyForecastData(JSON.stringify(data[2]));
-      });
+      const userLocation: string | null = sessionStorage.getItem('userLocation');
+      if (userLocation) {
+        getMultipleData([URL.locationInfo, URL.current, URL.daily], userLocation).then(data => {
+          setCity(data[0].name);
+          setCurrentData(JSON.stringify(data[1]));
+          setDailyForecastData(JSON.stringify(data[2]));
+        });
+      }
     }, 60);
   }, []);
 

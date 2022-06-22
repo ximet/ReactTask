@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 
-const App = () => {
+const App: React.FunctionComponent = () => {
   useEffect(() => {
     if (!document.cookie) {
       axios.get(URL.auth, {
@@ -28,7 +28,7 @@ const App = () => {
           <Route path="cities" element={<Cities />} />
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />
-          <Route path="*" element={<Error404 />} />
+          <Route path="*" element={<Error404>hello</Error404>} />
         </Routes>
         <Footer />
       </BrowserRouter>
