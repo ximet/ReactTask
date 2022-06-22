@@ -29,3 +29,5 @@ packages/api/etc/
 
 /.env
 .env
+notes.txt
+README.md
