@@ -25,27 +25,26 @@ const axios = require('axios').default;
 //   });
 
 axios
-.get('http://localhost:9020/list', {
-  baseURL: 'https://pfa.foreca.com/api/v1/location/search/Barcelona?lang=es',
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-    'Access-Control-Allow-Origin': '*',
+  .get('http://localhost:9020/list', {
+    baseURL: 'https://pfa.foreca.com/api/v1/location/search/Barcelona?lang=es',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      'Access-Control-Allow-Origin': '*',
       authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTY1NTY1NjY0MiwiZXhwIjo5OTk5OTk5OTk5LCJuYmYiOjE2NTU2NTY2NDIsImp0aSI6IjY2NDc4MGI2NWUxNzk1Y2QiLCJzdWIiOiJhbmRyZXlzaHVsZ2EiLCJmbXQiOiJYRGNPaGpDNDArQUxqbFlUdGpiT2lBPT0ifQ.7EuvH4zBSBDF_cclXSqxAiScReNDqMRcUUG5OHVdo1o`
-
-  },
-  auth: {
-    username: 'andreyshulga',
-    password: 'pfhQCZdG0aXV'
-  },
-})
-.then(function (response) {
-  console.log(response);
-  console.log(response.locations);
-})
-.catch(function (error) {
-  console.log(error);
-  console.log(22);
-});
+    },
+    auth: {
+      username: 'andreyshulga',
+      password: 'pfhQCZdG0aXV'
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+    console.log(response.locations);
+  })
+  .catch(function (error) {
+    console.log(error);
+    console.log(22);
+  });
 
 // const instance = axios.create({
 //   baseURL: 'https://pfa.foreca.com/api/v1/capabilities',
