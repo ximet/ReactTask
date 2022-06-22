@@ -13,8 +13,6 @@ export async function requestToken() {
 export const instance = axios.create({
     baseURL: 'https://pfa.foreca.com/api/v1',
     headers: {
-        Authorization: `Bearer ${COOKIE.loadToken()}`,
-    },
+        Authorization: `Bearer ${COOKIE.loadToken()}`
+    }
 });
-
-// export async function
