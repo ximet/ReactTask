@@ -2,43 +2,38 @@ import axios from 'axios';
 
 export const URL = {
   auth: 'http://localhost:3000/auth',
-  locationSearch: 'https://pfa.foreca.com/api/v1/location/search/',
-  locationInfo: 'https://pfa.foreca.com/api/v1/location/',
-  observations: 'https://pfa.foreca.com/api/v1/observation/latest/',
-  current: 'https://pfa.foreca.com/api/v1/current/',
-  nowCast: 'https://pfa.foreca.com/api/v1/forecast/15minutely/',
-  hourly: 'https://pfa.foreca.com/api/v1/forecast/hourly/',
-  threeHourly: 'https://pfa.foreca.com/api/v1/forecast/3hourly/',
-  daily: 'https://pfa.foreca.com/api/v1/forecast/daily/',
-  airQuality: 'https://pfa.foreca.com/api/v1/air-quality/forecast/hourly/'
+  locationSearch: 'location/search/',
+  locationInfo: 'location/',
+  observations: 'observation/latest/',
+  current: 'current/',
+  nowCast: 'forecast/15minutely/',
+  hourly: 'forecast/hourly/',
+  threeHourly: 'forecast/3hourly/',
+  daily: 'forecast/daily/',
+  airQuality: 'air-quality/forecast/hourly/'
 };
 
-export async function getData(url: string, param: string) {
+function options(url: string, param: string) {
+  const forecaUrl = 'https://pfa.foreca.com/api/v1/';
   const accessToken = document.cookie.slice(6);
-  const options = {
-    url: url + param,
+  return {
+    url: forecaUrl + url + param,
     withCredentials: false,
     headers: {
       Authorization: `Bearer ${accessToken}`
     }
   };
-  return axios.request(options).then(response => {
+}
+
+export async function getData(url: string, param: string) {
+  return axios.request(options(url, param)).then(response => {
     return response.data;
   });
 }
 
 export function getMultipleData(urls: string[], param: string) {
-  const accessToken = document.cookie.slice(6);
-  
   const requests = urls.map(url => {
-    const options = {
-      url: url + param,
-      withCredentials: false,
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    };
-    return axios.request(options);
+    return axios.request(options(url, param));
   });
 
   return axios.all(requests).then(

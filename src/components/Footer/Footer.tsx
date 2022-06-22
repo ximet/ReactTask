@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface Props {}
-
-const Footer = (props: Props): JSX.Element => {
+const Footer = (): JSX.Element => {
   return <div style={{ padding: 20 }}>Footer</div>;
 };
 

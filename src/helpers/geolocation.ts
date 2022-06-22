@@ -6,7 +6,7 @@ export const getUserLocation = () => {
     sessionStorage.setItem('userLocation', userLocation);
   };
   const errorCallback: PositionErrorCallback = error => {
-    console.log(error); //add error handling
+    console.log(error);
   };
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 };
