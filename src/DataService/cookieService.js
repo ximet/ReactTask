@@ -18,5 +18,5 @@ function loadToken() {
 
 export const COOKIE = {
     saveToken,
-    loadToken,
+    loadToken
 };
