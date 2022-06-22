@@ -1,0 +1,8 @@
+/* fonts */
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNextCyr-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+  font-display: auto;
+}
