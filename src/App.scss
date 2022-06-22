@@ -1,0 +1,10 @@
+@import './Styles/variables.scss';
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: $default-font-size;
+    font-family: $font-primary;
+}
