@@ -7,7 +7,7 @@
         "build": "cross-env NODE_ENV=production webpack",
         "test": "jest --coverage",
         "format": "prettier --write .",
-        "server": "nodemon backend/server.js"
+        "server": "nodemon server.js"
     },
     "husky": {
         "hooks": {
@@ -73,7 +73,7 @@
         "jsdom": "15.1.1",
         "koa-connect": "2.0.1",
         "mini-css-extract-plugin": "0.8.0",
-        "node-sass": "4.14.1",
+        "node-sass": "^4.14.1",
         "npm-check-updates": "3.1.24",
         "optimize-css-assets-webpack-plugin": "5.0.3",
         "prettier": "2.2.1",
