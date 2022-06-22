@@ -1,0 +1,24 @@
+@import './src/Styles/variables.scss';
+
+.navMenu {
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    a {
+        color: black;
+        list-style: none;
+        text-decoration: none;
+        font-size: $medium-font-size;
+        text-transform: uppercase;
+        font-weight: 500;
+        display: inline-block;
+        width: 8rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            color: black;
+        }
+    }
+}
