@@ -9,8 +9,8 @@ const authAxios = axios.create({
     Authorization: `Bearer ${accToken}`
   },
   data: {
-    username: process.env.REACT_APP_AUTH_USERNAME,
-    password: process.env.REACT_APP_AUTH_PASSWORD
+    username: 'kolyopeev',
+    password: 'kx75KiKsnOS8'
   },
   withCredentials: true
 });
@@ -18,8 +18,10 @@ const authAxios = axios.create({
 export const fetchPosts = () => async (dispatch, getState) => {
   const response = await authAxios.post('/authorize/token');
   console.log(response);
+  console.log('response');
+
   dispatch({
     type: 'FETCH_POSTS',
-    payload: response.data
+    payload: response
   });
 };
