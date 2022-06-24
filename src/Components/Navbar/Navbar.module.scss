@@ -3,17 +3,11 @@
 .navMenu {
     width: 100%;
     margin: auto;
-    //   margin-top: 0.5rem;
     margin-bottom: 2rem;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(209, 213, 219, 0.3);
-
-    //   --mask: linear-gradient(#000 0 0) center/calc(100% - 27.75px) calc(100% - 27.75px) no-repeat,
-    //     radial-gradient(farthest-side, #000 98%, #0000) 0 0/30px 30px round;
-    //   -webkit-mask: var(--mask);
-    //   mask: var(--mask);
 
     .container {
         width: 50%;
