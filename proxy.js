@@ -40,18 +40,17 @@ app.get('/login', (req, res) => {
     });
 });
 
-app.post('/a', (req, res) => {
-  let token2 = getApiKey();
-  let token = { Authorization: `Bearer ${token2}` };
+app.post('/test-url', (req, res) => {
+  const apiKeyCopy = getApiKey();
+  const secureHeaderProp = { Authorization: `Bearer ${apiKeyCopy}` };
 
   axios({
     method: 'get',
-    headers: token,
+    headers: secureHeaderProp,
     url: `https://pfa.foreca.com/api/v1/location/102810135`,
     data: {}
   })
     .then(response => {
-      console.log('API call succeeded: ', response.data);
       res.json(response.data);
     })
     .catch(error => {

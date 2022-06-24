@@ -4,13 +4,12 @@ export default function App() {
   const [token, setData] = useState([]);
 
   const req = async () => {
-    fetch('http://localhost:3000/a', {
+    fetch('http://localhost:3000/test-url', {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify(token)
     })
       .then(response => response.json())
-      .then(data => console.log(data))
       .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
       });

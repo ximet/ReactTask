@@ -34,8 +34,7 @@
     "react-router-dom": "5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "reselect": "4.0.0",
-    "xhr2": "^0.2.1"
+    "reselect": "4.0.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
