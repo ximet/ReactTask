@@ -25,4 +25,5 @@ package-lock.json
 /build/*
 # Editor/IDE
 .idea
+.env
 packages/api/etc/
