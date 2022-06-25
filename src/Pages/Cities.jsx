@@ -1,3 +1,3 @@
 export default function Cities() {
-    return <h2>Cities</h2>;
+  return <h2>Cities</h2>;
 }

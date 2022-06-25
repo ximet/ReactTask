@@ -11,15 +11,15 @@ export default function CurrWeatherCard(props) {
     let date = selectedDate.toLocaleString('en-GB', {
       day: 'numeric',
       weekday: 'long',
-      month: 'long',
+      month: 'long'
     });
     let year = selectedDate.toLocaleString('en-GB', {
-      year: 'numeric',
+      year: 'numeric'
     });
     let hour = selectedDate.toLocaleString('en-GB', {
       hour: '2-digit',
       minute: '2-digit',
-      hour12: false,
+      hour12: false
     });
 
     return `${date} ${year} ${hour}`;
