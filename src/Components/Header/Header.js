@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.css';
-import stylesGeneral from '../../assets/css/general.css';
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={stylesGeneral.container}>
+      <div className={styles.container}>
         <nav>
           <ul>
             <li>

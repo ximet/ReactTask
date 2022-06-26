@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './Api/Api';
-
 import './assets/css/fonts.css';
 import './assets/css/reset.css';
 import './assets/css/general.css';

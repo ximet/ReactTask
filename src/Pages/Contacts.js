@@ -1,13 +1,7 @@
-import stylesGeneral from '../assets/css/general.css';
+import Section from '../Components/Section/Section';
 
 const Contacts = () => {
-  return (
-    <section>
-      <div className={stylesGeneral.container}>
-        <div className={stylesGeneral.block}>Contacts</div>
-      </div>
-    </section>
-  );
+  return <Section>Contacts</Section>;
 };
 
 export default Contacts;
