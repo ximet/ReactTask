@@ -3,9 +3,8 @@ function saveCookie(key, value) {
 }
 
 function loadCookie(key) {
-  let cookie = document.cookie;
-  cookie = cookie.substring(cookie.indexOf('=') + 1);
-  return cookie;
+  const cookie = document.cookie;
+  return cookie.substring(cookie.indexOf('=') + 1);
 }
 
 function saveToken(token) {
