@@ -1,10 +1,7 @@
 import styles from './CurrWeatherCard.module.scss';
 import endpoints from '../../Helpers/endpoints';
 
-export default function CurrWeatherCard(props) {
-  let locationData = props.locationData;
-  let currWeather = props.currWeather;
-
+export default function CurrWeatherCard({ locationData, currWeather }) {
   function formatDate() {
     const selectedDate = new Date(currWeather.current.time);
 
