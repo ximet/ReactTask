@@ -28,7 +28,7 @@ const App: React.FunctionComponent = () => {
           <Route path="cities" element={<Cities />} />
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />
-          <Route path="*" element={<Error404>hello</Error404>} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </BrowserRouter>
