@@ -17,16 +17,14 @@ const Home: React.FunctionComponent = () => {
     setTimeout(() => {
       const userLocation: string | null = sessionStorage.getItem('userLocation');
       if (userLocation) {
-        getMultipleData([URL.locationInfo, URL.current, URL.daily], userLocation).then(
-          data => {
-            const locationInfo: LocationInfo = data[0];
-            const current: CurrentData = data[1];
-            const daily: ForecastData = data[2];
-            setCity(locationInfo.name);
-            setCurrentData(current);
-            setDailyForecastData(daily);
-          }
-        );
+        getMultipleData([URL.locationInfo, URL.current, URL.daily], userLocation).then(data => {
+          const locationInfo: LocationInfo = data[0];
+          const current: CurrentData = data[1];
+          const daily: ForecastData = data[2];
+          setCity(locationInfo.name);
+          setCurrentData(current);
+          setDailyForecastData(daily);
+        });
       }
     }, 60);
   }, []);
