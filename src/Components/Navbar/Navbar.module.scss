@@ -1,24 +1,38 @@
-@import './src/Styles/variables.scss';
+@import '../../Styles/variables.scss';
 
 .navMenu {
-    ul {
-        list-style-type: none;
-        padding: 0;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+
+  .container {
+    width: 50%;
+    margin: auto;
+    .nav-items {
+      list-style: none;
+      padding: 3rem 0 3rem;
+      display: flex;
+      justify-content: space-evenly;
     }
 
     a {
-        color: black;
-        list-style: none;
-        text-decoration: none;
-        font-size: $medium-font-size;
-        text-transform: uppercase;
-        font-weight: 500;
-        display: inline-block;
-        width: 8rem;
-        transition: all 0.2s ease-in-out;
+      color: grey;
+      list-style: none;
+      text-decoration: none;
+      font-size: $medium-font-size;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: inline-block;
+      width: 8rem;
+      transition: all 0.2s ease-in-out;
 
-        &:hover {
-            color: black;
-        }
+      &:hover {
+        color: $color-1L;
+      }
     }
+  }
 }
