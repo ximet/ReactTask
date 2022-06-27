@@ -1,7 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
-import { AxiosOptions, Url } from './helpersInterfaces';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { UrlInterface } from './helpersInterfaces';
 
-export const URL: Url = {
+export const URL: UrlInterface = {
   auth: 'http://localhost:3000/auth',
   locationSearch: 'location/search/',
   locationInfo: 'location/',
@@ -14,7 +14,7 @@ export const URL: Url = {
   airQuality: 'air-quality/forecast/hourly/'
 };
 
-function options(url: string, param: string): AxiosOptions {
+function options(url: string, param: string): AxiosRequestConfig {
   const forecaUrl: string = 'https://pfa.foreca.com/api/v1/';
   const accessToken: string = document.cookie.slice(6);
   return {

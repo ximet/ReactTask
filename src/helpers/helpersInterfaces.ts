@@ -1,4 +1,4 @@
-export interface Url {
+export interface UrlInterface {
   auth: string;
   locationSearch: string;
   locationInfo: string;
@@ -11,10 +11,4 @@ export interface Url {
   airQuality: string;
 }
 
-export interface AxiosOptions {
-  url: string;
-  withCredentials: boolean;
-  headers: {
-    Authorization: string;
-  };
-}
+
