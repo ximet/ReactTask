@@ -22,7 +22,7 @@ export default function Home() {
     try {
       setIsLoading(true);
       const { data } = await instance.get(endpoints.CURR_WEATHER(coords));
-      setCurrWeather(JSON.parse(data));
+      setCurrWeather(data);
       setIsLoading(false);
       setError(null);
     } catch (error) {
@@ -38,7 +38,7 @@ export default function Home() {
     try {
       setIsLoading(true);
       let { data } = await instance.get(endpoints.LOCATION_DATA(coords));
-      setLocationData(JSON.parse(data));
+      setLocationData(data);
       setIsLoading(false);
       setError(null);
     } catch (error) {

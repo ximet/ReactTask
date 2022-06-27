@@ -15,5 +15,5 @@ export const instance = axios.create({
   headers: {
     Authorization: `Bearer ${COOKIE.loadToken()}`
   },
-  transformResponse: (res) => res
+  transformResponse: (res) => JSON.parse(res)
 });
