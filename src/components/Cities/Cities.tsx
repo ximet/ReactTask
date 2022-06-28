@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cities = (): JSX.Element => {
+const Cities: React.FunctionComponent = () => {
   return <div>Cities</div>;
 };
 

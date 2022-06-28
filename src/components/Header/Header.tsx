@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header: React.FunctionComponent = () => {
   return (
     <header style={{ padding: 20 }}>
       <h1>Nice Weather App</h1>

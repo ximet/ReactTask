@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { getMultipleData, URL } from '../../helpers/api';
+import { getMultipleData, ENDPOINT } from '../../helpers/api';
 import { getUserLocation } from '../../helpers/geolocation';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyForecast from './DailyForecast/DailyForecast';
+import { CurrentData, ForecastData, LocationInfo } from './homeInterfaces';
 import Search from './Search/Search';
 
-const Home = () => {
+const Home: React.FunctionComponent = () => {
   const [city, setCity] = useState<string>();
-  const [currentData, setCurrentData] = useState('current data');
-  const [dailyForecastData, setDailyForecastData] = useState('daily forecast');
+  const [currentData, setCurrentData] = useState<CurrentData>();
+  const [dailyForecastData, setDailyForecastData] = useState<ForecastData>();
 
   useEffect(() => {
     setTimeout(getUserLocation, 50);
     setTimeout(() => {
-      const userLocation = sessionStorage.getItem('userLocation')!;
-      getMultipleData([URL.locationInfo, URL.current, URL.daily], userLocation).then(data => {
-        setCity(data[0].name);
-        setCurrentData(JSON.stringify(data[1]));
-        setDailyForecastData(JSON.stringify(data[2]));
-      });
+      const userLocation: string | null = sessionStorage.getItem('userLocation');
+      if (userLocation) {
+        getMultipleData([ENDPOINT.locationInfo, ENDPOINT.current, ENDPOINT.daily], userLocation).then(data => {
+          const locationInfo: LocationInfo = data[0];
+          const current: CurrentData = data[1];
+          const daily: ForecastData = data[2];
+          setCity(locationInfo.name);
+          setCurrentData(current);
+          setDailyForecastData(daily);
+        });
+      }
     }, 60);
   }, []);
 
@@ -26,9 +32,9 @@ const Home = () => {
     <div>
       <Search />
       <h2>{city} current weather info</h2>
-      <CurrentWeather currentData={currentData} />
+      <CurrentWeather currentData={JSON.stringify(currentData)} />
       <h2>7 day forecast</h2>
-      <DailyForecast dailyForecastData={dailyForecastData} />
+      <DailyForecast dailyForecastData={JSON.stringify(dailyForecastData)} />
     </div>
   );
 };

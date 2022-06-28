@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Endpoint } from './helpersInterfaces';
 
-export const URL = {
+export const ENDPOINT: Endpoint = {
   auth: 'http://localhost:3000/auth',
   locationSearch: 'location/search/',
   locationInfo: 'location/',
@@ -13,11 +14,11 @@ export const URL = {
   airQuality: 'air-quality/forecast/hourly/'
 };
 
-function options(url: string, param: string) {
-  const forecaUrl = 'https://pfa.foreca.com/api/v1/';
-  const accessToken = document.cookie.slice(6);
+function options(endpoint: string, param: string): AxiosRequestConfig {
+  const forecaUrl: string = 'https://pfa.foreca.com/api/v1/';
+  const accessToken: string = document.cookie.slice(6);
   return {
-    url: forecaUrl + url + param,
+    url: forecaUrl + endpoint + param,
     withCredentials: false,
     headers: {
       Authorization: `Bearer ${accessToken}`
@@ -25,23 +26,21 @@ function options(url: string, param: string) {
   };
 }
 
-export async function getData(url: string, param: string) {
-  return axios.request(options(url, param)).then(response => {
+export async function getData(endpoint: string, param: string): Promise<any> {
+  return axios.request(options(endpoint, param)).then(response => {
     return response.data;
   });
 }
 
-export function getMultipleData(urls: string[], param: string) {
-  const requests = urls.map(url => {
-    return axios.request(options(url, param));
+export function getMultipleData(endpoints: string[], param: string): Promise<any[]> {
+  const requests: Promise<AxiosResponse<any>>[] = endpoints.map(endpoint => {
+    return axios.request(options(endpoint, param));
   });
-
   return axios.all(requests).then(
     axios.spread((...responses) => {
-      const data = responses.map(response => {
+      return responses.map(response => {
         return response.data;
       });
-      return data;
     })
   );
 }

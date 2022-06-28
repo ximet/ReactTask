@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = () => {
+const Search: React.FunctionComponent = () => {
   return <input placeholder="Search for location" />;
 };
 

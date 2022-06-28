@@ -4,8 +4,8 @@ interface DailyForecastProps {
   dailyForecastData: string;
 }
 
-const DailyForecast = (props: DailyForecastProps) => {
-  return <div>{props.dailyForecastData}</div>;
+const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ dailyForecastData }) => {
+  return <div>{dailyForecastData}</div>;
 };
 
 export default DailyForecast;
