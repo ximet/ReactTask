@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ENDPOINT } from '../../helpers/api';
+import { ENDPOINTS } from '../../helpers/api';
 import About from '../About/About';
 import Cities from '../Cities/Cities';
 import Contacts from '../Contacts/Contacts';
@@ -13,7 +13,7 @@ import Home from '../Home/Home';
 const App: React.FunctionComponent = () => {
   useEffect(() => {
     if (!document.cookie) {
-      axios.get(ENDPOINT.auth, {
+      axios.get(ENDPOINTS.auth, {
         withCredentials: true
       });
     }

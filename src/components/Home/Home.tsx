@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMultipleData, ENDPOINT } from '../../helpers/api';
+import { getMultipleData, ENDPOINTS } from '../../helpers/api';
 import { getUserLocation } from '../../helpers/geolocation';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyForecast from './DailyForecast/DailyForecast';
@@ -16,7 +16,7 @@ const Home: React.FunctionComponent = () => {
     setTimeout(() => {
       const userLocation: string | null = sessionStorage.getItem('userLocation');
       if (userLocation) {
-        getMultipleData([ENDPOINT.locationInfo, ENDPOINT.current, ENDPOINT.daily], userLocation).then(data => {
+        getMultipleData([ENDPOINTS.locationInfo, ENDPOINTS.current, ENDPOINTS.daily], userLocation).then(data => {
           const locationInfo: LocationInfo = data[0];
           const current: CurrentData = data[1];
           const daily: ForecastData = data[2];

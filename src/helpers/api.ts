@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Endpoint } from './helpersInterfaces';
+import { EndpointsConfig } from './helpersInterfaces';
 
-export const ENDPOINT: Endpoint = {
+export const ENDPOINTS: EndpointsConfig = {
   auth: 'http://localhost:3000/auth',
   locationSearch: 'location/search/',
   locationInfo: 'location/',
