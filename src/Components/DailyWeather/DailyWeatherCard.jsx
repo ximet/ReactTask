@@ -8,7 +8,7 @@ export default function DailyWeatherCard({ dailyWeather }) {
     let opts = {
       day: 'numeric',
       weekday: 'short',
-      month: 'numeric',
+      month: 'numeric'
     };
     return formatDate(opts, dateStr).split(',').join('');
   };
