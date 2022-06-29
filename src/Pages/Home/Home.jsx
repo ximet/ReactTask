@@ -87,7 +87,7 @@ export default function Home() {
     <main className={styles.container}>
       <Search />
       {locationData && currWeather && dailyWeather && (
-        <CurrWeatherCard locationData={locationData} currWeather={currWeather} />
+        <CurrWeatherCard locationData={locationData} currWeather={currWeather.current} />
       )}
       {dailyWeather && <DailyWeatherCard dailyWeather={dailyWeather} />}
       {error && <p>{error}</p>}
