@@ -1,0 +1,55 @@
+@import '../../Styles/variables.scss';
+
+.container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+
+  &__items {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 2rem;
+
+    &-item {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: left;
+      padding: 1rem;
+      gap: 5px;
+
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(255, 255, 255, 0.75);
+      border-radius: 1.2rem;
+      border: 1px solid rgba(209, 213, 219, 0.3);
+
+      transition: ease-in-out 0.2s;
+
+      &:hover {
+        border: 1px solid $color-1L;
+        cursor: pointer;
+      }
+
+      .temperature {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+        gap: 1rem;
+
+        &--max {
+          font-size: $medium-font-size;
+        }
+      }
+
+      .wind {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  }
+}
