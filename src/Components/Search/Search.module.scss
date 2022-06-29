@@ -1,0 +1,32 @@
+@import '../../Styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+
+  .search {
+    width: 20%;
+    display: flex;
+
+    &-term {
+      width: 100%;
+      border: none;
+      padding: 5px;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      color: black;
+    }
+
+    &-button {
+      display: flex;
+      justify-content: center;
+      border: none;
+      text-align: center;
+      align-items: center;
+      width: 4rem;
+      background: $color-1L;
+      color: #fff;
+      border-radius: 0 5px 5px 0;
+    }
+  }
+}
