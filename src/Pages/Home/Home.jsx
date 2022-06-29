@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import findMyLocation from '../../Helpers/geolocation';
-import endpoints from '../../Helpers/endpoints';
+import { findMyLocation } from '../../Helpers/functions';
+import { endpoints } from '../../Helpers/constants';
 import { requestToken, instance } from '../../DataService/dataService';
 import { COOKIE } from '../../DataService/cookieService';
-import { CurrWeatherCard } from '../../Components';
+
+import { CurrWeatherCard, DailyWeatherCard, Search } from '../../Components/index';
 
 import styles from './Home.module.scss';
 
 export default function Home() {
   const [currWeather, setCurrWeather] = useState(null);
+  const [dailyWeather, setDailyWeather] = useState(null);
   const [coords, setCoords] = useState(null);
   const [locationData, setLocationData] = useState(null);
 
@@ -23,6 +25,22 @@ export default function Home() {
       setIsLoading(true);
       const { data } = await instance.get(endpoints.CURR_WEATHER(coords));
       setCurrWeather(data);
+      setIsLoading(false);
+      setError(null);
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+    }
+  }
+
+  async function getDailyWeather() {
+    if (!coords) {
+      return;
+    }
+    try {
+      setIsLoading(true);
+      const { data } = await instance.get(endpoints.DAILY_WEATHER(coords));
+      setDailyWeather(data);
       setIsLoading(false);
       setError(null);
     } catch (error) {
@@ -62,15 +80,18 @@ export default function Home() {
   useEffect(async () => {
     await getCurrentWeather();
     await getLocationData();
+    await getDailyWeather();
   }, [coords]);
 
   return (
-    <div className={styles.container}>
-      {locationData && currWeather && (
+    <main className={styles.container}>
+      <Search />
+      {locationData && currWeather && dailyWeather && (
         <CurrWeatherCard locationData={locationData} currWeather={currWeather} />
       )}
+      {dailyWeather && <DailyWeatherCard dailyWeather={dailyWeather} />}
       {error && <p>{error}</p>}
       {isLoading && <p>Loading...</p>}
-    </div>
+    </main>
   );
 }
