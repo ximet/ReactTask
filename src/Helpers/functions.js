@@ -1,4 +1,6 @@
-export default function findMyLocation(fn) {
+import { endpoints } from './constants';
+
+function findMyLocation(fn) {
   const success = (position) => {
     const long = position.coords.longitude;
     const lat = position.coords.latitude;
@@ -11,3 +13,9 @@ export default function findMyLocation(fn) {
 
   navigator.geolocation.getCurrentPosition(success, error);
 }
+
+function getWeatherSymbol(symbol) {
+  return endpoints.SYMBOL(symbol);
+}
+
+export { findMyLocation, getWeatherSymbol };
