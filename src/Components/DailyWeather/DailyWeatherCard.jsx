@@ -1,28 +1,22 @@
-import { getWeatherSymbol } from '../../Helpers/functions';
+import { getWeatherSymbol, formatDate } from '../../Helpers/functions';
 import { WiStrongWind } from 'react-icons/wi';
 
 import styles from './DailyWeatherCard.module.scss';
 
 export default function DailyWeatherCard({ dailyWeather }) {
-  const formatDate = (dateStr) => {
-    let selectedDate = new Date(dateStr);
-
-    let date = selectedDate
-      .toLocaleString('en-GB', {
-        day: 'numeric',
-        weekday: 'short',
-        month: 'numeric'
-      })
-      .split(',')
-      .join('');
-
-    return `${date}`;
+  const format = (dateStr) => {
+    let opts = {
+      day: 'numeric',
+      weekday: 'short',
+      month: 'numeric',
+    };
+    return formatDate(opts, dateStr).split(',').join('');
   };
 
   const listItems = dailyWeather.forecast.map((item) => {
     return (
       <div className={styles['container__items-item']} key={item.date}>
-        <div>{formatDate(item.date)}</div>
+        <div>{format(item.date)}</div>
         <img width="60" src={getWeatherSymbol(item.symbol)} />
         <div className={styles.temperature}>
           <div className={styles['temperature--max']}>{item.maxTemp}&deg;</div>

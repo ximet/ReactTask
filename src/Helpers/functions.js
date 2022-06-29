@@ -18,4 +18,10 @@ function getWeatherSymbol(symbol) {
   return endpoints.SYMBOL(symbol);
 }
 
-export { findMyLocation, getWeatherSymbol };
+function formatDate(opts, param) {
+  const selection = new Date(param);
+  let item = selection.toLocaleString('en-GB', opts);
+  return item;
+}
+
+export { findMyLocation, getWeatherSymbol, formatDate };
