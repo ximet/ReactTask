@@ -1,6 +1,6 @@
 import styles from './CurrWeatherCard.module.scss';
 import { formatDate, getWeatherSymbol } from '../../Helpers/functions';
-import { optsDate, optsYear, optsTime } from '../../Helpers/constants';
+import { opts } from '../../Helpers/constants';
 
 export default function CurrWeatherCard({ locationData, currWeather }) {
   return (
@@ -9,7 +9,10 @@ export default function CurrWeatherCard({ locationData, currWeather }) {
         <p className={styles['location-name']}>{locationData.name}</p>
         <p className={styles['country-name']}>{locationData.country}</p>
         <small>
-          {`${formatDate(optsDate, currWeather.time)} ${formatDate(optsYear, currWeather.time)}`}
+          {`${formatDate(opts.dateLong, currWeather.time)} ${formatDate(
+            opts.year,
+            currWeather.time
+          )}`}
         </small>
       </div>
       <div className={styles['container__weather']}>
@@ -24,7 +27,7 @@ export default function CurrWeatherCard({ locationData, currWeather }) {
       </div>
       <div>
         <small>
-          <strong>Updated as of {formatDate(optsTime, currWeather.time)}</strong>
+          <strong>Updated as of {formatDate(opts.time, currWeather.time)}</strong>
         </small>
       </div>
 

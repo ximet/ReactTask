@@ -65,6 +65,8 @@ export default function Home() {
     }
   }
 
+  async function getCurrentCity() {}
+
   async function tokenCheck() {
     const token = (await requestToken()) || COOKIE.loadToken();
     if (token) {
