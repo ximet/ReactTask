@@ -33,6 +33,7 @@ module.exports = {
   },
   devServer: {
     static: commonPaths.outputPath,
+    historyApiFallback: true,
     compress: true,
     hot: true,
     port: 9020

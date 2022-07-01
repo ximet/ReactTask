@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { EndpointsConfig } from './helpersInterfaces';
+import { EndpointsConfig } from './Interfaces';
 
 export const ENDPOINTS: EndpointsConfig = {
   auth: 'http://localhost:3000/auth',
@@ -14,6 +14,7 @@ export const ENDPOINTS: EndpointsConfig = {
   airQuality: 'air-quality/forecast/hourly/'
 };
 
+//param - location or id
 function options(endpoint: string, param: string): AxiosRequestConfig {
   const forecaUrl: string = 'https://pfa.foreca.com/api/v1/';
   const accessToken: string = document.cookie.slice(6);

@@ -1,3 +1,7 @@
+export interface EndpointsConfig {
+  [property: string]: string;
+}
+
 export interface LocationSearch {
   locations: {
     id: number;
