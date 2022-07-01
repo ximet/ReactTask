@@ -21,7 +21,9 @@ const CitiesForm = props => {
           defaultValue="0"
           onChange={getCurrentCountry}
         >
-          <option value="0" disabled>Страна</option>
+          <option value="0" disabled>
+            Страна
+          </option>
           {countries.map(item => {
             return (
               <option key={item.name} value={item.isoCode}>
@@ -34,7 +36,9 @@ const CitiesForm = props => {
       {currentCountry && (
         <div className={styles.selectWrap}>
           <select className={styles.select} name="city" defaultValue="0" onChange={props.getCity}>
-            <option value="0" disabled>Город</option>
+            <option value="0" disabled>
+              Город
+            </option>
             {City.getCitiesOfCountry(currentCountry).map(item => {
               return (
                 <option key={item.name} value={item.name}>
