@@ -7,19 +7,74 @@ html {
 }
 body {
   padding-top: 120px;
-  height: 100vh;
+  padding-bottom: 60px;
   position: relative;
   background-image: url(../img/cloud-top.png);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
 }
+body:before {
+  z-index: 1;
+  content: '';
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 100px;
+  top: 100px;
+  background-image: url(../img/sun-moon.png);
+  background-repeat: no-repeat;
+  background-position: -241px -65px;
+  background-size: 465px;
+}
+body.dark {
+  background-image: url(../img/cloud-top-dark.png);
+  color: #fff;
+  background-color: #060b1d;
+}
+body.dark:before {
+  background-position: -13px -68px;
+}
+body.dark input,
+body.dark input::placeholder,
+body.dark textarea,
+body.dark textarea::placeholder,
+body.dark select {
+  color: #fff;
+}
+body.dark .selectWrap:after {
+  border-color: #fff;
+}
+body.dark header {
+  border-color: #060b1d;
+}
+body.dark header:before {
+  background-color: #060b1d;
+}
+body.dark .block {
+  background-color: #060b1d;
+}
 p {
   line-height: 24px;
 }
-input, input::placeholder, textarea, textarea::placeholder {
+input,
+input::placeholder,
+textarea,
+textarea::placeholder,
+select {
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
   color: #2e2e2e;
+  background-color: transparent;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #989898;
+}
+
+h1 {
+  width: 100%;
+  font-weight: 700;
+  font-size: 30px;
 }

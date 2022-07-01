@@ -1,14 +1,15 @@
 import Section from '../Components/Section/Section';
 import City from '../Components/City/City';
 
+import List from '../Pages/List';
+
 import { useState, useEffect } from 'react';
 
-import getCurrentWeather from '../Api/getCurrentWeather';
 import { useGeolocated } from 'react-geolocated';
+import getCurrentWeather from '../Api/getCurrentWeather';
+import getCity from '../Api/getCity';
 
 const Homepage = () => {
-  const [currentWeather, setCurrentWeather] = useState(null);
-
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
     positionOptions: {
       enableHighAccuracy: false
@@ -16,9 +17,26 @@ const Homepage = () => {
     userDecisionTimeout: 1000
   });
 
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [currentCity, setCurrentCity] = useState(null);
+
+  // getting City name by coords
   useEffect(() => {
     if (isGeolocationAvailable && isGeolocationEnabled && coords) {
-      getCurrentWeather(coords)
+      getCity({ latitude: coords.latitude, longitude: coords.longitude })
+        .then(data => {
+          setCurrentCity(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }, [coords]);
+
+  // getting City weather
+  useEffect(() => {
+    if (isGeolocationAvailable && isGeolocationEnabled && coords) {
+      getCurrentWeather(currentCity)
         .then(data => {
           setCurrentWeather(data);
         })
@@ -26,19 +44,13 @@ const Homepage = () => {
           console.log(error);
         });
     }
-  }, [coords]);
-  // .get(`current/location=33,33`)
-  // .get(`observation/latest/location=41.627496,41.616724`)
-
-  // let cre = popla();
+  }, [currentCity]);
 
   return (
     <>
-      {currentWeather && (
-        <Section>
-          <City currentWeather={currentWeather} />
-        </Section>
-      )}
+      <Section>
+        <City weather={currentWeather} />
+      </Section>
     </>
   );
 };

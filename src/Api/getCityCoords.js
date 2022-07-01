@@ -1,18 +1,16 @@
 import createWeatherApi from './createWeatherApi';
 
 const getCityCoords = async query => {
-  return await // getInstanse.get(`current/location=${coords.latitude},${coords.longitude}`)
-  createWeatherApi
-    .get(`location/search/${query}`)
+  return await createWeatherApi
+    .get(`location/search/${query}&lang=ru`)
     .then(function (response) {
       console.log(response);
-      // return {
-      //   symbol: response.data.current.symbol,
-      //   temperature: response.data.current.relHumidity,
-      //   humidity: response.data.current.relHumidity,
-      //   windSpeed: response.data.current.windSpeed,
-      //   cloudiness: response.data.current.cloudiness,
-      // };
+      return {
+        country: response.data.locations[0].country,
+        city: response.data.locations[0].name,
+        latitude: response.data.locations[0].lat,
+        longitude: response.data.locations[0].lon
+      };
     })
     .catch(function (error) {
       console.log(error);

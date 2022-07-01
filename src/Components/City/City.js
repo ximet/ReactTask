@@ -1,29 +1,36 @@
 import styles from './City.css';
 
 const City = props => {
-  return (
-    <div className={styles.city}>
-      <img
-        className={styles.symbol}
-        src={require(`../../Api/symbols/${props.currentWeather.symbol}.png`)}
-      />
-      <div>
-        <h2>Батуми</h2>
-        <h3>{props.currentWeather.temperature}°C</h3>
-      </div>
-      <ul className={styles.list}>
-        <li>
-          <b>Влажность:</b> {props.currentWeather.humidity}%
-        </li>
-        <li>
-          <b>Облачность:</b> {props.currentWeather.cloudiness}
-        </li>
-        <li>
-          <b>Скорость ветра:</b> {props.currentWeather.windSpeed} м/с
-        </li>
-      </ul>
-    </div>
-  );
+  if (props.weather != undefined) {
+    return (
+      <>
+        <div className={styles.city}>
+          <img
+            className={styles.symbol}
+            src={require(`../../Api/symbols/${props.weather.symbol}.png`)}
+          />
+          <div>
+            <h4>{props.weather.country}</h4>
+            <h2>{props.weather.city}</h2>
+            <h3>{props.weather.temperature}°C</h3>
+          </div>
+          <ul className={styles.list}>
+            <li>
+              <b>Влажность:</b> {props.weather.relHumidity}%
+            </li>
+            <li>
+              <b>Облачность:</b> {props.weather.cloudiness}
+            </li>
+            <li>
+              <b>Скорость ветра:</b> {props.weather.windSpeed} м/с
+            </li>
+          </ul>
+        </div>
+      </>
+    );
+  } else {
+    return false;
+  }
 };
 
 export default City;

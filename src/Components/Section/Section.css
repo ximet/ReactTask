@@ -1,5 +1,6 @@
 section {
   margin-top: 60px;
+  width: 100%;
 }
 .container {
   display: -webkit-box;
@@ -17,6 +18,11 @@ section {
   margin-left: auto;
 }
 .block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   width: 100%;
   background-color: #fff;
   padding: 30px 20px;

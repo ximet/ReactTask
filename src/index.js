@@ -9,17 +9,21 @@ import './assets/css/general.css';
 import Header from './Components/Header/Header';
 import List from './Pages/List';
 import Contacts from './Pages/Contacts';
+import Info from './Pages/Info';
 import Homepage from './Pages/Homepage';
 
 ReactDOM.render(
   <BrowserRouter>
     <Header />
-    <Routes>
-      <Route path="list" element={<List />} />
-      <Route path="contacts" element={<Contacts />} />
-      <Route path="/" element={<Homepage />} />
-      <Route path="*" element={<div>Page not found!</div>} />
-    </Routes>
+    <main>
+      <Routes>
+        <Route path="list" element={<List />} />
+        <Route path="info" element={<Info />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="*" element={<div>Page not found!</div>} />
+      </Routes>
+    </main>
   </BrowserRouter>,
 
   document.getElementById('app')

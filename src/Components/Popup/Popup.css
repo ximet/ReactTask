@@ -1,0 +1,30 @@
+.popupWrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup {
+  position: relative;
+  width: 400px;
+  max-width: calc(100% - 40px);
+  background-color: #fff;
+  padding: 50px 35px;
+}
+.close {
+  cursor: pointer;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 10px;
+  top: 6px;
+  font-weight: 700;
+  font-size: 40px;
+}
+.message {
+  font-size: 26px;
+}
