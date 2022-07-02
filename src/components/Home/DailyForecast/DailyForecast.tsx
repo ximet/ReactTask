@@ -4,13 +4,18 @@ import { useGetRequest } from './../../../hooks/useGetRequest';
 import { ENDPOINTS } from './../../../helpers/api';
 import Loading from '../../UI/Loading/Loading';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
+import { DailyForecastData } from '../../../helpers/Interfaces';
 
 interface DailyForecastProps {
   userLocation: string;
 }
 
 const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ userLocation }) => {
-  const { data, loading, error } = useGetRequest(ENDPOINTS.daily, userLocation);
+  const { data, loading, error }: {
+    data: DailyForecastData;
+    loading: boolean;
+    error: string | null;
+  } = useGetRequest(ENDPOINTS.daily, userLocation);
 
   return (
     <>

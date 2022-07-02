@@ -12,7 +12,10 @@ export const useGetRequest = (endpoint: string, param: string) => {
     setError(null);
     setLoading(true);
     getData(endpoint, param)
-      .then(data => setData(data))
+      .then(data => {
+        console.log(data);
+        setData(data);
+      })
       .catch((err: Error | AxiosError) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);

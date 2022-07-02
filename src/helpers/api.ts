@@ -3,7 +3,7 @@ import { EndpointsConfig } from './Interfaces';
 
 export const ENDPOINTS: EndpointsConfig = {
   auth: 'http://localhost:3000/auth',
-  locationSearch: 'location/search/',
+  locationSearch: 'location/search/', // +query
   locationInfo: 'location/',
   observations: 'observation/latest/',
   current: 'current/',
@@ -28,8 +28,8 @@ function options(endpoint: string, param: string): AxiosRequestConfig {
 }
 
 export async function getData(endpoint: string, param: string): Promise<any> {
-  return axios.request(options(endpoint, param)).then(response => {
-    return response.data;
+  return axios.request(options(endpoint, param)).then(({data}) => {
+    return data;
   });
 }
 

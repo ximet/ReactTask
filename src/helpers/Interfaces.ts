@@ -2,16 +2,19 @@ export interface EndpointsConfig {
   [property: string]: string;
 }
 
-export interface LocationSearch {
-  locations: {
-    id: number;
-    name: string;
-    country: string;
-    timezone: string;
-    adminArea: string;
-    lon: number;
-    lat: number;
-  }[];
+export interface Locations {
+  id: number;
+  name: string;
+  country: string;
+  timezone?: string;
+  adminArea: string;
+  lon?: number;
+  lat?: number;
+}
+[];
+
+export interface LocationSearch extends Locations {
+  locations: Locations;
 }
 
 export interface LocationInfo {
@@ -47,7 +50,7 @@ export interface CurrentData {
   };
 }
 
-export interface ForecastData {
+export interface DailyForecastData {
   forecast: {
     date: string;
     symbol: string;

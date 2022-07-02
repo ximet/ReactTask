@@ -7,7 +7,15 @@ import DailyForecast from './DailyForecast/DailyForecast';
 import Search from './Search/Search';
 
 const Home: React.FunctionComponent = () => {
-  const { userLocation, error: locationError, loading: locationLoading } = useLocation();
+  const {
+    userLocation,
+    error: locationError,
+    loading: locationLoading
+  }: {
+    userLocation: string;
+    error: string | null;
+    loading: boolean;
+  } = useLocation();
 
   return (
     <>
