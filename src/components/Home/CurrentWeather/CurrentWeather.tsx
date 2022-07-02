@@ -7,15 +7,19 @@ import Loading from '../../UI/Loading/Loading';
 import Title from './../../UI/Title/Title';
 
 interface CurrentWeatherProps {
-  userLocation: string;
+  location: string;
 }
 
-const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({ userLocation }) => {
-  const { data, loading, error } : {
+const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({ location }) => {
+  const {
+    data,
+    loading,
+    error
+  }: {
     data: CurrentData;
     loading: boolean;
     error: string | null;
-  } = useGetRequest(ENDPOINTS.current, userLocation) ;
+  } = useGetRequest(ENDPOINTS.current, location);
 
   return (
     <>

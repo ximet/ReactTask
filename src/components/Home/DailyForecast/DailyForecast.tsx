@@ -7,15 +7,15 @@ import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import { DailyForecastData } from '../../../helpers/Interfaces';
 
 interface DailyForecastProps {
-  userLocation: string;
+  location: string;
 }
 
-const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ userLocation }) => {
+const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ location }) => {
   const { data, loading, error }: {
     data: DailyForecastData;
     loading: boolean;
     error: string | null;
-  } = useGetRequest(ENDPOINTS.daily, userLocation);
+  } = useGetRequest(ENDPOINTS.daily, location);
 
   return (
     <>

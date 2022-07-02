@@ -9,16 +9,18 @@ export const useGetRequest = (endpoint: string, param: string) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isSubscribed = true;
     setError(null);
     setLoading(true);
     getData(endpoint, param)
-      .then(data => {
-        console.log(data);
-        setData(data);
-      })
-      .catch((err: Error | AxiosError) => setError(err.message))
+      .then(data => isSubscribed && setData(data))
+      .catch((err: Error | AxiosError) => isSubscribed && setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [param]);
 
   return {
     data,
