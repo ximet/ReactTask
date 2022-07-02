@@ -1,26 +1,25 @@
 import { useEffect, useState } from 'react';
-import { instance } from '../../DataService/dataService';
-import { endpoints } from '../../Helpers/constants';
+import { instance } from '../../../DataService/dataService';
+import { endpoints } from '../../../Helpers/constants';
 
-import styles from './Search.module.scss';
+import styles from './SearchBar.module.scss';
 import { FiSearch } from 'react-icons/fi';
 
-const Search = ({ cities }) => {
+function SearchBar() {
   const [inputValue, setInputValue] = useState('');
   const [searchData, setSearchData] = useState([]);
 
   const getLocationName = async () => {
     try {
       const { data } = await instance(endpoints.LOCATION_NAME(inputValue));
-      console.log(data.locations);
       setSearchData(data.locations);
     } catch (error) {
-      alert(error);
+      console.error(error.message);
     }
   };
 
   useEffect(async () => {
-    if (inputValue.length >= 3) {
+    if (inputValue.length > 2) {
       getLocationName();
     }
   }, [inputValue]);
@@ -29,28 +28,33 @@ const Search = ({ cities }) => {
     setInputValue(value);
   };
 
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log('CHANGE WEATHER!');
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.search}>
+      <form className={styles.search} onSubmit={onSubmitHandler}>
         <input
           list="locations"
           type="text"
           value={inputValue}
           onChange={(event) => inputValueHandler(event.target.value)}
-          className={styles['search-term']}
+          className={styles['search-bar']}
           placeholder="Search"
         />
-        <div type="button" className={styles['search-icon']}>
+        <button type="submit" className={styles['search-icon']}>
           <FiSearch />
-        </div>
-        <datalist id="locations" className={styles.searchData}>
+        </button>
+        <datalist id="locations">
           {searchData.map((item) => (
-            <option key={item.id} value={item.name} />
+            <option key={item.id} value={`${item.name}, ${item.country}`} />
           ))}
         </datalist>
-      </div>
+      </form>
     </div>
   );
-};
+}
 
-export default Search;
+export default SearchBar;

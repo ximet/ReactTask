@@ -1,6 +1,13 @@
-import Navbar from './Navbar/Navbar';
-import CurrWeatherCard from './CurrWeatherCard/CurrWeatherCard';
-import DailyWeatherCard from './DailyWeather/DailyWeatherCard';
-import Search from './Search/Search';
+import Header from './Header/Header';
+import HomePage from './HomePage/HomePage';
+import AboutPage from './AboutPage/AboutPage';
+import FavPage from './FavPage/FavPage';
+import FeedbackPage from './FeedbackPage/FeedbackPage';
 
-export { Navbar, CurrWeatherCard, DailyWeatherCard, Search };
+import SearchBar from './HomePage/SearchBar/SearchBar';
+import CurrentForecast from './HomePage/CurrentForecast/CurrentForecast';
+import DailyForecast from './HomePage/DailyForecast/DailyForecast';
+import HourlyForecast from './HomePage/HourlyForecast/HourlyForecast';
+
+export { Header, HomePage, AboutPage, FavPage, FeedbackPage };
+export { SearchBar, CurrentForecast, DailyForecast, HourlyForecast };

@@ -1,10 +1,10 @@
-import { getWeatherSymbol, formatDate } from '../../Helpers/functions';
-import { opts } from '../../Helpers/constants';
+import { getWeatherSymbol, formatDate } from '../../../Helpers/functions';
+import { opts } from '../../../Helpers/constants';
 
 import { WiStrongWind } from 'react-icons/wi';
-import styles from './DailyWeatherCard.module.scss';
+import styles from './DailyForecast.module.scss';
 
-export default function DailyWeatherCard({ dailyWeather }) {
+function DailyForecast({ dailyWeather }) {
   const listItems = dailyWeather.forecast.map((item) => {
     return (
       <div className={styles['container__items-item']} key={item.date}>
@@ -29,3 +29,5 @@ export default function DailyWeatherCard({ dailyWeather }) {
     </div>
   );
 }
+
+export default DailyForecast;

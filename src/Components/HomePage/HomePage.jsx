@@ -4,11 +4,11 @@ import { endpoints } from '../../Helpers/constants';
 import { requestToken, instance } from '../../DataService/dataService';
 import { COOKIE } from '../../DataService/cookieService';
 
-import { CurrWeatherCard, DailyWeatherCard, Search } from '../../Components/index';
+import { CurrentForecast, DailyForecast, SearchBar, HourlyForecast } from '../../Components/index';
 
-import styles from './Home.module.scss';
+import styles from './HomePage.module.scss';
 
-export default function Home() {
+function HomePage() {
   const [currWeather, setCurrWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState(null);
   const [coords, setCoords] = useState(null);
@@ -29,7 +29,7 @@ export default function Home() {
       setError(null);
     } catch (error) {
       setIsLoading(false);
-      setError(error);
+      setError(error.message);
     }
   }
 
@@ -45,7 +45,7 @@ export default function Home() {
       setError(null);
     } catch (error) {
       setIsLoading(false);
-      setError(error);
+      setError(error.message);
     }
   }
 
@@ -61,11 +61,9 @@ export default function Home() {
       setError(null);
     } catch (error) {
       setIsLoading(false);
-      setError(error);
+      setError(error.message);
     }
   }
-
-  async function getCurrentCity() {}
 
   async function tokenCheck() {
     const token = (await requestToken()) || COOKIE.loadToken();
@@ -87,13 +85,15 @@ export default function Home() {
 
   return (
     <main className={styles.container}>
-      <Search />
+      <SearchBar />
       {locationData && currWeather && dailyWeather && (
-        <CurrWeatherCard locationData={locationData} currWeather={currWeather.current} />
+        <CurrentForecast locationData={locationData} currWeather={currWeather.current} />
       )}
-      {dailyWeather && <DailyWeatherCard dailyWeather={dailyWeather} />}
-      {error && <p>{error}</p>}
+      {dailyWeather && <DailyForecast dailyWeather={dailyWeather} />}
+      {error && <p>{error.message}</p>}
       {isLoading && <p>Loading...</p>}
     </main>
   );
 }
+
+export default HomePage;

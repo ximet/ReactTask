@@ -1,8 +1,9 @@
-import styles from './CurrWeatherCard.module.scss';
-import { formatDate, getWeatherSymbol } from '../../Helpers/functions';
-import { opts } from '../../Helpers/constants';
+import { formatDate, getWeatherSymbol } from '../../../Helpers/functions';
+import { opts } from '../../../Helpers/constants';
 
-export default function CurrWeatherCard({ locationData, currWeather }) {
+import styles from './CurrentForecast.module.scss';
+
+function CurrentForecast({ locationData, currWeather }) {
   return (
     <div className={styles.container}>
       <div className={styles['container__location']}>
@@ -59,3 +60,5 @@ export default function CurrWeatherCard({ locationData, currWeather }) {
     </div>
   );
 }
+
+export default CurrentForecast;

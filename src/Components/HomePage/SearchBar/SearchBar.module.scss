@@ -1,4 +1,4 @@
-@import '../../Styles/variables.scss';
+@import '../../../Styles/variables.scss';
 
 .container {
   display: flex;
@@ -8,7 +8,7 @@
     width: 20%;
     display: flex;
 
-    &-term {
+    &-bar {
       width: 100%;
       border: none;
       padding: 5px;
@@ -17,7 +17,8 @@
       color: black;
     }
 
-    &-button {
+    &-icon {
+      height: 100%;
       display: flex;
       justify-content: center;
       border: none;
@@ -27,6 +28,7 @@
       background: $color-1L;
       color: #fff;
       border-radius: 0 5px 5px 0;
+      cursor: pointer;
     }
   }
 }

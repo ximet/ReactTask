@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.scss';
+import styles from './Header.module.scss';
 
-export default function Navbar() {
+function Header() {
   return (
     <nav className={styles.navMenu}>
       <div className={styles.container}>
@@ -13,10 +13,15 @@ export default function Navbar() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/cities">Cities</Link>
+            <Link to="/favourites">Favourites</Link>
+          </li>
+          <li>
+            <Link to="/feedback">Feedback</Link>
           </li>
         </ul>
       </div>
     </nav>
   );
 }
+
+export default Header;
