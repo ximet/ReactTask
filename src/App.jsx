@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
-import { Header, HomePage, AboutPage, FavPage, FeedbackPage } from './Components/index';
+import { Header, HomePage, AboutPage, FavPage, FeedbackPage, Footer } from './Components/index';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Route path="/about" component={AboutPage} />
       <Route path="/favourites" component={FavPage} />
       <Route path="/feedback" component={FeedbackPage} />
+      <Footer />
     </Router>
   );
 }
