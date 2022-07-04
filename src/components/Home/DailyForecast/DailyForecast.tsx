@@ -11,7 +11,11 @@ interface DailyForecastProps {
 }
 
 const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ location }) => {
-  const { data, loading, error }: {
+  const {
+    data,
+    loading,
+    error
+  }: {
     data: DailyForecastData;
     loading: boolean;
     error: string | null;

@@ -5,7 +5,6 @@ import { useDebounce } from './../../../hooks/useDebounce';
 import { useGetRequest } from './../../../hooks/useGetRequest';
 import SearchResults from './SearchResults/SearchResults';
 
-
 const Search: React.FunctionComponent = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const debouncedSearchTerm: string = useDebounce(searchTerm);
@@ -31,9 +30,7 @@ const Search: React.FunctionComponent = () => {
         value={searchTerm}
       />
       {searchTerm.length < 3 && <p>Enter at least 3 letters</p>}
-      {searchResults.locations.length > 0 && (
-        <SearchResults searchResults={searchResults} />
-      )}
+      {searchResults.locations.length > 0 && <SearchResults searchResults={searchResults} />}
     </>
   );
 };
