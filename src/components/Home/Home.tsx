@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { ENDPOINTS } from '../../helpers/api';
+import { LocationInfo } from '../../helpers/Interfaces';
+import { LocationContext } from '../../store/location-context';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
 import Loading from '../UI/Loading/Loading';
+import { useGetRequest } from './../../hooks/useGetRequest';
 import { useLocation } from './../../hooks/useLocation';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyForecast from './DailyForecast/DailyForecast';
 import Search from './Search/Search';
-import { useGetRequest } from './../../hooks/useGetRequest';
-import { ENDPOINTS } from '../../helpers/api';
-import { LocationInfo } from '../../helpers/Interfaces';
 
 const Home: React.FunctionComponent = () => {
   const {
@@ -19,7 +20,8 @@ const Home: React.FunctionComponent = () => {
     error: string | null;
     loading: boolean;
   } = useLocation();
-  const [locationId, setLocationId] = useState<string | null>(null);
+  const [locationId, setLocationId] = useState<string>('');
+
   const locationParam = locationId ? locationId : userLocation;
   const {
     data: locationInfo,
@@ -33,16 +35,18 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <>
-      <Search setLocationId={setLocationId} />
-      {locationLoading && <Loading />}
-      {locationError && <ErrorComponent message={locationError} button="TRY_AGAIN" />}
-      {!locationLoading && !locationError && (
-        <>
-          <h1>{locationInfo && `${locationInfo.name}, ${locationInfo.country}`}</h1>
-          <CurrentWeather location={locationParam} />
-          <DailyForecast location={locationParam} />
-        </>
-      )}
+      <LocationContext.Provider value={{ setLocationId: setLocationId }}>
+        <Search />
+        {locationLoading && <Loading />}
+        {locationError && <ErrorComponent message={locationError} button="TRY_AGAIN" />}
+        {!locationLoading && !locationError && (
+          <>
+            <h1>{locationInfo && `${locationInfo.name}, ${locationInfo.country}`}</h1>
+            <CurrentWeather location={locationParam} />
+            <DailyForecast location={locationParam} />
+          </>
+        )}
+      </LocationContext.Provider>
     </>
   );
 };

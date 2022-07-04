@@ -28,7 +28,7 @@ function options(endpoint: string, param: string): AxiosRequestConfig {
 }
 
 export async function getData(endpoint: string, param: string): Promise<any> {
-  return axios.request(options(endpoint, param)).then(({data}) => {
+  return axios.request(options(endpoint, param)).then(({ data }) => {
     return data;
   });
 }
