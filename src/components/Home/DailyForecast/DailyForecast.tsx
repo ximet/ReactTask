@@ -5,6 +5,7 @@ import { ENDPOINTS } from './../../../helpers/api';
 import Loading from '../../UI/Loading/Loading';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import { DailyForecastData } from '../../../helpers/Interfaces';
+import Card from '../../UI/Card/Card';
 
 interface DailyForecastProps {
   location: string;
@@ -22,7 +23,7 @@ const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ location }
   } = useGetRequest(ENDPOINTS.daily, location);
 
   return (
-    <>
+    <Card>
       {loading && <Loading />}
       {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
       {!loading && !error && (
@@ -31,7 +32,7 @@ const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ location }
           <div>{JSON.stringify(data)}</div>
         </>
       )}
-    </>
+    </Card>
   );
 };
 

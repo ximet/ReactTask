@@ -21,9 +21,7 @@ module.exports = {
             options: {
               sourceMap: true,
               localsConvention: 'camelCase',
-              modules: {
-                localIdentName: '[local]___[hash:base64:5]'
-              }
+              modules: true
             }
           },
           'sass-loader'

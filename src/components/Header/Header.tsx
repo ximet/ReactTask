@@ -1,26 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import styles from './Header.module.scss';
 
 const Header: React.FunctionComponent = () => {
   return (
-    <header style={{ padding: 20 }}>
-      <h1>Nice Weather App</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/cities">Cities</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contacts">Contacts</Link>
-          </li>
-        </ul>
-      </nav>
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <h1 className={styles.logo}>Nice Weather App</h1>
+        <nav className={styles.nav}>
+          <ul className={styles.ul}>
+            <li className={styles.li}>
+              <NavLink
+                to="/"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className={styles.li}>
+              <NavLink
+                to="/cities"
+                style={({ isActive }) => (isActive ? { backgroundColor: '#fedc00' } : {})}
+              >
+                Cities
+              </NavLink>
+            </li>
+            <li className={styles.li}>
+              <NavLink
+                to="/about"
+                style={({ isActive }) => (isActive ? { backgroundColor: '#fedc00' } : {})}
+              >
+                About
+              </NavLink>
+            </li>
+            <li className={styles.li}>
+              <NavLink
+                to="/contacts"
+                style={({ isActive }) => (isActive ? { backgroundColor: '#fedc00' } : {})}
+              >
+                Contacts
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };

@@ -1,0 +1,26 @@
+.container {
+  margin: 0 auto;
+  background-color: white;
+  height: 30vh;
+  overflow-y: scroll;
+  border: 1px solid #245f763b;
+  padding: 0;
+  position: relative;
+  top:0;
+  z-index: 2;
+  .list {
+    width: 100%;
+
+    &:hover {
+      background-color: #fedc00;
+    }
+    .li {
+      text-align: left;
+      list-style: none;
+      padding: 1rem 2rem;
+      margin: 0 2rem;
+      cursor: pointer;
+      border-bottom: 1px solid #245f763b;
+    }
+  }
+}

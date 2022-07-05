@@ -5,6 +5,7 @@ import { useGetRequest } from '../../../hooks/useGetRequest';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import Loading from '../../UI/Loading/Loading';
 import Title from './../../UI/Title/Title';
+import Card from '../../UI/Card/Card';
 
 interface CurrentWeatherProps {
   location: string;
@@ -22,7 +23,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({ location
   } = useGetRequest(ENDPOINTS.current, location);
 
   return (
-    <>
+    <Card>
       {loading && <Loading />}
       {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
       {!loading && !error && (
@@ -31,7 +32,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({ location
           <div>{JSON.stringify(data)}</div>
         </>
       )}
-    </>
+    </Card>
   );
 };
 

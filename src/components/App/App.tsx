@@ -20,19 +20,17 @@ const App: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="cities" element={<Cities />} />
-          <Route path="about" element={<About />} />
-          <Route path="contacts" element={<Contacts />} />
-          <Route path="*" element={<ErrorComponent message="Page not found" button="HOME" />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="cities" element={<Cities />} />
+        <Route path="about" element={<About />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="*" element={<ErrorComponent message="Page not found" button="HOME" />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 

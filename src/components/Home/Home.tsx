@@ -34,9 +34,9 @@ const Home: React.FunctionComponent = () => {
   } = useGetRequest(ENDPOINTS.locationInfo, locationParam);
 
   return (
-    <>
-      <LocationContext.Provider value={{ setLocationId: setLocationId }}>
-        <Search />
+    <LocationContext.Provider value={{ setLocationId: setLocationId }}>
+      <Search />
+      <main>
         {locationLoading && <Loading />}
         {locationError && <ErrorComponent message={locationError} button="TRY_AGAIN" />}
         {!locationLoading && !locationError && (
@@ -45,9 +45,9 @@ const Home: React.FunctionComponent = () => {
             <CurrentWeather location={locationParam} />
             <DailyForecast location={locationParam} />
           </>
-        )}
-      </LocationContext.Provider>
-    </>
+        )}{' '}
+      </main>
+    </LocationContext.Provider>
   );
 };
 
