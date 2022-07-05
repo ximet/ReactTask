@@ -5,11 +5,11 @@ import { endpoints } from '../../../Helpers/constants';
 import styles from './SearchBar.module.scss';
 import { FiSearch } from 'react-icons/fi';
 
-function SearchBar() {
+function SearchBar({ coordsStateHandler, ...rest }) {
   const [inputValue, setInputValue] = useState('');
   const [searchData, setSearchData] = useState([]);
 
-  const getLocationName = async () => {
+  const getLocationDataByName = async () => {
     try {
       const { data } = await instance(endpoints.LOCATION_NAME(inputValue));
       setSearchData(data.locations);
@@ -18,9 +18,21 @@ function SearchBar() {
     }
   };
 
-  useEffect(async () => {
+  const getLocationCoords = async () => {
+    try {
+      const { data } = await instance(
+        endpoints.LOCATION_NAME(inputValue.substring(0, inputValue.indexOf(',')))
+      );
+      return { long: data.locations[0]?.lon, lat: data.locations[0]?.lat };
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
     if (inputValue.length > 2) {
-      getLocationName();
+      getLocationDataByName();
+      getLocationCoords();
     }
   }, [inputValue]);
 
@@ -28,9 +40,11 @@ function SearchBar() {
     setInputValue(value);
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log('CHANGE WEATHER!');
+    console.log(await getLocationCoords());
+    coordsStateHandler(await getLocationCoords());
+    setInputValue('');
   };
 
   return (

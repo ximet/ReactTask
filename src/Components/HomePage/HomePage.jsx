@@ -11,25 +11,26 @@ import styles from './HomePage.module.scss';
 function HomePage() {
   const [currWeather, setCurrWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState(null);
+  const [hourlyWeather, setHourlyWeather] = useState(null);
   const [coords, setCoords] = useState(null);
   const [locationData, setLocationData] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function getCurrentWeather() {
+  async function getCurrentWeatherByCoords() {
     if (!coords) {
       return;
     }
     try {
       setIsLoading(true);
-      const { data } = await instance.get(endpoints.CURR_WEATHER(coords));
+      const { data } = await instance.get(endpoints.CURR_WEATHER_BY_COORDS(coords));
       setCurrWeather(data);
       setIsLoading(false);
       setError(null);
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error);
     }
   }
 
@@ -45,23 +46,39 @@ function HomePage() {
       setError(null);
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error);
     }
   }
 
-  async function getLocationData() {
+  async function getHourlyWeather() {
     if (!coords) {
       return;
     }
     try {
       setIsLoading(true);
-      let { data } = await instance.get(endpoints.LOCATION_DATA(coords));
+      const { data } = await instance.get(endpoints.HOURLY_WEATHER(coords));
+      setHourlyWeather(data);
+      setIsLoading(false);
+      setError(null);
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+    }
+  }
+
+  async function getLocationDataByCoords() {
+    if (!coords) {
+      return;
+    }
+    try {
+      setIsLoading(true);
+      let { data } = await instance.get(endpoints.LOCATION_DATA_BY_COORDS(coords));
       setLocationData(data);
       setIsLoading(false);
       setError(null);
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      setError(error);
     }
   }
 
@@ -78,20 +95,22 @@ function HomePage() {
   }, []);
 
   useEffect(async () => {
-    await getCurrentWeather();
-    await getLocationData();
+    await getCurrentWeatherByCoords();
+    await getLocationDataByCoords();
     await getDailyWeather();
+    await getHourlyWeather();
   }, [coords]);
 
   return (
     <main className={styles.container}>
-      <SearchBar />
-      {locationData && currWeather && dailyWeather && (
+      <SearchBar coordsStateHandler={setCoords} />
+      {locationData && currWeather && (
         <CurrentForecast locationData={locationData} currWeather={currWeather.current} />
       )}
+      {hourlyWeather && <HourlyForecast hourlyWeather={hourlyWeather} />}
       {dailyWeather && <DailyForecast dailyWeather={dailyWeather} />}
-      {error && <p>{error.message}</p>}
       {isLoading && <p>Loading...</p>}
+      {error && <p>{error.message}</p>}
     </main>
   );
 }
