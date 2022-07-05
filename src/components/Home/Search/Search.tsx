@@ -18,9 +18,9 @@ const Search: React.FunctionComponent = () => {
     debouncedSearchTerm
   );
   const [displaySearchResults, setDisplaySearchResults] = useState<boolean>(false);
-  
+
   const inputChangeHandler = (event: FormEvent<HTMLInputElement>): void => {
-    setDisplaySearchResults(true)
+    setDisplaySearchResults(true);
     setSearchTerm(event.currentTarget.value);
   };
 
@@ -35,7 +35,11 @@ const Search: React.FunctionComponent = () => {
       />
       {searchTerm.length < 3 && <p>Enter at least 3 letters</p>}
       {searchResults.locations.length > 0 && displaySearchResults && (
-        <SearchResults searchResults={searchResults} setSearchTerm={setSearchTerm} setDisplaySearchResults={setDisplaySearchResults}/>
+        <SearchResults
+          searchResults={searchResults}
+          setSearchTerm={setSearchTerm}
+          setDisplaySearchResults={setDisplaySearchResults}
+        />
       )}
     </section>
   );
