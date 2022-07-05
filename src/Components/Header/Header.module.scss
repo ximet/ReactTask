@@ -5,7 +5,22 @@
   margin-bottom: 2rem;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background: linear-gradient(to right, #f12711, #f5af19);
+  // background: linear-gradient(220.55deg, #8a88fb 0%, #d079ee 100%);
+  // background: linear-gradient(
+  //   0deg,
+  //   hsl(209deg, 59%, 72%) 0%,
+  //   hsl(214deg, 48%, 67%) 11%,
+  //   hsl(219deg, 38%, 62%) 22%,
+  //   hsl(227deg, 30%, 57%) 33%,
+  //   hsl(239deg, 22%, 53%) 44%,
+  //   hsl(254deg, 23%, 45%) 56%,
+  //   hsl(269deg, 27%, 38%) 67%,
+  //   hsl(284deg, 32%, 30%) 78%,
+  //   hsl(300deg, 42%, 23%) 89%,
+  //   hsl(312deg, 74%, 16%) 100%
+  // );
+  // background-color: $color-1L;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 
   .container {
     width: 50%;
@@ -16,10 +31,11 @@
       padding: 2rem 0 2rem;
       display: flex;
       justify-content: space-evenly;
+      border-bottom: 1px solid transparent;
     }
 
     a {
-      color: black;
+      color: $color-1L;
       list-style: none;
       text-decoration: none;
       font-size: $medium-font-size;
