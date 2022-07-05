@@ -7,7 +7,7 @@ const City = props => {
         <div className={styles.city}>
           <img
             className={styles.symbol}
-            src={require(`../../Api/symbols/${props.weather.symbol}.png`)}
+            src={require(`../../assets/img/symbols/${props.weather.symbol}.png`)}
           />
           <div>
             <h4>{props.weather.country}</h4>
@@ -16,13 +16,13 @@ const City = props => {
           </div>
           <ul className={styles.list}>
             <li>
-              <b>Влажность:</b> {props.weather.relHumidity}%
+              <b>Humidity:</b> {props.weather.relHumidity}%
             </li>
             <li>
-              <b>Облачность:</b> {props.weather.cloudiness}
+              <b>cloudiness:</b> {props.weather.cloudiness}
             </li>
             <li>
-              <b>Скорость ветра:</b> {props.weather.windSpeed} м/с
+              <b>Wind speed:</b> {props.weather.windSpeed} м/с
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import styles from './CitiesForm.css';
 
@@ -6,11 +6,6 @@ import { Country, City } from 'country-state-city';
 
 const CitiesForm = props => {
   const countries = Country.getAllCountries();
-  const [currentCountry, setCurrentCountry] = useState(false);
-
-  const getCurrentCountry = e => {
-    setCurrentCountry(e.target.value);
-  };
 
   return (
     <form className={styles.form} onSubmit={props.submitForm}>
@@ -19,10 +14,10 @@ const CitiesForm = props => {
           className={styles.select}
           name="country"
           defaultValue="0"
-          onChange={getCurrentCountry}
+          onChange={props.getCurrentCountry}
         >
           <option value="0" disabled>
-            Страна
+            Country
           </option>
           {countries.map(item => {
             return (
@@ -33,13 +28,13 @@ const CitiesForm = props => {
           })}
         </select>
       </div>
-      {currentCountry && (
+      {props.currentCountry && (
         <div className={styles.selectWrap}>
           <select className={styles.select} name="city" defaultValue="0" onChange={props.getCity}>
             <option value="0" disabled>
-              Город
+              City
             </option>
-            {City.getCitiesOfCountry(currentCountry).map(item => {
+            {City.getCitiesOfCountry(props.currentCountry).map(item => {
               return (
                 <option key={item.name} value={item.name}>
                   {item.name}
@@ -56,10 +51,10 @@ const CitiesForm = props => {
           name="city"
           onChange={props.getCity}
           value={props.city}
-          placeholder="Город"
+          placeholder="City"
         />
         <button className={styles.btn} type="submit">
-          Поиск
+          Search
         </button>
       </div>
     </form>

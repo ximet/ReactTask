@@ -2,7 +2,7 @@ import createWeatherApi from './createWeatherApi';
 
 const getCurrentWeather = async coords => {
   return await createWeatherApi
-    .get(`current/location=${coords.latitude},${coords.longitude}&lang=ru`)
+    .get(`current/location=${coords.latitude},${coords.longitude}`)
     .then(function (response) {
       console.log(response);
       return {
@@ -14,9 +14,6 @@ const getCurrentWeather = async coords => {
         windSpeed: response.data.current.windSpeed,
         cloudiness: response.data.current.cloudiness
       };
-    })
-    .catch(function (error) {
-      console.log(error);
     });
 };
 

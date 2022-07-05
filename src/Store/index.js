@@ -1,5 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-const store = configureStore();
+import listPageSlice from './reducers/ListPageSlice/index';
 
-export default store;
+const store = configureStore({
+  reducer: {
+    listPage: listPageSlice,
+    // useGoods: useGoodsSlice,
+  }
+});
+export default store

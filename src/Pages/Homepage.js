@@ -18,33 +18,25 @@ const Homepage = () => {
   });
 
   const [currentWeather, setCurrentWeather] = useState(null);
-  const [currentCity, setCurrentCity] = useState(null);
 
   // getting City name by coords
   useEffect(() => {
     if (isGeolocationAvailable && isGeolocationEnabled && coords) {
       getCity({ latitude: coords.latitude, longitude: coords.longitude })
         .then(data => {
-          setCurrentCity(data);
+          getCurrentWeather(data)
+            .then(data => {
+              setCurrentWeather(data);
+            })
+            .catch(error => {
+              console.log(error);
+            });
         })
         .catch(error => {
           console.log(error);
         });
     }
   }, [coords]);
-
-  // getting City weather
-  useEffect(() => {
-    if (isGeolocationAvailable && isGeolocationEnabled && coords) {
-      getCurrentWeather(currentCity)
-        .then(data => {
-          setCurrentWeather(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  }, [currentCity]);
 
   return (
     <>

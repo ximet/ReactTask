@@ -29,29 +29,19 @@ body:before {
 }
 body.dark {
   background-image: url(../img/cloud-top-dark.png);
-  color: #fff;
   background-color: #060b1d;
 }
 body.dark:before {
   background-position: -13px -68px;
 }
-body.dark input,
-body.dark input::placeholder,
-body.dark textarea,
-body.dark textarea::placeholder,
-body.dark select {
-  color: #fff;
-}
 body.dark .selectWrap:after {
   border-color: #fff;
 }
 body.dark header {
+  color: #fff;
   border-color: #060b1d;
 }
 body.dark header:before {
-  background-color: #060b1d;
-}
-body.dark .block {
   background-color: #060b1d;
 }
 p {

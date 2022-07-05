@@ -2,7 +2,7 @@ import createWeatherApi from './createWeatherApi';
 
 const getCity = async coords => {
   return await createWeatherApi
-    .get(`location/${coords.latitude},${coords.longitude}&lang=ru`)
+    .get(`location/${coords.latitude},${coords.longitude}`)
     .then(function (response) {
       console.log(response);
       return {
@@ -11,9 +11,6 @@ const getCity = async coords => {
         latitude: response.data.lat,
         longitude: response.data.lon
       };
-    })
-    .catch(function (error) {
-      console.log(error);
     });
 };
 

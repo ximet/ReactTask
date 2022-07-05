@@ -8,8 +8,5 @@ module.exports = {
   imagesFolder: 'images',
   fontsFolder: 'fonts',
   cssFolder: 'css',
-  jsFolder: 'js',
-  devServer: {
-    historyApiFallback: true
-  }
+  jsFolder: 'js'
 };

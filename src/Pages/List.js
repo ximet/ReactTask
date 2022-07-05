@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Section from '../Components/Section/Section';
 import PopupPortal from '../Components/Popup/PopupPortal';
@@ -9,59 +9,65 @@ import City from '../Components/City/City';
 import getCityCoords from '../Api/getCityCoords';
 import getCurrentWeather from '../Api/getCurrentWeather';
 
-const List = () => {
-  const [city, setCity] = useState('');
-  const [cityCoords, setCityCoords] = useState(null);
-  const [cityWeather, setCityWeather] = useState(null);
+import { listPageActions } from '../Store/reducers/ListPageSlice/index';
 
-  const [error, setError] = useState(false);
+const List = () => {
+  const dispatch = useDispatch();
+  const {
+    currentCountry,
+    city,
+    cityWeather,
+    error
+  } = useSelector(state => state.listPage);
 
   const getCity = e => {
-    setCity(e.target.value);
+    dispatch(listPageActions.setCity(e.target.value));
+  };
+  
+  const getCurrentCountry = e => {
+    dispatch(listPageActions.setCurrentCountry(e.target.value));
   };
 
   const submitForm = e => {
     e.preventDefault();
 
-    if (city != null) {
+    if (city) {
       getCityCoords(city)
         .then(data => {
           if (data != undefined) {
-            setCityCoords(data);
+            getCurrentWeather(data)
+              .then(data => {
+                console.log(data);
+                dispatch(listPageActions.setCityWeather(data));
+              })
+              .catch(error => {
+                console.log(error);
+              });
           } else {
-            setError('Город не найден!');
+            dispatch(listPageActions.setError('Сity is not found!'));
           }
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
+          dispatch(listPageActions.setError('Сity is not found!'));
         });
     }
-
-    return;
   };
 
-  useEffect(() => {
-    if (cityCoords != null) {
-      getCurrentWeather(cityCoords)
-        .then(data => {
-          console.log(data);
-          setCityWeather(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  }, [cityCoords]);
-
   const closePopup = () => {
-    setError(false);
+    dispatch(listPageActions.setError(false));
   };
   return (
     <>
       {error && <PopupPortal close={closePopup} message={error} />}
       <Section>
-        <h1>Найти город</h1>
-        <CitiesForm submitForm={submitForm} getCity={getCity} city={city} />
+        <h1>Search city</h1>
+        <CitiesForm 
+          submitForm={submitForm} 
+          getCurrentCountry={getCurrentCountry}
+          currentCountry={currentCountry}
+          getCity={getCity} 
+          city={city} 
+        />
         <City weather={cityWeather} />
         {/* <CitiesList citiesArray={citiesArray} /> */}
       </Section>
