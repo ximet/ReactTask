@@ -13,17 +13,12 @@ import { listPageActions } from '../Store/reducers/ListPageSlice/index';
 
 const List = () => {
   const dispatch = useDispatch();
-  const {
-    currentCountry,
-    city,
-    cityWeather,
-    error
-  } = useSelector(state => state.listPage);
+  const { currentCountry, city, cityWeather, error } = useSelector(state => state.listPage);
 
   const getCity = e => {
     dispatch(listPageActions.setCity(e.target.value));
   };
-  
+
   const getCurrentCountry = e => {
     dispatch(listPageActions.setCurrentCountry(e.target.value));
   };
@@ -61,12 +56,12 @@ const List = () => {
       {error && <PopupPortal close={closePopup} message={error} />}
       <Section>
         <h1>Search city</h1>
-        <CitiesForm 
-          submitForm={submitForm} 
+        <CitiesForm
+          submitForm={submitForm}
           getCurrentCountry={getCurrentCountry}
           currentCountry={currentCountry}
-          getCity={getCity} 
-          city={city} 
+          getCity={getCity}
+          city={city}
         />
         <City weather={cityWeather} />
         {/* <CitiesList citiesArray={citiesArray} /> */}

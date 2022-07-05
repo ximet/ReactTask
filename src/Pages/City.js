@@ -1,7 +1,6 @@
 import Section from '../Components/Section/Section';
 
 const City = () => {
-
   return (
     <>
       <Section>

@@ -4,8 +4,8 @@ import listPageSlice from './reducers/ListPageSlice/index';
 
 const store = configureStore({
   reducer: {
-    listPage: listPageSlice,
+    listPage: listPageSlice
     // useGoods: useGoodsSlice,
   }
 });
-export default store
+export default store;

@@ -6,20 +6,20 @@ const listPageSlice = createSlice({
   initialState: initialState,
   reducers: {
     setCurrentCountry(state, action) {
-        state.currentCountry = action.payload;
+      state.currentCountry = action.payload;
     },
     setCity(state, action) {
-        state.city = action.payload;
+      state.city = action.payload;
     },
     setCityWeather(state, action) {
-        state.cityWeather = action.payload;
+      state.cityWeather = action.payload;
     },
     setError(state, action) {
-        state.error = action.payload;
-    },
+      state.error = action.payload;
+    }
   }
-})
+});
 
 export const listPageActions = listPageSlice.actions;
 
-export default listPageSlice.reducer
+export default listPageSlice.reducer;
