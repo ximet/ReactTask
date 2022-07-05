@@ -1,7 +1,7 @@
 import Section from '../Components/Section/Section';
 
 const Info = () => {
-  return <Section>Info</Section>;
+  return <Section>Infos</Section>;
 };
 
 export default Info;
