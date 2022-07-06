@@ -6,7 +6,10 @@ const Header: React.FunctionComponent = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h1 className={styles.logo}>Nice Weather App</h1>
+        <div className={styles.title}>
+          <h1>Nice Weather App</h1>
+          <div className={styles.logo}></div>
+        </div>
         <nav className={styles.nav}>
           <ul className={styles.ul}>
             <li className={styles.li}>

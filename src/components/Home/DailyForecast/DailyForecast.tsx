@@ -12,26 +12,26 @@ interface DailyForecastProps {
 }
 
 const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ location }) => {
-  const {
-    data,
-    loading,
-    error
-  }: {
-    data: DailyForecastData;
-    loading: boolean;
-    error: string | null;
-  } = useGetRequest(ENDPOINTS.daily, location);
+  // const {
+  //   data,
+  //   loading,
+  //   error
+  // }: {
+  //   data: DailyForecastData;
+  //   loading: boolean;
+  //   error: string | null;
+  // } = useGetRequest(ENDPOINTS.daily, location);
 
   return (
     <Card>
-      {loading && <Loading />}
+      {/* {loading && <Loading />}
       {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
-      {!loading && !error && (
-        <>
-          <Title title="7 day forecast" />
-          <div>{JSON.stringify(data)}</div>
-        </>
-      )}
+      {!loading && !error && ( */}
+      <>
+        <Title title="7 day forecast" />
+        {/* <div>{JSON.stringify(data)}</div> */}
+      </>
+      {/* )} */}
     </Card>
   );
 };
