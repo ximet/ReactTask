@@ -80,3 +80,28 @@ export interface DailyForecastData {
     confidence: string;
   }[];
 }
+
+export interface ThreeHourlyData {
+  forecast: {
+    time: string;
+    symbol: string;
+    symbolPhrase: string;
+    temperature: number;
+    feelsLikeTemp: number;
+    windSpeed: number;
+    windGust: number;
+    relHumidity: number;
+    dewPoint: number;
+    windDir: number;
+    windDirString: string;
+    precipProb: number;
+    precipAccum: number;
+    snowAccum: number;
+    cloudiness: number;
+    thunderProb: number;
+    uvIndex: number;
+    pressure: number;
+    visibility: number;
+    precipType: string;
+  }[];
+}

@@ -8,6 +8,7 @@ import Contacts from '../Contacts/Contacts';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
+import Card from '../UI/Card/Card';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
 
 const App: React.FunctionComponent = () => {
@@ -27,7 +28,14 @@ const App: React.FunctionComponent = () => {
         <Route path="cities" element={<Cities />} />
         <Route path="about" element={<About />} />
         <Route path="contacts" element={<Contacts />} />
-        <Route path="*" element={<ErrorComponent message="Page not found" button="HOME" />} />
+        <Route
+          path="*"
+          element={
+            <Card>
+              <ErrorComponent message="Page not found" button="HOME" />
+            </Card>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

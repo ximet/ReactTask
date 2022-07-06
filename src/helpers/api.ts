@@ -3,6 +3,7 @@ import { EndpointsConfig } from './Interfaces';
 
 export const ENDPOINTS: EndpointsConfig = {
   auth: 'http://localhost:3000/auth',
+  symbol: 'https://developer.foreca.com/static/images/symbols/', //+
   locationSearch: 'location/search/', // +query
   locationInfo: 'location/',
   observations: 'observation/latest/',

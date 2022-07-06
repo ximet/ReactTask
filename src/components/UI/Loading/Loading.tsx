@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Loading = () => {
+const Loading: React.FunctionComponent = () => {
   return <div>Loading...</div>;
 };
 
