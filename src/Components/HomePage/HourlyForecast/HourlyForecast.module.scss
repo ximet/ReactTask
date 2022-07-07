@@ -1,0 +1,103 @@
+@import '../../../Styles/variables.scss';
+
+.container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+
+  &__slider {
+    display: flex;
+    width: 100%;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 1rem;
+
+    &::-webkit-scrollbar {
+      height: 1.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-1L;
+      border-radius: 1rem;
+
+      &:hover {
+        cursor: auto;
+        background: lighten($color-1L, 15%);
+      }
+    }
+
+    /* Buttons */
+    &::-webkit-scrollbar-button {
+      border-style: solid;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      /* Left */
+      &:horizontal:decrement {
+        border-width: 7px 14px 7px 0;
+        border-color: transparent white transparent transparent;
+      }
+
+      &:horizontal:decrement:hover {
+        border-color: transparent $color-1L transparent transparent;
+      }
+
+      /* Right */
+      &:horizontal:increment {
+        border-width: 7px 0 7px 14px;
+        border-color: transparent transparent transparent gray;
+      }
+
+      &:horizontal:increment:hover {
+        border-color: transparent transparent transparent $color-1L;
+      }
+    }
+
+    &-slide {
+      min-width: 11rem;
+      display: flex;
+      flex-flow: column nowrap;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+
+      align-items: center;
+      padding: 1rem;
+      gap: 5px;
+
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(255, 255, 255, 0.75);
+      border-radius: 1.2rem;
+      border: 1px solid rgba(209, 213, 219, 0.3);
+
+      .temperature {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .details {
+        margin-top: 1rem;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+
+        .rain,
+        .wind {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          gap: 5px;
+        }
+      }
+    }
+  }
+}

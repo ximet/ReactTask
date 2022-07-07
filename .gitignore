@@ -31,3 +31,4 @@ packages/api/etc/
 .env
 notes.txt
 README.md
+settings.json
