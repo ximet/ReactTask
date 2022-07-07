@@ -82,21 +82,21 @@ app.post('/get-current-location-params', (req, res) => {
     });
 });
 
-
 app.post('/search', (req, res) => {
   const searchedLocation = req.query.location;
   function changeObj(oobj) {
-    const updatedResults = Object.entries(oobj.data).shift()
-    console.log('aha ', updatedResults)
-    return updatedResults
+    const updatedResults = Object.entries(oobj.data).shift();
+    console.log('aha ', updatedResults);
+    return updatedResults;
   }
 
   axios({
     method: 'get',
     url: `https://api.geoapify.com/v1/geocode/autocomplete?text=${searchedLocation}&format=json&apiKey=${process.env.REACT_APP_SEARCH_AUTOCOMPLETE_KEY}`
-  }).then(response => changeObj(response))
+  })
+    .then(response => changeObj(response))
     .then(response => res.send(response))
-    .catch(error => console.log('error', error));// 
+    .catch(error => console.log('error', error)); //
 
   // .then(response => {
   //   console.log('SEARCH call succeeded!');
@@ -106,6 +106,5 @@ app.post('/search', (req, res) => {
   //   if (error) console.log('API call returned an error: ', error);
   // });
 });
-
 
 app.listen(3000, 'localhost', () => console.log('working backend !!!'));

@@ -7,8 +7,8 @@ export default function DetailedPage(props) {
     const params = new URLSearchParams(window.location.search);
     const locationName = params.get('name');
     const lonLat = params.get('lon-lat');
-    setLocationName(locationName)
-  }, [])
+    setLocationName(locationName);
+  }, []);
 
   return (
     <>

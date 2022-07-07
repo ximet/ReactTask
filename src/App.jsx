@@ -4,7 +4,7 @@ import Navigation from './components/NavBar';
 import HomePage from './pages/Home';
 import AboutPage from './pages/About';
 import ContactsPage from './pages/Contacts';
-import DetailedPage from './pages/DetailedPage'
+import DetailedPage from './pages/DetailedPage';
 import './css/index.scss';
 
 export default function App() {
@@ -29,19 +29,20 @@ export default function App() {
         .then(response => response.json())
         .then(data => setAuth(JSON.stringify(data.data)))
         .catch(err => {
-          console.error('error occured: ', err.message)
+          console.error('error occured: ', err.message);
         });
     }
     attemptLogin();
   }, []);
 
   useEffect(() => {
-
     if (!authenticated || userCoords) return;
 
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        const userCoordinates = { latLon: position.coords.longitude + ',' + position.coords.latitude };
+        const userCoordinates = {
+          latLon: position.coords.longitude + ',' + position.coords.latitude
+        };
 
         async function getPin() {
           await fetch('http://localhost:3000/get-current-location-params', {
@@ -54,11 +55,9 @@ export default function App() {
         }
         getPin();
       });
-
     } else {
       alert('Location Not Available');
     }
-
   }, [authenticated]);
 
   return (
