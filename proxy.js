@@ -4,7 +4,7 @@ const cors = require('cors');
 const { json } = require('express');
 require('dotenv').config();
 
-let getApiKey = null;
+let getApiKey;
 
 function keyHolder(userSecret) {
   let apiKey;
@@ -84,9 +84,9 @@ app.post('/get-current-location-params', (req, res) => {
 
 app.post('/search', (req, res) => {
   const searchedLocation = req.query.location;
-  function changeObj(oobj) {
-    const updatedResults = Object.entries(oobj.data).shift();
-    console.log('aha ', updatedResults);
+
+  function transformObj(resObj) {
+    const updatedResults = Object.entries(resObj.data).shift();
     return updatedResults;
   }
 
@@ -94,17 +94,9 @@ app.post('/search', (req, res) => {
     method: 'get',
     url: `https://api.geoapify.com/v1/geocode/autocomplete?text=${searchedLocation}&format=json&apiKey=${process.env.REACT_APP_SEARCH_AUTOCOMPLETE_KEY}`
   })
-    .then(response => changeObj(response))
+    .then(response => transformObj(response))
     .then(response => res.send(response))
-    .catch(error => console.log('error', error)); //
-
-  // .then(response => {
-  //   console.log('SEARCH call succeeded!');
-  //   res.send({ data: 'Search done' });
-  // })
-  // .catch(error => {
-  //   if (error) console.log('API call returned an error: ', error);
-  // });
+    .catch(error => console.log('error', error));
 });
 
 app.listen(3000, 'localhost', () => console.log('working backend !!!'));
