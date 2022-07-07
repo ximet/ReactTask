@@ -8,9 +8,9 @@ import { useGetRequest } from './../../hooks/useGetRequest';
 import { useLocation } from './../../hooks/useLocation';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyForecast from './DailyForecast/DailyForecast';
+import styles from './Home.module.scss';
 import Search from './Search/Search';
 import Today3Hourly from './Today3Hourly/Today3Hourly';
-import styles from './Home.module.scss';
 
 const Home: React.FunctionComponent = () => {
   const {
