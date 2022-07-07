@@ -1,7 +1,6 @@
 const express = require('express');
 const axios = require('axios').default;
 const cors = require('cors');
-const { json } = require('express');
 require('dotenv').config();
 
 let getApiKey;
