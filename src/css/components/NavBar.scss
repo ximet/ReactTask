@@ -1,0 +1,29 @@
+nav {
+  background-color: $gem-green;
+}
+
+a.nav-link {
+  text-decoration: none;
+}
+
+.listNav {
+  max-width: 90rem;
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 12px;
+    font-size: 22px;
+    color: $yellow-green;
+
+    a {
+      color: inherit;
+    }
+
+    &:hover {
+      background-color: $neon-green;
+      color: $text-primary;
+    }
+  }
+}
