@@ -40,9 +40,7 @@ const Homepage = () => {
 
   return (
     <>
-      <Section>
-        <City weather={currentWeather} />
-      </Section>
+      <Section>{currentWeather && <City weather={currentWeather} />}</Section>
     </>
   );
 };

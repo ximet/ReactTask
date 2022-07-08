@@ -1,5 +1,6 @@
 .city {
   display: flex;
+  flex-wrap: wrap;
 }
 .symbol {
   margin-right: 20px;
@@ -25,4 +26,23 @@ h3 {
 }
 .list li:first-child {
   margin-top: 0;
+}
+.more {
+  transition: 0.2s;
+  cursor: pointer;
+  margin-left: 16px;
+  display: inline-block;
+  padding: 0 20px;
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  background-color: #3cc2ff;
+  color: #fff;
+}
+.more:hover {
+  transition: 0.2s;
+  background-color: #3095cb;
 }

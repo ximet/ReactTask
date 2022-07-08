@@ -1,0 +1,45 @@
+.prevPage {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.CityDetailsWrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.city {
+  width: 33.33%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.cityLarge {
+  margin-bottom: 30px;
+  zoom: 1.4;
+  width: 50%;
+}
+.symbol {
+  margin-right: 20px;
+  height: 70px;
+}
+h2 {
+  font-weight: 700;
+  font-size: 26px;
+}
+h3 {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 22px;
+}
+.list {
+  margin-left: 20px;
+}
+.list li {
+  margin-top: 6px;
+}
+.list li b {
+  font-size: 18px;
+}
+.list li:first-child {
+  margin-top: 0;
+}

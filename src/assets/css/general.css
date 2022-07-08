@@ -44,6 +44,9 @@ body.dark header {
 body.dark header:before {
   background-color: #060b1d;
 }
+body.dark .block {
+  background-color: #000;
+}
 p {
   line-height: 24px;
 }

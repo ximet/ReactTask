@@ -4,7 +4,6 @@ const getCurrentWeather = async coords => {
   return await createWeatherApi
     .get(`current/location=${coords.latitude},${coords.longitude}`)
     .then(function (response) {
-      console.log(response);
       return {
         country: coords.country,
         city: coords.city,

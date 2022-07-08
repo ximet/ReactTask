@@ -63,8 +63,7 @@ const List = () => {
           getCity={getCity}
           city={city}
         />
-        <City weather={cityWeather} />
-        {/* <CitiesList citiesArray={citiesArray} /> */}
+        {cityWeather && <City weather={cityWeather} />}
       </Section>
     </>
   );

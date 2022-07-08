@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+// import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import store from './Store/index';
@@ -13,7 +14,7 @@ import Header from './Components/Header/Header';
 import List from './Pages/List';
 import Contacts from './Pages/Contacts';
 import Info from './Pages/Info';
-import City from './Pages/City';
+import CityPage from './Pages/CityPage';
 import Homepage from './Pages/Homepage';
 
 const changeTheme = () => {
@@ -28,19 +29,19 @@ const changeTheme = () => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <BrowserRouter>
       <Header changeTheme={changeTheme} />
       <main>
-        <Switch>
-          <Route path="/" exact component={props => <Homepage {...props} />} />
-          <Route path="/list" exact component={props => <List {...props} />} />
-          <Route path="/info" exact component={props => <Info {...props} />} />
-          <Route path="/contacts" exact component={props => <Contacts {...props} />} />
-          <Route path="/city" exact component={props => <City {...props} />} />
-          <Route path="*" exact component={props => <div>Page not found!</div>} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/info" element={<Info />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/city:id" element={<CityPage />} />
+          <Route path="*" element={<div>Page not found!</div>} />
+        </Routes>
       </main>
-    </Router>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('app')
 );

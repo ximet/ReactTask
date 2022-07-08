@@ -2,7 +2,6 @@ import createWeatherApi from './createWeatherApi';
 
 const getCityCoords = async query => {
   return await createWeatherApi.get(`location/search/${query}`).then(function (response) {
-    console.log(response);
     return {
       country: response.data.locations[0].country,
       city: response.data.locations[0].name,
