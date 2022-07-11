@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 
 app.get('/auth', async (req, res) => {
   try {
-    const body = { user, password, expire_hours: -1 };
+    const body = { user, password, expire_hours: 2 };
     const url = 'https://pfa.foreca.com/api/v1/authorize/token';
     const options = {
       method: 'POST',
@@ -36,10 +36,12 @@ app.get('/auth', async (req, res) => {
     const response = await fetch(url, options);
     const json = await response.json();
     const token = json.access_token;
+    const expTime = json.expires_in*1000 + Date.now();
     res
       .cookie('token', token, {
         sameSite: 'strict',
-        secure: true
+        secure: true,
+        expires: new Date(expTime),
       })
       .send('cookie here');
   } catch (error) {
