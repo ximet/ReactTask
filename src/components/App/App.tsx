@@ -12,13 +12,12 @@ import Card from '../UI/Card/Card';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
 
 const App: React.FunctionComponent = () => {
-
   useEffect(() => {
     if (!document.cookie) {
       axios.get(ENDPOINTS.auth, {
         withCredentials: true
       });
-      location.reload() // 
+      location.reload(); //
     }
   }, [document.cookie]);
 

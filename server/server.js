@@ -36,12 +36,12 @@ app.get('/auth', async (req, res) => {
     const response = await fetch(url, options);
     const json = await response.json();
     const token = json.access_token;
-    const expTime = json.expires_in*1000 + Date.now();
+    const expTime = json.expires_in * 1000 + Date.now();
     res
       .cookie('token', token, {
         sameSite: 'strict',
         secure: true,
-        expires: new Date(expTime),
+        expires: new Date(expTime)
       })
       .send('cookie here');
   } catch (error) {
