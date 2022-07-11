@@ -4,16 +4,13 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-
   margin-top: 10rem;
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background: linear-gradient(to right, #f12711, #f5af19);
   padding: 1rem 0 1rem;
 
   .wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     .logo {
       margin-left: 1rem;

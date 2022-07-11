@@ -1,9 +1,9 @@
-import styles from './FeedbackPage.module.scss';
+import { FeedbackForm } from '../index';
 
 function FeedbackPage() {
   return (
-    <main className={styles.container}>
-      <h2>Send Feedback!</h2>
+    <main>
+      <FeedbackForm />
     </main>
   );
 }

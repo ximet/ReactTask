@@ -4,6 +4,7 @@ function Footer() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
+        <small>Powered by</small>
         <img
           src="https://f.hubspotusercontent40.net/hubfs/4979099/logo/Foreca_logo_BRC.png"
           className={styles.logo}
