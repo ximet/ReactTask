@@ -1,0 +1,12 @@
+@import '../../global-styles/colors';
+
+.footer {
+  height: 20vh;
+  width: 100%;
+  background-color: $darkBlue;
+  color: $lightBlue;
+  text-align: center;
+  .container {
+    padding-top: 5vh;
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../global-styles/colors';
+@import '../../../global-styles/mixins';
+
+.temperature {
+  text-align: center;
+  .currentTemperature {
+    font-size: 9rem;
+    font-weight: 700;
+    margin: 2rem auto;
+    color: $darkerBlue;
+  }
+  .feelsLike {
+    margin: 0;
+  }
+}
+.container {
+  @include flex(row, space-between);
+  .innerContainer {
+    margin: 0 3rem;
+    font-size: 1.1rem;
+    .symbol {
+      width: 170px;
+      height: 170px;
+    }
+  }
+}

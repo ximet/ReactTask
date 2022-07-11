@@ -1,9 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Endpoint } from './helpersInterfaces';
+import { EndpointsConfig } from './Interfaces';
 
-export const ENDPOINT: Endpoint = {
+export const ENDPOINTS: EndpointsConfig = {
   auth: 'http://localhost:3000/auth',
-  locationSearch: 'location/search/',
+  symbol: 'https://developer.foreca.com/static/images/symbols/', //+
+  locationSearch: 'location/search/', // +query
   locationInfo: 'location/',
   observations: 'observation/latest/',
   current: 'current/',
@@ -14,6 +15,7 @@ export const ENDPOINT: Endpoint = {
   airQuality: 'air-quality/forecast/hourly/'
 };
 
+//param - location or id
 function options(endpoint: string, param: string): AxiosRequestConfig {
   const forecaUrl: string = 'https://pfa.foreca.com/api/v1/';
   const accessToken: string = document.cookie.slice(6);
@@ -27,8 +29,8 @@ function options(endpoint: string, param: string): AxiosRequestConfig {
 }
 
 export async function getData(endpoint: string, param: string): Promise<any> {
-  return axios.request(options(endpoint, param)).then(response => {
-    return response.data;
+  return axios.request(options(endpoint, param)).then(({ data }) => {
+    return data;
   });
 }
 
