@@ -1,6 +1,6 @@
 import React from 'react';
 import { ENDPOINTS } from '../../../helpers/api';
-import { ThreeHourlyData } from '../../../helpers/Interfaces';
+import { RequestDataConfig, ThreeHourlyData } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
 import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
@@ -14,21 +14,14 @@ interface TodayHourlyProps {
 }
 
 const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) => {
-  const {
-    data,
-    loading,
-    error
-  }: {
-    data: ThreeHourlyData;
-    loading: boolean;
-    error: string | null;
-  } = useGetRequest(ENDPOINTS.threeHourly, location);
+  const { data, loading, error }: RequestDataConfig<ThreeHourlyData> = useGetRequest(
+    ENDPOINTS.threeHourly,
+    location
+  );
 
   return (
     <Card>
-      {loading && <Loading />}
-      {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
-      {!loading && !error && data && (
+      {data ? (
         <>
           <Title title="Next 24 hours" />
           <ul className={styles.container}>
@@ -55,6 +48,10 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
             ))}
           </ul>
         </>
+      ) : loading ? (
+        <Loading />
+      ) : (
+        error && <ErrorComponent message={error} button="TRY_AGAIN" />
       )}
     </Card>
   );

@@ -1,0 +1,12 @@
+@import './colors';
+
+@mixin flex($dir, $justify) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+}
+
+@mixin borderShadows {
+  border: 1px solid $borders;
+  box-shadow: 2px 2px 5px 0px $borders;
+}

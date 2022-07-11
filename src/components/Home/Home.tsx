@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ENDPOINTS } from '../../helpers/api';
-import { LocationInfo } from '../../helpers/Interfaces';
+import { LocationInfo, RequestDataConfig } from '../../helpers/Interfaces';
 import { LocationContext } from '../../store/location-context';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
 import Loading from '../UI/Loading/Loading';
@@ -24,24 +24,17 @@ const Home: React.FunctionComponent = () => {
   } = useLocation();
   const [locationId, setLocationId] = useState<string>('');
 
-  const locationParam = locationId ? locationId : userLocation;
-  const {
-    data: locationInfo,
-    loading,
-    error
-  }: {
-    data: LocationInfo;
-    error: string | null;
-    loading: boolean;
-  } = useGetRequest(ENDPOINTS.locationInfo, locationParam);
+  const locationParam = locationId || userLocation;
+  const { data: locationInfo, loading, error }: RequestDataConfig<LocationInfo> = useGetRequest(
+    ENDPOINTS.locationInfo,
+    locationParam
+  );
 
   return (
-    <LocationContext.Provider value={{ setLocationId: setLocationId }}>
+    <LocationContext.Provider value={{ setLocationId }}>
       <Search />
       <main className={styles.main}>
-        {locationLoading && <Loading />}
-        {locationError && <ErrorComponent message={locationError} button="TRY_AGAIN" />}
-        {!locationLoading && !locationError && (
+        {userLocation ? (
           <>
             <div className={styles.container}>
               <CurrentWeather location={locationParam} locationInfo={locationInfo} />
@@ -49,6 +42,10 @@ const Home: React.FunctionComponent = () => {
             </div>
             <DailyForecast location={locationParam} />
           </>
+        ) : locationLoading ? (
+          <Loading />
+        ) : (
+          locationError && <ErrorComponent message={locationError} button="TRY_AGAIN" />
         )}
       </main>
     </LocationContext.Provider>

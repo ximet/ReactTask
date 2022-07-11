@@ -1,12 +1,10 @@
-@mixin flex($dir) {
-  display: flex;
-  flex-direction: $dir;
-}
+@import '../../global-styles/colors';
+@import '../../global-styles/mixins';
 
 .header {
   height: 20vh;
   width: 100%;
-  background-image: url(../../../assets/sky1.jpg);
+  background-image: url('../../../assets/sky1.jpg');
   background-position: bottom;
   background-size: cover;
 
@@ -15,9 +13,7 @@
     height: 20vh;
     margin: 0 auto;
     text-align: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include flex(column, space-between);
     .title {
       margin: 0;
       padding-top: 5vh;
@@ -25,7 +21,7 @@
         margin: 0;
         font-size: 5vh;
         letter-spacing: 4px;
-        color: #195269;
+        color: $darkerBlue;
         z-index: 3;
         position: relative;
       }
@@ -42,10 +38,10 @@
       }
     }
     .nav {
-      .ul {
+      .linkContainer {
         list-style: none;
         margin: 0;
-        .li {
+        .link {
           display: inline-block;
           padding: 1rem;
           margin: 0 1rem;
@@ -53,16 +49,16 @@
           a {
             text-decoration: none;
             text-transform: uppercase;
-            color: #245f76;
+            color: $darkBlue;
             font-weight: 700;
             font-size: 1.1rem;
             padding: 1rem 4rem;
             &:hover {
-              background-color: #fedc00;
+              background-color: $yellow;
             }
           }
           .active {
-            background-color: #fedc00;
+            background-color: $yellow;
           }
         }
       }

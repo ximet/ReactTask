@@ -12,6 +12,8 @@ interface DailyForecastProps {
 }
 
 const DailyForecast: React.FunctionComponent<DailyForecastProps> = ({ location }) => {
+  //WILL DO LATER. Now uncommented because reached API requests/day limit.
+
   // const {
   //   data,
   //   loading,

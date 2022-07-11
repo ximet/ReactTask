@@ -1,10 +1,12 @@
+@import '../../../../global-styles/colors';
+@import '../../../../global-styles/mixins';
+
 .container {
   margin: 0 auto;
   background-color: white;
   height: 30vh;
   overflow-y: scroll;
-  border: 1px solid #245f763b;
-  box-shadow: 2px 2px 5px 0px #245f763b;
+  @include borderShadows;
   border-radius: 0.5rem;
   padding: 0;
   position: relative;
@@ -14,7 +16,7 @@
     width: 100%;
 
     &:hover {
-      background-color: #fedc00;
+      background-color: $yellow;
     }
     .li {
       text-align: left;
@@ -22,7 +24,7 @@
       padding: 1rem 2rem;
       margin: 0 2rem;
       cursor: pointer;
-      border-bottom: 1px solid #245f763b;
+      border-bottom: 1px solid $borders;
     }
   }
 }

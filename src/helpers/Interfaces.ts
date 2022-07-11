@@ -2,16 +2,14 @@ export interface EndpointsConfig {
   [property: string]: string;
 }
 
+export interface RequestDataConfig<T> {
+  data: T;
+  loading: boolean;
+  error: string | null;
+}
+
 export interface LocationSearch {
-  locations: {
-    id: number;
-    name: string;
-    country: string;
-    timezone: string;
-    adminArea: string;
-    lon: number;
-    lat: number;
-  }[];
+  locations: LocationInfo[];
 }
 
 export interface LocationInfo {
@@ -24,27 +22,33 @@ export interface LocationInfo {
   lat: number;
 }
 
+interface WeatherData {
+  time: string;
+  symbol: string;
+  symbolPhrase: string;
+  temperature: number;
+  feelsLikeTemp: number;
+  windSpeed: number;
+  windGust: number;
+  relHumidity: number;
+  dewPoint: number;
+  windDir: number;
+  windDirString: string;
+  precipProb: number;
+  cloudiness: number;
+  thunderProb: number;
+  uvIndex: number;
+  pressure: number;
+  visibility: number;
+  precipType?: string;
+  precipAccum?: number;
+  snowAccum?: number;
+}
 export interface CurrentData {
-  current: {
-    time: string;
-    symbol: string;
-    symbolPhrase: string;
-    temperature: number;
-    feelsLikeTemp: number;
-    relHumidity: number;
-    dewPoint: number;
-    windSpeed: number;
-    windDir: number;
-    windDirString: string;
-    windGust: number;
-    precipProb: number;
-    precipRate: number;
-    cloudiness: number;
-    thunderProb: number;
-    uvIndex: number;
-    pressure: number;
-    visibility: number;
-  };
+  current: WeatherData;
+}
+export interface ThreeHourlyData {
+  forecast: WeatherData[];
 }
 
 export interface DailyForecastData {
@@ -78,30 +82,5 @@ export interface DailyForecastData {
     minVisibility: number;
     pressure: number;
     confidence: string;
-  }[];
-}
-
-export interface ThreeHourlyData {
-  forecast: {
-    time: string;
-    symbol: string;
-    symbolPhrase: string;
-    temperature: number;
-    feelsLikeTemp: number;
-    windSpeed: number;
-    windGust: number;
-    relHumidity: number;
-    dewPoint: number;
-    windDir: number;
-    windDirString: string;
-    precipProb: number;
-    precipAccum: number;
-    snowAccum: number;
-    cloudiness: number;
-    thunderProb: number;
-    uvIndex: number;
-    pressure: number;
-    visibility: number;
-    precipType: string;
   }[];
 }

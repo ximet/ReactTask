@@ -4,8 +4,8 @@ import styles from './WiRaindrops.module.scss';
 const WiRaindrops: React.FunctionComponent = () => {
   return (
     <svg
-      stroke="#007fff"
-      fill="#007fff"
+      stroke="#63b3d7"
+      fill="#63b3d7"
       strokeWidth={0}
       id="Layer_1"
       x="0px"

@@ -1,10 +1,10 @@
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { ENDPOINTS } from '../../../helpers/api';
-import { LocationSearch } from '../../../helpers/Interfaces';
+import { LocationSearch, RequestDataConfig } from '../../../helpers/Interfaces';
 import { useDebounce } from './../../../hooks/useDebounce';
 import { useGetRequest } from './../../../hooks/useGetRequest';
-import SearchResults from './SearchResults/SearchResults';
 import styles from './Search.module.scss';
+import SearchResults from './SearchResults/SearchResults';
 
 const Search: React.FunctionComponent = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -13,16 +13,17 @@ const Search: React.FunctionComponent = () => {
     data: searchResults = { locations: [] },
     loading = true,
     error = null
-  }: { data: LocationSearch; loading: boolean; error: string | null } = useGetRequest(
+  }: RequestDataConfig<LocationSearch> = useGetRequest(
     ENDPOINTS.locationSearch,
     debouncedSearchTerm
   );
   const [displaySearchResults, setDisplaySearchResults] = useState<boolean>(false);
 
-  const inputChangeHandler = (event: FormEvent<HTMLInputElement>): void => {
+  const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setDisplaySearchResults(true);
-    setSearchTerm(event.currentTarget.value);
+    setSearchTerm(event.target.value);
   };
+  const minLetter = 3;
 
   return (
     <section className={styles.container}>
@@ -33,8 +34,8 @@ const Search: React.FunctionComponent = () => {
         onChange={inputChangeHandler}
         value={searchTerm}
       />
-      {searchTerm.length < 3 && <p>Enter at least 3 letters</p>}
-      {searchResults.locations.length > 0 && displaySearchResults && (
+      {searchTerm.length < minLetter && <p>Enter at least {minLetter} letters</p>}
+      {!!searchResults.locations.length && displaySearchResults && (
         <SearchResults
           searchResults={searchResults}
           setSearchTerm={setSearchTerm}

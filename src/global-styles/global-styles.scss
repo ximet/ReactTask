@@ -1,4 +1,4 @@
-@use "./colors" as colors;
+@import './colors';
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 *,
@@ -9,6 +9,6 @@
 html,
 body {
   margin: 0;
-  background-color: #f2fafd;
+  background-color: $lightBlue;
   font-family: 'Lato', sans-serif;
 }

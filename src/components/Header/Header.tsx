@@ -11,30 +11,30 @@ const Header: React.FunctionComponent = () => {
           <div className={styles.logo}></div>
         </div>
         <nav className={styles.nav}>
-          <ul className={styles.ul}>
-            <li className={styles.li}>
+          <ul className={styles.linkContainer}>
+            <li className={styles.link}>
               <NavLink to="/">Home</NavLink>
             </li>
-            <li className={styles.li}>
+            <li className={styles.link}>
               <NavLink
                 to="/cities"
-                style={({ isActive }) => (isActive ? { backgroundColor: '#fedc00' } : {})}
+                className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Cities
               </NavLink>
             </li>
-            <li className={styles.li}>
+            <li className={styles.link}>
               <NavLink
                 to="/about"
-                style={({ isActive }) => (isActive ? { backgroundColor: '#fedc00' } : {})}
+                className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 About
               </NavLink>
             </li>
-            <li className={styles.li}>
+            <li className={styles.link}>
               <NavLink
                 to="/contacts"
-                style={({ isActive }) => (isActive ? { backgroundColor: '#fedc00' } : {})}
+                className={({ isActive }) => (isActive ? styles.active : undefined)}
               >
                 Contacts
               </NavLink>

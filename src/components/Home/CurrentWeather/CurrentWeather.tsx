@@ -1,11 +1,11 @@
 import React from 'react';
-import { ENDPOINTS, getData } from '../../../helpers/api';
-import { CurrentData, LocationInfo } from '../../../helpers/Interfaces';
+import { ENDPOINTS } from '../../../helpers/api';
+import { CurrentData, LocationInfo, RequestDataConfig } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
+import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import Loading from '../../UI/Loading/Loading';
 import Title from './../../UI/Title/Title';
-import Card from '../../UI/Card/Card';
 import styles from './CurrentWeather.module.scss';
 
 interface CurrentWeatherProps {
@@ -17,21 +17,14 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
   location,
   locationInfo
 }) => {
-  const {
-    data,
-    loading,
-    error
-  }: {
-    data: CurrentData;
-    loading: boolean;
-    error: string | null;
-  } = useGetRequest(ENDPOINTS.current, location);
+  const { data, loading, error }: RequestDataConfig<CurrentData> = useGetRequest(
+    ENDPOINTS.current,
+    location
+  );
 
   return (
     <Card>
-      {loading && <Loading />}
-      {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
-      {!loading && !error && data && (
+      {data ? (
         <>
           {locationInfo && <Title title={`Now in ${locationInfo.name}, ${locationInfo.country}`} />}
           <div className={styles.temperature}>
@@ -71,6 +64,10 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
             </div>
           </div>
         </>
+      ) : loading ? (
+        <Loading />
+      ) : (
+        error && <ErrorComponent message={error} button="TRY_AGAIN" />
       )}
     </Card>
   );

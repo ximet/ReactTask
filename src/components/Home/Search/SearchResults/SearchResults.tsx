@@ -2,7 +2,6 @@ import React, { SetStateAction, useContext } from 'react';
 import { LocationSearch } from '../../../../helpers/Interfaces';
 import { LocationContext } from '../../../../store/location-context';
 import styles from './SearchResults.module.scss';
-import { useState } from 'react';
 
 interface SearchResultsProps {
   searchResults: LocationSearch;
@@ -20,18 +19,18 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
 
   return (
     <ul className={styles.container}>
-      {locations.slice(0, 10).map(location => (
+      {locations.slice(0, 10).map(({ id, name, adminArea, country }) => (
         <div className={styles.list}>
           <li
             className={styles.li}
-            key={location.id}
+            key={id}
             onClick={() => {
-              setLocationId(location.id.toString());
+              setLocationId(id.toString());
               setSearchTerm('');
               setDisplaySearchResults(false);
             }}
           >
-            {location.name}, {location.adminArea && `${location.adminArea},`} {location.country}
+            {name}, {adminArea && `${adminArea},`} {country}
           </li>
         </div>
       ))}
