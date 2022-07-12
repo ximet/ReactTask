@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { COOKIE } from '../DataService/cookieService';
+import { COOKIE } from './cookieService';
 
 export async function requestToken() {
   try {
