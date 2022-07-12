@@ -42,7 +42,6 @@ function SearchBar({ coordsStateHandler, ...rest }) {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(await getLocationCoords());
     coordsStateHandler(await getLocationCoords());
     setInputValue('');
   };
