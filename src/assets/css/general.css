@@ -1,11 +1,20 @@
 /* general */
+:root {
+  --background: #fff;
+  --text-primary: #2e2e2e;
+}
+[data-theme='dark'] {
+  --background: #0f152e;
+  --text-primary: #fff;
+}
 html {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 500;
-  color: #2e2e2e;
 }
-body {
+[data-theme] {
+  color: var(--text-primary);
+  min-height: 100vh;
   padding-top: 120px;
   padding-bottom: 60px;
   position: relative;
@@ -14,7 +23,7 @@ body {
   background-position: center top;
   background-size: 100%;
 }
-body:before {
+[data-theme]:before {
   z-index: 1;
   content: '';
   width: 200px;
@@ -27,26 +36,21 @@ body:before {
   background-position: -241px -65px;
   background-size: 465px;
 }
-body.dark {
+[data-theme='dark'] {
   background-image: url(../img/cloud-top-dark.png);
-  background-color: #060b1d;
+  background-color: var(--background);
 }
-body.dark:before {
+[data-theme='dark']:before {
   background-position: -13px -68px;
 }
-body.dark .selectWrap:after {
-  border-color: #fff;
+[data-theme='dark'] header {
+  color: var(--text-primary);
+  border-color: var(--background);
 }
-body.dark header {
-  color: #fff;
-  border-color: #060b1d;
+[data-theme='dark'] header:before {
+  background-color: var(--background);
 }
-body.dark header:before {
-  background-color: #060b1d;
-}
-body.dark .block {
-  background-color: #000;
-}
+
 p {
   line-height: 24px;
 }
@@ -58,12 +62,12 @@ select {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 400;
-  color: #2e2e2e;
+  color: var(--text-primary);
   background-color: transparent;
 }
 input::placeholder,
 textarea::placeholder {
-  color: #989898;
+  color: var(--text-primary);
 }
 
 h1 {

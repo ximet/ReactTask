@@ -57,17 +57,3 @@ header a {
 header a:hover {
   opacity: 0.8;
 }
-header .themeBtn {
-  display: flex;
-  padding: 5px;
-  margin-left: auto;
-  width: 50px;
-  border-radius: 20px;
-  border: 2px solid #3cc2ff;
-}
-header .themeBtn span {
-  width: 20px;
-  height: 20px;
-  background-color: #3cc2ff;
-  border-radius: 50%;
-}

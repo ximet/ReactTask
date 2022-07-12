@@ -24,6 +24,6 @@ section {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--background);
   padding: 50px 40px;
 }

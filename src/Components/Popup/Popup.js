@@ -13,7 +13,7 @@ const Popup = props => {
           >
             +
           </div>
-          <div className={styles.message} dangerouslySetInnerHTML={{ __html: props.message }} />
+          <div className={styles.message}>{props.message}</div>
         </div>
       </div>
       <div className="overlay"></div>

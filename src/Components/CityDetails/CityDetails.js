@@ -25,10 +25,10 @@ const CityDetails = props => {
           src={require(`../../assets/img/symbols/${item.symbol}.png`)}
         />
         <div>
-          <h2>{item.date}</h2>
-          <h3>
+          <h3 className={styles.h3}>{item.date}</h3>
+          <h4 className={styles.h4}>
             {item.minTemp}-{item.maxTemp}°C
-          </h3>
+          </h4>
         </div>
         <ul className={styles.list}>
           <li>
@@ -44,6 +44,7 @@ const CityDetails = props => {
       </div>
     );
   });
+  console.log(props);
   return (
     <>
       {prevPage && (
@@ -51,6 +52,7 @@ const CityDetails = props => {
           Previus page
         </div>
       )}
+      <h2 className={styles.h2}>{props.city}</h2>
       <div className={styles.CityDetailsWrap}>{WeeklyWeather}</div>
     </>
   );

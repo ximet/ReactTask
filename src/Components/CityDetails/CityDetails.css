@@ -1,6 +1,11 @@
 .prevPage {
+  font-size: 24px;
   cursor: pointer;
-  text-decoration: underline;
+}
+.prevPage:before {
+  content: '<-';
+  margin-right: 10px;
+  display: inline;
 }
 .CityDetailsWrap {
   width: 100%;
@@ -22,14 +27,21 @@
   margin-right: 20px;
   height: 70px;
 }
-h2 {
-  font-weight: 700;
+.h2 {
+  margin-top: 10px;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 36px;
+}
+.h3 {
+  margin-top: 0;
+  font-weight: 500;
   font-size: 26px;
 }
-h3 {
-  margin-top: 10px;
+.h4 {
+  margin-top: 15px;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 24px;
 }
 .list {
   margin-left: 20px;

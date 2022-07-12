@@ -18,11 +18,12 @@
   width: 13px;
   height: 13px;
   transform: rotate(45deg);
-  border: 3px solid #2e2e2e;
+  border: 3px solid var(--text-primary);
   border-top: none;
   border-left: none;
 }
 .select {
+  cursor: pointer;
   border: 3px solid #3cc2ff;
   border-radius: 30px;
   display: inline-flex;

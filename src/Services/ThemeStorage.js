@@ -2,13 +2,13 @@
 const themeStorage = () => {
   const DB_KEY = 'darkTheme';
 
-  const getFromLocalStorage = () => {
+  const getTheme = () => {
     return localStorage.getItem(DB_KEY);
   };
-  const setToLocalStorage = item => {
+  const setTheme = item => {
     localStorage.setItem(DB_KEY, item);
   };
 
-  return { setToLocalStorage, getFromLocalStorage };
+  return { setTheme, getTheme };
 };
 export default themeStorage;

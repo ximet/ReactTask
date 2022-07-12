@@ -11,10 +11,10 @@ const contactsFormSlice = createSlice({
     },
     changeEmail(state, action) {
       state.email = action.payload;
-      state.emailIsValid = 
-      action.payload.trim().length > 0 && 
-      action.payload.indexOf('@') > -1 &&
-      action.payload.indexOf('.') > -1;
+      state.emailIsValid =
+        action.payload.trim().length > 0 &&
+        action.payload.indexOf('@') > -1 &&
+        action.payload.indexOf('.') > -1;
     },
     changeMessage(state, action) {
       state.message = action.payload;
@@ -25,10 +25,10 @@ const contactsFormSlice = createSlice({
       state.email = '';
       state.emailIsValid = false;
       state.message = '';
-    },
+    }
   }
-})
+});
 
 export const contactsFormActions = contactsFormSlice.actions;
 
-export default contactsFormSlice.reducer
+export default contactsFormSlice.reducer;

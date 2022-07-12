@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.css';
 
-const Header = props => {
+import ThemeBtn from '../ThemeBtn/ThemeBtn';
+
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -22,9 +24,7 @@ const Header = props => {
             </li>
           </ul>
         </nav>
-        <div className={styles.themeBtn} onClick={props.changeTheme}>
-          <span></span>
-        </div>
+        <ThemeBtn />
       </div>
     </header>
   );

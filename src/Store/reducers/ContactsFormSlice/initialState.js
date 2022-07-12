@@ -3,6 +3,6 @@ const initialState = {
   nameIsValid: false,
   email: '',
   emailIsValid: false,
-  message: '',
+  message: ''
 };
 export default initialState;

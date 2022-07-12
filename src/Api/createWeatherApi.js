@@ -1,4 +1,4 @@
-import { TOKEN, MAIN_URL } from '../Services/constants';
+import { TOKEN, MAIN_URL } from '../Config/constants';
 const axios = require('axios').default;
 
 export default axios.create({

@@ -13,7 +13,6 @@ const City = props => {
 
   useEffect(() => {
     dispatch(prevPageActions.setPrevPage(location.pathname));
-    console.log(location.pathname);
   }, [location]);
 
   const viewDetails = () => {
@@ -37,7 +36,7 @@ const City = props => {
             <b>Humidity:</b> {props.weather.relHumidity}%
           </li>
           <li>
-            <b>cloudiness:</b> {props.weather.cloudiness}
+            <b>Cloudiness:</b> {props.weather.cloudiness}
           </li>
           <li>
             <b>Wind speed:</b> {props.weather.windSpeed} м/с

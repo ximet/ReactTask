@@ -29,12 +29,11 @@ const CityPage = () => {
           // dispatch(listPageActions.setError('Сity is not found!'));
         });
     }
-    console.log(cityDetails);
   }, [city]);
 
   return (
     <>
-      <Section>{cityDetails && <CityDetails weather={cityDetails} />}</Section>
+      <Section>{cityDetails && <CityDetails city={city} weather={cityDetails} />}</Section>
     </>
   );
 };

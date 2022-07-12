@@ -1,8 +1,6 @@
 import Section from '../Components/Section/Section';
 import City from '../Components/City/City';
 
-import List from '../Pages/List';
-
 import { useState, useEffect } from 'react';
 
 import { useGeolocated } from 'react-geolocated';
