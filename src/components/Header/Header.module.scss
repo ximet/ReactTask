@@ -7,7 +7,11 @@
   background-image: url('../../../assets/sky1.jpg');
   background-position: bottom;
   background-size: cover;
-
+  transition: background-image 0.6s ease-in, background-position 0.6s ease-in;
+  &.dark {
+    background-image: url('../../../assets/dark_sky.jpg');
+    background-position: center;
+  }
   .container {
     width: 70%;
     height: 20vh;
@@ -61,6 +65,56 @@
             background-color: $yellow;
           }
         }
+      }
+    }
+  }
+  .themeSwitcher {
+    float: right;
+    margin-right: 10%;
+    margin-top: 0.5rem;
+    width: 4rem;
+    height: 2.2rem;
+    border-radius: 1.2rem;
+    background-color: white;
+    @include borderShadows(1px, 1px, 3px, $borders);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.6s ease-out;
+    .themeSwitcherButton {
+      width: 1.6rem;
+      height: 1.6rem;
+      margin: 0 0.4rem;
+      background-color: $darkYellow;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 1;
+      transition: margin-left 0.6s ease-out;
+    }
+    .moonMaker {
+      width: 0.4rem;
+      height: 0.4rem;
+      margin: 0 1rem 0 0;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 2;
+      opacity: 0;
+      transition: height 0.6s ease-out, width 0.6s ease-out, background-color 0.6s ease-out,
+        margin-left 0.6s ease-out;
+    }
+    &.dark {
+      background-color: black;
+      @include borderShadows(1px, 1px, 3px, $transparentBlack);
+      .themeSwitcherButton {
+        margin-left: 2rem;
+      }
+      .moonMaker {
+        width: 1.6rem;
+        height: 1.6rem;
+        opacity: 1;
+        background-color: black;
+        margin-left: 1.3rem;
       }
     }
   }

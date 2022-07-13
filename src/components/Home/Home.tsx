@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ENDPOINTS } from '../../helpers/api';
 import { LocationInfo, RequestDataConfig } from '../../helpers/Interfaces';
 import { LocationContext } from '../../store/location-context';
@@ -11,8 +11,10 @@ import DailyForecast from './DailyForecast/DailyForecast';
 import styles from './Home.module.scss';
 import Search from './Search/Search';
 import Today3Hourly from './Today3Hourly/Today3Hourly';
+import { ThemeContext, ThemeContextConfig } from './../../store/theme-context';
 
 const Home: React.FunctionComponent = () => {
+  const { theme }: ThemeContextConfig = useContext(ThemeContext);
   const {
     userLocation,
     error: locationError,
@@ -32,8 +34,8 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <LocationContext.Provider value={{ setLocationId }}>
-      <Search />
-      <main className={styles.main}>
+      <main className={`${styles.main} ${styles[theme]}`}>
+        <Search />
         {userLocation ? (
           <>
             <div className={styles.container}>

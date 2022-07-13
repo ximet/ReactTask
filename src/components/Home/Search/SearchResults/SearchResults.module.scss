@@ -6,7 +6,7 @@
   background-color: white;
   height: 30vh;
   overflow-y: scroll;
-  @include borderShadows;
+  @include borderShadows(2px, 2px, 5px, $borders);
   border-radius: 0.5rem;
   padding: 0;
   position: relative;
@@ -14,7 +14,6 @@
   z-index: 2;
   .list {
     width: 100%;
-
     &:hover {
       background-color: $yellow;
     }
@@ -25,6 +24,12 @@
       margin: 0 2rem;
       cursor: pointer;
       border-bottom: 1px solid $borders;
+    }
+  }
+  &.dark {
+    background-color: $veryDarkBlue;
+    .list:hover {
+      color: black;
     }
   }
 }

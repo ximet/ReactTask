@@ -1,7 +1,7 @@
 @import '../../../global-styles/colors';
 
 .container {
-  width: 33%;
+  width: 50%;
   margin: 2rem auto;
   text-align: center;
   height: 10vh;
@@ -14,5 +14,11 @@
     border: 1px solid $borders;
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
+    background-color: $transparentWhite;
+    &.dark {
+      background-color: $transparentBlack;
+      border: 1px solid $transparentBlack;
+      color: $lightBlue;
+    }
   }
 }
