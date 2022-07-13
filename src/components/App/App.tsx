@@ -10,7 +10,7 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import Card from '../UI/Card/Card';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import { ThemeContext, ThemeContextConfig } from './../../store/theme-context';
+import { ThemeContext, ThemeContextConfig, Theme } from './../../store/theme-context';
 import styles from './App.module.scss';
 
 const App: React.FunctionComponent = () => {
@@ -25,7 +25,7 @@ const App: React.FunctionComponent = () => {
 
   return (
     <BrowserRouter>
-      <div className={`${styles.app} ${styles[theme]}`}>
+      <div className={`${styles.app} ${theme === Theme.DARK && styles[theme]}`}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

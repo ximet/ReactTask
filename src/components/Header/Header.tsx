@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ThemeContext, ThemeContextConfig } from '../../store/theme-context';
+import { ThemeContext, ThemeContextConfig, Theme } from '../../store/theme-context';
 import styles from './Header.module.scss';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleTheme }: ThemeContextConfig = useContext(ThemeContext);
   return (
-    <header className={`${styles.header} ${styles[theme]}`}>
+    <header className={`${styles.header} ${theme === Theme.DARK && styles[theme]}`}>
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>Nice Weather App</h1>
@@ -44,7 +44,10 @@ const Header: React.FunctionComponent = () => {
           </ul>
         </nav>
       </div>
-      <div className={`${styles.themeSwitcher} ${styles[theme]}`} onClick={toggleTheme}>
+      <div
+        className={`${styles.themeSwitcher} ${theme === Theme.DARK && styles[theme]}`}
+        onClick={toggleTheme}
+      >
         <div className={styles.themeSwitcherButton}></div>
         <div className={styles.moonMaker}></div>
       </div>

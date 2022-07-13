@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import { ENDPOINTS } from '../../../helpers/api';
 import { LocationSearch, RequestDataConfig } from '../../../helpers/Interfaces';
-import { ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
+import { ThemeContext, ThemeContextConfig, Theme } from '../../../store/theme-context';
 import { useDebounce } from './../../../hooks/useDebounce';
 import { useGetRequest } from './../../../hooks/useGetRequest';
 import styles from './Search.module.scss';
@@ -30,7 +30,7 @@ const Search: React.FunctionComponent = () => {
   return (
     <section className={styles.container}>
       <input
-        className={`${styles.input} ${styles[theme]}`}
+        className={`${styles.input} ${theme === Theme.DARK && styles[theme]}`}
         placeholder="Search for location"
         type="text"
         onChange={inputChangeHandler}
