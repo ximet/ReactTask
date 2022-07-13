@@ -2,6 +2,11 @@
 
 .title {
   font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
   color: $darkerBlue;
   margin: 2rem;
+  &.dark {
+    color: $lightBlue;
+  }
 }

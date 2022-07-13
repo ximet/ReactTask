@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
 import styles from './Title.module.scss';
 
 interface TitleProps {
@@ -6,7 +7,8 @@ interface TitleProps {
 }
 
 const Title: React.FunctionComponent<TitleProps> = ({ title }) => {
-  return <h2 className={styles.title}>{title}</h2>;
+  const { theme }: ThemeContextConfig = useContext(ThemeContext);
+  return <h2 className={`${styles.title} ${styles[theme]}`}>{title}</h2>;
 };
 
 export default Title;

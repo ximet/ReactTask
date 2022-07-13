@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
 import styles from './Card.module.scss';
 
 const Card: React.FunctionComponent = ({ children }) => {
-  return <section className={styles.card}>{children}</section>;
+  const { theme }: ThemeContextConfig = useContext(ThemeContext);
+  return <section className={`${styles.card} ${styles[theme]}`}>{children}</section>;
 };
 
 export default Card;

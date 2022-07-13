@@ -2,9 +2,13 @@
 @import '../../../global-styles/mixins';
 
 .card {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: $transparentWhite;
   border-radius: 0.5rem;
-  @include borderShadows;
+  @include borderShadows(2px, 2px, 5px, $borders);
   margin: 3rem;
   padding: 2rem;
+  &.dark {
+    background-color: $transparentBlack;
+    @include borderShadows(2px, 2px, 5px, $transparentBlack);
+  }
 }
