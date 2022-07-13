@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { instance } from '../../../DataService/dataService';
+import { instance } from '../../../DataService/apiService';
 import { endpoints } from '../../../Helpers/constants';
 
 import styles from './SearchBar.module.scss';

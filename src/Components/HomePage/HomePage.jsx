@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { findMyLocation } from '../../Helpers/functions';
 import { endpoints } from '../../Helpers/constants';
-import { requestToken, instance } from '../../DataService/dataService';
+import { requestToken, instance } from '../../DataService/apiService';
 import { COOKIE } from '../../DataService/cookieService';
 
 import { CurrentForecast, DailyForecast, SearchBar, HourlyForecast } from '../../Components/index';
@@ -89,16 +89,16 @@ function HomePage() {
     }
   }
 
-  useEffect(async () => {
-    await tokenCheck();
+  useEffect(() => {
+    tokenCheck();
     findMyLocation(setCoords);
   }, []);
 
-  useEffect(async () => {
-    await getCurrentWeatherByCoords();
-    await getLocationDataByCoords();
-    await getDailyWeather();
-    await getHourlyWeather();
+  useEffect(() => {
+    getCurrentWeatherByCoords();
+    getLocationDataByCoords();
+    getDailyWeather();
+    getHourlyWeather();
   }, [coords]);
 
   return (
