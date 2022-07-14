@@ -19,7 +19,6 @@ import Info from './Pages/Info';
 import CityPage from './Pages/CityPage';
 import Homepage from './Pages/Homepage';
 
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
