@@ -11,18 +11,15 @@ import './assets/css/general.css';
 
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import ThemeWrapper from './Components/ThemeWrapper/ThemeWrapper';
+
 import List from './Pages/List';
 import Contacts from './Pages/Contacts';
 import Info from './Pages/Info';
 import CityPage from './Pages/CityPage';
 import Homepage from './Pages/Homepage';
 
-// import { useSelector } from 'react-redux';
-import ThemeWrapper from './Components/ThemeWrapper/ThemeWrapper';
 
-// const { darkTheme } = useSelector(state => state.theme);
-
-// console.log(store.getState().theme.darkTheme);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

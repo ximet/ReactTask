@@ -1,4 +1,3 @@
-// db function
 const themeStorage = () => {
   const THEME_KEY = 'theme';
 

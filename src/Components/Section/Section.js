@@ -1,5 +1,4 @@
 import styles from './Section.css';
-// import getCurrentLocation from '../Utils/currentLocation';
 
 const Section = props => {
   return (

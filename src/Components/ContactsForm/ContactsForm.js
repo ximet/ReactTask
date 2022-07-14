@@ -47,8 +47,7 @@ const ContactsForm = () => {
         });
     }
   };
-  console.log(question2);
-  console.log(typeof question2);
+  
   return (
     <>
       {popupMessage && <PopupPortal message={popupMessage} />}
