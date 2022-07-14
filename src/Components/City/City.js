@@ -1,19 +1,9 @@
 import styles from './City.css';
-import { useEffect } from 'react';
 
-import { useNavigate, useLocation } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-import { prevPageActions } from '../../Store/reducers/PrevPageSlice/index';
+import { useNavigate } from 'react-router-dom';
 
 const City = props => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  let location = useLocation();
-
-  useEffect(() => {
-    dispatch(prevPageActions.setPrevPage(location.pathname));
-  }, [location]);
 
   const viewDetails = () => {
     navigate(`/city&city=${props.weather.city}`);
@@ -24,7 +14,7 @@ const City = props => {
       <div className={styles.city}>
         <img
           className={styles.symbol}
-          src={require(`../../assets/img/symbols/${props.weather.symbol}.png`)}
+          src={`https://developer.foreca.com/static/images/symbols/${props.weather.symbol}.png`}
         />
         <div>
           <h4>{props.weather.country}</h4>

@@ -52,6 +52,17 @@ module.exports = {
             loader: 'url-loader?limit=100000'
           }
         ]
+      },
+      {
+        test: /\.php$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: commonPaths.phpFolder
+            }
+          }
+        ]
       }
     ]
   },
@@ -67,7 +78,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.js', '.jsx', '.css', '.scss', '.php']
   },
   plugins: [
     new webpack.ProgressPlugin(),

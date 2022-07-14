@@ -1,10 +1,12 @@
 /* general */
 :root {
   --background: #fff;
+  --footer-background: #3cc2ff;
   --text-primary: #2e2e2e;
 }
 [data-theme='dark'] {
   --background: #0f152e;
+  --footer-background: #070a16;
   --text-primary: #fff;
 }
 html {
@@ -15,13 +17,15 @@ html {
 [data-theme] {
   color: var(--text-primary);
   min-height: 100vh;
-  padding-top: 120px;
-  padding-bottom: 60px;
+  padding-top: 180px;
   position: relative;
   background-image: url(../img/cloud-top.png);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 [data-theme]:before {
   z-index: 1;
@@ -65,6 +69,9 @@ select {
   color: var(--text-primary);
   background-color: transparent;
 }
+select {
+  background-color: var(--background);
+}
 input::placeholder,
 textarea::placeholder {
   color: var(--text-primary);
@@ -74,4 +81,8 @@ h1 {
   width: 100%;
   font-weight: 700;
   font-size: 30px;
+}
+
+p {
+  margin-top: 30px;
 }

@@ -1,4 +1,6 @@
 const initialState = {
-  theme: 'light'
+  city: null,
+  cityDetails: null,
+  error: null
 };
 export default initialState;

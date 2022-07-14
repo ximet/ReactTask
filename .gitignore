@@ -28,4 +28,4 @@ package-lock.json
 packages/api/etc/
 
 # api keys
-# .env 
+.env

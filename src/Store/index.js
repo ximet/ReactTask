@@ -1,15 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import popupSlice from './reducers/PopupSlice/index';
 import listPageSlice from './reducers/ListPageSlice/index';
-import prevPageSlice from './reducers/PrevPageSlice/index';
 import themeSlice from './reducers/ThemeSlice/index';
+import cityPageDetailsSlice from './reducers/CityPageDetailsSlice/index';
+import contactsFormSlice from './reducers/ContactsFormSlice/index';
 
 const store = configureStore({
   reducer: {
+    popup: popupSlice,
     listPage: listPageSlice,
-    prevPage: prevPageSlice,
-    theme: themeSlice
-    // prevPage: prevPageSlice,
+    theme: themeSlice,
+    cityPageDetails: cityPageDetailsSlice,
+    contactsForm: contactsFormSlice
   }
 });
 export default store;

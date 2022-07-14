@@ -1,4 +1,4 @@
 const initialState = {
-  theme: 'light'
+  popupMessage: null
 };
 export default initialState;

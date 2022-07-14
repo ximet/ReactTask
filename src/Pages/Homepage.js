@@ -1,13 +1,20 @@
 import Section from '../Components/Section/Section';
+import PopupPortal from '../Components/Popup/PopupPortal';
 import City from '../Components/City/City';
 
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { popupActions } from '../Store/reducers/PopupSlice/index';
 
 import { useGeolocated } from 'react-geolocated';
 import getCurrentWeather from '../Api/getCurrentWeather';
 import getCity from '../Api/getCity';
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+  const { popupMessage } = useSelector(state => state.popup);
+
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
     positionOptions: {
       enableHighAccuracy: false
@@ -26,18 +33,19 @@ const Homepage = () => {
             .then(data => {
               setCurrentWeather(data);
             })
-            .catch(error => {
-              console.log(error);
+            .catch(() => {
+              dispatch(popupActions.setMessage('Сity is not found!'));
             });
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
+          dispatch(popupActions.setMessage('Сity is not found!'));
         });
     }
   }, [coords]);
 
   return (
     <>
+      {popupMessage && <PopupPortal message={popupMessage} />}
       <Section>{currentWeather && <City weather={currentWeather} />}</Section>
     </>
   );

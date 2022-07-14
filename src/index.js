@@ -10,6 +10,7 @@ import './assets/css/reset.css';
 import './assets/css/general.css';
 
 import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 import List from './Pages/List';
 import Contacts from './Pages/Contacts';
 import Info from './Pages/Info';
@@ -37,6 +38,7 @@ ReactDOM.render(
             <Route path="*" element={<div>Page not found!</div>} />
           </Routes>
         </main>
+        <Footer />
       </ThemeWrapper>
     </BrowserRouter>
   </Provider>,

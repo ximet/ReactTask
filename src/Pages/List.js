@@ -10,10 +10,12 @@ import getCityCoords from '../Api/getCityCoords';
 import getCurrentWeather from '../Api/getCurrentWeather';
 
 import { listPageActions } from '../Store/reducers/ListPageSlice/index';
+import { popupActions } from '../Store/reducers/PopupSlice/index';
 
 const List = () => {
   const dispatch = useDispatch();
-  const { currentCountry, city, cityWeather, error } = useSelector(state => state.listPage);
+  const { currentCountry, city, cityWeather } = useSelector(state => state.listPage);
+  const { popupMessage } = useSelector(state => state.popup);
 
   const getCity = e => {
     dispatch(listPageActions.setCity(e.target.value));
@@ -29,31 +31,27 @@ const List = () => {
     if (city) {
       getCityCoords(city)
         .then(data => {
-          if (data != undefined) {
+          if (data) {
             getCurrentWeather(data)
               .then(data => {
-                console.log(data);
                 dispatch(listPageActions.setCityWeather(data));
               })
-              .catch(error => {
-                console.log(error);
+              .catch(() => {
+                dispatch(popupActions.setMessage('Сity is not found!'));
               });
           } else {
-            dispatch(listPageActions.setError('Сity is not found!'));
+            dispatch(popupActions.setMessage('Сity is not found!'));
           }
         })
         .catch(() => {
-          dispatch(listPageActions.setError('Сity is not found!'));
+          dispatch(popupActions.setMessage('Сity is not found!'));
         });
     }
   };
 
-  const closePopup = () => {
-    dispatch(listPageActions.setError(false));
-  };
   return (
     <>
-      {error && <PopupPortal close={closePopup} message={error} />}
+      {popupMessage && <PopupPortal message={popupMessage} />}
       <Section>
         <h1>Search city</h1>
         <CitiesForm

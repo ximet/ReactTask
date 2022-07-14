@@ -16,6 +16,15 @@ const contactsFormSlice = createSlice({
         action.payload.indexOf('@') > -1 &&
         action.payload.indexOf('.') > -1;
     },
+    changeQuestion1(state, action) {
+      state.question1 = action.payload;
+    },
+    changeQuestion2(state, action) {
+      state.question2 = action.payload;
+    },
+    changeQuestion3(state, action) {
+      state.question3 = action.payload;
+    },
     changeMessage(state, action) {
       state.message = action.payload;
     },

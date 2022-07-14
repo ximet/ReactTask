@@ -7,16 +7,14 @@ import { themeActions } from '../../Store/reducers/ThemeSlice/index';
 
 const ThemeWrapper = props => {
   const dispatch = useDispatch();
-  const { darkTheme } = useSelector(state => state.theme);
+  const { theme } = useSelector(state => state.theme);
 
   useEffect(() => {
-    let getTheme = Boolean(themeStorage().getTheme());
-    console.log('ThemeWrapper');
+    const getTheme = themeStorage().getTheme();
     dispatch(themeActions.setTheme(getTheme));
-    console.log(getTheme);
   }, []);
 
-  return <div data-theme={darkTheme ? 'dark' : ''}>{props.children}</div>;
+  return <div data-theme={theme === 'light' ? 'light' : 'dark'}>{props.children}</div>;
 };
 
 export default ThemeWrapper;

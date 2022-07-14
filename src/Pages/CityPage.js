@@ -1,38 +1,50 @@
 import { useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { cityPageDetailsActions } from '../Store/reducers/CityPageDetailsSlice/index';
+import { popupActions } from '../Store/reducers/PopupSlice/index';
 
 import getCityCoords from '../Api/getCityCoords';
 import getDetailWeather from '../Api/getDetailWeather';
 
 import Section from '../Components/Section/Section';
+import PopupPortal from '../Components/Popup/PopupPortal';
+
 import CityDetails from '../Components/CityDetails/CityDetails';
 
 const CityPage = () => {
+  const dispatch = useDispatch();
+  const { city, cityDetails } = useSelector(state => state.cityPageDetails);
+  const { popupMessage } = useSelector(state => state.popup);
+
   let location = useLocation();
-  const [city, setCity] = useState(null);
-  const [cityDetails, setCityDetails] = useState(null);
 
   useEffect(() => {
-    setCity(decodeURI(location.pathname.split('=')[1]));
+    dispatch(cityPageDetailsActions.setCity(decodeURI(location.pathname.split('=')[1])));
+  }, [location]);
+
+  useEffect(() => {
     if (city) {
       getCityCoords(city)
         .then(data => {
           getDetailWeather({ latitude: data.latitude, longitude: data.longitude })
             .then(data => {
-              setCityDetails(data);
+              dispatch(cityPageDetailsActions.setCityDetails(data));
             })
             .catch(() => {
-              // dispatch(listPageActions.setError('Сity is not found!'));
+              dispatch(popupActions.setMessage('Сity is not found!'));
             });
         })
         .catch(() => {
-          // dispatch(listPageActions.setError('Сity is not found!'));
+          dispatch(popupActions.setMessage('Сity is not found!'));
         });
     }
   }, [city]);
 
   return (
     <>
+      {popupMessage && <PopupPortal message={popupMessage} />}
       <Section>{cityDetails && <CityDetails city={city} weather={cityDetails} />}</Section>
     </>
   );

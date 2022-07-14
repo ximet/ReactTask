@@ -7,21 +7,17 @@ import themeStorage from '../../Services/ThemeStorage';
 
 const ThemeBtn = () => {
   const dispatch = useDispatch();
-  const { darkTheme } = useSelector(state => state.theme);
+  const { theme } = useSelector(state => state.theme);
 
   const changeTheme = () => {
-    dispatch(themeActions.setTheme(!Boolean(darkTheme)));
-    themeStorage().setTheme(!Boolean(darkTheme));
-    console.log('ClickThemeBtn');
-    console.log(darkTheme);
-    console.log(Boolean(themeStorage().getTheme()));
+    let newTheme = theme === 'light' ? 'dark' : 'light';
+    dispatch(themeActions.setTheme(newTheme));
+    themeStorage().setTheme(newTheme);
   };
 
-  console.log('ThemeBtn');
-  console.log(darkTheme);
   return (
     <div
-      className={darkTheme ? styles.themeBtn + ' ' + styles.darkTheme : styles.themeBtn}
+      className={theme === 'light' ? styles.themeBtn : styles.themeBtn + ' ' + styles.darkTheme}
       onClick={changeTheme}
     ></div>
   );

@@ -1,12 +1,12 @@
 // db function
 const themeStorage = () => {
-  const DB_KEY = 'darkTheme';
+  const THEME_KEY = 'theme';
 
   const getTheme = () => {
-    return localStorage.getItem(DB_KEY);
+    return localStorage.getItem(THEME_KEY);
   };
   const setTheme = item => {
-    localStorage.setItem(DB_KEY, item);
+    localStorage.setItem(THEME_KEY, item);
   };
 
   return { setTheme, getTheme };

@@ -3,6 +3,9 @@ const initialState = {
   nameIsValid: false,
   email: '',
   emailIsValid: false,
-  message: ''
+  message: '',
+  question1: '',
+  question2: '',
+  question3: ''
 };
 export default initialState;

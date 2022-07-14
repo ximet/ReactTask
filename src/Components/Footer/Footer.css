@@ -1,6 +1,7 @@
-section {
-  margin-bottom: 60px;
-  width: 100%;
+.footer {
+  margin-top: auto;
+  padding: 40px;
+  background-color: var(--footer-background);
 }
 .container {
   display: -webkit-box;
@@ -8,6 +9,8 @@ section {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   width: 100%;
   height: 100%;
@@ -17,13 +20,10 @@ section {
   margin-right: auto;
   margin-left: auto;
 }
-.block {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  width: 100%;
-  background-color: var(--background);
-  padding: 50px 40px;
+.footer a {
+  transition: .2s;
+}
+.footer a:hover {
+  transition: .2s;
+  opacity: .8;
 }
