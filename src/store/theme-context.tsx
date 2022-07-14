@@ -20,7 +20,9 @@ export const ThemeContext = React.createContext<ThemeContextConfig>({
   toggleTheme: () => {}
 });
 
-export const ThemeProvider: React.FunctionComponent = ({ children }) => {
+export const ThemeProvider: React.FunctionComponent<{ children?: React.ReactNode }> = ({
+  children
+}) => {
   const [theme, setTheme] = useState<Theme>(getTheme);
   const toggleTheme = (): void => {
     theme === Theme.LIGHT ? setTheme(Theme.DARK) : setTheme(Theme.LIGHT);
