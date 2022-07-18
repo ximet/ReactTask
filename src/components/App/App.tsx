@@ -28,7 +28,7 @@ const App: React.FunctionComponent = () => {
       <div className={`${styles.app} ${theme === Theme.DARK && styles[theme]}`}>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index={true} element={<Home />} />
           <Route path="cities" element={<Cities />} />
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />

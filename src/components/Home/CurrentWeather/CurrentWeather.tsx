@@ -35,6 +35,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
               <img
                 className={styles.symbol}
                 src={ENDPOINTS.symbol + data.current.symbol + '.png'}
+                alt={data.current.symbolPhrase}
               />{' '}
               <p className={styles.feelsLike}>
                 <b>
