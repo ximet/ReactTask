@@ -19,7 +19,7 @@ function keyHolder(userSecret) {
 }
 
 function getHeaders() {
-  let apiKeyCopy = getApiKey();
+  const apiKeyCopy = getApiKey();
   return { Authorization: `Bearer ${apiKeyCopy}` };
 }
 
@@ -83,6 +83,7 @@ app.post('/get-current-location-params', (req, res) => {
 
 app.post('/search', (req, res) => {
   const searchedLocation = req.query.location;
+  const hdrs = getHeaders();
 
   function transformObj(resObj) {
     const updatedResults = Object.entries(resObj.data).shift();
@@ -91,7 +92,8 @@ app.post('/search', (req, res) => {
 
   axios({
     method: 'get',
-    url: `https://api.geoapify.com/v1/geocode/autocomplete?text=${searchedLocation}&format=json&apiKey=${process.env.REACT_APP_SEARCH_AUTOCOMPLETE_KEY}`
+    headers: hdrs,
+    url: 'https://pfa.foreca.com/api/v1/location/search/' + searchedLocation
   })
     .then(response => transformObj(response))
     .then(response => res.send(response))

@@ -10,10 +10,10 @@ const NavigationPaths = [
 export default function Navigation() {
   return (
     <nav className="container">
-      <ul className="listNav">
+      <ul className="nav__list">
         {NavigationPaths.map(item => (
           <li key={item.title}>
-            <Link className="nav-link" to={item.path}>
+            <Link className="nav__link" to={item.path}>
               {item.title}
             </Link>
           </li>

@@ -1,6 +1,7 @@
-import React, { Children, useState } from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import DetailedPage from '../pages/DetailedPage';
+import React, { useState } from 'react';
+import axios from 'axios';
+import ResultsList from './ResultsList';
+
 
 export default function SearchBar() {
   const [results, setResults] = useState([]);
@@ -11,9 +12,13 @@ export default function SearchBar() {
   };
 
   const updateInput = async event => {
-    await fetch(`http://localhost:3000/search?location=${event.target.value}`, { method: 'POST' })
-      .then(response => response.json())
-      .then(result => extractData(result))
+
+    await axios
+      .post(`http://localhost:3000/search?location=${event.target.value}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/html; charset=UTF-8' }
+      })
+      .then(result => extractData(result.data))
       .catch(error => console.log('error', error));
   };
 
@@ -25,33 +30,4 @@ export default function SearchBar() {
   );
 }
 
-function ResultsList(list) {
-  console.log(list);
-  let extacted;
-  for (const itm in list) {
-    extacted = list[itm];
-  }
 
-  return (
-    <>
-      {extacted.length ? (
-        <div className="search-results">
-          <ul className="search-results__list">
-            {extacted.map(item => (
-              <li key={item.lat} className="search-results__list-item">
-                <Link
-                  to={{
-                    pathname: `/location/weather-in-${item.name}`,
-                    search: `?name=${item.name}&lon-lat=${item.lat},${item.lat}`
-                  }}
-                >
-                  {item.formatted}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-    </>
-  );
-}
