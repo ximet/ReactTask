@@ -11,15 +11,15 @@ import RadioInput from './RadioInput/RadioInput';
 
 interface ContactsProps {}
 interface ContactsState {
-  formIsValid?: boolean;
-  formIsSubmitted?: boolean;
-  nameTouched?: boolean;
-  emailTouched?: boolean;
-  messageTouched?: boolean;
-  name?: string;
-  email?: string;
-  message?: string;
-  subscribe?: boolean;
+  formIsValid: boolean;
+  formIsSubmitted: boolean;
+  nameTouched: boolean;
+  emailTouched: boolean;
+  messageTouched: boolean;
+  name: string;
+  email: string;
+  message: string;
+  subscribe: boolean;
   number?: string;
 }
 interface Feedback {
@@ -53,42 +53,41 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
     this.thankYouCard = React.createRef();
   }
 
-  inputChangeHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value }: { name: string; value: string | boolean | undefined } = event.target;
     if (name === 'subscribe') {
       this.setState(() => ({ [name]: value === 'yes' }));
     } else {
       this.setState(
-        () => ({ [name]: value } as Partial<ContactsState>),
+        () => ({ [name]: value } as any),
         () => {
           this.updateInputValidations();
           this.checkFormValidity();
         }
       );
     }
-  }
+  };
 
-  inputBlurHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  inputBlurHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name }: { name: string } = event.target;
-    this.setState(() => ({ [`${name}Touched`]: true } as Partial<ContactsState>));
-  }
+    this.setState(() => ({ [`${name}Touched`]: true } as any));
+  };
 
-  checkFormValidity() {
+  checkFormValidity = () => {
     this.setState({
       formIsValid:
         this.nameIsValid && this.emailIsValid && this.messageIsValid && this.numberIsValid
     });
-  }
+  };
 
-  updateInputValidations() {
-    this.nameIsValid = this.state.name != '';
+  updateInputValidations = () => {
+    this.nameIsValid = this.state.name !== '';
     this.emailIsValid = emailRegEx.test(this.state.email || '');
-    this.messageIsValid = this.state.message != '';
-    this.numberIsValid =
-      phoneRegEx.test(this.state.number || '') || this.state.number === undefined;
-  }
+    this.messageIsValid = this.state.message !== '';
+    this.numberIsValid = !this.state.number || phoneRegEx.test(this.state.number);
+  };
 
-  formSubmitHandler(event: React.MouseEvent<HTMLButtonElement>) {
+  formSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const feedback: Feedback = {
       name: this.state.name!,
@@ -107,7 +106,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
       formIsSubmitted: true
     }));
     this.thankYouCard.current!.scrollIntoView();
-  }
+  };
 
   render() {
     return (
@@ -119,23 +118,23 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
             <form className={styles.form}>
               <Input
                 valueName="name"
-                changeHandler={this.inputChangeHandler.bind(this)}
+                changeHandler={this.inputChangeHandler}
                 inputValue={this.state.name}
                 required={true}
                 valid={this.nameIsValid}
                 touched={this.state.nameTouched}
                 errorMessage="Name cannot be empty."
-                blurHandler={this.inputBlurHandler.bind(this)}
+                blurHandler={this.inputBlurHandler}
               />
               <Input
                 valueName="email"
-                changeHandler={this.inputChangeHandler.bind(this)}
+                changeHandler={this.inputChangeHandler}
                 inputValue={this.state.email}
                 required={true}
                 valid={this.emailIsValid}
                 touched={this.state.emailTouched}
                 errorMessage="Check your email. It is not valid."
-                blurHandler={this.inputBlurHandler.bind(this)}
+                blurHandler={this.inputBlurHandler}
               />
 
               <div className={styles.inputContainer}>
@@ -147,8 +146,8 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                   placeholder="Type your message or questions here and we will go back to you soon!"
                   id="message-input"
                   value={this.state.message}
-                  onChange={this.inputChangeHandler.bind(this)}
-                  onBlur={this.inputBlurHandler.bind(this)}
+                  onChange={this.inputChangeHandler}
+                  onBlur={this.inputBlurHandler}
                   name="message"
                 />
                 {!this.messageIsValid && this.state.messageTouched && (
@@ -165,13 +164,13 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                   <RadioInput
                     name="subscribe"
                     value="yes"
-                    changeHandler={this.inputChangeHandler.bind(this)}
+                    changeHandler={this.inputChangeHandler}
                     checked={this.state.subscribe}
                   />
                   <RadioInput
                     name="subscribe"
                     value="no"
-                    changeHandler={this.inputChangeHandler.bind(this)}
+                    changeHandler={this.inputChangeHandler}
                     checked={!this.state.subscribe}
                   />
                 </div>
@@ -180,17 +179,17 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                 <Input
                   valueName="number"
                   placeholder={'Leave your mobile number if you want to be contacted via sms.'}
-                  changeHandler={this.inputChangeHandler.bind(this)}
+                  changeHandler={this.inputChangeHandler}
                   inputValue={this.state.number}
                   required={false}
                   valid={this.numberIsValid}
                   errorMessage="Check your phone number. It is not valid."
-                  blurHandler={this.inputBlurHandler.bind(this)}
+                  blurHandler={this.inputBlurHandler}
                 />
               )}
               <button
                 className={styles.button}
-                onClick={this.formSubmitHandler.bind(this)}
+                onClick={this.formSubmitHandler}
                 disabled={!this.state.formIsValid}
               >
                 Send
