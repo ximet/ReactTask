@@ -40,9 +40,10 @@ export default function App() {
     if (!authenticated || userCoords) return;
 
     if ('geolocation' in navigator) {
-
       navigator.geolocation.getCurrentPosition(function (position) {
-        const userCoordinates = { latLon: position.coords.longitude + ',' + position.coords.latitude };
+        const userCoordinates = {
+          latLon: position.coords.longitude + ',' + position.coords.latitude
+        };
 
         (async function getPin() {
           await axios
@@ -51,9 +52,7 @@ export default function App() {
             })
             .then(data => setUserCoords(data));
         })();
-
       });
-
     } else {
       alert('Location Not Available');
     }

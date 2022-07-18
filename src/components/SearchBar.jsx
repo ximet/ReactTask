@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ResultsList from './ResultsList';
 
-
 export default function SearchBar() {
   const [results, setResults] = useState([]);
 
@@ -12,7 +11,6 @@ export default function SearchBar() {
   };
 
   const updateInput = async event => {
-
     await axios
       .post(`http://localhost:3000/search?location=${event.target.value}`, {
         method: 'POST',
@@ -29,5 +27,3 @@ export default function SearchBar() {
     </div>
   );
 }
-
-
