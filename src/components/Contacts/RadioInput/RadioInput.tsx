@@ -29,7 +29,7 @@ class RadioInput extends React.Component<RadioInputProps> {
           name={this.props.name}
           value={this.props.value}
           id={`${this.props.value}-radio`}
-          onChange={this.props.changeHandler.bind(this)}
+          onChange={this.props.changeHandler}
           checked={this.props.checked}
         />
       </>

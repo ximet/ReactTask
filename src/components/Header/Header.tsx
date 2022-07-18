@@ -55,4 +55,4 @@ const Header: React.FunctionComponent = () => {
   );
 };
 
-export default React.memo(Header); // can we wrap like this? Is it worth?
+export default React.memo(Header);

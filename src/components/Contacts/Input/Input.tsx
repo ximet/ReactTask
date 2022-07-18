@@ -28,7 +28,7 @@ class Input extends React.Component<InputProps> {
       <>
         <div className={styles.inputContainer}>
           <label className={styles.label} htmlFor={`${this.props.valueName}-input`}>
-            {`${this.capitalizeInputName()}`}{' '}
+            {`${this.capitalizeInputName()} `}
             {this.props.required && <span className={styles.required}>*</span>}
           </label>
           <input
@@ -37,8 +37,8 @@ class Input extends React.Component<InputProps> {
             placeholder={this.props.placeholder || `Enter your ${this.capitalizeInputName()}`}
             id={`${this.props.valueName}-input`}
             value={this.props.inputValue}
-            onChange={this.props.changeHandler.bind(this)}
-            onBlur={this.props.blurHandler.bind(this)}
+            onChange={this.props.changeHandler}
+            onBlur={this.props.blurHandler}
             name={this.props.valueName}
           />
           {!this.props.valid && this.props.touched && (

@@ -10,18 +10,19 @@ import Input from './Input/Input';
 import RadioInput from './RadioInput/RadioInput';
 
 interface ContactsProps {}
-interface ContactsState extends InputValues {
-  formIsValid: boolean;
-  formIsSubmitted: boolean;
-  nameTouched: boolean;
-  emailTouched: boolean;
-  messageTouched: boolean;
-}
-interface InputValues {
-  [prop: string]: string | boolean | undefined;
+interface ContactsState {
+  formIsValid?: boolean;
+  formIsSubmitted?: boolean;
+  nameTouched?: boolean;
+  emailTouched?: boolean;
+  messageTouched?: boolean;
+  name?: string;
+  email?: string;
+  message?: string;
+  subscribe?: boolean;
+  number?: string;
 }
 interface Feedback {
-  id?: number;
   name: string;
   email: string;
   message: string;
@@ -53,12 +54,12 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
   }
 
   inputChangeHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
-    const { name, value }: { name: string; value: string } = event.target;
+    const { name, value }: { name: string; value: string | boolean | undefined } = event.target;
     if (name === 'subscribe') {
       this.setState(() => ({ [name]: value === 'yes' }));
     } else {
       this.setState(
-        () => ({ [name]: value }),
+        () => ({ [name]: value } as Partial<ContactsState>),
         () => {
           this.updateInputValidations();
           this.checkFormValidity();
@@ -69,7 +70,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
 
   inputBlurHandler(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const { name }: { name: string } = event.target;
-    this.setState(() => ({ [`${name}Touched`]: true }));
+    this.setState(() => ({ [`${name}Touched`]: true } as Partial<ContactsState>));
   }
 
   checkFormValidity() {
@@ -80,24 +81,21 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
   }
 
   updateInputValidations() {
-    this.nameIsValid = (this.state.name as string) != '';
-    this.emailIsValid = emailRegEx.test(this.state.email as string);
-    this.messageIsValid = (this.state.message as string) != '';
+    this.nameIsValid = this.state.name != '';
+    this.emailIsValid = emailRegEx.test(this.state.email || '');
+    this.messageIsValid = this.state.message != '';
     this.numberIsValid =
-      phoneRegEx.test(this.state.number as string) ||
-      (this.state.number as string) === '' ||
-      this.state.number === undefined;
+      phoneRegEx.test(this.state.number || '') || this.state.number === undefined;
   }
 
   formSubmitHandler(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     const feedback: Feedback = {
-      id: Math.random(),
-      name: this.state.name as string,
-      email: this.state.email as string,
-      message: this.state.message as string,
-      subscribe: this.state.subscribe as boolean,
-      number: this.state.number as string | undefined
+      name: this.state.name!,
+      email: this.state.email!,
+      message: this.state.message!,
+      subscribe: this.state.subscribe!,
+      number: this.state.number
     };
     saveInLocalStorage('feedback', feedback);
     this.setState(() => ({
@@ -122,7 +120,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
               <Input
                 valueName="name"
                 changeHandler={this.inputChangeHandler.bind(this)}
-                inputValue={this.state.name as string}
+                inputValue={this.state.name}
                 required={true}
                 valid={this.nameIsValid}
                 touched={this.state.nameTouched}
@@ -132,7 +130,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
               <Input
                 valueName="email"
                 changeHandler={this.inputChangeHandler.bind(this)}
-                inputValue={this.state.email as string}
+                inputValue={this.state.email}
                 required={true}
                 valid={this.emailIsValid}
                 touched={this.state.emailTouched}
@@ -148,7 +146,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                   className={styles.textarea}
                   placeholder="Type your message or questions here and we will go back to you soon!"
                   id="message-input"
-                  value={this.state.message as string}
+                  value={this.state.message}
                   onChange={this.inputChangeHandler.bind(this)}
                   onBlur={this.inputBlurHandler.bind(this)}
                   name="message"
@@ -168,13 +166,13 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                     name="subscribe"
                     value="yes"
                     changeHandler={this.inputChangeHandler.bind(this)}
-                    checked={this.state.subscribe as boolean}
+                    checked={this.state.subscribe}
                   />
                   <RadioInput
                     name="subscribe"
                     value="no"
                     changeHandler={this.inputChangeHandler.bind(this)}
-                    checked={!this.state.subscribe as boolean}
+                    checked={!this.state.subscribe}
                   />
                 </div>
               </div>
@@ -183,7 +181,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                   valueName="number"
                   placeholder={'Leave your mobile number if you want to be contacted via sms.'}
                   changeHandler={this.inputChangeHandler.bind(this)}
-                  inputValue={this.state.number as string | undefined}
+                  inputValue={this.state.number}
                   required={false}
                   valid={this.numberIsValid}
                   errorMessage="Check your phone number. It is not valid."
