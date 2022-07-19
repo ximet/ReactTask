@@ -1,5 +1,4 @@
-import { Reducer } from 'react';
-import { createStore, Store } from 'redux';
+import { createStore } from 'redux';
 
 export enum tempUnits {
   CELSIUS = 'celsius',

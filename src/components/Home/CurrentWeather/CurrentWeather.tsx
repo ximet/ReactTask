@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector, useStore } from 'react-redux';
-import { Store } from 'redux';
+import { useSelector } from 'react-redux';
 import { ENDPOINTS } from '../../../helpers/api';
 import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
 import { CurrentData, LocationInfo, RequestDataConfig } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
-import { Action, tempUnits } from '../../../store/store-redux';
+import { tempUnits } from '../../../store/store-redux';
 import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import Loading from '../../UI/Loading/Loading';

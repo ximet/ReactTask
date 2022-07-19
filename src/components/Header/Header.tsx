@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { ThemeContext, ThemeContextConfig, Theme } from '../../store/theme-context';
-import styles from './Header.module.scss';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { Dispatch } from 'redux';
 import { Action, tempActions, tempUnits } from '../../store/store-redux';
-import { Dispatch, Store } from 'redux';
+import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
+import styles from './Header.module.scss';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleTheme }: ThemeContextConfig = useContext(ThemeContext);
