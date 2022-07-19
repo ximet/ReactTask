@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ENDPOINTS } from '../../../helpers/api';
+import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
 import { RequestDataConfig, ThreeHourlyData } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
+import { TempUnits } from '../../../store/store-redux';
 import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import WiRaindrops from '../../UI/Icons/WiRaindrops';
@@ -18,6 +21,7 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
     ENDPOINTS.threeHourly,
     location
   );
+  const tempUnit = useSelector<TempUnits, TempUnits>(state => state);
 
   return (
     <Card>
@@ -38,7 +42,11 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
                     />
                     <p>{forecast.symbolPhrase}</p>
                     <p>
-                      <b>{forecast.temperature} °C</b>
+                      <b>
+                        {tempUnit === TempUnits.FAHRENHEIT
+                          ? `${convertToFahrenheit(forecast.temperature)} °F`
+                          : `${forecast.temperature} °C`}
+                      </b>
                     </p>
                     <WiRaindrops />
                     <p> {forecast.precipProb} %</p>
