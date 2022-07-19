@@ -144,7 +144,7 @@
           margin: 0.5rem 0;
           cursor: pointer;
         }
-        &.dark{
+        &.dark {
           @include borderShadows(1px, 1px, 3px, $transparentBlack);
           background-color: black;
           color: $lightBlue;
