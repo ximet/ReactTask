@@ -1,38 +1,38 @@
 import { createStore } from 'redux';
 
-export enum tempUnits {
+export enum TempUnits {
   CELSIUS = 'celsius',
   FAHRENHEIT = 'fahrenheit'
 }
-export enum tempActions {
+export enum TempActions {
   TO_FAHRENHEIT = 'toFahrenheit',
   TO_CELSIUS = 'toCelsius'
 }
 export interface Action {
   type: string;
 }
-const getTempUnits = (): tempUnits => {
+const getTempUnits = (): TempUnits => {
   const tempUnit: string | null = localStorage.getItem('tempUnit');
-  if (!tempUnit || tempUnit === tempUnits.CELSIUS) {
-    return tempUnits.CELSIUS;
+  if (!tempUnit || tempUnit === TempUnits.CELSIUS) {
+    return TempUnits.CELSIUS;
   } else {
-    return tempUnits.FAHRENHEIT;
+    return TempUnits.FAHRENHEIT;
   }
 };
-const initialState: tempUnits = getTempUnits();
+const initialState: TempUnits = getTempUnits();
 
-const tempUnitsReducer = (state = initialState, action: Action) => {
-  if (action.type === tempActions.TO_FAHRENHEIT) {
-    localStorage.setItem('tempUnit', tempUnits.FAHRENHEIT);
-    return (state = tempUnits.FAHRENHEIT);
+const TempUnitsReducer = (state: TempUnits = initialState, action: Action) => {
+  if (action.type === TempActions.TO_FAHRENHEIT) {
+    localStorage.setItem('tempUnit', TempUnits.FAHRENHEIT);
+    return TempUnits.FAHRENHEIT;
   }
-  if (action.type === tempActions.TO_CELSIUS) {
-    localStorage.setItem('tempUnit', tempUnits.CELSIUS);
-    return (state = tempUnits.CELSIUS);
+  if (action.type === TempActions.TO_CELSIUS) {
+    localStorage.setItem('tempUnit', TempUnits.CELSIUS);
+    return TempUnits.CELSIUS;
   }
   return state;
 };
 
-const store = createStore(tempUnitsReducer);
+const store = createStore(TempUnitsReducer);
 
 export default store;

@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { Action, tempActions, tempUnits } from '../../store/store-redux';
+import { Action, TempActions, TempUnits } from '../../store/store-redux';
 import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
 import styles from './Header.module.scss';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleTheme }: ThemeContextConfig = useContext(ThemeContext);
   const dispatch: Dispatch<Action> = useDispatch();
-  const tempUnit = useSelector<tempUnits, tempUnits>(state => state);
-  const isCelsius: boolean = tempUnit === tempUnits.CELSIUS;
+  const tempUnit = useSelector<TempUnits, TempUnits>(state => state);
+  const isCelsius: boolean = tempUnit === TempUnits.CELSIUS;
 
   const toggleTempUnits = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({ type: event.target.value });
@@ -62,12 +62,12 @@ const Header: React.FunctionComponent = () => {
             className={`${styles.select} ${theme === Theme.DARK && styles[theme]}`}
             onChange={toggleTempUnits}
           >
-            <option className={styles.option} value={tempActions.TO_CELSIUS} selected={isCelsius}>
+            <option className={styles.option} value={TempActions.TO_CELSIUS} selected={isCelsius}>
               Celsius °C
             </option>
             <option
               className={styles.option}
-              value={tempActions.TO_FAHRENHEIT}
+              value={TempActions.TO_FAHRENHEIT}
               selected={!isCelsius}
             >
               Fahrenheit °F

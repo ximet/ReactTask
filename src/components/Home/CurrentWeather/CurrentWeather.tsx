@@ -4,7 +4,7 @@ import { ENDPOINTS } from '../../../helpers/api';
 import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
 import { CurrentData, LocationInfo, RequestDataConfig } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
-import { tempUnits } from '../../../store/store-redux';
+import { TempUnits } from '../../../store/store-redux';
 import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import Loading from '../../UI/Loading/Loading';
@@ -24,7 +24,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
     ENDPOINTS.current,
     location
   );
-  const tempUnit = useSelector<tempUnits, tempUnits>(state => state);
+  const tempUnit = useSelector<TempUnits, TempUnits>(state => state);
 
   return (
     <Card>
@@ -33,7 +33,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
           {locationInfo && <Title title={`Now in ${locationInfo.name}, ${locationInfo.country}`} />}
           <div className={styles.temperature}>
             <p className={styles.currentTemperature}>
-              {tempUnit === tempUnits.FAHRENHEIT
+              {tempUnit === TempUnits.FAHRENHEIT
                 ? `${convertToFahrenheit(data.current.temperature)} °F`
                 : `${data.current.temperature} °C`}
             </p>
@@ -53,7 +53,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
                 </b>
                 Feels like
                 <b>
-                  {tempUnit === tempUnits.FAHRENHEIT
+                  {tempUnit === TempUnits.FAHRENHEIT
                     ? ` ${convertToFahrenheit(data.current.feelsLikeTemp)} °F`
                     : ` ${data.current.feelsLikeTemp} °C`}
                 </b>
