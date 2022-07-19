@@ -4,7 +4,8 @@ import { ENDPOINTS } from '../../../helpers/api';
 import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
 import { RequestDataConfig, ThreeHourlyData } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
-import { TempUnits } from '../../../store/store-redux';
+import { CombinedState } from '../../../store/index-redux';
+import { TempUnits } from '../../../store/tempUnits-redux';
 import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import WiRaindrops from '../../UI/Icons/WiRaindrops';
@@ -21,7 +22,7 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
     ENDPOINTS.threeHourly,
     location
   );
-  const tempUnit = useSelector<TempUnits, TempUnits>(state => state);
+  const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
 
   return (
     <Card>

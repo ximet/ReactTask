@@ -8,7 +8,7 @@ export enum TempActions {
   TO_FAHRENHEIT = 'toFahrenheit',
   TO_CELSIUS = 'toCelsius'
 }
-export interface Action {
+export interface TempActionConfig {
   type: string;
 }
 const getTempUnits = (): TempUnits => {
@@ -21,7 +21,7 @@ const getTempUnits = (): TempUnits => {
 };
 const initialState: TempUnits = getTempUnits();
 
-const TempUnitsReducer = (state: TempUnits = initialState, action: Action) => {
+const TempUnitsReducer = (state: TempUnits = initialState, action: TempActionConfig) => {
   if (action.type === TempActions.TO_FAHRENHEIT) {
     localStorage.setItem('tempUnit', TempUnits.FAHRENHEIT);
     return TempUnits.FAHRENHEIT;
@@ -33,6 +33,4 @@ const TempUnitsReducer = (state: TempUnits = initialState, action: Action) => {
   return state;
 };
 
-const store = createStore(TempUnitsReducer);
-
-export default store;
+export default TempUnitsReducer;

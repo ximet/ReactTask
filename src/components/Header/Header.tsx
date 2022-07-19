@@ -2,20 +2,20 @@ import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { Action, TempActions, TempUnits } from '../../store/store-redux';
+import { CombinedState } from '../../store/index-redux';
+import { TempActionConfig, TempActions, TempUnits } from '../../store/tempUnits-redux';
 import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
 import styles from './Header.module.scss';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleTheme }: ThemeContextConfig = useContext(ThemeContext);
-  const dispatch: Dispatch<Action> = useDispatch();
-  const tempUnit = useSelector<TempUnits, TempUnits>(state => state);
+  const dispatch: Dispatch<TempActionConfig> = useDispatch();
+  const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
   const isCelsius: boolean = tempUnit === TempUnits.CELSIUS;
 
   const toggleTempUnits = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({ type: event.target.value });
   };
-
   return (
     <header className={`${styles.header} ${theme === Theme.DARK && styles[theme]}`}>
       <div className={styles.container}>
