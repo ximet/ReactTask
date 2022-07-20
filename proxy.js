@@ -18,7 +18,14 @@ function keyHolder(userSecret) {
   return displayApiKey;
 }
 
+function getHeaders() {
+  const apiKeyCopy = getApiKey();
+  return { Authorization: `Bearer ${apiKeyCopy}` };
+}
+
 const app = express();
+app.use(express.json());
+
 app.use(cors());
 
 app.get('/login', (req, res) => {
@@ -41,12 +48,11 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/test-url', (req, res) => {
-  const apiKeyCopy = getApiKey();
-  const secureHeaderProp = { Authorization: `Bearer ${apiKeyCopy}` };
+  const hdrs = getHeaders();
 
   axios({
     method: 'get',
-    headers: secureHeaderProp,
+    headers: hdrs,
     url: `https://pfa.foreca.com/api/v1/location/102810135`,
     data: {}
   })
@@ -56,6 +62,43 @@ app.post('/test-url', (req, res) => {
     .catch(error => {
       if (error) console.log('API call returned an error:', error);
     });
+});
+
+app.post('/get-current-location-params', (req, res) => {
+  const hdrs = getHeaders();
+  const userCoordinates = req.body.latLon;
+
+  axios({
+    method: 'get',
+    headers: hdrs,
+    url: 'https://pfa.foreca.com/api/v1/location/' + userCoordinates, //current
+    data: {}
+  })
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      if (error) console.log('API call returned an error:', error);
+    });
+});
+
+app.post('/search', (req, res) => {
+  const searchedLocation = req.query.location;
+  const hdrs = getHeaders();
+
+  function transformObj(resObj) {
+    const updatedResults = Object.entries(resObj.data).shift();
+    return updatedResults;
+  }
+
+  axios({
+    method: 'get',
+    headers: hdrs,
+    url: 'https://pfa.foreca.com/api/v1/location/search/' + searchedLocation
+  })
+    .then(response => transformObj(response))
+    .then(response => res.send(response))
+    .catch(error => console.log('error', error));
 });
 
 app.listen(3000, 'localhost', () => console.log('working backend !!!'));
