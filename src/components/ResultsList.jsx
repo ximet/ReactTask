@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function ResultsList(props) {
   return (
     <>
-      {props.list.length ? (
+      {!!props.list.length && (
         <div className="search-results">
           <ul className="search-results__list">
             {props.list.map(item => (
@@ -20,7 +20,7 @@ export default function ResultsList(props) {
             ))}
           </ul>
         </div>
-      ) : null}
+      )}
     </>
   );
 }

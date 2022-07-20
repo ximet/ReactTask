@@ -37,7 +37,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!authenticated || userCoords) return;
+    if (!authenticated) return;
 
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -62,7 +62,7 @@ export default function App() {
     <Router>
       <Navigation />
       <button onClick={req}>test request</button>
-      {testLocation ? JSON.stringify(testLocation) : null}
+      {!!testLocation && JSON.stringify(testLocation)}
       <div className="page container">
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
