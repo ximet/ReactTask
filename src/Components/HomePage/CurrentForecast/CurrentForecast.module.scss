@@ -14,6 +14,16 @@
   border-radius: 1.2rem;
   border: 1px solid rgba(209, 213, 219, 0.3);
 
+  .starIcon {
+    font-size: 4rem;
+    color: $color-1L;
+
+    &:hover {
+      color: lighten($color: $color-1L, $amount: 50%);
+      cursor: pointer;
+    }
+  }
+
   &__location {
     display: flex;
     flex-direction: column;
