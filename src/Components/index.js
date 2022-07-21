@@ -16,5 +16,18 @@ import HourlyForecast from './HomePage/HourlyForecast/HourlyForecast';
 import FeedbackForm from './FeedbackPage/FeedbackForm/FeedbackForm';
 import ErrorMessage from './FeedbackPage/FeedbackForm/ErrorMessage';
 
+// FavPage
+import FavCitiesList from './FavPage/FavCitiesList/FavCitiesList';
+import Message from './FavPage/Message/Message';
+
 export { Header, HomePage, AboutPage, FavPage, FeedbackPage, Footer };
-export { SearchBar, CurrentForecast, DailyForecast, HourlyForecast, FeedbackForm, ErrorMessage };
+export {
+  SearchBar,
+  CurrentForecast,
+  DailyForecast,
+  HourlyForecast,
+  FeedbackForm,
+  ErrorMessage,
+  FavCitiesList,
+  Message
+};

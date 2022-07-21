@@ -5,5 +5,16 @@
   flex-direction: column;
   width: 80%;
   margin: auto;
-  gap: 5rem;
+  text-align: center;
+
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  .container-items {
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+  }
 }
