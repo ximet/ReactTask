@@ -1,0 +1,51 @@
+@import '../../global-styles/mixins';
+@import '../../global-styles/colors';
+
+.mainContainer {
+  margin: 5rem auto;
+  width: 80%;
+  .list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    .cardContainer {
+      width: 40%;
+      margin: 0 2rem;
+      .dataContainer {
+        text-align: center;
+        @include flex(row, space-around);
+        align-items: center;
+        .date {
+          font-weight: 700;
+          font-size: 1.2rem;
+        }
+        .temperature {
+          font-size: 3rem;
+          font-weight: 700;
+          color: $darkerBlue;
+          margin: 0;
+        }
+        .symbol {
+          height: 5rem;
+        }
+      }
+      .link {
+        display: block;
+        text-decoration: none;
+        color: black;
+        font-size: 0.8rem;
+        font-style: italic;
+        margin-top: 2rem;
+        transition: all 0.8s ease;
+        &:hover {
+          padding-left: 1.5rem;
+          font-weight: 700;
+        }
+        &.dark {
+          color: $lightBlue;
+        }
+      }
+    }
+  }
+}

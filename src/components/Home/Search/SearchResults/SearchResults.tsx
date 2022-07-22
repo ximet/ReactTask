@@ -37,7 +37,6 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
   const clickHandler = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const target = event.target as HTMLDivElement;
-      console.log('clickHandler', target.id);
       setLocationId(target.id);
       setSearchTerm('');
       setDisplaySearchResults(false);

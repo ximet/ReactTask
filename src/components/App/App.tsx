@@ -10,7 +10,7 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import Card from '../UI/Card/Card';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import { ThemeContext, ThemeContextConfig, Theme } from './../../store/theme-context';
+import { Theme, ThemeContext, ThemeContextConfig } from './../../store/theme-context';
 import styles from './App.module.scss';
 
 const App: React.FunctionComponent = () => {
@@ -29,7 +29,9 @@ const App: React.FunctionComponent = () => {
         <Header />
         <Routes>
           <Route index={true} element={<Home />} />
-          <Route path="cities" element={<Cities />} />
+          <Route path="cities" element={<Cities />}>
+            <Route path=":city" element={<Home />} />
+          </Route>
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />
           <Route
