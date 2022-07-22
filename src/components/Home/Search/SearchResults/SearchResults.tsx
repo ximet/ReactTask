@@ -1,7 +1,18 @@
-import React, { SetStateAction, useContext } from 'react';
+import React, { SetStateAction, useCallback, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 import { LocationSearch } from '../../../../helpers/Interfaces';
+import { CombinedState } from '../../../../store/index-redux';
 import { LocationContext } from '../../../../store/location-context';
-import { ThemeContext, ThemeContextConfig, Theme } from '../../../../store/theme-context';
+import {
+  LocationActionConfig,
+  LocationActions,
+  LocationState
+} from '../../../../store/location-redux';
+import { Theme, ThemeContext, ThemeContextConfig } from '../../../../store/theme-context';
+import GoLocation from '../../../UI/Icons/GoLocation';
+
+import SavedLocations from './SavedLocations/SavedLocations';
 import styles from './SearchResults.module.scss';
 
 interface SearchResultsProps {
@@ -18,23 +29,52 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
   const { locations } = searchResults;
   const { setLocationId } = useContext(LocationContext);
+  const { currentLocation, prevSearches } = useSelector<CombinedState, LocationState>(
+    state => state.location
+  );
+  const dispatch: Dispatch<LocationActionConfig> = useDispatch();
+
+  const clickHandler = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      const target = event.target as HTMLDivElement;
+      console.log('clickHandler', target.id);
+      setLocationId(target.id);
+      setSearchTerm('');
+      setDisplaySearchResults(false);
+      if (target.id !== currentLocation) {
+        dispatch({ type: LocationActions.SAVE_SEARCH, payload: target.id });
+      }
+    },
+    [event]
+  );
 
   return (
     <ul className={`${styles.container} ${theme === Theme.DARK && styles[theme]}`}>
       {locations.slice(0, 10).map(({ id, name, adminArea, country }) => (
-        <div className={styles.list}>
-          <li
-            className={styles.li}
-            key={id}
-            onClick={() => {
-              setLocationId(id.toString());
-              setSearchTerm('');
-              setDisplaySearchResults(false);
-            }}
-          >
+        <li className={styles.listElement} key={id}>
+          <div className={styles.locationName} id={id.toString()} onClick={clickHandler}>
             {name}, {adminArea && `${adminArea},`} {country}
-          </li>
+          </div>
+        </li>
+      ))}
+      <li className={styles.listElement}>
+        <div
+          className={`${styles.locationName} ${styles.liCurrent}`}
+          key={currentLocation}
+          id={currentLocation}
+          onClick={clickHandler}
+        >
+          <GoLocation />
+          <b>Current location</b>
         </div>
+      </li>
+      <li key={Math.random()}>
+        <div className={styles.previousLabel}>
+          <b>Previous searches:</b>
+        </div>
+      </li>
+      {prevSearches.map(savedSearch => (
+        <SavedLocations clickHandler={clickHandler} savedSearch={savedSearch} />
       ))}
     </ul>
   );

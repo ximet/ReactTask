@@ -2,7 +2,7 @@ export interface LocationState {
   currentLocation: string;
   prevSearches: string[];
 }
-enum LocationActions {
+export enum LocationActions {
   SAVE_CURRENT_LOCATION,
   SAVE_SEARCH
 }
@@ -11,9 +11,16 @@ export interface LocationActionConfig {
   payload: string;
 }
 
+const getPrevSearches = (): string[] => {
+  const prevSearches: string | null = localStorage.getItem('prevSearches');
+  if (prevSearches) {
+    return JSON.parse(localStorage.getItem('prevSearches')!);
+  } else return [];
+};
+
 const initialState: LocationState = {
   currentLocation: '',
-  prevSearches: []
+  prevSearches: getPrevSearches()
 };
 
 const LocationReducer = (
@@ -27,17 +34,36 @@ const LocationReducer = (
     };
   }
   if (action.type === LocationActions.SAVE_SEARCH) {
+    if (action.payload === '') {
+      return state;
+    }
+    if (state.prevSearches.includes(action.payload)) {
+      const filteredPrevSearches = [...state.prevSearches].filter(
+        element => element !== action.payload
+      );
+      const prevSearches = [action.payload, ...filteredPrevSearches];
+      localStorage.setItem('prevSearches', JSON.stringify(prevSearches));
+      return {
+        ...state,
+        prevSearches: prevSearches
+      };
+    }
     if (state.prevSearches.length > 4) {
-      const prevSearches = [...state.prevSearches].slice(0, 4);
+      const slicedPrevSearches = [...state.prevSearches].slice(0, 4);
+      const prevSearches = [action.payload, ...slicedPrevSearches];
+      localStorage.setItem('prevSearches', JSON.stringify(prevSearches));
       return {
         ...state,
-        prevSearches: [action.payload, ...prevSearches]
+        prevSearches: prevSearches
       };
-    } else
+    } else {
+      const prevSearches = [action.payload, ...state.prevSearches];
+      localStorage.setItem('prevSearches', JSON.stringify(prevSearches));
       return {
         ...state,
-        prevSearches: [action.payload, ...state.prevSearches]
+        prevSearches: prevSearches
       };
+    }
   }
   return state;
 };

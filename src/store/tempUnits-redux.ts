@@ -1,5 +1,3 @@
-import { createStore } from 'redux';
-
 export enum TempUnits {
   CELSIUS = 'celsius',
   FAHRENHEIT = 'fahrenheit'
