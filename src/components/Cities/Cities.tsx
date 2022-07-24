@@ -10,20 +10,20 @@ const Cities: React.FunctionComponent = () => {
   const cityId: string = cities.filter(city => city.name === cityParam)[0]?.id;
 
   return (
-    <main className={styles.mainContainer}>
+    <>
       {!cityParam ? (
-        <>
-          <Title title="What is the weather like in other Coherent&lsquo;s cities?" />
-          <ul className={styles.list}>
-            {cities.map(city => (
-              <City key={city.id} city={city} />
-            ))}
-          </ul>
-        </>
+        <main className={styles.mainContainer}>
+             <Title title="What is the weather like in other Coherent&lsquo;s cities?" />
+            <ul className={styles.list}>
+              {cities.map(city => (
+                <City key={city.id} city={city} />
+              ))}
+            </ul>
+        </main>
       ) : (
         <Outlet context={{ cityId: cityId }} />
       )}
-    </main>
+    </>
   );
 };
 
