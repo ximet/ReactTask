@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ENDPOINTS } from '../../helpers/api';
 import About from '../About/About';
@@ -18,9 +18,11 @@ const App: React.FunctionComponent = () => {
 
   useEffect(() => {
     if (!document.cookie) {
-      axios.get(ENDPOINTS.auth, {
-        withCredentials: true
-      });
+      axios
+        .get(ENDPOINTS.auth, {
+          withCredentials: true
+        })
+        .then(()=>location.reload());
     }
   }, [document.cookie]);
 
