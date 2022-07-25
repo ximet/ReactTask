@@ -13,7 +13,7 @@ const Search: React.FunctionComponent = () => {
   const debouncedSearchTerm: string = useDebounce(searchTerm);
   const {
     data: searchResults = { locations: [] },
-    loading = true,
+    loading: searchLoading = true,
     error = null
   }: RequestDataConfig<LocationSearch> = useGetRequest(
     ENDPOINTS.locationSearch,
@@ -42,6 +42,7 @@ const Search: React.FunctionComponent = () => {
       {displaySearchResults && (
         <SearchResults
           searchResults={searchResults}
+          searchLoading={searchLoading}
           setSearchTerm={setSearchTerm}
           setDisplaySearchResults={setDisplaySearchResults}
         />

@@ -11,6 +11,7 @@ import {
 } from '../../../../store/location-redux';
 import { Theme, ThemeContext, ThemeContextConfig } from '../../../../store/theme-context';
 import GoLocation from '../../../UI/Icons/GoLocation';
+import Loading from '../../../UI/Loading/Loading';
 
 import SavedLocations from './SavedLocations/SavedLocations';
 import styles from './SearchResults.module.scss';
@@ -19,12 +20,14 @@ interface SearchResultsProps {
   searchResults: LocationSearch;
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
   setDisplaySearchResults: React.Dispatch<SetStateAction<boolean>>;
+  searchLoading: boolean;
 }
 
 const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
   searchResults,
   setSearchTerm,
-  setDisplaySearchResults
+  setDisplaySearchResults,
+  searchLoading
 }) => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
   const { locations } = searchResults;
@@ -50,13 +53,17 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
 
   return (
     <ul className={`${styles.container} ${theme === Theme.DARK && styles[theme]}`}>
-      {locations.slice(0, 10).map(({ id, name, adminArea, country }) => (
-        <li className={styles.listElement} key={id}>
-          <div className={styles.locationName} id={id.toString()} onMouseDown={clickHandler}>
-            {name}, {adminArea && `${adminArea},`} {country}
-          </div>
-        </li>
-      ))}
+      {searchLoading ? (
+        <Loading width="30" />
+      ) : (
+        locations.slice(0, 10).map(({ id, name, adminArea, country }) => (
+          <li className={styles.listElement} key={id}>
+            <div className={styles.locationName} id={id.toString()} onMouseDown={clickHandler}>
+              {name}, {adminArea && `${adminArea},`} {country}
+            </div>
+          </li>
+        ))
+      )}
       <li className={styles.listElement}>
         <div
           className={`${styles.locationName} ${styles.liCurrent}`}
