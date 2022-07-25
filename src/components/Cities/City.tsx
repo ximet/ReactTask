@@ -31,9 +31,7 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
     <li className={styles.cardContainer}>
       <Card>
         <Title title={`${city.name}, ${city.country}`} fontSize="1.7rem" />
-        {loading && <Loading />}
-        {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
-        {data && (
+        {data ? (
           <div className={styles.dataContainer}>
             <div>
               <p className={styles.date}>{`${data.current.time.slice(0, 10)} ${getWeekDay(
@@ -52,6 +50,10 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
               alt={data.current.symbolPhrase}
             />
           </div>
+        ) : loading ? (
+          <Loading />
+        ) : (
+          error && <ErrorComponent message={error} button="TRY_AGAIN" />
         )}
         <Link
           to={`/cities/${city.id}`}
