@@ -13,9 +13,7 @@ export interface LocationActionConfig {
 
 const getPrevSearches = (): string[] => {
   const prevSearches: string | null = localStorage.getItem('prevSearches');
-  if (prevSearches) {
-    return JSON.parse(localStorage.getItem('prevSearches')!);
-  } else return [];
+  return prevSearches ? JSON.parse(localStorage.getItem('prevSearches')!) : [];
 };
 
 const initialState: LocationState = {

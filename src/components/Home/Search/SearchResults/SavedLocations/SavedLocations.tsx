@@ -22,7 +22,7 @@ const SavedLocations: React.FunctionComponent<SavedLocationsProps> = ({
     <>
       {data && (
         <li className={styles.listElement}>
-          <div className={styles.locationName} id={data.id.toString()} onClick={clickHandler}>
+          <div className={styles.locationName} id={data.id.toString()} onMouseDown={clickHandler}>
             {data.name}, {data.adminArea && `${data.adminArea},`} {data.country}
           </div>
         </li>

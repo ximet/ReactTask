@@ -37,7 +37,6 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
   const clickHandler = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const target = event.target as HTMLDivElement;
-      console.log('clickHandler', target.id);
       setLocationId(target.id);
       setSearchTerm('');
       setDisplaySearchResults(false);
@@ -52,7 +51,7 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
     <ul className={`${styles.container} ${theme === Theme.DARK && styles[theme]}`}>
       {locations.slice(0, 10).map(({ id, name, adminArea, country }) => (
         <li className={styles.listElement} key={id}>
-          <div className={styles.locationName} id={id.toString()} onClick={clickHandler}>
+          <div className={styles.locationName} id={id.toString()} onMouseDown={clickHandler}>
             {name}, {adminArea && `${adminArea},`} {country}
           </div>
         </li>
@@ -62,7 +61,7 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
           className={`${styles.locationName} ${styles.liCurrent}`}
           key={currentLocation}
           id={currentLocation}
-          onClick={clickHandler}
+          onMouseDown={clickHandler}
         >
           <GoLocation />
           <b>Current location</b>

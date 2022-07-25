@@ -26,6 +26,7 @@ const Search: React.FunctionComponent = () => {
     setSearchTerm(event.target.value);
   };
   const inputFocusHandler = (): void => setDisplaySearchResults(true);
+  const inputBlurHandler = (): void => setDisplaySearchResults(false);
 
   return (
     <section className={styles.container}>
@@ -35,6 +36,7 @@ const Search: React.FunctionComponent = () => {
         type="text"
         onChange={inputChangeHandler}
         onFocus={inputFocusHandler}
+        onBlur={inputBlurHandler}
         value={searchTerm}
       />
       {displaySearchResults && (
