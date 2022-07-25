@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ENDPOINTS } from '../../helpers/api';
 import { LocationInfo, RequestDataConfig } from '../../helpers/Interfaces';
 import { LocationContext } from '../../store/location-context';
@@ -12,6 +12,9 @@ import styles from './Home.module.scss';
 import Search from './Search/Search';
 import Today3Hourly from './Today3Hourly/Today3Hourly';
 import { ThemeContext, ThemeContextConfig } from './../../store/theme-context';
+import { Dispatch } from 'redux';
+import { LocationActionConfig, LocationActions } from '../../store/location-redux';
+import { useDispatch } from 'react-redux';
 
 const Home: React.FunctionComponent = () => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
@@ -25,12 +28,16 @@ const Home: React.FunctionComponent = () => {
     loading: boolean;
   } = useLocation();
   const [locationId, setLocationId] = useState<string>('');
-
   const locationParam = locationId || userLocation;
   const { data: locationInfo, loading, error }: RequestDataConfig<LocationInfo> = useGetRequest(
     ENDPOINTS.locationInfo,
     locationParam
   );
+  const dispatch: Dispatch<LocationActionConfig> = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: LocationActions.SAVE_CURRENT_LOCATION, payload: userLocation });
+  }, [userLocation]);
 
   return (
     <LocationContext.Provider value={{ setLocationId }}>

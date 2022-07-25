@@ -4,7 +4,8 @@ import { ENDPOINTS } from '../../../helpers/api';
 import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
 import { CurrentData, LocationInfo, RequestDataConfig } from '../../../helpers/Interfaces';
 import { useGetRequest } from '../../../hooks/useGetRequest';
-import { TempUnits } from '../../../store/store-redux';
+import { CombinedState } from '../../../store/index-redux';
+import { TempUnits } from '../../../store/tempUnits-redux';
 import Card from '../../UI/Card/Card';
 import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import Loading from '../../UI/Loading/Loading';
@@ -24,7 +25,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
     ENDPOINTS.current,
     location
   );
-  const tempUnit = useSelector<TempUnits, TempUnits>(state => state);
+  const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
 
   return (
     <Card>

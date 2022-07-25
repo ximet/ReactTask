@@ -12,23 +12,36 @@
   position: relative;
   top: 0;
   z-index: 2;
-  .list {
+  .listElement {
     width: 100%;
     &:hover {
       background-color: $yellow;
     }
-    .li {
+    .locationName {
       text-align: left;
       list-style: none;
       padding: 1rem 2rem;
       margin: 0 2rem;
       cursor: pointer;
       border-bottom: 1px solid $borders;
+      &.liCurrent {
+        border-top: 4px solid $borders;
+        border-bottom: 2px solid $borders;
+        font-style: italic;
+      }
     }
+  }
+  .previousLabel {
+    text-align: left;
+    list-style: none;
+    margin: 0 2rem;
+    font-style: italic;
+    border-bottom: none;
+    padding: 0.5rem 2rem 0 2rem;
   }
   &.dark {
     background-color: $veryDarkBlue;
-    .list:hover {
+    .listElement:hover {
       color: black;
     }
   }

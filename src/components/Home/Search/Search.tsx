@@ -25,7 +25,8 @@ const Search: React.FunctionComponent = () => {
     setDisplaySearchResults(true);
     setSearchTerm(event.target.value);
   };
-  const minLetter = 3;
+  const inputFocusHandler = (): void => setDisplaySearchResults(true);
+  const inputBlurHandler = (): void => setDisplaySearchResults(false);
 
   return (
     <section className={styles.container}>
@@ -34,10 +35,11 @@ const Search: React.FunctionComponent = () => {
         placeholder="Search for location"
         type="text"
         onChange={inputChangeHandler}
+        onFocus={inputFocusHandler}
+        onBlur={inputBlurHandler}
         value={searchTerm}
       />
-      {searchTerm.length < minLetter && <p>Enter at least {minLetter} letters</p>}
-      {!!searchResults.locations.length && displaySearchResults && (
+      {displaySearchResults && (
         <SearchResults
           searchResults={searchResults}
           setSearchTerm={setSearchTerm}
