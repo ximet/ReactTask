@@ -15,6 +15,7 @@ import styles from './App.module.scss';
 
 const App: React.FunctionComponent = () => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
+
   useEffect(() => {
     if (!document.cookie) {
       axios.get(ENDPOINTS.auth, {
@@ -29,8 +30,9 @@ const App: React.FunctionComponent = () => {
         <Header />
         <Routes>
           <Route index={true} element={<Home />} />
-          <Route path="cities" element={<Cities />}>
-            <Route path=":city" element={<Home />} />
+          <Route path="cities">
+            <Route index={true} element={<Cities />} />
+            <Route path=":cityId" element={<Home />} />
           </Route>
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />

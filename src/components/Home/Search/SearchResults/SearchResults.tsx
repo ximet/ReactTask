@@ -1,9 +1,9 @@
 import React, { SetStateAction, useCallback, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { LocationSearch } from '../../../../helpers/Interfaces';
 import { CombinedState } from '../../../../store/index-redux';
-import { LocationContext } from '../../../../store/location-context';
 import {
   LocationActionConfig,
   LocationActions,
@@ -28,21 +28,22 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
 }) => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
   const { locations } = searchResults;
-  const { setLocationId } = useContext(LocationContext);
   const { currentLocation, prevSearches } = useSelector<CombinedState, LocationState>(
     state => state.location
   );
   const dispatch: Dispatch<LocationActionConfig> = useDispatch();
+  const navigate = useNavigate();
 
   const clickHandler = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      console.log('click');
       const target = event.target as HTMLDivElement;
-      setLocationId(target.id);
       setSearchTerm('');
       setDisplaySearchResults(false);
       if (target.id !== currentLocation) {
         dispatch({ type: LocationActions.SAVE_SEARCH, payload: target.id });
       }
+      navigate(`/cities/${target.id}`);
     },
     [event]
   );
@@ -51,7 +52,7 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
     <ul className={`${styles.container} ${theme === Theme.DARK && styles[theme]}`}>
       {locations.slice(0, 10).map(({ id, name, adminArea, country }) => (
         <li className={styles.listElement} key={id}>
-          <div className={styles.locationName} id={id.toString()} onClick={clickHandler}>
+          <div className={styles.locationName} id={id.toString()} onMouseDown={clickHandler}>
             {name}, {adminArea && `${adminArea},`} {country}
           </div>
         </li>
@@ -61,7 +62,7 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
           className={`${styles.locationName} ${styles.liCurrent}`}
           key={currentLocation}
           id={currentLocation}
-          onClick={clickHandler}
+          onMouseDown={clickHandler}
         >
           <GoLocation />
           <b>Current location</b>

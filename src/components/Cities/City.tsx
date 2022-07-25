@@ -10,6 +10,8 @@ import { CombinedState } from '../../store/index-redux';
 import { TempUnits } from '../../store/tempUnits-redux';
 import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
 import Card from '../UI/Card/Card';
+import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
+import Loading from '../UI/Loading/Loading';
 import Title from '../UI/Title/Title';
 import styles from './Cities.module.scss';
 
@@ -29,13 +31,15 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
     <li className={styles.cardContainer}>
       <Card>
         <Title title={`${city.name}, ${city.country}`} fontSize="1.7rem" />
+        {loading && <Loading />}
+        {error && <ErrorComponent message={error} button="TRY_AGAIN" />}
         {data && (
           <div className={styles.dataContainer}>
             <div>
               <p className={styles.date}>{`${data.current.time.slice(0, 10)} ${getWeekDay(
                 new Date(data.current.time).getDay()
               )}`}</p>
-              <p>{`updated at ${data.current.time.substring(11, 16)}`}</p>
+              <p>{`updated at ${data.current.time.substring(11, 16)} (local time)`}</p>
             </div>
             <p className={styles.temperature}>
               {tempUnit === TempUnits.FAHRENHEIT
@@ -50,7 +54,7 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
           </div>
         )}
         <Link
-          to={`/cities/${city.name}`}
+          to={`/cities/${city.id}`}
           className={`${styles.link} ${theme === Theme.DARK && styles[theme]}`}
         >
           See the whole forecast &gt;&gt;

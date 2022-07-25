@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import { ENDPOINTS } from '../../../helpers/api';
 import { LocationSearch, RequestDataConfig } from '../../../helpers/Interfaces';
-import { ThemeContext, ThemeContextConfig, Theme } from '../../../store/theme-context';
+import { Theme, ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
 import { useDebounce } from './../../../hooks/useDebounce';
 import { useGetRequest } from './../../../hooks/useGetRequest';
 import styles from './Search.module.scss';
@@ -26,6 +26,7 @@ const Search: React.FunctionComponent = () => {
     setSearchTerm(event.target.value);
   };
   const inputFocusHandler = (): void => setDisplaySearchResults(true);
+  const inputBlurHandler = (): void => setDisplaySearchResults(false);
 
   return (
     <section className={styles.container}>
@@ -35,6 +36,7 @@ const Search: React.FunctionComponent = () => {
         type="text"
         onChange={inputChangeHandler}
         onFocus={inputFocusHandler}
+        onBlur={inputBlurHandler}
         value={searchTerm}
       />
       {displaySearchResults && (
