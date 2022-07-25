@@ -29,7 +29,7 @@
       transition: all 0.2s ease-in-out;
 
       &:hover {
-        color: white;
+        color: lighten($color: $color-1L, $amount: 50%);
       }
     }
   }
