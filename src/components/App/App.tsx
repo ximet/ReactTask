@@ -22,7 +22,7 @@ const App: React.FunctionComponent = () => {
         .get(ENDPOINTS.auth, {
           withCredentials: true
         })
-        .then(()=>location.reload());
+        .then(() => location.reload());
     }
   }, [document.cookie]);
 

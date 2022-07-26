@@ -59,7 +59,7 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
           to={`/cities/${city.id}`}
           className={`${styles.link} ${theme === Theme.DARK && styles[theme]}`}
         >
-          See the whole forecast &gt;&gt;
+          See full forecast &gt;&gt;
         </Link>
       </Card>
     </li>
