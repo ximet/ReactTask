@@ -1,9 +1,12 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useContext } from 'react';
 import { FavCitiesList, Message } from '../';
+import { ThemeContext } from '../../context/themeContext';
 
 import styles from './FavPage.module.scss';
 
 function FavPage() {
+  const { theme } = useContext(ThemeContext);
   const favCityList = useSelector((state) => state);
 
   const listItems = favCityList.map((item) => {
@@ -11,7 +14,7 @@ function FavPage() {
   });
 
   return (
-    <main className={styles.container}>
+    <main className={styles[`${theme}-theme`]}>
       {listItems.length !== 0 && <h2 className={styles.title}>Favourite Locations</h2>}
 
       {listItems.length !== 0 ? (

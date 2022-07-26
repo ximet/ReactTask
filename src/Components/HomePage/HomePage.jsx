@@ -4,7 +4,7 @@ import { endpoints } from '../../Helpers/constants';
 import { requestToken, instance } from '../../DataService/apiService';
 import { COOKIE } from '../../DataService/cookieService';
 
-import { CurrentForecast, DailyForecast, SearchBar, HourlyForecast } from '../../Components/index';
+import { CurrentForecast, DailyForecast, SearchBar, HourlyForecast } from '../../Components';
 
 import styles from './HomePage.module.scss';
 
@@ -104,9 +104,11 @@ function HomePage() {
   return (
     <main className={styles.container}>
       <SearchBar coordsStateHandler={setCoords} />
+
       {locationData && currWeather && (
         <CurrentForecast locationData={locationData} currWeather={currWeather.current} />
       )}
+
       {hourlyWeather && <HourlyForecast hourlyWeather={hourlyWeather} />}
       {dailyWeather && <DailyForecast dailyWeather={dailyWeather} />}
       {isLoading && <p>Loading...</p>}
