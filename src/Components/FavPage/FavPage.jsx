@@ -15,15 +15,20 @@ function FavPage() {
 
   return (
     <main className={styles[`${theme}-theme`]}>
-      {listItems.length !== 0 && <h2 className={styles.title}>Favourite Locations</h2>}
-
       {listItems.length !== 0 ? (
-        <div className={styles['container-items']}>{listItems}</div>
+        <>
+          <h2 className={styles.title}>Favourite Locations</h2>
+          <div className={styles['container-items']}>{listItems}</div>
+        </>
       ) : (
-        <Message
-          message1={'Here you can see a list of the weather from your favourite cities.'}
-          message2={'Your list is empty. Search for a city and add it as a favourite!'}
-        />
+        <>
+          <Message>
+            <p>Here you can see a list of the weather from your favourite cities.</p>
+            <br />
+            <br />
+            <p>Your list is empty. Search for a city and add it as a favourite!</p>
+          </Message>
+        </>
       )}
     </main>
   );
