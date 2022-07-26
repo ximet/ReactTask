@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import { ENDPOINTS } from '../../../helpers/api';
 import { LocationSearch, RequestDataConfig } from '../../../helpers/Interfaces';
-import { ThemeContext, ThemeContextConfig, Theme } from '../../../store/theme-context';
+import { Theme, ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
 import { useDebounce } from './../../../hooks/useDebounce';
 import { useGetRequest } from './../../../hooks/useGetRequest';
 import styles from './Search.module.scss';
@@ -13,7 +13,7 @@ const Search: React.FunctionComponent = () => {
   const debouncedSearchTerm: string = useDebounce(searchTerm);
   const {
     data: searchResults = { locations: [] },
-    loading = true,
+    loading: searchLoading = true,
     error = null
   }: RequestDataConfig<LocationSearch> = useGetRequest(
     ENDPOINTS.locationSearch,
@@ -42,6 +42,7 @@ const Search: React.FunctionComponent = () => {
       {displaySearchResults && (
         <SearchResults
           searchResults={searchResults}
+          searchLoading={searchLoading}
           setSearchTerm={setSearchTerm}
           setDisplaySearchResults={setDisplaySearchResults}
         />

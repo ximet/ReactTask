@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ENDPOINTS } from '../../helpers/api';
 import About from '../About/About';
@@ -10,16 +10,19 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import Card from '../UI/Card/Card';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import { ThemeContext, ThemeContextConfig, Theme } from './../../store/theme-context';
+import { Theme, ThemeContext, ThemeContextConfig } from './../../store/theme-context';
 import styles from './App.module.scss';
 
 const App: React.FunctionComponent = () => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
+
   useEffect(() => {
     if (!document.cookie) {
-      axios.get(ENDPOINTS.auth, {
-        withCredentials: true
-      });
+      axios
+        .get(ENDPOINTS.auth, {
+          withCredentials: true
+        })
+        .then(() => location.reload());
     }
   }, [document.cookie]);
 
@@ -29,7 +32,10 @@ const App: React.FunctionComponent = () => {
         <Header />
         <Routes>
           <Route index={true} element={<Home />} />
-          <Route path="cities" element={<Cities />} />
+          <Route path="cities">
+            <Route index={true} element={<Cities />} />
+            <Route path=":cityId" element={<Home />} />
+          </Route>
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />
           <Route
