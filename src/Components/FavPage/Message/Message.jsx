@@ -1,14 +1,7 @@
 import styles from './Message.module.scss';
 
-function Message({ message1, message2 }) {
-  return (
-    <h3 className={styles.message}>
-      {message1}
-      <br />
-      <br />
-      {message2}
-    </h3>
-  );
+function Message(props) {
+  return <div className={styles.message}>{props.children}</div>;
 }
 
 export default Message;
