@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { instance } from '../../../DataService/apiService';
 import { endpoints } from '../../../Helpers/constants';
+import { ThemeContext } from '../../../context/themeContext';
 
 import styles from './SearchBar.module.scss';
 import { FiSearch } from 'react-icons/fi';
@@ -8,6 +9,7 @@ import { FiSearch } from 'react-icons/fi';
 function SearchBar({ coordsStateHandler, ...rest }) {
   const [inputValue, setInputValue] = useState('');
   const [searchData, setSearchData] = useState([]);
+  const { theme } = useContext(ThemeContext);
 
   const getLocationDataByName = async () => {
     try {
@@ -47,7 +49,7 @@ function SearchBar({ coordsStateHandler, ...rest }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles[`${theme}-theme`]}>
       <form className={styles.search} onSubmit={onSubmitHandler}>
         <input
           list="locations"

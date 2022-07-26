@@ -6,6 +6,9 @@ import FavPage from './FavPage/FavPage';
 import FeedbackPage from './FeedbackPage/FeedbackPage';
 import Footer from './Footer/Footer';
 
+//Header
+import ThemeSwitch from './Header/ThemeSwitch/ThemeSwitch';
+
 // HomePage
 import SearchBar from './HomePage/SearchBar/SearchBar';
 import CurrentForecast from './HomePage/CurrentForecast/CurrentForecast';
@@ -29,5 +32,6 @@ export {
   FeedbackForm,
   ErrorMessage,
   FavCitiesList,
-  Message
+  Message,
+  ThemeSwitch
 };

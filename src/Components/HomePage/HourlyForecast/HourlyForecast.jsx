@@ -1,10 +1,14 @@
 import { getWeatherSymbol, formatDate } from '../../../Helpers/functions';
+import { useContext } from 'react';
 import { opts } from '../../../Helpers/constants';
+import { ThemeContext } from '../../../context/themeContext';
 
 import { WiRaindrop, WiStrongWind } from 'react-icons/wi';
 import styles from './HourlyForecast.module.scss';
 
 function HourlyForecast({ hourlyWeather }) {
+  const { theme } = useContext(ThemeContext);
+
   const listItems = hourlyWeather.forecast.map((item) => {
     return (
       <div className={styles['container__slider-slide']} key={item.time}>
@@ -30,7 +34,7 @@ function HourlyForecast({ hourlyWeather }) {
   });
 
   return (
-    <div className={styles.container}>
+    <div className={styles[`${theme}-theme`]}>
       <h2>Hourly</h2>
       <div className={styles.container__slider}>{listItems}</div>
     </div>
