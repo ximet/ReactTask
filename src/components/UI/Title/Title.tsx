@@ -12,7 +12,7 @@ const Title: React.FunctionComponent<TitleProps> = ({ title, fontSize }) => {
   return (
     <h2
       className={`${styles.title} ${theme === Theme.DARK && styles[theme]}`}
-      style={{ fontSize: fontSize }}
+      style={{ fontSize }}
     >
       {title}
     </h2>
