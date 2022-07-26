@@ -71,10 +71,3 @@ function ThemeSwitch() {
 }
 
 export default ThemeSwitch;
-
-/* 
-<button onClick={toggleTheme}>Switch</button> 
-<input type="checkbox" className={styles.toggle} onClick=toggleTheme} /> 
-<label htmlFor="toggle" className="button" />  
-
-*/
