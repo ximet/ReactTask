@@ -1,10 +1,14 @@
 import { getWeatherSymbol, formatDate } from '../../../Helpers/functions';
 import { opts } from '../../../Helpers/constants';
+import { useContext } from 'react';
+import { ThemeContext } from '../../../context/themeContext';
 
 import { WiStrongWind } from 'react-icons/wi';
 import styles from './DailyForecast.module.scss';
 
 function DailyForecast({ dailyWeather }) {
+  const { theme } = useContext(ThemeContext);
+
   const listItems = dailyWeather.forecast.map((item) => {
     return (
       <div className={styles['container__items-item']} key={item.date}>
@@ -23,7 +27,7 @@ function DailyForecast({ dailyWeather }) {
   });
 
   return (
-    <div className={styles.container}>
+    <div className={styles[`${theme}-theme`]}>
       <h2>Daily</h2>
       <div className={styles.container__items}>{listItems}</div>
     </div>

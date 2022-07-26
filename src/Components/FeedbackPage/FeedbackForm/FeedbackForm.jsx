@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { saveData } from '../../../DataService/localDataService';
 import { ErrorMessage } from '../../index';
+import { ThemeContext } from '../../../context/themeContext';
 
 import styles from './FeedbackForm.module.scss';
-import { BiErrorCircle } from 'react-icons/bi';
 
 function FeedbackForm() {
+  const { theme } = useContext(ThemeContext);
+  
   const initialValues = {
     username: '',
     email: '',
@@ -44,9 +46,7 @@ function FeedbackForm() {
 
   function validate(values) {
     const errors = {};
-    const emailRegEx =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+    const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!values.username) {
       errors.username = 'Name is required!';
     } else if (values.username.length < 3) {
@@ -72,7 +72,7 @@ function FeedbackForm() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles[`${theme}-theme`]}>
       <div className={styles['title-wrapper']}>
         <h2 className={styles.title}>Send Feedback!</h2>
         <h4 className={styles.subtitle}>
