@@ -11,19 +11,6 @@ import axios from 'axios';
 export default function App() {
   const [authenticated, setAuth] = useState();
   const [userCoords, setUserCoords] = useState();
-  const [testLocation, setTestResults] = useState();
-
-  const req = async () => {
-    await axios
-      .post('http://localhost:3000/test-url', {
-        headers: { 'Content-Type': 'text/html; charset=UTF-8' },
-        body: JSON.stringify(authenticated)
-      })
-      .then(response => setTestResults(response.data))
-      .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-      });
-  };
 
   useEffect(() => {
     (async function attemptLogin() {
@@ -61,8 +48,6 @@ export default function App() {
   return (
     <Router>
       <Navigation />
-      <button onClick={req}>test request</button>
-      {!!testLocation && JSON.stringify(testLocation)}
       <div className="page container">
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
