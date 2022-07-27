@@ -10,7 +10,6 @@ import axios from 'axios';
 
 export default function App() {
   const [authenticated, setAuth] = useState();
-  const [userCoords, setUserCoords] = useState();
 
   useEffect(() => {
     (async function attemptLogin() {
@@ -22,28 +21,6 @@ export default function App() {
         });
     })();
   }, []);
-
-  useEffect(() => {
-    if (!authenticated) return;
-
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const userCoordinates = {
-          latLon: position.coords.longitude + ',' + position.coords.latitude
-        };
-
-        (async function getPin() {
-          await axios
-            .post('http://localhost:3000/get-current-location-params', userCoordinates, {
-              headers: { 'Content-Type': 'application/json; charset=UTF-8' }
-            })
-            .then(data => setUserCoords(data));
-        })();
-      });
-    } else {
-      alert('Location Not Available');
-    }
-  }, [authenticated]);
 
   return (
     <Router>

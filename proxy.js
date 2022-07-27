@@ -38,7 +38,6 @@ app.get('/login', (req, res) => {
     }
   })
     .then(response => {
-      console.log('API call succeeded!');
       getApiKey = keyHolder(response.data);
       res.send({ data: 'Logged in' });
     })
@@ -48,7 +47,6 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/get-location-current-weather-by-id', (req, res) => {
-  console.log(req.body.id);
   const hdrs = getHeaders();
 
   axios({
@@ -65,7 +63,6 @@ app.post('/get-location-current-weather-by-id', (req, res) => {
 });
 
 app.post('/get-location-daily-weather-by-id', (req, res) => {
-  console.log(req.body.id);
   const hdrs = getHeaders();
 
   axios({
