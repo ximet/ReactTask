@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ENDPOINTS } from '../../helpers/api';
+import { CityConfig } from '../../helpers/cities';
 import { convertToFahrenheit } from '../../helpers/convertToFahrenheit';
-import { getWeekDay } from '../../helpers/date';
 import { CurrentData, RequestDataConfig } from '../../helpers/Interfaces';
 import { useGetRequest } from '../../hooks/useGetRequest';
 import { CombinedState } from '../../store/index-redux';
@@ -16,7 +16,7 @@ import Title from '../UI/Title/Title';
 import styles from './Cities.module.scss';
 
 interface CityProps {
-  city: { name: string; country: string; id: string };
+  city: CityConfig;
 }
 
 const City: React.FunctionComponent<CityProps> = ({ city }) => {
@@ -34,9 +34,9 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
         {data ? (
           <div className={styles.dataContainer}>
             <div>
-              <p className={styles.date}>{`${data.current.time.slice(0, 10)} ${getWeekDay(
-                new Date(data.current.time).getDay()
-              )}`}</p>
+              <p className={styles.date}>{`${data.current.time.slice(0, 10)} ${new Date(
+                data.current.time
+              ).toLocaleDateString('en-US', { weekday: 'long' })}`}</p>
               <p>{`updated at ${data.current.time.substring(11, 16)} (local time)`}</p>
             </div>
             <p className={styles.temperature}>

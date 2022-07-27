@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ENDPOINTS } from '../../helpers/api';
+import { AuthContext, AuthContextConfig } from '../../store/auth-context';
 import About from '../About/About';
 import Cities from '../Cities/Cities';
 import Contacts from '../Contacts/Contacts';
@@ -15,16 +16,21 @@ import styles from './App.module.scss';
 
 const App: React.FunctionComponent = () => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
+  const { userHasToken, setUserHasToken }: AuthContextConfig = useContext(AuthContext);
 
   useEffect(() => {
-    if (!document.cookie) {
-      axios
-        .get(ENDPOINTS.auth, {
-          withCredentials: true
-        })
-        .then(() => location.reload());
-    }
-  }, [document.cookie]);
+    !userHasToken && getAuthToken();
+  }, [userHasToken]);
+
+  const getAuthToken = (): void => {
+    axios
+      .get(ENDPOINTS.auth, {
+        withCredentials: true
+      })
+      .then(() => {
+        setUserHasToken(!!document.cookie);
+      });
+  };
 
   return (
     <BrowserRouter>

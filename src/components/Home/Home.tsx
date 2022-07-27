@@ -5,9 +5,9 @@ import { Dispatch } from 'redux';
 import { ENDPOINTS } from '../../helpers/api';
 import { LocationInfo, RequestDataConfig } from '../../helpers/Interfaces';
 import { useGeoLocation } from '../../hooks/useGeoLocation';
+import { AuthContext, AuthContextConfig } from '../../store/auth-context';
 import { LocationActionConfig, LocationActions } from '../../store/location-redux';
 import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import Loading from '../UI/Loading/Loading';
 import { useGetRequest } from './../../hooks/useGetRequest';
 import { ThemeContext, ThemeContextConfig } from './../../store/theme-context';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
@@ -34,6 +34,7 @@ const Home: React.FunctionComponent = () => {
     locationParam
   );
   const dispatch: Dispatch<LocationActionConfig> = useDispatch();
+  const { userHasToken }: AuthContextConfig = useContext(AuthContext);
 
   useEffect(() => {
     dispatch({ type: LocationActions.SAVE_CURRENT_LOCATION, payload: userLocation });
@@ -42,7 +43,13 @@ const Home: React.FunctionComponent = () => {
   return (
     <main className={`${styles.main} ${styles[theme]}`}>
       <Search />
-      {userLocation ? (
+      {locationError && (
+        <ErrorComponent
+          message="Your current location is unavailable at the moment. Please check your browser settings or use search bar to search for location."
+          button="TRY_AGAIN"
+        />
+      )}
+      {userHasToken ? (
         <>
           <div className={styles.container}>
             <CurrentWeather location={locationParam} locationInfo={locationInfo} />
@@ -50,10 +57,8 @@ const Home: React.FunctionComponent = () => {
           </div>
           <DailyForecast location={locationParam} />
         </>
-      ) : locationLoading ? (
-        <Loading />
       ) : (
-        locationError && <ErrorComponent message={locationError} button="TRY_AGAIN" />
+        <ErrorComponent message="No weather data available at the moment" button="TRY_AGAIN" />
       )}
     </main>
   );

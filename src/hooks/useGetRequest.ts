@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
-import { getData } from '../helpers/api';
 import { AxiosError } from 'axios';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getData } from '../helpers/api';
+import { CombinedState } from '../store/index-redux';
 
 //param - location or id
 export const useGetRequest = (endpoint: string, param: string) => {
@@ -9,17 +11,12 @@ export const useGetRequest = (endpoint: string, param: string) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isSubscribed = true;
     setError(null);
     setLoading(true);
     getData(endpoint, param)
-      .then(data => isSubscribed && setData(data))
-      .catch((err: Error | AxiosError) => isSubscribed && setError(err.message))
+      .then(data => setData(data))
+      .catch((err: Error | AxiosError) => setError(err.message))
       .finally(() => setLoading(false));
-
-    return () => {
-      isSubscribed = false;
-    };
   }, [param]);
 
   return {

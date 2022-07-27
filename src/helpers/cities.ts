@@ -1,4 +1,10 @@
-const cities: { name: string; country: string; id: string }[] = [
+export interface CityConfig {
+  name: string;
+  country: string;
+  id: string;
+}
+
+const cities: CityConfig[] = [
   { name: 'Vilnius', country: 'Lithuania', id: '100593116' },
   { name: 'Minneapolis', country: 'USA', id: '105037649' },
   { name: 'Minsk', country: 'Belarus', id: '100625144' },
