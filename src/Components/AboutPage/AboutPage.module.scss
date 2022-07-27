@@ -1,9 +1,4 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: auto;
-  gap: 5rem;
-}
+@include page-layout(container, flex, column, 80%, auto, 5rem);

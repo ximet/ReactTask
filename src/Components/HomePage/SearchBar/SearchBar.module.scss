@@ -1,8 +1,11 @@
 @import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
 
-.container {
+.dark-theme,
+.light-theme {
   display: flex;
   flex-direction: row-reverse;
+  transition: ease-in 0.2s;
 
   .search {
     width: 20%;
@@ -14,7 +17,6 @@
       padding: 5px;
       border-radius: 5px 0 0 5px;
       outline: none;
-      color: black;
     }
 
     &-icon {
@@ -32,3 +34,6 @@
     }
   }
 }
+
+@include SearchBar(dark-theme, $color-5L, $color-7D, $color-5D);
+@include SearchBar(light-theme, $color-5L, $color-1L, $color-5D);

@@ -1,7 +1,12 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../../../context/themeContext';
+
 import styles from './ErrorMessage.module.scss';
 
 function ErrorMessage({ message }) {
-  return <small className={styles.message}>{message && `❌ ${message}`}</small>;
+  const { theme } = useContext(ThemeContext);
+
+  return <small className={styles[`${theme}-theme`]}>{message && `❌ ${message}`}</small>;
 }
 
 export default ErrorMessage;

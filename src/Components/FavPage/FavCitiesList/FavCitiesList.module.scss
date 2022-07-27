@@ -1,12 +1,15 @@
-.container-item {
+@import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
+
+.dark-theme,
+.light-theme {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.75);
   border-radius: 0.5rem;
-  border: 1px solid rgba(209, 213, 219, 0.3);
   padding: 1rem;
+  width: 15%;
 
-  &--title {
+  .container-item--title {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -14,7 +17,7 @@
     margin-bottom: 1rem;
   }
 
-  &-main {
+  .container-item-main {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -47,7 +50,7 @@
     justify-content: center;
   }
 
-  &--detail {
+  .container-item--detail {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -55,3 +58,6 @@
     align-items: center;
   }
 }
+
+@include FavCitiesList(dark-theme, $color-7D, $color-7D, $color-4D);
+@include FavCitiesList(light-theme, $rgba-bg-L, $color-1L, $color-5L);

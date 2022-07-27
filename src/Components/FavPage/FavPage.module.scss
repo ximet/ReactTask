@@ -1,20 +1,27 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+@include page-layout(container, flex, column, 80%, auto, no-gap);
+
+.dark-theme,
+.light-theme {
   margin: auto;
   text-align: center;
 
   .title {
-    margin-bottom: 2rem;
+    margin: 5rem 0;
   }
 
   .container-items {
+    width: 80%;
+    justify-content: left;
+    text-align: center;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
     gap: 2rem;
   }
 }
+
+@include FavPage(dark-theme, $color-4D);
+@include FavPage(light-theme, $color-5L);

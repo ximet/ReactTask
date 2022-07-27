@@ -1,0 +1,21 @@
+@import './Styles/variables.scss';
+@import './Styles/mixins.scss';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: $default-font-size;
+  font-family: $font-primary;
+}
+
+.dark-theme,
+.light-theme {
+  min-height: 100vh;
+  padding-bottom: 10rem;
+  transition: ease-in 0.2s;
+}
+
+@include appTheme(dark-theme, $color-1D);
+@include appTheme(light-theme, $color-4L);

@@ -24,4 +24,3 @@ function saveState(state) {
 }
 
 export { saveData, loadState, saveState };
-
