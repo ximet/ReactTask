@@ -1,6 +1,11 @@
 @import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
 
-.message {
-  color: red;
+.dark-theme,
+.light-theme {
   text-indent: 5px;
+  transition: ease-in 0.2s;
 }
+
+@include ErrorMessage(dark-theme, $color-3D);
+@include ErrorMessage(light-theme, $color-6D);

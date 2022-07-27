@@ -1,11 +1,15 @@
 import { formatDate, getWeatherSymbol } from '../../../Helpers/functions';
+import { ThemeContext } from '../../../context/themeContext';
+import { useContext } from 'react';
 
 import styles from './FavCitiesList.module.scss';
 import { WiRaindrop, WiStrongWind } from 'react-icons/wi';
 
 function FavCitiesList({ data }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className={styles['container-item']}>
+    <div className={styles[`${theme}-theme`]}>
       <div className={styles['container-item--title']}>
         <h3>{data.locationData.name}</h3>
         <p>{data.locationData.country}</p>

@@ -1,0 +1,220 @@
+@mixin page-layout($container, $display, $orientation, $width, $margin, $gap) {
+  .#{$container} {
+    display: $display;
+    flex-direction: $orientation;
+    width: $width;
+    margin: $margin;
+    gap: $gap;
+  }
+}
+
+///////////////// App
+@mixin appTheme($theme, $container-bg) {
+  .#{$theme} {
+    background-color: $container-bg;
+  }
+}
+
+///////////////// Header
+@mixin headerTheme($theme, $container-bg, $text-color, $hover) {
+  .#{$theme} {
+    background-color: $container-bg;
+    .container {
+      .nav-items {
+        a {
+          color: $text-color;
+          &:hover {
+            color: $hover;
+          }
+        }
+      }
+    }
+  }
+}
+
+///////////////// HomePage
+// CurrentForecast
+@mixin CurrentForecastTheme($theme, $container-bg, $border, $text-color, $icon, $hover) {
+  .#{$theme} {
+    background-color: $container-bg;
+    border: 1px solid $border;
+    color: $text-color;
+
+    .starIcon {
+      color: $icon;
+
+      &:hover {
+        color: $hover;
+      }
+    }
+  }
+}
+
+// Search Bar
+@mixin SearchBar($theme, $text-color, $icon-color, $icon-text-color) {
+  .#{$theme} {
+    .search {
+      &-bar {
+        color: $text-color;
+      }
+
+      &-icon {
+        background: $icon-color;
+        color: $icon-text-color;
+      }
+    }
+  }
+}
+
+// Daily Forecast
+@mixin dailyForecast($theme, $container-bg, $border-color, $text-color) {
+  .#{$theme} {
+    color: $text-color;
+
+    .container__items-item {
+      background-color: $container-bg;
+      border: 1px solid $border-color;
+    }
+  }
+}
+
+// Hourly Forecast
+@mixin hourlyForecast(
+  $theme,
+  $container-bg,
+  $border-color,
+  $text-color,
+  $scrollbar,
+  $btn-color-1,
+  $btn-color-2,
+  $hover
+) {
+  .#{$theme} {
+    color: $text-color;
+    .container__slider {
+      &::-webkit-scrollbar-thumb {
+        background: $scrollbar;
+
+        &:hover {
+          background: $hover;
+        }
+      }
+
+      /* Buttons */
+      &::-webkit-scrollbar-button {
+        /* Left */
+        &:horizontal:decrement {
+          border-width: 7px 14px 7px 0;
+          border-color: transparent $btn-color-1 transparent transparent;
+        }
+
+        &:horizontal:decrement:hover {
+          border-color: transparent $hover transparent transparent;
+        }
+
+        /* Right */
+        &:horizontal:increment {
+          border-width: 7px 0 7px 14px;
+          border-color: transparent transparent transparent $btn-color-2;
+        }
+
+        &:horizontal:increment:hover {
+          border-color: transparent transparent transparent $hover;
+        }
+      }
+
+      &-slide {
+        background-color: $container-bg;
+        border: 1px solid $border-color;
+      }
+    }
+  }
+}
+
+///////////////// FavPage
+@mixin FavPage($theme, $text-color) {
+  .#{$theme} {
+    .title {
+      color: $text-color;
+    }
+  }
+}
+
+// FavCitiesList
+@mixin FavCitiesList($theme, $container-bg, $border-color, $text-color) {
+  .#{$theme} {
+    background-color: $container-bg;
+    border: 1px solid $border-color;
+    color: $text-color;
+  }
+}
+
+///////////////// FeedbackPage
+@mixin FeedbackPage($theme, $text-color) {
+  .#{$theme} {
+    color: $text-color;
+  }
+}
+
+// FeedbackForm
+@mixin FeedbackForm(
+  $theme,
+  $bg-color,
+  $text-color,
+  $border-color,
+  $btn-bg-color,
+  $btn-text-color,
+  $hover,
+  $extra-color
+) {
+  .#{$theme} {
+    .form {
+      backdrop-filter: blur(16px) saturate(180%);
+      background-color: $bg-color;
+      color: $text-color;
+
+      input[type='text'],
+      input[type='email'] {
+        border: 1px solid $border-color;
+      }
+
+      textarea {
+        border: 1px solid $border-color;
+      }
+
+      .btn {
+        background-color: $btn-bg-color;
+        color: $btn-text-color;
+        cursor: pointer;
+
+        &:active,
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          background-color: lighten($color: $hover, $amount: 10%);
+        }
+
+        &:focus:not(:active) {
+          box-shadow: $extra-color 0 0 0 0.125em;
+        }
+      }
+    }
+  }
+}
+
+// ErrorMessage
+@mixin ErrorMessage($theme, $text-color) {
+  .#{$theme} {
+    color: $text-color;
+  }
+}
+
+///////////////// Footer
+@mixin FooterTheme($theme, $container-bg, $text-color) {
+  .#{$theme} {
+    background-color: $container-bg;
+    color: $text-color;
+  }
+}

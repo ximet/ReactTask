@@ -20,7 +20,7 @@ function Header() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/favourites">Favourites</Link>
+            <Link to="/favourites">Locations</Link>
           </li>
           <li>
             <Link to="/feedback">Feedback</Link>

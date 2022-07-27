@@ -1,30 +1,30 @@
 @import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
 
-.container {
+.dark-theme,
+.light-theme {
   width: 70%;
   margin: auto;
   display: flex;
   flex-flow: column nowrap;
+  transition: ease-in 0.2s;
   gap: 1rem;
 
-  &__items {
+  .container__items {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     gap: 2rem;
 
     &-item {
+      width: 15rem;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
       padding: 1rem;
       gap: 5px;
-
       backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background-color: rgba(255, 255, 255, 0.75);
       border-radius: 1.2rem;
-      border: 1px solid rgba(209, 213, 219, 0.3);
 
       .temperature {
         display: flex;
@@ -46,3 +46,6 @@
     }
   }
 }
+
+@include dailyForecast(dark-theme, $color-7D, $color-7D, $color-4D);
+@include dailyForecast(light-theme, $rgba-bg-L, $color-1L, $color-5L);

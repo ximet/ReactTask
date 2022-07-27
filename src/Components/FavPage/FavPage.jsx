@@ -14,21 +14,21 @@ function FavPage() {
   });
 
   return (
-    <main className={styles[`${theme}-theme`]}>
+    <main className={styles.wrapper}>
       {listItems.length !== 0 ? (
-        <>
-          <h2 className={styles.title}>Favourite Locations</h2>
+        <div className={styles[`${theme}-theme`]}>
+          <h2 className={styles.title}>Saved Locations</h2>
           <div className={styles['container-items']}>{listItems}</div>
-        </>
+        </div>
       ) : (
-        <>
+        <div className={styles[`${theme}-theme`]}>
           <Message>
             <p>Here you can see a list of the weather from your favourite cities.</p>
             <br />
             <br />
             <p>Your list is empty. Search for a city and add it as a favourite!</p>
           </Message>
-        </>
+        </div>
       )}
     </main>
   );

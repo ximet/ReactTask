@@ -1,11 +1,13 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
-.container {
+.dark-theme,
+.light-theme {
   position: absolute;
   bottom: 0;
   width: 100%;
-  margin-top: 10rem;
   padding: 1rem 0 1rem;
+  transition: ease-in 0.2s;
 
   .wrapper {
     display: flex;
@@ -18,3 +20,6 @@
     }
   }
 }
+
+@include FooterTheme(light-theme, $color-5D, $color-5L);
+@include FooterTheme(dark-theme, $color-2D, $color-5D);
