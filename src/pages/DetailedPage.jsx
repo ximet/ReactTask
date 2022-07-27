@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function DetailedPage(props) {
-  //const [locationName, setLocationName] = useState();
   const [location, setLocation] = useState();
-
   const params = new URLSearchParams(window.location.search);
   const locationName = params.get('name');
   const locationId = params.get('id');
@@ -13,6 +11,7 @@ export default function DetailedPage(props) {
     document.getElementById('icon-weather').src =
       'https://developer.foreca.com/static/images/symbols/' + location.symbol + '.png';
   };
+
   const getFormatedDate = givenDate => {
     const localDate = givenDate.split('T');
     const localTime = localDate[1].split('+');
