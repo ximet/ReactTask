@@ -7,6 +7,7 @@ export default function SearchBar() {
 
   const extractData = data => {
     const extr = data.pop();
+    console.log(extr);
     setResults(extr);
   };
 

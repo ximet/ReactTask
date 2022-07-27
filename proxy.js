@@ -47,20 +47,37 @@ app.get('/login', (req, res) => {
     });
 });
 
-app.post('/test-url', (req, res) => {
+app.post('/get-location-current-weather-by-id', (req, res) => {
+  console.log(req.body.id);
   const hdrs = getHeaders();
 
   axios({
     method: 'get',
     headers: hdrs,
-    url: `https://pfa.foreca.com/api/v1/location/102810135`,
-    data: {}
+    url: `https://pfa.foreca.com/api/v1/current/${req.body.id}`
   })
     .then(response => {
-      res.json(response.data);
+      res.json(response.data.current);
     })
     .catch(error => {
-      if (error) console.log('API call returned an error:', error);
+      if (error) console.log('API call returned an error:');
+    });
+});
+
+app.post('/get-location-daily-weather-by-id', (req, res) => {
+  console.log(req.body.id);
+  const hdrs = getHeaders();
+
+  axios({
+    method: 'get',
+    headers: hdrs,
+    url: `https://pfa.foreca.com/api/v1/current/${req.body.id}`
+  })
+    .then(response => {
+      res.json(response.data.current);
+    })
+    .catch(error => {
+      if (error) console.log('API call returned an error:');
     });
 });
 

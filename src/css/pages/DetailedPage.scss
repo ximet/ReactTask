@@ -1,0 +1,98 @@
+.detailed-page {
+  &__date-time {
+    margin-bottom: 1rem;
+  }
+
+  .forecast-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    overflow: hidden;
+    filter: $standart-shadow;
+
+    &__data {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+  }
+
+  .grid-element {
+    background-color: #fff;
+    padding: 1.25rem 0.5rem;
+
+    &--two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .temperature__container,
+  .wind-direction__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    border-radius: 100%;
+    width: 10rem;
+    height: 10rem;
+    border: 4px solid $gem-green;
+
+    .temperature {
+      font-size: 64px;
+      color: $gem-green;
+    }
+
+    .temperature__real-feel,
+    .wind-direction__text {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .wind-direction__arrow {
+      font-size: 64px;
+      color: $gem-green;
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+
+    img {
+      animation: mymoveUpDown 3s infinite;
+      animation-timing-function: linear;
+    }
+
+    &__text {
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 990px) {
+    .forecast-content {
+      grid-template-columns: 1fr;
+
+      .forecast-content__temperatute {
+        order: 2;
+      }
+
+      .forecast-content__icon {
+        order: 1;
+      }
+
+      .forecast-content__wind {
+        order: 3;
+
+        .forecast-content__data {
+          order: 1;
+        }
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ export default function ResultsList(props) {
                 <Link
                   to={{
                     pathname: `/location/weather-in-${item.name}`,
-                    search: `?name=${item.name}&lon-lat=${item.lat},${item.lat}`
+                    search: `?name=${item.name}&lon-lat=${item.lat},${item.lat}&id=${item.id}`
                   }}
                 >
                   {item.name}, {item.adminArea}, {item.country}
