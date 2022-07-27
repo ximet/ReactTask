@@ -1,7 +1,7 @@
 import styles from './Message.module.scss';
 
-function Message(props) {
-  return <div className={styles.message}>{props.children}</div>;
+function Message({ children }) {
+  return <div className={styles.message}>{children}</div>;
 }
 
 export default Message;

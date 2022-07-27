@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/themeContext';
 import { ThemeSwitch } from '../../Components';
+import logo from '../../Assets/img/Cloud9-x1000.png';
 
 import styles from './Header.module.scss';
 
@@ -25,6 +26,7 @@ function Header() {
           <li>
             <Link to="/feedback">Feedback</Link>
           </li>
+          <img src={logo} width="90" height="90" alt="Cloud9 logo" />
         </ul>
       </div>
     </nav>

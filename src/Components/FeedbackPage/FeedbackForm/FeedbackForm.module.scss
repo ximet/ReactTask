@@ -67,39 +67,8 @@
       border-radius: 5px;
     }
 
-    .btn {
-      width: fit-content;
-      margin: auto;
-      margin-top: 2rem;
-      align-items: center;
-      appearance: none;
-      background-size: calc(100% + 2rem) calc(100% + 2rem);
-      border-radius: 10rem;
-      border-width: 0;
-      box-shadow: none;
-      box-sizing: border-box;
-      cursor: pointer;
-      display: inline-flex;
-      font-weight: 500;
-      font-size: $default-font-size;
-      height: auto;
-      justify-content: center;
-      line-height: 1.5;
-      padding: 6px 2rem;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.2s, background-position 0.2s;
-      user-select: none;
-      touch-action: manipulation;
-      vertical-align: top;
-      white-space: nowrap;
-
-      &:active,
-      &:focus {
-        outline: none;
-      }
-    }
+    @include Button(dark-theme, $color-4D, $color-5L, $color-5D, $extra-rgba);
+    @include Button(light-theme, $color-1L, $color-5D, $color-1L, $extra-rgba);
   }
 }
 
