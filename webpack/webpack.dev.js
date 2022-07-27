@@ -31,6 +31,7 @@ module.exports = {
   },
   devServer: {
     contentBase: commonPaths.outputPath,
+    historyApiFallback: true,
     compress: true,
     hot: true,
     port: 9020
