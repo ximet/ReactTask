@@ -48,11 +48,12 @@ app.get('/login', (req, res) => {
 
 app.post('/get-location-current-weather-by-id', (req, res) => {
   const hdrs = getHeaders();
+  const optionalTemperature = req.body.temp === 'F' ? '&tempunit=' + req.body.temp : '';
 
   axios({
     method: 'get',
     headers: hdrs,
-    url: `https://pfa.foreca.com/api/v1/current/${req.body.id}`
+    url: `https://pfa.foreca.com/api/v1/current/${req.body.id}${optionalTemperature}`
   })
     .then(response => {
       res.json(response.data.current);

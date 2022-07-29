@@ -1,0 +1,75 @@
+nav {
+  background-color: $gem-green;
+  justify-content: space-between;
+}
+
+.nav__list {
+  max-width: 90rem;
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 12px;
+    font-size: 22px;
+    color: $yellow-green;
+
+    &:hover {
+      background-color: $neon-green;
+      color: $text-primary;
+    }
+  }
+}
+
+.nav__link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+.nav-controls {
+  max-height: 28px;
+  overflow: hidden;
+  display: flex;
+  font-size: 22px;
+  color: $yellow-green;
+  margin: 12px;
+
+  &__temperature,
+  &__theme {
+    p {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+    &:hover {
+      background-color: $neon-green;
+      color: $text-primary;
+      cursor: pointer;
+    }
+  }
+
+  #temperature-toggle,
+  #theme-toggle {
+    transition: all 0.4s ease-in-out;
+
+    &[data-active-temperature='F'] {
+      transform: translateY(-50%);
+    }
+
+    &[data-active-temperature='C'] {
+      transform: translateY(0%);
+    }
+
+    &[data-active-theme='dark'] {
+      transform: translateY(-50%);
+    }
+
+    &[data-active-theme='light'] {
+      transform: translateY(0%);
+    }
+  }
+}

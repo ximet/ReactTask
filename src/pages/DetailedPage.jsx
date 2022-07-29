@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { TemperatureContext } from '../Context';
+import { useContext } from 'react';
 
 export default function DetailedPage(props) {
   const [location, setLocation] = useState();
+  const { temperature } = useContext(TemperatureContext)
   const params = new URLSearchParams(window.location.search);
   const locationName = params.get('name');
   const locationId = params.get('id');
@@ -28,7 +31,7 @@ export default function DetailedPage(props) {
   useEffect(() => {
     (async function () {
       await axios
-        .post('http://localhost:3000/get-location-current-weather-by-id', { id: locationId })
+        .post('http://localhost:3000/get-location-current-weather-by-id', { id: locationId, temp: temperature })
         .then(data => setLocation(data.data))
         .catch(err => {
           console.error('error occured: ', err.message);
