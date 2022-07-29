@@ -23,6 +23,9 @@ import ErrorMessage from './FeedbackPage/FeedbackForm/ErrorMessage';
 import FavCitiesList from './FavPage/FavCitiesList/FavCitiesList';
 import Message from './FavPage/Message/Message';
 
+// Button
+import Button from './Button/Button';
+
 export { Header, HomePage, AboutPage, FavPage, FeedbackPage, Footer };
 export {
   SearchBar,
@@ -33,5 +36,6 @@ export {
   ErrorMessage,
   FavCitiesList,
   Message,
-  ThemeSwitch
+  ThemeSwitch,
+  Button
 };

@@ -1,0 +1,9 @@
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+
+a {
+  text-decoration: none;
+}
+
+@include Button(dark-theme, $color-4D, $color-5L, $color-5D, $extra-rgba);
+@include Button(light-theme, $color-1L, $color-5D, $color-1L, $extra-rgba);

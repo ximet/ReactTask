@@ -57,7 +57,7 @@ function SearchBar({ coordsStateHandler, ...rest }) {
           value={inputValue}
           onChange={(event) => inputValueHandler(event.target.value)}
           className={styles['search-bar']}
-          placeholder="Search"
+          placeholder="Search location"
         />
         <button type="submit" className={styles['search-icon']}>
           <FiSearch />

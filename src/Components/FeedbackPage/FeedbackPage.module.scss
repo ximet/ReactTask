@@ -1,6 +1,14 @@
 @import '../../Styles/variables.scss';
 @import '../../Styles/mixins.scss';
 
-@include page-layout(container, flex, column, 80%, auto, 5rem);
 @include FeedbackPage(dark-theme, $color-4D);
 @include FeedbackPage(light-theme, $color-5L);
+
+.dark-theme,
+.light-theme {
+  background-image: url(../../Assets/img/Joke-dark--x1000.png),
+    url(../../Assets/img/joke2--1000x773.png);
+  background-size: 20%;
+  background-position: right 10% top 50%, left 10% top 50%;
+  background-repeat: no-repeat;
+}

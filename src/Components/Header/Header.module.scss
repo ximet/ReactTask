@@ -9,13 +9,15 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   .container {
+    display: flex;
     .nav-items {
       width: 60%;
       margin: auto;
       list-style: none;
-      padding: 2rem 0 2rem;
+      padding: 0;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: center;
+      gap: 15rem;
       align-items: center;
       border-bottom: 1px solid transparent;
 
@@ -30,7 +32,6 @@
         text-transform: uppercase;
         font-weight: 700;
         display: inline-block;
-        width: 8rem;
         transition: all 0.2s ease-in-out;
       }
     }

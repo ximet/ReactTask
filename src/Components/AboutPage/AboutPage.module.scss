@@ -1,4 +1,21 @@
 @import '../../Styles/variables.scss';
 @import '../../Styles/mixins.scss';
 
-@include page-layout(container, flex, column, 80%, auto, 5rem);
+@include page-layout(dark-theme, flex, column, 80%, auto, 5rem);
+@include page-layout(light-theme, flex, column, 80%, auto, 5rem);
+
+@include page-layout(content, flex, column, 70%, auto, 5rem);
+
+.title {
+  margin: 5rem 0 0;
+}
+
+.content--1 {
+  .imgLight {
+    float: right;
+    shape-outside: ellipse(250px 223px at 245px 240px);
+  }
+}
+
+@include AboutPage(dark-theme, $color-4D);
+@include AboutPage(light-theme, $color-5L);
