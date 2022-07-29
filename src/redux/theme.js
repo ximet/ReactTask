@@ -1,5 +1,3 @@
-import { loadState, saveState } from '../DataService/localDataService';
-
 export function toggleTheme() {
   return {
     type: 'TOGGLE_THEME'
