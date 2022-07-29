@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { saveState, loadState } from '../DataService/localDataService';
 const ThemeContext = React.createContext();
 
 class ThemeContextProvider extends Component {
@@ -6,14 +7,18 @@ class ThemeContextProvider extends Component {
     theme: 'dark'
   };
 
-  toggleTheme = () => {
-    const darkOS = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  getTheme() {
+    const storedTheme = loadState('theme');
+    return !storedTheme || storedTheme === 'light' ? 'dark' : 'light';
+  }
 
+  toggleTheme = () => {
     this.setState((prevState) => {
       return {
         theme: prevState.theme === 'light' ? 'dark' : 'light'
       };
     });
+    saveState('theme', this.state.theme);
   };
 
   render() {

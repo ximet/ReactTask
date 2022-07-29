@@ -1,4 +1,4 @@
-import { formatDate, getWeatherSymbol } from '../../../Helpers/functions';
+import { getWeatherSymbol } from '../../../Helpers/functions';
 import { ThemeContext } from '../../../context/themeContext';
 import { useContext } from 'react';
 

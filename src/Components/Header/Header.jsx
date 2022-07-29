@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/themeContext';
 import { ThemeSwitch } from '../../Components';
@@ -15,16 +15,24 @@ function Header() {
         <ul className={styles['nav-items']}>
           <ThemeSwitch />
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" exact={true} activeClassName={styles.active}>
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about" activeClassName={styles.active}>
+              About
+            </NavLink>
           </li>
           <li>
-            <Link to="/favourites">Locations</Link>
+            <NavLink to="/favourites" activeClassName={styles.active}>
+              Locations
+            </NavLink>
           </li>
           <li>
-            <Link to="/feedback">Feedback</Link>
+            <NavLink to="/feedback" activeClassName={styles.active}>
+              Feedback
+            </NavLink>
           </li>
           <img src={logo} width="90" height="90" alt="Cloud9 logo" />
         </ul>

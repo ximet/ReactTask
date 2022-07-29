@@ -21,6 +21,9 @@
     background-color: $container-bg;
     .container {
       .nav-items {
+        .active {
+          color: $hover;
+        }
         a {
           color: $text-color;
           &:hover {

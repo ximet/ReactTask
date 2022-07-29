@@ -1,5 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../../context/themeContext';
+import { loadState } from '../../../DataService/localDataService';
+loadState;
 
 import styles from './ThemeSwitch.module.scss';
 
@@ -11,6 +13,12 @@ function ThemeSwitch() {
       <div className={styles.wrapper}>
         <label className={styles.switch}>
           <input type="checkbox" id="checkbox-toggle" onClick={toggleTheme} />
+          {/* {checked ? (
+            <input type="checkbox" id="checkbox-toggle" onClick={toggleTheme} />
+          ) : (
+            <input type="checkbox" id="checkbox-toggle" onClick={toggleTheme} />
+          )} */}
+
           <span className={styles.slider}>
             <div className={styles.fish}>
               <div className={styles.body}></div>
