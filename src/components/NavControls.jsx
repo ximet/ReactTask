@@ -12,12 +12,11 @@ export default function NavControls(props) {
 
   const updateTheme = () => {
     const themeElement = document.getElementById('app');
-    const newTheme = props.theme === 'dark' ? 'light' : 'dark'
+    const newTheme = props.theme === 'dark' ? 'light' : 'dark';
     themeElement.dataset.theme = newTheme;
     document.getElementById('theme-toggle').dataset.activeTheme = newTheme;
     sessionStorage.setItem('theme', newTheme);
     props.changeTheme(newTheme);
-
   };
 
   return (
