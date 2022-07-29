@@ -47,22 +47,23 @@ const Home: React.FunctionComponent = () => {
     <main className={`${styles.main} ${styles[theme]}`}>
       <HashNav />
       <Search />
-      {locationError && !cityId && <ErrorComponent message={locationError} button="TRY_AGAIN" />}
-      {userHasToken ? (
+      {locationError && !cityId ? (
+        <ErrorComponent message={locationError} button="TRY_AGAIN" />
+      ) : userHasToken ? (
         <>
           <div className={styles.container}>
             <CurrentWeather location={locationParam} locationInfo={locationInfo} />
             <Today3Hourly location={locationParam} />
           </div>
           <Today1Hourly location={locationParam} />
-          <DailyForecast location={locationParam} />
+          <DailyForecast location={locationParam} />{' '}
+          <HashLink to={'#top'} smooth className={styles.toTheTop}>
+            Go to the top
+          </HashLink>
         </>
-      ) : locationError ? null : (
+      ) : (
         <ErrorComponent message="No weather data available at the moment" button="TRY_AGAIN" />
       )}
-      <HashLink to={'#top'} smooth className={styles.toTheTop}>
-        Go to the top
-      </HashLink>
     </main>
   );
 };

@@ -5,15 +5,6 @@
   @include flex(row, center);
 
   margin: 5rem auto;
-  .svgBackground {
-    position: absolute;
-    z-index: 2;
-    .tempScale {
-      position: relative;
-      z-index: 3;
-      font-size: 0.7rem;
-    }
-  }
 
   .hourContainer {
     height: 400px;

@@ -11,6 +11,8 @@ import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
 import Loading from '../../UI/Loading/Loading';
 import { ENDPOINTS, getData } from './../../../helpers/api';
 import Title from './../../UI/Title/Title';
+import CreateLine from './SvgBackground/CreateLine/CreateLine';
+import SvgBackground from './SvgBackground/SvgBackground';
 import styles from './Today1Hourly.module.scss';
 
 interface Today1HourlyProps {
@@ -67,36 +69,7 @@ class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState>
                   this.context.theme === Theme.DARK && styles[Theme.DARK]
                 }`}
               >
-                <svg height={'400'} width={'1000'} className={styles.svgBackground}>
-                  <text x={'0'} y={'15'} className={styles.tempScale}>
-                    {tempUnit === TempUnits.FAHRENHEIT
-                      ? `${convertToFahrenheit(40)} °F`
-                      : `${40} °C`}
-                  </text>
-                  <text x={'0'} y={'100'} className={styles.tempScale}>
-                    {tempUnit === TempUnits.FAHRENHEIT
-                      ? `${convertToFahrenheit(30)} °F`
-                      : `${30} °C`}
-                  </text>
-                  <text x={'0'} y={'200'} className={styles.tempScale}>
-                    {tempUnit === TempUnits.FAHRENHEIT
-                      ? `${convertToFahrenheit(20)} °F`
-                      : `${20} °C`}
-                  </text>
-                  <text x={'0'} y={'300'} className={styles.tempScale}>
-                    {tempUnit === TempUnits.FAHRENHEIT
-                      ? `${convertToFahrenheit(10)} °F`
-                      : `${10} °C`}
-                  </text>
-                  <text x={'0'} y={'400'} className={styles.tempScale}>
-                    {tempUnit === TempUnits.FAHRENHEIT ? `${convertToFahrenheit(0)} °F` : `${0} °C`}
-                  </text>
-                  <line x1={'20'} x2={'1000'} y1={'0'} y2={'0'} stroke={'#245f763b'}></line>
-                  <line x1={'20'} x2={'1000'} y1={'100'} y2={'100'} stroke={'#245f763b'}></line>
-                  <line x1={'20'} x2={'1000'} y1={'200'} y2={'200'} stroke={'#245f763b'}></line>
-                  <line x1={'20'} x2={'1000'} y1={'300'} y2={'300'} stroke={'#245f763b'}></line>
-                  <line x1={'20'} x2={'1000'} y1={'400'} y2={'400'} stroke={'#245f763b'}></line>
-                </svg>
+                <SvgBackground />
                 {data.forecast.map(
                   ({ time, symbol, temperature, precipAccum }, index, forecastData) => (
                     <div className={styles.hourContainer} key={time}>
@@ -107,16 +80,20 @@ class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState>
                         style={{ top: `${350 - temperature * 10}px` }}
                       />
                       <svg height={'400'} width={'40'} className={styles.svgTemperature}>
-                        <line
-                          x1={'4'}
-                          x2={forecastData[index + 1] ? '40' : '0'}
-                          y1={400 - temperature * 10}
-                          y2={
-                            400 - forecastData[index + 1]?.temperature * 10 ||
-                            400 - temperature * 10
-                          }
-                          stroke={'red'}
-                        ></line>
+                        <CreateLine
+                          coordsBeg={{
+                            x1: '4',
+                            y1: `${400 - temperature * 10}`
+                          }}
+                          coordsEnd={{
+                            x2: `${forecastData[index + 1] ? '40' : '0'}`,
+                            y2: `${
+                              400 - forecastData[index + 1]?.temperature * 10 ||
+                              400 - temperature * 10
+                            }`
+                          }}
+                          color={'red'}
+                        />
                         <circle
                           cy={400 - temperature * 10}
                           cx={'4'}
