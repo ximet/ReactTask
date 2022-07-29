@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ThemeContext } from '../../../context/themeContext';
+import { ThemeContext } from '../../../../context/themeContext';
 
 import styles from './ErrorMessage.module.scss';
 

@@ -38,11 +38,11 @@ function cityReducer(favCityList = [], action) {
   }
 }
 
-const persistedState = loadState();
+const persistedState = loadState('savedLocations');
 const store = createStore(cityReducer, persistedState);
 
 store.subscribe(() => {
-  saveState(store.getState());
+  saveState('savedLocations', store.getState());
 });
 
 export default store;

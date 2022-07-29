@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { saveData } from '../../../DataService/localDataService';
+import { saveState } from '../../../DataService/localDataService';
 import { ErrorMessage } from '../../';
 import { ThemeContext } from '../../../context/themeContext';
 import { Button } from '../../';
@@ -37,7 +37,7 @@ function FeedbackForm() {
 
   function saveToLocalStorage() {
     if (Object.keys(formErrors).length === 0) {
-      saveData(formData);
+      saveState('formData', formData);
     }
   }
 
@@ -47,8 +47,7 @@ function FeedbackForm() {
 
   function validate(values) {
     const errors = {};
-    const emailRegEx =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!values.username) {
       errors.username = 'Name is required!';

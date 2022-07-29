@@ -7,9 +7,9 @@ import styles from './FavPage.module.scss';
 
 function FavPage() {
   const { theme } = useContext(ThemeContext);
-  const favCityList = useSelector((state) => state);
+  const locations = useSelector((state) => state);
 
-  const listItems = favCityList.map((item) => {
+  const listItems = locations.map((item) => {
     return <FavCitiesList data={item} key={item.locationData.id} />;
   });
 
