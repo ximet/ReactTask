@@ -26,9 +26,9 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
 
   return (
     <Card>
+      <Title title="Next 24 hours" />
       {data ? (
         <>
-          <Title title="Next 24 hours" />
           <ul className={styles.container}>
             {data.forecast.slice(0, 8).map(forecast => (
               <li key={forecast.time} className={styles.innerContainer}>
