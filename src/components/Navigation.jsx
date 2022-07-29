@@ -12,10 +12,7 @@ export default function Navigation(props) {
   return (
     <nav className="container flex-row">
       <NavLinks />
-      <NavControls
-        changeTheme={props.changeTheme}
-        theme={props.currentTheme}
-      />
+      <NavControls changeTheme={props.changeTheme} theme={props.currentTheme} />
     </nav>
   );
 }

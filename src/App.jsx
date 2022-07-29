@@ -11,8 +11,10 @@ import { TemperatureContext } from './Context';
 
 export default function App() {
   const [authenticated, setAuth] = useState();
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState('light');
   const [temperature, setTemperature] = useState();
+  const cashedTheme = sessionStorage.getItem('theme');
+  const themeElement = document.getElementById('app');
 
   useEffect(() => {
     (async function attemptLogin() {
@@ -23,24 +25,13 @@ export default function App() {
           console.error('error occured: ', err.message);
         });
     })();
-    if (sessionStorage.getItem('temp')) setTemperature(sessionStorage.getItem('temp'));
-  }, []);
 
-  useEffect(() => {
-    const cashedTheme = sessionStorage.getItem('theme');
-    const themeElement = document.getElementById('app');
-    if (!theme) {
-      if (!!cashedTheme) {
-        themeElement.dataset.theme = cashedTheme;
-        setTheme(cashedTheme);
-      } else {
-        themeElement.dataset.theme = 'light';
-      }
-    } else {
-      sessionStorage.setItem('theme', theme);
-      document.getElementById('app').dataset.theme = theme;
+    if (sessionStorage.getItem('temp')) setTemperature(sessionStorage.getItem('temp'));
+    if (cashedTheme) {
+      themeElement.dataset.theme = cashedTheme;
+      setTheme(cashedTheme);
     }
-  }, [theme]);
+  }, []);
 
   useEffect(() => {
     if (!temperature) return;
@@ -49,7 +40,7 @@ export default function App() {
 
   return (
     <Router>
-      <TemperatureContext.Provider value={{ temperature, setTemperature }} >
+      <TemperatureContext.Provider value={{ temperature, setTemperature }}>
         <Navigation currentTheme={theme} changeTheme={setTheme} />
         <div className="page container">
           <Route exact path="/" component={HomePage} />

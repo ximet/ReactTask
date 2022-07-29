@@ -11,9 +11,13 @@ export default function NavControls(props) {
   };
 
   const updateTheme = () => {
-    props.changeTheme(props.theme === 'dark' ? 'light' : 'dark');
-    document.getElementById('theme-toggle').dataset.activeTheme =
-      props.theme === 'dark' ? 'light' : 'dark';
+    const themeElement = document.getElementById('app');
+    const newTheme = props.theme === 'dark' ? 'light' : 'dark'
+    themeElement.dataset.theme = newTheme;
+    document.getElementById('theme-toggle').dataset.activeTheme = newTheme;
+    sessionStorage.setItem('theme', newTheme);
+    props.changeTheme(newTheme);
+
   };
 
   return (
