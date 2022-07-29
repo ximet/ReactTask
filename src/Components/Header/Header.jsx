@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import { ThemeSwitch } from '../../Components';
 import { useSelector } from 'react-redux';
 
-import logo from '../../Assets/img/Cloud9-x1000.png';
 
 import styles from './Header.module.scss';
 

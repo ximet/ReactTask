@@ -10,6 +10,7 @@ import styles from './AboutPage.module.scss';
 function AboutPage() {
   const theme = useSelector((state) => state.theme);
 
+
   return (
     <main className={styles[`${theme}-theme`]}>
       <article className={styles.content}>
