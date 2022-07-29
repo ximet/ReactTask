@@ -10,7 +10,10 @@ interface TitleProps {
 const Title: React.FunctionComponent<TitleProps> = ({ title, fontSize }) => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
   return (
-    <h2 className={`${styles.title} ${theme === Theme.DARK && styles[theme]}`} style={{ fontSize }}>
+    <h2
+      className={`${styles.title} ${theme === Theme.DARK && styles[theme]}`}
+      style={{ fontSize }}
+    >
       {title}
     </h2>
   );
