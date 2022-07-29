@@ -175,6 +175,7 @@
       backdrop-filter: blur(16px) saturate(180%);
       background-color: $bg-color;
       color: $text-color;
+      border: 1px solid $border-color;
 
       input[type='text'],
       input[type='email'] {

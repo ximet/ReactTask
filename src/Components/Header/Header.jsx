@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
-import { ThemeContext } from '../../context/themeContext';
 import { ThemeSwitch } from '../../Components';
+import { useSelector } from 'react-redux';
+
 import logo from '../../Assets/img/Cloud9-x1000.png';
 
 import styles from './Header.module.scss';
 
 function Header() {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   return (
     <nav className={styles[`${theme}-theme`]}>

@@ -1,7 +1,6 @@
-import { ThemeContext } from '../../context/themeContext';
 import { Button } from '../';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import imgLight from '../../Assets/img/light.png';
 import imgDark from '../../Assets/img/dark.png';
@@ -9,7 +8,7 @@ import imgDark from '../../Assets/img/dark.png';
 import styles from './AboutPage.module.scss';
 
 function AboutPage() {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   return (
     <main className={styles[`${theme}-theme`]}>

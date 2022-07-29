@@ -1,7 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { instance } from '../../../DataService/apiService';
 import { endpoints } from '../../../Helpers/constants';
-import { ThemeContext } from '../../../context/themeContext';
 
 import styles from './SearchBar.module.scss';
 import { FiSearch } from 'react-icons/fi';
@@ -9,7 +10,7 @@ import { FiSearch } from 'react-icons/fi';
 function SearchBar({ coordsStateHandler, ...rest }) {
   const [inputValue, setInputValue] = useState('');
   const [searchData, setSearchData] = useState([]);
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   const getLocationDataByName = async () => {
     try {

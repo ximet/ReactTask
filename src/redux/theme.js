@@ -1,3 +1,5 @@
+import { loadState, saveState } from '../DataService/localDataService';
+
 export function toggleTheme() {
   return {
     type: 'TOGGLE_THEME'
@@ -7,7 +9,7 @@ export function toggleTheme() {
 export default function themeReducer(theme = 'light', action) {
   switch (action.type) {
     case 'TOGGLE_THEME':
-      return theme === 'light' ? 'light' : 'dark';
+      return theme === 'light' ? 'dark' : 'light';
 
     default:
       return theme;

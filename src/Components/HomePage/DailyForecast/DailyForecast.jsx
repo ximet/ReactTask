@@ -1,13 +1,12 @@
 import { getWeatherSymbol, formatDate } from '../../../Helpers/functions';
 import { opts } from '../../../Helpers/constants';
-import { useContext } from 'react';
-import { ThemeContext } from '../../../context/themeContext';
+import { useSelector } from 'react-redux';
 
 import { WiStrongWind } from 'react-icons/wi';
 import styles from './DailyForecast.module.scss';
 
 function DailyForecast({ dailyWeather }) {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   const listItems = dailyWeather.forecast.map((item) => {
     return (

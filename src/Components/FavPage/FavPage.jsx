@@ -1,13 +1,11 @@
 import { useSelector } from 'react-redux';
-import { useContext } from 'react';
 
 import { FavCitiesList, Message } from '../';
-import { ThemeContext } from '../../context/themeContext';
 
 import styles from './FavPage.module.scss';
 
 function FavPage() {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
   const locations = useSelector((state) => state.favCityList);
 
   const listItems = locations.map((item) => {

@@ -1,13 +1,12 @@
 import { getWeatherSymbol, formatDate } from '../../../Helpers/functions';
-import { useContext } from 'react';
 import { opts } from '../../../Helpers/constants';
-import { ThemeContext } from '../../../context/themeContext';
+import { useSelector } from 'react-redux';
 
 import { WiRaindrop, WiStrongWind } from 'react-icons/wi';
 import styles from './HourlyForecast.module.scss';
 
 function HourlyForecast({ hourlyWeather }) {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   const listItems = hourlyWeather.forecast.map((item) => {
     return (

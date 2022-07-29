@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Header, HomePage, AboutPage, FavPage, FeedbackPage, Footer } from './Components/index';
-import { ThemeContext } from './context/themeContext';
+import { useSelector } from 'react-redux';
 
 import styles from './App.module.scss';
 
 function App() {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   return (
     <div className={styles[`${theme}-theme`]}>
