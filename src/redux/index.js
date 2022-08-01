@@ -18,7 +18,6 @@ const store = createStore(rootReducer, persistedState);
 store.subscribe(() => {
   saveState('savedLocations', store.getState().favCityList);
   saveState('theme', store.getState().theme);
-  console.log(store.getState());
 });
 
 export default store;

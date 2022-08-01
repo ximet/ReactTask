@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../../../context/themeContext';
+import { useSelector } from 'react-redux';
 
 import styles from './ErrorMessage.module.scss';
 
 function ErrorMessage({ message }) {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   return <small className={styles[`${theme}-theme`]}>{message && `❌ ${message}`}</small>;
 }
