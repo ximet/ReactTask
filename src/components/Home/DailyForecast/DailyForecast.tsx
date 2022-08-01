@@ -54,36 +54,34 @@ class DailyForecast extends React.Component<DailyForecastProps, DailyForecastSta
     const { data, loading, error } = this.state;
     const { tempUnit } = this.props;
     return (
-      <Card>
-        <div id="7day">
-          <Title title="7 day forecast" />
-          {data.forecast.length > 0 ? (
-            <ul className={styles.container}>
-              {data.forecast.map(({ date, symbol, maxTemp, minTemp }, index) => (
-                <li className={styles.dayContainer} key={date}>
-                  <p className={styles.date}>
-                    {index === 0 ? 'Today' : index === 1 ? 'Tomorrow' : date}
-                  </p>
-                  <p className={styles.maxTemp}>
-                    {tempUnit === TempUnits.FAHRENHEIT
-                      ? `${convertToFahrenheit(maxTemp)} °F`
-                      : `${maxTemp} °C`}
-                  </p>
-                  <p className={styles.minTemp}>
-                    {tempUnit === TempUnits.FAHRENHEIT
-                      ? `${convertToFahrenheit(minTemp)}`
-                      : `${minTemp}`}
-                  </p>
-                  <img className={styles.symbol} src={ENDPOINTS.symbol + symbol + '.png'} />
-                </li>
-              ))}
-            </ul>
-          ) : loading ? (
-            <Loading />
-          ) : (
-            error && <ErrorComponent message={error} button="TRY_AGAIN" />
-          )}
-        </div>
+      <Card id="7day">
+        <Title title="7 day forecast" />
+        {data.forecast.length > 0 ? (
+          <ul className={styles.container}>
+            {data.forecast.map(({ date, symbol, maxTemp, minTemp }, index) => (
+              <li className={styles.dayContainer} key={date}>
+                <p className={styles.date}>
+                  {index === 0 ? 'Today' : index === 1 ? 'Tomorrow' : date}
+                </p>
+                <p className={styles.maxTemp}>
+                  {tempUnit === TempUnits.FAHRENHEIT
+                    ? `${convertToFahrenheit(maxTemp)} °F`
+                    : `${maxTemp} °C`}
+                </p>
+                <p className={styles.minTemp}>
+                  {tempUnit === TempUnits.FAHRENHEIT
+                    ? `${convertToFahrenheit(minTemp)}`
+                    : `${minTemp}`}
+                </p>
+                <img className={styles.symbol} src={ENDPOINTS.symbol + symbol + '.png'} />
+              </li>
+            ))}
+          </ul>
+        ) : loading ? (
+          <Loading />
+        ) : (
+          error && <ErrorComponent message={error} button="TRY_AGAIN" />
+        )}
       </Card>
     );
   }

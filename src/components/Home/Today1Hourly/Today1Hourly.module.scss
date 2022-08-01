@@ -3,7 +3,6 @@
 
 .container {
   @include flex(row, center);
-
   margin: 5rem auto;
 
   .hourContainer {
@@ -47,6 +46,11 @@
       display: flex;
       align-items: flex-end;
       position: relative;
+      &.outOfScale {
+        background-color: $darkBlue;
+        height: 100%;
+        top: 0%;
+      }
       .precipAccumNumber {
         margin: 0 0 -20px 0;
         font-size: 0.75rem;
