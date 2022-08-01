@@ -11,22 +11,12 @@ function ThemeSwitch() {
     <div className={styles['theme-switch']}>
       <div className={styles.wrapper}>
         <label className={styles.switch}>
-          {theme === 'light' ? (
-            <input
-              type="checkbox"
-              defaultChecked={true}
-              id="checkbox-toggle"
-              onClick={() => dispatch(toggleTheme())}
-            />
-          ) : (
-            <input
-              type="checkbox"
-              defaultChecked={false}
-              id="checkbox-toggle"
-              onClick={() => dispatch(toggleTheme())}
-            />
-          )}
-
+          <input
+            type="checkbox"
+            defaultChecked={theme === 'light'}
+            id="checkbox-toggle"
+            onClick={() => dispatch(toggleTheme())}
+          />
           <span className={styles.slider}>
             <div className={styles.fish}>
               <div className={styles.body}></div>
