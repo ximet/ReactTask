@@ -1,0 +1,31 @@
+@import '../../../global-styles/colors';
+@import '../../../global-styles/mixins';
+
+.container {
+  @include flex(row, space-around);
+  padding: 0;
+  .dayContainer {
+    list-style-type: none;
+    text-align: center;
+    border: 1px solid $borders;
+    padding: 0;
+    .date {
+      font-weight: 700;
+    }
+    .maxTemp,
+    .minTemp {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $darkerBlue;
+      margin: 0;
+    }
+    .minTemp {
+      font-size: 1.4rem;
+    }
+    .symbol {
+      width: 45%;
+      display: block;
+      margin: 1rem auto;
+    }
+  }
+}

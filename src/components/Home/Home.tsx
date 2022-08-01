@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Dispatch } from 'redux';
 import { ENDPOINTS } from '../../helpers/api';
 import { LocationInfo, RequestDataConfig } from '../../helpers/Interfaces';
@@ -12,8 +13,10 @@ import { useGetRequest } from './../../hooks/useGetRequest';
 import { ThemeContext, ThemeContextConfig } from './../../store/theme-context';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyForecast from './DailyForecast/DailyForecast';
+import HashNav from './HashNav/HashNav';
 import styles from './Home.module.scss';
 import Search from './Search/Search';
+import Today1Hourly from './Today1Hourly/Today1Hourly';
 import Today3Hourly from './Today3Hourly/Today3Hourly';
 
 const Home: React.FunctionComponent = () => {
@@ -42,20 +45,21 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <main className={`${styles.main} ${styles[theme]}`}>
+      <HashNav />
       <Search />
-      {locationError && (
-        <ErrorComponent
-          message="Your current location is unavailable at the moment. Please check your browser settings or use search bar to search for location."
-          button="TRY_AGAIN"
-        />
-      )}
-      {userHasToken ? (
+      {locationError && !cityId ? (
+        <ErrorComponent message={locationError} button="TRY_AGAIN" />
+      ) : userHasToken ? (
         <>
           <div className={styles.container}>
             <CurrentWeather location={locationParam} locationInfo={locationInfo} />
             <Today3Hourly location={locationParam} />
           </div>
-          <DailyForecast location={locationParam} />
+          <Today1Hourly location={locationParam} />
+          <DailyForecast location={locationParam} />{' '}
+          <HashLink to={'#top'} smooth className={styles.toTheTop}>
+            Go to the top
+          </HashLink>
         </>
       ) : (
         <ErrorComponent message="No weather data available at the moment" button="TRY_AGAIN" />

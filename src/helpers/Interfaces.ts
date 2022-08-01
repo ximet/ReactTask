@@ -44,10 +44,14 @@ interface WeatherData {
   precipAccum?: number;
   snowAccum?: number;
 }
+
 export interface CurrentData {
   current: WeatherData;
 }
 export interface ThreeHourlyData {
+  forecast: WeatherData[];
+}
+export interface HourlyData {
   forecast: WeatherData[];
 }
 

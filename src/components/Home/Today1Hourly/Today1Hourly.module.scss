@@ -1,0 +1,72 @@
+@import '../../../global-styles/colors';
+@import '../../../global-styles/mixins';
+
+.container {
+  @include flex(row, center);
+  margin: 5rem auto;
+
+  .hourContainer {
+    height: 400px;
+    width: 40px;
+    .time {
+      font-size: 0.8rem;
+      opacity: 1;
+      margin: -16px 0 0 0;
+    }
+    &:nth-child(2n) .time {
+      opacity: 0;
+    }
+    .symbol {
+      width: 50%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .svgTemperature {
+      position: absolute;
+      z-index: 3;
+      .textTemperature {
+        font-weight: 700;
+        opacity: 0;
+      }
+      .circle {
+        &:hover {
+          cursor: pointer;
+        }
+        &:hover + .textTemperature {
+          opacity: 1;
+        }
+      }
+    }
+
+    .precipAccum {
+      width: 30px;
+      background-color: $rainColor;
+      margin: 0 5px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      &.outOfScale {
+        background-color: $darkBlue;
+        height: 100%;
+        top: 0%;
+      }
+      .precipAccumNumber {
+        margin: 0 0 -20px 0;
+        font-size: 0.75rem;
+        color: $darkBlue;
+      }
+    }
+  }
+  &.dark {
+    .tempScale,
+    .textTemperature {
+      fill: $lightBlue;
+    }
+  }
+}
+.precipLabel {
+  width: 20%;
+  margin: 0 auto;
+  font-size: 0.8rem;
+}

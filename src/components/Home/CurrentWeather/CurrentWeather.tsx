@@ -28,7 +28,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
   const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
 
   return (
-    <Card>
+    <Card id="current">
       {data ? (
         <>
           {locationInfo && <Title title={`Now in ${locationInfo.name}, ${locationInfo.country}`} />}
@@ -45,7 +45,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
                 className={styles.symbol}
                 src={ENDPOINTS.symbol + data.current.symbol + '.png'}
                 alt={data.current.symbolPhrase}
-              />{' '}
+              />
               <p className={styles.feelsLike}>
                 <b>
                   {data.current.symbolPhrase.charAt(0).toUpperCase() +
