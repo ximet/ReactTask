@@ -16,6 +16,7 @@ interface ContactsState {
   nameTouched: boolean;
   emailTouched: boolean;
   messageTouched: boolean;
+  numberTouched: boolean;
   name: string;
   email: string;
   message: string;
@@ -35,7 +36,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
   nameIsValid: boolean = false;
   emailIsValid: boolean = false;
   messageIsValid: boolean = false;
-  numberIsValid: boolean = false;
+  numberIsValid: boolean = true;
   constructor(props: ContactsProps) {
     super(props);
     this.state = {
@@ -47,6 +48,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
       nameTouched: false,
       emailTouched: false,
       messageTouched: false,
+      numberTouched: false,
       formIsValid: false,
       formIsSubmitted: false
     };
@@ -183,6 +185,7 @@ class Contacts extends React.Component<ContactsProps, ContactsState> {
                   inputValue={this.state.number}
                   required={false}
                   valid={this.numberIsValid}
+                  touched={this.state.numberTouched}
                   errorMessage="Check your phone number. It is not valid."
                   blurHandler={this.inputBlurHandler}
                 />
