@@ -44,7 +44,7 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
       if (target.id !== currentLocation) {
         dispatch({ type: LocationActions.SAVE_SEARCH, payload: target.id });
       }
-      navigate(`/cities/${target.id}`);
+      target.id ? navigate(`/cities/${target.id}`) : navigate('/');
     },
     [event]
   );

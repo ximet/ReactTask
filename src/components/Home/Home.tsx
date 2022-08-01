@@ -32,6 +32,7 @@ const Home: React.FunctionComponent = () => {
   } = useGeoLocation();
   const { cityId } = useParams<string>();
   const locationParam = cityId || userLocation;
+  console.log(locationParam)
   const { data: locationInfo, loading, error }: RequestDataConfig<LocationInfo> = useGetRequest(
     ENDPOINTS.locationInfo,
     locationParam
