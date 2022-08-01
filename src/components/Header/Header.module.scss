@@ -21,13 +21,17 @@
     .title {
       margin: 0;
       padding-top: 5vh;
-      h1 {
+      .titleContent {
         margin: 0;
         font-size: 5vh;
         letter-spacing: 4px;
         color: $darkerBlue;
         z-index: 3;
         position: relative;
+        .titleLink {
+          text-decoration: none;
+          color: inherit;
+        }
       }
       .logo {
         background-image: url('../../../assets/sun_logo.png');

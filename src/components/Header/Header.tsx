@@ -20,7 +20,11 @@ const Header: React.FunctionComponent = () => {
     <header className={`${styles.header} ${theme === Theme.DARK && styles[theme]}`}>
       <div className={styles.container}>
         <div className={styles.title}>
-          <h1>Nice Weather App</h1>
+          <h1 className={styles.titleContent}>
+            <a href="/" className={styles.titleLink}>
+              Nice Weather App
+            </a>
+          </h1>
           <a href="/" className={styles.logo}></a>
         </div>
         <nav className={styles.nav}>

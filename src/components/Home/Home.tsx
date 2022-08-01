@@ -31,8 +31,9 @@ const Home: React.FunctionComponent = () => {
     loading: boolean;
   } = useGeoLocation();
   const { cityId } = useParams<string>();
-  const locationParam = cityId || userLocation;
-  console.log(locationParam)
+
+  const locationParam = cityId === 'current' ? userLocation : cityId || userLocation;
+  console.log(locationParam);
   const { data: locationInfo, loading, error }: RequestDataConfig<LocationInfo> = useGetRequest(
     ENDPOINTS.locationInfo,
     locationParam
@@ -58,7 +59,7 @@ const Home: React.FunctionComponent = () => {
             <Today3Hourly location={locationParam} />
           </div>
           <Today1Hourly location={locationParam} />
-          <DailyForecast location={locationParam} />{' '}
+          <DailyForecast location={locationParam} />
           <HashLink to={'#top'} smooth className={styles.toTheTop}>
             Go to the top
           </HashLink>
