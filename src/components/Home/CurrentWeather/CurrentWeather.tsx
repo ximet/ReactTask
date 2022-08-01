@@ -28,7 +28,7 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
   const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
 
   return (
-    <Card id="current">
+    <Card id="current" width="55%">
       {data ? (
         <>
           {locationInfo && <Title title={`Now in ${locationInfo.name}, ${locationInfo.country}`} />}
@@ -49,9 +49,10 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
               <p className={styles.feelsLike}>
                 <b>
                   {data.current.symbolPhrase.charAt(0).toUpperCase() +
-                    data.current.symbolPhrase.slice(1) +
-                    '. '}
+                    data.current.symbolPhrase.slice(1)}
                 </b>
+              </p>
+              <p className={styles.feelsLike}>
                 Feels like
                 <b>
                   {tempUnit === TempUnits.FAHRENHEIT
@@ -61,20 +62,29 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
               </p>
             </div>
             <div className={styles.innerContainer}>
-              <p>
-                Wind: <b>{data.current.windSpeed} m/s</b>
+              <p className={styles.label}>Wind: </p>
+              <p className={styles.value}>
+                <b>{data.current.windSpeed} m/s</b>
               </p>
-              <p>
-                Wind Direction: <b>{data.current.windDirString}</b>
+
+              <p className={styles.label}>Wind Direction: </p>
+              <p className={styles.value}>
+                <b>{data.current.windDirString}</b>
               </p>
-              <p>
-                Precipitation: <b>{data.current.precipProb} %</b>
+
+              <p className={styles.label}>Precipitation: </p>
+              <p className={styles.value}>
+                <b>{data.current.precipProb} %</b>
               </p>
-              <p>
-                Pressure: <b>{data.current.pressure} mmHg</b>
+
+              <p className={styles.label}>Pressure: </p>
+              <p className={styles.value}>
+                <b>{data.current.pressure} mmHg</b>
               </p>
-              <p>
-                UV index: <b>{data.current.uvIndex}</b>
+
+              <p className={styles.label}>UV index: </p>
+              <p className={styles.value}>
+                <b>{data.current.uvIndex}</b>
               </p>
             </div>
           </div>

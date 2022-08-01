@@ -40,7 +40,8 @@ const Home: React.FunctionComponent = () => {
   const { userHasToken }: AuthContextConfig = useContext(AuthContext);
 
   useEffect(() => {
-    dispatch({ type: LocationActions.SAVE_CURRENT_LOCATION, payload: userLocation });
+    userLocation &&
+      dispatch({ type: LocationActions.SAVE_CURRENT_LOCATION, payload: userLocation });
   }, [userLocation]);
 
   return (

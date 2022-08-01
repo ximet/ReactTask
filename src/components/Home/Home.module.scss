@@ -5,9 +5,7 @@
   width: 70%;
   margin: 0 auto 20vh auto;
   .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    @include flex(row, space-between);
   }
   .toTheTop {
     margin-right: 5rem;

@@ -10,7 +10,7 @@ const WiRaindrops: React.FunctionComponent = () => {
       id="Layer_1"
       x="0px"
       y="0px"
-      viewBox="-5 2 30 30"
+      viewBox="-5 -3 30 30"
       height="3rem"
       width="3rem"
       className={styles.svg}

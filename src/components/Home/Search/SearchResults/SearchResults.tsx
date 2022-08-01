@@ -12,7 +12,6 @@ import {
 import { Theme, ThemeContext, ThemeContextConfig } from '../../../../store/theme-context';
 import GoLocation from '../../../UI/Icons/GoLocation';
 import Loading from '../../../UI/Loading/Loading';
-
 import SavedLocations from './SavedLocations/SavedLocations';
 import styles from './SearchResults.module.scss';
 

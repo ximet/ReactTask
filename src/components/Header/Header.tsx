@@ -21,7 +21,7 @@ const Header: React.FunctionComponent = () => {
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>Nice Weather App</h1>
-          <div className={styles.logo}></div>
+          <a href="/" className={styles.logo}></a>
         </div>
         <nav className={styles.nav}>
           <ul className={styles.linkContainer}>
