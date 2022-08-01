@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { saveState } from '../../../DataService/localDataService';
 import { ErrorMessage } from '../../';
-import { ThemeContext } from '../../../context/themeContext';
 import { Button } from '../../';
 
 import styles from './FeedbackForm.module.scss';
 
 function FeedbackForm() {
-  const { theme } = useContext(ThemeContext);
-
   const initialValues = {
     username: '',
     email: '',
@@ -19,6 +17,7 @@ function FeedbackForm() {
   };
   const [formData, setFormData] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const theme = useSelector((state) => state.theme);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
