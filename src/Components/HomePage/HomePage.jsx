@@ -1,4 +1,10 @@
-import { CurrentForecast, DailyForecast, SearchBar, HourlyForecast } from '../../Components';
+import {
+  CurrentForecast,
+  DailyForecast,
+  SearchBar,
+  HourlyForecast,
+  Message
+} from '../../Components';
 import useApi from '../../hooks/useApi';
 import styles from './HomePage.module.scss';
 
@@ -16,8 +22,17 @@ function HomePage() {
 
       {hourlyWeather && <HourlyForecast hourlyWeather={hourlyWeather} />}
       {dailyWeather && <DailyForecast dailyWeather={dailyWeather} />}
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error.message}</p>}
+      {isLoading && (
+        <Message>
+          <h2>Loading...</h2>
+        </Message>
+      )}
+
+      {error && (
+        <Message>
+          <h2>{error.message}</h2>
+        </Message>
+      )}
     </main>
   );
 }

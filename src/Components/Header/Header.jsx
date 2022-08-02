@@ -34,7 +34,9 @@ function Header() {
               Feedback
             </NavLink>
           </li>
-          <img src={logo} width="90" height="90" alt="Cloud9 logo" />
+          <NavLink to="/" exact={true}>
+            <img src={logo} width="90" height="90" alt="Cloud9 logo" className={styles.logo} />
+          </NavLink>
         </ul>
       </div>
     </nav>

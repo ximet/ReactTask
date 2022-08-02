@@ -21,12 +21,14 @@ function FavPage() {
         </div>
       ) : (
         <div className={styles[`${theme}-theme`]}>
-          <Message>
-            <p>Here you can see a list of the weather from your favourite cities.</p>
-            <br />
-            <br />
-            <p>Your list is empty. Search for a city and add it as a favourite!</p>
-          </Message>
+          <div className={styles['message-wrapper']}>
+            <Message>
+              <p>Here you can see a list of the weather from your favourite cities.</p>
+              <br />
+              <br />
+              <p>Your list is empty. Search for a city and add it as a favourite!</p>
+            </Message>
+          </div>
         </div>
       )}
     </main>

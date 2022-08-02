@@ -38,6 +38,7 @@ function useApi() {
         })
       )
       .catch((error) => {
+        setIsLoading(false);
         setError(error);
       });
   }
