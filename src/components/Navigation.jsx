@@ -7,7 +7,9 @@ export default function Navigation(props) {
   return (
     <nav>
       <NavLinks />
-      <Link to="/" className="logo">Whatever Weather</Link>
+      <Link to="/" className="logo">
+        Whatever Weather
+      </Link>
       <NavControls changeTheme={props.changeTheme} theme={props.currentTheme} />
     </nav>
   );
