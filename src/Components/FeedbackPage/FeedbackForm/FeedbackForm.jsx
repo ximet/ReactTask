@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
 import { saveState } from '../../../DataService/localDataService';
 
 import { ErrorMessage } from '../../';
@@ -9,8 +8,6 @@ import { Button } from '../../';
 import styles from './FeedbackForm.module.scss';
 
 function FeedbackForm() {
-  const theme = useSelector((state) => state.theme);
-
   const initialValues = {
     username: '',
     email: '',
@@ -21,6 +18,7 @@ function FeedbackForm() {
   };
   const [formData, setFormData] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const theme = useSelector((state) => state.theme);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -49,8 +47,7 @@ function FeedbackForm() {
 
   function validate(values) {
     const errors = {};
-    const emailRegEx =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!values.username) {
       errors.username = 'Name is required!';
