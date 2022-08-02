@@ -1,17 +1,15 @@
 import { formatDate, getWeatherSymbol } from '../../../Helpers/functions';
 import { opts } from '../../../Helpers/constants';
-import { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveFavCity, deleteFavCity } from '../../../redux';
-import { ThemeContext } from '../../../context/themeContext';
+import { saveFavCity, deleteFavCity } from '../../../redux/locations';
 
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import styles from './CurrentForecast.module.scss';
 
 function CurrentForecast({ locationData, currWeather }) {
-  const favCityList = useSelector((state) => state);
+  const favCityList = useSelector((state) => state.favCityList);
+  const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
-  const { theme } = useContext(ThemeContext);
 
   const isFound = favCityList.some((item) => {
     return item.locationData.id === locationData.id;

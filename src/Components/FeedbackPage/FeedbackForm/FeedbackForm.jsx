@@ -1,13 +1,15 @@
-import { useEffect, useState, useContext } from 'react';
-import { saveData } from '../../../DataService/localDataService';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { saveState } from '../../../DataService/localDataService';
+
 import { ErrorMessage } from '../../';
-import { ThemeContext } from '../../../context/themeContext';
 import { Button } from '../../';
 
 import styles from './FeedbackForm.module.scss';
 
 function FeedbackForm() {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   const initialValues = {
     username: '',
@@ -37,7 +39,7 @@ function FeedbackForm() {
 
   function saveToLocalStorage() {
     if (Object.keys(formErrors).length === 0) {
-      saveData(formData);
+      saveState('formData', formData);
     }
   }
 

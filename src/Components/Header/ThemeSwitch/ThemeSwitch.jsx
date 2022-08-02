@@ -1,16 +1,22 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../../context/themeContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../../redux/theme';
 
 import styles from './ThemeSwitch.module.scss';
 
 function ThemeSwitch() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles['theme-switch']}>
       <div className={styles.wrapper}>
         <label className={styles.switch}>
-          <input type="checkbox" id="checkbox-toggle" onClick={toggleTheme} />
+          <input
+            type="checkbox"
+            defaultChecked={theme === 'light'}
+            id="checkbox-toggle"
+            onClick={() => dispatch(toggleTheme())}
+          />
           <span className={styles.slider}>
             <div className={styles.fish}>
               <div className={styles.body}></div>

@@ -7,6 +7,7 @@
   margin-bottom: 2rem;
   transition: ease-in 0.2s;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all 0.2s ease-in-out;
 
   .container {
     display: flex;
@@ -33,10 +34,30 @@
         font-weight: 700;
         display: inline-block;
         transition: all 0.2s ease-in-out;
+        position: relative;
+      }
+
+      a.active {
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.125rem;
+          left: -0.5rem;
+          right: -0.5rem;
+          height: 0.75rem;
+          background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg');
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+
+      .logo {
+        max-width: none;
       }
     }
   }
 }
 
-@include headerTheme(light-theme, $color-5D, $color-1L, lighten($color: $color-1L, $amount: 20%));
+@include headerTheme(light-theme, $color-5D, $color-1L, $color-3L);
 @include headerTheme(dark-theme, $color-2D, $color-4D, $color-3L);

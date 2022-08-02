@@ -1,12 +1,11 @@
-import { formatDate, getWeatherSymbol } from '../../../Helpers/functions';
-import { ThemeContext } from '../../../context/themeContext';
-import { useContext } from 'react';
+import { getWeatherSymbol } from '../../../Helpers/functions';
+import { useSelector } from 'react-redux';
 
 import styles from './FavCitiesList.module.scss';
 import { WiRaindrop, WiStrongWind } from 'react-icons/wi';
 
 function FavCitiesList({ data }) {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   return (
     <div className={styles[`${theme}-theme`]}>

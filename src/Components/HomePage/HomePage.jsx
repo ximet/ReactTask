@@ -1,105 +1,16 @@
-import { useEffect, useState } from 'react';
-import { findMyLocation } from '../../Helpers/functions';
-import { endpoints } from '../../Helpers/constants';
-import { requestToken, instance } from '../../DataService/apiService';
-import { COOKIE } from '../../DataService/cookieService';
-
-import { CurrentForecast, DailyForecast, SearchBar, HourlyForecast } from '../../Components';
-
+import {
+  CurrentForecast,
+  DailyForecast,
+  SearchBar,
+  HourlyForecast,
+  Message
+} from '../../Components';
+import useApi from '../../hooks/useApi';
 import styles from './HomePage.module.scss';
 
 function HomePage() {
-  const [currWeather, setCurrWeather] = useState(null);
-  const [dailyWeather, setDailyWeather] = useState(null);
-  const [hourlyWeather, setHourlyWeather] = useState(null);
-  const [coords, setCoords] = useState(null);
-  const [locationData, setLocationData] = useState(null);
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  async function getCurrentWeatherByCoords() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      const { data } = await instance.get(endpoints.CURR_WEATHER_BY_COORDS(coords));
-      setCurrWeather(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function getDailyWeather() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      const { data } = await instance.get(endpoints.DAILY_WEATHER(coords));
-      setDailyWeather(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function getHourlyWeather() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      const { data } = await instance.get(endpoints.HOURLY_WEATHER(coords));
-      setHourlyWeather(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function getLocationDataByCoords() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      let { data } = await instance.get(endpoints.LOCATION_DATA_BY_COORDS(coords));
-      setLocationData(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function tokenCheck() {
-    const token = (await requestToken()) || COOKIE.loadToken();
-    if (token) {
-      COOKIE.saveToken(token);
-    }
-  }
-
-  useEffect(() => {
-    tokenCheck();
-    findMyLocation(setCoords);
-  }, []);
-
-  useEffect(() => {
-    getCurrentWeatherByCoords();
-    getLocationDataByCoords();
-    getDailyWeather();
-    getHourlyWeather();
-  }, [coords]);
+  const { locationData, currWeather, dailyWeather, hourlyWeather, setCoords, isLoading, error } =
+    useApi();
 
   return (
     <main className={styles.container}>
@@ -111,8 +22,17 @@ function HomePage() {
 
       {hourlyWeather && <HourlyForecast hourlyWeather={hourlyWeather} />}
       {dailyWeather && <DailyForecast dailyWeather={dailyWeather} />}
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error.message}</p>}
+      {isLoading && (
+        <Message>
+          <h2>Loading...</h2>
+        </Message>
+      )}
+
+      {error && (
+        <Message>
+          <h2>{error.message}</h2>
+        </Message>
+      )}
     </main>
   );
 }

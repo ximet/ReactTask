@@ -2,10 +2,10 @@
 
 .message {
   position: absolute;
-  top: 35%;
-  width: 50%;
-  transform: translate(50%, 50%);
-  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
   text-align: center;
   padding: 2rem;
   backdrop-filter: blur(16px) saturate(180%);

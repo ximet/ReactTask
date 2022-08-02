@@ -17,7 +17,7 @@ import HourlyForecast from './HomePage/HourlyForecast/HourlyForecast';
 
 // Feedback Page
 import FeedbackForm from './FeedbackPage/FeedbackForm/FeedbackForm';
-import ErrorMessage from './FeedbackPage/FeedbackForm/ErrorMessage';
+import ErrorMessage from './FeedbackPage/FeedbackForm/ErrorMessage/ErrorMessage';
 
 // FavPage
 import FavCitiesList from './FavPage/FavCitiesList/FavCitiesList';

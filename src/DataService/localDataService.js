@@ -1,10 +1,6 @@
-function saveData(data) {
-  localStorage.setItem('formData', JSON.stringify(data));
-}
-
-function loadState() {
+function loadState(name) {
   try {
-    const serialState = localStorage.getItem('favCityList');
+    const serialState = localStorage.getItem(name);
     if (serialState === null) {
       return undefined;
     }
@@ -14,13 +10,13 @@ function loadState() {
   }
 }
 
-function saveState(state) {
+function saveState(name, state) {
   try {
     const serialState = JSON.stringify(state);
-    localStorage.setItem('favCityList', serialState);
+    localStorage.setItem(name, serialState);
   } catch (err) {
     console.log(err);
   }
 }
 
-export { saveData, loadState, saveState };
+export { loadState, saveState };

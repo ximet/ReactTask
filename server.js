@@ -13,19 +13,19 @@ const port = process.env.PORT;
 const account = {
   user: process.env.USERNAME,
   password: process.env.PASSWORD,
-  expire_hours: 24
+  expire_hours: 1
 };
 
 async function tokenRequest() {
   try {
-    const res = await axios.post(process.env.AUTH_URL, account);
+    const res = await axios.post('https://pfa.foreca.com/authorize/token', account);
     return res.data;
   } catch (error) {
     console.log(error);
   }
 }
 
-server.get(process.env.TOKEN_URL, async (req, res) => {
+server.get('/token', async (req, res) => {
   const tokenData = await tokenRequest();
   res.send(tokenData);
 });

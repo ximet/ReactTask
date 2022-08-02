@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { ThemeContext } from '../../context/themeContext';
+import { NavLink } from 'react-router-dom';
 import { ThemeSwitch } from '../../Components';
+import { useSelector } from 'react-redux';
+
 import logo from '../../Assets/img/Cloud9-x1000.png';
 
 import styles from './Header.module.scss';
 
 function Header() {
-  const { theme } = useContext(ThemeContext);
+  const theme = useSelector((state) => state.theme);
 
   return (
     <nav className={styles[`${theme}-theme`]}>
@@ -15,18 +15,28 @@ function Header() {
         <ul className={styles['nav-items']}>
           <ThemeSwitch />
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" exact={true} activeClassName={styles.active}>
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about" activeClassName={styles.active}>
+              About
+            </NavLink>
           </li>
           <li>
-            <Link to="/favourites">Locations</Link>
+            <NavLink to="/favourites" activeClassName={styles.active}>
+              Locations
+            </NavLink>
           </li>
           <li>
-            <Link to="/feedback">Feedback</Link>
+            <NavLink to="/feedback" activeClassName={styles.active}>
+              Feedback
+            </NavLink>
           </li>
-          <img src={logo} width="90" height="90" alt="Cloud9 logo" />
+          <NavLink to="/" exact={true}>
+            <img src={logo} width="90" height="90" alt="Cloud9 logo" className={styles.logo} />
+          </NavLink>
         </ul>
       </div>
     </nav>
