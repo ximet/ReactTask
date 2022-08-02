@@ -25,3 +25,20 @@
     }
   }
 }
+@media screen and (max-width: 1530px) {
+  .main {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .main {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .main {
+    .container {
+      flex-direction: column;
+    }
+  }
+}

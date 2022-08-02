@@ -29,3 +29,10 @@
     }
   }
 }
+@media screen and (max-width: 900px) {
+  .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}

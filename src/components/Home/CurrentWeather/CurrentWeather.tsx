@@ -26,9 +26,8 @@ const CurrentWeather: React.FunctionComponent<CurrentWeatherProps> = ({
     location
   );
   const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
-
   return (
-    <Card id="current" width="55%">
+    <Card id="current" width={window.screen.width > 1060 ? '55%' : '80%'}>
       {data ? (
         <>
           {locationInfo && <Title title={`Now in ${locationInfo.name}, ${locationInfo.country}`} />}

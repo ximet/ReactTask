@@ -37,3 +37,33 @@
     }
   }
 }
+@media screen and (max-width: 600px) {
+  .temperature {
+    .currentTemperature {
+      font-size: 7rem;
+    }
+  }
+  .container {
+    .innerContainer {
+      .symbol {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .temperature {
+    .currentTemperature {
+      font-size: 5rem;
+    }
+  }
+  .container {
+    .innerContainer {
+      .symbol {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  }
+}

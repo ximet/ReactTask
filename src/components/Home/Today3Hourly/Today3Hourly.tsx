@@ -25,7 +25,7 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
   const tempUnit = useSelector<CombinedState, TempUnits>(state => state.tempUnit);
 
   return (
-    <Card width="40%">
+    <Card width={window.screen.width > 1060 ? '40%' : '100%'}>
       <Title title="Next 24 hours" />
       {data ? (
         <>

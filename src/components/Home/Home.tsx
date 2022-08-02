@@ -33,7 +33,6 @@ const Home: React.FunctionComponent = () => {
   const { cityId } = useParams<string>();
 
   const locationParam = cityId === 'current' ? userLocation : cityId || userLocation;
-  console.log(locationParam);
   const { data: locationInfo, loading, error }: RequestDataConfig<LocationInfo> = useGetRequest(
     ENDPOINTS.locationInfo,
     locationParam

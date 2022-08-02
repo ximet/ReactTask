@@ -4,7 +4,6 @@
 .container {
   @include flex(row, center);
   margin: 5rem auto;
-
   .hourContainer {
     height: 400px;
     width: 40px;
@@ -59,7 +58,6 @@
     }
   }
   &.dark {
-    .tempScale,
     .textTemperature {
       fill: $lightBlue;
     }
@@ -69,4 +67,14 @@
   width: 20%;
   margin: 0 auto;
   font-size: 0.8rem;
+}
+@media screen and (max-width: 1060px) {
+  .container {
+    transform: scale(75%);
+  }
+}
+@media screen and (max-width: 800px) {
+  .container {
+    transform: scale(60%);
+  }
 }

@@ -32,6 +32,7 @@ interface Feedback {
 }
 
 class Contacts extends React.Component<ContactsProps, ContactsState> {
+  declare context: React.ContextType<typeof ThemeContext>;
   thankYouCard: React.RefObject<HTMLDivElement>;
   nameIsValid: boolean = false;
   emailIsValid: boolean = false;

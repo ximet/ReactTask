@@ -9,6 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0;
+    padding: 0;
     .cardContainer {
       width: 40%;
       margin: 0 2rem;
@@ -62,6 +63,45 @@
     background-color: $yellow;
     &:hover {
       opacity: 0.8;
+    }
+  }
+}
+@media screen and (max-width: 1530px) {
+  .mainContainer {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .dataContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    .date {
+      padding: 0 4rem;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .mainContainer {
+    .list {
+      .cardContainer {
+        width: 70%;
+        margin: 0 auto;
+        .dataContainer {
+          .date {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .mainContainer {
+    width: 99%;
+    .list {
+      .cardContainer {
+        width: 90%;
+      }
     }
   }
 }
