@@ -3,6 +3,7 @@ import { findMyLocation } from '../Helpers/functions';
 import { endpoints } from '../Helpers/constants';
 import { requestToken, instance } from '../DataService/apiService';
 import { COOKIE } from '../DataService/cookieService';
+import axios from 'axios';
 
 function useApi() {
   const [currWeather, setCurrWeather] = useState(null);
@@ -14,68 +15,31 @@ function useApi() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function getCurrentWeatherByCoords() {
+  async function getReq() {
     if (!coords) {
       return;
     }
-    try {
-      setIsLoading(true);
-      const { data } = await instance.get(endpoints.CURR_WEATHER_BY_COORDS(coords));
-      setCurrWeather(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function getDailyWeather() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      const { data } = await instance.get(endpoints.DAILY_WEATHER(coords));
-      setDailyWeather(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function getHourlyWeather() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      const { data } = await instance.get(endpoints.HOURLY_WEATHER(coords));
-      setHourlyWeather(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  }
-
-  async function getLocationDataByCoords() {
-    if (!coords) {
-      return;
-    }
-    try {
-      setIsLoading(true);
-      let { data } = await instance.get(endpoints.LOCATION_DATA_BY_COORDS(coords));
-      setLocationData(data);
-      setIsLoading(false);
-      setError(null);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
+    setIsLoading(true);
+    await axios
+      .all([
+        instance.get(endpoints.CURR_WEATHER_BY_COORDS(coords)),
+        instance.get(endpoints.DAILY_WEATHER(coords)),
+        instance.get(endpoints.HOURLY_WEATHER(coords)),
+        instance.get(endpoints.LOCATION_DATA_BY_COORDS(coords))
+      ])
+      .then(
+        axios.spread((...res) => {
+          setCurrWeather(res[0].data);
+          setDailyWeather(res[1].data);
+          setHourlyWeather(res[2].data);
+          setLocationData(res[3].data);
+          setIsLoading(false);
+          setError(null);
+        })
+      )
+      .catch((error) => {
+        setError(error);
+      });
   }
 
   async function tokenCheck() {
@@ -91,10 +55,7 @@ function useApi() {
   }, []);
 
   useEffect(() => {
-    getCurrentWeatherByCoords();
-    getLocationDataByCoords();
-    getDailyWeather();
-    getHourlyWeather();
+    getReq();
   }, [coords]);
 
   return { locationData, currWeather, dailyWeather, hourlyWeather, setCoords, isLoading, error };
