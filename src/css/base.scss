@@ -46,6 +46,7 @@ body {
   color: $text-primary;
   box-sizing: border-box;
   font-family: 'font-regular';
+  font-size: 1.125rem;
 }
 
 #app {
@@ -73,6 +74,10 @@ a {
   }
 }
 
-.white {
-  background-color: #fff;
+figure {
+  display: inline-block;
+
+  figcaption {
+    text-align: center;
+  }
 }
