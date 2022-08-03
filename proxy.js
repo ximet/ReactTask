@@ -116,9 +116,4 @@ app.post('/search', (req, res) => {
     .catch(error => console.log('error', error));
 });
 
-app.post('/send-feedback', (req, res) => {
-  const formFields = req.body;
-  res.send('Form submitted successfully!');
-});
-
 app.listen(3000, 'localhost', () => console.log('working backend !!!'));
