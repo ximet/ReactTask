@@ -1,6 +1,8 @@
 nav {
   background-color: $gem-green;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
 }
 
 .nav__list {
@@ -37,6 +39,7 @@ nav {
   font-size: 22px;
   color: $yellow-green;
   margin: 12px;
+  justify-content: end;
 
   &__temperature,
   &__theme {
@@ -71,5 +74,20 @@ nav {
     &[data-active-theme='light'] {
       transform: translateY(0%);
     }
+  }
+}
+
+.logo {
+  font-weight: 700;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  align-self: center;
+  justify-self: center;
+  transition: all ease-in-out 0.15s;
+
+  &:hover {
+    color: $yellow-green;
+    transform: scale(1.1);
   }
 }
