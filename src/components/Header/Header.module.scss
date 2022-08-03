@@ -21,13 +21,17 @@
     .title {
       margin: 0;
       padding-top: 5vh;
-      h1 {
+      .titleContent {
         margin: 0;
         font-size: 5vh;
         letter-spacing: 4px;
         color: $darkerBlue;
         z-index: 3;
         position: relative;
+        .titleLink {
+          text-decoration: none;
+          color: inherit;
+        }
       }
       .logo {
         background-image: url('../../../assets/sun_logo.png');
@@ -49,7 +53,6 @@
           display: inline-block;
           padding: 1rem;
           margin: 0 1rem;
-
           a {
             text-decoration: none;
             text-transform: uppercase;
@@ -57,6 +60,8 @@
             font-weight: 700;
             font-size: 1.1rem;
             padding: 1rem 4rem;
+            position: relative;
+            z-index: 3;
             &:hover {
               background-color: $yellow;
             }
@@ -68,8 +73,43 @@
       }
     }
   }
+  .navBurger {
+    width: 3.1rem;
+    height: 3.1rem;
+    background-color: $yellow;
+    text-align: center;
+    padding: 0.7rem 0;
+    margin: 0 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 15vh;
+    opacity: 0;
+  }
+  .mobileNav {
+    background-color: $yellow;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    .linkContainer {
+      list-style: none;
+      margin: 4rem 0;
+      .link {
+        padding: 1rem;
+        margin: 1rem;
+        a {
+          text-decoration: none;
+          text-transform: uppercase;
+          color: $darkBlue;
+          font-weight: 700;
+          font-size: 1.1rem;
+          padding: 1rem 2rem;
+        }
+      }
+    }
+  }
   .buttonsContainer {
-    float: right;
     margin-right: 7%;
     @include flex(row, flex-end);
     .buttonLabel {
@@ -149,6 +189,68 @@
           background-color: black;
           color: $lightBlue;
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1530px) {
+  .header {
+    .container {
+      width: 80%;
+      .title {
+        .logo {
+          right: 5%;
+        }
+      }
+      .nav {
+        .linkContainer {
+          .link {
+            margin: 0;
+            a {
+              padding: 1rem 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 860px) {
+  .header {
+    .container {
+      width: 90%;
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .header {
+    .container {
+      .nav {
+        display: none;
+      }
+    }
+    .navBurger,
+    .mobileNav {
+      opacity: 1;
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .header {
+    .container {
+      .title {
+        .titleContent {
+          margin: 0;
+          font-size: 3.5vh;
+        }
+      }
+    }
+    .buttonsContainer {
+      .buttonLabel {
+        display: none;
+      }
+      .degreesChanger {
+        margin-top: 0.5rem;
       }
     }
   }

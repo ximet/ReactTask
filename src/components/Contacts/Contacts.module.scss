@@ -130,3 +130,30 @@
     transform: rotate(360deg);
   }
 }
+@media screen and (max-width: 1530px) {
+  .main {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .main {
+    .formContainer {
+      width: 80%;
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  .main {
+    .formContainer {
+      width: 95%;
+    }
+  }
+}
+@media screen and (max-width: 560px) {
+  .main {
+    width: 95%;
+    .formContainer {
+      width: 95%;
+    }
+  }
+}

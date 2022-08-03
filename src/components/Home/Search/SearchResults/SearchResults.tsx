@@ -12,7 +12,6 @@ import {
 import { Theme, ThemeContext, ThemeContextConfig } from '../../../../store/theme-context';
 import GoLocation from '../../../UI/Icons/GoLocation';
 import Loading from '../../../UI/Loading/Loading';
-
 import SavedLocations from './SavedLocations/SavedLocations';
 import styles from './SearchResults.module.scss';
 
@@ -44,8 +43,10 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
       setDisplaySearchResults(false);
       if (target.id !== currentLocation) {
         dispatch({ type: LocationActions.SAVE_SEARCH, payload: target.id });
+        navigate(`/cities/${target.id}`);
+      } else {
+        navigate('/cities/current');
       }
-      navigate(`/cities/${target.id}`);
     },
     [event]
   );

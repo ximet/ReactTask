@@ -22,6 +22,7 @@ interface Today1HourlyState {
 }
 
 class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState> {
+  declare context: React.ContextType<typeof ThemeContext>;
   constructor(props: Today1HourlyProps) {
     super(props);
     this.state = {

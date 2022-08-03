@@ -31,7 +31,8 @@ const Home: React.FunctionComponent = () => {
     loading: boolean;
   } = useGeoLocation();
   const { cityId } = useParams<string>();
-  const locationParam = cityId || userLocation;
+
+  const locationParam = cityId === 'current' ? userLocation : cityId || userLocation;
   const { data: locationInfo, loading, error }: RequestDataConfig<LocationInfo> = useGetRequest(
     ENDPOINTS.locationInfo,
     locationParam
@@ -40,7 +41,8 @@ const Home: React.FunctionComponent = () => {
   const { userHasToken }: AuthContextConfig = useContext(AuthContext);
 
   useEffect(() => {
-    dispatch({ type: LocationActions.SAVE_CURRENT_LOCATION, payload: userLocation });
+    userLocation &&
+      dispatch({ type: LocationActions.SAVE_CURRENT_LOCATION, payload: userLocation });
   }, [userLocation]);
 
   return (
@@ -55,8 +57,8 @@ const Home: React.FunctionComponent = () => {
             <CurrentWeather location={locationParam} locationInfo={locationInfo} />
             <Today3Hourly location={locationParam} />
           </div>
-          <Today1Hourly location={locationParam} />
-          <DailyForecast location={locationParam} />{' '}
+          {window.screen.width < 650 && <Today1Hourly location={locationParam} />}
+          <DailyForecast location={locationParam} />
           <HashLink to={'#top'} smooth className={styles.toTheTop}>
             Go to the top
           </HashLink>

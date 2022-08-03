@@ -6,21 +6,64 @@
   .currentTemperature {
     font-size: 9rem;
     font-weight: 700;
-    margin: 2rem auto;
+    margin: 3rem auto;
     color: $darkerBlue;
   }
   .feelsLike {
     margin: 0;
+    text-align: center;
   }
 }
 .container {
-  @include flex(row, space-between);
+  @include flex(row, center);
   .innerContainer {
-    margin: 0 3rem;
+    margin: 0 2.2rem;
     font-size: 1.1rem;
     .symbol {
       width: 170px;
       height: 170px;
+    }
+    .label,
+    .value {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .value {
+      font-size: 1.3rem;
+      margin-bottom: 0.7rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .temperature {
+    .currentTemperature {
+      font-size: 7rem;
+    }
+  }
+  .container {
+    .innerContainer {
+      .symbol {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .temperature {
+    .currentTemperature {
+      font-size: 5rem;
+    }
+  }
+  .container {
+    .innerContainer {
+      .symbol {
+        width: 110px;
+        height: 110px;
+      }
     }
   }
 }
