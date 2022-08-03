@@ -20,7 +20,7 @@ const Header: React.FunctionComponent = () => {
   const toggleTempUnits = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({ type: event.target.value });
   };
-  const burgerClickHAndler = (): void => {
+  const burgerClickHandler = (): void => {
     setShowMobileNav(prevState => !prevState);
   };
   return (
