@@ -8,3 +8,31 @@
   display: flex;
   flex-direction: row;
 }
+
+.img-circle {
+  max-width: 12.5rem;
+  border-radius: 100%;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.bold_text {
+  font-weight: 700;
+}
+
+.error-msg {
+  font-weight: 500;
+  color: red;
+}
+
+.success-msg {
+  background-color: $gem-green;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  padding: 1.125rem;
+  text-align: center;
+}
