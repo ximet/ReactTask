@@ -54,9 +54,6 @@ class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState>
 
   render() {
     const { data, loading, error } = this.state;
-    if (window.screen.width < 650) {
-      return null;
-    }
     return (
       <Card id="hourly">
         <Title title="Hourly forecast" />

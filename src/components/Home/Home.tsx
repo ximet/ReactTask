@@ -57,7 +57,7 @@ const Home: React.FunctionComponent = () => {
             <CurrentWeather location={locationParam} locationInfo={locationInfo} />
             <Today3Hourly location={locationParam} />
           </div>
-          <Today1Hourly location={locationParam} />
+          {window.screen.width < 650 && <Today1Hourly location={locationParam} />}
           <DailyForecast location={locationParam} />
           <HashLink to={'#top'} smooth className={styles.toTheTop}>
             Go to the top
