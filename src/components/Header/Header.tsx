@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { CombinedState } from '../../store/index-redux';
 import { TempActionConfig, TempActions, TempUnits } from '../../store/tempUnits-redux';
@@ -36,7 +35,7 @@ const Header: React.FunctionComponent = () => {
         </div>
         <Navigation classname={styles.nav} />
       </div>
-      <div className={styles.navBurger} onClick={burgerClickHAndler}>
+      <div className={styles.navBurger} onClick={burgerClickHandler}>
         {!showMobileNav ? <GiHamburgerMenu /> : <VscChromeClose />}
       </div>
       {showMobileNav && (
