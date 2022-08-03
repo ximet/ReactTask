@@ -9,6 +9,7 @@ function VscChromeClose() {
       viewBox="0 0 16 16"
       height="1.8rem"
       width="1.8rem"
+      data-testid="x"
     >
       <path
         fillRule="evenodd"
