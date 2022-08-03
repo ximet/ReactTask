@@ -47,7 +47,8 @@ function FeedbackForm() {
 
   function validate(values) {
     const errors = {};
-    const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegEx =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!values.username) {
       errors.username = 'Name is required!';
@@ -82,7 +83,7 @@ function FeedbackForm() {
           please include details.
         </h4>
       </div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form data-testId="feedback-form" className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="username">Name</label>
           <ErrorMessage message={formErrors.username} />
@@ -92,6 +93,7 @@ function FeedbackForm() {
             onChange={handleChange}
             name="username"
             value={formData.username}
+            data-testId="username"
           />
         </div>
 
@@ -104,6 +106,7 @@ function FeedbackForm() {
             onChange={handleChange}
             name="email"
             value={formData.email}
+            data-testId="email"
           />
         </div>
 
@@ -116,6 +119,7 @@ function FeedbackForm() {
             onChange={handleChange}
             name="comments"
             rows={5}
+            data-testId="textarea"
           />
         </div>
 
