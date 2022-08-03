@@ -101,21 +101,25 @@
   #feedback {
     margin-top: 0.5rem;
   }
-}
 
-.radio-set-container {
-  display: flex;
-  padding: 1.5rem 0 0;
-
-  .radio-set {
+  .radio-set-container {
     display: flex;
-    flex-direction: column-reverse;
-    padding: 0 6px;
-  }
+    padding: 1.5rem 0 0;
 
-  input[type='radio'] {
-    &:focus {
-      outline: none !important;
+    .radio-set {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 0 6px;
+    }
+
+    label {
+      font-size: 1.5rem;
+    }
+
+    input[type='radio'] {
+      &:focus {
+        outline: none !important;
+      }
     }
   }
 }

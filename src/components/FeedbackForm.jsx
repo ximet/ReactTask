@@ -12,6 +12,16 @@ export default function FeedbackForm() {
     feedback: ''
   });
 
+  const radioOptions = [
+    { val: "super-bad", emoji: '\u{1F4A9}' },
+    { val: "bad", emoji: '\u{1F922}' },
+    { val: "mediocre", emoji: '\u{1F623}' },
+    { val: "OK", emoji: '\u{1F914}' },
+    { val: "good", emoji: '\u{1F60A}' },
+    { val: "very-good", emoji: '\u{1F60D}' },
+    { val: "excellent", emoji: '\u{1F37A}' },
+  ]
+
   const changeVal = e => {
     setFormValues({ ...formValues, [e.target.id]: e.target.value });
   };
@@ -30,7 +40,6 @@ export default function FeedbackForm() {
         feedback: ''
       });
       setSubmitted(false);
-      setValidity(false);
       Array.from(document.getElementsByName('rating')).map(item => (item.checked = false));
     } else {
       alert('Something went wrong! Please try again.');
@@ -42,10 +51,11 @@ export default function FeedbackForm() {
     setSubmitted(true);
     const { firstName, lastName, mail, rating, feedback } = formValues;
     if (firstName && lastName && mail && rating && feedback) {
+      localStorage.setItem('survey-form', JSON.stringify(formValues));
       setValidity(true);
+      resetForm({ status: 200 });
       setTimeout(function () {
-        localStorage.setItem('survey-form', JSON.stringify(formValues));
-        resetForm({ status: 200 });
+        setValidity(false);
       }, 5000);
     }
   };
@@ -90,76 +100,21 @@ export default function FeedbackForm() {
         <fieldset>
           <label htmlFor="satisfactory-index">Rate our services</label>
           <div className="radio-set-container">
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex1"
-                name="rating"
-                value="super-bad"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex1">&#128169;</label>
-            </div>
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex2"
-                name="rating"
-                value="bad"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex2">&#129314;</label>
-            </div>
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex3"
-                name="rating"
-                value="mediocre"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex3">&#128547;</label>
-            </div>
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex4"
-                name="rating"
-                value="OK"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex4">&#129300;</label>
-            </div>
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex5"
-                name="rating"
-                value="good"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex5">&#128522;</label>
-            </div>
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex6"
-                name="rating"
-                value="very-good"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex6">&#x1F60D;</label>
-            </div>
-            <div className="radio-set">
-              <input
-                type="radio"
-                id="satisfactoryIndex7"
-                name="rating"
-                value="excellent"
-                onChange={radioSelected}
-              />
-              <label htmlFor="satisfactoryIndex7">&#127866;</label>
-            </div>
+            {radioOptions.map((obj, idx) => {
+              const a = new DOMParser().parseFromString(obj.emoji, "text/xml")
+              console.log(a)
+              return (<div className="radio-set">
+                <input
+                  type="radio"
+                  id={`satisfactoryIndex${idx}`}
+                  name="rating"
+                  value={obj.val}
+                  onChange={radioSelected}
+                />
+                <label htmlFor={`satisfactoryIndex${idx}`}>{obj.emoji} </label>
+              </div>)
+            })}
+
             {submitted && !formValues.rating && (
               <span className="error-msg">You didn't rate us!</span>
             )}
