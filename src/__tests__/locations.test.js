@@ -1,5 +1,5 @@
 import cityReducer from '../redux/locations';
-import mockCityData from '../__mocks__/mocks';
+import { mockCityData } from '../__mocks__/mocks';
 
 describe('theme reducer', () => {
   it('should return the initial state when passed an empty action', () => {
@@ -15,11 +15,16 @@ describe('theme reducer', () => {
     const result = cityReducer(favCityList, action);
     expect(result).toEqual(['Bucharest']);
   });
-  it('should delete city data object', () => {
+  it('should delete corresponding data object when payload is found', () => {
     const favCityList = mockCityData;
-    const cityName = 'Bucharest';
-    const action = { type: 'DELETE_FAV_CITY', payload: cityName };
+    const action = { type: 'DELETE_FAV_CITY', payload: { locationData: { id: 100683506 } } };
     const result = cityReducer(favCityList, action);
-    expect(result).toEqual([]);
+    expect(result).toEqual(mockCityData.splice(1, 1));
+  });
+  it('should return current array when payload is not found', () => {
+    const favCityList = mockCityData;
+    const action = { type: 'DELETE_FAV_CITY', payload: { locationData: { id: 100524901 } } };
+    const result = cityReducer(favCityList, action);
+    expect(result).toEqual(mockCityData);
   });
 });
