@@ -1,7 +1,7 @@
+import { Title } from 'components';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
-import Title from './../UI/Title/Title';
+import { Theme, ThemeContext, ThemeContextConfig } from 'store';
 import styles from './About.module.scss';
 
 const About: React.FunctionComponent = () => {

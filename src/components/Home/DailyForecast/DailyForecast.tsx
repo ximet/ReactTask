@@ -1,15 +1,11 @@
 import { AxiosError } from 'axios';
+import { Card, ErrorComponent, Loading, Title } from 'components';
+import { ENDPOINTS } from 'consts';
+import { convertToFahrenheit, getData } from 'helpers';
 import React from 'react';
 import { connect } from 'react-redux';
-import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
-import { DailyForecastData } from '../../../helpers/Interfaces';
-import { CombinedState } from '../../../store/index-redux';
-import { TempUnits } from '../../../store/tempUnits-redux';
-import Card from '../../UI/Card/Card';
-import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
-import Loading from '../../UI/Loading/Loading';
-import { ENDPOINTS, getData } from './../../../helpers/api';
-import Title from './../../UI/Title/Title';
+import { CombinedState, TempUnits } from 'store';
+import { DailyForecastData } from 'types/interfaces';
 import styles from './DailyForecast.module.scss';
 
 interface DailyForecastProps {
@@ -23,6 +19,7 @@ interface DailyForecastState {
 }
 
 class DailyForecast extends React.Component<DailyForecastProps, DailyForecastState> {
+  accessToken: string = document.cookie.slice(6);
   constructor(props: DailyForecastProps) {
     super(props);
     this.state = {
@@ -32,14 +29,16 @@ class DailyForecast extends React.Component<DailyForecastProps, DailyForecastSta
     };
   }
   getDailyForecast(): void {
-    getData(ENDPOINTS.daily, this.props.location).then(
-      (data: DailyForecastData) => {
-        this.setState(() => ({ loading: true, data }));
-      },
-      (error: Error | AxiosError) => {
-        this.setState(() => ({ error: error.message }));
-      }
-    );
+    if (this.props.location && this.accessToken.length > 10) {
+      getData(ENDPOINTS.daily, this.props.location).then(
+        (data: DailyForecastData) => {
+          this.setState(() => ({ loading: true, data }));
+        },
+        (error: Error | AxiosError) => {
+          this.setState(() => ({ error: error.message }));
+        }
+      );
+    }
   }
   componentDidMount() {
     this.getDailyForecast();
@@ -77,11 +76,10 @@ class DailyForecast extends React.Component<DailyForecastProps, DailyForecastSta
               </li>
             ))}
           </ul>
-        ) : loading ? (
-          <Loading />
         ) : (
-          error && <ErrorComponent message={error} button="TRY_AGAIN" />
+          loading && <Loading />
         )}
+        <ErrorComponent message={error} button="TRY_AGAIN" error={error} />
       </Card>
     );
   }

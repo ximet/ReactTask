@@ -1,8 +1,8 @@
+import { Loading } from 'components';
+import { ENDPOINTS } from 'consts';
+import { useGetRequest } from 'hooks';
 import React from 'react';
-import { ENDPOINTS } from '../../../../../helpers/api';
-import { LocationInfo, RequestDataConfig } from '../../../../../helpers/Interfaces';
-import { useGetRequest } from '../../../../../hooks/useGetRequest';
-import Loading from '../../../../UI/Loading/Loading';
+import { LocationInfo, RequestDataConfig } from 'types/interfaces';
 import styles from './../SearchResults.module.scss';
 
 interface SavedLocationsProps {
@@ -30,7 +30,7 @@ const SavedLocations: React.FunctionComponent<SavedLocationsProps> = ({
       ) : loading ? (
         <Loading width="30" />
       ) : (
-        error && 'Could not load previous searches'
+        error && null
       )}
     </>
   );

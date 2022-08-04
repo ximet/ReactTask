@@ -1,6 +1,5 @@
+import { CreateLine, ShowTempValue } from 'components';
 import React from 'react';
-import CreateLine from './CreateLine/CreateLine';
-import ShowTempValue from './ShowTempValue/ShowTempValue';
 import styles from './SvgBackground.module.scss';
 
 class SvgBackground extends React.Component {

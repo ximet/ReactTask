@@ -1,18 +1,12 @@
+import { Card, ErrorComponent, Loading, Title } from 'components';
+import { ENDPOINTS } from 'consts';
+import { convertToFahrenheit } from 'helpers';
+import { useGetRequest } from 'hooks';
 import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ENDPOINTS } from '../../helpers/api';
-import { CityConfig } from '../../helpers/cities';
-import { convertToFahrenheit } from '../../helpers/convertToFahrenheit';
-import { CurrentData, RequestDataConfig } from '../../helpers/Interfaces';
-import { useGetRequest } from '../../hooks/useGetRequest';
-import { CombinedState } from '../../store/index-redux';
-import { TempUnits } from '../../store/tempUnits-redux';
-import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
-import Card from '../UI/Card/Card';
-import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import Loading from '../UI/Loading/Loading';
-import Title from '../UI/Title/Title';
+import { CombinedState, TempUnits, Theme, ThemeContext, ThemeContextConfig } from 'store';
+import { CityConfig, CurrentData, RequestDataConfig } from 'types/interfaces';
 import styles from './Cities.module.scss';
 
 interface CityProps {
@@ -50,11 +44,10 @@ const City: React.FunctionComponent<CityProps> = ({ city }) => {
               alt={data.current.symbolPhrase}
             />
           </div>
-        ) : loading ? (
-          <Loading />
         ) : (
-          error && <ErrorComponent message={error} button="TRY_AGAIN" />
+          loading && <Loading />
         )}
+        <ErrorComponent message={error} button="TRY_AGAIN" error={error} />
         <Link
           to={`/cities/${city.id}`}
           className={`${styles.link} ${theme === Theme.DARK && styles[theme]}`}

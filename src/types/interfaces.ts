@@ -1,6 +1,11 @@
 export interface EndpointsConfig {
   [property: string]: string;
 }
+export interface CityConfig {
+  name: string;
+  country: string;
+  id: string;
+}
 
 export interface RequestDataConfig<T> {
   data: T;

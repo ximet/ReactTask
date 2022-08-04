@@ -1,11 +1,10 @@
+import { SearchResults } from 'components';
+import { ENDPOINTS } from 'consts';
+import { useDebounce, useGetRequest } from 'hooks';
 import React, { ChangeEvent, useContext, useState } from 'react';
-import { ENDPOINTS } from '../../../helpers/api';
-import { LocationSearch, RequestDataConfig } from '../../../helpers/Interfaces';
-import { Theme, ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
-import { useDebounce } from './../../../hooks/useDebounce';
-import { useGetRequest } from './../../../hooks/useGetRequest';
+import { Theme, ThemeContext, ThemeContextConfig } from 'store';
+import { LocationSearch, RequestDataConfig } from 'types/interfaces';
 import styles from './Search.module.scss';
-import SearchResults from './SearchResults/SearchResults';
 
 const Search: React.FunctionComponent = () => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
@@ -39,14 +38,13 @@ const Search: React.FunctionComponent = () => {
         onBlur={inputBlurHandler}
         value={searchTerm}
       />
-      {displaySearchResults && (
-        <SearchResults
-          searchResults={searchResults}
-          searchLoading={searchLoading}
-          setSearchTerm={setSearchTerm}
-          setDisplaySearchResults={setDisplaySearchResults}
-        />
-      )}
+      <SearchResults
+        searchResults={searchResults}
+        searchLoading={searchLoading}
+        setSearchTerm={setSearchTerm}
+        setDisplaySearchResults={setDisplaySearchResults}
+        displaySearchResults={displaySearchResults}
+      />
     </section>
   );
 };

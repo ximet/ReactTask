@@ -1,18 +1,18 @@
+import { GoLocation, Loading, SavedLocations } from 'components';
 import React, { SetStateAction, useCallback, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { LocationSearch } from '../../../../helpers/Interfaces';
-import { CombinedState } from '../../../../store/index-redux';
 import {
+  CombinedState,
   LocationActionConfig,
   LocationActions,
-  LocationState
-} from '../../../../store/location-redux';
-import { Theme, ThemeContext, ThemeContextConfig } from '../../../../store/theme-context';
-import GoLocation from '../../../UI/Icons/GoLocation';
-import Loading from '../../../UI/Loading/Loading';
-import SavedLocations from './SavedLocations/SavedLocations';
+  LocationState,
+  Theme,
+  ThemeContext,
+  ThemeContextConfig
+} from 'store';
+import { LocationSearch } from 'types/interfaces';
 import styles from './SearchResults.module.scss';
 
 interface SearchResultsProps {
@@ -20,13 +20,15 @@ interface SearchResultsProps {
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
   setDisplaySearchResults: React.Dispatch<SetStateAction<boolean>>;
   searchLoading: boolean;
+  displaySearchResults: boolean;
 }
 
 const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
   searchResults,
   setSearchTerm,
   setDisplaySearchResults,
-  searchLoading
+  searchLoading,
+  displaySearchResults
 }) => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
   const { locations } = searchResults;
@@ -50,7 +52,7 @@ const SearchResults: React.FunctionComponent<SearchResultsProps> = ({
     },
     [event]
   );
-
+  if (!displaySearchResults) return <></>;
   return (
     <ul className={`${styles.container} ${theme === Theme.DARK && styles[theme]}`}>
       {searchLoading ? (

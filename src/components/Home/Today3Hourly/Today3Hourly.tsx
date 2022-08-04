@@ -1,23 +1,18 @@
+import { Card, ErrorComponent, Loading, Title, WiRaindrops } from 'components';
+import { ENDPOINTS } from 'consts';
+import { convertToFahrenheit } from 'helpers';
+import { useGetRequest } from 'hooks';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ENDPOINTS } from '../../../helpers/api';
-import { convertToFahrenheit } from '../../../helpers/convertToFahrenheit';
-import { RequestDataConfig, ThreeHourlyData } from '../../../helpers/Interfaces';
-import { useGetRequest } from '../../../hooks/useGetRequest';
-import { CombinedState } from '../../../store/index-redux';
-import { TempUnits } from '../../../store/tempUnits-redux';
-import Card from '../../UI/Card/Card';
-import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
-import WiRaindrops from '../../UI/Icons/WiRaindrops';
-import Loading from '../../UI/Loading/Loading';
-import Title from '../../UI/Title/Title';
+import { CombinedState, TempUnits } from 'store';
+import { RequestDataConfig, ThreeHourlyData } from 'types/interfaces';
 import styles from './Today3Hourly.module.scss';
 
 interface TodayHourlyProps {
   location: string;
 }
 
-const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) => {
+const Today3Hourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) => {
   const { data, loading, error }: RequestDataConfig<ThreeHourlyData> = useGetRequest(
     ENDPOINTS.threeHourly,
     location
@@ -64,10 +59,10 @@ const TodayHourly: React.FunctionComponent<TodayHourlyProps> = ({ location }) =>
       ) : loading ? (
         <Loading />
       ) : (
-        error && <ErrorComponent message={error} button="TRY_AGAIN" />
+        <ErrorComponent message={error} button="TRY_AGAIN" error={error} />
       )}
     </Card>
   );
 };
 
-export default TodayHourly;
+export default Today3Hourly;
