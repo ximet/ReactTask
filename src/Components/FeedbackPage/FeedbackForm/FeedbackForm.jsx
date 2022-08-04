@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
 import { saveState } from '../../../DataService/localDataService';
 
 import { ErrorMessage } from '../../';
@@ -9,8 +8,6 @@ import { Button } from '../../';
 import styles from './FeedbackForm.module.scss';
 
 function FeedbackForm() {
-  const theme = useSelector((state) => state.theme);
-
   const initialValues = {
     username: '',
     email: '',
@@ -21,6 +18,7 @@ function FeedbackForm() {
   };
   const [formData, setFormData] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const theme = useSelector((state) => state.theme);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -85,7 +83,7 @@ function FeedbackForm() {
           please include details.
         </h4>
       </div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form data-testId="feedback-form" className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="username">Name</label>
           <ErrorMessage message={formErrors.username} />
@@ -95,6 +93,7 @@ function FeedbackForm() {
             onChange={handleChange}
             name="username"
             value={formData.username}
+            data-testId="username"
           />
         </div>
 
@@ -107,6 +106,7 @@ function FeedbackForm() {
             onChange={handleChange}
             name="email"
             value={formData.email}
+            data-testId="email"
           />
         </div>
 
@@ -119,6 +119,7 @@ function FeedbackForm() {
             onChange={handleChange}
             name="comments"
             rows={5}
+            data-testId="textarea"
           />
         </div>
 
