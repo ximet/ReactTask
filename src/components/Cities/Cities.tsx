@@ -1,11 +1,9 @@
+import { City, ErrorComponent, Title } from 'components';
+import { cities } from 'consts';
 import React, { useContext, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import cities from '../../helpers/cities';
-import { AuthContext, AuthContextConfig } from '../../store/auth-context';
-import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import Title from './../UI/Title/Title';
+import { AuthContext, AuthContextConfig } from 'store';
 import styles from './Cities.module.scss';
-import City from './City';
 
 const Cities: React.FunctionComponent = () => {
   const { cityId } = useParams<string>();

@@ -1,4 +1,4 @@
-export const saveInLocalStorage = (key: string, value: any): void => {
+const saveInLocalStorage = (key: string, value: any): void => {
   let itemsArray: any[] = [];
   const item: string | null = localStorage.getItem(key);
   if (item) {
@@ -7,3 +7,4 @@ export const saveInLocalStorage = (key: string, value: any): void => {
   itemsArray.push(value);
   localStorage.setItem(key, JSON.stringify(itemsArray));
 };
+export default saveInLocalStorage;

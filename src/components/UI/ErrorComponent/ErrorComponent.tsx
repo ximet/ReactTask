@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import styles from './ErrorComponent.module.scss';
 
 interface ErrorComponentProps {
-  message: string;
+  message: string | null;
   button: 'HOME' | 'TRY_AGAIN';
+  error?: string | null;
 }
 
-const ErrorComponent: React.FunctionComponent<ErrorComponentProps> = ({ message, button }) => {
+const ErrorComponent: React.FunctionComponent<ErrorComponentProps> = ({
+  message,
+  button,
+  error
+}) => {
+  if (!error) return <></>;
   return (
     <div className={styles.container}>
       <div>{message}</div>

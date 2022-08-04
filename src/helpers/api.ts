@@ -1,48 +1,30 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { EndpointsConfig } from './Interfaces';
-
-export const ENDPOINTS: EndpointsConfig = {
-  auth: 'http://localhost:3000/auth',
-  symbol: 'https://developer.foreca.com/static/images/symbols/', //+
-  locationSearch: 'location/search/', // +query
-  locationInfo: 'location/',
-  observations: 'observation/latest/',
-  current: 'current/',
-  nowCast: 'forecast/15minutely/',
-  hourly: 'forecast/hourly/',
-  threeHourly: 'forecast/3hourly/',
-  daily: 'forecast/daily/',
-  airQuality: 'air-quality/forecast/hourly/'
-};
+import axios, { AxiosRequestConfig } from 'axios';
 
 //param - location or id
-function options(endpoint: string, param: string): AxiosRequestConfig {
+function options(endpoint: string, param?: string): AxiosRequestConfig {
   const forecaUrl: string = 'https://pfa.foreca.com/api/v1/';
   const accessToken: string = document.cookie.slice(6);
-  return {
-    url: forecaUrl + endpoint + param,
-    withCredentials: false,
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  };
+  if (param) {
+    return {
+      url: forecaUrl + endpoint + param,
+      withCredentials: false,
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    };
+  } else {
+    return {
+      url: endpoint,
+      withCredentials: true
+    };
+  }
 }
 
-export async function getData(endpoint: string, param: string): Promise<any> {
-  return axios.request(options(endpoint, param)).then(({ data }) => {
+export async function getData(endpoint: string, param?: string): Promise<any> {
+  if (param && options(endpoint, param).headers.Authorization.length < 10) {
+    throw new Error('No token');
+  } else {
+    const { data } = await axios.request(options(endpoint, param));
     return data;
-  });
-}
-
-export function getMultipleData(endpoints: string[], param: string): Promise<any[]> {
-  const requests: Promise<AxiosResponse<any>>[] = endpoints.map(endpoint => {
-    return axios.request(options(endpoint, param));
-  });
-  return axios.all(requests).then(
-    axios.spread((...responses) => {
-      return responses.map(response => {
-        return response.data;
-      });
-    })
-  );
+  }
 }

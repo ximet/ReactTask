@@ -1,5 +1,5 @@
 import React from 'react';
-import { ENDPOINTS } from '../../../helpers/api';
+import { ENDPOINTS } from 'consts';
 import styles from './Loading.module.scss';
 
 interface LoadingProps {

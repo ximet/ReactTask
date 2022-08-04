@@ -5,7 +5,7 @@ export enum Theme {
 }
 export interface ThemeContextConfig {
   theme: Theme;
-  toggleTheme?: () => void;
+  toggleTheme: () => void;
 }
 const getTheme = (): Theme => {
   const themeString: string | null = localStorage.getItem('theme');

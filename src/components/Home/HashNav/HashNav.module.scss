@@ -4,6 +4,7 @@
 .hashNav {
   .container {
     list-style-type: none;
+    padding: 0;
     @include flex(row, flex-start);
     .link a {
       text-decoration: none;

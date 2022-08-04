@@ -1,15 +1,18 @@
 import { AxiosError } from 'axios';
+import {
+  Card,
+  CreateLine,
+  ErrorComponent,
+  Loading,
+  ShowTempValue,
+  SvgBackground,
+  Title
+} from 'components';
+import { ENDPOINTS } from 'consts';
+import { getData } from 'helpers';
 import React from 'react';
-import { HourlyData } from '../../../helpers/Interfaces';
-import { Theme, ThemeContext } from '../../../store/theme-context';
-import Card from '../../UI/Card/Card';
-import ErrorComponent from '../../UI/ErrorComponent/ErrorComponent';
-import Loading from '../../UI/Loading/Loading';
-import { ENDPOINTS, getData } from './../../../helpers/api';
-import Title from './../../UI/Title/Title';
-import CreateLine from './SvgBackground/CreateLine/CreateLine';
-import ShowTempValue from './SvgBackground/ShowTempValue/ShowTempValue';
-import SvgBackground from './SvgBackground/SvgBackground';
+import { Theme, ThemeContext } from 'store';
+import { HourlyData } from 'types/interfaces';
 import styles from './Today1Hourly.module.scss';
 
 interface Today1HourlyProps {
@@ -23,6 +26,7 @@ interface Today1HourlyState {
 
 class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState> {
   declare context: React.ContextType<typeof ThemeContext>;
+  accessToken: string = document.cookie.slice(6);
   constructor(props: Today1HourlyProps) {
     super(props);
     this.state = {
@@ -33,14 +37,16 @@ class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState>
   }
 
   getHourlyData(): void {
-    getData(ENDPOINTS.hourly, this.props.location).then(
-      (data: HourlyData) => {
-        this.setState(() => ({ loading: true, data }));
-      },
-      (error: Error | AxiosError) => {
-        this.setState(() => ({ error: error.message }));
-      }
-    );
+    if (this.props.location && this.accessToken.length > 10) {
+      getData(ENDPOINTS.hourly, this.props.location).then(
+        (data: HourlyData) => {
+          this.setState(() => ({ loading: true, data }));
+        },
+        (error: Error | AxiosError) => {
+          this.setState(() => ({ error: error.message }));
+        }
+      );
+    }
   }
 
   componentDidMount() {
@@ -126,7 +132,7 @@ class Today1Hourly extends React.Component<Today1HourlyProps, Today1HourlyState>
         ) : loading ? (
           <Loading />
         ) : (
-          error && <ErrorComponent message={error} button="TRY_AGAIN" />
+          <ErrorComponent message={error} button="TRY_AGAIN" error={error} />
         )}
       </Card>
     );

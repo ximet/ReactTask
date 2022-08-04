@@ -1,10 +1,17 @@
-export interface CityConfig {
-  name: string;
-  country: string;
-  id: string;
-}
+import { CityConfig, EndpointsConfig } from 'types/interfaces';
 
-const cities: CityConfig[] = [
+export const ENDPOINTS: EndpointsConfig = {
+  auth: 'http://localhost:3000/auth',
+  symbol: 'https://developer.foreca.com/static/images/symbols/', //+
+  locationSearch: 'location/search/', // +query
+  locationInfo: 'location/',
+  current: 'current/',
+  hourly: 'forecast/hourly/',
+  threeHourly: 'forecast/3hourly/',
+  daily: 'forecast/daily/'
+};
+
+export const cities: CityConfig[] = [
   { name: 'Vilnius', country: 'Lithuania', id: '100593116' },
   { name: 'Minneapolis', country: 'USA', id: '105037649' },
   { name: 'Minsk', country: 'Belarus', id: '100625144' },
@@ -14,5 +21,3 @@ const cities: CityConfig[] = [
   { name: 'Chișinău', country: 'Moldova', id: '100618426' },
   { name: 'Wroclav', country: 'Poland', id: '103081368' }
 ];
-
-export default cities;

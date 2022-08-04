@@ -1,17 +1,9 @@
-import axios from 'axios';
+import { About, Card, Cities, Contacts, ErrorComponent, Footer, Header, Home } from 'components';
+import { ENDPOINTS } from 'consts';
+import { getData } from 'helpers';
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ENDPOINTS } from '../../helpers/api';
-import { AuthContext, AuthContextConfig } from '../../store/auth-context';
-import About from '../About/About';
-import Cities from '../Cities/Cities';
-import Contacts from '../Contacts/Contacts';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Home from '../Home/Home';
-import Card from '../UI/Card/Card';
-import ErrorComponent from '../UI/ErrorComponent/ErrorComponent';
-import { Theme, ThemeContext, ThemeContextConfig } from './../../store/theme-context';
+import { AuthContext, AuthContextConfig, Theme, ThemeContext, ThemeContextConfig } from 'store';
 import styles from './App.module.scss';
 
 const App: React.FunctionComponent = () => {
@@ -23,13 +15,9 @@ const App: React.FunctionComponent = () => {
   }, [userHasToken]);
 
   const getAuthToken = (): void => {
-    axios
-      .get(ENDPOINTS.auth, {
-        withCredentials: true
-      })
-      .then(() => {
-        setUserHasToken(!!document.cookie);
-      });
+    getData(ENDPOINTS.auth).then(() => {
+      setUserHasToken(!!document.cookie);
+    });
   };
 
   return (

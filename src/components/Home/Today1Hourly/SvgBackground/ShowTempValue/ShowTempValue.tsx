@@ -1,9 +1,7 @@
+import { convertToFahrenheit } from 'helpers';
 import React from 'react';
 import { connect } from 'react-redux';
-import { convertToFahrenheit } from '../../../../../helpers/convertToFahrenheit';
-import { CombinedState } from '../../../../../store/index-redux';
-import { TempUnits } from '../../../../../store/tempUnits-redux';
-import { Theme, ThemeContext } from '../../../../../store/theme-context';
+import { CombinedState, TempUnits, Theme, ThemeContext } from 'store';
 import styles from './ShowTempValue.module.scss';
 
 interface ShowTempValueProps {

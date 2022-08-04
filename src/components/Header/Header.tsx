@@ -1,13 +1,17 @@
+import { GiHamburgerMenu, Navigation, VscChromeClose } from 'components';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
-import { CombinedState } from '../../store/index-redux';
-import { TempActionConfig, TempActions, TempUnits } from '../../store/tempUnits-redux';
-import { Theme, ThemeContext, ThemeContextConfig } from '../../store/theme-context';
-import GiHamburgerMenu from '../UI/Icons/GiHamburgerMenu';
-import VscChromeClose from '../UI/Icons/VscChromeClose';
+import {
+  CombinedState,
+  TempActionConfig,
+  TempActions,
+  TempUnits,
+  Theme,
+  ThemeContext,
+  ThemeContextConfig
+} from 'store';
 import styles from './Header.module.scss';
-import Navigation from './Navigation/Navigation';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleTheme }: ThemeContextConfig = useContext(ThemeContext);

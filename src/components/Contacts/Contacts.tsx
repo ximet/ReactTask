@@ -1,13 +1,9 @@
+import { Card, Input, RadioInput, Title } from 'components';
+import { ENDPOINTS } from 'consts';
+import { emailRegEx, phoneRegEx, saveInLocalStorage } from 'helpers';
 import React from 'react';
-import { ENDPOINTS } from '../../helpers/api';
-import { saveInLocalStorage } from '../../helpers/localStorage';
-import { emailRegEx, phoneRegEx } from '../../helpers/regex';
-import { Theme, ThemeContext } from '../../store/theme-context';
-import Card from './../UI/Card/Card';
-import Title from './../UI/Title/Title';
+import { Theme, ThemeContext } from 'store';
 import styles from './Contacts.module.scss';
-import Input from './Input/Input';
-import RadioInput from './RadioInput/RadioInput';
 
 interface ContactsProps {}
 interface ContactsState {

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Theme, ThemeContext, ThemeContextConfig } from '../../../store/theme-context';
+import { Theme, ThemeContext, ThemeContextConfig } from 'store';
 import styles from './Title.module.scss';
 
 interface TitleProps {
