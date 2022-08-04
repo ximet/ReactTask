@@ -18,6 +18,7 @@ function FeedbackForm() {
   };
   const [formData, setFormData] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const theme = useSelector((state) => state.theme);
 
   function handleChange(event) {
@@ -33,6 +34,7 @@ function FeedbackForm() {
   function handleSubmit(event) {
     event.preventDefault();
     setFormErrors(validate(formData));
+    setIsSubmit(true);
   }
 
   function saveToLocalStorage() {
@@ -43,6 +45,7 @@ function FeedbackForm() {
 
   useEffect(() => {
     saveToLocalStorage();
+    setFormData(initialValues);
   }, [formErrors]);
 
   function validate(values) {
@@ -76,14 +79,21 @@ function FeedbackForm() {
 
   return (
     <div className={styles[`${theme}-theme`]}>
-      <div className={styles['title-wrapper']}>
-        <h2 className={styles.title}>Send Feedback!</h2>
-        <h4 className={styles.subtitle}>
-          Please use this form to share your feedback. If you’re experiencing technical issues,
-          please include details.
-        </h4>
-      </div>
-      <form data-testId="feedback-form" className={styles.form} onSubmit={handleSubmit}>
+      {Object.keys(formErrors).length === 0 && isSubmit ? (
+        <div className={styles['title-wrapper']}>
+          <h2 className={styles.title}>Feedback Sent!</h2>
+          <h4 className={styles.subtitle}>Thank you!</h4>
+        </div>
+      ) : (
+        <div className={styles['title-wrapper']}>
+          <h2 className={styles.title}>Send Feedback!</h2>
+          <h4 className={styles.subtitle}>
+            Please use this form to share your feedback. If you’re experiencing technical issues,
+            please include details.
+          </h4>
+        </div>
+      )}
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="username">Name</label>
           <ErrorMessage message={formErrors.username} />
@@ -93,7 +103,6 @@ function FeedbackForm() {
             onChange={handleChange}
             name="username"
             value={formData.username}
-            data-testId="username"
           />
         </div>
 
@@ -106,7 +115,6 @@ function FeedbackForm() {
             onChange={handleChange}
             name="email"
             value={formData.email}
-            data-testId="email"
           />
         </div>
 
@@ -119,7 +127,6 @@ function FeedbackForm() {
             onChange={handleChange}
             name="comments"
             rows={5}
-            data-testId="textarea"
           />
         </div>
 
