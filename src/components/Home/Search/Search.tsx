@@ -1,23 +1,11 @@
 import { SearchResults } from 'components';
-import { ENDPOINTS } from 'consts';
-import { useDebounce, useGetRequest } from 'hooks';
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { ChangeEvent, useCallback, useContext, useState } from 'react';
 import { Theme, ThemeContext, ThemeContextConfig } from 'store';
-import { LocationSearch, RequestDataConfig } from 'types/interfaces';
 import styles from './Search.module.scss';
 
 const Search: React.FunctionComponent = () => {
   const { theme }: ThemeContextConfig = useContext(ThemeContext);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const debouncedSearchTerm: string = useDebounce(searchTerm);
-  const {
-    data: searchResults = { locations: [] },
-    loading: searchLoading = true,
-    error = null
-  }: RequestDataConfig<LocationSearch> = useGetRequest(
-    ENDPOINTS.locationSearch,
-    debouncedSearchTerm
-  );
   const [displaySearchResults, setDisplaySearchResults] = useState<boolean>(false);
 
   const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -26,6 +14,10 @@ const Search: React.FunctionComponent = () => {
   };
   const inputFocusHandler = (): void => setDisplaySearchResults(true);
   const inputBlurHandler = (): void => setDisplaySearchResults(false);
+  const resultSelectedHandler = useCallback((): void => {
+    setSearchTerm('');
+    setDisplaySearchResults(false);
+  }, []);
 
   return (
     <section className={styles.container}>
@@ -39,11 +31,9 @@ const Search: React.FunctionComponent = () => {
         value={searchTerm}
       />
       <SearchResults
-        searchResults={searchResults}
-        searchLoading={searchLoading}
-        setSearchTerm={setSearchTerm}
-        setDisplaySearchResults={setDisplaySearchResults}
+        searchTerm={searchTerm}
         displaySearchResults={displaySearchResults}
+        onResultSelected={resultSelectedHandler}
       />
     </section>
   );
