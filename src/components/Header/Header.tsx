@@ -33,13 +33,17 @@ const Header: React.FunctionComponent = () => {
           </h1>
           <a href="/" className={styles.logo}></a>
         </div>
-        <Navigation classname={styles.nav} />
+        <Navigation classname={styles.nav} testid="desktop-nav" />
       </div>
-      <div className={styles.navBurger} onClick={burgerClickHandler}>
+      <div className={styles.navBurger} onClick={burgerClickHandler} data-testid="BurgerOrX">
         {!showMobileNav ? <GiHamburgerMenu /> : <VscChromeClose />}
       </div>
       {showMobileNav && (
-        <Navigation classname={styles.mobileNav} setShowMobileNav={setShowMobileNav} />
+        <Navigation
+          classname={styles.mobileNav}
+          setShowMobileNav={setShowMobileNav}
+          testid="mobile-nav"
+        />
       )}
       <div className={styles.buttonsContainer}>
         <div className={styles.degreesChanger}>
@@ -47,14 +51,21 @@ const Header: React.FunctionComponent = () => {
           <select
             className={`${styles.select} ${theme === Theme.DARK && styles[theme]}`}
             onChange={toggleTempUnits}
+            data-testid="select"
           >
-            <option className={styles.option} value={TempActions.TO_CELSIUS} selected={isCelsius}>
+            <option
+              className={styles.option}
+              value={TempActions.TO_CELSIUS}
+              selected={isCelsius}
+              data-testid="select-option"
+            >
               Celsius °C
             </option>
             <option
               className={styles.option}
               value={TempActions.TO_FAHRENHEIT}
               selected={!isCelsius}
+              data-testid="select-option"
             >
               Fahrenheit °F
             </option>
