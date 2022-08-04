@@ -40,7 +40,6 @@ export default function App() {
 
   return (
     <Router>
-
       <TemperatureContext.Provider value={{ temperature, setTemperature }}>
         <Navigation currentTheme={theme} changeTheme={setTheme} />
         <div className="page container">
@@ -54,7 +53,6 @@ export default function App() {
           </Route>
         </div>
       </TemperatureContext.Provider>
-
     </Router>
   );
 }

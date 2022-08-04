@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useEffect } from "react"
+import { useState } from 'react';
+import { useEffect } from 'react';
 import React, { useContext } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import { AuthenticationContext, TemperatureContext } from '../Context';
 import Loader from '../components/Loader';
 
@@ -52,19 +52,20 @@ export default function CurrentLocation() {
           console.error('error occured: ', err.message);
         });
     })();
-
   }, [userCoords]);
 
   useEffect(() => {
-    if (!userLocation) return
-    updateIcon()
-  }, [userLocation])
+    if (!userLocation) return;
+    updateIcon();
+  }, [userLocation]);
 
   return (
     <>
-      {!userLocation ? <Loader /> :
+      {!userLocation ? (
+        <Loader />
+      ) : (
         <div className="detailed-page__forecast-content">
-          <h2 >The weather in {userCoords.name} currently</h2>
+          <h2>The weather in {userCoords.name} currently</h2>
           <div className="forecast-content">
             <div className="forecast-content__temperatute grid-element grid-element--two">
               <div className="temperature__container">
@@ -106,7 +107,8 @@ export default function CurrentLocation() {
               </div>
             </div>
           </div>
-        </div>}
+        </div>
+      )}
     </>
-  )
+  );
 }

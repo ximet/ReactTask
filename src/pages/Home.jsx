@@ -5,7 +5,7 @@ import CurrentLocation from '../components/CurrentLocation';
 
 export default function HomePage() {
   return (
-    <div className='home-page'>
+    <div className="home-page">
       <CurrentLocation />
       <SearchBar />
       <LocationNavigation />
