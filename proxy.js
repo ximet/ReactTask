@@ -98,8 +98,12 @@ app.post('/get-current-location-params', (req, res) => {
 });
 
 app.post('/search', (req, res) => {
-  const searchedLocation = req.query.location;
   const hdrs = getHeaders();
+
+  function defineURL(req) {
+    const searchedLocation = req.query.location;
+    return searchedLocation ? searchedLocation : `${req.body.location}`;
+  }
 
   function transformObj(resObj) {
     const updatedResults = Object.entries(resObj.data).shift();
@@ -109,7 +113,7 @@ app.post('/search', (req, res) => {
   axios({
     method: 'get',
     headers: hdrs,
-    url: 'https://pfa.foreca.com/api/v1/location/search/' + searchedLocation
+    url: 'https://pfa.foreca.com/api/v1/location/search/' + defineURL(req)
   })
     .then(response => transformObj(response))
     .then(response => res.send(response))
