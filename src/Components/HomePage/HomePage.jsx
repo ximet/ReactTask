@@ -6,11 +6,19 @@ import {
   Message
 } from '../../Components';
 import useApi from '../../hooks/useApi';
+
 import styles from './HomePage.module.scss';
 
 function HomePage() {
-  const { locationData, currWeather, dailyWeather, hourlyWeather, setCoords, isLoading, error } =
-    useApi();
+  const {
+    locationData,
+    currWeather,
+    dailyWeather,
+    hourlyWeather,
+    setCoords,
+    isLoading,
+    error
+  } = useApi();
 
   return (
     <main className={styles.container}>
