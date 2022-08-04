@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TemperatureContext } from '../Context';
 import { useContext } from 'react';
+import Loader from '../components/Loader';
 
 export default function DetailedPage(props) {
   const [location, setLocation] = useState();
@@ -87,9 +88,7 @@ export default function DetailedPage(props) {
       <h1>{locationName}</h1>
       <h2>Current weather</h2>
       {loading ? (
-        <div className="spinner-container">
-          <div className="loading-spinner"></div>
-        </div>
+        <Loader />
       ) : location ? (
         <div className="detailed-page__forecast-content">
           <div className="detailed-page__date-time">{getFormatedDate(location.time)}</div>

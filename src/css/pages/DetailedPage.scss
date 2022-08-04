@@ -1,4 +1,5 @@
-.detailed-page {
+.detailed-page,
+.home-page {
   &__date-time {
     margin-bottom: 1rem;
   }
@@ -97,6 +98,7 @@
   }
 
   [data-theme='dark'] & {
+
     // check if theme is dark
     .forecast-content {
       filter: none;

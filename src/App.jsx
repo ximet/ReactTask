@@ -7,7 +7,7 @@ import ContactsPage from './pages/Contacts';
 import DetailedPage from './pages/DetailedPage';
 import './css/index.scss';
 import axios from 'axios';
-import { TemperatureContext } from './Context';
+import { AuthenticationContext, TemperatureContext } from './Context';
 
 export default function App() {
   const [authenticated, setAuth] = useState();
@@ -40,10 +40,13 @@ export default function App() {
 
   return (
     <Router>
+
       <TemperatureContext.Provider value={{ temperature, setTemperature }}>
         <Navigation currentTheme={theme} changeTheme={setTheme} />
         <div className="page container">
-          <Route exact path="/" component={HomePage} />
+          <AuthenticationContext.Provider value={{ authenticated }}>
+            <Route exact path="/" component={HomePage} />
+          </AuthenticationContext.Provider>
           <Route path="/about" component={AboutPage} />
           <Route path="/contacts" component={ContactsPage} />
           <Route path="/location/:locationId">
@@ -51,6 +54,7 @@ export default function App() {
           </Route>
         </div>
       </TemperatureContext.Provider>
+
     </Router>
   );
 }

@@ -22,6 +22,7 @@ export default function SearchBar() {
 
   return (
     <div className="search-bar container">
+      <h2>Try searching a speciffic location</h2>
       <input type="search" onChange={updateInput} placeholder={'find place..'} />
       {!results ? 'results' : <ResultsList list={results} />}
     </div>
