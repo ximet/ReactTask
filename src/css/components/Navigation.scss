@@ -105,7 +105,7 @@ nav {
     padding: 12px 26px;
     margin: 6px;
     font-weight: 600;
-    transition: all .15s;
+    transition: all 0.15s;
 
     &:hover {
       cursor: pointer;
@@ -123,7 +123,7 @@ nav {
     margin: 6px;
     font-family: 'font-bold';
     line-height: 0;
-    transition: all .15s;
+    transition: all 0.15s;
 
     &:hover {
       color: $neon-green;

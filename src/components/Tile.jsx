@@ -1,13 +1,23 @@
 import { Link } from 'react-router-dom';
 
-export default function TileCountry({ loactionName, clickHandler, countrySelected }) {
+export default function TileCountry({ locationName, clickHandler, countrySelected }) {
   return (
     <>
-      {!countrySelected ?
-        <span className='location-nav__tile' onClick={() => clickHandler(loactionName)}>{loactionName}</span>
-        :
-        <Link className='location-nav__tile' to={{ pathname: `/location/weather-in-${loactionName}`, search: `?name=${loactionName}&country=${countrySelected}` }} >{loactionName}</Link>
-      }
+      {!countrySelected ? (
+        <span className="location-nav__tile" onClick={() => clickHandler(locationName)}>
+          {locationName}
+        </span>
+      ) : (
+        <Link
+          className="location-nav__tile"
+          to={{
+            pathname: `/location/weather-in-${locationName}`,
+            search: `?name=${locationName}&country=${countrySelected}`
+          }}
+        >
+          {locationName}
+        </Link>
+      )}
     </>
-  )
+  );
 }

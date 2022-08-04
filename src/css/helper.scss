@@ -59,4 +59,8 @@
   border-top: 10px solid #383636;
   border-radius: 50%;
   animation: spinner 1.5s linear infinite;
+
+  [data-theme='light'] & {
+    border-top: 10px solid $yellow-green;
+  }
 }

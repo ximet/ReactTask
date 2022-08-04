@@ -101,13 +101,11 @@ app.post('/search', (req, res) => {
   const hdrs = getHeaders();
 
   function defineURL(req) {
-    const searchedLocation = req.query.location;
-    return searchedLocation ? searchedLocation : `${req.body.location}`;
+    return req.query.location ? req.query.location : `${req.body.location}`;
   }
 
   function transformObj(resObj) {
-    const updatedResults = Object.entries(resObj.data).shift();
-    return updatedResults;
+    return Object.entries(resObj.data).shift();
   }
 
   axios({

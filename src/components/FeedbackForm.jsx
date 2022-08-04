@@ -114,9 +114,7 @@ export default function FeedbackForm() {
               );
             })}
 
-            {valid && !formValues.rating && (
-              <span className="error-msg">You didn't rate us!</span>
-            )}
+            {valid && !formValues.rating && <span className="error-msg">You didn't rate us!</span>}
           </div>
         </fieldset>
         <fieldset>
