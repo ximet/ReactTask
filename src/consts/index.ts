@@ -8,7 +8,7 @@ export const ENDPOINTS: EndpointsConfig = {
   current: 'current/',
   hourly: 'forecast/hourly/',
   threeHourly: 'forecast/3hourly/',
-  daily: 'forecast/daily/',
+  daily: 'forecast/daily/'
 };
 
 export const cities: CityConfig[] = [
