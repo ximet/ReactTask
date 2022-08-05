@@ -13,17 +13,10 @@ export default function DetailedPage(props) {
   const locationId = params.get('id');
   const locationCountry = params.get('country');
 
-  const updateIcon = () => {
-    document.getElementById('icon-weather').src =
-      'https://developer.foreca.com/static/images/symbols/' + location.symbol + '.png';
-  };
-
-  async function getLoc(data) {
-    const searchedCity = data[1].filter(locObj => locObj.country === locationCountry);
-
+  async function getLocationById(passedLocationId) {
     await axios
       .post('http://localhost:3000/get-location-current-weather-by-id', {
-        id: searchedCity[0].id,
+        id: passedLocationId,
         temp: temperature
       })
       .then(data => setLocation(data.data))
@@ -31,6 +24,11 @@ export default function DetailedPage(props) {
         console.error('error occured: ', err.message);
       });
   }
+
+  const updateIcon = () => {
+    document.getElementById('icon-weather').src =
+      'https://developer.foreca.com/static/images/symbols/' + location.symbol + '.png';
+  };
 
   const getFormatedDate = givenDate => {
     const localDate = givenDate.split('T');
@@ -47,17 +45,7 @@ export default function DetailedPage(props) {
 
   useEffect(() => {
     if (locationId) {
-      (async function () {
-        await axios
-          .post('http://localhost:3000/get-location-current-weather-by-id', {
-            id: locationId,
-            temp: temperature
-          })
-          .then(data => setLocation(data.data))
-          .catch(err => {
-            console.error('error occured: ', err.message);
-          });
-      })();
+      getLocationById(locationId);
     } else {
       (async function () {
         await axios
@@ -65,7 +53,9 @@ export default function DetailedPage(props) {
             location: locationName,
             country: locationCountry
           })
-          .then(data => getLoc(data.data))
+          .then(data => data.data[1].filter(locObj => locObj.country === locationCountry))
+          .then(data => data[0].id)
+          .then(data => getLocationById(data))
           .catch(err => {
             console.error('error occured: ', err.message);
           });
