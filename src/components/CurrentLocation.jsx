@@ -19,8 +19,10 @@ class CurrentLocation extends React.Component {
 
   updateIcon(data) {
     document.getElementById('icon-weather').src =
-      'https://developer.foreca.com/static/images/symbols/' + this.state.userLocation.symbol + '.png';
-  };
+      'https://developer.foreca.com/static/images/symbols/' +
+      this.state.userLocation.symbol +
+      '.png';
+  }
 
   componentDidMount() {
     const that = this;
@@ -45,7 +47,7 @@ class CurrentLocation extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.userCoords == '') {
+    if (!prevState.userCoords) {
       const that = this;
       (async function () {
         await axios
@@ -107,7 +109,9 @@ class CurrentLocation extends React.Component {
                   >
                     &#x2B07;
                   </div>
-                  <div className="wind-direction__text">Direction: {this.state.userLocation.windDirString}</div>
+                  <div className="wind-direction__text">
+                    Direction: {this.state.userLocation.windDirString}
+                  </div>
                 </div>
               </div>
             </div>
