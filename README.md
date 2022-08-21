@@ -26,9 +26,9 @@ You are about to create weather application with location detection.
 
 ### Full description
 
-Use weather API: https://developer.foreca.com/#Forecasts. Note that this API is **NOT** public. Your task is to create 
-front-end for that API. Your application should not have any login buttons to authenticate against weather api. It 
-should happen silently for the user. You need to create next parts (every page has a layout with a header, footer and 
+Use weather API: https://developer.foreca.com/#Forecasts. Note that this API is **NOT** public. Your task is to create
+front-end for that API. Your application should not have any login buttons to authenticate against weather api. It
+should happen silently for the user. You need to create next parts (every page has a layout with a header, footer and
 navigation panel):
 
 1. Main page with weather for the current location.
