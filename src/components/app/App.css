@@ -1,0 +1,15 @@
+@import '../../styles/normalizez.css';
+@import '../../styles/resets.css';
+
+html,
+body {
+  min-height: 100vh;
+  font-size: 62.5%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f8ff;
+}
