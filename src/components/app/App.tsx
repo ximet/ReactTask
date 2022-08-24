@@ -1,10 +1,13 @@
+import React from 'react';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Main from '../main/Main';
 
 import styles from './App.css';
 
-function App() {
+import { FC } from 'react';
+
+const App: FC = () => {
   return (
     <div className={styles.app}>
       <Header />
@@ -12,6 +15,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
