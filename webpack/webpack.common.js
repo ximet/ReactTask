@@ -4,18 +4,17 @@ const history = require('connect-history-api-fallback');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const commonPaths = require('./paths');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   entry: commonPaths.entryPath,
   module: {
     rules: [
       {
-        test: /(\.js$|\.jsx?$)/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/],
-        options: {
-          sourceMap: true
-        }
+        test: /(\.ts$|\.tsx?$)/,
+        loader: 'ts-loader',
+        exclude: [/node_modules/]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -66,7 +65,8 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.ts', 'tsx', '.jsx', '.js', '.css', '.scss'],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -75,6 +75,12 @@ module.exports = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      // Speeds up TypeScript type checking and ESLint linting (by moving each to a separate process)
+      eslint: {
+        files: './src/**/*.{ts,tsx,js,jsx}'
+      }
     })
   ]
 };
