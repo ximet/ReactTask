@@ -13,7 +13,8 @@ module.exports = function (api) {
         useBuiltIns: 'usage'
       }
     ],
-    ['@babel/preset-react', { runtime: 'automatic' }]
+    ['@babel/preset-react', { runtime: 'automatic' }],
+    '@babel/preset-typescript'
   ];
   const plugins = [
     '@babel/transform-react-constant-elements',
