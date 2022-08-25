@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 const commonPaths = require('./paths');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -39,5 +40,10 @@ module.exports = {
     hot: true,
     port: 9020
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({
+      path: `../.env`
+    })
+  ]
 };
