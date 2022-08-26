@@ -3,6 +3,7 @@ const convert = require('koa-connect');
 const history = require('connect-history-api-fallback');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
           sourceMap: true
         }
       },
+      { test: /\.(ts|tsx)$/, loader: 'ts-loader', exclude: [/node_modules/] },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
@@ -66,7 +68,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -75,6 +77,7 @@ module.exports = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
-    })
+    }),
+    new ESLintPlugin()
   ]
 };

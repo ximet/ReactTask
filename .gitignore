@@ -23,6 +23,11 @@ package-lock.json
 /build/index.html
 /build*
 /build/*
+
 # Editor/IDE
 .idea
 packages/api/etc/
+
+# Cache
+.cache/
+.eslintcache

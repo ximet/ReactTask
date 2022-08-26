@@ -1,0 +1,64 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import", "prettier"],
+  "rules": {
+    "import/extensions": "off",
+    "no-unused-vars": "warn",
+    "no-use-before-define": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["arrow-function", "function-declaration"],
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-uses-react": "warn",
+    "react/jsx-uses-vars": "warn",
+    "react/react-in-jsx-scope": "warn",
+    "@typescript-eslint/no-unused-vars": "warn"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
