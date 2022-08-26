@@ -1,8 +1,5 @@
-/* Commented out everything relating to Typescript for now,
-    since I don't know how to use it yet. */
 {
-  "parser": "@babel/eslint-parser",
-  // "parser": "@typescript-eslint/parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
@@ -15,22 +12,17 @@
     "plugin:import/errors",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
-    // "plugin:@typescript-eslint/recommended",
-    // "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb/hooks",
     "prettier"
   ],
-  "plugins": [
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "import",
-    "prettier"
-    // "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import", "prettier"],
   "rules": {
+    "import/extensions": "off",
     "no-unused-vars": "warn",
+    "no-use-before-define": "off",
     "prettier/prettier": [
       "error",
       {
@@ -49,8 +41,8 @@
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-uses-react": "warn",
     "react/jsx-uses-vars": "warn",
-    "react/react-in-jsx-scope": "warn"
-    // "@typescript-eslint/no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "warn",
+    "@typescript-eslint/no-unused-vars": "warn"
   },
   "env": {
     "browser": true,
@@ -62,6 +54,11 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }
