@@ -1,7 +1,7 @@
 import styles from './Header.css';
-import React from 'react';
 
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header: FC = () => {
   return (
@@ -9,24 +9,24 @@ const Header: FC = () => {
       <nav>
         <ul className={styles.navList}>
           <li>
-            <a href="#" className={styles.listItem}>
-              Countries
-            </a>
-          </li>
-          <li>
-            <a href="#" className={styles.listItem}>
+            <NavLink to="/" className={styles.listItem}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className={styles.listItem}>
+            <NavLink to="/countries" className={styles.listItem}>
+              Countries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/details" className={styles.listItem}>
               Details
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className={styles.listItem}>
+            <NavLink to="/feedback" className={styles.listItem}>
               Feedback
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
