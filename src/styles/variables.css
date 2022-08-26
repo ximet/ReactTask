@@ -1,0 +1,8 @@
+html {
+  --active-link: #b8860b;
+
+  --light-background: #f8f8ff;
+  --light-header: #adff2f;
+  --light-footer: #87cefa;
+  --light-link-after: #ffffff;
+}
