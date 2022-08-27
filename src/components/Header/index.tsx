@@ -1,8 +1,5 @@
-// @ts-ignore
 import React from 'react';
-// @ts-ignore
 import { NavLink } from 'react-router-dom';
-// @ts-ignore
 import styles from './styles.module.scss';
 
 const Header = () => {

@@ -3,16 +3,24 @@ const convert = require('koa-connect');
 const history = require('connect-history-api-fallback');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const commonPaths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const commonPaths = require('./paths');
 
 module.exports = {
   entry: commonPaths.entryPath,
   module: {
     rules: [
       {
-        test: /(\.ts$|\.tsx?$)/,
+        test: /(\.js$|\.jsx?$)/,
+        loader: 'babel-loader',
+        exclude: [/node_modules/],
+        options: {
+          sourceMap: true
+        }
+      },
+      {
+        test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: [/node_modules/]
       },
@@ -65,7 +73,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.ts', 'tsx', '.jsx', '.js', '.css', '.scss'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
     plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
   },
   plugins: [
@@ -76,11 +84,6 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
     }),
-    new ForkTsCheckerWebpackPlugin({
-      // Speeds up TypeScript type checking and ESLint linting (by moving each to a separate process)
-      eslint: {
-        files: './src/**/*.{ts,tsx,js,jsx}'
-      }
-    })
+    new ESLintPlugin()
   ]
 };

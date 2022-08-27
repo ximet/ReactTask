@@ -1,17 +1,10 @@
-// @ts-ignore
 import React from 'react';
-// @ts-ignore
 import { Route, Routes as RoutesPaths } from 'react-router-dom';
-// @ts-ignore
-import Layout from '../components/layouts/index.tsx';
-// @ts-ignore
-import Main from '../pages/Main/index.tsx';
-// @ts-ignore
-import Details from '../pages/Details/index.tsx';
-// @ts-ignore
-import Info from '../pages/Info/index.tsx';
-// @ts-ignore
-import Feedback from '../pages/Feedback/index.tsx';
+import Layout from './layouts/index';
+import Main from '../pages/Main/index';
+import Details from '../pages/Details/index';
+import Info from '../pages/Info/index';
+import Feedback from '../pages/Feedback/index';
 
 const Routes: React.FC = () => {
   return (

@@ -1,9 +1,6 @@
-// @ts-ignore
-import Routes from 'components/Routes.tsx';
-// @ts-ignore
 import React from 'react';
-// @ts-ignore
-import { BrowserRouter } from '../node_modules/react-router-dom/index';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from 'components/Routes';
 import './styles/globals.scss';
 
 const App: React.FC = () => {
@@ -15,5 +12,4 @@ const App: React.FC = () => {
     </BrowserRouter>
   );
 };
-
 export default App;

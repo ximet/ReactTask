@@ -46,7 +46,6 @@ module.exports = {
     // https://twitter.com/wSokra/status/969679223278505985
     runtimeChunk: true
   },
-  // ts-loader for dev and babel for prod builds.
   module: {
     rules: [
       {
@@ -55,8 +54,6 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            // loader: 'babel-loader',
-
             options: {
               sourceMap: false,
               localsConvention: 'camelCase',
