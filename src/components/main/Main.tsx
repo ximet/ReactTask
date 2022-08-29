@@ -28,12 +28,13 @@ const Main: FC = () => {
       thunderProb: 0,
       uvIndex: 0,
       pressure: 0,
-      visibility: 0,
-  }})
+      visibility: 0
+    }
+  });
 
   async function fetchData(lon: number, lat: number) {
     await getCity(lon, lat).then(locationData => setCity(locationData.city));
-    await getCityWeather(lon, lat).then(cityWeather => setWeather(cityWeather))
+    await getCityWeather(lon, lat).then(cityWeather => setWeather(cityWeather));
   }
 
   useEffect(() => {
@@ -41,24 +42,26 @@ const Main: FC = () => {
       const lon = position.longitude as number;
       const lat = position.latitude as number;
 
-      fetchData(lon, lat)
+      fetchData(lon, lat);
     }
   }, [position.longitude]);
 
   useEffect(() => {
-    console.log(weather)
-  }, [weather])
+    console.log(weather);
+  }, [weather]);
 
   return (
     <main className={commonStyle.container}>
       {weather.current.time ? (
         <>
           <span>{city}</span>
-          <img src={`https://developer.foreca.com/static/images/symbols/${weather.current.symbol}.png`} alt={weather.current.symbolPhrase} />
+          <img
+            src={`https://developer.foreca.com/static/images/symbols/${weather.current.symbol}.png`}
+            alt={weather.current.symbolPhrase}
+          />
           <p>{weather.current.symbolPhrase}</p>
           <p>Temperature: {weather.current.temperature}°C</p>
         </>
-        
       ) : (
         <p>{error}</p>
       )}

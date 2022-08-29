@@ -23,7 +23,10 @@ export type cityWeatherType = {
   };
 };
 
-export const getCityWeather = async (longitude: number, latitude: number): Promise<cityWeatherType> => {
+export const getCityWeather = async (
+  longitude: number,
+  latitude: number
+): Promise<cityWeatherType> => {
   const current = await HTTPRequest(`/current/${longitude},${latitude}`, {});
   return current;
 };
