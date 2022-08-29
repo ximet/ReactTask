@@ -1,8 +1,8 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
-import React from 'react';
 
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { usePosition } from 'hooks/usePosition';
 
 interface MainProps {
   positionData: {
@@ -12,15 +12,17 @@ interface MainProps {
   positionError?: string | null;
 }
 
-const Main: FC<MainProps> = ({ positionData: { latitude, longitude }, positionError }) => {
+const Main: FC = () => {
+  const { position, error } = usePosition();
+
   return (
     <main className={commonStyle.container}>
-      {positionError ? (
-        <p>{positionError}</p>
-      ) : (
+      {position ? (
         <p>
-          Your position: {latitude}/{longitude}
+          Your position: {position.latitude}/{position.longitude}
         </p>
+      ) : (
+        <p>{error}</p>
       )}
     </main>
   );
