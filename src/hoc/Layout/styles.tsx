@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
+import theme from '../../styles/theme';
+
 const GlobalStyle = createGlobalStyle`
   ${normalize}
   *,
@@ -15,14 +17,28 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    font-size: 62.5%;
   }
   
   body {
-    font-size: 62.5%;
+    font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
     overflow-x: hidden;
+    background: ${theme.palette.white};
+    color: ${theme.palette.black};
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0%;
+      width: 0%;
+      height: 100%;
+      background: ${theme.palette.white};
+      transition: all 1s;
+      will-change: width;
+      z-index: -1;
+    }
   }
 
   ul {
