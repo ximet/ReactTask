@@ -1,7 +1,14 @@
 import styles from './Header.css';
-import React from 'react';
 
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+
+type LinkType = {
+  isActive: boolean;
+};
+
+const setActive = ({ isActive }: LinkType) =>
+  isActive ? `${styles.listItem} ${styles['active-link']}` : styles.listItem;
 
 const Header: FC = () => {
   return (
@@ -9,24 +16,24 @@ const Header: FC = () => {
       <nav>
         <ul className={styles.navList}>
           <li>
-            <a href="#" className={styles.listItem}>
-              Countries
-            </a>
-          </li>
-          <li>
-            <a href="#" className={styles.listItem}>
+            <NavLink to="/" className={setActive}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className={styles.listItem}>
+            <NavLink to="/countries" className={setActive}>
+              Countries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/details" className={setActive}>
               Details
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className={styles.listItem}>
+            <NavLink to="/feedback" className={setActive}>
               Feedback
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
