@@ -1,11 +1,14 @@
 import React, { FunctionComponent } from 'react';
 
+// Custom hooks
+import { useAppSelector } from '../../redux/hooks';
+
 // Styles
 import * as S from './styles';
 
 const INPUT = {
-  input: ({ type, placeholder }: { type: string; placeholder: string }) => (
-    <S.Input type={type} placeholder={placeholder} />
+  input: ({ type, placeholder, theme }: { type: string; placeholder: string; theme: string }) => (
+    <S.Input type={type} placeholder={placeholder} theme={theme} />
   )
 };
 
@@ -15,8 +18,10 @@ interface InputProps {
   placeholder: string;
 }
 
-const Input: FunctionComponent<InputProps> = ({ inputElement, type, placeholder }) => {+
-  return INPUT[inputElement]({ type, placeholder });
+const Input: FunctionComponent<InputProps> = ({ inputElement, type, placeholder }) => {
+  const { theme } = useAppSelector(state => state.theme);
+
+  return INPUT[inputElement]({ type, placeholder, theme });
 };
 
 export default Input;

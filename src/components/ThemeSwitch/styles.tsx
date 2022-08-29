@@ -2,12 +2,19 @@ import styled from 'styled-components';
 
 import theme from '../../styles/theme';
 
-export const ThemeSwitch = styled.div`
+interface ThemeSwitchProps {
+  theme: 'light' | 'dark';
+}
+
+export const ThemeSwitch = styled.div<ThemeSwitchProps>`
   position: relative;
   height: 3rem;
   padding: 0 2rem;
   border-radius: ${theme.shape.borderRadius};
-  background: ${theme.palette.componentBackgroundLight};
+  background: ${(props: ThemeSwitchProps) =>
+    props.theme === 'light'
+      ? theme.palette.componentBackgroundLight
+      : theme.palette.componentBackgroundDark};
   width: 100px;
   transition: all 1.2s;
   cursor: pointer;
@@ -15,7 +22,7 @@ export const ThemeSwitch = styled.div`
   &::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: ${(props: ThemeSwitchProps) => (props.theme === 'light' ? '0' : '50%')};
     top: 0;
     width: 50%;
     height: 100%;

@@ -3,7 +3,11 @@ import { normalize } from 'styled-normalize';
 
 import theme from '../../styles/theme';
 
-const GlobalStyle = createGlobalStyle`
+interface GlobalStyleProps {
+  theme: 'light' | 'dark';
+}
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   ${normalize}
   *,
   *::after,
@@ -24,15 +28,16 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
     overflow-x: hidden;
-    background: ${theme.palette.white};
-    color: ${theme.palette.black};
+    background: ${theme.palette.black};
+    color: ${(props: GlobalStyleProps) =>
+      props.theme === 'light' ? theme.palette.black : theme.palette.white};
 
     &::after {
       content: "";
       position: absolute;
       top: 0;
       right: 0%;
-      width: 0%;
+      width: ${(props: GlobalStyleProps) => (props.theme === 'light' ? '100%' : '0%')};
       height: 100%;
       background: ${theme.palette.white};
       transition: all 1s;

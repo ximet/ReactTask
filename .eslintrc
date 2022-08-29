@@ -21,8 +21,9 @@
   "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import", "prettier"],
   "rules": {
     "import/extensions": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "no-use-before-define": "off",
+    "no-param-reassign": ["error", { "props": false }],
     "prettier/prettier": [
       "error",
       {
@@ -42,7 +43,8 @@
     "react/jsx-uses-react": "warn",
     "react/jsx-uses-vars": "warn",
     "react/react-in-jsx-scope": "warn",
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-var-requires": "off"
   },
   "env": {
     "browser": true,
