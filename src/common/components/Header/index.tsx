@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 // Custom hooks
-import { useAppSelector } from '../../redux/hooks';
+import { useAppSelector } from '../../../app/hooks';
 
 // Components
 import Location from '../Location';

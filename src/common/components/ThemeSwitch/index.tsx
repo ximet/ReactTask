@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
 // Custom hooks
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 // Store actions
-import { toggleTheme } from '../../redux/features/theme/themeSlice';
+import { toggleTheme } from '../../../features/theme/themeSlice';
 
 // Styles
 import * as S from './styles';

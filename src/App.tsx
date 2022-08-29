@@ -2,11 +2,11 @@ import React, { FunctionComponent, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Components
-import Layout from './hoc/Layout';
+import Layout from './common/hoc/Layout';
 
 // Lazy components
-const Home = React.lazy(() => import('./pages/Home'));
-const About = React.lazy(() => import('./pages/About'));
+const Home = React.lazy(() => import('./common/pages/Home'));
+const About = React.lazy(() => import('./common/pages/About'));
 
 const routes = [
   { path: '/', name: 'Home', Component: Home },
