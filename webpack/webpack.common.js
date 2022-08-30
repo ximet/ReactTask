@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -84,6 +85,7 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
     }),
-    new ESLintPlugin()
+    new ESLintPlugin(),
+    new Dotenv()
   ]
 };
