@@ -8,7 +8,6 @@ interface HeaderProps {
 
 export const Header = styled.header<HeaderProps>`
   padding: 1.5rem 0;
-
   svg {
     fill: ${(props: HeaderProps) =>
       props.theme === 'light' ? theme.palette.black : theme.palette.white};

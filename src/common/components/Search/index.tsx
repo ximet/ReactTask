@@ -12,7 +12,7 @@ import { IconSearch } from '../../assets/images/svg';
 const Search: FunctionComponent = () => (
   <S.Search>
     <IconSearch />
-    <Input inputElement="input" type="search" placeholder="Search city..." />
+    <Input inputElement="input" type="string" placeholder="Search city..." />
   </S.Search>
 );
 
