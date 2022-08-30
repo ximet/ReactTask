@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     box-sizing: inherit;
     text-decoration: none;
   }
-
   html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -31,7 +30,6 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     background: ${theme.palette.black};
     color: ${(props: GlobalStyleProps) =>
       props.theme === 'light' ? theme.palette.black : theme.palette.white};
-
     &::after {
       content: "";
       position: absolute;
@@ -45,11 +43,9 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
       z-index: -1;
     }
   }
-
   ul {
     list-style: none;
   }
-
   button {
     border: none;
     background: none;
