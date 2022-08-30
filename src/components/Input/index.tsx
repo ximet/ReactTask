@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, HTMLInputTypeAttribute } from 'react';
 
 // Custom hooks
 import { useAppSelector } from '../../redux/hooks';
@@ -6,22 +6,25 @@ import { useAppSelector } from '../../redux/hooks';
 // Styles
 import * as S from './styles';
 
+type InputType = HTMLInputTypeAttribute;
+
+interface InputProps {
+  inputElement: 'input';
+  type: InputType;
+  placeholder: string;
+  theme?: string;
+}
+
 const INPUT = {
-  input: ({ type, placeholder, theme }: { type: string; placeholder: string; theme: string }) => (
+  input: ({ type, placeholder, theme }: InputProps) => (
     <S.Input type={type} placeholder={placeholder} theme={theme} />
   )
 };
 
-interface InputProps {
-  inputElement: 'input';
-  type: 'text' | 'textarea' | 'search';
-  placeholder: string;
-}
-
 const Input: FunctionComponent<InputProps> = ({ inputElement, type, placeholder }) => {
   const { theme } = useAppSelector(state => state.theme);
 
-  return INPUT[inputElement]({ type, placeholder, theme });
+  return INPUT[inputElement]({ type, placeholder, theme, inputElement });
 };
 
 export default Input;
