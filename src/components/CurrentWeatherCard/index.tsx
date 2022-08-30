@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { LocationData, WeatherData } from 'types';
-// import styles from './styles.module.scss';
+import styles from './styles.module.scss';
 
 type WeatherProps = {
   weatherData: WeatherData | null;
@@ -30,8 +30,10 @@ const CurrentWeatherCard: FC<WeatherProps> = ({
           <h3>{weatherData.symbolPhrase}</h3>
           <h6>Feels like {weatherData.feelsLikeTemp}&deg;</h6>
           <h6>
-            Wind {weatherData.windDir} {weatherData.windSpeed} km/h
+            Wind{' '}
+            <i className={`${styles.rotate}${weatherData.windDir}`}>{weatherData.windDir} &rarr;</i>
           </h6>
+          <h6>{weatherData.windSpeed} km/h</h6>
           <h6>Visibility {weatherData.visibility * 0.001} km</h6>
           <h6>Humidity {weatherData.relHumidity} </h6>
           <h6>Dew Point {weatherData.dewPoint} </h6>
