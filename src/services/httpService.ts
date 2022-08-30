@@ -1,17 +1,18 @@
-const URL = 'https://pfa.foreca.com/api/v1';
-const TOKEN = process.env.TOKEN as string;
+import { getFromLocalStorage } from './localStorage';
 
-async function HTTPRequest(
-  endpoint = '',
-  { method = 'GET', body = null, headers = { 'Content-Type': 'application/json' } }
-) {
+const URL = 'https://pfa.foreca.com';
+
+async function HTTPRequest(endpoint = '', { method = 'GET', body = '', headers = {} }) {
+  const TOKEN = getFromLocalStorage('token');
+
   const request = await fetch(`${URL}${endpoint}`, {
     method,
     headers: {
+      'Content-Type': 'application/json',
       authorization: `Bearer ${TOKEN}`,
       ...headers
     },
-    body
+    body: body ? body : null
   });
 
   const result = request.json();

@@ -27,6 +27,6 @@ export const getCityWeather = async (
   longitude: number,
   latitude: number
 ): Promise<cityWeatherType> => {
-  const current = await HTTPRequest(`/current/${longitude},${latitude}`, {});
+  const current = await HTTPRequest(`/api/v1/current/${longitude},${latitude}`, {});
   return current;
 };

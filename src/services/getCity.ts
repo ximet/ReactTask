@@ -10,7 +10,7 @@ type Response = {
 
 export const getCity = async (longitude: number, latitude: number): Promise<Response> => {
   const { id, name: city, country, lon, lat } = await HTTPRequest(
-    `/location/${longitude},${latitude}`,
+    `/api/v1/location/${longitude},${latitude}`,
     {}
   );
   return {

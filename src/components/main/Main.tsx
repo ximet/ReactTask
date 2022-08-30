@@ -39,16 +39,12 @@ const Main: FC = () => {
 
   useEffect(() => {
     if (position.longitude) {
-      const lon = position.longitude as number;
-      const lat = position.latitude as number;
+      const lon: number = position.longitude;
+      const lat: number = position.latitude;
 
       fetchData(lon, lat);
     }
   }, [position.longitude]);
-
-  useEffect(() => {
-    console.log(weather);
-  }, [weather]);
 
   return (
     <main className={commonStyle.container}>

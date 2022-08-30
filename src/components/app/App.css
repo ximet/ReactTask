@@ -13,3 +13,7 @@ body {
   height: 100vh;
   background-color: var(--light-background);
 }
+
+.loading-text {
+  font-size: 3rem;
+}
