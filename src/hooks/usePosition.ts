@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 type PositionParams = {
-  latitude?: number;
-  longitude?: number;
+  latitude: number;
+  longitude: number;
 };
 
 type LocationParams = {
@@ -10,7 +10,10 @@ type LocationParams = {
 };
 
 export const usePosition = () => {
-  const [position, setPosition] = useState<PositionParams>({});
+  const [position, setPosition] = useState<PositionParams>({
+    latitude: 0,
+    longitude: 0
+  });
   const [error, setError] = useState<string | null>(null);
 
   const onSuccess = ({ coords: { latitude, longitude } }: LocationParams): void => {

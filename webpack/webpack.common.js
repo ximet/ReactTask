@@ -4,6 +4,7 @@ const history = require('connect-history-api-fallback');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const commonPaths = require('./paths');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: commonPaths.entryPath,
@@ -80,6 +81,9 @@ module.exports = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
+    }),
+    new Dotenv({
+      path: `./.env`
     })
   ]
 };
