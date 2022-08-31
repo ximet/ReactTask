@@ -17,7 +17,7 @@ const App: FC = () => {
   const [token, setToken] = useState<string>('');
 
   async function getToken(): Promise<string> {
-    const result = await fetch('http://127.0.0.1:8081/token');
+    const result = await fetch('http://localhost:8081/token');
 
     const { access_token } = await result.json();
     setInLocalStorage(access_token, 'token');
