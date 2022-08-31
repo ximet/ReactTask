@@ -23,7 +23,7 @@ const Search: FunctionComponent = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [listShown, setListShown] = useState<boolean>(true);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-  const { data: searchResults } = useSearchLocationsQuery(debouncedSearchQuery, {
+  const { data } = useSearchLocationsQuery(debouncedSearchQuery, {
     skip: debouncedSearchQuery === ''
   });
   const { theme } = useAppSelector(state => state.theme);
@@ -49,9 +49,7 @@ const Search: FunctionComponent = () => {
         onChange={handleInputChange}
         onFocus={handleInputFocus}
       />
-      {searchResults && listShown && (
-        <SearchResultList searchResults={searchResults && searchResults.locations} />
-      )}
+      {data && listShown && <SearchResultList data={data && data.locations} />}
     </S.Search>
   );
 };

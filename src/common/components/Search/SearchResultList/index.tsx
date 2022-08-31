@@ -7,18 +7,15 @@ import SearchResultItem from './SearchResultItem';
 import * as S from '../styles';
 
 // Types
-import { searchResultType } from '../../../../types';
+import { SearchResult } from '../../../../types';
 
 interface SearchResultListProps {
-  searchResults: [searchResultType];
+  data: SearchResult[];
 }
 
-const SearchResultList = ({ searchResults }: SearchResultListProps) => (
+const SearchResultList = ({ data }: SearchResultListProps) => (
   <S.SearchResultList>
-    {searchResults &&
-      searchResults.map(searchResult => (
-        <SearchResultItem key={searchResult.id} searchResult={searchResult} />
-      ))}
+    {data && data.map(item => <SearchResultItem key={item.id} data={item} />)}
   </S.SearchResultList>
 );
 

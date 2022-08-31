@@ -46,13 +46,21 @@ export const SearchResultList = styled.ul`
   position: absolute;
   top: 110%;
   width: 100%;
+  max-height: 360px;
   padding: 1rem 2rem;
   background: ${theme.palette.primary.light};
   border-radius: ${theme.shape.borderRadius};
+  overflow-y: scroll;
 
   li:not(:last-child) {
     margin-bottom: 0.5rem;
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const SearchResultItem = styled.li`

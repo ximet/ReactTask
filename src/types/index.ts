@@ -1,4 +1,4 @@
-export interface searchResultType {
+export interface SearchResult {
   adminArea: string;
   adminArea2?: string;
   adminArea3?: string;

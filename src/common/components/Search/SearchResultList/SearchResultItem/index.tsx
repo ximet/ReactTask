@@ -1,24 +1,20 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 // Styles
 import * as S from '../../styles';
 
 // Types
-import { searchResultType } from '../../../../../types';
+import { SearchResult } from '../../../../../types';
 
 interface SearchResultItemProps {
-  searchResult: searchResultType;
+  data: SearchResult;
 }
 
-const SearchResultItem = ({ searchResult }: SearchResultItemProps) => {
-  const searchResultItemRef = useRef<HTMLLIElement>(null);
-
-  const { name, state, country } = searchResult;
+const SearchResultItem = ({ data }: SearchResultItemProps) => {
+  const { name, state, country } = data;
 
   return (
-    <S.SearchResultItem ref={searchResultItemRef}>{`${name}, ${
-      state ? `${state},` : ''
-    } ${country}`}</S.SearchResultItem>
+    <S.SearchResultItem>{`${name}, ${state ? `${state},` : ''} ${country}`}</S.SearchResultItem>
   );
 };
 
