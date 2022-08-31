@@ -3,16 +3,16 @@ import { getFromLocalStorage } from './localStorage';
 const URL = 'https://pfa.foreca.com';
 
 async function HTTPRequest(endpoint = '', { method = 'GET', body = '', headers = {} }) {
-  const TOKEN = getFromLocalStorage('token');
+  const token = getFromLocalStorage('token');
 
   const request = await fetch(`${URL}${endpoint}`, {
     method,
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${TOKEN}`,
+      authorization: `Bearer ${token}`,
       ...headers
     },
-    body: body ? body : null
+    body: body || null
   });
 
   const result = request.json();

@@ -16,26 +16,8 @@ import { setInLocalStorage, getFromLocalStorage } from 'services/localStorage';
 const App: FC = () => {
   const [token, setToken] = useState<string>('');
 
-  async function getToken(user: string, password: string): Promise<string> {
-    const body = {
-      user,
-      password
-    };
-
-    const ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-
-    let URL =
-      ENV === 'development'
-        ? 'https://cors.bridged.cc/https://pfa.foreca.com/authorize/token?expire_hours=-1'
-        : 'https://pfa.foreca.com/authorize/token?expire_hours=-1';
-
-    const result = await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
+  async function getToken(): Promise<string> {
+    const result = await fetch('http://127.0.0.1:8081/token');
 
     const { access_token } = await result.json();
     setInLocalStorage(access_token, 'token');
@@ -44,11 +26,9 @@ const App: FC = () => {
   }
 
   useEffect(() => {
-    const user: string = process.env.USER!;
-    const password: string = process.env.PASSWORD!;
     const token = getFromLocalStorage('token');
 
-    token ? setToken(token) : getToken(user, password).then(token => setToken(token));
+    token ? setToken(token) : getToken().then(token => setToken(token));
   }, []);
 
   return (
