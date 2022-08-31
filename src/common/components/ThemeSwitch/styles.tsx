@@ -1,28 +1,30 @@
 import styled from 'styled-components';
 
 import theme from '../../styles/theme';
+import { colorChange } from '../../styles/mixins';
 
-interface ThemeSwitchProps {
-  theme: 'light' | 'dark';
-}
+import { StylesProps } from '../../../types';
 
-export const ThemeSwitch = styled.div<ThemeSwitchProps>`
+export const ThemeSwitch = styled.div<StylesProps>`
   position: relative;
+  width: 100px;
   height: 3rem;
   padding: 0 2rem;
   border-radius: ${theme.shape.borderRadius};
-  background: ${(props: ThemeSwitchProps) =>
-    props.theme === 'light'
-      ? theme.palette.componentBackgroundLight
-      : theme.palette.componentBackgroundDark};
-  width: 100px;
-  transition: all 1.2s;
+  ${(props: StylesProps) =>
+    colorChange(
+      props,
+      'background',
+      theme.palette.componentBackgroundLight,
+      theme.palette.componentBackgroundDark,
+      'background'
+    )}
   cursor: pointer;
 
   &::before {
     content: '';
     position: absolute;
-    left: ${(props: ThemeSwitchProps) => (props.theme === 'light' ? '0' : '50%')};
+    left: ${(props: StylesProps) => (props.theme === 'light' ? '0' : '50%')};
     top: 0;
     width: 50%;
     height: 100%;

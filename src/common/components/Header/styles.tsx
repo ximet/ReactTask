@@ -1,15 +1,7 @@
 import styled from 'styled-components';
 
-import theme from '../../styles/theme';
+import { StylesProps } from '../../../types';
 
-interface HeaderProps {
-  theme: 'light' | 'dark';
-}
-
-export const Header = styled.header<HeaderProps>`
+export const Header = styled.header<StylesProps>`
   padding: 1.5rem 0;
-  svg {
-    fill: ${(props: HeaderProps) =>
-      props.theme === 'light' ? theme.palette.black : theme.palette.white};
-  }
 `;

@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import theme from '../../styles/theme';
 
-export const Search = styled.div`
+import { StylesProps } from '../../../types';
+
+export const Search = styled.div<StylesProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -18,12 +20,12 @@ export const Search = styled.div`
     display: inline-block;
     width: 0.75rem;
     height: 0.75rem;
-    background: linear-gradient(
+    background: ${(props: StylesProps) => `linear-gradient(
         45deg,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 0) 43%,
-        #000 45%,
-        #000 55%,
+        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 45%,
+        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 55%,
         rgba(0, 0, 0, 0) 57%,
         rgba(0, 0, 0, 0) 100%
       ),
@@ -31,11 +33,11 @@ export const Search = styled.div`
         135deg,
         transparent 0%,
         transparent 43%,
-        #000 45%,
-        #000 55%,
+        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 45%,
+        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 55%,
         transparent 57%,
         transparent 100%
-      );
+      )`};
     cursor: pointer;
   }
 `;
