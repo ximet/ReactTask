@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
-// Custom hooks
+// Store
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-
-// Store actions
 import { toggleTheme } from '../../../features/theme/themeSlice';
 
 // Styles

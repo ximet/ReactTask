@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-// Custom hooks
+// Store
 import { useAppSelector } from '../../../app/hooks';
 
 // Components

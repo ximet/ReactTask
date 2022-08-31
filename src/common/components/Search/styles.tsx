@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from '../../styles/theme';
+
 export const Search = styled.div`
   position: relative;
   display: flex;
@@ -36,4 +38,21 @@ export const Search = styled.div`
       );
     cursor: pointer;
   }
+`;
+
+export const SearchResultList = styled.ul`
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: ${theme.palette.primary.light};
+  border-radius: ${theme.shape.borderRadius};
+
+  li:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+export const SearchResultItem = styled.li`
+  cursor: pointer;
 `;

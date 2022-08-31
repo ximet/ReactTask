@@ -24,6 +24,9 @@ package-lock.json
 /build*
 /build/*
 
+# dotenv environment variable files
+.env*
+
 # Editor/IDE
 .idea
 packages/api/etc/

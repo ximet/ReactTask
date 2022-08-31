@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Suspense, useEffect } from 'react';
+import React, { FunctionComponent, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Components
@@ -8,6 +8,7 @@ import Layout from './common/hoc/Layout';
 const Home = React.lazy(() => import('./common/pages/Home'));
 const About = React.lazy(() => import('./common/pages/About'));
 
+// Routes
 const routes = [
   { path: '/', name: 'Home', Component: Home },
   { path: '/about', name: 'About', Component: About }
@@ -24,5 +25,4 @@ const App: FunctionComponent = () => (
     </Suspense>
   </Layout>
 );
-
 export default App;

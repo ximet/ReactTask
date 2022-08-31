@@ -1,30 +1,79 @@
-import React, { FunctionComponent, HTMLInputTypeAttribute } from 'react';
+import React, {
+  FunctionComponent,
+  HTMLInputTypeAttribute,
+  ChangeEvent,
+  RefObject,
+  useRef
+} from 'react';
 
-// Custom hooks
+// Store
 import { useAppSelector } from '../../../app/hooks';
 
 // Styles
 import * as S from './styles';
 
-type InputType = HTMLInputTypeAttribute;
+type ChangeEventType = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 interface InputProps {
+  inputRef?: RefObject<HTMLInputElement>;
   inputElement: 'input';
-  type: InputType;
+  type: HTMLInputTypeAttribute;
   placeholder: string;
   theme?: string;
+  onChange?: (e: ChangeEventType) => void;
+  onFocus?: (e: ChangeEventType) => void;
+  handleClearValue?: (e: ChangeEventType) => void;
 }
 
 const INPUT = {
-  input: ({ type, placeholder, theme }: InputProps) => (
-    <S.Input type={type} placeholder={placeholder} theme={theme} />
+  input: ({
+    inputRef,
+    type,
+    placeholder,
+    theme,
+    onChange,
+    onFocus,
+    handleClearValue
+  }: InputProps) => (
+    <S.Input
+      ref={inputRef}
+      type={type}
+      placeholder={placeholder}
+      theme={theme}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={e => {
+        if (handleClearValue) handleClearValue(e);
+      }}
+    />
   )
 };
 
-const Input: FunctionComponent<InputProps> = ({ inputElement, type, placeholder }) => {
+const Input: FunctionComponent<InputProps> = ({
+  inputElement,
+  type,
+  placeholder,
+  onChange,
+  onFocus
+}) => {
   const { theme } = useAppSelector(state => state.theme);
 
-  return INPUT[inputElement]({ type, placeholder, theme, inputElement });
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleClearValue = (e: ChangeEventType) => {
+    e.currentTarget.value = '';
+  };
+
+  return INPUT[inputElement]({
+    inputRef,
+    type,
+    placeholder,
+    inputElement,
+    theme,
+    onChange,
+    onFocus,
+    handleClearValue
+  });
 };
 
 export default Input;
