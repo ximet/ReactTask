@@ -33,6 +33,6 @@ app.get('/token', (_, res) => {
     .catch(err => console.log(err));
 });
 
-app.listen(8081, '127.0.0.1', () => {
+app.listen(8081, () => {
   console.log('server start');
 });
