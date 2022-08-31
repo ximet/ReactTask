@@ -6,11 +6,13 @@ import { forecaApi } from '../services/forecaApi';
 
 // Reducers
 import themeReducer from '../features/theme/themeSlice';
+import authReducer from '../features/auth/authSlice';
 
 const store = configureStore({
   reducer: {
     [forecaApi.reducerPath]: forecaApi.reducer,
-    theme: themeReducer
+    theme: themeReducer,
+    auth: authReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(forecaApi.middleware)
 });

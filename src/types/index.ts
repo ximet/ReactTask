@@ -1,3 +1,12 @@
+export interface LoginRequest {
+  user?: string;
+  password?: string;
+}
+
+export interface LoginResponse {
+  data: Record<string, unknown>;
+}
+
 export interface SearchResult {
   adminArea: string;
   adminArea2?: string;
