@@ -15,6 +15,7 @@
     "noEmit": false,
     "jsx": "react",
     "baseUrl": "src",
+    "rootDirs": ["./server", "./src"],
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],

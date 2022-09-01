@@ -4,7 +4,8 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  data: Record<string, unknown>;
+  status: 'success' | 'fail';
+  token: string;
 }
 
 export interface SearchResult {

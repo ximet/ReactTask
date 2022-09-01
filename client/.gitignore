@@ -1,0 +1,36 @@
+# Cruft
+*~
+*#
+.#*
+.DS_Store
+
+# Test
+coverage
+
+# Logs
+*.log
+
+# npm & yarn
+node_modules/
+.npm
+.yarn-integrity
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock*
+package-lock.json
+/build/bundle.js
+/build/index.html
+/build*
+/build/*
+
+# dotenv environment variable files
+.env*
+
+# Editor/IDE
+.idea
+packages/api/etc/
+
+# Cache
+.cache/
+.eslintcache

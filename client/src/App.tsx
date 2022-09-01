@@ -1,10 +1,13 @@
 import React, { FunctionComponent, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
 // Store
-import { useLoginMutation } from './services/forecaApi';
 import { setCredentials } from './features/auth/authSlice';
 import { useAppDispatch } from './app/hooks';
+
+// Types
+import { LoginResponse, LoginRequest } from './types';
 
 // Components
 import Layout from './common/hoc/Layout';
@@ -20,18 +23,19 @@ const routes = [
 ];
 
 const App: FunctionComponent = () => {
-  const [login] = useLoginMutation();
-
   const dispatch = useAppDispatch();
 
   const handleLogin = async () => {
     try {
-      const result = await login({
+      const body: LoginRequest = {
         user: process.env.USER,
         password: process.env.PASSWORD
+      };
+      const res = await axios.post<LoginResponse>('http://localhost:3000/auth', body, {
+        withCredentials: true
       });
-      if ((result as any).data) {
-        dispatch(setCredentials((result as any).data.access_token));
+      if (res.data.token) {
+        dispatch(setCredentials(res.data.token));
       }
     } catch (err) {
       console.error(err);

@@ -4,8 +4,10 @@ const history = require('connect-history-api-fallback');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const dotenv = require('dotenv');
 const commonPaths = require('./paths');
+
+dotenv.config({ path: './.env' });
 
 module.exports = {
   entry: commonPaths.entryPath,
@@ -80,6 +82,8 @@ module.exports = {
       defaultAttribute: 'async'
     }),
     new ESLintPlugin(),
-    new Dotenv()
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    })
   ]
 };
