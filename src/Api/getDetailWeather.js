@@ -1,22 +1,14 @@
-import createWeatherApi from './createWeatherApi';
+const axios = require('axios');
+import { backendURL } from '../Config/constants';
 
 const getDetailWeather = async coords => {
-  return await createWeatherApi
-    .get(`forecast/daily/location=${coords.latitude},${coords.longitude}&dataset=full&periods=8`)
-    .then(function (response) {
-      return response.data.forecast.map(item => {
-        return {
-          date: item.date,
-          symbol: item.symbol,
-          minTemp: item.minTemp,
-          maxTemp: item.maxTemp,
-          minRelHumidity: item.minRelHumidity,
-          maxRelHumidity: item.maxRelHumidity,
-          windSpeed: item.maxWindSpeed,
-          cloudiness: item.cloudiness
-        };
-      });
-    });
+  const options = {
+    method: 'GET',
+    url: backendURL + '/get-detail-weather',
+    params: coords
+  };
+  
+  return await axios.request(options).then(response => response.data);
 };
 
 export default getDetailWeather;

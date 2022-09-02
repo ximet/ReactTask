@@ -1,16 +1,14 @@
-import createWeatherApi from './createWeatherApi';
+const axios = require('axios');
+import { backendURL } from '../Config/constants';
 
 const getCity = async coords => {
-  return await createWeatherApi
-    .get(`location/${coords.latitude},${coords.longitude}`)
-    .then(function (response) {
-      return {
-        country: response.data.country,
-        city: response.data.name,
-        latitude: response.data.lat,
-        longitude: response.data.lon
-      };
-    });
+  const options = {
+    method: 'GET',
+    url: backendURL + '/get-city',
+    params: coords
+  };
+
+  return await axios.request(options).then(response => response.data);
 };
 
 export default getCity;
