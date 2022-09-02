@@ -40,7 +40,8 @@ app.get('/get-city-coords', (req, res) => {
 });
 
 app.get('/get-current-weather', (req, res) => {
-  foreca.get(`current/location=${req.query.latitude},${req.query.longitude}`)
+  foreca
+    .get(`current/location=${req.query.latitude},${req.query.longitude}`)
     .then(function (response) {
       res.json({
         country: req.query.country,
@@ -55,7 +56,10 @@ app.get('/get-current-weather', (req, res) => {
 });
 
 app.get('/get-detail-weather', (req, res) => {
-  foreca.get(`forecast/daily/location=${req.query.latitude},${req.query.longitude}&dataset=full&periods=8`)
+  foreca
+    .get(
+      `forecast/daily/location=${req.query.latitude},${req.query.longitude}&dataset=full&periods=8`
+    )
     .then(function (response) {
       let detailWeather = () => {
         return response.data.forecast.map(item => {
@@ -70,8 +74,8 @@ app.get('/get-detail-weather', (req, res) => {
             cloudiness: item.cloudiness
           };
         });
-      }
-      
+      };
+
       res.send(detailWeather());
     });
 });

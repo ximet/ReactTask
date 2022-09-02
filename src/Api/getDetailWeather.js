@@ -7,7 +7,7 @@ const getDetailWeather = async coords => {
     url: backendURL + '/get-detail-weather',
     params: coords
   };
-  
+
   return await axios.request(options).then(response => response.data);
 };
 

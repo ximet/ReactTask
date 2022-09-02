@@ -7,7 +7,7 @@ const getCurrentWeather = async coords => {
     url: backendURL + '/get-current-weather',
     params: coords
   };
-  
+
   return await axios.request(options).then(response => response.data);
 };
 
