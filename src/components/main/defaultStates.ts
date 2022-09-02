@@ -1,7 +1,7 @@
-import { CurrentWeatherType } from "types/weatherTypes";
-import { LocationInfoType } from "types/cityInfoType";
+import { CurrentWeatherType } from 'types/weatherTypes';
+import { LocationInfoType } from 'types/cityInfoType';
 
-export const defaultCurrentWeather : CurrentWeatherType = {
+export const defaultCurrentWeather: CurrentWeatherType = {
   time: '',
   symbol: '',
   symbolPhrase: '',
@@ -22,7 +22,7 @@ export const defaultCurrentWeather : CurrentWeatherType = {
   visibility: 0
 };
 
-export const defaultLocationInfo : LocationInfoType = {
+export const defaultLocationInfo: LocationInfoType = {
   id: 0,
   city: '',
   country: '',
