@@ -24,7 +24,12 @@ const Main: FC = () => {
       getCity(lon, lat),
       getWeather<{ current: CurrentWeatherType }>('/api/v1/current/', lon, lat),
       getWeather<{ forecast: HourlyWeatherType[] }>('/api/v1/forecast/hourly/', lon, lat),
-      getWeather<{ forecast: DailyWeatherType[] }>('/api/v1/forecast/daily/', lon, lat)
+      getWeather<{ forecast: DailyWeatherType[] }>(
+        '/api/v1/forecast/daily/',
+        lon,
+        lat,
+        '&periods=10&dataset=full'
+      )
     ]).then(res => {
       setLocation(res[0]);
       setCurrentWeather(res[1].current);
@@ -47,8 +52,22 @@ const Main: FC = () => {
       {currentWeather.time ? (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
-          <MainHourlyCard />
-          <MainDailyCard />
+          <section className={styles['weather-section-wrapper']}>
+            <h2 className={styles['weather-section-title']}>Hourly weather</h2>
+            <div className={styles['section-hourly']}>
+              {hourlyWeather.map(el => (
+                <MainHourlyCard key={el.time} hourlyWeather={el} />
+              ))}
+            </div>
+          </section>
+          <section className={styles['weather-section-wrapper']}>
+            <h2 className={styles['weather-section-title']}>Daily weather</h2>
+            <div className={styles['section-daily']}>
+              {dailyWeather.map(el => (
+                <MainDailyCard key={el.date} dailyWeather={el} />
+              ))}
+            </div>
+          </section>
         </>
       ) : (
         <p>{error}</p>

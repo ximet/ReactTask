@@ -4,6 +4,7 @@
   align-items: center;
   height: 80px;
   background-color: var(--light-header);
+  margin-bottom: 5rem;
 }
 
 .nav-list {
