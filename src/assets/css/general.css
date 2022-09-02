@@ -1,0 +1,88 @@
+/* general */
+:root {
+  --background: #fff;
+  --footer-background: #3cc2ff;
+  --text-primary: #2e2e2e;
+}
+[data-theme='dark'] {
+  --background: #0f152e;
+  --footer-background: #070a16;
+  --text-primary: #fff;
+}
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+[data-theme] {
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding-top: 180px;
+  position: relative;
+  background-image: url(../img/cloud-top.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+[data-theme]:before {
+  z-index: 1;
+  content: '';
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 100px;
+  top: 100px;
+  background-image: url(../img/sun-moon.png);
+  background-repeat: no-repeat;
+  background-position: -241px -65px;
+  background-size: 465px;
+}
+[data-theme='dark'] {
+  background-image: url(../img/cloud-top-dark.png);
+  background-color: var(--background);
+}
+[data-theme='dark']:before {
+  background-position: -13px -68px;
+}
+[data-theme='dark'] header {
+  color: var(--text-primary);
+  border-color: var(--background);
+}
+[data-theme='dark'] header:before {
+  background-color: var(--background);
+}
+
+p {
+  line-height: 24px;
+}
+input,
+input::placeholder,
+textarea,
+textarea::placeholder,
+select {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: transparent;
+}
+select {
+  background-color: var(--background);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-primary);
+}
+
+h1 {
+  width: 100%;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+p {
+  margin-top: 30px;
+}

@@ -3,6 +3,7 @@ const convert = require('koa-connect');
 const history = require('connect-history-api-fallback');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -51,6 +52,17 @@ module.exports = {
             loader: 'url-loader?limit=100000'
           }
         ]
+      },
+      {
+        test: /\.php$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: commonPaths.phpFolder
+            }
+          }
+        ]
       }
     ]
   },
@@ -66,7 +78,7 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css', '.scss']
+    extensions: ['*', '.js', '.jsx', '.css', '.scss', '.php']
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -75,6 +87,9 @@ module.exports = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
+    }),
+    new Dotenv({
+      path: `./.env`
     })
   ]
 };

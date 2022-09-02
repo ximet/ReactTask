@@ -1,0 +1,52 @@
+.city {
+  display: flex;
+  flex-wrap: wrap;
+}
+.symbol {
+  margin-right: 20px;
+  height: 70px;
+}
+h2 {
+  font-weight: 700;
+  font-size: 30px;
+  color: #3cc2ff;
+}
+h3 {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 24px;
+}
+h4 {
+  color: #858584;
+}
+.list {
+  margin-left: 30px;
+}
+.list li {
+  margin-top: 6px;
+}
+.list li b {
+  font-size: 20px;
+}
+.list li:first-child {
+  margin-top: 0;
+}
+.more {
+  transition: 0.2s;
+  cursor: pointer;
+  margin-left: 16px;
+  display: inline-block;
+  padding: 0 20px;
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  background-color: #3cc2ff;
+  color: #fff;
+}
+.more:hover {
+  transition: 0.2s;
+  background-color: #3095cb;
+}
