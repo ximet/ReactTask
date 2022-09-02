@@ -1,16 +1,25 @@
 import axios from 'axios';
-import { Coordinates, LocationData, WeatherData } from 'types';
+import { Coordinates, DailyWeather, LocationData, WeatherData } from 'types';
 
-const MAIN_URL = 'https://pfa.foreca.com/api/v1';
+const url = process.env.MAIN_URL;
 
-export const auth = axios.create({
-  baseURL: MAIN_URL,
-  headers: { Authorization: `Bearer ${process.env.TOKEN}` }
-});
-
-export const getCurrentWeather = async (param: Coordinates): Promise<WeatherData | null> => {
+export const createToken = async () => {
   try {
-    const result = await auth.get(`/current/location=${param.lon},${param.lat}`);
+    const result = await axios.post(`http://localhost:5000/authorize/token?expire_hours=2`);
+    window.localStorage.setItem('token', result.data.access_token);
+    return result.data;
+  } catch (err) {
+    throw new Error((err as Error).message);
+  }
+};
+
+export const getCurrentWeather = async (param: Coordinates) => {
+  try {
+    const result = await axios.get(`${url}/current/location=${param.lon},${param.lat}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
     return result.data.current;
   } catch (error) {
     throw new Error((error as Error).message);
@@ -19,8 +28,28 @@ export const getCurrentWeather = async (param: Coordinates): Promise<WeatherData
 
 export const getLocation = async (param: Coordinates): Promise<LocationData | null> => {
   try {
-    const result = await auth.get(`/location/${param.lon},${param.lat}`);
+    const result = await axios.get(`${url}/location/${param.lon},${param.lat}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
     return result.data;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+export const getDailyWeather = async (param: Coordinates) => {
+  try {
+    const result = await axios.get(
+      `${url}/forecast/daily/location=${param.lon},${param.lat}&dataset=full`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }
+    );
+    return result.data.forecast;
   } catch (error) {
     throw new Error((error as Error).message);
   }

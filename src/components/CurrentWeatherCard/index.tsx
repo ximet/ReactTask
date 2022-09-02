@@ -23,20 +23,26 @@ const CurrentWeatherCard: FC<WeatherProps> = ({
         <div>Geolocation is not enabled</div>
       ) : weatherData && location ? (
         <div>
-          <h1>{location.name}</h1>
-          <h2>{location.country}</h2>
-          <h6> {weatherData.symbol} </h6>
-          <h1>{weatherData.temperature}&deg; C </h1>
-          <h3>{weatherData.symbolPhrase}</h3>
-          <h6>Feels like {weatherData.feelsLikeTemp}&deg;</h6>
-          <h6>
-            Wind{' '}
-            <i className={`${styles.rotate}${weatherData.windDir}`}>{weatherData.windDir} &rarr;</i>
-          </h6>
-          <h6>{weatherData.windSpeed} km/h</h6>
-          <h6>Visibility {weatherData.visibility * 0.001} km</h6>
-          <h6>Humidity {weatherData.relHumidity} </h6>
-          <h6>Dew Point {weatherData.dewPoint} </h6>
+          <h2 className={styles.locationName}>
+            {location.name}, {location.country}
+          </h2>
+          <div className={styles.temperatureBox}>
+            <img
+              className={styles.symbol}
+              src={`https://developer.foreca.com/static/images/symbols/${weatherData.symbol}.png`}
+              alt={weatherData.symbol}
+            />
+            <h1 className={styles.temperature}>{weatherData.temperature}&deg;C </h1>
+          </div>
+          <h3 className={styles.symbolPhrase}>{weatherData.symbolPhrase}</h3>
+          <div className={styles.weatherDataBox}>
+            <h5>Feels like {weatherData.feelsLikeTemp}&deg;</h5>
+            <h5>Wind {weatherData.windSpeed} km/h</h5>
+            <h5>Visibility {(weatherData.visibility * 0.001).toFixed(2)} km</h5>
+            <h5>Humidity {weatherData.relHumidity} %</h5>
+            <h5>Dew Point {weatherData.dewPoint}&deg;</h5>
+            <h5>Cloudines {weatherData.cloudiness}%</h5>
+          </div>
         </div>
       ) : (
         <div>Getting the location data&hellip; </div>

@@ -1,0 +1,21 @@
+.dailyCardsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 30px 0;
+
+  .dailyHeader {
+    text-align: left;
+    font-weight: 300;
+  }
+  .dailyCardsBox {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+  }
+}

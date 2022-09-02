@@ -1,27 +1,35 @@
 import React, { FC, useEffect, useState } from 'react';
 import useGetLocation from 'hooks/useGetLocation';
 import '../../styles/globals.scss';
-import { getCurrentWeather, getLocation } from 'API/get';
+import { createToken, getCurrentWeather, getDailyWeather, getLocation } from 'API/get';
 import CurrentWeatherCard from 'components/CurrentWeatherCard';
-import { LocationData, WeatherData } from 'types';
+import { DailyWeather, LocationData, WeatherData } from 'types';
+import DailyWeatherCard from 'components/DailyWeatherCard';
+import styles from './styles.module.scss';
 
 const Main: FC = () => {
-  const [coords, isGeolocationAvailable, isGeolocationEnabled] = useGetLocation();
+  const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGetLocation();
   const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState<LocationData | null>(null);
-
-  const getData = async () => {
-    const data = await getCurrentWeather({ lon: coords?.longitude, lat: coords?.latitude });
-    const locationData = await getLocation({ lon: coords?.longitude, lat: coords?.latitude });
-    setCurrentWeather(data);
-    setLocation(locationData);
-  };
+  const [forecast, setForecast] = useState<DailyWeather[]>([]);
 
   useEffect(() => {
+    const coordinates = {
+      lon: coords?.longitude,
+      lat: coords?.latitude
+    };
+    const getData = async () => {
+      await createToken();
+      const data = await getCurrentWeather(coordinates);
+      const locationData = await getLocation(coordinates);
+      const dailyWeather = await getDailyWeather(coordinates);
+      setCurrentWeather(data);
+      setLocation(locationData);
+      setForecast(dailyWeather);
+    };
     if (coords) {
       getData();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coords]);
 
   return (
@@ -32,6 +40,14 @@ const Main: FC = () => {
         isAvailable={isGeolocationAvailable}
         isEnabled={isGeolocationEnabled}
       />
+      <div className={styles.dailyCardsContainer}>
+        <h1 className={styles.dailyHeader}>Daily</h1>
+        <div className={styles.dailyCardsBox}>
+          {forecast.map((day: DailyWeather) => {
+            return <DailyWeatherCard key={day.date} dayWeather={day} />;
+          })}
+        </div>
+      </div>
     </main>
   );
 };

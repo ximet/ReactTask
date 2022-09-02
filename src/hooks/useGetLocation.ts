@@ -1,6 +1,6 @@
 import { useGeolocated } from 'react-geolocated';
 
-type Coordinates = {
+type GeolocationCoordinates = {
   latitude: number;
   longitude: number;
   accuracy: number;
@@ -9,14 +9,18 @@ type Coordinates = {
   heading: number | null;
 };
 
-const useGetLocation = (): [Coordinates | undefined, boolean, boolean] => {
+const useGetLocation = (): {
+  coords: GeolocationCoordinates | undefined;
+  isGeolocationAvailable: boolean;
+  isGeolocationEnabled: boolean;
+} => {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({
     positionOptions: {
       enableHighAccuracy: false
     },
     userDecisionTimeout: 5000
   });
-  return [coords, isGeolocationAvailable, isGeolocationEnabled];
+  return { coords, isGeolocationAvailable, isGeolocationEnabled };
 };
 
 export default useGetLocation;
