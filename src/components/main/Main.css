@@ -1,3 +1,27 @@
 .main h1 {
   font-size: 3rem;
 }
+
+.main-card {
+  display: flex;
+  column-gap: 3rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--light-color-background);
+}
+
+.main-card__item {
+  display: flex;
+  row-gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-card__item_center {
+  align-items: center;
+}
+
+.main-card__title {
+  font-weight: 500;
+  font-size: 2.4rem;
+}

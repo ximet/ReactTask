@@ -4,37 +4,33 @@ import commonStyle from '../../styles/commonStyles.css';
 import React, { FC, useEffect, useState } from 'react';
 import { usePosition } from 'hooks/usePosition';
 import { getCity } from 'services/getCity';
-import { getCityWeather, cityWeatherType } from 'services/getWeather';
+import { getWeather } from 'services/getWeather';
+import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/weatherTypes';
+import { LocationInfoType } from 'types/cityInfoType';
+import { defaultCurrentWeather, defaultLocationInfo } from './defaultStates';
+import MainCard from './MainCard';
+import MainHourlyCard from './MainHourlyCard';
+import MainDailyCard from './MainDailyCard';
 
 const Main: FC = () => {
   const { position, error } = usePosition();
-  const [city, setCity] = useState<string>('');
-  const [weather, setWeather] = useState<cityWeatherType>({
-    current: {
-      time: '',
-      symbol: '',
-      symbolPhrase: '',
-      temperature: 0,
-      feelsLikeTemp: 0,
-      relHumidity: 0,
-      dewPoint: 0,
-      windSpeed: 0,
-      windDir: 0,
-      windDirString: '',
-      windGust: 0,
-      precipProb: 0,
-      precipRate: 0,
-      cloudiness: 0,
-      thunderProb: 0,
-      uvIndex: 0,
-      pressure: 0,
-      visibility: 0
-    }
-  });
+  const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(defaultCurrentWeather);
+  const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
+  const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
 
   async function fetchData(lon: number, lat: number) {
-    await getCity(lon, lat).then(locationData => setCity(locationData.city));
-    await getCityWeather(lon, lat).then(cityWeather => setWeather(cityWeather));
+    Promise.all([
+      getCity(lon, lat),
+      getWeather<{ current: CurrentWeatherType }>('/api/v1/current/', lon, lat),
+      getWeather<{ forecast: HourlyWeatherType[] }>('/api/v1/forecast/hourly/', lon, lat),
+      getWeather<{ forecast: DailyWeatherType[] }>('/api/v1/forecast/daily/', lon, lat)
+    ]).then(res => {
+      setLocation(res[0]);
+      setCurrentWeather(res[1].current);
+      setHourlyWeather(res[2].forecast);
+      setDailyWeather(res[3].forecast);
+    });
   }
 
   useEffect(() => {
@@ -48,15 +44,11 @@ const Main: FC = () => {
 
   return (
     <main className={commonStyle.container}>
-      {weather.current.time ? (
+      {currentWeather.time ? (
         <>
-          <span>{city}</span>
-          <img
-            src={`https://developer.foreca.com/static/images/symbols/${weather.current.symbol}.png`}
-            alt={weather.current.symbolPhrase}
-          />
-          <p>{weather.current.symbolPhrase}</p>
-          <p>Temperature: {weather.current.temperature}°C</p>
+          <MainCard currentWeather={currentWeather} location={location} />
+          <MainHourlyCard />
+          <MainDailyCard />
         </>
       ) : (
         <p>{error}</p>
