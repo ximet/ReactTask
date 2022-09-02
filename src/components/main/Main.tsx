@@ -16,18 +16,18 @@ const Main: FC = () => {
   const { position, error } = usePosition();
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(defaultCurrentWeather);
-  const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType>([]);
-  const [dailyWeather, setDailyWeather] = useState<DailyWeatherType>([]);
+  const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
+  const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
 
   async function fetchData(lon: number, lat: number) {
     Promise.all([
       getCity(lon, lat),
-      getWeather<CurrentWeatherType>('/api/v1/current/', lon, lat),
-      getWeather<{ forecast: HourlyWeatherType }>('/api/v1/forecast/hourly/', lon, lat),
-      getWeather<{ forecast: DailyWeatherType }>('/api/v1/forecast/daily/', lon, lat)
+      getWeather<{ current: CurrentWeatherType }>('/api/v1/current/', lon, lat),
+      getWeather<{ forecast: HourlyWeatherType[] }>('/api/v1/forecast/hourly/', lon, lat),
+      getWeather<{ forecast: DailyWeatherType[] }>('/api/v1/forecast/daily/', lon, lat)
     ]).then(res => {
       setLocation(res[0]);
-      setCurrentWeather(res[1]);
+      setCurrentWeather(res[1].current);
       setHourlyWeather(res[2].forecast);
       setDailyWeather(res[3].forecast);
     });
@@ -44,7 +44,7 @@ const Main: FC = () => {
 
   return (
     <main className={commonStyle.container}>
-      {currentWeather.current.time ? (
+      {currentWeather.time ? (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
           <MainHourlyCard />

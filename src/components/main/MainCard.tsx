@@ -21,7 +21,7 @@ const convertTime = (timeData: string) => {
 };
 
 const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
-  const date = convertTime(currentWeather.current.time);
+  const date = convertTime(currentWeather.time);
   return (
     <div className={styles['main-card']}>
       <div className={`${styles['main-card__item']} ${styles['main-card__item_center']}`}>
@@ -30,22 +30,22 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
           {date.date}-{date.month}-{date.year} {date.hours}:{date.minutes}
         </p>
         <img
-          src={`https://developer.foreca.com/static/images/symbols/${currentWeather.current.symbol}.png`}
-          alt={currentWeather.current.symbolPhrase}
+          src={`https://developer.foreca.com/static/images/symbols/${currentWeather.symbol}.png`}
+          alt={currentWeather.symbolPhrase}
         />
         <p>
-          {currentWeather.current.symbolPhrase}, {currentWeather.current.temperature}°C
+          {currentWeather.symbolPhrase}, {currentWeather.temperature}°C
         </p>
       </div>
       <div className={styles['main-card__item']}>
-        <p>Relative humidity: {currentWeather.current.relHumidity}%</p>
+        <p>Relative humidity: {currentWeather.relHumidity}%</p>
         <p>
-          Wind speed: {currentWeather.current.windSpeed}m/s ({currentWeather.current.windDirString})
+          Wind speed: {currentWeather.windSpeed}m/s ({currentWeather.windDirString})
         </p>
-        <p>Wind gust: {currentWeather.current.windGust}m/s</p>
-        <p>Probability of precipitation: {currentWeather.current.precipProb}%</p>
-        <p>Cloudiness: {currentWeather.current.cloudiness}%</p>
-        <p>UV index: {currentWeather.current.uvIndex}</p>
+        <p>Wind gust: {currentWeather.windGust}m/s</p>
+        <p>Probability of precipitation: {currentWeather.precipProb}%</p>
+        <p>Cloudiness: {currentWeather.cloudiness}%</p>
+        <p>UV index: {currentWeather.uvIndex}</p>
         <p>Visibility: hidden :))))</p>
       </div>
     </div>

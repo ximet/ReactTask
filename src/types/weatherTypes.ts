@@ -1,54 +1,41 @@
-export type CurrentWeatherType = {
-  current: {
-    time: string;
-    symbol: string;
-    symbolPhrase: string;
-    temperature: number;
-    feelsLikeTemp: number;
-    relHumidity: number;
-    dewPoint: number;
-    windSpeed: number;
-    windDir: number;
-    windDirString: string;
-    windGust: number;
-    precipProb: number;
-    precipRate: number;
-    cloudiness: number;
-    thunderProb: number;
-    uvIndex: number;
-    pressure: number;
-    visibility: number;
-  };
-};
-
-export type HourlyWeatherType = {
-  time: string;
+type CommonWeatherType = {
   symbol: string;
   symbolPhrase: string;
-  temperature: number;
-  feelsLikeTemp: number;
-  windSpeed: number;
-  windGust: number;
-  relHumidity: number;
-  dewPoint: number;
   windDir: number;
-  windDirString: string;
   precipProb: number;
-  precipAccum: number;
-  snowAccum: number;
   cloudiness: number;
-  thunderProb: number;
   uvIndex: number;
   pressure: number;
-  visibility: number;
-  precipType: string;
-  solarRadiation: number;
-}[];
+};
 
-export type DailyWeatherType = {
+type CommonCurrentAndHourly = {
+  time: string;
+  temperature: number;
+  feelsLikeTemp: number;
+  relHumidity: number;
+  dewPoint: number;
+  windSpeed: number;
+  windGust: number;
+  windDirString: string;
+  thunderProb: number;
+  visibility: number;
+};
+
+export type CurrentWeatherType = CommonWeatherType &
+  CommonCurrentAndHourly & {
+    precipRate: number;
+  };
+
+export type HourlyWeatherType = CommonWeatherType &
+  CommonCurrentAndHourly & {
+    precipAccum: number;
+    snowAccum: number;
+    precipType: string;
+    solarRadiation: number;
+  };
+
+export type DailyWeatherType = CommonWeatherType & {
   date: string;
-  symbol: string;
-  symbolPhrase: string;
   maxTemp: number;
   minTemp: number;
   maxFeelsLikeTemp: number;
@@ -60,10 +47,7 @@ export type DailyWeatherType = {
   precipAccum: number;
   snowAccum: number;
   maxWindSpeed: number;
-  windDir: number;
   maxWindGust: number;
-  precipProb: number;
-  cloudiness: number;
   sunrise: string;
   sunset: string;
   sunriseEpoch: number;
@@ -71,9 +55,7 @@ export type DailyWeatherType = {
   moonrise: string;
   moonset: string;
   moonPhase: number;
-  uvIndex: number;
   minVisibility: number;
-  pressure: number;
   confidence: string;
   solarRadiationSum: number;
-}[];
+};
