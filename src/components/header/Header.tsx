@@ -1,6 +1,6 @@
 import styles from './Header.css';
 
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getCity } from 'services/getCity';
 import HTTPRequest from 'services/httpService';
@@ -10,12 +10,11 @@ type LinkType = {
   isActive: boolean;
 };
 
-let timeoutId: number;
-
 const setActive = ({ isActive }: LinkType) =>
   isActive ? `${styles.listItem} ${styles['active-link']}` : styles.listItem;
 
 const Header: FC = () => {
+  const timeoutId = useRef(0);
   const [searchText, setSearchText] = useState<string>('');
   const [cities, setCities] = useState<LocationInfoType[]>([]);
 
@@ -25,10 +24,10 @@ const Header: FC = () => {
   };
 
   useEffect(() => {
-    clearTimeout(timeoutId);
+    clearTimeout(timeoutId.current);
 
     if (searchText) {
-      timeoutId = window.setTimeout(
+      timeoutId.current = window.setTimeout(
         () => getCities(searchText).then(res => setCities(res.locations)),
         1000
       );
@@ -75,8 +74,7 @@ const Header: FC = () => {
           {cities.length
             ? cities.map(city => (
                 <div key={city.id} className={styles['search-results__item']}>
-                  {' '}
-                  {city.name}, {city.country}{' '}
+                  {city.name}, {city.country}
                 </div>
               ))
             : null}

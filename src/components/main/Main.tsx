@@ -44,7 +44,7 @@ const Main: FC = () => {
         '/forecast/daily/',
         position.longitude,
         position.latitude,
-        `&periods=${selectDays}&dataset=full`
+        { periods: selectDays, dataset: 'full' }
       ).then(res => setDailyWeather(res.forecast));
     }
   }, [selectDays]);
