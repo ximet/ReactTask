@@ -12,8 +12,12 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: var(--light-background);
+  min-height: 100vh;
+  background: linear-gradient(
+    172deg,
+    var(--light-white-background) 40%,
+    var(--light-blue-background) 70%
+  );
 }
 
 .loading-text {

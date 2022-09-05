@@ -2,26 +2,30 @@ import React, { FC } from 'react';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
+import { convertTime, getImgURL } from '../../helpers';
 
 type MainCardProps = {
   currentWeather: CurrentWeatherType;
   location: LocationInfoType;
 };
 
-const convertTime = (timeData: string) => {
-  const date = new Date(timeData);
-
-  return {
-    date: date.getDate(),
-    month: date.getMonth() + 1,
-    year: date.getFullYear(),
-    hours: date.getHours(),
-    minutes: date.getMinutes()
-  };
-};
-
 const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
-  const date = convertTime(currentWeather.time);
+  const {
+    time,
+    symbol,
+    symbolPhrase,
+    temperature,
+    relHumidity,
+    windSpeed,
+    windDirString,
+    windGust,
+    precipProb,
+    cloudiness,
+    uvIndex
+  } = currentWeather;
+
+  const date = convertTime(time);
+
   return (
     <div className={styles['main-card']}>
       <div className={`${styles['main-card__item']} ${styles['main-card__item_center']}`}>
@@ -29,23 +33,20 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
         <p>
           {date.date}-{date.month}-{date.year} {date.hours}:{date.minutes}
         </p>
-        <img
-          src={`https://developer.foreca.com/static/images/symbols/${currentWeather.symbol}.png`}
-          alt={currentWeather.symbolPhrase}
-        />
+        <img src={getImgURL(symbol)} alt={symbolPhrase} />
         <p>
-          {currentWeather.symbolPhrase}, {currentWeather.temperature}°C
+          {symbolPhrase}, {temperature}°C
         </p>
       </div>
       <div className={styles['main-card__item']}>
-        <p>Relative humidity: {currentWeather.relHumidity}%</p>
+        <p>Relative humidity: {relHumidity}%</p>
         <p>
-          Wind speed: {currentWeather.windSpeed}m/s ({currentWeather.windDirString})
+          Wind speed: {windSpeed}m/s ({windDirString})
         </p>
-        <p>Wind gust: {currentWeather.windGust}m/s</p>
-        <p>Probability of precipitation: {currentWeather.precipProb}%</p>
-        <p>Cloudiness: {currentWeather.cloudiness}%</p>
-        <p>UV index: {currentWeather.uvIndex}</p>
+        <p>Wind gust: {windGust}m/s</p>
+        <p>Probability of precipitation: {precipProb}%</p>
+        <p>Cloudiness: {cloudiness}%</p>
+        <p>UV index: {uvIndex}</p>
         <p>Visibility: hidden :))))</p>
       </div>
     </div>

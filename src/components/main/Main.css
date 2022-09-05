@@ -4,10 +4,12 @@
 
 .main-card {
   display: flex;
+  margin-bottom: 3rem;
   column-gap: 3rem;
   padding: 0.5rem;
   border-radius: 1rem;
-  background-color: var(--light-color-background);
+  background-color: var(--light-card-background);
+  box-shadow: 0px 5px 10px 2px var(--light-card-shadow);
 }
 
 .main-card__item {
@@ -21,7 +23,73 @@
   align-items: center;
 }
 
+.hourly-card__title,
+.daily-card__title,
 .main-card__title {
   font-weight: 500;
+}
+
+.main-card__title {
   font-size: 2.4rem;
+}
+
+.section-hourly {
+  display: grid;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  grid-template-columns: repeat(8, minmax(100px, 200px));
+  grid-template-rows: repeat(3, max-content);
+}
+
+.weather-section-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.weather-section-title {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.hourly-card,
+.daily-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  column-gap: 0.7rem;
+  row-gap: 0.7rem;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+  background-color: var(--light-card-background);
+  box-shadow: 0px 5px 10px 2px var(--light-card-shadow);
+}
+
+.hourly-card__img {
+  max-width: 100px;
+  width: 100%;
+  text-align: center;
+  object-fit: contain;
+}
+
+.section-daily {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}
+
+.sun-icon {
+  width: 60px;
+  height: auto;
+}
+
+.sun-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
