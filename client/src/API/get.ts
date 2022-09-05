@@ -1,0 +1,59 @@
+import axios from 'axios';
+import { GeolocationCoordinates } from 'hooks/useGetLocation';
+import { Coordinates, LocationData } from 'types';
+
+const URL = 'https://pfa.foreca.com/api/v1';
+
+export const createToken = async () => {
+  try {
+    const result = await axios.post(`http://localhost:5000/authorize/token?expire_hours=2`);
+    window.localStorage.setItem('token', result.data.access_token);
+    return result.data;
+  } catch (err) {
+    throw new Error((err as Error).message);
+  }
+};
+
+export const getCurrentWeather = async (param: GeolocationCoordinates | null) => {
+  try {
+    const result = await axios.get(`${URL}/current/location=${param?.lon},${param?.lat}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return result.data.current;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+export const getLocation = async (
+  param: GeolocationCoordinates | null
+): Promise<LocationData | null> => {
+  try {
+    const result = await axios.get(`${URL}/location/${param?.lon},${param?.lat}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return result.data;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+export const getDailyWeather = async (param: GeolocationCoordinates | null) => {
+  try {
+    const result = await axios.get(
+      `${URL}/forecast/daily/location=${param?.lon},${param?.lat}&dataset=full`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }
+    );
+    return result.data.forecast;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};

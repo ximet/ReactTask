@@ -12,6 +12,7 @@ coverage
 
 # npm & yarn
 node_modules/
+.env
 .npm
 .yarn-integrity
 npm-debug.log*

@@ -46,7 +46,6 @@ module.exports = {
     // https://twitter.com/wSokra/status/969679223278505985
     runtimeChunk: true
   },
-
   module: {
     rules: [
       {

@@ -1,0 +1,39 @@
+.locationName {
+  font-weight: 300;
+}
+
+.temperatureBox {
+  width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px auto;
+
+  .symbol {
+    width: 60px;
+    height: 60px;
+  }
+
+  .temperature {
+    font-size: 3.2em;
+    font-weight: 300;
+  }
+}
+
+.symbolPhrase {
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+.weatherDataBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: start;
+  width: 400px;
+  margin: 20px auto;
+
+  h5 {
+    font-weight: 300;
+  }
+}
