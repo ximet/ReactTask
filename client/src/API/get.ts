@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { Coordinates, DailyWeather, LocationData, WeatherData } from 'types';
+import { GeolocationCoordinates } from 'hooks/useGetLocation';
+import { Coordinates, LocationData } from 'types';
 
-const url = process.env.MAIN_URL;
+const URL = 'https://pfa.foreca.com/api/v1';
 
 export const createToken = async () => {
   try {
@@ -13,9 +14,9 @@ export const createToken = async () => {
   }
 };
 
-export const getCurrentWeather = async (param: Coordinates) => {
+export const getCurrentWeather = async (param: GeolocationCoordinates | null) => {
   try {
-    const result = await axios.get(`${url}/current/location=${param.lon},${param.lat}`, {
+    const result = await axios.get(`${URL}/current/location=${param?.lon},${param?.lat}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -26,9 +27,11 @@ export const getCurrentWeather = async (param: Coordinates) => {
   }
 };
 
-export const getLocation = async (param: Coordinates): Promise<LocationData | null> => {
+export const getLocation = async (
+  param: GeolocationCoordinates | null
+): Promise<LocationData | null> => {
   try {
-    const result = await axios.get(`${url}/location/${param.lon},${param.lat}`, {
+    const result = await axios.get(`${URL}/location/${param?.lon},${param?.lat}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -39,10 +42,10 @@ export const getLocation = async (param: Coordinates): Promise<LocationData | nu
   }
 };
 
-export const getDailyWeather = async (param: Coordinates) => {
+export const getDailyWeather = async (param: GeolocationCoordinates | null) => {
   try {
     const result = await axios.get(
-      `${url}/forecast/daily/location=${param.lon},${param.lat}&dataset=full`,
+      `${URL}/forecast/daily/location=${param?.lon},${param?.lat}&dataset=full`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`

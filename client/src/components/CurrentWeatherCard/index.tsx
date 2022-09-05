@@ -1,26 +1,19 @@
 import React, { FC } from 'react';
 import { LocationData, WeatherData } from 'types';
+import { getSymbol } from 'utils/getWeatherSymbol';
 import styles from './styles.module.scss';
 
 type WeatherProps = {
   weatherData: WeatherData | null;
   location: LocationData | null;
-  isAvailable: boolean;
-  isEnabled: boolean;
+  status: string | null;
 };
 
-const CurrentWeatherCard: FC<WeatherProps> = ({
-  weatherData,
-  location,
-  isAvailable,
-  isEnabled
-}) => {
+const CurrentWeatherCard: FC<WeatherProps> = ({ weatherData, location, status }) => {
   return (
     <div>
-      {!isAvailable ? (
-        <div>Your browser does not support Geolocation</div>
-      ) : !isEnabled ? (
-        <div>Geolocation is not enabled</div>
+      {status ? (
+        <div>{status}</div>
       ) : weatherData && location ? (
         <div>
           <h2 className={styles.locationName}>
@@ -29,7 +22,7 @@ const CurrentWeatherCard: FC<WeatherProps> = ({
           <div className={styles.temperatureBox}>
             <img
               className={styles.symbol}
-              src={`https://developer.foreca.com/static/images/symbols/${weatherData.symbol}.png`}
+              src={getSymbol(weatherData.symbol)}
               alt={weatherData.symbol}
             />
             <h1 className={styles.temperature}>{weatherData.temperature}&deg;C </h1>

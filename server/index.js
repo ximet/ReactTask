@@ -13,7 +13,7 @@ server.get('/', (req, res) => {
 });
 
 server.post(':endpoint([\\/\\w\\.-]*)', (req, res) => {
-  const endpoint = process.env.API_BASE_URL + req.params.endpoint;
+  const endpoint = `https://pfa.foreca.com${req.params.endpoint}`;
   const params = {
     user: process.env.USER,
     password: process.env.PASSWORD
