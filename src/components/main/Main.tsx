@@ -22,10 +22,10 @@ const Main: FC = () => {
   async function fetchData(lon: number, lat: number) {
     Promise.all([
       getCity(lon, lat),
-      getWeather<{ current: CurrentWeatherType }>('/api/v1/current/', lon, lat),
-      getWeather<{ forecast: HourlyWeatherType[] }>('/api/v1/forecast/hourly/', lon, lat),
+      getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat),
+      getWeather<{ forecast: HourlyWeatherType[] }>('/forecast/hourly/', lon, lat),
       getWeather<{ forecast: DailyWeatherType[] }>(
-        '/api/v1/forecast/daily/',
+        '/forecast/daily/',
         lon,
         lat,
         '&periods=10&dataset=full'
@@ -61,7 +61,7 @@ const Main: FC = () => {
             </div>
           </section>
           <section className={styles['weather-section-wrapper']}>
-            <h2 className={styles['weather-section-title']}>Daily weather</h2>
+            <h2 className={styles['weather-section-title']}>Weather for 10 days</h2>
             <div className={styles['section-daily']}>
               {dailyWeather.map(el => (
                 <MainDailyCard key={el.date} dailyWeather={el} />

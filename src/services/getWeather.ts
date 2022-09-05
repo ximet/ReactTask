@@ -6,6 +6,9 @@ export const getWeather = async <T>(
   latitude: number,
   params?: string
 ): Promise<T> => {
-  const current = await HTTPRequest(`${endpoint}${longitude},${latitude}${params || ''}`, {});
+  const current = await HTTPRequest(
+    `/api/v1${endpoint}${longitude},${latitude}${params || ''}`,
+    {}
+  );
   return current;
 };

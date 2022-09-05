@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Main.css';
 import { HourlyWeatherType } from '../../types/weatherTypes';
-import { convertTime } from '../../helpers';
+import { convertTime, getImgURL } from '../../helpers';
 
 type HourlyCardProps = {
   hourlyWeather: HourlyWeatherType;
@@ -14,16 +14,12 @@ const MainHourlyCard: FC<HourlyCardProps> = ({ hourlyWeather }) => {
 
   return (
     <div className={styles['hourly-card']}>
-      <div>
-        <span>{`${date.hours}:${date.minutes}0`}</span>, <span>{temperature}°C</span>
-      </div>
-      <img
-        src={`https://developer.foreca.com/static/images/symbols/${symbol}.png`}
-        alt={symbol}
-        className={styles['hourly-card__img']}
-      />
+      <h4 className={styles['hourly-card__title']}>
+        {`${date.hours}:${date.minutes}0`}: {temperature}°C
+      </h4>
+      <img src={getImgURL(symbol)} alt={symbol} className={styles['hourly-card__img']} />
       <span>
-        Wind: {windSpeed}({windDirString})
+        Wind: {windSpeed}m/s ({windDirString})
       </span>
     </div>
   );

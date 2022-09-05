@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
-import { convertTime } from '../../helpers';
+import { convertTime, getImgURL } from '../../helpers';
 
 type MainCardProps = {
   currentWeather: CurrentWeatherType;
@@ -33,10 +33,7 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
         <p>
           {date.date}-{date.month}-{date.year} {date.hours}:{date.minutes}
         </p>
-        <img
-          src={`https://developer.foreca.com/static/images/symbols/${symbol}.png`}
-          alt={symbolPhrase}
-        />
+        <img src={getImgURL(symbol)} alt={symbolPhrase} />
         <p>
           {symbolPhrase}, {temperature}°C
         </p>

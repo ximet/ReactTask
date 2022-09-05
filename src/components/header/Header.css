@@ -14,23 +14,21 @@
 
 .list-item {
   font-size: 2rem;
+  padding: 0.5rem;
   position: relative;
-}
-
-.list-item::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  height: 0.2rem;
-  width: 50%;
-  background-color: var(--light-link-after);
+  text-transform: uppercase;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    var(--light-blue-background) 50%
+  );
+  background-size: 250%;
   transition: all 0.2s;
-  transform: translateX(-50%);
 }
 
-.list-item:hover::after {
-  width: 100%;
+.list-item:hover {
+  background-position: 100%;
 }
 
 .theme-btn {

@@ -4,6 +4,8 @@ html {
   --light-background: #f8f8ff;
   --light-header: #adff2f;
   --light-footer: #87cefa;
-  --light-link-after: #ffffff;
-  --light-color-background: #d6d6d6;
+  --light-white-background: #ffffff;
+  --light-blue-background: #00d4ff;
+  --light-card-background: #fffaf0;
+  --light-card-shadow: rgba(34, 60, 80, 0.2);
 }

@@ -9,3 +9,6 @@ export const convertTime = (timeData: string) => {
     minutes: date.getMinutes()
   };
 };
+
+export const getImgURL = (symbol: string): string =>
+  `https://developer.foreca.com/static/images/symbols/${symbol}.png`;

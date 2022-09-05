@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import styles from './Main.css';
 import { DailyWeatherType } from 'types/weatherTypes';
-import { convertTime } from '../../helpers';
+import { convertTime, getImgURL } from '../../helpers';
+import sunRise from '../../pictures/sunrise.png';
+import sunSet from '../../pictures/sunset.png';
 
 type HourlyCardProps = {
   dailyWeather: DailyWeatherType;
@@ -14,25 +16,21 @@ const MainDailyCard: FC<HourlyCardProps> = ({ dailyWeather }) => {
 
   return (
     <div className={styles['daily-card']}>
-      <div>
-        <span>{`${date.date}-${date.month}`}, </span>
-        <span>{symbolPhrase}</span>
-      </div>
-      <img
-        src={`https://developer.foreca.com/static/images/symbols/${symbol}.png`}
-        alt={symbolPhrase}
-      />
+      <h4 className={styles['daily-card__title']}>
+        {`${date.date}-${date.month}`}: {symbolPhrase}
+      </h4>
+      <img src={getImgURL(symbol)} alt={symbolPhrase} />
       <p>
         Temperature: {minTemp}°C - {maxTemp}°C
       </p>
       <div className={styles['sun-group']}>
         <div>
-          <img src={require('../../pictures/sunrise.png')} alt="" className={styles['sun-icon']} />
-          <p>{sunrise}</p>
+          <img src={sunRise} alt="" className={styles['sun-icon']} />
+          <p>{sunrise.slice(0, 5)}</p>
         </div>
         <div>
-          <img src={require('../../pictures/sunset.png')} alt="" className={styles['sun-icon']} />
-          <p>{sunset}</p>
+          <img src={sunSet} alt="" className={styles['sun-icon']} />
+          <p>{sunset.slice(0, 5)}</p>
         </div>
       </div>
     </div>

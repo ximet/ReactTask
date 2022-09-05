@@ -13,7 +13,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--light-background);
+  background: linear-gradient(
+    172deg,
+    var(--light-white-background) 40%,
+    var(--light-blue-background) 70%
+  );
 }
 
 .loading-text {
