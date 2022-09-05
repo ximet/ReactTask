@@ -1,13 +1,8 @@
-import React, { FunctionComponent, Suspense, useEffect } from 'react';
+import React, { FunctionComponent, Suspense, useEffect, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import axios from 'axios';
 
 // Store
-import { setCredentials } from './features/auth/authSlice';
-import { useAppDispatch } from './app/hooks';
-
-// Types
-import { LoginResponse, LoginRequest } from './types';
+import { useAuthorizeMutation, useAuthenticateMutation } from './services/authApi';
 
 // Components
 import Layout from './common/hoc/Layout';
@@ -23,28 +18,20 @@ const routes = [
 ];
 
 const App: FunctionComponent = () => {
-  const dispatch = useAppDispatch();
+  const [authorize] = useAuthorizeMutation();
+  const [authenticate] = useAuthenticateMutation();
 
-  const handleLogin = async () => {
-    try {
-      const body: LoginRequest = {
-        user: process.env.USER,
-        password: process.env.PASSWORD
-      };
-      const res = await axios.post<LoginResponse>('http://localhost:3000/auth', body, {
-        withCredentials: true
-      });
-      if (res.data.token) {
-        dispatch(setCredentials(res.data.token));
-      }
-    } catch (err) {
-      console.error(err);
+  const handleAuth = useCallback(async () => {
+    const { token } = await authenticate(null).unwrap();
+
+    if (!token) {
+      await authorize({ user: process.env.USER, password: process.env.PASSWORD });
     }
-  };
+  }, [authenticate, authorize]);
 
   useEffect(() => {
-    handleLogin();
-  }, []);
+    handleAuth();
+  }, [handleAuth]);
 
   return (
     <Layout>

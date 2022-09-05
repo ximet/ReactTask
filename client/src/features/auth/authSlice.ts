@@ -1,26 +1,30 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
+import { authApi } from '../../services/authApi';
+
+// Types
+import { AccessToken } from '../../types';
+
 interface InitialState {
-  token: null | string;
+  accessToken: AccessToken;
 }
 
 const initialState: InitialState = {
-  token: null
+  accessToken: null
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    setCredentials: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
-    }
+  reducers: {},
+  extraReducers: builder => {
+    builder.addMatcher(authApi.endpoints.authenticate.matchFulfilled, (state, action) => {
+      state.accessToken = action.payload.token;
+    });
   }
 });
 
-export const { setCredentials } = authSlice.actions;
-
 export default authSlice.reducer;
 
-export const selectCurrentUser = (state: RootState) => state.auth.token;
+export const selectAccessToken = (state: RootState) => state.auth.accessToken;

@@ -1,12 +1,17 @@
-export interface LoginRequest {
+export interface AuthorizationRequest {
   user?: string;
   password?: string;
 }
 
-export interface LoginResponse {
+export interface AuthorizationResponse {
+  status: 'success' | 'fail';
+}
+export interface AuthenticationResponse {
   status: 'success' | 'fail';
   token: string;
 }
+
+export type AccessToken = null | string;
 
 export interface SearchResult {
   adminArea: string;

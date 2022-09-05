@@ -6,9 +6,9 @@ export const forecaApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://pfa.foreca.com/api/v1',
     prepareHeaders: (headers, { getState }) => {
-      const { token } = (getState() as RootState).auth;
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
+      const { accessToken } = (getState() as RootState).auth;
+      if (accessToken) {
+        headers.set('authorization', `Bearer ${accessToken}`);
       }
       return headers;
     }

@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 // API
+import { authApi } from '../services/authApi';
 import { forecaApi } from '../services/forecaApi';
 
 // Reducers
@@ -10,11 +11,13 @@ import authReducer from '../features/auth/authSlice';
 
 const store = configureStore({
   reducer: {
+    [authApi.reducerPath]: authApi.reducer,
     [forecaApi.reducerPath]: forecaApi.reducer,
-    theme: themeReducer,
-    auth: authReducer
+    auth: authReducer,
+    theme: themeReducer
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(forecaApi.middleware)
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(authApi.middleware, forecaApi.middleware)
 });
 
 export default store;
