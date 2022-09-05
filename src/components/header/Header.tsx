@@ -1,16 +1,42 @@
 import styles from './Header.css';
 
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { getCity } from 'services/getCity';
+import HTTPRequest from 'services/httpService';
+import { LocationInfoType } from 'types/cityInfoType';
 
 type LinkType = {
   isActive: boolean;
 };
 
+let timeoutId: number;
+
 const setActive = ({ isActive }: LinkType) =>
   isActive ? `${styles.listItem} ${styles['active-link']}` : styles.listItem;
 
 const Header: FC = () => {
+  const [searchText, setSearchText] = useState<string>('');
+  const [cities, setCities] = useState<LocationInfoType[]>([]);
+
+  const getCities = async (search: string): Promise<{ locations: LocationInfoType[] }> => {
+    const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
+    return result;
+  };
+
+  useEffect(() => {
+    clearTimeout(timeoutId);
+
+    if (searchText) {
+      timeoutId = window.setTimeout(
+        () => getCities(searchText).then(res => setCities(res.locations)),
+        1000
+      );
+    } else {
+      setCities([]);
+    }
+  }, [searchText]);
+
   return (
     <header className={styles.header}>
       <nav>
@@ -37,6 +63,25 @@ const Header: FC = () => {
           </li>
         </ul>
       </nav>
+      <div className={styles['search-group']}>
+        <input
+          placeholder="search city..."
+          type="text"
+          className={styles['search-input']}
+          value={searchText}
+          onChange={e => setSearchText(e.target.value)}
+        />
+        <div className={styles['search-results']}>
+          {cities.length
+            ? cities.map(city => (
+                <div key={city.id} className={styles['search-results__item']}>
+                  {' '}
+                  {city.name}, {city.country}{' '}
+                </div>
+              ))
+            : null}
+        </div>
+      </div>
       <button className={styles.themeBtn}>Toggle theme</button>
     </header>
   );

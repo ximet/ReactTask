@@ -1,6 +1,6 @@
 export type LocationInfoType = {
   id: number;
-  city: string;
+  name: string;
   country: string;
   timezone: string;
   language: string;
