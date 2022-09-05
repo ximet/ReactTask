@@ -1,0 +1,30 @@
+.header-container {
+  display: flex;
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  color: antiquewhite;
+  background: linear-gradient(
+    45deg,
+    violet,
+    orange,
+    yellow,
+    green,
+    #5897d1,
+    indigo,
+    violet,
+    violet
+  );
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+img {
+  width: 5%;
+  margin-right: 2rem;
+}
