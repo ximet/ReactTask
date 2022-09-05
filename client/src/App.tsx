@@ -22,7 +22,7 @@ const App: FunctionComponent = () => {
   const [authenticate] = useAuthenticateMutation();
 
   const handleAuth = useCallback(async () => {
-    const { token } = await authenticate(null).unwrap();
+    const { token } = await authenticate().unwrap();
 
     if (!token) {
       await authorize({ user: process.env.USER, password: process.env.PASSWORD });

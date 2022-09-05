@@ -17,7 +17,7 @@ export const authApi = createApi({
         body: credentials
       })
     }),
-    authenticate: builder.mutation<AuthenticationResponse, null>({
+    authenticate: builder.mutation<AuthenticationResponse, void>({
       query: () => `/authenticate`
     })
   })

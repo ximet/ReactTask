@@ -16,6 +16,7 @@ const store = configureStore({
     auth: authReducer,
     theme: themeReducer
   },
+  devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(authApi.middleware, forecaApi.middleware)
 });
