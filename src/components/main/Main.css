@@ -93,3 +93,12 @@
   width: 100%;
   justify-content: space-between;
 }
+
+.days-select {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  outline: none;
+}

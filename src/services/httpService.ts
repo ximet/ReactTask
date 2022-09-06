@@ -1,11 +1,20 @@
 import { getFromLocalStorage } from './localStorage';
 
-const URL = 'https://pfa.foreca.com';
+const BASE_URL = 'https://pfa.foreca.com';
 
-async function HTTPRequest(endpoint = '', { method = 'GET', body = '', headers = {} }) {
+async function HTTPRequest(
+  endpoint = '',
+  { method = 'GET', body = '', headers = {} },
+  params = {}
+) {
   const token = getFromLocalStorage('token');
 
-  const request = await fetch(`${URL}${endpoint}`, {
+  const url = new URL(`${BASE_URL}${endpoint}`);
+  const queryParams = new URLSearchParams(params);
+
+  url.search = queryParams.toString();
+
+  const request = await fetch(url, {
     method,
     headers: {
       'Content-Type': 'application/json',

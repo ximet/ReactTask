@@ -29,7 +29,7 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
   return (
     <div className={styles['main-card']}>
       <div className={`${styles['main-card__item']} ${styles['main-card__item_center']}`}>
-        <h3 className={styles['main-card__title']}>Location: {location.city}</h3>
+        <h3 className={styles['main-card__title']}>Location: {location.name}</h3>
         <p>
           {date.date}-{date.month}-{date.year} {date.hours}:{date.minutes}
         </p>

@@ -24,7 +24,7 @@ export const defaultCurrentWeather: CurrentWeatherType = {
 
 export const defaultLocationInfo: LocationInfoType = {
   id: 0,
-  city: '',
+  name: '',
   country: '',
   timezone: '',
   language: '',
