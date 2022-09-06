@@ -7,10 +7,10 @@ import SearchResultItem from './SearchResultItem';
 import * as S from '../styles';
 
 // Types
-import { SearchResult } from '../../../../types';
+import { LocationInfo } from '../../../../types';
 
 interface SearchResultListProps {
-  data: SearchResult[];
+  data: LocationInfo[];
 }
 
 const SearchResultList = ({ data }: SearchResultListProps) => (

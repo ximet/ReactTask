@@ -4,10 +4,10 @@ import React from 'react';
 import * as S from '../../styles';
 
 // Types
-import { SearchResult } from '../../../../../types';
+import { LocationInfo } from '../../../../../types';
 
 interface SearchResultItemProps {
-  data: SearchResult;
+  data: LocationInfo;
 }
 
 const SearchResultItem = ({ data }: SearchResultItemProps) => {

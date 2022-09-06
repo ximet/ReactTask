@@ -1,8 +1,11 @@
 import React, { FunctionComponent, Suspense, useEffect, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-// Store
+// API
 import { useAuthorizeMutation, useAuthenticateMutation } from './services/authApi';
+
+// Types
+import { AuthorizationRequest, AuthenticationResponse } from './types';
 
 // Components
 import Layout from './common/hoc/Layout';
@@ -22,10 +25,15 @@ const App: FunctionComponent = () => {
   const [authenticate] = useAuthenticateMutation();
 
   const handleAuth = useCallback(async () => {
-    const { token } = await authenticate().unwrap();
+    const { token }: AuthenticationResponse = await authenticate().unwrap();
+
+    const credentials: AuthorizationRequest = {
+      user: process.env.USER,
+      password: process.env.PASSWORD
+    };
 
     if (!token) {
-      await authorize({ user: process.env.USER, password: process.env.PASSWORD });
+      await authorize(credentials);
     }
   }, [authenticate, authorize]);
 

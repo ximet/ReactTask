@@ -13,18 +13,18 @@ export interface AuthenticationResponse {
 
 export type AccessToken = null | string;
 
-export interface SearchResult {
+export interface LocationInfo {
+  id: number;
+  name: string;
+  country: string;
+  timezone: string;
+  language: string;
   adminArea: string;
   adminArea2?: string;
   adminArea3?: string;
-  country: string;
-  id: number;
-  language: string;
-  lat: number;
   lon: number;
-  name: string;
-  state: string;
-  timezone: string;
+  lat: number;
+  state?: string;
 }
 
 export interface StylesProps {
