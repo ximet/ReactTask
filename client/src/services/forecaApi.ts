@@ -1,23 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { RootState } from '../app/store';
 
 export const forecaApi = createApi({
   reducerPath: 'forecaApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://pfa.foreca.com/api/v1',
-    prepareHeaders: (headers, { getState }) => {
-      const { accessToken } = (getState() as RootState).auth;
-      if (accessToken) {
-        headers.set('authorization', `Bearer ${accessToken}`);
-      }
-      return headers;
-    }
+    baseUrl: 'http://localhost:3000/forecaApi',
+    credentials: 'include'
   }),
   endpoints: builder => ({
     searchLocations: builder.query({
       query: (query: string) => `/location/search/${query}`
+    }),
+    getLocationInfo: builder.query({
+      query: (query: string) => `/location/${query}`
     })
   })
 });
 
-export const { useSearchLocationsQuery } = forecaApi;
+export const { useSearchLocationsQuery, useGetLocationInfoQuery } = forecaApi;
