@@ -38,9 +38,12 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 'off',
+    'react/require-default-props': 'warn',
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
+    'react/button-has-type': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'jsx-a11y/no-static-element-interactions': 'off',
     'arrow-body-style': ['error', 'always'],
     'react/function-component-definition': [
       2,

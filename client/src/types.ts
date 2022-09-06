@@ -67,3 +67,16 @@ export type DailyWeather = {
   confidence: string;
   solarRadiationSum: number;
 };
+
+export type HourlyWeather = {
+  feelsLikeTemp: number;
+  precipAccum: number;
+  precipProb: number;
+  symbol: string;
+  temperature: number;
+  time: string;
+  windDir: number;
+  windDirString: string;
+  windGust: number;
+  windSpeed: number;
+};

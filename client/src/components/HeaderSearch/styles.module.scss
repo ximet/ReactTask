@@ -1,0 +1,17 @@
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.input {
+  padding: 7px;
+  height: 35px;
+  width: 100%;
+  outline: none;
+}
+
+.icon {
+  font-size: 1.3em;
+  margin: 5px auto 0;
+}

@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 type WeatherProps = {
   weatherData: WeatherData | null;
-  location: LocationData | null;
+  location: LocationData | undefined;
   status: string | null;
 };
 

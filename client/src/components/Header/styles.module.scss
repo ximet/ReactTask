@@ -3,14 +3,18 @@
 .header {
   width: 100%;
   background-color: $lightgrey;
-  height: 80px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .menuNav {
   height: 100%;
   display: flex;
   width: 40%;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   font-size: 1.2em;
 }
@@ -18,7 +22,12 @@
 .link {
   text-decoration: none;
   color: $darkgrey;
+  padding-right: 25px;
+
   &:hover {
     color: $hovergrey;
   }
+}
+.search {
+  width: 40%;
 }
