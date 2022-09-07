@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
+// API
 import { authApi } from '../../services/authApi';
 
 // Types
-import { AccessToken } from '../../types';
+import { AccessToken, AuthenticationResponse } from '../../types';
 
 interface InitialState {
   accessToken: AccessToken;
@@ -19,9 +20,12 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addMatcher(authApi.endpoints.authenticate.matchFulfilled, (state, action) => {
-      state.accessToken = action.payload.token;
-    });
+    builder.addMatcher(
+      authApi.endpoints.authenticate.matchFulfilled,
+      (state: InitialState, action: PayloadAction<AuthenticationResponse, string>) => {
+        state.accessToken = action.payload.token;
+      }
+    );
   }
 });
 

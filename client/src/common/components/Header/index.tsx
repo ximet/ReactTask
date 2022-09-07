@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { useAppSelector } from '../../../app/hooks';
 
 // Components
-import Location from '../Location';
+import GeoLocation from '../GeoLocation';
 import Search from '../Search';
 import ThemeSwitch from '../ThemeSwitch';
 
@@ -19,7 +19,7 @@ const Header: FunctionComponent = () => {
     <S.Header theme={theme}>
       <Container>
         <Flex justifySpaceBetween>
-          <Location />
+          <GeoLocation />
           <Search />
           <ThemeSwitch />
         </Flex>

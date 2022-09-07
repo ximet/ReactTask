@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const dotenv = require('dotenv');
 const axios = require('axios').default;
 
@@ -10,7 +11,6 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(cors({ credentials: true, origin: 'http://localhost:9020' }));
-
 app.use(express.json());
 app.use(cookieParser());
 
@@ -38,9 +38,32 @@ app.post('/authorize', async (req, res) => {
 
 app.get('/authenticate', function (req, res) {
   const { token } = req.cookies;
-
   res.status(200).json({ status: 'success', token });
 });
+
+const relayRequestHeaders = (proxyReq, req) => {
+  const { token } = req.cookies;
+  if (token) {
+    proxyReq.setHeader('authorization', `Bearer ${token}`);
+  }
+};
+
+const relayResponseHeaders = (proxyRes, req, res) => {
+  proxyRes.headers['access-control-allow-origin'] = 'http://localhost:9020';
+};
+
+app.use(
+  '/forecaApi',
+  createProxyMiddleware({
+    target: 'https://pfa.foreca.com/api/v1',
+    changeOrigin: true,
+    pathRewrite: {
+      [`^/forecaApi`]: '',
+    },
+    onProxyReq: relayRequestHeaders,
+    onProxyRes: relayResponseHeaders,
+  })
+);
 
 app.listen(port, () =>
   console.log(`Express server is running on port ${port}...`)

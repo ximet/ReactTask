@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useState, useRef, ChangeEvent } from 'react';
 
 // Store
-import { useSearchLocationsQuery } from '../../../services/forecaApi';
 import { useAppSelector } from '../../../app/hooks';
+
+// API
+import { useSearchLocationsQuery } from '../../../services/forecaApi';
 
 // Custom hooks
 import useDebounce from '../../hooks/useDebounce';
@@ -31,11 +33,11 @@ const Search: FunctionComponent = () => {
   const searchRef = useRef<HTMLDivElement>(null);
 
   // Handlers
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setSearchQuery(e.currentTarget.value);
   };
-  const handleInputFocus = () => setListShown(true);
-  const handleClickOutside = () => setListShown(false);
+  const handleInputFocus = (): void => setListShown(true);
+  const handleClickOutside = (): void => setListShown(false);
 
   useOnClickOutside(searchRef, handleClickOutside);
 
