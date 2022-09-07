@@ -22,21 +22,17 @@ const GeoLocation: FunctionComponent = () => {
     }
   );
 
-  let locationInfo;
-  if (posLoading || infoLoading) locationInfo = <p>Loading data...</p>;
-  if (posError || infoError) locationInfo = <p>No data available</p>;
-  if (data)
-    locationInfo = (
-      <p>
-        <span>{data.name}</span>, {data.country}
-      </p>
-    );
-
   return (
     <S.GeoLocation>
       <Flex>
         <IconLocation />
-        {locationInfo}
+        {(posLoading || infoLoading) && !data && <p>Loading data...</p>}
+        {(posError || infoError) && !data && <p>No data available</p>}
+        {data && (
+          <p>
+            <span>{data.name}</span>, {data.country}
+          </p>
+        )}
       </Flex>
     </S.GeoLocation>
   );
