@@ -3,7 +3,6 @@ import commonStyle from '../../styles/commonStyles.css';
 
 import React, { useContext, FC, useEffect, useState } from 'react';
 import { dataContext } from 'context/context';
-import { usePosition } from 'hooks/usePosition';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
 import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/weatherTypes';
@@ -20,7 +19,9 @@ const Main: FC = () => {
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
 
-  const { position, positionError } = useContext(dataContext);
+  const {
+    state: { position, positionError }
+  } = useContext(dataContext);
 
   async function fetchData(lon: number, lat: number) {
     Promise.all([

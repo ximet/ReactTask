@@ -2,26 +2,49 @@ import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { usePosition } from 'hooks/usePosition';
 import { reducer } from './reducer';
 import { CHANGE_POSITION } from './actions';
+import { State, ActionData } from './reducer';
 
-export const initState = {
-  position: {
-    latitude: 0,
-    longitude: 0
+type InitStateType = {
+  state: {
+    position: {
+      latitude: number;
+      longitude: number;
+    };
+    positionError: string;
+  };
+  changePosition: (lat: number, los: number) => void;
+};
+
+export const initState: InitStateType = {
+  state: {
+    position: {
+      latitude: 0,
+      longitude: 0
+    },
+    positionError: ''
   },
-  positionError: '',
   changePosition: (lat: number, los: number) => {}
 };
 
-export const dataContext = createContext(initState);
+export const dataContext = createContext<InitStateType>(initState);
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const { position, error } = usePosition();
 
   const { Provider } = dataContext;
 
-  const [state, dispatch] = useReducer(reducer, initState);
+  const [state, dispatch] = useReducer<(state: State, { type, payload }: ActionData) => State>(
+    reducer,
+    {
+      position: {
+        latitude: 0,
+        longitude: 0
+      },
+      positionError: ''
+    }
+  );
 
-  state.changePosition = (lat, los) => {
+  const changePosition = (lat: number, los: number) => {
     dispatch({
       type: CHANGE_POSITION,
       payload: {
@@ -35,8 +58,8 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    state.changePosition(position.latitude, position.longitude);
+    changePosition(position.latitude, position.longitude);
   }, [position.latitude]);
 
-  return <Provider value={state}>{children}</Provider>;
+  return <Provider value={{ state, changePosition }}>{children}</Provider>;
 };

@@ -1,15 +1,14 @@
 import { CHANGE_POSITION } from './actions';
 
-type State = {
+export type State = {
   position: {
     latitude: number;
     longitude: number;
   };
   positionError: string;
-  changePosition: (lat: number, los: number) => void;
 };
 
-type ActionData = {
+export type ActionData = {
   type: string;
   payload: State;
 };
