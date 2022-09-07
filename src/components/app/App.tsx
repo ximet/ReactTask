@@ -5,6 +5,7 @@ import commonStyles from '../../styles/commonStyles.css';
 
 import React, { FC, useEffect, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { ContextProvider } from '../../context/context';
 
 import { Layout } from 'components/Layout';
 import { Countries } from 'components/countries/Countries';
@@ -34,17 +35,19 @@ const App: FC = () => {
   return (
     <div className={styles.app}>
       {token ? (
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Main />} />
-              <Route path="countries" element={<Countries />} />
-              <Route path="details" element={<Details />} />
-              <Route path="feedback" element={<Feedback />} />
-              <Route path="*" element={<Page404 />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <ContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Main />} />
+                <Route path="countries" element={<Countries />} />
+                <Route path="details" element={<Details />} />
+                <Route path="feedback" element={<Feedback />} />
+                <Route path="*" element={<Page404 />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </ContextProvider>
       ) : (
         <div className={commonStyles.container}>
           <p className={styles['loading-text']}>loading...</p>

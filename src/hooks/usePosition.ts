@@ -14,7 +14,7 @@ export const usePosition = () => {
     latitude: 0,
     longitude: 0
   });
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>('');
 
   const onSuccess = ({ coords: { latitude, longitude } }: LocationParams): void => {
     setPosition({

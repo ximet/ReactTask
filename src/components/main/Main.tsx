@@ -1,7 +1,8 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { useContext, FC, useEffect, useState } from 'react';
+import { dataContext } from 'context/context';
 import { usePosition } from 'hooks/usePosition';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
@@ -13,12 +14,13 @@ import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
 
 const Main: FC = () => {
-  const { position, error } = usePosition();
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(defaultCurrentWeather);
   const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
+
+  const { position, positionError } = useContext(dataContext);
 
   async function fetchData(lon: number, lat: number) {
     Promise.all([
@@ -84,7 +86,7 @@ const Main: FC = () => {
           </section>
         </>
       ) : (
-        <p>{error}</p>
+        <p>{positionError}</p>
       )}
     </main>
   );
