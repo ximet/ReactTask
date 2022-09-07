@@ -1,6 +1,6 @@
 import { CHANGE_POSITION } from './actions';
 
-export type State = {
+export type PositionContextState = {
   position: {
     latitude: number;
     longitude: number;
@@ -8,12 +8,12 @@ export type State = {
   positionError: string;
 };
 
-export type ActionData = {
+export type PositionActionData = {
   type: string;
-  payload: State;
+  payload: PositionContextState;
 };
 
-export function reducer(state: State, { type, payload }: ActionData) {
+export function reducer(state: PositionContextState, { type, payload }: PositionActionData) {
   switch (type) {
     case CHANGE_POSITION:
       return {
