@@ -1,10 +1,10 @@
 import styles from './Header.css';
 
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getCity } from 'services/getCity';
 import HTTPRequest from 'services/httpService';
 import { LocationInfoType } from 'types/cityInfoType';
+import { dataContext } from '../../context/context';
 
 type LinkType = {
   isActive: boolean;
@@ -17,10 +17,17 @@ const Header: FC = () => {
   const timeoutId = useRef(0);
   const [searchText, setSearchText] = useState<string>('');
   const [cities, setCities] = useState<LocationInfoType[]>([]);
+  const { changePosition } = useContext(dataContext);
 
   const getCities = async (search: string): Promise<{ locations: LocationInfoType[] }> => {
     const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
     return result;
+  };
+
+  const cityClickHandler = (lat: number, lon: number) => {
+    setSearchText('');
+    setCities([]);
+    changePosition(lat, lon);
   };
 
   useEffect(() => {
@@ -73,7 +80,11 @@ const Header: FC = () => {
         <div className={styles['search-results']}>
           {cities.length
             ? cities.map(city => (
-                <div key={city.id} className={styles['search-results__item']}>
+                <div
+                  key={city.id}
+                  className={styles['search-results__item']}
+                  onClick={() => cityClickHandler(city.lat, city.lon)}
+                >
                   {city.name}, {city.country}
                 </div>
               ))
