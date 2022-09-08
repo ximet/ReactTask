@@ -58,7 +58,7 @@ const Main: FC = () => {
     <main>
       <div>{statusMsg}</div>
       {console.log('statusMsg', statusMsg)}
-      <CurrentWeatherCard weatherData={currentWeather} location={locationData} status={statusMsg} />
+      <CurrentWeatherCard weatherData={currentWeather} location={locationData} />
       <div className={styles.dailyCardsContainer}>
         <h1 className={styles.dailyHeader}>Daily</h1>
         <div className={styles.dailyCardsBox}>

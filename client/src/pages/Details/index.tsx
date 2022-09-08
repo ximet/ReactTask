@@ -54,7 +54,7 @@ const Details: React.FC = () => {
   return (
     <main>
       <div>{statusMsg}</div>
-      <CurrentWeatherCard weatherData={currentWeather} location={locationData} status={statusMsg} />
+      <CurrentWeatherCard weatherData={currentWeather} location={locationData} />
       <div className={styles.dailyCardsContainer}>
         <h1 className={styles.dailyHeader}>Daily</h1>
         <div className={styles.dailyCardsBox}>
