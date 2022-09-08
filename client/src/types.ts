@@ -80,3 +80,4 @@ export type HourlyWeather = {
   windGust: number;
   windSpeed: number;
 };
+

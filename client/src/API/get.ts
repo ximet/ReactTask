@@ -86,3 +86,4 @@ export const getHourlyWeather = async (param: GeolocationCoordinates | null) => 
     throw new Error((error as Error).message);
   }
 };
+
