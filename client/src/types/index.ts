@@ -30,3 +30,50 @@ export interface LocationInfo {
 export interface StylesProps {
   theme: 'light' | 'dark';
 }
+
+export interface WeatherInfo {
+  date?: string;
+  time?: string;
+  symbol: string;
+  symbolPhrase: string;
+  temperature?: number;
+  maxTemp?: number;
+  minTemp?: number;
+  maxFeelsLikeTemp?: number;
+  minFeelsLikeTemp?: number;
+  feelsLikeTemp?: number;
+  relHumidity?: number;
+  maxRelHumidity?: number;
+  minRelHumidity?: number;
+  dewPoint?: number;
+  maxDewPoint?: number;
+  minDewPoint?: number;
+  windSpeed?: number;
+  maxWindSpeed?: number;
+  windDir: number;
+  windDirString: string;
+  windGust: number;
+  maxWindGust?: number;
+  precipProb: number;
+  precipRate: number;
+  precipType?: string;
+  precipAccum?: number;
+  snowRate?: number;
+  snowAccum?: number;
+  cloudiness: number;
+  thunderProb: number;
+  sunrise?: string;
+  sunset?: string;
+  sunriseEpoch?: number;
+  sunsetEpoch?: number;
+  moonrise?: string;
+  moonset?: string;
+  moonPhase?: number;
+  uvIndex: number;
+  solarRadiation?: number;
+  solarRadiationSum?: number;
+  pressure: number;
+  confidence?: string;
+  visibility?: number;
+  minVisibility?: number;
+}

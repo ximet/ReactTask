@@ -12,8 +12,15 @@ export const forecaApi = createApi({
     }),
     getLocationInfo: builder.query({
       query: (query: string) => `/location/${query}`
+    }),
+    getCurrLocationWeather: builder.query({
+      query: (query: string) => `/current/${query}&tempunit=C&windunit=MS`
     })
   })
 });
 
-export const { useSearchLocationsQuery, useGetLocationInfoQuery } = forecaApi;
+export const {
+  useSearchLocationsQuery,
+  useGetLocationInfoQuery,
+  useGetCurrLocationWeatherQuery
+} = forecaApi;

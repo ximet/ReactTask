@@ -1,4 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
+
+// Store
+import { useAppDispatch } from '../../../app/hooks';
+import { setLocationQuery } from '../../../features/location/locationSlice';
 
 // API
 import { useGetLocationInfoQuery } from '../../../services/forecaApi';
@@ -14,24 +19,40 @@ import * as S from './styles';
 import { IconLocation } from '../../assets/images/svg';
 
 const GeoLocation: FunctionComponent = () => {
+  const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
+
   const { location: pos, loading: posLoading, error: posError } = useGeoLocation();
-  const { data, isLoading: infoLoading, isError: infoError } = useGetLocationInfoQuery(
-    `${pos?.lon}, ${pos?.lat}`,
-    {
-      skip: !pos
-    }
-  );
+
+  // For now locationId is just a placeholder, later I will get it from URL
+  const query = pathname !== '/location' ? `${pos?.lon}, ${pos?.lat}` : `locationId`;
+
+  const { data, isLoading: infoLoading, isError: infoError } = useGetLocationInfoQuery(query, {
+    skip: !pos
+  });
+
+  const handleSetLocationQuery = useCallback(() => dispatch(setLocationQuery(query)), [
+    query,
+    dispatch
+  ]);
+
+  useEffect(() => {
+    handleSetLocationQuery();
+  }, [handleSetLocationQuery]);
 
   return (
     <S.GeoLocation>
       <Flex>
         <IconLocation />
-        {(posLoading || infoLoading) && !data && <p>Loading data...</p>}
-        {(posError || infoError) && !data && <p>No data available</p>}
-        {data && (
+        {data ? (
           <p>
             <span>{data.name}</span>, {data.country}
           </p>
+        ) : (
+          <>
+            {(posLoading || infoLoading) && (!posError || !infoError) && <p>Loading data...</p>}
+            {(posError || infoError) && (!posLoading || !infoLoading) && <p>No data available</p>}
+          </>
         )}
       </Flex>
     </S.GeoLocation>

@@ -42,8 +42,15 @@
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-uses-react": "warn",
     "react/jsx-uses-vars": "warn",
+    "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }],
     "react/react-in-jsx-scope": "warn",
     "react-hooks/exhaustive-deps": "warn",
+    "react/require-default-props": [
+      2,
+      {
+        "ignoreFunctionalComponents": true
+      }
+    ],
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-var-requires": "off"
   },

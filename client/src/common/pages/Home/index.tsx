@@ -1,8 +1,16 @@
 import React, { FunctionComponent } from 'react';
 
+// Components
+import Dashboard from '../../components/Dashboard';
+
+// Styles
+import { Container } from '../../styles/global';
+
 const Home: FunctionComponent = () => (
   <main>
-    <h1>Home Page</h1>
+    <Container>
+      <Dashboard />
+    </Container>
   </main>
 );
 
