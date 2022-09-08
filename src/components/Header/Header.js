@@ -4,7 +4,7 @@ function Header() {
   return (
     <h1 className="header-container">
       <img src={require('../../../public/images/logo.png')} alt="Logo image" />
-      <span> Show me the weather </span>
+      <span> Show Me The Weather </span>
     </h1>
   );
 }
