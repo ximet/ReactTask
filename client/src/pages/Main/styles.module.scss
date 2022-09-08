@@ -1,3 +1,13 @@
+@import '../../styles/variables.scss';
+
+main {
+  min-height: calc(100vh - 160px);
+  height: 115vh;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
 .dailyCardsContainer {
   display: flex;
   flex-direction: column;
@@ -44,5 +54,24 @@
     width: 100%;
     padding-top: 20px;
     overflow-x: scroll;
+    min-height: 220px;
+  }
+
+  .hourlyCardsBox::-webkit-scrollbar {
+    height: 7px;
+    background-color: $lightgrey;
+  }
+
+  .hourlyCardsBox::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    margin: 0 20px;
+  }
+
+  .hourlyCardsBox::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: $hovergrey;
   }
 }

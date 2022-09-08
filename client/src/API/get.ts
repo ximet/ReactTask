@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { GeolocationCoordinates } from 'hooks/useGetLocation';
-import { Coordinates, LocationData } from 'types';
+import { LocationData } from 'types';
 
 const URL = 'https://pfa.foreca.com/api/v1';
 

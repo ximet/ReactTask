@@ -15,17 +15,17 @@ import HourlyWeatherCard from 'components/HourlyWeatherCard';
 import styles from './styles.module.scss';
 
 const Main: FC = () => {
-  const { coordinates, statusMsg } = useContext(LocationContext);
+  const { coordinates, statusMsg, setStatusMsg } = useContext(LocationContext);
   const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
   const [locationData, setLocationData] = useState<LocationData | undefined>(undefined);
   const [forecast, setForecast] = useState<DailyWeather[]>([]);
   const [hourlyForecast, setHourlyForecast] = useState<HourlyWeather[]>([]);
-  const [hourlyOnClick, setHourlyOnClick] = useState<HourlyWeather[]>([]);
 
   useEffect(() => {
     setCurrentWeather(null);
     setLocationData(undefined);
     setForecast([]);
+    setHourlyForecast([]);
     const getData = async () => {
       await createToken();
       const data = await getCurrentWeather(coordinates);
@@ -41,22 +41,23 @@ const Main: FC = () => {
     if (coordinates) {
       getData();
     }
-  }, [coordinates]);
+  }, [coordinates, statusMsg]);
 
   const onCardClick = async (date: string) => {
     setHourlyForecast([]);
-    setHourlyOnClick([]);
     const hourlyWeather = await getHourlyWeather(coordinates);
     const newDate = new Date(date);
     const clickedDay = newDate.getDate();
     const todayDay = new Date().getDate();
     const timeframe = (clickedDay - todayDay + 1) * 24 - 24;
     const hoursofTheDay = hourlyWeather.slice(timeframe, timeframe + 24);
-    setHourlyOnClick(hoursofTheDay);
+    setHourlyForecast(hoursofTheDay);
   };
 
   return (
     <main>
+      <div>{statusMsg}</div>
+      {console.log('statusMsg', statusMsg)}
       <CurrentWeatherCard weatherData={currentWeather} location={locationData} status={statusMsg} />
       <div className={styles.dailyCardsContainer}>
         <h1 className={styles.dailyHeader}>Daily</h1>
@@ -77,13 +78,9 @@ const Main: FC = () => {
       <div className={styles.hourlyCardsContainer}>
         <h1 className={styles.hourlyHeader}>Hourly</h1>
         <div className={styles.hourlyCardsBox}>
-          {hourlyForecast.length === 0
-            ? hourlyOnClick.map((hour: HourlyWeather) => {
-                return <HourlyWeatherCard key={hour.time} hourWeather={hour} />;
-              })
-            : hourlyForecast.map((hour: HourlyWeather) => {
-                return <HourlyWeatherCard key={hour.time} hourWeather={hour} />;
-              })}
+          {hourlyForecast.map((hour: HourlyWeather) => {
+            return <HourlyWeatherCard key={hour.time} hourWeather={hour} />;
+          })}
         </div>
       </div>
     </main>

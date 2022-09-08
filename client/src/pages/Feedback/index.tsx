@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/globals.scss';
+import styles from './styles.module.scss';
 
 const Feedback = () => {
   return (
-    <main>
+    <main className={styles.main}>
       <h1>Feedback Page</h1>
     </main>
   );

@@ -5,10 +5,11 @@ import { NavLink } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const Header: React.FC = ({ children }) => {
-  const { setCoordinates } = useContext(LocationContext);
+  const { setCoordinates, setStatusMsg } = useContext(LocationContext);
   const { coords } = useGetLocation();
 
   const onClick = () => {
+    setStatusMsg(null);
     setCoordinates(coords);
   };
 

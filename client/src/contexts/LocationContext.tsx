@@ -10,7 +10,7 @@ export type LocationContextData = {
 
 const LocationContext = createContext<LocationContextData>({
   coordinates: null,
-  statusMsg: null,
+  statusMsg: '',
   setCoordinates: () => {
     return null;
   },
