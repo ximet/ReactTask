@@ -4,23 +4,31 @@
 
 h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   color: antiquewhite;
   background: linear-gradient(
     45deg,
-    violet,
+    #b5179e,
+    #7209b7,
+    #601293,
+    #480ca8,
+    #3f37c9,
+    #4361ee,
+    #4895ef,
+    #4cc9f0
+      /* violet,
     orange,
     yellow,
     green,
     #5897d1,
     indigo,
     violet,
-    violet
+    violet */
   );
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 80px;
+  height: 62px;
   right: 0px;
   overflow: hidden;
   display: flex;
@@ -30,6 +38,6 @@ h1 {
 }
 
 img {
-  width: 6%;
+  width: 5%;
   margin-right: 32px;
 }
