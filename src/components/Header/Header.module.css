@@ -1,10 +1,10 @@
 .header-container {
   display: flex;
-  width: 100%;
 }
 
 h1 {
   font-family: 'Roboto', sans-serif;
+  font-size: 36px;
   color: antiquewhite;
   background: linear-gradient(
     45deg,
@@ -17,7 +17,12 @@ h1 {
     violet,
     violet
   );
-  height: 5rem;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 80px;
+  right: 0px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,6 +30,6 @@ h1 {
 }
 
 img {
-  width: 5%;
-  margin-right: 2rem;
+  width: 6%;
+  margin-right: 32px;
 }

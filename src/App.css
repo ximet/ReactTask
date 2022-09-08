@@ -1,7 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,500;1,700;1,900&display=swap');
+@import './reset.css';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+body {
+  height: 100%;
+  width: 100%;
 }
+
+main {
+  position: absolute;
+  top: 80px;
+  bottom: 20px;
+  left: 0px;
+  right: 0px;
+  overflow: auto;
+}
+
+/* body {
+  background-image: url('./../public/images/sky_old.jpg');
+  background-color: #cccccc;
+  height: 400px;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+} */
