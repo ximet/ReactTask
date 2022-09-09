@@ -1,4 +1,4 @@
-import type { AccessToken } from '../../types';
+import type { AccessToken } from 'types';
 
 export enum ActionType {
   AUTHORIZE_PENDING = 'AUTHORIZE_PENDING',

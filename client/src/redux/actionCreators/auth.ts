@@ -1,12 +1,8 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 
+import type { AuthorizationRequest, AuthorizationResponse, AuthenticationResponse } from 'types';
 import { ActionType, Action } from '../actionTypes/auth';
-import type {
-  AuthorizationRequest,
-  AuthorizationResponse,
-  AuthenticationResponse
-} from '../../types';
 
 export const authorize = (credentials: AuthorizationRequest) => async (
   dispatch: Dispatch<Action>

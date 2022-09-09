@@ -1,5 +1,5 @@
+import type { AccessToken } from 'types';
 import { ActionType, Action } from '../actionTypes/auth';
-import type { AccessToken } from '../../types';
 
 interface AuthState {
   accessToken?: AccessToken;

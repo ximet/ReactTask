@@ -1,4 +1,4 @@
-import type { LocationInfo, WeatherInfo } from '../../types';
+import type { LocationInfo, WeatherInfo } from 'types';
 
 export enum ActionType {
   SEARCH_LOCATION_PENDING = 'SEARCH_LOCATION_PENDING',

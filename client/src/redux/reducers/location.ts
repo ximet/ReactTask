@@ -1,5 +1,5 @@
+import type { LocationInfo, WeatherInfo } from 'types';
 import { ActionType, Action } from '../actionTypes/location';
-import type { LocationInfo, WeatherInfo } from '../../types';
 
 interface LocationState {
   search: {

@@ -9,16 +9,16 @@ import { authorize, authenticate } from 'redux/actionCreators/auth';
 import type { AuthorizationRequest } from 'types';
 
 // Components
-import Layout from 'common/hoc/Layout';
+import Layout from 'hoc/Layout/Layout';
 
 // Lazy components
-const Home = React.lazy(() => import('./common/pages/Home'));
-const About = React.lazy(() => import('./common/pages/About'));
+const HomePage = React.lazy(() => import('components/HomePage/HomePage'));
+const AboutPage = React.lazy(() => import('components/AboutPage/AboutPage'));
 
 // Routes
 const routes = [
-  { path: '/', name: 'Home', Component: Home },
-  { path: '/about', name: 'About', Component: About }
+  { path: '/', name: 'Home', Component: HomePage },
+  { path: '/about', name: 'About', Component: AboutPage }
 ];
 
 const App: FunctionComponent = () => {
