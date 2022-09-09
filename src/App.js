@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import DropDownMenu from './components/DropDownMenu/DropDownMenu';
-import RandomText from './components/RandomText.js/RandomText';
+import RandomText from './components/RandomText/RandomText';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <main>
         <DropDownMenu />
-        {/* <RandomText />  */}
+        {/* <RandomText />   */}
       </main>
       <Footer />
     </div>

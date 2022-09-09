@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './Footer.module.css';
+import styles from './Footer.module.css';
 
 function Footer() {
   const [time, setTime] = useState(getTime());
@@ -41,7 +41,7 @@ function Footer() {
   }
 
   return (
-    <footer>
+    <footer className={styles.footer}>
       <p>Current time: {time}</p>
     </footer>
   );
