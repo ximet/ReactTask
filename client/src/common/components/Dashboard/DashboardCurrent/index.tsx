@@ -22,7 +22,14 @@ const DashboardCurrent: FunctionComponent = () => {
   return (
     <S.DashboardCurrent>
       <h3>Current weather</h3>
-      <Widget color="primary" data={data && data.current} isLoading={isLoading} isError={isError} />
+      {data && (
+        <Widget
+          color="primary"
+          data={data && data.current}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      )}
     </S.DashboardCurrent>
   );
 };

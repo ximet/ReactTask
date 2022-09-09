@@ -18,6 +18,9 @@ import * as S from './styles';
 // Assets
 import { IconLocation } from '../../assets/images/svg';
 
+// Utils
+import { renderConditionalJSX } from './utils';
+
 const GeoLocation: FunctionComponent = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
@@ -31,10 +34,9 @@ const GeoLocation: FunctionComponent = () => {
     skip: !pos
   });
 
-  const handleSetLocationQuery = useCallback(() => dispatch(setLocationQuery(query)), [
-    query,
-    dispatch
-  ]);
+  const handleSetLocationQuery = useCallback(() => {
+    if (pos) dispatch(setLocationQuery(query));
+  }, [dispatch, query, pos]);
 
   useEffect(() => {
     handleSetLocationQuery();
@@ -44,16 +46,7 @@ const GeoLocation: FunctionComponent = () => {
     <S.GeoLocation>
       <Flex>
         <IconLocation />
-        {data ? (
-          <p>
-            <span>{data.name}</span>, {data.country}
-          </p>
-        ) : (
-          <>
-            {(posLoading || infoLoading) && (!posError || !infoError) && <p>Loading data...</p>}
-            {(posError || infoError) && (!posLoading || !infoLoading) && <p>No data available</p>}
-          </>
-        )}
+        {renderConditionalJSX(data, posLoading || infoLoading, posError || infoError)}
       </Flex>
     </S.GeoLocation>
   );
