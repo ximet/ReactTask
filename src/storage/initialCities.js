@@ -4,7 +4,7 @@ const initialCities = [
     cityName: 'Berlin'
   },
   {
-    id:.2,
+    id: 2,
     cityName: 'Budapest'
   },
   {
