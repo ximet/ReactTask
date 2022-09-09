@@ -2,14 +2,14 @@ import styles from './Header.module.css';
 
 function Header() {
   return (
-    <h1 className={styles.headerContainer}>
+    <header className={styles.headerContainer}>
       <img
         className={styles.img}
         src={require('../../../public/images/logo.png')}
         alt="Logo image"
       />
-      <span> Show Me The Weather </span>
-    </h1>
+      <h1> Show Me The Weather </h1>
+    </header>
   );
 }
 

@@ -9,8 +9,8 @@ body {
 
 main {
   position: absolute;
-  top: 62px;
-  bottom: 24px;
+  top: 60px;
+  bottom: 20px;
   left: 0px;
   right: 0px;
   overflow: auto;
@@ -19,11 +19,8 @@ main {
 body {
   background-image: url('./../public/images/sky.jpg');
   background-color: #cccccc;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  /* Full height */
   height: 100vh;
 }
