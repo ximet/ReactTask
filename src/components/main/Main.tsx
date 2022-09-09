@@ -2,7 +2,7 @@ import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
 import React, { useContext, FC, useEffect, useState } from 'react';
-import { dataContext } from 'context/context';
+import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
 import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/weatherTypes';
@@ -21,7 +21,7 @@ const Main: FC = () => {
 
   const {
     state: { position, positionError }
-  } = useContext(dataContext);
+  } = useContext(positionContext);
 
   async function fetchData(lon: number, lat: number) {
     Promise.all([

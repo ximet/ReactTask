@@ -1,4 +1,4 @@
-import { CHANGE_POSITION } from './actions';
+import { CHANGE_POSITION } from './positionActions';
 
 export type PositionContextState = {
   position: {

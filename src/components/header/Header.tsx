@@ -4,7 +4,10 @@ import React, { FC, useState, useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import HTTPRequest from 'services/httpService';
 import { LocationInfoType } from 'types/cityInfoType';
-import { dataContext } from '../../context/context';
+import { positionContext } from '../../context/positionContext';
+import { themeContext } from '../../context/themeContext';
+import { BsSun } from 'react-icons/bs';
+import { TbMoonStars } from 'react-icons/tb';
 
 type LinkType = {
   isActive: boolean;
@@ -17,7 +20,8 @@ const Header: FC = () => {
   const timeoutId = useRef(0);
   const [searchText, setSearchText] = useState<string>('');
   const [cities, setCities] = useState<LocationInfoType[]>([]);
-  const { changePosition } = useContext(dataContext);
+  const { changePosition } = useContext(positionContext);
+  const { theme, toggleTheme } = useContext(themeContext);
 
   const getCities = async (search: string): Promise<{ locations: LocationInfoType[] }> => {
     const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
@@ -91,7 +95,9 @@ const Header: FC = () => {
             : null}
         </div>
       </div>
-      <button className={styles.themeBtn}>Toggle theme</button>
+      <button className={styles.themeBtn} onClick={toggleTheme}>
+        {theme === 'light' ? <BsSun size="30px" /> : <TbMoonStars size="30px" />} theme
+      </button>
     </header>
   );
 };
