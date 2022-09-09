@@ -1,12 +1,10 @@
 import React, { FunctionComponent, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 // Store
-import { useAppDispatch } from '../../../app/hooks';
-import { setLocationQuery } from '../../../features/location/locationSlice';
-
-// API
-import { useGetLocationInfoQuery } from '../../../services/forecaApi';
+import { useAppSelector } from 'redux/hooks';
+import { getLocationInfo, setLocationQuery } from 'redux/actionCreators/location';
 
 // Custom hooks
 import useGeoLocation from '../../hooks/useGeoLocation';
@@ -20,21 +18,29 @@ import { IconLocation } from '../../assets/images/svg';
 
 const GeoLocation: FunctionComponent = () => {
   const { pathname } = useLocation();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const { location: pos, loading: posLoading, error: posError } = useGeoLocation();
 
   // For now locationId is just a placeholder, later I will get it from URL
   const query = pathname !== '/location' ? `${pos?.lon}, ${pos?.lat}` : `locationId`;
 
-  const { data, isLoading: infoLoading, isError: infoError } = useGetLocationInfoQuery(query, {
-    skip: !pos
-  });
+  const { data, loading: infoLoading, error: infoError } = useAppSelector(
+    state => state.location.info
+  );
 
+  // Handlers
+  const handleGetLocationInfo = useCallback(() => {
+    if (pos) dispatch(getLocationInfo(query));
+  }, [dispatch, query, pos]);
   const handleSetLocationQuery = useCallback(() => dispatch(setLocationQuery(query)), [
-    query,
-    dispatch
+    dispatch,
+    query
   ]);
+
+  useEffect(() => {
+    handleGetLocationInfo();
+  }, [handleGetLocationInfo]);
 
   useEffect(() => {
     handleSetLocationQuery();

@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
+import { useDispatch } from 'react-redux';
 
 // Store
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { toggleTheme } from '../../../features/theme/themeSlice';
+import { toggleTheme } from 'redux/actionCreators/theme';
+import { useAppSelector } from 'redux/hooks';
 
 // Components
 import GeoLocation from '../GeoLocation';
@@ -17,9 +18,9 @@ import * as S from './styles';
 import { IconLightMode, IconDarkMode } from '../../assets/images/svg';
 
 const Header: FunctionComponent = () => {
-  const { theme } = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.theme.theme);
 
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const handleThemeSwitch = () => dispatch(toggleTheme(theme === 'light' ? 'dark' : 'light'));
 

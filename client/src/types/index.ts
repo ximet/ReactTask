@@ -4,11 +4,15 @@ export interface AuthorizationRequest {
 }
 
 export interface AuthorizationResponse {
-  status: 'success' | 'fail';
+  data: {
+    status: 'success' | 'fail';
+  };
 }
 export interface AuthenticationResponse {
-  status: 'success' | 'fail';
-  token: string;
+  data: {
+    status: 'success' | 'fail';
+    token: string;
+  };
 }
 
 export type AccessToken = null | string;
@@ -25,10 +29,6 @@ export interface LocationInfo {
   lon: number;
   lat: number;
   state?: string;
-}
-
-export interface StylesProps {
-  theme: 'light' | 'dark';
 }
 
 export interface WeatherInfo {
@@ -76,4 +76,10 @@ export interface WeatherInfo {
   confidence?: string;
   visibility?: number;
   minVisibility?: number;
+}
+
+export type Theme = 'light' | 'dark';
+
+export interface StylesProps {
+  theme: Theme;
 }

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, MouseEvent } from 'react';
 
 // Store
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector } from 'redux/hooks';
 
 // Styles
 import * as S from './styles';

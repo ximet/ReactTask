@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 // Store
-import { useAppSelector } from '../../../../app/hooks';
-
-// API
-import { useGetCurrLocationWeatherQuery } from '../../../../services/forecaApi';
+import { useAppSelector } from 'redux/hooks';
+import { getLocationCurrWeather } from 'redux/actionCreators/location';
 
 // Components
 import Widget from '../../Widget';
@@ -13,16 +12,32 @@ import Widget from '../../Widget';
 import * as S from '../styles';
 
 const DashboardCurrent: FunctionComponent = () => {
-  const { query } = useAppSelector(state => state.location);
+  const query = useAppSelector(state => state.location.query);
+  const { data, loading, error } = useAppSelector(state => state.location.weather.current);
 
-  const { data, isLoading, isError } = useGetCurrLocationWeatherQuery(query, {
-    skip: !query
-  });
+  const dispatch = useDispatch();
+
+  const handleGetLocationCurrWeather = useCallback(() => {
+    if (query) dispatch(getLocationCurrWeather(query));
+  }, [dispatch, query]);
+
+  useEffect(() => {
+    handleGetLocationCurrWeather();
+  }, [handleGetLocationCurrWeather]);
+
+  let content;
+  if (loading) {
+    content = <p>Loading...</p>;
+  } else if (error) {
+    content = <p>Something went wrong...</p>;
+  } else if (data !== null) {
+    content = <Widget color="primary" data={data} />;
+  }
 
   return (
     <S.DashboardCurrent>
       <h3>Current weather</h3>
-      <Widget color="primary" data={data && data.current} isLoading={isLoading} isError={isError} />
+      {content}
     </S.DashboardCurrent>
   );
 };

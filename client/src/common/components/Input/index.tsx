@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 
 // Store
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector } from 'redux/hooks';
 
 // Styles
 import * as S from './styles';
@@ -56,7 +56,7 @@ const Input: FunctionComponent<InputProps> = ({
   onChange,
   onFocus
 }) => {
-  const { theme } = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.theme.theme);
 
   const inputRef = useRef<HTMLInputElement>(null);
 

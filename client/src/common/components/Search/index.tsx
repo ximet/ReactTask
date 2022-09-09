@@ -1,10 +1,16 @@
-import React, { FunctionComponent, useState, useRef, ChangeEvent } from 'react';
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  ChangeEvent
+} from 'react';
+import { useDispatch } from 'react-redux';
 
 // Store
-import { useAppSelector } from '../../../app/hooks';
-
-// API
-import { useSearchLocationsQuery } from '../../../services/forecaApi';
+import { useAppSelector } from 'redux/hooks';
+import { searchLocations } from 'redux/actionCreators/location';
 
 // Custom hooks
 import useDebounce from '../../hooks/useDebounce';
@@ -25,12 +31,12 @@ const Search: FunctionComponent = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [listShown, setListShown] = useState<boolean>(true);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-  const { data } = useSearchLocationsQuery(debouncedSearchQuery, {
-    skip: debouncedSearchQuery === ''
-  });
-  const { theme } = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.theme.theme);
+  const { data } = useAppSelector(state => state.location.search);
 
   const searchRef = useRef<HTMLDivElement>(null);
+
+  const dispatch = useDispatch();
 
   // Handlers
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -38,8 +44,15 @@ const Search: FunctionComponent = () => {
   };
   const handleInputFocus = (): void => setListShown(true);
   const handleClickOutside = (): void => setListShown(false);
+  const handleSearchLocations = useCallback(() => {
+    if (debouncedSearchQuery !== '') dispatch(searchLocations(debouncedSearchQuery));
+  }, [dispatch, debouncedSearchQuery]);
 
   useOnClickOutside(searchRef, handleClickOutside);
+
+  useEffect(() => {
+    handleSearchLocations();
+  }, [handleSearchLocations]);
 
   return (
     <S.Search ref={searchRef} theme={theme}>
@@ -51,7 +64,7 @@ const Search: FunctionComponent = () => {
         onChange={handleInputChange}
         onFocus={handleInputFocus}
       />
-      {data && listShown && <SearchResultList data={data && data.locations} />}
+      {data && listShown && <SearchResultList data={data && data} />}
     </S.Search>
   );
 };
