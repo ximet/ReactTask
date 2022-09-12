@@ -91,3 +91,16 @@ export type HourlyWeather = {
   windGust: number;
   windSpeed: number;
 };
+
+export type BoxStyleParams = {
+  activeObject: { id: number } | null;
+  objects: [
+    { id: number },
+    { id: number },
+    { id: number },
+    { id: number },
+    { id: number },
+    { id: number },
+    { id: number }
+  ];
+};

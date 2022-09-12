@@ -1,63 +1,45 @@
-import React, { FC, useEffect, useState, useContext } from 'react';
-import '../../styles/globals.scss';
-import {
-  createToken,
-  getCurrentWeather,
-  getDailyWeather,
-  getHourlyWeather,
-  getLocation
-} from 'API/get';
+import React, { FC, useState, useContext } from 'react';
+import { getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation } from 'API/get';
 import CurrentWeatherCard from 'components/CurrentWeatherCard';
-import { DailyWeather, HourlyWeather, LocationData, WeatherData } from 'types';
+import { BoxStyleParams, DailyWeather, HourlyWeather } from 'types';
 import DailyWeatherCard from 'components/DailyWeatherCard';
 import LocationContext from 'contexts/LocationContext';
 import HourlyWeatherCard from 'components/HourlyWeatherCard';
 import { getBackgroundImg } from 'utils/getImages';
+import useGetData from 'hooks/useGetData';
+import { useParams } from 'react-router-dom';
+import { Loader } from 'components/Loader/Loader';
 import styles from './styles.module.scss';
 
+type LocationParams = {
+  location: string | undefined;
+};
+
 const Main: FC = () => {
+  const { location } = useParams<LocationParams>();
+
   const { coordinates, statusMsg } = useContext(LocationContext);
-  const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
-  const [locationData, setLocationData] = useState<LocationData | undefined>(undefined);
-  const [forecast, setForecast] = useState<DailyWeather[]>([]);
-  const [hourlyForecast, setHourlyForecast] = useState<HourlyWeather[]>([]);
-  const [boxStyle, setBoxStyle] = useState<{
-    activeObject: { id: number } | null;
-    objects: [
-      { id: number },
-      { id: number },
-      { id: number },
-      { id: number },
-      { id: number },
-      { id: number },
-      { id: number }
-    ];
-  }>({
+  const [boxStyle, setBoxStyle] = useState<BoxStyleParams>({
     activeObject: null,
     objects: [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }]
   });
 
-  useEffect(() => {
-    setCurrentWeather(null);
-    setLocationData(undefined);
-    setForecast([]);
-    setHourlyForecast([]);
-    const getData = async () => {
-      await createToken();
-      const data = await getCurrentWeather(coordinates);
-      const locationResult = await getLocation(coordinates);
-      const dailyWeather = await getDailyWeather(coordinates);
-      const hourlyWeather = await getHourlyWeather(coordinates);
-      setCurrentWeather(data);
-      setLocationData(locationResult);
-      setForecast(dailyWeather);
-      const first24Hours = hourlyWeather?.slice(0, 24);
-      setHourlyForecast(first24Hours);
-    };
-    if (coordinates) {
-      getData();
-    }
-  }, [coordinates, statusMsg]);
+  const {
+    currentWeather,
+    locationData,
+    forecast,
+    hourlyForecast,
+    setHourlyForecast,
+    isLoading
+  } = useGetData(getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation, {
+    coordinates,
+    statusMsg,
+    location
+  });
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const onCardClick = async (index: number, date: string) => {
     setHourlyForecast([]);
