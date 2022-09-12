@@ -1,6 +1,19 @@
 .dayWeatherBox {
   text-align: left;
   padding: 10px 10px 10px 30%;
+  position: relative;
+  height: 205px;
+  width: 150px;
+
+  &:hover {
+    border: 2px solid lightgrey;
+  }
+
+  .div {
+    position: absolute;
+    top: 0;
+    left: -2px;
+  }
 
   .symbol {
     width: 40px;

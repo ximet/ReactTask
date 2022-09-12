@@ -1,21 +1,71 @@
-main {
-  min-height: calc(100vh - 160px);
-  height: 115vh;
+@import '../../styles/variables.scss';
+
+.main {
+  height: 130vh;
   width: 100%;
   padding: 20px;
   text-align: center;
+  position: relative;
+  color: whitesmoke;
 }
+
+.backgroundImages {
+  position: absolute;
+  width: 100%;
+  height: 126%;
+  top: -260px;
+  left: 0;
+  background-size: cover;
+  z-index: -30;
+  animation: mover 2s normal;
+  animation-fill-mode: forwards;
+  filter: brightness(80%);
+}
+
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(80px);
+  }
+}
+
+.mainContainer {
+  position: absolute;
+  width: 100%;
+  top: 180px;
+  left: 0;
+  z-index: 0;
+  animation: datamover 2s normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes datamover {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-80px);
+  }
+}
+
 .dailyCardsContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  padding: 30px 0;
+  padding: 5px 0;
+  width: 90%;
+  margin: 0 auto;
 
   .dailyHeader {
     text-align: left;
-    font-weight: 300;
+    padding-left: 45px;
   }
+
   .dailyCardsBox {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -24,5 +74,69 @@ main {
     align-items: center;
     width: 100%;
     padding-top: 20px;
+    min-height: 160px;
   }
+}
+
+.hourlyCardsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 30px 0;
+  width: 90%;
+  margin: 0 auto;
+
+  hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 10px;
+  }
+
+  .hourlyHeader {
+    text-align: left;
+    padding-left: 45px;
+  }
+
+  .hourlyCardsBox {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 10px;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    overflow-x: scroll;
+    min-height: 220px;
+  }
+
+  .hourlyCardsBox::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .hourlyCardsBox::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f5f569;
+    margin: 0 20px;
+  }
+
+  .hourlyCardsBox::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: $hovergrey;
+  }
+}
+
+.active {
+  background-color: rgba(128, 128, 128, 0);
+}
+
+.inactive {
+  background-color: rgba(128, 128, 128, 0);
+}
+.errorMsg{
+  margin-top: 60px;
+  color: black;
 }

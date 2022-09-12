@@ -69,15 +69,25 @@ export type DailyWeather = {
 };
 
 export type HourlyWeather = {
+  cloudiness: number;
+  dewPoint: number;
   feelsLikeTemp: number;
   precipAccum: number;
   precipProb: number;
+  precipType: string;
+  pressure: number;
+  relHumidity: number;
+  snowAccum: number;
+  solarRadiation: number;
   symbol: string;
+  symbolPhrase: string;
   temperature: number;
+  thunderProb: number;
   time: string;
+  uvIndex: number;
+  visibility: number;
   windDir: number;
   windDirString: string;
   windGust: number;
   windSpeed: number;
 };
-

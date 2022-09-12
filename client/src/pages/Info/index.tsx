@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './styles.module.scss';
+import '../../styles/globals.scss';
 
 const Info = () => {
   return (
-    <main className={styles.main}>
-      <h1>Info page</h1>;
+    <main>
+      <h1>Info page</h1>
     </main>
   );
 };

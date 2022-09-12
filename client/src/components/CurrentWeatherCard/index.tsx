@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { LocationData, WeatherData } from 'types';
-import { getSymbol } from 'utils/getWeatherSymbol';
+import { getSymbol } from 'utils/getImages';
 import styles from './styles.module.scss';
 
 type WeatherProps = {

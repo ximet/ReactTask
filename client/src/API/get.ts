@@ -18,7 +18,7 @@ export const getCurrentWeather = async (param: GeolocationCoordinates | null) =>
   try {
     const result = await axios.get(`${URL}/current/location=${param?.lon},${param?.lat}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`
       }
     });
     return result.data.current;
@@ -74,7 +74,7 @@ export const getDailyWeather = async (param: GeolocationCoordinates | null) => {
 export const getHourlyWeather = async (param: GeolocationCoordinates | null) => {
   try {
     const result = await axios.get(
-      `${URL}/forecast/hourly/location=${param?.lon},${param?.lat}&periods=168`,
+      `${URL}/forecast/hourly/location=${param?.lon},${param?.lat}&periods=168&dataset=full`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -86,4 +86,3 @@ export const getHourlyWeather = async (param: GeolocationCoordinates | null) => 
     throw new Error((error as Error).message);
   }
 };
-

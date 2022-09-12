@@ -3,11 +3,16 @@
 .header {
   width: 100%;
   background-color: $lightgrey;
-  height: 70px;
+  opacity: 70%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  position: absolute;
+  top: 0%;
+  position: fixed;
+  z-index: 1;
 }
 
 .menuNav {
@@ -23,6 +28,7 @@
   text-decoration: none;
   color: $darkgrey;
   padding-right: 25px;
+  font-size: 1rem;
 
   &:hover {
     color: $hovergrey;
@@ -32,4 +38,3 @@
 .search {
   width: 40%;
 }
-

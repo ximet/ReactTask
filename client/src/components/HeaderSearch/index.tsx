@@ -36,6 +36,9 @@ const HeaderSearch = () => {
         navigate(`/details/${locationData.locations[0].name}`);
         setInputValue('');
       }
+    } else {
+      setStatusMsg('Please, enter the name of the city. The input cannot be empty');
+      setCoordinates(null);
     }
   };
   return (

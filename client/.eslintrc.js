@@ -42,6 +42,7 @@ module.exports = {
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
     'react/button-has-type': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'jsx-a11y/no-static-element-interactions': 'off',
     'arrow-body-style': ['error', 'always'],
@@ -68,7 +69,6 @@ module.exports = {
     'max-lines': ['error', { max: 200 }],
     semi: ['error', 'always'],
     indent: ['error', 2],
-    'react/require-default-props': 'error',
     'prettier/prettier': [
       'error',
       {
