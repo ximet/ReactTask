@@ -1,9 +1,9 @@
 import styles from './Button.scss';
 
-function Button({ children, ...props }) {
+function Button(props) {
   return (
     <button {...props} className={styles.Btn}>
-      {children}
+      {props.text}
     </button>
   );
 }

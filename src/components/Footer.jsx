@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import styles from './header&footer.scss';
+import styles from '../styles.scss';
 
-export default function MyFooter() {
+function Footer() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
   const interval = setInterval(() => {
     setCurrentTime(new Date().toLocaleTimeString());
@@ -18,3 +18,4 @@ export default function MyFooter() {
     </div>
   );
 }
+export default Footer;

@@ -1,13 +1,13 @@
+import Footer from './components/Footer';
+import Header from './components/Header';
 import MainPage from './components/MainPage';
-import MyFooter from './header&footer/MyFooter';
-import MyHeader from './header&footer/MyHeader';
 
 function App() {
   return (
     <>
-      <MyHeader />
+      <Header />
       <MainPage />
-      <MyFooter />
+      <Footer />
     </>
   );
 }

@@ -122,7 +122,7 @@ export default function MainPage() {
       </div>
       <div className={styles.items}>
         {filteredItems.map(item => (
-          <Button key={item}>{item}</Button>
+          <Button text={item} key={item}></Button>
         ))}
       </div>
     </div>

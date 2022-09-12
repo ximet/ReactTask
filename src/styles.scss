@@ -3,6 +3,9 @@ body {
   font-family: 'Ubuntu', sans-serif;
   margin: 0 auto;
 }
+$bgc: teal;
+$h3Color: rgb(221, 170, 17);
+$searchItemsColor: rgb(23, 203, 216);
 .MainPage {
   display: flex;
   flex-direction: column;
@@ -15,7 +18,7 @@ body {
   align-items: center;
   p {
     margin-bottom: 2px;
-    color: rgb(23, 203, 216);
+    color: $searchItemsColor;
   }
 }
 .items {
@@ -27,5 +30,33 @@ body {
     margin-bottom: 10px;
     margin-right: 5px;
     height: auto;
+  }
+}
+.appheader {
+  background-color: $bgc;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  h3 {
+    margin: 0;
+    padding-left: 90px;
+    color: $h3Color;
+  }
+}
+
+.appfooter {
+  background-color: $bgc;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  h3 {
+    margin: 0;
+    padding-left: 90px;
+    color: $h3Color;
   }
 }
