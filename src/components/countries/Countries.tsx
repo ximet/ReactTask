@@ -1,16 +1,14 @@
-import { string } from 'prop-types';
 import React, { FC, useRef, useState } from 'react';
 import { getFavoriteCities } from 'services/localStorage';
 import { LocationInfoType } from 'types/cityInfoType';
 import { CitySmallCards } from './CitySmallCards';
+import { getSortedByCountries } from 'helpers';
 
 import commonStyle from '../../styles/commonStyles.css';
 import styles from './Countries.css';
 
 export const Countries: FC = () => {
-  const sortedByCountries: LocationInfoType[] = getFavoriteCities().sort((a, b) =>
-    a.country > b.country ? 1 : -1
-  );
+  const sortedByCountries: LocationInfoType[] = getSortedByCountries()
   const countries: string[] = sortedByCountries.map(city => city.country);
   const uniqueCountries: Set<string> = new Set(countries);
 

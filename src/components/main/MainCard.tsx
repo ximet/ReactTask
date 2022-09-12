@@ -3,12 +3,17 @@ import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
 import { convertTime, getImgURL } from '../../helpers';
-import { getFromLocalStorage, setInLocalStorage, getFavoriteCities } from 'services/localStorage';
+import { setInLocalStorage, getFavoriteCities, FAVORITE_CITIES_LS_LABEL } from 'services/localStorage';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
 type MainCardProps = {
   currentWeather: CurrentWeatherType;
   location: LocationInfoType;
+};
+
+const getIsFavorite = (id: number): boolean => {
+  const favoriteCities: LocationInfoType[] = getFavoriteCities();
+  return favoriteCities.some(city => city.id === id);
 };
 
 const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
@@ -28,21 +33,16 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
 
   const date = convertTime(time);
 
-  const getIsFavorite = (): boolean => {
-    const favoriteCities: LocationInfoType[] = getFavoriteCities();
-    return favoriteCities.some(city => city.id === location.id);
-  };
-
-  const [isFavorite, setIsFavorite] = useState(getIsFavorite);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const toggleFavoriteCities = () => {
+    let favoriteCities = getFavoriteCities()
     if (!isFavorite) {
-      const favoriteCities = getFavoriteCities().concat(location);
-      setInLocalStorage(favoriteCities, 'favorite-cities');
+      favoriteCities = favoriteCities.concat(location);
     } else {
-      const favoriteCities = getFavoriteCities().filter(city => city.id !== location.id);
-      setInLocalStorage(favoriteCities, 'favorite-cities');
+      favoriteCities = favoriteCities.filter(city => city.id !== location.id);
     }
+    setInLocalStorage(favoriteCities, FAVORITE_CITIES_LS_LABEL);
   };
 
   const favoriteIconHandler = () => {
@@ -51,7 +51,7 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
   };
 
   useEffect(() => {
-    setIsFavorite(getIsFavorite());
+    setIsFavorite(getIsFavorite(location.id));
   }, [location.id]);
 
   return (

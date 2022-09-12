@@ -1,3 +1,6 @@
+import { LocationInfoType } from 'types/cityInfoType';
+import { getFavoriteCities } from 'services/localStorage';
+
 export const convertTime = (timeData: string) => {
   const date = new Date(timeData);
 
@@ -12,3 +15,6 @@ export const convertTime = (timeData: string) => {
 
 export const getImgURL = (symbol: string): string =>
   `https://developer.foreca.com/static/images/symbols/${symbol}.png`;
+
+export const getSortedByCountries = (): LocationInfoType[] =>
+  getFavoriteCities().sort((a, b) => (a.country > b.country ? 1 : -1));

@@ -14,7 +14,7 @@ import MainDailyCard from './MainDailyCard';
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(defaultCurrentWeather);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
   const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
@@ -37,7 +37,7 @@ const Main: FC = () => {
 
   useEffect(() => {
     if (position.longitude) {
-      fetchData(position.longitude, position.latitude);
+      //fetchData(position.longitude, position.latitude);
     }
   }, [position.longitude]);
 
@@ -54,7 +54,7 @@ const Main: FC = () => {
 
   return (
     <main className={commonStyle.container}>
-      {currentWeather.time ? (
+      {currentWeather ? (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
           <section className={styles['weather-section-wrapper']}>

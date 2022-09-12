@@ -12,7 +12,7 @@ type SmallCardProps = {
 };
 
 export const CitySmallCard: FC<SmallCardProps> = ({ lon, lat, cityName }) => {
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(defaultCurrentWeather);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
 
   useEffect(() => {
     getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat).then(res =>
@@ -21,7 +21,7 @@ export const CitySmallCard: FC<SmallCardProps> = ({ lon, lat, cityName }) => {
   }, []);
   return (
     <>
-      {currentWeather.time ? (
+      {currentWeather ? (
         <>
           <h4>
             {cityName}, {currentWeather.temperature}°C
