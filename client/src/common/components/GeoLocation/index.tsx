@@ -51,11 +51,9 @@ const GeoLocation: FunctionComponent = () => {
           loading={posLoading || infoLoading}
           error={posError || infoError}
         >
-          {data && (
-            <p>
-              <span>{data.name}</span>, {data.country}
-            </p>
-          )}
+          <p>
+            <span>{data?.name}</span>, {data?.country}
+          </p>
         </RequestDataWrapper>
       </Flex>
     </S.GeoLocation>
