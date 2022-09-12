@@ -1,4 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
+
+// Store
+import { useAppDispatch } from '../../../app/hooks';
+import { setLocationQuery } from '../../../features/location/locationSlice';
 
 // API
 import { useGetLocationInfoQuery } from '../../../services/forecaApi';
@@ -13,26 +18,43 @@ import * as S from './styles';
 // Assets
 import { IconLocation } from '../../assets/images/svg';
 
+// Components
+import RequestDataWrapper from '../RequestDataWrapper/RequestDataWrapper';
+
 const GeoLocation: FunctionComponent = () => {
+  const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
+
   const { location: pos, loading: posLoading, error: posError } = useGeoLocation();
-  const { data, isLoading: infoLoading, isError: infoError } = useGetLocationInfoQuery(
-    `${pos?.lon}, ${pos?.lat}`,
-    {
-      skip: !pos
-    }
-  );
+
+  // For now locationId is just a placeholder, later I will get it from URL
+  const query = pathname !== '/location' ? `${pos?.lon}, ${pos?.lat}` : `locationId`;
+
+  const { data, isLoading: infoLoading, isError: infoError } = useGetLocationInfoQuery(query, {
+    skip: !pos
+  });
+
+  const handleSetLocationQuery = useCallback(() => {
+    if (pos) dispatch(setLocationQuery(query));
+  }, [dispatch, query, pos]);
+
+  useEffect(() => {
+    handleSetLocationQuery();
+  }, [handleSetLocationQuery]);
 
   return (
     <S.GeoLocation>
       <Flex>
         <IconLocation />
-        {(posLoading || infoLoading) && !data && <p>Loading data...</p>}
-        {(posError || infoError) && !data && <p>No data available</p>}
-        {data && (
+        <RequestDataWrapper
+          data={data}
+          loading={posLoading || infoLoading}
+          error={posError || infoError}
+        >
           <p>
-            <span>{data.name}</span>, {data.country}
+            <span>{data?.name}</span>, {data?.country}
           </p>
-        )}
+        </RequestDataWrapper>
       </Flex>
     </S.GeoLocation>
   );
