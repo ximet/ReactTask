@@ -1,31 +1,31 @@
 import React, { FunctionComponent, Suspense, useEffect, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-// API
-import { useAuthorizeMutation, useAuthenticateMutation } from './services/authApi';
+// Store
+import { authorize, authenticate } from 'redux/actionCreators/auth';
 
 // Types
-import { AuthorizationRequest, AuthenticationResponse } from './types';
+import type { AuthorizationRequest } from 'types';
 
 // Components
-import Layout from './common/hoc/Layout';
+import Layout from 'hoc/Layout/Layout';
 
 // Lazy components
-const Home = React.lazy(() => import('./common/pages/Home'));
-const About = React.lazy(() => import('./common/pages/About'));
+const HomePage = React.lazy(() => import('components/HomePage/HomePage'));
+const AboutPage = React.lazy(() => import('components/AboutPage/AboutPage'));
 
 // Routes
 const routes = [
-  { path: '/', name: 'Home', Component: Home },
-  { path: '/about', name: 'About', Component: About }
+  { path: '/', name: 'Home', Component: HomePage },
+  { path: '/about', name: 'About', Component: AboutPage }
 ];
 
 const App: FunctionComponent = () => {
-  const [authorize] = useAuthorizeMutation();
-  const [authenticate] = useAuthenticateMutation();
+  const dispatch = useDispatch();
 
   const handleAuth = useCallback(async () => {
-    const { token }: AuthenticationResponse = await authenticate().unwrap();
+    const token = await dispatch(authenticate());
 
     const credentials: AuthorizationRequest = {
       user: process.env.USER,
@@ -33,9 +33,9 @@ const App: FunctionComponent = () => {
     };
 
     if (!token) {
-      await authorize(credentials);
+      await dispatch(authorize(credentials));
     }
-  }, [authenticate, authorize]);
+  }, [dispatch]);
 
   useEffect(() => {
     handleAuth();

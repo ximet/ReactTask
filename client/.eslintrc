@@ -24,6 +24,8 @@
     "no-unused-vars": "off",
     "no-use-before-define": "off",
     "no-param-reassign": ["error", { "props": false }],
+    "no-shadow": "off",
+    "default-param-last": "off",
     "prettier/prettier": [
       "error",
       {
@@ -52,7 +54,9 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/default-param-last": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   },
   "env": {
     "browser": true,
@@ -67,7 +71,8 @@
     },
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["./client/src"]
       }
     }
   }
