@@ -8,8 +8,8 @@
   column-gap: 3rem;
   padding: 0.5rem;
   border-radius: 1rem;
-  background-color: var(--light-card-background);
-  box-shadow: 0px 5px 10px 2px var(--light-card-shadow);
+  background-color: var(--card-background);
+  box-shadow: 0px 5px 10px 2px var(--card-shadow);
 }
 
 .main-card__item {
@@ -64,8 +64,8 @@
   row-gap: 0.7rem;
   padding: 0.5rem;
   border-radius: 0.7rem;
-  background-color: var(--light-card-background);
-  box-shadow: 0px 5px 10px 2px var(--light-card-shadow);
+  background-color: var(--card-background);
+  box-shadow: 0px 5px 10px 2px var(--card-shadow);
 }
 
 .hourly-card__img {
@@ -101,4 +101,12 @@
   padding: 1rem;
   border-radius: 1rem;
   outline: none;
+}
+
+.like-icon__wrapper {
+  text-align: center;
+}
+
+.like-icon {
+  cursor: pointer;
 }

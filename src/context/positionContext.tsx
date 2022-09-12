@@ -1,15 +1,15 @@
 import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { usePosition } from 'hooks/usePosition';
-import { reducer } from './reducer';
-import { CHANGE_POSITION } from './actions';
-import { PositionContextState, PositionActionData } from './reducer';
+import { reducer } from './positionReducer';
+import { CHANGE_POSITION } from './positionActions';
+import { PositionContextState, PositionActionData } from './positionReducer';
 
-type InitContextValuesType = {
+type PositionContextValuesType = {
   state: PositionContextState;
   changePosition: (lat: number, los: number) => void;
 };
 
-export const initValues: InitContextValuesType = {
+const contextValues: PositionContextValuesType = {
   state: {
     position: {
       latitude: 0,
@@ -20,12 +20,12 @@ export const initValues: InitContextValuesType = {
   changePosition: (lat: number, los: number) => {}
 };
 
-export const dataContext = createContext<InitContextValuesType>(initValues);
+export const positionContext = createContext<PositionContextValuesType>(contextValues);
 
-export const ContextProvider = ({ children }: { children: ReactNode }) => {
+export const PositionContextProvider = ({ children }: { children: ReactNode }) => {
   const { position, error } = usePosition();
 
-  const { Provider } = dataContext;
+  const { Provider } = positionContext;
 
   const [state, dispatch] = useReducer<
     (state: PositionContextState, { type, payload }: PositionActionData) => PositionContextState

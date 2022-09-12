@@ -1,11 +1,25 @@
-html {
+body[data-theme='light'] {
   --active-link: #b8860b;
+  --font-color: #000000;
+  --header-background: #adff2f;
+  --footer-background: #00d4ff;
+  --first-gradient-background: #ffffff;
+  --second-gradient-background: #00d4ff;
+  --card-background: #fffaf0;
+  --card-shadow: rgba(34, 60, 80, 0.2);
+  --search-result-background: #ffffff;
+  --after-title: #0000cd;
+}
 
-  --light-background: #f8f8ff;
-  --light-header: #adff2f;
-  --light-footer: #87cefa;
-  --light-white-background: #ffffff;
-  --light-blue-background: #00d4ff;
-  --light-card-background: #fffaf0;
-  --light-card-shadow: rgba(34, 60, 80, 0.2);
+body[data-theme='dark'] {
+  --active-link: #ffff00;
+  --font-color: #ffffff;
+  --header-background: #4682b4;
+  --footer-background: #0000cd;
+  --first-gradient-background: #4169e1;
+  --second-gradient-background: #0000cd;
+  --card-background: #3ab4ff;
+  --card-shadow: rgba(255, 255, 224, 0.35);
+  --search-result-background: #4682b4;
+  --after-title: #ffffff;
 }

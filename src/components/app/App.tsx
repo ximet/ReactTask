@@ -5,7 +5,8 @@ import commonStyles from '../../styles/commonStyles.css';
 
 import React, { FC, useEffect, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { ContextProvider } from '../../context/context';
+import { PositionContextProvider } from '../../context/positionContext';
+import { ThemeContextProvider } from 'context/themeContext';
 
 import { Layout } from 'components/Layout';
 import { Countries } from 'components/countries/Countries';
@@ -35,19 +36,21 @@ const App: FC = () => {
   return (
     <div className={styles.app}>
       {token ? (
-        <ContextProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Main />} />
-                <Route path="countries" element={<Countries />} />
-                <Route path="details" element={<Details />} />
-                <Route path="feedback" element={<Feedback />} />
-                <Route path="*" element={<Page404 />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </ContextProvider>
+        <ThemeContextProvider>
+          <PositionContextProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Main />} />
+                  <Route path="countries" element={<Countries />} />
+                  <Route path="details" element={<Details />} />
+                  <Route path="feedback" element={<Feedback />} />
+                  <Route path="*" element={<Page404 />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </PositionContextProvider>
+        </ThemeContextProvider>
       ) : (
         <div className={commonStyles.container}>
           <p className={styles['loading-text']}>loading...</p>

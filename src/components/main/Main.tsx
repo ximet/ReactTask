@@ -2,7 +2,7 @@ import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
 import React, { useContext, FC, useEffect, useState } from 'react';
-import { dataContext } from 'context/context';
+import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
 import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/weatherTypes';
@@ -14,14 +14,14 @@ import MainDailyCard from './MainDailyCard';
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType>(defaultCurrentWeather);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
   const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
 
   const {
     state: { position, positionError }
-  } = useContext(dataContext);
+  } = useContext(positionContext);
 
   async function fetchData(lon: number, lat: number) {
     Promise.all([
@@ -37,7 +37,7 @@ const Main: FC = () => {
 
   useEffect(() => {
     if (position.longitude) {
-      fetchData(position.longitude, position.latitude);
+      //fetchData(position.longitude, position.latitude);
     }
   }, [position.longitude]);
 
@@ -54,7 +54,7 @@ const Main: FC = () => {
 
   return (
     <main className={commonStyle.container}>
-      {currentWeather.time ? (
+      {currentWeather ? (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
           <section className={styles['weather-section-wrapper']}>

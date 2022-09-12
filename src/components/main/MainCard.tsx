@@ -1,12 +1,23 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
 import { convertTime, getImgURL } from '../../helpers';
+import {
+  setInLocalStorage,
+  getFavoriteCities,
+  FAVORITE_CITIES_LS_LABEL
+} from 'services/localStorage';
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
 type MainCardProps = {
   currentWeather: CurrentWeatherType;
   location: LocationInfoType;
+};
+
+const getIsFavorite = (id: number): boolean => {
+  const favoriteCities: LocationInfoType[] = getFavoriteCities();
+  return favoriteCities.some(city => city.id === id);
 };
 
 const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
@@ -25,6 +36,27 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
   } = currentWeather;
 
   const date = convertTime(time);
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavoriteCities = () => {
+    let favoriteCities = getFavoriteCities();
+    if (!isFavorite) {
+      favoriteCities = favoriteCities.concat(location);
+    } else {
+      favoriteCities = favoriteCities.filter(city => city.id !== location.id);
+    }
+    setInLocalStorage(favoriteCities, FAVORITE_CITIES_LS_LABEL);
+  };
+
+  const favoriteIconHandler = () => {
+    setIsFavorite(!isFavorite);
+    toggleFavoriteCities();
+  };
+
+  useEffect(() => {
+    setIsFavorite(getIsFavorite(location.id));
+  }, [location.id]);
 
   return (
     <div className={styles['main-card']}>
@@ -48,6 +80,17 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
         <p>Cloudiness: {cloudiness}%</p>
         <p>UV index: {uvIndex}</p>
         <p>Visibility: hidden :))))</p>
+        <p className={styles['like-icon__wrapper']}>
+          {isFavorite ? (
+            <FcLike onClick={favoriteIconHandler} size="30px" className={styles['like-icon']} />
+          ) : (
+            <FcLikePlaceholder
+              onClick={favoriteIconHandler}
+              size="30px"
+              className={styles['like-icon']}
+            />
+          )}
+        </p>
       </div>
     </div>
   );
