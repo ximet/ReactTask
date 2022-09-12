@@ -1,14 +1,17 @@
 .footer {
-  background-color: #7209b7;
-  color: white;
-  font-size: larger;
-  padding-right: 40px;
-  text-align: right;
-  width: 100%;
-  position: absolute;
-  bottom: 0px;
-  height: 20px;
-  left: 0px;
-  right: 0px;
-  overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    height: 20px;
+    left: 0px;
+    right: 0px;
+
+    width: 100%;
+    padding-right: 40px;
+    overflow: hidden;
+
+    background-color: var(--purple);
+    color: white;
+
+    font-size: larger;
+    text-align: right; 
 }

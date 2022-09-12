@@ -1,27 +1,32 @@
 .headerContainer {
-  font-family: 'Lobster', cursive;
-  font-size: 28px;
-  color: antiquewhite;
-  background: linear-gradient(
-    45deg,
-    #b5179e,
-    #7209b7,
-    #601293,
-    #480ca8,
-    #3f37c9,
-    #4361ee,
-    #4895ef,
-    #4cc9f0
-  );
   position: absolute;
   top: 0px;
   left: 0px;
   height: 60px;
   right: 0px;
-  overflow: hidden;
+
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
+
+  font-family: 'Lobster', cursive;
+  font-size: 28px;
+
+  color: antiquewhite;
+  background: linear-gradient(
+    45deg,
+    var(--pink),
+    #7209b7,
+    var(--purple),
+    #480ca8,
+    var(--blue),
+    #4361ee,
+    #4895ef,
+    #4cc9f0
+  );
+ 
+  
 }
 
 .img {
