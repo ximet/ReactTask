@@ -6,6 +6,7 @@ import { useAppSelector } from 'redux/hooks';
 import { getLocationCurrWeather } from 'redux/actionCreators/location';
 
 // Components
+import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
 import Widget from 'components/Widget/Widget';
 
 // Styles
@@ -25,19 +26,12 @@ const DashboardCurrent: FunctionComponent = () => {
     handleGetLocationCurrWeather();
   }, [handleGetLocationCurrWeather]);
 
-  let content;
-  if (loading) {
-    content = <p>Loading...</p>;
-  } else if (error) {
-    content = <p>Something went wrong...</p>;
-  } else if (data !== null) {
-    content = <Widget color="primary" data={data} />;
-  }
-
   return (
     <S.DashboardCurrent>
       <h3>Current weather</h3>
-      {content}
+      <RequestDataWrapper data={data} loading={loading} error={error}>
+        <Widget color="primary" data={data} />
+      </RequestDataWrapper>
     </S.DashboardCurrent>
   );
 };
