@@ -1,4 +1,3 @@
-/* global GeolocationCoordinates PositionCallback GeolocationPosition PositionErrorCallback GeolocationPositionError */
 import { useState, useEffect } from 'react';
 
 interface useGeoLocationProps {

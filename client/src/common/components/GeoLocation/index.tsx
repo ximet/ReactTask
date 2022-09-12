@@ -18,8 +18,8 @@ import * as S from './styles';
 // Assets
 import { IconLocation } from '../../assets/images/svg';
 
-// Utils
-import { renderConditionalJSX } from './utils';
+// Components
+import RequestDataWrapper from '../RequestDataWrapper/RequestDataWrapper';
 
 const GeoLocation: FunctionComponent = () => {
   const { pathname } = useLocation();
@@ -46,7 +46,17 @@ const GeoLocation: FunctionComponent = () => {
     <S.GeoLocation>
       <Flex>
         <IconLocation />
-        {renderConditionalJSX(data, posLoading || infoLoading, posError || infoError)}
+        <RequestDataWrapper
+          data={data}
+          loading={posLoading || infoLoading}
+          error={posError || infoError}
+        >
+          {data && (
+            <p>
+              <span>{data.name}</span>, {data.country}
+            </p>
+          )}
+        </RequestDataWrapper>
       </Flex>
     </S.GeoLocation>
   );

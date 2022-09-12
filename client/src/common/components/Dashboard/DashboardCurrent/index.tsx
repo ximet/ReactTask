@@ -7,6 +7,7 @@ import { useAppSelector } from '../../../../app/hooks';
 import { useGetCurrLocationWeatherQuery } from '../../../../services/forecaApi';
 
 // Components
+import RequestDataWrapper from '../../RequestDataWrapper/RequestDataWrapper';
 import Widget from '../../Widget';
 
 // Styles
@@ -22,14 +23,9 @@ const DashboardCurrent: FunctionComponent = () => {
   return (
     <S.DashboardCurrent>
       <h3>Current weather</h3>
-      {data && (
-        <Widget
-          color="primary"
-          data={data && data.current}
-          isLoading={isLoading}
-          isError={isError}
-        />
-      )}
+      <RequestDataWrapper data={data} loading={isLoading} error={isError}>
+        <Widget color="primary" data={data && data.current} />
+      </RequestDataWrapper>
     </S.DashboardCurrent>
   );
 };
