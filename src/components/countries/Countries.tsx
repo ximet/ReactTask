@@ -8,7 +8,7 @@ import commonStyle from '../../styles/commonStyles.css';
 import styles from './Countries.css';
 
 export const Countries: FC = () => {
-  const sortedByCountries: LocationInfoType[] = getSortedByCountries()
+  const sortedByCountries: LocationInfoType[] = getSortedByCountries();
   const countries: string[] = sortedByCountries.map(city => city.country);
   const uniqueCountries: Set<string> = new Set(countries);
 

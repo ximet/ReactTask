@@ -3,7 +3,11 @@ import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
 import { convertTime, getImgURL } from '../../helpers';
-import { setInLocalStorage, getFavoriteCities, FAVORITE_CITIES_LS_LABEL } from 'services/localStorage';
+import {
+  setInLocalStorage,
+  getFavoriteCities,
+  FAVORITE_CITIES_LS_LABEL
+} from 'services/localStorage';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
 type MainCardProps = {
@@ -36,7 +40,7 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const toggleFavoriteCities = () => {
-    let favoriteCities = getFavoriteCities()
+    let favoriteCities = getFavoriteCities();
     if (!isFavorite) {
       favoriteCities = favoriteCities.concat(location);
     } else {
