@@ -4,7 +4,7 @@ body {
   margin: 0 auto;
 }
 $bgc: teal;
-$h3Color: rgb(221, 170, 17);
+$headerAndFotterColor: rgb(221, 170, 17);
 $searchItemsColor: rgb(23, 203, 216);
 .MainPage {
   display: flex;
@@ -42,7 +42,7 @@ $searchItemsColor: rgb(23, 203, 216);
   h3 {
     margin: 0;
     padding-left: 90px;
-    color: $h3Color;
+    color: $headerAndFotterColor;
   }
 }
 
@@ -54,9 +54,10 @@ $searchItemsColor: rgb(23, 203, 216);
   position: fixed;
   bottom: 0;
   width: 100%;
-  h3 {
+  p {
+    font-size: large;
     margin: 0;
     padding-left: 90px;
-    color: $h3Color;
+    color: $headerAndFotterColor;
   }
 }
