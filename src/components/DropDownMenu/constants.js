@@ -1,4 +1,4 @@
-const initialCities = [
+export const initialCities = [
   {
     id: 1,
     cityName: 'Berlin'
@@ -32,5 +32,3 @@ const initialCities = [
     cityName: 'Stockholm'
   }
 ];
-
-export default initialCities;

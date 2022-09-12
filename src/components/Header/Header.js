@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-function Header() {
+const Header = () => {
   return (
     <header className={styles.headerContainer}>
       <img
@@ -11,6 +11,6 @@ function Header() {
       <h1> Show Me The Weather </h1>
     </header>
   );
-}
+};
 
 export default Header;

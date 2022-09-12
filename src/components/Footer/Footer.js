@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
-function Footer() {
+import { getTime } from '../helper/helper.js';
+
+const Footer = () => {
   const [time, setTime] = useState(getTime());
 
   useEffect(() => {
@@ -11,40 +13,11 @@ function Footer() {
     };
   }, []);
 
-  function getTime() {
-    const currentdate = new Date();
-    const hour = getLocalHours(currentdate);
-    const min = getLocalMinutes(currentdate);
-    const sec = getLocalSeconds(currentdate);
-    const currentTime = hour + ':' + min + ':' + sec;
-    return currentTime;
-  }
-
-  function getLocalHours(currentdate) {
-    return currentdate.getHours();
-  }
-
-  function getLocalMinutes(currentdate) {
-    const min = currentdate.getMinutes();
-    if (min < 10) {
-      return `0${min}`;
-    }
-    return min;
-  }
-
-  function getLocalSeconds(currentdate) {
-    const sec = currentdate.getSeconds();
-    if (sec < 10) {
-      return `0${sec}`;
-    }
-    return sec;
-  }
-
   return (
     <footer className={styles.footer}>
       <p>Current time: {time}</p>
     </footer>
   );
-}
+};
 
 export default Footer;

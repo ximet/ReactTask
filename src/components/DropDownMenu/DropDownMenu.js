@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import styles from './DropDownMenu.module.css';
 
-import initialCities from '../../storage/initialCities';
+import { initialCities } from './constants.js';
 
 function DropDownMenu() {
   const [searchValue, setSearchValue] = useState(null);
 
-  function getSearchedValue(e) {
-    setSearchValue(e.target.value);
-  }
+  const getSearchedValue = e => setSearchValue(e.target.value);
 
   const citiesToShow = searchValue
     ? initialCities.filter(city => city.cityName.includes(searchValue))
