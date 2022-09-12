@@ -1,11 +1,11 @@
 const getLocalHours = currentdate => currentdate.getHours();
 
 const getLocalUnit = (currentdate, getUnit) => {
-  const min = currentdate[getUnit]();
-  if (min < 10) {
-    return `0${min}`;
+  const unit = currentdate[getUnit]();
+  if (unit < 10) {
+    return `0${unit}`;
   }
-  return min;
+  return unit;
 };
 
 export const getTime = () => {
