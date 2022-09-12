@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles.scss';
-import { MyBytton } from '../UI/button/MyButton';
-import MyInput from '../UI/input/MyInput';
+import Button from '../UI/button/Button';
+import Input from '../UI/input/Input';
 
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -114,15 +114,15 @@ export default function MainPage() {
     <div className={styles.MainPage}>
       <div className={styles.search}>
         <p>Find the right location</p>
-        <MyInput
+        <Input
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
           placeholder="write here"
-        ></MyInput>
+        ></Input>
       </div>
       <div className={styles.items}>
         {filteredItems.map(item => (
-          <MyBytton key={item}>{item}</MyBytton>
+          <Button key={item}>{item}</Button>
         ))}
       </div>
     </div>
