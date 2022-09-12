@@ -12,6 +12,9 @@ import useGeoLocation from 'hooks/useGeoLocation';
 // Assets
 import { IconLocation } from 'assets/images/svg';
 
+// Components
+import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
+
 // Styles
 import { Flex } from 'styles/global';
 import * as S from './GeoLocation.styles';
@@ -33,10 +36,9 @@ const GeoLocation: FunctionComponent = () => {
   const handleGetLocationInfo = useCallback(() => {
     if (pos) dispatch(getLocationInfo(query));
   }, [dispatch, query, pos]);
-  const handleSetLocationQuery = useCallback(() => dispatch(setLocationQuery(query)), [
-    dispatch,
-    query
-  ]);
+  const handleSetLocationQuery = useCallback(() => {
+    if (pos) dispatch(setLocationQuery(query));
+  }, [dispatch, query, pos]);
 
   useEffect(() => {
     handleGetLocationInfo();
@@ -50,16 +52,15 @@ const GeoLocation: FunctionComponent = () => {
     <S.GeoLocation>
       <Flex>
         <IconLocation />
-        {data ? (
+        <RequestDataWrapper
+          data={data}
+          loading={posLoading || infoLoading}
+          error={posError || infoError}
+        >
           <p>
-            <span>{data.name}</span>, {data.country}
+            <span>{data?.name}</span>, {data?.country}
           </p>
-        ) : (
-          <>
-            {(posLoading || infoLoading) && (!posError || !infoError) && <p>Loading data...</p>}
-            {(posError || infoError) && (!posLoading || !infoLoading) && <p>No data available</p>}
-          </>
-        )}
+        </RequestDataWrapper>
       </Flex>
     </S.GeoLocation>
   );

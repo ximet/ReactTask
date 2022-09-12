@@ -1,4 +1,3 @@
-/* global GeolocationCoordinates PositionCallback GeolocationPosition PositionErrorCallback GeolocationPositionError */
 import { useState, useEffect } from 'react';
 
 interface useGeoLocationProps {
@@ -7,7 +6,7 @@ interface useGeoLocationProps {
   maximumAge?: 0;
 }
 
-function useGeoLocation(options: useGeoLocationProps = {}) {
+function useGeoLocation(options?: useGeoLocationProps) {
   const [location, setLocation] = useState<{ lat: number; lon: number }>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null | GeolocationPositionError>(null);
