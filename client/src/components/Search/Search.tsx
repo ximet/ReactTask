@@ -31,7 +31,7 @@ const Search: FunctionComponent = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [listShown, setListShown] = useState<boolean>(true);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-  const theme = useAppSelector(state => state.theme.theme);
+  const theme = useAppSelector(state => state.theme);
   const { data } = useAppSelector(state => state.location.search);
 
   const searchRef = useRef<HTMLDivElement>(null);

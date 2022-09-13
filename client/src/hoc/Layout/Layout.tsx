@@ -10,7 +10,7 @@ import Header from 'components/Header/Header';
 import GlobalStyle from './Layout.styles';
 
 const Layout: FunctionComponent = ({ children }) => {
-  const { theme } = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.theme);
 
   return (
     <>

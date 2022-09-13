@@ -1,20 +1,13 @@
 import { ActionType, Action } from '../actionTypes/theme';
 
-interface ThemeState {
-  theme: string;
-}
+type ThemeState = string;
 
-const initialState = {
-  theme: 'light'
-};
+const initialState = 'light';
 
 const themeReducer = (state: ThemeState = initialState, action: Action): ThemeState => {
   switch (action.type) {
     case ActionType.TOGGLE_THEME: {
-      return {
-        ...state,
-        theme: action.payload
-      };
+      return action.payload;
     }
     default:
       return state;

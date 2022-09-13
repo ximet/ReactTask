@@ -56,7 +56,7 @@ const Input: FunctionComponent<InputProps> = ({
   onChange,
   onFocus
 }) => {
-  const theme = useAppSelector(state => state.theme.theme);
+  const theme = useAppSelector(state => state.theme);
 
   const inputRef = useRef<HTMLInputElement>(null);
 

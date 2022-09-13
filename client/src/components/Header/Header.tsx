@@ -18,7 +18,7 @@ import Search from '../Search/Search';
 import ButtonSwitch from '../ButtonSwitch/ButtonSwitch';
 
 const Header: FunctionComponent = () => {
-  const theme = useAppSelector(state => state.theme.theme);
+  const theme = useAppSelector(state => state.theme);
 
   const dispatch = useDispatch();
 

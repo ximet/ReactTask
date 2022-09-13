@@ -20,7 +20,7 @@ const ButtonSwitch: FunctionComponent<ButtonSwitchProps> = ({
   onClick,
   children
 }) => {
-  const { theme } = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.theme);
 
   return (
     <S.ButtonSwitch
