@@ -13,17 +13,13 @@
   font-family: 'Lobster', cursive;
   font-size: 28px;
 
-  color: antiquewhite;
+  color: var(--color-text-primary);
   background: linear-gradient(
     45deg,
-    var(--pink),
-    #7209b7,
-    var(--purple),
-    #480ca8,
-    var(--blue),
-    #4361ee,
-    #4895ef,
-    #4cc9f0
+    var(--color-canvas-tertiary),
+    var(--color-canvas-primary),
+    var(--color-canvas-secondary),
+    var(--color-canvas-quaternary)
   );
 }
 

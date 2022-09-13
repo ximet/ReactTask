@@ -9,9 +9,8 @@
   padding-right: 40px;
   overflow: hidden;
 
-  background-color: var(--purple);
-  color: white;
-
+  background-color: var(--color-canvas-primary);
+  color: var(--color-text-primary);
   font-size: larger;
   text-align: right;
 }

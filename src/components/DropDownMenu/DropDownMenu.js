@@ -3,7 +3,7 @@ import styles from './DropDownMenu.module.css';
 
 import { initialCities } from './constants.js';
 
-function DropDownMenu() {
+const DropDownMenu = () => {
   const [searchValue, setSearchValue] = useState(null);
 
   const getSearchedValue = e => setSearchValue(e.target.value);
@@ -25,6 +25,6 @@ function DropDownMenu() {
       </datalist>
     </div>
   );
-}
+};
 
 export default DropDownMenu;

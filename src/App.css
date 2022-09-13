@@ -3,9 +3,13 @@
 @import './reset.css';
 
 :root {
-  --pink: #b5179e;
-  --purple: #601293;
-  --blue: #3f37c9;
+  --color-canvas-primary: #601293;
+  --color-canvas-secondary: #3f37c9;
+  --color-canvas-tertiary: #b5179e;
+  --color-canvas-quaternary: #4cc9f0;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #601293;
 }
 
 main {
@@ -22,7 +26,7 @@ body {
   height: 100vh;
 
   background-image: url('./../public/images/sky.jpg');
-  background-color: #cccccc;
+  background-color: var(--color-canvas-quaternary);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
