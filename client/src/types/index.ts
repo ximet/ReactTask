@@ -5,15 +5,17 @@ export interface AuthorizationRequest {
 
 export interface AuthorizationResponse {
   data: {
-    status: 'success' | 'fail';
+    status: HttpResponseStatus;
   };
 }
 export interface AuthenticationResponse {
   data: {
-    status: 'success' | 'fail';
+    status: HttpResponseStatus;
     token: string;
   };
 }
+
+export type HttpResponseStatus = 'success' | 'fail';
 
 export type AccessToken = null | string;
 

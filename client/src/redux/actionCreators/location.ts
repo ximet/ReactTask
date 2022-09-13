@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 
+import { Constants } from '../../constants';
 import { ActionType, Action } from '../actionTypes/location';
 
 export const searchLocations = (query: string) => async (dispatch: Dispatch<Action>) => {
   dispatch({ type: ActionType.SEARCH_LOCATION_PENDING });
 
   try {
-    const data = await axios.get(`http://localhost:3000/forecaApi/location/search/${query}`, {
+    const data = await axios.get(`${Constants.BASE_URL}/forecaApi/location/search/${query}`, {
       withCredentials: true
     });
 
@@ -23,7 +24,7 @@ export const getLocationInfo = (query: string) => async (dispatch: Dispatch<Acti
   dispatch({ type: ActionType.GET_LOCATION_INFO_PENDING });
 
   try {
-    const data = await axios.get(`http://localhost:3000/forecaApi/location/${query}`, {
+    const data = await axios.get(`${Constants.BASE_URL}/forecaApi/location/${query}`, {
       withCredentials: true
     });
 
@@ -40,7 +41,7 @@ export const getLocationCurrWeather = (query: string) => async (dispatch: Dispat
 
   try {
     const data = await axios.get(
-      `http://localhost:3000/forecaApi/current/${query}&tempunit=C&windunit=MS`,
+      `${Constants.BASE_URL}/forecaApi/current/${query}&tempunit=C&windunit=MS`,
       { withCredentials: true }
     );
 

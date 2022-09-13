@@ -15,7 +15,7 @@ const initialState = {
 
 const authReducer = (state: AuthState = initialState, action: Action): AuthState => {
   switch (action.type) {
-    case ActionType.AUTHORIZE_PENDING: {
+    case ActionType.AUTHORIZE_PENDING || ActionType.AUTHENTICATE_PENDING: {
       return {
         ...state,
         loading: true
@@ -27,17 +27,11 @@ const authReducer = (state: AuthState = initialState, action: Action): AuthState
         loading: false
       };
     }
-    case ActionType.AUTHORIZE_FAIL: {
+    case ActionType.AUTHORIZE_FAIL || ActionType.AUTHENTICATE_FAIL: {
       return {
         ...state,
         loading: false,
         error: action.payload
-      };
-    }
-    case ActionType.AUTHENTICATE_PENDING: {
-      return {
-        ...state,
-        loading: true
       };
     }
     case ActionType.AUTHENTICATE_SUCCESS: {
@@ -45,13 +39,6 @@ const authReducer = (state: AuthState = initialState, action: Action): AuthState
         ...state,
         loading: false,
         accessToken: action.payload
-      };
-    }
-    case ActionType.AUTHENTICATE_FAIL: {
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
       };
     }
     default:
