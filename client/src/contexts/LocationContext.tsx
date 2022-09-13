@@ -1,5 +1,6 @@
-import useGetLocation, { GeolocationCoordinates } from 'hooks/useGetLocation';
+import useGetLocation from 'hooks/useGetLocation';
 import React, { createContext, useState, useMemo, FC, useEffect } from 'react';
+import { GeolocationCoordinates } from 'types';
 
 export type LocationContextData = {
   coordinates: GeolocationCoordinates | null;

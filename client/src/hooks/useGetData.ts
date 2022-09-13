@@ -7,7 +7,7 @@ const useGetData = (
   getDailyWeather,
   getHourlyWeather,
   getLocation,
-  { coordinates, statusMsg, location }
+  { coordinates, location }
 ) => {
   const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
   const [locationData, setLocationData] = useState<LocationData | undefined>(undefined);

@@ -2,6 +2,10 @@ export type Coordinates = {
   lon?: number;
   lat?: number;
 };
+export type GeolocationCoordinates = {
+  lon: number;
+  lat: number;
+};
 
 export type WeatherData = {
   cloudiness: number;
