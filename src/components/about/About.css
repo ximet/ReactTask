@@ -1,0 +1,34 @@
+.about-container {
+  display: block;
+  max-width: 1000px;
+}
+
+.about-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 5rem;
+}
+
+.about-article-title {
+  position: relative;
+  width: max-content;
+  margin-bottom: 2.5rem;
+}
+
+.about-article-title::after {
+  position: absolute;
+  content: '';
+  top: 110%;
+  left: 50%;
+  width: 75%;
+  transform: translateX(-50%);
+  border-bottom: 2px var(--font-color) solid;
+}
+
+.about-article > p {
+  padding-left: 1.5rem;
+}
+
+.about-article:not(:last-child) {
+  margin-bottom: 3rem;
+}

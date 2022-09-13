@@ -1,7 +1,7 @@
 import styles from './Header.css';
 
 import React, { FC, useState, useEffect, useRef, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import HTTPRequest from 'services/httpService';
 import { LocationInfoType } from 'types/cityInfoType';
 import { positionContext } from '../../context/positionContext';
@@ -22,6 +22,7 @@ const Header: FC = () => {
   const [cities, setCities] = useState<LocationInfoType[]>([]);
   const { changePosition } = useContext(positionContext);
   const { theme, toggleTheme } = useContext(themeContext);
+  const navigate = useNavigate();
 
   const getCities = async (search: string): Promise<{ locations: LocationInfoType[] }> => {
     const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
@@ -32,6 +33,7 @@ const Header: FC = () => {
     setSearchText('');
     setCities([]);
     changePosition(lat, lon);
+    navigate('/');
   };
 
   useEffect(() => {
@@ -62,8 +64,8 @@ const Header: FC = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/details" className={setActive}>
-              Details
+            <NavLink to="/about" className={setActive}>
+              About
             </NavLink>
           </li>
           <li>

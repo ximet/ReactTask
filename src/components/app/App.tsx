@@ -10,7 +10,7 @@ import { ThemeContextProvider } from 'context/themeContext';
 
 import { Layout } from 'components/Layout';
 import { Countries } from 'components/countries/Countries';
-import { Details } from 'components/details/Details';
+import { About } from 'components/about/About';
 import { Feedback } from 'components/feedback/Feedback';
 import { Page404 } from 'components/page404/Page404';
 import { setInLocalStorage, getFromLocalStorage } from 'services/localStorage';
@@ -43,7 +43,7 @@ const App: FC = () => {
                 <Route path="/" element={<Layout />}>
                   <Route index element={<Main />} />
                   <Route path="countries" element={<Countries />} />
-                  <Route path="details" element={<Details />} />
+                  <Route path="about" element={<About />} />
                   <Route path="feedback" element={<Feedback />} />
                   <Route path="*" element={<Page404 />} />
                 </Route>
