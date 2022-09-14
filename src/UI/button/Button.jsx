@@ -1,9 +1,10 @@
-import styles from './Button.scss';
+import styles from '../../styles.scss';
 
 function Button(props) {
+  const { text } = props;
   return (
-    <button {...props} className={styles.Btn}>
-      {props.text}
+    <button className={styles.btn} {...props}>
+      {text}
     </button>
   );
 }

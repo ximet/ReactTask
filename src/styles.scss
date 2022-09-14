@@ -3,22 +3,44 @@ body {
   font-family: 'Ubuntu', sans-serif;
   margin: 0 auto;
 }
-$bgc: teal;
-$headerAndFotterColor: rgb(221, 170, 17);
-$searchItemsColor: rgb(23, 203, 216);
-.MainPage {
+$colorUIPrimary: teal;
+$colorUISecondary: rgb(22, 157, 215);
+$colorTextPrimary: rgb(221, 170, 17);
+$colorTextSecondary: rgb(8, 142, 152);
+$colorButtonsSecondary: rgb(14, 196, 196);
+.mainPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.btn {
+  padding: 5px 15px;
+  color: $colorTextSecondary;
+  font-size: 14px;
+  background: transparent;
+  border: 2px solid $colorUISecondary;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 8px;
+}
+.input {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 5px 0;
+
+  height: 20px;
+  border-radius: 8px;
+  border: 2px solid $colorUISecondary;
+}
+
 .search {
   display: flex;
   flex-direction: column;
   align-items: center;
   p {
     margin-bottom: 2px;
-    color: $searchItemsColor;
+    color: $colorUISecondary;
   }
 }
 .items {
@@ -33,21 +55,23 @@ $searchItemsColor: rgb(23, 203, 216);
   }
 }
 .appheader {
-  background-color: $bgc;
+  background-color: $colorUIPrimary;
   height: 55px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
-  h3 {
+  p {
     margin: 0;
     padding-left: 90px;
-    color: $headerAndFotterColor;
+    color: $colorTextPrimary;
+    font-size: 25px;
+    font-weight: 700;
   }
 }
 
 .appfooter {
-  background-color: $bgc;
+  background-color: $colorUIPrimary;
   height: 55px;
   display: flex;
   align-items: center;
@@ -58,6 +82,6 @@ $searchItemsColor: rgb(23, 203, 216);
     font-size: large;
     margin: 0;
     padding-left: 90px;
-    color: $headerAndFotterColor;
+    color: $colorTextPrimary;
   }
 }
