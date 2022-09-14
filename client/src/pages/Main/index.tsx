@@ -2,17 +2,12 @@ import React, { FC, useContext } from 'react';
 import { getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation } from 'API/get';
 import LocationContext from 'contexts/LocationContext';
 import useGetData from 'hooks/useGetData';
-import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import MainView from 'components/MainView/MainView';
-
-type LocationParams = {
-  location: string | undefined;
-};
+import styles from '../../components/Loader/styles.module.scss';
 
 const Main: FC = () => {
-  const { location } = useParams<LocationParams>();
-  const { coordinates, statusMsg } = useContext(LocationContext);
+  const { statusMsg } = useContext(LocationContext);
 
   const {
     currentWeather,
@@ -20,19 +15,20 @@ const Main: FC = () => {
     forecast,
     hourlyForecast,
     setHourlyForecast,
-    isLoading
-  } = useGetData(getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation, {
-    coordinates,
-    location
-  });
+    isLoading,
+    errorMsg
+  } = useGetData({ getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation });
 
   if (isLoading) {
-    return <Loader />;
+    return statusMsg || errorMsg ? (
+      <div className={styles.loaderContainer}>{statusMsg || errorMsg}</div>
+    ) : (
+      <Loader />
+    );
   }
 
   return (
     <MainView
-      coordinates={coordinates}
       setHourlyForecast={setHourlyForecast}
       statusMsg={statusMsg}
       currentWeather={currentWeather}

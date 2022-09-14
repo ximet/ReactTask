@@ -7,15 +7,15 @@ import styles from './styles.module.scss';
 interface DayForecast {
   dayWeather: DailyWeather;
   onClick: () => void;
-  className: string;
+  isActive: boolean;
 }
 
-const DailyWeatherCard: FC<DayForecast> = ({ dayWeather, onClick, className }) => {
+const DailyWeatherCard: FC<DayForecast> = ({ dayWeather, onClick, isActive }) => {
   return (
-    <div className={`${styles.dayWeatherBox} ${className}`} onClick={onClick} onKeyDown={onClick}>
-      {className.split('_')[0] === 'active' && (
-        <div className={styles.div}>
-          <LayoutIcon className={`${styles.div}`} />
+    <div className={styles.dayWeatherBox} onClick={onClick} onKeyDown={onClick}>
+      {isActive && (
+        <div className={styles.cardOverlay}>
+          <LayoutIcon className={`${styles.cardOverlay}`} />
         </div>
       )}
       <h5>{dayWeather.date}</h5>

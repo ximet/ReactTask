@@ -1,32 +1,8 @@
-export type Coordinates = {
-  lon?: number;
-  lat?: number;
-};
 export type GeolocationCoordinates = {
   lon: number;
   lat: number;
 };
 
-export type WeatherData = {
-  cloudiness: number;
-  dewPoint: number;
-  feelsLikeTemp: number;
-  precipProb: number;
-  precipRate: number;
-  pressure: number;
-  relHumidity: number;
-  symbol: string;
-  symbolPhrase: string;
-  temperature: number;
-  thunderProb: number;
-  time: string;
-  uvIndex: number;
-  visibility: number;
-  windDir: number;
-  windDirString: string;
-  windGust: number;
-  windSpeed: number;
-};
 export type LocationData = {
   adminArea: string;
   adminArea2: string;
@@ -39,10 +15,45 @@ export type LocationData = {
   name: string;
   timezone: string;
 };
-export type DailyWeather = {
-  date: string;
+
+export type CommonWeatherData = {
+  cloudiness: number;
+  precipProb: number;
+  pressure: number;
   symbol: string;
   symbolPhrase: string;
+  uvIndex: number;
+  windDir: number;
+};
+
+export type CurrentHourlyCommonData = {
+  dewPoint: number;
+  feelsLikeTemp: number;
+  relHumidity: number;
+  temperature: number;
+  thunderProb: number;
+  time: string;
+  visibility: number;
+  windDirString: string;
+  windGust: number;
+  windSpeed: number;
+};
+
+export type CurrentWeatherData = CommonWeatherData &
+  CurrentHourlyCommonData & {
+    precipRate: number;
+  };
+
+export type HourlyWeather = CommonWeatherData &
+  CurrentHourlyCommonData & {
+    solarRadiation: number;
+    precipType: string;
+    precipAccum: number;
+    snowAccum: number;
+  };
+
+export type DailyWeather = CommonWeatherData & {
+  date: string;
   maxTemp: number;
   minTemp: number;
   maxFeelsLikeTemp: number;
@@ -51,13 +62,9 @@ export type DailyWeather = {
   minRelHumidity: number;
   maxDewPoint: number;
   minDewPoint: number;
-  precipAccum: number;
-  snowAccum: number;
   maxWindSpeed: number;
-  windDir: number;
   maxWindGust: number;
-  precipProb: number;
-  cloudiness: number;
+  minVisibility: number;
   sunrise: string;
   sunset: string;
   sunriseEpoch: number;
@@ -65,35 +72,10 @@ export type DailyWeather = {
   moonrise: string;
   moonset: string;
   moonPhase: number;
-  uvIndex: number;
-  minVisibility: number;
-  pressure: number;
   confidence: string;
   solarRadiationSum: number;
-};
-
-export type HourlyWeather = {
-  cloudiness: number;
-  dewPoint: number;
-  feelsLikeTemp: number;
-  precipAccum: number;
-  precipProb: number;
-  precipType: string;
-  pressure: number;
-  relHumidity: number;
   snowAccum: number;
-  solarRadiation: number;
-  symbol: string;
-  symbolPhrase: string;
-  temperature: number;
-  thunderProb: number;
-  time: string;
-  uvIndex: number;
-  visibility: number;
-  windDir: number;
-  windDirString: string;
-  windGust: number;
-  windSpeed: number;
+  precipAccum: number;
 };
 
 export type BoxStyleParams = {

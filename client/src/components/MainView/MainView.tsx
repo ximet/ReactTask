@@ -2,30 +2,22 @@ import { getHourlyWeather } from 'API/get';
 import CurrentWeatherCard from 'components/CurrentWeatherCard';
 import DailyWeatherCard from 'components/DailyWeatherCard';
 import HourlyWeatherCard from 'components/HourlyWeatherCard';
-import React, { FC, useState } from 'react';
-import {
-  BoxStyleParams,
-  DailyWeather,
-  GeolocationCoordinates,
-  HourlyWeather,
-  LocationData,
-  WeatherData
-} from 'types';
+import LocationContext from 'contexts/LocationContext';
+import React, { FC, useState, useContext, useRef } from 'react';
+import { DailyWeather, HourlyWeather, LocationData, CurrentWeatherData } from 'types';
 import { getBackgroundImg } from 'utils/getImages';
 import styles from './MainView.module.scss';
 
 interface MainViewParams {
-  coordinates: GeolocationCoordinates | null;
   setHourlyForecast: (arg: HourlyWeather[]) => void;
-  statusMsg: string | null;
-  currentWeather: WeatherData | null;
+  statusMsg?: string | null;
+  currentWeather: CurrentWeatherData | null;
   locationData: LocationData | undefined;
   forecast: DailyWeather[];
   hourlyForecast: HourlyWeather[];
 }
 
 const MainView: FC<MainViewParams> = ({
-  coordinates,
   setHourlyForecast,
   statusMsg,
   currentWeather,
@@ -33,10 +25,10 @@ const MainView: FC<MainViewParams> = ({
   forecast,
   hourlyForecast
 }) => {
-  const [boxStyle, setBoxStyle] = useState<BoxStyleParams>({
-    activeObject: null,
-    objects: [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }]
-  });
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const { coordinates } = useContext(LocationContext);
+  // would be good to use it for smaller screens
+  // const ref = useRef<null | HTMLDivElement>(null);
 
   const onCardClick = async (index: number, date: string) => {
     setHourlyForecast([]);
@@ -46,14 +38,13 @@ const MainView: FC<MainViewParams> = ({
       return new Date(hour.time).getDate() === clickedDay;
     });
     setHourlyForecast(filteredHoursByDay);
-    setBoxStyle({ ...boxStyle, activeObject: boxStyle.objects[index] });
+    setActiveCard(index);
+    // would be good to use it for smaller screens
+    // ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const toggleActiveStyles = (index: number): string => {
-    if (boxStyle.activeObject === boxStyle.objects[index]) {
-      return styles.active;
-    }
-    return styles.inactive;
+  const toggleActiveStyles = (index: number): boolean => {
+    return activeCard === index;
   };
 
   return (
@@ -74,7 +65,7 @@ const MainView: FC<MainViewParams> = ({
             {forecast?.map((day: DailyWeather, index) => {
               return (
                 <DailyWeatherCard
-                  className={toggleActiveStyles(index)}
+                  isActive={toggleActiveStyles(index)}
                   key={day.date}
                   dayWeather={day}
                   onClick={() => {

@@ -13,7 +13,7 @@ const HeaderSearch = () => {
   const navigate = useNavigate();
 
   const handleChange = event => {
-    if (/^[A-Za-z]*$/.test(event.target.value)) {
+    if (/(^[A-Za-z]\s{1}}[A-Za-z])*$/.test(event.target.value)) {
       setInputValue(event.target.value);
     }
   };
@@ -27,20 +27,17 @@ const HeaderSearch = () => {
         setStatusMsg(`Sorry, your entered location "${inputValue}" does not exists`);
         setInputValue('');
       } else {
-        const coords = {
-          lat: locationData.locations[0].lat,
-          lon: locationData.locations[0].lon
-        };
-        setCoordinates(coords);
+        setCoordinates(null);
         setStatusMsg(null);
-        navigate(`/details/${locationData.locations[0].name}`);
         setInputValue('');
+        navigate(`/details/${locationData.locations[0].name.replace(/\s+/g, '')}`);
       }
     } else {
       setStatusMsg('Please, enter the name of the city. The input cannot be empty');
       setCoordinates(null);
     }
   };
+
   return (
     <Header>
       <form onSubmit={handleSubmit} className={styles.form}>

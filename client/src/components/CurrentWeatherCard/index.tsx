@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { LocationData, WeatherData } from 'types';
+import { LocationData, CurrentWeatherData } from 'types';
 import { getSymbol } from 'utils/getImages';
 import styles from './styles.module.scss';
 
 type WeatherProps = {
-  weatherData: WeatherData | null;
+  weatherData: CurrentWeatherData | null;
   location: LocationData | undefined;
 };
 
@@ -13,7 +13,7 @@ const CurrentWeatherCard: FC<WeatherProps> = ({ weatherData, location }) => {
     <div>
       {weatherData && location && (
         <div>
-          <h2 className={styles.locationName}>
+          <h2>
             {location.name}, {location.country}
           </h2>
           <div className={styles.temperatureBox}>

@@ -22,8 +22,8 @@ const LocationContext = createContext<LocationContextData>({
 
 export const LocationProvider: FC<React.ReactNode> = ({ children }) => {
   const { coords, status } = useGetLocation();
-  const [coordinates, setCoordinates] = useState<GeolocationCoordinates | null>(coords);
-  const [statusMsg, setStatusMsg] = useState<string | null>(status);
+  const [coordinates, setCoordinates] = useState<GeolocationCoordinates | null>(null);
+  const [statusMsg, setStatusMsg] = useState<string | null>(null);
 
   useEffect(() => {
     setCoordinates(coords);

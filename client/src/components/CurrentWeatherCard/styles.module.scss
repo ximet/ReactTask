@@ -1,7 +1,3 @@
-.locationName {
-  // font-weight: 300;
-}
-
 .temperatureBox {
   width: 250px;
   display: flex;
@@ -16,13 +12,11 @@
 
   .temperature {
     font-size: 3.2em;
-    // font-weight: 300;
   }
 }
 
 .symbolPhrase {
   text-transform: capitalize;
-  // font-weight: 300;
 }
 
 .weatherDataBox {
@@ -32,8 +26,4 @@
   justify-items: start;
   width: 400px;
   margin: 20px auto;
-
-  h5 {
-    // font-weight: 300;
-  }
 }

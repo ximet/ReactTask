@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { GeolocationCoordinates, LocationData } from 'types';
 
-const URL = 'https://pfa.foreca.com/api/v1';
+// const URL = 'https://pfa.foreca.com/api/v1';
+const URL = 'http://localhost:5000';
 
 export const createToken = async () => {
   try {
@@ -17,7 +18,7 @@ export const getCurrentWeather = async (param: GeolocationCoordinates | null) =>
   try {
     const result = await axios.get(`${URL}/current/location=${param?.lon},${param?.lat}`, {
       headers: {
-        Authorization: `Bearer ${window.localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     });
     return result.data.current;
