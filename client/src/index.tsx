@@ -4,10 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // Store
-import store from './app/store';
+import store from 'redux/store';
 
 // Components
-import App from './App';
+import App from 'App';
 
 const app = (
   <React.StrictMode>

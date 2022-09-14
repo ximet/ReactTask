@@ -4,12 +4,18 @@ export interface AuthorizationRequest {
 }
 
 export interface AuthorizationResponse {
-  status: 'success' | 'fail';
+  data: {
+    status: HttpResponseStatus;
+  };
 }
 export interface AuthenticationResponse {
-  status: 'success' | 'fail';
-  token: string;
+  data: {
+    status: HttpResponseStatus;
+    token: string;
+  };
 }
+
+export type HttpResponseStatus = 'success' | 'fail';
 
 export type AccessToken = null | string;
 
@@ -27,15 +33,11 @@ export interface LocationInfo {
   state?: string;
 }
 
-export interface StylesProps {
-  theme: 'light' | 'dark';
-}
-
 export interface WeatherInfo {
   date?: string;
   time?: string;
-  symbol: string;
-  symbolPhrase: string;
+  symbol?: string;
+  symbolPhrase?: string;
   temperature?: number;
   maxTemp?: number;
   minTemp?: number;
@@ -50,18 +52,18 @@ export interface WeatherInfo {
   minDewPoint?: number;
   windSpeed?: number;
   maxWindSpeed?: number;
-  windDir: number;
-  windDirString: string;
-  windGust: number;
+  windDir?: number;
+  windDirString?: string;
+  windGust?: number;
   maxWindGust?: number;
-  precipProb: number;
-  precipRate: number;
+  precipProb?: number;
+  precipRate?: number;
   precipType?: string;
   precipAccum?: number;
   snowRate?: number;
   snowAccum?: number;
-  cloudiness: number;
-  thunderProb: number;
+  cloudiness?: number;
+  thunderProb?: number;
   sunrise?: string;
   sunset?: string;
   sunriseEpoch?: number;
@@ -69,11 +71,17 @@ export interface WeatherInfo {
   moonrise?: string;
   moonset?: string;
   moonPhase?: number;
-  uvIndex: number;
+  uvIndex?: number;
   solarRadiation?: number;
   solarRadiationSum?: number;
-  pressure: number;
+  pressure?: number;
   confidence?: string;
   visibility?: number;
   minVisibility?: number;
+}
+
+export type Theme = 'light' | 'dark';
+
+export interface StylesProps {
+  theme: Theme;
 }
