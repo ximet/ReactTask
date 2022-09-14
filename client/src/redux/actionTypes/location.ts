@@ -13,6 +13,10 @@ export enum ActionType {
   GET_LOCATION_CURRENT_WEATHER_SUCCESS = 'GET_LOCATION_CURRENT_WEATHER_SUCCESS',
   GET_LOCATION_CURRENT_WEATHER_FAIL = 'GET_LOCATION_CURRENT_WEATHER_FAIL',
 
+  GET_LOCATION_HOURLY_WEATHER_PENDING = 'GET_LOCATION_HOURLY_WEATHER_PENDING',
+  GET_LOCATION_HOURLY_WEATHER_SUCCESS = 'GET_LOCATION_HOURLY_WEATHER_SUCCESS',
+  GET_LOCATION_HOURLY_WEATHER_FAIL = 'GET_LOCATION_HOURLY_WEATHER_FAIL',
+
   SET_LOCATION_QUERY = 'SET_LOCATION_QUERY'
 }
 
@@ -20,7 +24,8 @@ interface ActionPending {
   type:
     | ActionType.SEARCH_LOCATION_PENDING
     | ActionType.GET_LOCATION_INFO_PENDING
-    | ActionType.GET_LOCATION_CURRENT_WEATHER_PENDING;
+    | ActionType.GET_LOCATION_CURRENT_WEATHER_PENDING
+    | ActionType.GET_LOCATION_HOURLY_WEATHER_PENDING;
 }
 
 interface ActionSearchSuccess {
@@ -38,11 +43,17 @@ interface ActionCurrentWeatherSuccess {
   payload: WeatherInfo;
 }
 
+interface ActionHourlyWeatherSuccess {
+  type: ActionType.GET_LOCATION_HOURLY_WEATHER_SUCCESS;
+  payload: WeatherInfo[];
+}
+
 interface ActionFail {
   type:
     | ActionType.SEARCH_LOCATION_FAIL
     | ActionType.GET_LOCATION_INFO_FAIL
-    | ActionType.GET_LOCATION_CURRENT_WEATHER_FAIL;
+    | ActionType.GET_LOCATION_CURRENT_WEATHER_FAIL
+    | ActionType.GET_LOCATION_HOURLY_WEATHER_FAIL;
   payload: string;
 }
 
@@ -56,5 +67,6 @@ export type Action =
   | ActionSearchSuccess
   | ActionInfoSuccess
   | ActionCurrentWeatherSuccess
+  | ActionHourlyWeatherSuccess
   | ActionQuery
   | ActionFail;

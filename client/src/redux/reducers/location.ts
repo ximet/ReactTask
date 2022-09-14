@@ -18,6 +18,11 @@ interface LocationState {
       loading: boolean;
       error: string | null;
     };
+    hourly: {
+      data: WeatherInfo[] | null;
+      loading: boolean;
+      error: string | null;
+    };
   };
   query: string;
 }
@@ -35,6 +40,11 @@ const initialState = {
   },
   weather: {
     current: {
+      data: null,
+      loading: false,
+      error: null
+    },
+    hourly: {
       data: null,
       loading: false,
       error: null
@@ -135,6 +145,44 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           ...state.weather,
           current: {
             ...state.weather.current,
+            loading: false,
+            error: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_HOURLY_WEATHER_PENDING: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          hourly: {
+            ...state.weather.hourly,
+            loading: true
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_HOURLY_WEATHER_SUCCESS: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          hourly: {
+            ...state.weather.hourly,
+            loading: false,
+            data: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_HOURLY_WEATHER_FAIL: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          hourly: {
+            ...state.weather.hourly,
             loading: false,
             error: action.payload
           }

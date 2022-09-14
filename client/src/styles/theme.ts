@@ -8,6 +8,7 @@ const theme = {
       dark: '#adcade'
     },
     grey: {
+      light: '#dcdbdb',
       medium: '#9f9f9f',
       dark: '#706f74'
     },

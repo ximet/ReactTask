@@ -9,4 +9,5 @@ export const colorChange = (
 ) => `
   ${changeP}: ${props.theme === 'light' ? changeVal1 : changeVal2};
   transition: ${transitionVal} 1.2s;
+  will-change: ${transitionVal};
 `;
