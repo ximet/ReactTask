@@ -4,6 +4,7 @@ import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
 import { allItems } from '../helper/variables';
 
+const { mainPage, search, buttons } = styles;
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState(allItems);
@@ -11,8 +12,8 @@ export default function MainPage() {
     item.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
   );
   return (
-    <div className={styles.mainPage}>
-      <div className={styles.search}>
+    <div className={mainPage}>
+      <div className={search}>
         <p>Find the right location</p>
         <Input
           value={searchQuery}
@@ -20,7 +21,7 @@ export default function MainPage() {
           placeholder="write here"
         ></Input>
       </div>
-      <div className={styles.items}>
+      <div className={buttons}>
         {filteredItems.map(item => (
           <Button text={item} key={item}></Button>
         ))}
