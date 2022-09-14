@@ -69,6 +69,48 @@ export const getLocationHourlyWeather = (query: string) => async (dispatch: Disp
   }
 };
 
+export const getLocationThreeHourlyWeather = (query: string) => async (
+  dispatch: Dispatch<Action>
+) => {
+  dispatch({ type: ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_PENDING });
+
+  try {
+    const data = await axios.get(
+      `${BASE_URL}/forecaApi/forecast/3hourly/${query}&tempunit=C&windunit=MS`,
+      { withCredentials: true }
+    );
+
+    dispatch({
+      type: ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_SUCCESS,
+      payload: data.data.forecast
+    });
+  } catch (err) {
+    if (err instanceof Error) {
+      dispatch({ type: ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_FAIL, payload: err.message });
+    }
+  }
+};
+
+export const getLocationDailyWeather = (query: string) => async (dispatch: Dispatch<Action>) => {
+  dispatch({ type: ActionType.GET_LOCATION_DAILY_WEATHER_PENDING });
+
+  try {
+    const data = await axios.get(
+      `${BASE_URL}/forecaApi/forecast/daily/${query}&tempunit=C&windunit=MS`,
+      { withCredentials: true }
+    );
+
+    dispatch({
+      type: ActionType.GET_LOCATION_DAILY_WEATHER_SUCCESS,
+      payload: data.data.forecast
+    });
+  } catch (err) {
+    if (err instanceof Error) {
+      dispatch({ type: ActionType.GET_LOCATION_DAILY_WEATHER_FAIL, payload: err.message });
+    }
+  }
+};
+
 export const setLocationQuery = (query: string) => (dispatch: Dispatch<Action>) => {
   dispatch({ type: ActionType.SET_LOCATION_QUERY, payload: query });
 };

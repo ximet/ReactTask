@@ -1,6 +1,12 @@
 import type { LocationInfo, WeatherInfo } from 'types';
 import { ActionType, Action } from '../actionTypes/location';
 
+interface WeatherInfoList {
+  data: WeatherInfo[] | null;
+  loading: boolean;
+  error: string | null;
+}
+
 interface LocationState {
   search: {
     data: LocationInfo[] | null;
@@ -18,11 +24,9 @@ interface LocationState {
       loading: boolean;
       error: string | null;
     };
-    hourly: {
-      data: WeatherInfo[] | null;
-      loading: boolean;
-      error: string | null;
-    };
+    hourly: WeatherInfoList;
+    threeHourly: WeatherInfoList;
+    daily: WeatherInfoList;
   };
   query: string;
 }
@@ -45,6 +49,16 @@ const initialState = {
       error: null
     },
     hourly: {
+      data: null,
+      loading: false,
+      error: null
+    },
+    threeHourly: {
+      data: null,
+      loading: false,
+      error: null
+    },
+    daily: {
       data: null,
       loading: false,
       error: null
@@ -183,6 +197,82 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           ...state.weather,
           hourly: {
             ...state.weather.hourly,
+            loading: false,
+            error: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_PENDING: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          threeHourly: {
+            ...state.weather.threeHourly,
+            loading: true
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_SUCCESS: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          threeHourly: {
+            ...state.weather.threeHourly,
+            loading: false,
+            data: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_FAIL: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          threeHourly: {
+            ...state.weather.threeHourly,
+            loading: false,
+            error: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_DAILY_WEATHER_PENDING: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          daily: {
+            ...state.weather.daily,
+            loading: true
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_DAILY_WEATHER_SUCCESS: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          daily: {
+            ...state.weather.daily,
+            loading: false,
+            data: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_DAILY_WEATHER_FAIL: {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          daily: {
+            ...state.weather.daily,
             loading: false,
             error: action.payload
           }

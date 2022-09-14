@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 
 // Store
 import { useAppSelector } from 'redux/hooks';
-import { getLocationHourlyWeather } from 'redux/actionCreators/location';
+import {
+  getLocationHourlyWeather,
+  getLocationThreeHourlyWeather,
+  getLocationDailyWeather
+} from 'redux/actionCreators/location';
 
 // Components
 import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
@@ -24,7 +28,17 @@ interface ForecastTypeState {
 const DashboardForecast: FunctionComponent = () => {
   const theme = useAppSelector(state => state.theme);
   const query = useAppSelector(state => state.location.query);
-  const { data, loading, error } = useAppSelector(state => state.location.weather.hourly);
+  const { data: hourlyData, loading: hourlyLoading, error: hourlyError } = useAppSelector(
+    state => state.location.weather.hourly
+  );
+  const {
+    data: threeHourlyData,
+    loading: threeHourlyLoading,
+    error: threeHourlyError
+  } = useAppSelector(state => state.location.weather.threeHourly);
+  const { data: dailyData, loading: dailyLoading, error: dailyError } = useAppSelector(
+    state => state.location.weather.daily
+  );
 
   const [forecastType, setForecastType] = useState<ForecastTypeState>({
     hourly: true,
@@ -49,11 +63,45 @@ const DashboardForecast: FunctionComponent = () => {
   const handleGetLocationHourlyWeather = useCallback(() => {
     if (query) dispatch(getLocationHourlyWeather(query));
   }, [dispatch, query]);
+  const handleGetLocationThreeHourlyWeather = useCallback(() => {
+    if (query) dispatch(getLocationThreeHourlyWeather(query));
+  }, [dispatch, query]);
+  const handleGetLocationDailyWeather = useCallback(() => {
+    if (query) dispatch(getLocationDailyWeather(query));
+  }, [dispatch, query]);
 
   // Get data
   useEffect(() => {
-    handleGetLocationHourlyWeather();
-  }, [handleGetLocationHourlyWeather]);
+    if (forecastType.hourly) handleGetLocationHourlyWeather();
+    if (forecastType.threeHourly) handleGetLocationThreeHourlyWeather();
+    if (forecastType.daily) handleGetLocationDailyWeather();
+  }, [
+    handleGetLocationHourlyWeather,
+    forecastType.hourly,
+    handleGetLocationThreeHourlyWeather,
+    forecastType.threeHourly,
+    handleGetLocationDailyWeather,
+    forecastType.daily
+  ]);
+
+  let data;
+  let loading;
+  let error;
+  if (forecastType.hourly) {
+    data = hourlyData;
+    loading = hourlyLoading;
+    error = hourlyError;
+  }
+  if (forecastType.threeHourly) {
+    data = threeHourlyData;
+    loading = threeHourlyLoading;
+    error = threeHourlyError;
+  }
+  if (forecastType.daily) {
+    data = dailyData;
+    loading = dailyLoading;
+    error = dailyError;
+  }
 
   return (
     <S.DashboardForecast>

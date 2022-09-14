@@ -25,7 +25,7 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
 
   const [active, setActive] = useState<boolean>(false);
 
-  const timeStamp = useMemo(() => data && dateFormatter(data.time), [data]);
+  const timeStamp = useMemo(() => data && dateFormatter(data.time || data.date), [data]);
 
   return (
     <S.Widget
@@ -35,7 +35,7 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
       onClick={() => setActive(!active)}
       pointerEvents={pointerEvents}
     >
-      <S.WidgetHeader color={color}>
+      <S.WidgetHeader color={color} theme={theme}>
         <Flex justifySpaceBetween>
           <time dateTime={timeStamp?.day}>{timeStamp?.day}</time>
           <time dateTime={timeStamp?.time}>{timeStamp?.time}</time>
@@ -44,16 +44,30 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
       <S.WidgetBody color={color} active={active}>
         <S.WidgetDetails>
           <S.WidgetDetailsTop>
-            <S.WidgetTemp>{data?.temperature}°</S.WidgetTemp>
+            {data?.temperature && <S.WidgetTemp>{data?.temperature}°</S.WidgetTemp>}
+            {data?.maxTemp && (
+              <S.WidgetTempMaxMin>
+                <span>{data?.maxTemp}°</span> <span>{data?.minTemp}°</span>
+              </S.WidgetTempMaxMin>
+            )}
           </S.WidgetDetailsTop>
           <S.WidgetDetailsBottom color={color} active={active}>
-            <S.WidgetDetailsItem color={color}>
-              <span>Real Feel</span> {data?.feelsLikeTemp}°
-            </S.WidgetDetailsItem>
-            <S.WidgetDetailsItem color={color}>
-              <span>Wind</span> {data?.windDirString}, speed {data?.windSpeed}&nbsp;m/s, gust{' '}
-              {data?.windGust} m/s
-            </S.WidgetDetailsItem>
+            {data?.feelsLikeTemp && (
+              <S.WidgetDetailsItem color={color}>
+                <span>Real Feel</span> {data?.feelsLikeTemp}°
+              </S.WidgetDetailsItem>
+            )}
+            {data?.windSpeed && (
+              <S.WidgetDetailsItem color={color}>
+                <span>Wind</span> {data?.windDirString}, speed {data?.windSpeed}&nbsp;m/s, gust{' '}
+                {data?.windGust} m/s
+              </S.WidgetDetailsItem>
+            )}
+            {data?.maxWindSpeed && (
+              <S.WidgetDetailsItem color={color}>
+                <span>Wind</span> {data?.maxWindSpeed}&nbsp;m/s max,
+              </S.WidgetDetailsItem>
+            )}
             {data?.pressure && (
               <S.WidgetDetailsItem color={color}>
                 <span>Pressure</span> {data?.pressure}
@@ -81,9 +95,16 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
                 <span>Cloudiness</span> {data?.cloudiness}%
               </S.WidgetDetailsItem>
             )}
-            <S.WidgetDetailsItem color={color}>
-              <span>Precipation</span> {data?.precipProb}%, {data?.precipRate}&nbsp;mm/h
-            </S.WidgetDetailsItem>
+            {data?.precipProb && (
+              <S.WidgetDetailsItem color={color}>
+                <span>Precipation</span> {data?.precipProb}%, {data?.precipRate}&nbsp;mm/h
+              </S.WidgetDetailsItem>
+            )}
+            {data?.precipAccum && (
+              <S.WidgetDetailsItem color={color}>
+                <span>Precipation</span> {data?.precipAccum} &nbsp;mm
+              </S.WidgetDetailsItem>
+            )}
           </S.WidgetDetailsBottom>
         </S.WidgetDetails>
       </S.WidgetBody>

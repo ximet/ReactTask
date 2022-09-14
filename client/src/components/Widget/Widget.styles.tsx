@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import theme from 'styles/theme';
+import { colorChange } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -28,7 +29,7 @@ export const Widget = styled.article<WidgetStyles>`
     return theme.palette.primary.light;
   }};
   border-radius: ${theme.shape.borderRadius};
-  transition: color 1.2s;
+  transition: color 1.2s, background 1.2s, width 0.1s ease;
   overflow: hidden;
   user-select: none;
   pointer-events: ${(props: WidgetStyles) => (props.pointerEvents === 'true' ? 'auto' : 'none')};
@@ -42,8 +43,20 @@ export const WidgetHeader = styled.div<WidgetStyles>`
   height: 3rem;
   padding: 0rem 1rem;
   font-weight: 500;
-  background: ${(props: WidgetStyles) =>
-    props.color === 'primary' ? theme.palette.primary.medium : theme.palette.grey.light};
+  background: ${(props: WidgetStyles) => {
+    if (props.color !== 'primary' && props.theme === 'light') {
+      return theme.palette.grey.light;
+    }
+    if (props.color !== 'primary' && props.theme !== 'light') {
+      return theme.palette.grey.darkest;
+    }
+    if (props.color === 'primary') {
+      return theme.palette.primary.medium;
+    }
+    return null;
+  }};
+  transition: background 1.2s;
+  will-change: background;
   border-bottom: ${(props: WidgetStyles) =>
     props.color !== 'primary' ? theme.palette.grey.dark : theme.palette.grey.medium};
 `;
@@ -78,6 +91,18 @@ export const WidgetDetailsBottom = styled.div<WidgetStyles>`
 export const WidgetTemp = styled.p<StylesProps>`
   margin-bottom: 0.5rem;
   font-size: 3.5rem;
+`;
+
+export const WidgetTempMaxMin = styled.p<StylesProps>`
+  margin-bottom: 0.5rem;
+
+  span:first-of-type {
+    font-size: 3.5rem;
+  }
+
+  span:last-of-type {
+    font-size: 2rem;
+  }
 `;
 
 export const WidgetImg = styled.div<StylesProps>`
