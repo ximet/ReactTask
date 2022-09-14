@@ -37,7 +37,7 @@ const Main: FC = () => {
 
   useEffect(() => {
     if (position.longitude) {
-      //fetchData(position.longitude, position.latitude);
+      fetchData(position.longitude, position.latitude);
     }
   }, [position.longitude]);
 

@@ -32,6 +32,7 @@
   display: flex;
   justify-content: center;
   column-gap: 2rem;
+  cursor: pointer;
 }
 
 .city-card {
