@@ -45,7 +45,7 @@ const Search: FunctionComponent = () => {
   const handleInputFocus = (): void => setListShown(true);
   const handleClickOutside = (): void => setListShown(false);
   const handleSearchLocations = useCallback(() => {
-    if (debouncedSearchQuery !== '') dispatch(searchLocations(debouncedSearchQuery));
+    if (debouncedSearchQuery) dispatch(searchLocations(debouncedSearchQuery));
   }, [dispatch, debouncedSearchQuery]);
 
   useOnClickOutside(searchRef, handleClickOutside);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 
 import type { AuthorizationRequest, AuthorizationResponse, AuthenticationResponse } from 'types';
-import { Constants } from '../../constants';
+import { BASE_URL } from '../../constants';
 import { ActionType, Action } from '../actionTypes/auth';
 
 export const authorize = (credentials: AuthorizationRequest) => async (
@@ -12,7 +12,7 @@ export const authorize = (credentials: AuthorizationRequest) => async (
 
   try {
     await axios.post<AuthorizationRequest, AuthorizationResponse>(
-      `${Constants.BASE_URL}/authorize`,
+      `${BASE_URL}/authorize`,
       credentials,
       { withCredentials: true }
     );
@@ -31,7 +31,7 @@ export const authenticate = () => async (dispatch: Dispatch<Action>) => {
   try {
     const {
       data: { token }
-    } = await axios.get<void, AuthenticationResponse>(`${Constants.BASE_URL}/authenticate`, {
+    } = await axios.get<void, AuthenticationResponse>(`${BASE_URL}/authenticate`, {
       withCredentials: true
     });
 
