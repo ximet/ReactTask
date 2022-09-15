@@ -1,5 +1,11 @@
+import { Homepage } from './components/Homepage/Homepage.js';
+
 function App() {
-  return <div>Hello world!</div>;
+  return (
+    <>
+      <Homepage />
+    </>
+  );
 }
 
 export default App;
