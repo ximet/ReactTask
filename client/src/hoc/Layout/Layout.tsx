@@ -3,9 +3,6 @@ import React, { FunctionComponent } from 'react';
 // Custom hooks
 import { useAppSelector } from 'redux/hooks';
 
-// Components
-import Header from 'components/Header/Header';
-
 // Styles
 import GlobalStyle from './Layout.styles';
 
@@ -15,7 +12,6 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <GlobalStyle theme={theme} />
-      <Header />
       {children}
     </>
   );
