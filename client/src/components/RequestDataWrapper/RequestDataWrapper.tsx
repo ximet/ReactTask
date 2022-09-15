@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { LocationInfo, WeatherInfo } from '../../types';
 
 interface RequestDataWrapperProps {
-  data?: LocationInfo | WeatherInfo | WeatherInfo[] | null;
+  data?: LocationInfo | LocationInfo[] | WeatherInfo | WeatherInfo[] | null;
   loading?: boolean;
   error?: boolean | string | GeolocationPositionError | null;
 }

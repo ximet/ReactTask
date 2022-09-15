@@ -6,6 +6,7 @@ import React, {
   useCallback,
   ChangeEvent
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // Store
@@ -21,7 +22,7 @@ import { IconSearch } from 'assets/images/svg';
 
 // Components
 import Input from '../Input/Input';
-import SearchResultList from './SearchResultList';
+import SearchResultList from './SearchResultList/SearchResultList';
 
 // Styles
 import * as S from './Search.styles';
@@ -32,10 +33,11 @@ const Search: FunctionComponent = () => {
   const [listShown, setListShown] = useState<boolean>(true);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
   const theme = useAppSelector(state => state.theme);
-  const { data } = useAppSelector(state => state.location.search);
+  const { data, loading, error } = useAppSelector(state => state.location.search);
 
   const searchRef = useRef<HTMLDivElement>(null);
 
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   // Handlers
@@ -50,9 +52,15 @@ const Search: FunctionComponent = () => {
 
   useOnClickOutside(searchRef, handleClickOutside);
 
+  // Get data
   useEffect(() => {
     handleSearchLocations();
   }, [handleSearchLocations]);
+
+  // Close search modal on route change
+  useEffect(() => {
+    setListShown(false);
+  }, [pathname]);
 
   return (
     <S.Search ref={searchRef} theme={theme}>
@@ -64,7 +72,7 @@ const Search: FunctionComponent = () => {
         onChange={handleInputChange}
         onFocus={handleInputFocus}
       />
-      {data && listShown && <SearchResultList data={data && data} />}
+      {data && listShown && <SearchResultList data={data} loading={loading} error={error} />}
     </S.Search>
   );
 };

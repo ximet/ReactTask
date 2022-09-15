@@ -50,10 +50,16 @@ export const SearchResultList = styled.ul`
   padding: 1rem 2rem;
   background: ${theme.palette.primary.light};
   border-radius: ${theme.shape.borderRadius};
+  box-shadow: ${theme.shadows[0]};
   overflow-y: scroll;
+  z-index: 100;
 
   li:not(:last-child) {
     margin-bottom: 0.5rem;
+  }
+
+  a:hover {
+    color: ${theme.palette.grey.dark};
   }
 
   ::-webkit-scrollbar {
