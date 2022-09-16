@@ -1,7 +1,7 @@
 import React, { FC, useReducer, ChangeEvent, useMemo, useCallback, MouseEvent } from 'react';
 
 import commonStyle from '../../styles/commonStyles.css';
-import { feedbackReducer, CHANGE_FEEDBACK_STATE, RESET_STATE } from './feedbackReducer';
+import { feedbackReducer, CHANGE_FEEDBACK_STATE, RESET_STATE } from '../../reducers/feedbackReducer';
 import styles from './Feedback.css';
 import useValidate from 'hooks/useValidate';
 import { setInLocalStorage, FEEDBACK_DATA_LS_LABEL } from 'services/localStorage';
