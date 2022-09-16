@@ -38,13 +38,7 @@ export const Feedback: FC = () => {
   };
 
   const resetForm = useCallback(() => {
-    dispatch({
-      type: RESET_STATE,
-      payload: {
-        data: '',
-        name: ''
-      }
-    });
+    dispatch({ type: RESET_STATE });
   }, []);
 
   const sendForm = (e: MouseEvent) => {

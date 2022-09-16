@@ -7,7 +7,7 @@ export type FeedbackState = {
 
 type FeedbackActionData = {
   type: string;
-  payload: {
+  payload?: {
     name: string;
     data: string | number;
   };
@@ -21,7 +21,7 @@ export const feedbackReducer = (state: FeedbackState, { type, payload }: Feedbac
     case CHANGE_FEEDBACK_STATE:
       return {
         ...state,
-        [payload.name]: payload.data
+        [payload!.name]: payload!.data
       };
     case RESET_STATE:
       return {
