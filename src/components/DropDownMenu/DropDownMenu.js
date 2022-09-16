@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './DropDownMenu.module.css';
 
 import { initialCities } from './constants.js';
+import { DROP_DOWN_MENU_LABEL } from '../constants';
 
 const DropDownMenu = () => {
   const [searchValue, setSearchValue] = useState(null);
@@ -15,7 +16,7 @@ const DropDownMenu = () => {
   return (
     <div className={styles.dropdownMenuContainer}>
       <label>
-        Choose a city from this list:
+        {DROP_DOWN_MENU_LABEL}
         <input list="cities" name="choose-city" onChange={e => getSearchedValue(e)} />
       </label>
       <datalist id="cities">

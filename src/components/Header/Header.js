@@ -1,4 +1,5 @@
 import styles from './Header.module.css';
+import { MAIN_TITLE_LABEL } from '../constants';
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
         src={require('../../../public/images/logo.png')}
         alt="Logo image"
       />
-      <h1> Show Me The Weather </h1>
+      <h1> {MAIN_TITLE_LABEL} </h1>
     </header>
   );
 };

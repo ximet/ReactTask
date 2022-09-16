@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
+import { FOOTER_TIME_LABEL } from '../constants';
 import { getTime } from '../helper/helper.js';
 
 const Footer = () => {
@@ -15,7 +16,9 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <p>Current time: {time}</p>
+      <p>
+        {FOOTER_TIME_LABEL} {time}
+      </p>
     </footer>
   );
 };
