@@ -1,10 +1,10 @@
 import LocationContext from 'contexts/LocationContext';
 import useGetLocation from 'hooks/useGetLocation';
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
 import Button from 'components/Button';
 import DarkLightThemeContext from 'contexts/ThemeContext';
+import NavbarLink from 'components/NavbarLink/NavbarLink';
 import styles from './styles.module.scss';
 
 const Header: React.FC = ({ children }) => {
@@ -23,25 +23,29 @@ const Header: React.FC = ({ children }) => {
   };
 
   return (
-    <header className={darkMode ? styles.headerDark : styles.header}>
+    <header className={`${styles.header} ${darkMode ? styles.headerDark : styles.headerLight}`}>
       <nav className={styles.menuNav}>
-        <NavLink to="/" className={darkMode ? styles.linkDark : styles.link} onClick={onLinkClick}>
+        <NavbarLink onClick={onLinkClick} url="/">
           Home
-        </NavLink>
-        <NavLink to="feedback" className={darkMode ? styles.linkDark : styles.link}>
+        </NavbarLink>
+        <NavbarLink onClick={onLinkClick} url="feedback">
           Feedback
-        </NavLink>
-        <NavLink to="info" className={darkMode ? styles.linkDark : styles.link}>
+        </NavbarLink>
+        <NavbarLink onClick={onLinkClick} url="info">
           Info
-        </NavLink>
+        </NavbarLink>
       </nav>
       <div className={styles.searchBox}>
         <div className={styles.search}>{children}</div>
         <Button type="button" className="themeBtn" onClick={onThemeBtnClick}>
           {icon ? (
-            <MdOutlineLightMode className={darkMode ? styles.iconDark : styles.icon} />
+            <MdOutlineLightMode
+              className={`${styles.icon} ${darkMode ? styles.iconDark : styles.iconLight}`}
+            />
           ) : (
-            <MdOutlineDarkMode className={styles.icon} />
+            <MdOutlineDarkMode
+              className={`${styles.icon} ${darkMode ? styles.iconDark : styles.iconLight}`}
+            />
           )}
         </Button>
       </div>

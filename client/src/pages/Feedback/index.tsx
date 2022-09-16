@@ -1,14 +1,11 @@
-import DarkLightThemeContext from 'contexts/ThemeContext';
-import React, { useContext } from 'react';
-import styles from './styles.module.scss';
+import SecondaryPagesLayout from 'components/layouts/SecondaryPagesLayout';
+import React from 'react';
 
 const Feedback = () => {
-  const { darkMode } = useContext(DarkLightThemeContext);
-
   return (
-    <main className={darkMode ? styles.mainDark : styles.main}>
-      <h1 className={styles.title}>Feedback Page</h1>
-    </main>
+    <SecondaryPagesLayout>
+      <h1>Feedback Page</h1>
+    </SecondaryPagesLayout>
   );
 };
 
