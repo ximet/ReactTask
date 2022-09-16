@@ -1,11 +1,11 @@
+import SecondaryPagesLayout from 'components/layouts/SecondaryPagesLayout';
 import React from 'react';
-import '../../styles/globals.scss';
 
 const Feedback = () => {
   return (
-    <main>
+    <SecondaryPagesLayout>
       <h1>Feedback Page</h1>
-    </main>
+    </SecondaryPagesLayout>
   );
 };
 

@@ -1,45 +1,41 @@
-import React, { FC, useEffect, useState } from 'react';
-import useGetLocation from 'hooks/useGetLocation';
-import '../../styles/globals.scss';
-import { createToken, getCurrentWeather, getDailyWeather, getLocation } from 'API/get';
-import CurrentWeatherCard from 'components/CurrentWeatherCard';
-import { DailyWeather, LocationData, WeatherData } from 'types';
-import DailyWeatherCard from 'components/DailyWeatherCard';
-import styles from './styles.module.scss';
+import React, { FC, useContext } from 'react';
+import { getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation } from 'API/get';
+import LocationContext from 'contexts/LocationContext';
+import useGetData from 'hooks/useGetData';
+import { Loader } from 'components/Loader/Loader';
+import MainView from 'components/MainView/MainView';
+import styles from '../../components/Loader/styles.module.scss';
 
 const Main: FC = () => {
-  const { coords, status } = useGetLocation();
-  const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
-  const [location, setLocation] = useState<LocationData | null>(null);
-  const [forecast, setForecast] = useState<DailyWeather[]>([]);
+  const { statusMsg } = useContext(LocationContext);
 
-  useEffect(() => {
-    const getData = async () => {
-      await createToken();
-      const data = await getCurrentWeather(coords);
-      const locationData = await getLocation(coords);
-      const dailyWeather = await getDailyWeather(coords);
-      setCurrentWeather(data);
-      setLocation(locationData);
-      setForecast(dailyWeather);
-    };
-    if (coords) {
-      getData();
-    }
-  }, [coords]);
+  const {
+    currentWeather,
+    locationData,
+    forecast,
+    hourlyForecast,
+    setHourlyForecast,
+    isLoading,
+    errorMsg
+  } = useGetData({ getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation });
+
+  if (isLoading) {
+    return statusMsg || errorMsg ? (
+      <div className={styles.loaderContainer}>{statusMsg || errorMsg}</div>
+    ) : (
+      <Loader />
+    );
+  }
 
   return (
-    <main>
-      <CurrentWeatherCard weatherData={currentWeather} location={location} status={status} />
-      <div className={styles.dailyCardsContainer}>
-        <h1 className={styles.dailyHeader}>Daily</h1>
-        <div className={styles.dailyCardsBox}>
-          {forecast.map((day: DailyWeather) => {
-            return <DailyWeatherCard key={day.date} dayWeather={day} />;
-          })}
-        </div>
-      </div>
-    </main>
+    <MainView
+      setHourlyForecast={setHourlyForecast}
+      statusMsg={statusMsg}
+      currentWeather={currentWeather}
+      locationData={locationData}
+      forecast={forecast}
+      hourlyForecast={hourlyForecast}
+    />
   );
 };
 

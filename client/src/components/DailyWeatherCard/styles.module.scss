@@ -1,6 +1,20 @@
 .dayWeatherBox {
   text-align: left;
   padding: 10px;
+  text-align: center;
+  position: relative;
+  height: 205px;
+  width: 150px;
+
+  &:hover {
+    border: 2px solid lightgrey;
+  }
+
+  .cardOverlay {
+    position: absolute;
+    top: 0;
+    left: -2px;
+  }
 
   .symbol {
     width: 40px;

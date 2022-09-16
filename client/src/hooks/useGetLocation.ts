@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
-
-export type GeolocationCoordinates = {
-  lon: number;
-  lat: number;
-};
+import { GeolocationCoordinates } from 'types';
 
 const useGetLocation = (): {
   coords: GeolocationCoordinates | null;

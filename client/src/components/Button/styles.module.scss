@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.searchBtn {
+  height: 38px;
+  width: 38px;
+  margin-left: 10px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  border-radius: 30px;
+  border: 0;
+  background-color: rgba(128, 128, 128, 0.685);
+
+  &:hover {
+    background: rgb(173, 173, 173);
+  }
+}
+
+.themeBtn {
+  height: 38px;
+  width: 38px;
+  border: none;
+  background-color: $transparent;
+  margin-left: 20px;
+  border-radius: 30px;
+
+  &:hover {
+    background-color: $transparent;
+  }
+}

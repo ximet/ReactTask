@@ -1,0 +1,31 @@
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  display: inline-block;
+}
+
+.input {
+  padding: 7px 20px;
+  height: 40px;
+  width: 100%;
+  outline: none;
+  border-radius: 30px;
+  border: 0;
+  background-color: rgb(128, 128, 128);
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+
+  &::placeholder {
+    color: white;
+  }
+}
+
+.icon {
+  font-size: 1.4em;
+  margin: 5px auto 0;
+  color: white;
+}

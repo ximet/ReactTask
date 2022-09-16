@@ -1,22 +1,19 @@
 import React, { FC } from 'react';
-import { LocationData, WeatherData } from 'types';
-import { getSymbol } from 'utils/getWeatherSymbol';
+import { LocationData, CurrentWeatherData } from 'types';
+import { getSymbol } from 'utils/getImages';
 import styles from './styles.module.scss';
 
 type WeatherProps = {
-  weatherData: WeatherData | null;
-  location: LocationData | null;
-  status: string | null;
+  weatherData: CurrentWeatherData | null;
+  location: LocationData | undefined;
 };
 
-const CurrentWeatherCard: FC<WeatherProps> = ({ weatherData, location, status }) => {
+const CurrentWeatherCard: FC<WeatherProps> = ({ weatherData, location }) => {
   return (
     <div>
-      {status ? (
-        <div>{status}</div>
-      ) : weatherData && location ? (
+      {weatherData && location && (
         <div>
-          <h2 className={styles.locationName}>
+          <h2>
             {location.name}, {location.country}
           </h2>
           <div className={styles.temperatureBox}>
@@ -37,8 +34,6 @@ const CurrentWeatherCard: FC<WeatherProps> = ({ weatherData, location, status })
             <h5>Cloudines {weatherData.cloudiness}%</h5>
           </div>
         </div>
-      ) : (
-        <div>Getting the location data&hellip; </div>
       )}
     </div>
   );

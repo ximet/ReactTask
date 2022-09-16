@@ -1,0 +1,15 @@
+.dayWeatherBox {
+  text-align: left;
+  padding: 10px 10px 10px 30%;
+  width: 150px;
+
+  .symbol {
+    width: 40px;
+    height: 40px;
+    margin: 15px 0;
+  }
+
+  .temperature {
+    padding-bottom: 5px;
+  }
+}

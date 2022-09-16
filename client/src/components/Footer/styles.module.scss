@@ -4,10 +4,18 @@
   width: 100%;
   height: 80px;
   background-color: $footergrey;
+  color: $lightgrey;
+
 }
+.footerDark {
+  width: 100%;
+  height: 80px;
+  background-color: $darkgrey;
+  color: $lightgrey;
+}
+
 .date {
   height: 100%;
-  color: $lightgrey;
   display: flex;
   justify-content: center;
   align-items: center;

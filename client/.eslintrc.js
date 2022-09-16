@@ -38,9 +38,13 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 'off',
+    'react/require-default-props': 'warn',
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
+    'react/button-has-type': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'jsx-a11y/no-static-element-interactions': 'off',
     'arrow-body-style': ['error', 'always'],
     'react/function-component-definition': [
       2,
@@ -53,6 +57,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
     'no-plusplus': 0,
     'linebreak-style': 0,
     'import/extensions': 0,
@@ -65,7 +71,6 @@ module.exports = {
     'max-lines': ['error', { max: 200 }],
     semi: ['error', 'always'],
     indent: ['error', 2],
-    'react/require-default-props': 'error',
     'prettier/prettier': [
       'error',
       {

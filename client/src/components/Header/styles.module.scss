@@ -2,23 +2,63 @@
 
 .header {
   width: 100%;
+  opacity: 70%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: absolute;
+  top: 0%;
+  position: fixed;
+  z-index: 1;
+}
+
+.headerLight {
   background-color: $lightgrey;
-  height: 80px;
+}
+
+.headerDark {
+  background-color: $darkgrey;
 }
 
 .menuNav {
   height: 100%;
   display: flex;
   width: 40%;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   font-size: 1.2em;
 }
 
-.link {
-  text-decoration: none;
-  color: $darkgrey;
-  &:hover {
+.searchBox {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  align-items: center;
+
+  .search {
+    width: 50%;
+  }
+
+  .icon {
+    height: 28px;
+    width: 28px;
+  }
+
+  .iconLight {
     color: $hovergrey;
+
+    &:hover {
+      color: $darkgrey;
+    }
+  }
+
+  .iconDark {
+    color: $lightgrey;
+
+    &:hover {
+      color: $footergrey;
+    }
   }
 }
