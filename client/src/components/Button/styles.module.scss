@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .searchBtn {
   height: 38px;
   width: 38px;
@@ -11,5 +13,18 @@
 
   &:hover {
     background: rgb(173, 173, 173);
+  }
+}
+
+.themeBtn {
+  height: 38px;
+  width: 38px;
+  border: none;
+  background-color: $transparent;
+  margin-left: 20px;
+  border-radius: 30px;
+
+  &:hover {
+    background-color: $transparent;
   }
 }

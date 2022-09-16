@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import MainView from 'components/MainView/MainView';
 import useGetData from 'hooks/useGetData';
+import { resetLocationName } from 'utils/stringCorrections';
 import styles from '../../components/Loader/styles.module.scss';
 
 const Details: React.FC = () => {
@@ -19,8 +20,9 @@ const Details: React.FC = () => {
 
   useEffect(() => {
     const getLocationData = async () => {
+      const locationName = resetLocationName(location);
       if (location) {
-        const searchLocationData = await getLocationByQuery(location);
+        const searchLocationData = await getLocationByQuery(locationName);
         const searchLocationCoords = {
           lat: searchLocationData.locations[0].lat,
           lon: searchLocationData.locations[0].lon

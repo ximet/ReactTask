@@ -5,6 +5,7 @@ import LocationContext from 'contexts/LocationContext';
 import React, { useContext, useState } from 'react';
 import { VscSearch } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
+import { formatNameForUrl, isInputValid } from 'utils/stringCorrections';
 import styles from './styles.module.scss';
 
 const HeaderSearch = () => {
@@ -13,7 +14,7 @@ const HeaderSearch = () => {
   const navigate = useNavigate();
 
   const handleChange = event => {
-    if (/(^[A-Za-z]\s{1}}[A-Za-z])*$/.test(event.target.value)) {
+    if (isInputValid(event.target.value)) {
       setInputValue(event.target.value);
     }
   };
@@ -30,7 +31,8 @@ const HeaderSearch = () => {
         setCoordinates(null);
         setStatusMsg(null);
         setInputValue('');
-        navigate(`/details/${locationData.locations[0].name.replace(/\s+/g, '')}`);
+        const urlLocationName = formatNameForUrl(locationData.locations[0].name);
+        navigate(`/details/${urlLocationName}`);
       }
     } else {
       setStatusMsg('Please, enter the name of the city. The input cannot be empty');
@@ -48,7 +50,7 @@ const HeaderSearch = () => {
           value={inputValue}
           onChange={handleChange}
         />
-        <Button type="submit">
+        <Button type="submit" className="iconBtn">
           <VscSearch className={styles.icon} />
         </Button>
       </form>

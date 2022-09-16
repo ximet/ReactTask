@@ -1,10 +1,13 @@
-import React from 'react';
-import '../../styles/globals.scss';
+import DarkLightThemeContext from 'contexts/ThemeContext';
+import React, { useContext } from 'react';
+import styles from './styles.module.scss';
 
 const Feedback = () => {
+  const { darkMode } = useContext(DarkLightThemeContext);
+
   return (
-    <main>
-      <h1>Feedback Page</h1>
+    <main className={darkMode ? styles.mainDark : styles.main}>
+      <h1 className={styles.title}>Feedback Page</h1>
     </main>
   );
 };

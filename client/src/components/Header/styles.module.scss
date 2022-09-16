@@ -15,6 +15,21 @@
   z-index: 1;
 }
 
+.headerDark {
+  width: 100%;
+  background-color: $darkgrey;
+  opacity: 70%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: absolute;
+  top: 0%;
+  position: fixed;
+  z-index: 1;
+}
+
 .menuNav {
   height: 100%;
   display: flex;
@@ -35,6 +50,42 @@
   }
 }
 
-.search {
-  width: 40%;
+.linkDark {
+  text-decoration: none;
+  color: $lightgrey;
+  padding-right: 25px;
+  font-size: 1rem;
+
+  &:hover {
+    color: $footergrey;
+  }
 }
+  .searchBox {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+
+    .search {
+      width: 50%;
+    }
+
+    .icon {
+      height: 28px;
+      width: 28px;
+      color: $hovergrey;
+
+      &:hover {
+        color: whitesmoke;
+      }
+    }
+    .iconDark {
+      height: 28px;
+      width: 28px;
+      color: $lightgrey;
+
+      &:hover {
+        color: whitesmoke;
+      }
+    }
+  }

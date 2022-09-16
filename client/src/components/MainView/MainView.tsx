@@ -3,6 +3,7 @@ import CurrentWeatherCard from 'components/CurrentWeatherCard';
 import DailyWeatherCard from 'components/DailyWeatherCard';
 import HourlyWeatherCard from 'components/HourlyWeatherCard';
 import LocationContext from 'contexts/LocationContext';
+import DarkLightThemeContext from 'contexts/ThemeContext';
 import React, { FC, useState, useContext, useRef } from 'react';
 import { DailyWeather, HourlyWeather, LocationData, CurrentWeatherData } from 'types';
 import { getBackgroundImg } from 'utils/getImages';
@@ -27,8 +28,9 @@ const MainView: FC<MainViewParams> = ({
 }) => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const { coordinates } = useContext(LocationContext);
-  // would be good to use it for smaller screens
-  // const ref = useRef<null | HTMLDivElement>(null);
+  const { darkMode } = useContext(DarkLightThemeContext);
+
+  const ref = useRef<null | HTMLDivElement>(null);
 
   const onCardClick = async (index: number, date: string) => {
     setHourlyForecast([]);
@@ -39,8 +41,7 @@ const MainView: FC<MainViewParams> = ({
     });
     setHourlyForecast(filteredHoursByDay);
     setActiveCard(index);
-    // would be good to use it for smaller screens
-    // ref.current?.scrollIntoView({ behavior: 'smooth' });
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const toggleActiveStyles = (index: number): boolean => {
@@ -76,7 +77,7 @@ const MainView: FC<MainViewParams> = ({
             })}
           </div>
         </div>
-        <div className={styles.hourlyCardsContainer}>
+        <div className={styles.hourlyCardsContainer} ref={ref}>
           <h1 className={styles.hourlyHeader}>Hourly</h1>
           <hr />
           <div className={styles.hourlyCardsBox}>

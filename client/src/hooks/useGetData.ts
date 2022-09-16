@@ -20,7 +20,7 @@ const useGetData = ({ getCurrentWeather, getDailyWeather, getHourlyWeather, getL
       const dailyWeather = await getDailyWeather(coordinates);
       const hourlyWeather = await getHourlyWeather(coordinates);
       setCurrentWeather(data);
-      setLocationData(locationResult.locations ? locationResult.locations[0] : locationResult);
+      setLocationData(locationResult);
       setForecast(dailyWeather);
       const first24Hours = hourlyWeather?.slice(0, 24);
       setHourlyForecast(first24Hours);

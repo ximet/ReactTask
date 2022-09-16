@@ -77,16 +77,3 @@ export type DailyWeather = CommonWeatherData & {
   snowAccum: number;
   precipAccum: number;
 };
-
-export type BoxStyleParams = {
-  activeObject: { id: number } | null;
-  objects: [
-    { id: number },
-    { id: number },
-    { id: number },
-    { id: number },
-    { id: number },
-    { id: number },
-    { id: number }
-  ];
-};

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { GeolocationCoordinates, LocationData } from 'types';
 
-// const URL = 'https://pfa.foreca.com/api/v1';
 const URL = 'http://localhost:5000';
 
 export const createToken = async () => {

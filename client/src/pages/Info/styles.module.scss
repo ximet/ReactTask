@@ -1,0 +1,23 @@
+.title {
+  margin-top: 60px;
+}
+
+.main {
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  background-color: whitesmoke;
+  color: rgb(33, 33, 33);
+}
+
+.mainDark {
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  background-color: rgb(48, 48, 48);
+  color: whitesmoke;
+}
