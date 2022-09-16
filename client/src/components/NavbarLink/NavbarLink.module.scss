@@ -3,20 +3,17 @@
 .link {
   text-decoration: none;
   padding-right: 25px;
+  color: $darkgrey;
   font-size: 1rem;
 }
 
 .linkLight {
-  color: $darkgrey;
-
   &:hover {
     color: $hovergrey;
   }
 }
 
 .linkDark {
-  font-size: 1rem;
-
   &:hover {
     color: $footergrey;
   }
