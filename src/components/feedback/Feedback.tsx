@@ -1,43 +1,62 @@
 import React, { FC, useReducer, ChangeEvent, useMemo, useCallback, MouseEvent } from 'react';
 
-import commonStyle from '../../styles/commonStyles.css';
+import commonStyle from 'styles/commonStyles.css';
 import {
   feedbackReducer,
   CHANGE_FEEDBACK_STATE,
-  RESET_STATE
-} from '../../reducers/feedbackReducer';
+  RESET_STATE,
+  FeedbackState,
+  FeedbackActionData
+} from 'reducers/feedbackReducer';
 import styles from './Feedback.css';
 import useValidate from 'hooks/useValidate';
 import { setInLocalStorage, FEEDBACK_DATA_LS_LABEL } from 'services/localStorage';
+import { ValidateElementInfoType } from 'hooks/useValidate';
+import { getBindedStyles } from 'helpers';
+
+const getClasses = getBindedStyles(styles);
 
 export const Feedback: FC = () => {
-  const [state, dispatch] = useReducer(feedbackReducer, {
+  const [state, dispatch] = useReducer<
+    (state: FeedbackState, { type, payload }: FeedbackActionData) => FeedbackState
+  >(feedbackReducer, {
     name: '',
     email: '',
     problems: '',
     rating: 5
   });
 
-  const email = useValidate();
-  const name = useValidate();
+  const email: ValidateElementInfoType = useValidate();
+  const name: ValidateElementInfoType = useValidate();
 
   const stateHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const {
+      target: { name, type, value }
+    } = e;
     dispatch({
       type: CHANGE_FEEDBACK_STATE,
       payload: {
-        name: e.target.name,
-        data: e.target.type === 'range' ? +e.target.value : e.target.value
+        name,
+        data: type === 'range' ? +value : value
       }
     });
   };
 
-  const requiredInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === 'name') {
-      name.validateInput(e.target, e.target.value);
+  const validatedInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name: elementName, value: elementValue }
+    } = e;
+
+    let selectedInput: ValidateElementInfoType;
+
+    if (elementName === 'name') {
+      selectedInput = name;
     }
-    if (e.target.name === 'email') {
-      email.validateInput(e.target, e.target.value);
+    if (elementName === 'email') {
+      selectedInput = email;
     }
+
+    selectedInput!.validateInput(elementName, elementValue);
     stateHandler(e);
   };
 
@@ -52,10 +71,14 @@ export const Feedback: FC = () => {
   };
 
   const ratingColor = useMemo(() => {
-    if (state.rating >= 8) return 'green';
-    if (state.rating >= 5) return 'yellow';
-    if (state.rating < 5) return 'red';
+    const { rating } = state;
+    if (rating >= 8) return 'green';
+    if (rating >= 5) return 'yellow';
+    if (rating < 5) return 'red';
   }, [state.rating]);
+
+  const sendBtnClasses = useMemo(() => getClasses('form-btn', 'send-btn'), []);
+  const resetBtnClasses = useMemo(() => getClasses('form-btn', 'reset-btn'), []);
 
   return (
     <main className={commonStyle.container}>
@@ -72,7 +95,7 @@ export const Feedback: FC = () => {
               name="name"
               value={state.name}
               className={styles['feedback-input-text']}
-              onChange={requiredInputHandler}
+              onChange={validatedInputHandler}
               required
             />
             {!name.isValid && state.name.length ? (
@@ -89,7 +112,7 @@ export const Feedback: FC = () => {
               name="email"
               value={state.email}
               className={styles['feedback-input-text']}
-              onChange={requiredInputHandler}
+              onChange={validatedInputHandler}
               required
             />
             {!email.isValid && state.email.length ? (
@@ -132,17 +155,13 @@ export const Feedback: FC = () => {
         <div className={styles['control-buttons']}>
           <button
             type="submit"
-            className={`${styles['form-btn']} ${styles['send-btn']}`}
+            className={sendBtnClasses}
             disabled={!email.isValid || !name.isValid}
             onClick={sendForm}
           >
             Send
           </button>
-          <button
-            type="reset"
-            className={`${styles['form-btn']} ${styles['reset-btn']}`}
-            onClick={resetForm}
-          >
+          <button type="reset" className={resetBtnClasses} onClick={resetForm}>
             Reset
           </button>
         </div>

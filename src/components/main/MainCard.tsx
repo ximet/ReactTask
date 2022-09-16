@@ -1,8 +1,8 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import React, { FC, useEffect, useState, useMemo } from 'react';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
-import { convertTime, getImgURL } from '../../helpers';
+import { convertTime, getImgURL, getBindedStyles } from '../../helpers';
 import {
   setInLocalStorage,
   getFavoriteCities,
@@ -19,6 +19,8 @@ const getIsFavorite = (id: number): boolean => {
   const favoriteCities: LocationInfoType[] = getFavoriteCities();
   return favoriteCities.some(city => city.id === id);
 };
+
+const getClasses = getBindedStyles(styles);
 
 const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
   const {
@@ -58,9 +60,14 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
     setIsFavorite(getIsFavorite(location.id));
   }, [location.id]);
 
+  const mainCardClasses = useMemo(
+    () => getClasses('main-card__item', 'main-card__item_center'),
+    []
+  );
+
   return (
     <div className={styles['main-card']}>
-      <div className={`${styles['main-card__item']} ${styles['main-card__item_center']}`}>
+      <div className={mainCardClasses}>
         <h3 className={styles['main-card__title']}>Location: {location.name}</h3>
         <p>
           {date.date}-{date.month}-{date.year} {date.hours}:{date.minutes}

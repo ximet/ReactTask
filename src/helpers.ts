@@ -1,5 +1,6 @@
 import { LocationInfoType } from 'types/cityInfoType';
 import { getFavoriteCities } from 'services/localStorage';
+import classNames from 'classnames/bind';
 
 export const convertTime = (timeData: string) => {
   const date = new Date(timeData);
@@ -18,3 +19,5 @@ export const getImgURL = (symbol: string): string =>
 
 export const getSortedByCountries = (): LocationInfoType[] =>
   getFavoriteCities().sort((a, b) => (a.country > b.country ? 1 : -1));
+
+export const getBindedStyles = (styles: Record<string, string>) => classNames.bind(styles);

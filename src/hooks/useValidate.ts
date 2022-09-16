@@ -1,17 +1,22 @@
 import { useState } from 'react';
 
-const validationSchema: { [index: string]: (value: string) => boolean } = {
-  name: (value: string) => /[a-zA-Z0-9_]{3,}/gm.test(value),
-  email: (value: string) =>
-    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu.test(
-      value
-    )
+export type ValidateElementInfoType = {
+  isValid: boolean;
+  validateInput: (elementName: string, value: string) => void;
 };
 
-export default function useValidate() {
+const REG_EXP_FOR_NAME = /[a-zA-Z0-9_]{3,}/iu;
+const REG_EXP_FOR_EMAIL = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+const validationSchema: { [index: string]: (value: string) => boolean } = {
+  name: (value: string) => REG_EXP_FOR_NAME.test(value),
+  email: (value: string) => REG_EXP_FOR_EMAIL.test(value)
+};
+
+export default function useValidate(): ValidateElementInfoType {
   const [isValid, setIsValid] = useState<boolean>(false);
-  const validateInput = (element: HTMLInputElement, value: string) => {
-    setIsValid(validationSchema[element.name](value));
+  const validateInput = (elementName: string, value: string) => {
+    setIsValid(validationSchema[elementName](value));
   };
 
   return {

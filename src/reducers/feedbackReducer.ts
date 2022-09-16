@@ -5,7 +5,7 @@ export type FeedbackState = {
   rating: number;
 };
 
-type FeedbackActionData = {
+export type FeedbackActionData = {
   type: string;
   payload?: {
     name: string;
