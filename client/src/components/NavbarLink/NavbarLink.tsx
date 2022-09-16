@@ -1,9 +1,15 @@
 import DarkLightThemeContext from 'contexts/ThemeContext';
-import React, { useContext } from 'react';
+import React, { FC, ReactNode, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NavbarLink.module.scss';
 
-const NavbarLink = ({ children, onClick, url }) => {
+type NavbarLinkProps = {
+  children: ReactNode;
+  onClick: () => void;
+  url: string;
+};
+
+const NavbarLink: FC<NavbarLinkProps> = ({ children, onClick, url }) => {
   const { darkMode } = useContext(DarkLightThemeContext);
 
   return (

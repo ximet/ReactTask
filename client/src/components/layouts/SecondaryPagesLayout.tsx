@@ -1,8 +1,12 @@
 import DarkLightThemeContext from 'contexts/ThemeContext';
-import React, { useContext } from 'react';
+import React, { FC, ReactNode, useContext } from 'react';
 import styles from './SecondaryPagesLayout.module.scss';
 
-const SecondaryPagesLayout = ({ children }) => {
+type LayoutProps = {
+  children: ReactNode;
+};
+
+const SecondaryPagesLayout: FC<LayoutProps> = ({ children }) => {
   const { darkMode } = useContext(DarkLightThemeContext);
 
   return (
