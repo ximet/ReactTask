@@ -1,4 +1,12 @@
-import React, { FC, useReducer, ChangeEvent, useMemo, useCallback, MouseEvent } from 'react';
+import React, {
+  FC,
+  useReducer,
+  ChangeEvent,
+  useMemo,
+  useCallback,
+  MouseEvent,
+  Reducer
+} from 'react';
 
 import commonStyle from 'styles/commonStyles.css';
 import {
@@ -12,19 +20,18 @@ import styles from './Feedback.css';
 import useValidate from 'hooks/useValidate';
 import { setInLocalStorage, FEEDBACK_DATA_LS_LABEL } from 'services/localStorage';
 import { ValidateElementInfoType } from 'hooks/useValidate';
-import { getBindedStyles } from 'helpers';
-
-const getClasses = getBindedStyles(styles);
+import classNames from 'classnames';
 
 export const Feedback: FC = () => {
-  const [state, dispatch] = useReducer<
-    (state: FeedbackState, { type, payload }: FeedbackActionData) => FeedbackState
-  >(feedbackReducer, {
-    name: '',
-    email: '',
-    problems: '',
-    rating: 5
-  });
+  const [state, dispatch] = useReducer<Reducer<FeedbackState, FeedbackActionData>>(
+    feedbackReducer,
+    {
+      name: '',
+      email: '',
+      problems: '',
+      rating: 5
+    }
+  );
 
   const email: ValidateElementInfoType = useValidate();
   const name: ValidateElementInfoType = useValidate();
@@ -76,9 +83,6 @@ export const Feedback: FC = () => {
     if (rating >= 5) return 'yellow';
     if (rating < 5) return 'red';
   }, [state.rating]);
-
-  const sendBtnClasses = useMemo(() => getClasses('form-btn', 'send-btn'), []);
-  const resetBtnClasses = useMemo(() => getClasses('form-btn', 'reset-btn'), []);
 
   return (
     <main className={commonStyle.container}>
@@ -155,13 +159,17 @@ export const Feedback: FC = () => {
         <div className={styles['control-buttons']}>
           <button
             type="submit"
-            className={sendBtnClasses}
+            className={classNames(styles['form-btn'], styles['send-btn'])}
             disabled={!email.isValid || !name.isValid}
             onClick={sendForm}
           >
             Send
           </button>
-          <button type="reset" className={resetBtnClasses} onClick={resetForm}>
+          <button
+            type="reset"
+            className={classNames(styles['form-btn'], styles['reset-btn'])}
+            onClick={resetForm}
+          >
             Reset
           </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
+import React, { createContext, ReactNode, useEffect, useReducer, Reducer } from 'react';
 import { usePosition } from 'hooks/usePosition';
 import { reducer } from './positionReducer';
 import { CHANGE_POSITION } from './positionActions';
@@ -27,9 +27,7 @@ export const PositionContextProvider = ({ children }: { children: ReactNode }) =
 
   const { Provider } = positionContext;
 
-  const [state, dispatch] = useReducer<
-    (state: PositionContextState, { type, payload }: PositionActionData) => PositionContextState
-  >(reducer, {
+  const [state, dispatch] = useReducer<Reducer<PositionContextState, PositionActionData>>(reducer, {
     position: {
       latitude: 0,
       longitude: 0
