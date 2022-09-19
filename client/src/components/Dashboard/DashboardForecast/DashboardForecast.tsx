@@ -15,93 +15,64 @@ import ButtonSwitch from 'components/ButtonSwitch/ButtonSwitch';
 import Carousel from 'components/Carousel/Carousel';
 import Widget from 'components/Widget/Widget';
 
+// Utils
+import { capitalize } from 'utils/helpers';
+
 // Styles
 import { Flex } from 'styles/global';
 import * as S from '../Dashboard.styles';
 
-interface ForecastTypeState {
-  hourly: boolean;
-  threeHourly: boolean;
-  daily: boolean;
+enum ForecastType {
+  hourly = 'hourly',
+  threeHourly = 'threeHourly',
+  daily = 'daily'
 }
 
 const DashboardForecast: FunctionComponent = () => {
+  const [infoType, setInfoType] = useState<string>('forecast');
+  const [selectedForecastType, setSelectedForecastType] = useState<string>(ForecastType.hourly);
+  const [carouselChildPointerEv, setCarouselChildPointerEv] = useState<boolean>(false);
+
   const theme = useAppSelector(state => state.theme);
   const query = useAppSelector(state => state.location.query);
-  const { data: hourlyData, loading: hourlyLoading, error: hourlyError } = useAppSelector(
-    state => state.location.weather.hourly
-  );
-  const {
-    data: threeHourlyData,
-    loading: threeHourlyLoading,
-    error: threeHourlyError
-  } = useAppSelector(state => state.location.weather.threeHourly);
-  const { data: dailyData, loading: dailyLoading, error: dailyError } = useAppSelector(
-    state => state.location.weather.daily
-  );
+  const { data, loading, error } = useAppSelector(state => {
+    if (selectedForecastType === ForecastType.hourly) {
+      return state.location.weather.hourly;
+    }
+    if (selectedForecastType === ForecastType.threeHourly) {
+      return state.location.weather.threeHourly;
+    }
+    if (selectedForecastType === ForecastType.daily) {
+      return state.location.weather.daily;
+    }
 
-  const [forecastType, setForecastType] = useState<ForecastTypeState>({
-    hourly: true,
-    threeHourly: false,
-    daily: false
+    return state.location.weather.hourly;
   });
-  const [infoType, setInfoType] = useState<string>('forecast');
-  const [carouselChildPointerEv, setCarouselChildPointerEv] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
   // Handlers
   const handleInfoType = (): void =>
     setInfoType(prevState => (prevState === 'forecast' ? 'air-quality' : 'forecast'));
-  const handleForecastType = (hourly: boolean, threeHourly: boolean, daily: boolean): void =>
-    setForecastType(prevState => ({
-      ...prevState,
-      hourly,
-      threeHourly,
-      daily
-    }));
-  const handleGetLocationHourlyWeather = useCallback(() => {
-    if (query) dispatch(getLocationHourlyWeather(query));
-  }, [dispatch, query]);
-  const handleGetLocationThreeHourlyWeather = useCallback(() => {
-    if (query) dispatch(getLocationThreeHourlyWeather(query));
-  }, [dispatch, query]);
-  const handleGetLocationDailyWeather = useCallback(() => {
-    if (query) dispatch(getLocationDailyWeather(query));
-  }, [dispatch, query]);
+  const handleForecastType = (forecastType: string): void => setSelectedForecastType(forecastType);
+  const handleGetLocationWeather = useCallback(() => {
+    if (!query) return;
+
+    if (selectedForecastType === ForecastType.hourly) {
+      dispatch(getLocationHourlyWeather(query));
+    }
+    if (selectedForecastType === ForecastType.threeHourly) {
+      dispatch(getLocationThreeHourlyWeather(query));
+    }
+    if (selectedForecastType === ForecastType.daily) {
+      dispatch(getLocationDailyWeather(query));
+    }
+  }, [dispatch, query, selectedForecastType]);
 
   // Get data
   useEffect(() => {
-    if (forecastType.hourly) handleGetLocationHourlyWeather();
-    if (forecastType.threeHourly) handleGetLocationThreeHourlyWeather();
-    if (forecastType.daily) handleGetLocationDailyWeather();
-  }, [
-    handleGetLocationHourlyWeather,
-    forecastType.hourly,
-    handleGetLocationThreeHourlyWeather,
-    forecastType.threeHourly,
-    handleGetLocationDailyWeather,
-    forecastType.daily
-  ]);
-
-  let data;
-  let loading;
-  let error;
-  if (forecastType.hourly) {
-    data = hourlyData;
-    loading = hourlyLoading;
-    error = hourlyError;
-  }
-  if (forecastType.threeHourly) {
-    data = threeHourlyData;
-    loading = threeHourlyLoading;
-    error = threeHourlyError;
-  }
-  if (forecastType.daily) {
-    data = dailyData;
-    loading = dailyLoading;
-    error = dailyError;
-  }
+    handleGetLocationWeather();
+  }, [handleGetLocationWeather]);
 
   return (
     <S.DashboardForecast>
@@ -109,27 +80,16 @@ const DashboardForecast: FunctionComponent = () => {
         <Flex justifySpaceBetween>
           <S.DashboardForecastTypes>
             <Flex justifySpaceBetween>
-              <S.DashboardForecastType
-                theme={theme}
-                active={forecastType.hourly}
-                onClick={() => handleForecastType(true, false, false)}
-              >
-                Hourly
-              </S.DashboardForecastType>
-              <S.DashboardForecastType
-                theme={theme}
-                active={forecastType.threeHourly}
-                onClick={() => handleForecastType(false, true, false)}
-              >
-                Three-hourly
-              </S.DashboardForecastType>
-              <S.DashboardForecastType
-                theme={theme}
-                active={forecastType.daily}
-                onClick={() => handleForecastType(false, false, true)}
-              >
-                Daily
-              </S.DashboardForecastType>
+              {(Object.keys(ForecastType) as Array<keyof typeof ForecastType>).map(key => (
+                <S.DashboardForecastType
+                  key={key}
+                  theme={theme}
+                  active={selectedForecastType === key}
+                  onClick={() => handleForecastType(key)}
+                >
+                  {capitalize(key)}
+                </S.DashboardForecastType>
+              ))}
             </Flex>
           </S.DashboardForecastTypes>
           <ButtonSwitch
@@ -150,7 +110,7 @@ const DashboardForecast: FunctionComponent = () => {
               <Widget
                 key={item.time || item.date}
                 data={item}
-                pointerEvents={carouselChildPointerEv ? 'true' : 'false'}
+                pointerEvents={carouselChildPointerEv}
               />
             ))}
           </Carousel>
