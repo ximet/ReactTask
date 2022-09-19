@@ -1,47 +1,23 @@
-import axios from 'axios';
-import { Dispatch } from 'redux';
-
+import { dispatchAsyncReq } from 'redux/utils';
 import type { AuthorizationRequest, AuthorizationResponse, AuthenticationResponse } from 'types';
-import { BASE_URL } from '../../constants';
 import { ActionType, Action } from '../actionTypes/auth';
 
-export const authorize = (credentials: AuthorizationRequest) => async (
-  dispatch: Dispatch<Action>
-) => {
-  dispatch({ type: ActionType.AUTHORIZE_PENDING });
+export const authorize = (credentials: AuthorizationRequest) =>
+  dispatchAsyncReq<Action, AuthorizationRequest, AuthorizationResponse>(
+    'authorize',
+    'post',
+    credentials,
+    ActionType.AUTHORIZE_PENDING,
+    ActionType.AUTHORIZE_SUCCESS,
+    ActionType.AUTHORIZE_FAIL
+  );
 
-  try {
-    await axios.post<AuthorizationRequest, AuthorizationResponse>(
-      `${BASE_URL}/authorize`,
-      credentials,
-      { withCredentials: true }
-    );
-    dispatch({ type: ActionType.AUTHORIZE_SUCCESS });
-  } catch (err) {
-    if (err instanceof Error) {
-      dispatch({ type: ActionType.AUTHORIZE_FAIL, payload: err.message });
-    }
-  }
-};
-
-export const authenticate = () => async (dispatch: Dispatch<Action>) => {
-  dispatch({ type: ActionType.AUTHENTICATE_PENDING });
-
-  let accessToken;
-  try {
-    const {
-      data: { token }
-    } = await axios.get<void, AuthenticationResponse>(`${BASE_URL}/authenticate`, {
-      withCredentials: true
-    });
-
-    dispatch({ type: ActionType.AUTHENTICATE_SUCCESS, payload: token });
-    accessToken = token;
-  } catch (err) {
-    if (err instanceof Error) {
-      dispatch({ type: ActionType.AUTHENTICATE_FAIL, payload: err.message });
-    }
-  }
-
-  return accessToken;
-};
+export const authenticate = () =>
+  dispatchAsyncReq<Action, null, AuthenticationResponse>(
+    'authenticate',
+    'get',
+    null,
+    ActionType.AUTHENTICATE_PENDING,
+    ActionType.AUTHENTICATE_SUCCESS,
+    ActionType.AUTHENTICATE_FAIL
+  );

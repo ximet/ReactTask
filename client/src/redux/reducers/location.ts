@@ -1,32 +1,20 @@
 import type { LocationInfo, WeatherInfo } from 'types';
 import { ActionType, Action } from '../actionTypes/location';
 
-interface WeatherInfoList {
-  data: WeatherInfo[] | null;
+interface LocationRequestResult<T> {
+  data?: T | null;
   loading: boolean;
   error: string | null;
 }
 
 interface LocationState {
-  search: {
-    data: LocationInfo[] | null;
-    loading: boolean;
-    error: string | null;
-  };
-  info: {
-    data: LocationInfo | null;
-    loading: boolean;
-    error: string | null;
-  };
+  search: LocationRequestResult<LocationInfo[]>;
+  info: LocationRequestResult<LocationInfo>;
   weather: {
-    current: {
-      data: WeatherInfo | null;
-      loading: boolean;
-      error: string | null;
-    };
-    hourly: WeatherInfoList;
-    threeHourly: WeatherInfoList;
-    daily: WeatherInfoList;
+    current: LocationRequestResult<WeatherInfo>;
+    hourly: LocationRequestResult<WeatherInfo[]>;
+    threeHourly: LocationRequestResult<WeatherInfo[]>;
+    daily: LocationRequestResult<WeatherInfo[]>;
   };
   query: string;
 }
@@ -84,7 +72,7 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
         search: {
           ...state.search,
           loading: false,
-          data: action.payload
+          data: action.payload.data.locations
         }
       };
     }
@@ -113,7 +101,7 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
         info: {
           ...state.info,
           loading: false,
-          data: action.payload
+          data: action.payload.data
         }
       };
     }
@@ -147,7 +135,7 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           current: {
             ...state.weather.current,
             loading: false,
-            data: action.payload
+            data: action.payload.data.current
           }
         }
       };
@@ -185,7 +173,7 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           hourly: {
             ...state.weather.hourly,
             loading: false,
-            data: action.payload
+            data: action.payload.data.forecast
           }
         }
       };
@@ -223,7 +211,7 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           threeHourly: {
             ...state.weather.threeHourly,
             loading: false,
-            data: action.payload
+            data: action.payload.data.forecast
           }
         }
       };
@@ -261,7 +249,7 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           daily: {
             ...state.weather.daily,
             loading: false,
-            data: action.payload
+            data: action.payload.data.forecast
           }
         }
       };

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { authorize, authenticate } from 'redux/actionCreators/auth';
 
 // Types
-import type { AuthorizationRequest } from 'types';
+import type { AuthorizationRequest, AuthenticationResponse } from 'types';
 
 // Components
 import Layout from 'hoc/Layout/Layout';
@@ -25,14 +25,14 @@ const App: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   const handleAuth = useCallback(async () => {
-    const token = await dispatch(authenticate());
+    const res = await dispatch(authenticate());
 
     const credentials: AuthorizationRequest = {
       user: process.env.USER,
       password: process.env.PASSWORD
     };
 
-    if (!token) {
+    if (!((res as unknown) as AuthenticationResponse).data.token) {
       await dispatch(authorize(credentials));
     }
   }, [dispatch]);

@@ -16,7 +16,7 @@ import * as S from './Widget.styles';
 
 interface WidgetProps {
   color?: string;
-  data: WeatherInfo | null;
+  data?: WeatherInfo | null;
   pointerEvents?: string;
 }
 

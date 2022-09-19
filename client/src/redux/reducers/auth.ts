@@ -38,7 +38,7 @@ const authReducer = (state: AuthState = initialState, action: Action): AuthState
       return {
         ...state,
         loading: false,
-        accessToken: action.payload
+        accessToken: action.payload.data.token
       };
     }
     default:
