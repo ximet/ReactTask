@@ -21,7 +21,7 @@ const getIsFavorite = (id: number): boolean => {
   return favoriteCities.some(city => city.id === id);
 };
 
-const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
+const MainCard: FC<MainCardProps> = React.memo(({ currentWeather, location }) => {
   const {
     time,
     symbol,
@@ -95,6 +95,6 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
       </div>
     </div>
   );
-};
+});
 
 export default MainCard;

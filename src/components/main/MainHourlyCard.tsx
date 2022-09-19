@@ -7,7 +7,7 @@ type HourlyCardProps = {
   hourlyWeather: HourlyWeatherType;
 };
 
-const MainHourlyCard: FC<HourlyCardProps> = ({ hourlyWeather }) => {
+const MainHourlyCard: FC<HourlyCardProps> = React.memo(({ hourlyWeather }) => {
   const { time, temperature, symbol, windSpeed, windDirString } = hourlyWeather;
 
   const date = convertTime(time);
@@ -23,6 +23,6 @@ const MainHourlyCard: FC<HourlyCardProps> = ({ hourlyWeather }) => {
       </span>
     </div>
   );
-};
+});
 
 export default MainHourlyCard;
