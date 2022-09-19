@@ -1,5 +1,5 @@
 import styles from '../../styles.scss';
-function Input({ value, onChange, ...props }) {
-  return <input className={styles.input} value={value} onChange={onChange} {...props} />;
+function Input({ value, onChangeInput, ...props }) {
+  return <input className={styles.input} value={value} onChange={onChangeInput} {...props} />;
 }
 export default Input;
