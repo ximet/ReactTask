@@ -1,0 +1,31 @@
+.headerContainer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 60px;
+  right: 0px;
+
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Lobster', cursive;
+  font-size: 28px;
+
+  color: var(--color-text-primary);
+  background: linear-gradient(
+    45deg,
+    var(--color-canvas-tertiary),
+    var(--color-canvas-primary),
+    var(--color-canvas-secondary),
+    var(--color-canvas-quaternary)
+  );
+}
+
+.img {
+  width: 5%;
+  max-width: 60px;
+  min-width: 40px;
+  margin-right: 32px;
+}
