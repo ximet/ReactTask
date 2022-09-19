@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 
 import commonStyle from '../../styles/commonStyles.css';
 import styles from './About.css';
+import classNames from 'classnames';
 
 export const About: FC = () => {
   return (
-    <main className={`${commonStyle.container} ${styles['about-container']}`}>
+    <main className={classNames(commonStyle['container'], styles['about-container'])}>
       <h2 className={styles['about-title']}>More info about our service</h2>
       <article className={styles['about-article']}>
         <h3 className={styles['about-article-title']}>What you can?</h3>

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
@@ -9,6 +9,7 @@ import {
   FAVORITE_CITIES_LS_LABEL
 } from 'services/localStorage';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
+import classNames from 'classnames';
 
 type MainCardProps = {
   currentWeather: CurrentWeatherType;
@@ -60,7 +61,7 @@ const MainCard: FC<MainCardProps> = ({ currentWeather, location }) => {
 
   return (
     <div className={styles['main-card']}>
-      <div className={`${styles['main-card__item']} ${styles['main-card__item_center']}`}>
+      <div className={classNames(styles['main-card__item'], styles['main-card__item_center'])}>
         <h3 className={styles['main-card__title']}>Location: {location.name}</h3>
         <p>
           {date.date}-{date.month}-{date.year} {date.hours}:{date.minutes}
