@@ -11,17 +11,17 @@ interface WidgetStyles extends StylesProps {
 }
 
 export const Widget = styled.article<WidgetStyles>`
-  width: ${(props: WidgetStyles) =>
-    props.color !== 'primary' && !props.active ? '10rem' : '18.5rem'};
-  color: ${(props: WidgetStyles) => {
-    if (props.color === 'primary') {
+  width: ${({ color, active }: WidgetStyles) =>
+    color !== 'primary' && !active ? '10rem' : '18.5rem'};
+  color: ${({ themeType, color }: WidgetStyles) => {
+    if (color === 'primary') {
       return theme.palette.black;
     }
-    return props.theme === 'light' ? theme.palette.black : theme.palette.white;
+    return themeType === 'light' ? theme.palette.black : theme.palette.white;
   }};
-  background: ${(props: WidgetStyles) => {
-    if (props.color !== 'primary') {
-      return props.theme === 'light'
+  background: ${({ themeType, color }: WidgetStyles) => {
+    if (color !== 'primary') {
+      return themeType === 'light'
         ? theme.palette.componentBackgroundLight
         : theme.palette.componentBackgroundDark;
     }
@@ -31,7 +31,8 @@ export const Widget = styled.article<WidgetStyles>`
   transition: color 1.2s, background 1.2s, width 0.1s ease;
   overflow: hidden;
   user-select: none;
-  pointer-events: ${(props: WidgetStyles) => (props.pointerEvents === 'true' ? 'auto' : 'none')};
+  pointer-events: ${({ pointerEvents }: WidgetStyles) =>
+    pointerEvents === 'true' ? 'auto' : 'none'};
 
   &:not(:last-of-type) {
     margin-right: 2rem;
@@ -42,22 +43,22 @@ export const WidgetHeader = styled.div<WidgetStyles>`
   height: 3rem;
   padding: 0rem 1rem;
   font-weight: 500;
-  background: ${(props: WidgetStyles) => {
-    if (props.color !== 'primary' && props.theme === 'light') {
+  background: ${({ themeType, color }: WidgetStyles) => {
+    if (color !== 'primary' && themeType === 'light') {
       return theme.palette.grey.light;
     }
-    if (props.color !== 'primary' && props.theme !== 'light') {
+    if (color !== 'primary' && themeType !== 'light') {
       return theme.palette.grey.darkest;
     }
-    if (props.color === 'primary') {
+    if (color === 'primary') {
       return theme.palette.primary.medium;
     }
     return null;
   }};
   transition: background 1.2s;
   will-change: background;
-  border-bottom: ${(props: WidgetStyles) =>
-    props.color !== 'primary' ? theme.palette.grey.dark : theme.palette.grey.medium};
+  border-bottom: ${({ color }: WidgetStyles) =>
+    color !== 'primary' ? theme.palette.grey.dark : theme.palette.grey.medium};
 `;
 
 export const WidgetBody = styled.div<WidgetStyles>`
@@ -66,9 +67,9 @@ export const WidgetBody = styled.div<WidgetStyles>`
   justify-content: center;
   padding: 0.75rem 1rem 1.25rem 1rem;
 
-  ${props =>
-    props.color !== 'primary' &&
-    !props.active &&
+  ${({ color, active }) =>
+    color !== 'primary' &&
+    !active &&
     css`
       flex-direction: column;
     `};
@@ -83,8 +84,8 @@ export const WidgetDetails = styled.div<StylesProps>`
 export const WidgetDetailsTop = styled.div<StylesProps>``;
 
 export const WidgetDetailsBottom = styled.div<WidgetStyles>`
-  display: ${(props: WidgetStyles) =>
-    props.color !== 'primary' && !props.active ? 'none' : 'block'};
+  display: ${({ color, active }: WidgetStyles) =>
+    color !== 'primary' && !active ? 'none' : 'block'};
 `;
 
 export const WidgetTemp = styled.p<StylesProps>`
@@ -119,7 +120,7 @@ export const WidgetImg = styled.div<StylesProps>`
 
 export const WidgetDetailsItem = styled.p<WidgetStyles>`
   span {
-    color: ${(props: WidgetStyles) =>
-      props.color === 'primary' ? theme.palette.grey.dark : theme.palette.grey.medium};
+    color: ${({ color }: WidgetStyles) =>
+      color === 'primary' ? theme.palette.grey.dark : theme.palette.grey.medium};
   }
 `;

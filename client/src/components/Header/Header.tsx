@@ -25,7 +25,7 @@ const Header: FunctionComponent = () => {
   const handleThemeSwitch = () => dispatch(toggleTheme(theme === 'light' ? 'dark' : 'light'));
 
   return (
-    <S.Header theme={theme}>
+    <S.Header themeType={theme}>
       <Container>
         <Flex justifySpaceBetween>
           <GeoLocation />

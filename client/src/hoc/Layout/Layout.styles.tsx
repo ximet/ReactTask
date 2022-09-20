@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
       position: absolute;
       top: 0;
       right: 0%;
-      width: ${(props: StylesProps) => (props.theme === 'light' ? '0%' : '100%')};
+      width: ${({ themeType }: StylesProps) => (themeType === 'light' ? '0%' : '100%')};
       height: 100%;
       background: ${theme.palette.black};
       transition: all 1s;

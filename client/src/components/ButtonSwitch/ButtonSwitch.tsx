@@ -24,7 +24,7 @@ const ButtonSwitch: FunctionComponent<ButtonSwitchProps> = ({
 
   return (
     <S.ButtonSwitch
-      theme={theme}
+      themeType={theme}
       width={width}
       switchType={switchType}
       infoType={infoType}

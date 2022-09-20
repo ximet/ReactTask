@@ -95,5 +95,5 @@ export interface WeatherInfo {
 export type Theme = 'light' | 'dark';
 
 export interface StylesProps {
-  theme: Theme;
+  themeType?: string;
 }

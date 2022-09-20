@@ -83,7 +83,7 @@ const DashboardForecast: FunctionComponent = () => {
               {(Object.keys(ForecastType) as Array<keyof typeof ForecastType>).map(key => (
                 <S.DashboardForecastType
                   key={key}
-                  theme={theme}
+                  themeType={theme}
                   active={selectedForecastType === key}
                   onClick={() => handleForecastType(key)}
                 >
