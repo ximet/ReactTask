@@ -15,21 +15,33 @@ export interface AuthenticationResponse {
   };
 }
 
+export interface LocationInfoResponse {
+  data: LocationInfo;
+}
+
+export type LocationAllResponse = LocationInfoResponse & {
+  data: {
+    locations?: LocationInfo[];
+    current?: WeatherInfo;
+    forecast?: WeatherInfo[];
+  };
+};
+
 export type HttpResponseStatus = 'success' | 'fail';
 
-export type AccessToken = null | string;
+export type AccessToken = null | string | undefined;
 
 export interface LocationInfo {
-  id: number;
-  name: string;
-  country: string;
-  timezone: string;
-  language: string;
-  adminArea: string;
+  id?: number;
+  name?: string;
+  country?: string;
+  timezone?: string;
+  language?: string;
+  adminArea?: string;
   adminArea2?: string;
   adminArea3?: string;
-  lon: number;
-  lat: number;
+  lon?: number;
+  lat?: number;
   state?: string;
 }
 
@@ -83,5 +95,5 @@ export interface WeatherInfo {
 export type Theme = 'light' | 'dark';
 
 export interface StylesProps {
-  theme: Theme;
+  themeType?: string;
 }

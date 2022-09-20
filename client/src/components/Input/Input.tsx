@@ -39,7 +39,7 @@ const INPUT = {
       ref={inputRef}
       type={type}
       placeholder={placeholder}
-      theme={theme}
+      themeType={theme}
       onChange={onChange}
       onFocus={onFocus}
       onBlur={e => {

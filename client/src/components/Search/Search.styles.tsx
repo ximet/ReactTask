@@ -20,12 +20,12 @@ export const Search = styled.div<StylesProps>`
     display: inline-block;
     width: 0.75rem;
     height: 0.75rem;
-    background: ${(props: StylesProps) => `linear-gradient(
+    background: ${({ themeType }: StylesProps) => `linear-gradient(
         45deg,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 0) 43%,
-        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 45%,
-        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 55%,
+        ${themeType === 'light' ? theme.palette.black : theme.palette.white} 45%,
+        ${themeType === 'light' ? theme.palette.black : theme.palette.white} 55%,
         rgba(0, 0, 0, 0) 57%,
         rgba(0, 0, 0, 0) 100%
       ),
@@ -33,8 +33,8 @@ export const Search = styled.div<StylesProps>`
         135deg,
         transparent 0%,
         transparent 43%,
-        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 45%,
-        ${props.theme === 'light' ? theme.palette.black : theme.palette.white} 55%,
+        ${themeType === 'light' ? theme.palette.black : theme.palette.white} 45%,
+        ${themeType === 'light' ? theme.palette.black : theme.palette.white} 55%,
         transparent 57%,
         transparent 100%
       )`};

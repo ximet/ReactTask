@@ -8,8 +8,10 @@ const theme = {
       dark: '#adcade'
     },
     grey: {
+      light: '#dcdbdb',
       medium: '#9f9f9f',
-      dark: '#706f74'
+      dark: '#706f74',
+      darkest: '#3d3d3d'
     },
     componentBackgroundLight: 'rgba(0, 0, 0, 0.05)',
     componentBackgroundDark: 'rgba(255, 255, 255, 0.1)'
