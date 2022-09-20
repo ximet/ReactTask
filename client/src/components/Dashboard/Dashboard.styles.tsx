@@ -46,14 +46,14 @@ interface DashboardForecastTypeStyles extends StylesProps {
 export const DashboardForecastType = styled.li<DashboardForecastTypeStyles>`
   font-size: 1.17rem;
   font-weight: 700;
-  color: ${props => {
-    if (!props.active && props.theme === 'light') {
+  color: ${({ themeType, active }) => {
+    if (!active && themeType === 'light') {
       return theme.palette.black;
     }
-    if (!props.active && props.theme !== 'light') {
+    if (!active && themeType !== 'light') {
       return theme.palette.white;
     }
-    if (props.active) {
+    if (active) {
       return theme.palette.primary.dark;
     }
     return null;

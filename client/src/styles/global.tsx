@@ -23,32 +23,32 @@ export const Flex = styled.div<FlexProps>`
   height: 100%;
   width: 100%;
 
-  ${props =>
-    props.directionColumn &&
+  ${({ directionColumn }) =>
+    directionColumn &&
     css`
       flex-direction: column;
     `};
 
-  ${props =>
-    props.justifySpaceBetween &&
+  ${({ justifySpaceBetween }) =>
+    justifySpaceBetween &&
     css`
       justify-content: space-between;
     `};
 
-  ${props =>
-    props.justifyFlexEnd &&
+  ${({ justifyFlexEnd }) =>
+    justifyFlexEnd &&
     css`
       justify-content: flex-end;
     `};
 
-  ${props =>
-    props.justifyFlexStart &&
+  ${({ justifyFlexStart }) =>
+    justifyFlexStart &&
     css`
       justify-content: flex-start;
     `};
 
-  ${props =>
-    props.alignFlexStart &&
+  ${({ alignFlexStart }) =>
+    alignFlexStart &&
     css`
       align-items: flex-start;
     `};

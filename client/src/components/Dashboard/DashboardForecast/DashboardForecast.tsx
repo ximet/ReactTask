@@ -36,17 +36,19 @@ const DashboardForecast: FunctionComponent = () => {
   const theme = useAppSelector(state => state.theme);
   const query = useAppSelector(state => state.location.query);
   const { data, loading, error } = useAppSelector(state => {
-    if (selectedForecastType === ForecastType.hourly) {
-      return state.location.weather.hourly;
+    switch (selectedForecastType) {
+      case ForecastType.hourly: {
+        return state.location.weather.hourly;
+      }
+      case ForecastType.threeHourly: {
+        return state.location.weather.threeHourly;
+      }
+      case ForecastType.daily: {
+        return state.location.weather.daily;
+      }
+      default:
+        return state.location.weather.hourly;
     }
-    if (selectedForecastType === ForecastType.threeHourly) {
-      return state.location.weather.threeHourly;
-    }
-    if (selectedForecastType === ForecastType.daily) {
-      return state.location.weather.daily;
-    }
-
-    return state.location.weather.hourly;
   });
 
   const dispatch = useDispatch();
@@ -58,14 +60,21 @@ const DashboardForecast: FunctionComponent = () => {
   const handleGetLocationWeather = useCallback(() => {
     if (!query) return;
 
-    if (selectedForecastType === ForecastType.hourly) {
-      dispatch(getLocationHourlyWeather(query));
-    }
-    if (selectedForecastType === ForecastType.threeHourly) {
-      dispatch(getLocationThreeHourlyWeather(query));
-    }
-    if (selectedForecastType === ForecastType.daily) {
-      dispatch(getLocationDailyWeather(query));
+    switch (selectedForecastType) {
+      case ForecastType.hourly: {
+        dispatch(getLocationHourlyWeather(query));
+        break;
+      }
+      case ForecastType.threeHourly: {
+        dispatch(getLocationThreeHourlyWeather(query));
+        break;
+      }
+      case ForecastType.daily: {
+        dispatch(getLocationDailyWeather(query));
+        break;
+      }
+      default:
+        dispatch(getLocationHourlyWeather(query));
     }
   }, [dispatch, query, selectedForecastType]);
 
@@ -83,7 +92,7 @@ const DashboardForecast: FunctionComponent = () => {
               {(Object.keys(ForecastType) as Array<keyof typeof ForecastType>).map(key => (
                 <S.DashboardForecastType
                   key={key}
-                  theme={theme}
+                  themeType={theme}
                   active={selectedForecastType === key}
                   onClick={() => handleForecastType(key)}
                 >

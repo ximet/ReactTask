@@ -63,7 +63,7 @@ const Search: FunctionComponent = () => {
   }, [pathname]);
 
   return (
-    <S.Search ref={searchRef} theme={theme}>
+    <S.Search ref={searchRef} themeType={theme}>
       <IconSearch />
       <Input
         type="search"

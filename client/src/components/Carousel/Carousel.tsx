@@ -10,7 +10,7 @@ interface CarouselState {
 }
 
 interface CarouselProps {
-  setCarouselChildPointerEv: (bool: boolean) => void;
+  setCarouselChildPointerEv: (enabled: boolean) => void;
 }
 
 const Carousel: FunctionComponent<CarouselProps> = ({ setCarouselChildPointerEv, children }) => {

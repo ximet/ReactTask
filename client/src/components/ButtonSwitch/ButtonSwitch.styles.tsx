@@ -13,7 +13,7 @@ interface ButtonSwitchStylesProps extends StylesProps {
 
 export const ButtonSwitch = styled.button<ButtonSwitchStylesProps>`
   position: relative;
-  width: ${(props: ButtonSwitchStylesProps) => props.width};
+  width: ${({ width }: ButtonSwitchStylesProps) => width};
   height: 3rem;
   padding: 0 2rem;
   border-radius: ${theme.shape.borderRadius};
@@ -30,11 +30,11 @@ export const ButtonSwitch = styled.button<ButtonSwitchStylesProps>`
   &::before {
     content: '';
     position: absolute;
-    left: ${(props: ButtonSwitchStylesProps) => {
-      if (props.switchType === 'theme') {
-        return props.theme === 'light' ? '0' : '50%';
+    left: ${({ switchType, infoType, themeType }: ButtonSwitchStylesProps) => {
+      if (switchType === 'theme') {
+        return themeType === 'light' ? '0' : '50%';
       }
-      return props.infoType === 'forecast' ? '0' : '50%';
+      return infoType === 'forecast' ? '0' : '50%';
     }};
     top: 0;
     width: 50%;
@@ -71,11 +71,11 @@ export const ButtonSwitch = styled.button<ButtonSwitchStylesProps>`
 
   span:first-of-type {
     left: 1.5rem;
-    color: ${(props: ButtonSwitchStylesProps) => {
-      if (props.theme === 'light' && props.infoType !== 'forecast') {
+    color: ${({ themeType, infoType }: ButtonSwitchStylesProps) => {
+      if (themeType === 'light' && infoType !== 'forecast') {
         return theme.palette.grey.dark;
       }
-      if (props.theme === 'dark' && props.infoType !== 'forecast') {
+      if (themeType === 'dark' && infoType !== 'forecast') {
         return theme.palette.grey.medium;
       }
       return theme.palette.black;
@@ -84,11 +84,11 @@ export const ButtonSwitch = styled.button<ButtonSwitchStylesProps>`
 
   span:last-of-type {
     right: 1.5rem;
-    color: ${(props: ButtonSwitchStylesProps) => {
-      if (props.theme === 'light' && props.infoType === 'forecast') {
+    color: ${({ themeType, infoType }: ButtonSwitchStylesProps) => {
+      if (themeType === 'light' && infoType === 'forecast') {
         return theme.palette.grey.dark;
       }
-      if (props.theme === 'dark' && props.infoType === 'forecast') {
+      if (themeType === 'dark' && infoType === 'forecast') {
         return theme.palette.grey.medium;
       }
       return theme.palette.black;

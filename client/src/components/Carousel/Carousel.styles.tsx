@@ -16,8 +16,8 @@ export const Carousel = styled.div<CarouselStyles>`
     cursor: grab;
   }
 
-  ${props =>
-    props.active &&
+  ${({ active }) =>
+    active &&
     css`
       cursor: grabbing;
     `};

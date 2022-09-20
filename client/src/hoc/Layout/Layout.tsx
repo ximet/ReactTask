@@ -11,7 +11,7 @@ const Layout: FunctionComponent = ({ children }) => {
 
   return (
     <>
-      <GlobalStyle theme={theme} />
+      <GlobalStyle themeType={theme} />
       {children}
     </>
   );

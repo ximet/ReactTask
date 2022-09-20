@@ -29,13 +29,13 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
 
   return (
     <S.Widget
-      theme={theme}
+      themeType={theme}
       color={color}
       active={active}
       onClick={() => setActive(!active)}
       pointerEvents={pointerEvents?.toString()}
     >
-      <S.WidgetHeader color={color} theme={theme}>
+      <S.WidgetHeader color={color} themeType={theme}>
         <Flex justifySpaceBetween>
           <time dateTime={timeStamp?.day}>{timeStamp?.day}</time>
           <time dateTime={timeStamp?.time}>{timeStamp?.time}</time>
