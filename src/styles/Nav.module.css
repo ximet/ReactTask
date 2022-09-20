@@ -1,0 +1,45 @@
+:root {
+  --lightBlue: #3498db;
+  --blue: #2980b9;
+  --white: rgb(255, 255, 255);
+}
+
+.navBtnsList {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+  width: 100%;
+  list-style: none;
+  line-height: 30px;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.navBtnsList {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+  width: 100%;
+  list-style: none;
+  line-height: 30px;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.navBtn {
+  background-color: var(--lightBlue);
+  width: 120px;
+  color: var(--white);
+  border-style: solid;
+  border-width: 0 2px 0 0;
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navBtn:hover,
+.navBtn:focus {
+  background-color: var(--blue);
+}

@@ -1,12 +1,16 @@
 import React from 'react';
+import * as styles from '../../../styles/Nav.module.css';
 import { DropdownMenu } from './DropdownMenu.js';
 
-export function Nav(props) {
+function Nav(props) {
   return (
-    <>
-      <nav>
-        <DropdownMenu styles={props.styles} />
-      </nav>
-    </>
+    <nav className={styles.navBtnsList}>
+      <DropdownMenu className={styles.navBtn} />
+      <button className={styles.navBtn}>Daily</button>
+      <button className={styles.navBtn}>Weekly</button>
+      <button className={styles.navBtn}>Monthly</button>
+    </nav>
   );
 }
+
+export { Nav };

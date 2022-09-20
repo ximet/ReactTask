@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import * as styles from '../../../styles/DropdownMenu.module.css';
 
-export function DropdownMenu(props) {
-  const { styles } = props;
+const initialCitiesState = [
+  { name: 'Sofia', id: Math.random() },
+  { name: 'Athens', id: Math.random() },
+  { name: 'Istanbul', id: Math.random() }
+];
 
+function DropdownMenu(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [cities, setCities] = useState(initialCitiesState);
 
   const showCities = ev => {
-    ev.preventDefault();
-
     const dropdownContent = [...document.getElementsByClassName(styles.dropdownContent)][0];
     if (isOpen) {
       setIsOpen(false);
@@ -18,18 +22,14 @@ export function DropdownMenu(props) {
     }
   };
 
+  const citiesList = cities.map(city => <a key={city.id} href="#">{city.name}</a>);
+
   return (
-    <>
-      <div className={styles.dropdown}>
-        <button className={styles.dropdownBtn} onClick={showCities}>
-          Cities
-        </button>
-        <div className={styles.dropdownContent}>
-          <a href="#">Sofia</a>
-          <a href="#">Athens</a>
-          <a href="#">Istanbul</a>
-        </div>
-      </div>
-    </>
+    <div className={styles.dropdown}>
+      <button id={styles.dropdownBtn} className={props.className} onClick={showCities}>Cities</button>
+      <div className={styles.dropdownContent}>{citiesList}</div>
+    </div>
   );
 }
+
+export { DropdownMenu };
