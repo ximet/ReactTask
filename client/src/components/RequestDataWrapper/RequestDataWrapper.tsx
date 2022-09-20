@@ -6,7 +6,7 @@ interface RequestDataWrapperProps<T> {
   error?: boolean | string | GeolocationPositionError | null;
 }
 
-const RequestDataWrapper = <T,>({
+const RequestDataWrapper = <T extends unknown>({
   data,
   loading,
   error,

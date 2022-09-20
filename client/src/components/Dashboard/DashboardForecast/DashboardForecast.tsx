@@ -35,19 +35,17 @@ const DashboardForecast: FunctionComponent = () => {
 
   const theme = useAppSelector(state => state.theme);
   const query = useAppSelector(state => state.location.query);
-  const { data, loading, error } = useAppSelector(state => {
+  const { data, loading, error } = useAppSelector(({ location: { weather } }) => {
     switch (selectedForecastType) {
-      case ForecastType.hourly: {
-        return state.location.weather.hourly;
-      }
+      case ForecastType.hourly:
+      default:
+        return weather.hourly;
       case ForecastType.threeHourly: {
-        return state.location.weather.threeHourly;
+        return weather.threeHourly;
       }
       case ForecastType.daily: {
-        return state.location.weather.daily;
+        return weather.daily;
       }
-      default:
-        return state.location.weather.hourly;
     }
   });
 
@@ -61,10 +59,10 @@ const DashboardForecast: FunctionComponent = () => {
     if (!query) return;
 
     switch (selectedForecastType) {
-      case ForecastType.hourly: {
+      case ForecastType.hourly:
+      default:
         dispatch(getLocationHourlyWeather(query));
         break;
-      }
       case ForecastType.threeHourly: {
         dispatch(getLocationThreeHourlyWeather(query));
         break;
@@ -73,8 +71,6 @@ const DashboardForecast: FunctionComponent = () => {
         dispatch(getLocationDailyWeather(query));
         break;
       }
-      default:
-        dispatch(getLocationHourlyWeather(query));
     }
   }, [dispatch, query, selectedForecastType]);
 
