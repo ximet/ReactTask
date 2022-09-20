@@ -17,7 +17,7 @@ import * as S from './Widget.styles';
 interface WidgetProps {
   color?: string;
   data?: WeatherInfo | null;
-  pointerEvents?: string;
+  pointerEvents?: boolean;
 }
 
 const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) => {
@@ -33,7 +33,7 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
       color={color}
       active={active}
       onClick={() => setActive(!active)}
-      pointerEvents={pointerEvents}
+      pointerEvents={pointerEvents?.toString()}
     >
       <S.WidgetHeader color={color} theme={theme}>
         <Flex justifySpaceBetween>
