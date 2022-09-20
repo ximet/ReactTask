@@ -16,7 +16,7 @@ export const CitySmallCards: FC<CityPropsType> = ({ locations, country }) => {
 
   const cardClickHandler = (lat: number, lon: number) => {
     changePosition(lat, lon);
-    navigate('/');
+    navigate(`/${lon},${lat}`);
   };
 
   return (

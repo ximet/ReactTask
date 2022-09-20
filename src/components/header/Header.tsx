@@ -33,7 +33,7 @@ const Header: FC = () => {
     setSearchText('');
     setCities([]);
     changePosition(lat, lon);
-    navigate('/');
+    navigate(`/${lon},${lat}`);
   };
 
   useEffect(() => {

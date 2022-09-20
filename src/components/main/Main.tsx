@@ -1,16 +1,22 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
-import React, { useContext, FC, useEffect, useState } from 'react';
+import React, { useContext, FC, useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
 import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
-import { defaultCurrentWeather, defaultLocationInfo } from './defaultStates';
+import { defaultLocationInfo } from './defaultStates';
 import MainCard from './MainCard';
 import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
+
+type PositionRef = {
+  lon: number | string;
+  lat: number | string;
+};
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -19,11 +25,19 @@ const Main: FC = () => {
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
 
+  const { coordinates } = useParams();
+  const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
+
   const {
     state: { position, positionError }
   } = useContext(positionContext);
 
-  async function fetchData(lon: number, lat: number) {
+  const { current: positionRef } = useRef<PositionRef>({ lon: 0, lat: 0 });
+
+  positionRef.lon = paramLongitude || position.longitude;
+  positionRef.lat = paramLatitude || position.latitude;
+
+  async function fetchData(lon: number | string, lat: number | string) {
     Promise.all([
       getCity(lon, lat),
       getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat),
@@ -36,17 +50,17 @@ const Main: FC = () => {
   }
 
   useEffect(() => {
-    if (position.longitude) {
-      fetchData(position.longitude, position.latitude);
+    if (positionRef.lon && positionRef.lon !== '0') {
+      fetchData(positionRef.lon, positionRef.lat);
     }
-  }, [position.longitude]);
+  }, [positionRef.lon, positionRef.lat]);
 
   useEffect(() => {
     if (selectDays) {
       getWeather<{ forecast: DailyWeatherType[] }>(
         '/forecast/daily/',
-        position.longitude,
-        position.latitude,
+        positionRef.lon,
+        positionRef.lat,
         { periods: selectDays, dataset: 'full' }
       ).then(res => setDailyWeather(res.forecast));
     }
