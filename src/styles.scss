@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+body {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0 auto;
+}
+$colorUIPrimary: teal;
+$colorUISecondary: rgb(22, 157, 215);
+$colorTextPrimary: rgb(221, 170, 17);
+$colorTextSecondary: rgb(8, 142, 152);
+$colorButtonsSecondary: rgb(14, 196, 196);
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  padding: 5px 15px;
+  color: $colorTextSecondary;
+  font-size: 14px;
+  background: transparent;
+  border: 2px solid $colorUISecondary;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 8px;
+}
+.input {
+  width: 100%;
+  padding: 5px 15px;
+  margin: 5px 0;
+
+  height: 20px;
+  border-radius: 8px;
+  border: 2px solid $colorUISecondary;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    margin-bottom: 2px;
+    color: $colorUISecondary;
+  }
+}
+.buttons {
+  display: flex;
+  width: 700px;
+  flex-wrap: wrap;
+  button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    height: auto;
+  }
+}
+.appheader {
+  background-color: $colorUIPrimary;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  p {
+    margin: 0;
+    padding-left: 90px;
+    color: $colorTextPrimary;
+    font-size: 25px;
+    font-weight: 700;
+  }
+}
+
+.appfooter {
+  background-color: $colorUIPrimary;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  p {
+    font-size: large;
+    margin: 0;
+    padding-left: 90px;
+    color: $colorTextPrimary;
+  }
+}
