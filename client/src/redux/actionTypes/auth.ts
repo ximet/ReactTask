@@ -1,4 +1,4 @@
-import type { AccessToken } from 'types';
+import type { AuthenticationResponse } from 'types';
 
 export enum ActionType {
   AUTHORIZE_PENDING = 'AUTHORIZE_PENDING',
@@ -16,7 +16,7 @@ interface ActionPending {
 
 interface ActionSuccess {
   type: ActionType.AUTHORIZE_SUCCESS | ActionType.AUTHENTICATE_SUCCESS;
-  payload?: AccessToken;
+  payload: AuthenticationResponse;
 }
 
 interface ActionFail {

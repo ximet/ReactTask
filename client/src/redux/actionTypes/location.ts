@@ -1,4 +1,4 @@
-import type { LocationInfo, WeatherInfo } from 'types';
+import type { LocationAllResponse } from 'types';
 
 export enum ActionType {
   SEARCH_LOCATION_PENDING = 'SEARCH_LOCATION_PENDING',
@@ -38,34 +38,15 @@ interface ActionPending {
     | ActionType.GET_LOCATION_DAILY_WEATHER_PENDING;
 }
 
-interface ActionSearchSuccess {
-  type: ActionType.SEARCH_LOCATION_SUCCESS;
-  payload: LocationInfo[];
-}
-
-interface ActionInfoSuccess {
-  type: ActionType.GET_LOCATION_INFO_SUCCESS;
-  payload: LocationInfo;
-}
-
-interface ActionCurrentWeatherSuccess {
-  type: ActionType.GET_LOCATION_CURRENT_WEATHER_SUCCESS;
-  payload: WeatherInfo;
-}
-
-interface ActionHourlyWeatherSuccess {
-  type: ActionType.GET_LOCATION_HOURLY_WEATHER_SUCCESS;
-  payload: WeatherInfo[];
-}
-
-interface ActionThreeHourlyWeatherSuccess {
-  type: ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_SUCCESS;
-  payload: WeatherInfo[];
-}
-
-interface ActionDailyWeatherSuccess {
-  type: ActionType.GET_LOCATION_DAILY_WEATHER_SUCCESS;
-  payload: WeatherInfo[];
+interface ActionSuccess {
+  type:
+    | ActionType.SEARCH_LOCATION_SUCCESS
+    | ActionType.GET_LOCATION_INFO_SUCCESS
+    | ActionType.GET_LOCATION_CURRENT_WEATHER_SUCCESS
+    | ActionType.GET_LOCATION_HOURLY_WEATHER_SUCCESS
+    | ActionType.GET_LOCATION_THREE_HOURLY_WEATHER_SUCCESS
+    | ActionType.GET_LOCATION_DAILY_WEATHER_SUCCESS;
+  payload: LocationAllResponse;
 }
 
 interface ActionFail {
@@ -84,13 +65,4 @@ interface ActionQuery {
   payload: string;
 }
 
-export type Action =
-  | ActionPending
-  | ActionSearchSuccess
-  | ActionInfoSuccess
-  | ActionCurrentWeatherSuccess
-  | ActionHourlyWeatherSuccess
-  | ActionThreeHourlyWeatherSuccess
-  | ActionDailyWeatherSuccess
-  | ActionQuery
-  | ActionFail;
+export type Action = ActionPending | ActionSuccess | ActionFail | ActionQuery;

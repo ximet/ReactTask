@@ -1,20 +1,17 @@
-import React, { FunctionComponent } from 'react';
+import React, { PropsWithChildren } from 'react';
 
-// Types
-import { LocationInfo, WeatherInfo } from '../../types';
-
-interface RequestDataWrapperProps {
-  data?: LocationInfo | LocationInfo[] | WeatherInfo | WeatherInfo[] | null;
+interface RequestDataWrapperProps<T> {
+  data?: T | T[];
   loading?: boolean;
   error?: boolean | string | GeolocationPositionError | null;
 }
 
-const RequestDataWrapper: FunctionComponent<RequestDataWrapperProps> = ({
+const RequestDataWrapper = <T,>({
   data,
   loading,
   error,
   children
-}) => {
+}: PropsWithChildren<RequestDataWrapperProps<T>>) => {
   if (data) {
     return <>{children}</>;
   }
