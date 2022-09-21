@@ -8,7 +8,8 @@ const { mainPage, search, buttons } = styles;
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState([]);
-  const [isModalOpen, setModal] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [error, setError] = useState(null);
   function inpuHandler(e) {
     setSearchQuery(e.target.value);
   }
@@ -21,27 +22,30 @@ export default function MainPage() {
       }
     })
       .then(res => res.json())
-      .then(data => {
-        setItems(data.locations);
+      .then(cityes => setItems(cityes.locations))
+      .catch(error => {
+        console.log(error);
+        setError(error);
       });
   }, [searchQuery]);
 
-  const filteredItems = Boolean(items.length) ? items : [];
+  const checkedItems = Boolean(items.length) ? items : [];
   return (
     <div className={mainPage}>
       <ModalCountries
         modal={isModalOpen}
-        onModalClose={() => setModal(false)}
-        content={filteredItems}
+        onModalClose={() => setModalOpen(false)}
+        content={checkedItems}
       />
       <div className={search}>
         <p>Find the right location</p>
+        <p>{error}</p>
         <Input
           value={searchQuery}
           onChangeInput={e => inpuHandler(e)}
           placeholder="write here"
         ></Input>
-        <Button text="show countries" onClick={() => setModal(true)} />
+        <Button text="show countries" onClick={() => setModalOpen(true)} />
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function ModalCountries(props) {
   });
   if (modal) {
     return createPortal(
-      <div className={styles.modalBcg} onClick={() => onModalClose()}>
+      <div className={styles.modalBackground} onClick={() => onModalClose()}>
         <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
           <div className={styles.buttons}>
             {content.map(item => (
