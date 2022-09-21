@@ -32,10 +32,8 @@ const Main: FC = () => {
     state: { position, positionError }
   } = useContext(positionContext);
 
-  const { current: positionRef } = useRef<PositionRef>({ lon: 0, lat: 0 });
-
-  positionRef.lon = paramLongitude || position.longitude;
-  positionRef.lat = paramLatitude || position.latitude;
+  const resultLongitude = paramLongitude || position.longitude;
+  const resultLatitude = paramLatitude || position.latitude;
 
   async function fetchData(lon: number | string, lat: number | string) {
     Promise.all([
@@ -50,17 +48,17 @@ const Main: FC = () => {
   }
 
   useEffect(() => {
-    if (positionRef.lon && positionRef.lon !== '0') {
-      fetchData(positionRef.lon, positionRef.lat);
+    if (resultLongitude && resultLongitude !== '0') {
+      fetchData(resultLongitude, resultLatitude);
     }
-  }, [positionRef.lon, positionRef.lat]);
+  }, [resultLongitude, resultLatitude]);
 
   useEffect(() => {
     if (selectDays) {
       getWeather<{ forecast: DailyWeatherType[] }>(
         '/forecast/daily/',
-        positionRef.lon,
-        positionRef.lat,
+        resultLongitude,
+        resultLatitude,
         { periods: selectDays, dataset: 'full' }
       ).then(res => setDailyWeather(res.forecast));
     }
