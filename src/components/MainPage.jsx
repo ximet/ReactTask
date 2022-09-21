@@ -8,7 +8,7 @@ const { mainPage, search, buttons } = styles;
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState([]);
-  const [modal, setModal] = useState(false);
+  const [isModalOpen, setModal] = useState(false);
   function inpuHandler(e) {
     setSearchQuery(e.target.value);
   }
@@ -26,10 +26,14 @@ export default function MainPage() {
       });
   }, [searchQuery]);
 
-  const filteredItems = items.length !== 0 && items ? items : [];
+  const filteredItems = Boolean(items.length) ? items : [];
   return (
     <div className={mainPage}>
-      <ModalCountries modal={modal} onModalClose={() => setModal(false)} content={filteredItems} />
+      <ModalCountries
+        modal={isModalOpen}
+        onModalClose={() => setModal(false)}
+        content={filteredItems}
+      />
       <div className={search}>
         <p>Find the right location</p>
         <Input

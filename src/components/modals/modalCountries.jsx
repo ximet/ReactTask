@@ -4,7 +4,7 @@ import Button from '../../UI/button/Button';
 import styles from './modalStyles.scss';
 
 const modalRootElement = document.getElementById('modal');
-export default function ModalCountries(props) {
+function ModalCountries(props) {
   const { content, onModalClose, modal } = props;
   const element = useMemo(() => document.createElement('div'), []);
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function ModalCountries(props) {
         <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
           <div className={styles.buttons}>
             {content.map(item => (
-              <Button text={item.name} key={item.id}></Button>
+              <Button text={item.name} key={item.id} />
             ))}
           </div>
         </div>
@@ -30,3 +30,5 @@ export default function ModalCountries(props) {
     return null;
   }
 }
+
+export default ModalCountries;
