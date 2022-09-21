@@ -44,15 +44,15 @@ const App: FunctionComponent = () => {
   }, [handleAuth]);
 
   return (
-    <Layout>
-      <Suspense fallback={null}>
-        <Routes>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route element={<Layout />}>
           {routes.map(({ path, Component }) => (
             <Route path={path} key={path} element={<Component />} />
           ))}
-        </Routes>
-      </Suspense>
-    </Layout>
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 export default App;
