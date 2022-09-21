@@ -25,12 +25,8 @@ export default function MainPage() {
         setItems(data.locations);
       });
   }, [searchQuery]);
-  const filteredItems =
-    items.length !== 0 && items
-      ? items.filter(item =>
-          item.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-        )
-      : [];
+
+  const filteredItems = items.length !== 0 && items ? items : [];
   return (
     <div className={mainPage}>
       <ModalCountries modal={modal} onModalClose={() => setModal(false)} content={filteredItems} />

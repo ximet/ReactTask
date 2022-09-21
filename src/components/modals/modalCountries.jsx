@@ -16,7 +16,7 @@ export default function ModalCountries(props) {
   if (modal) {
     return createPortal(
       <div className={styles.modalBcg} onClick={() => onModalClose()}>
-        <div className={styles.modalContent}>
+        <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
           <div className={styles.buttons}>
             {content.map(item => (
               <Button text={item.name} key={item.id}></Button>
