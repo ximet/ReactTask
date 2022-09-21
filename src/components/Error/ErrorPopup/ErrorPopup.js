@@ -1,12 +1,14 @@
-import './ErrorPopup.css'
+import styles from './ErrorPopup.module.css';
 
-function ErrorPopup(props) {
-    return (
-        <div className="error-container">
-            <h3>{props.title}</h3>
-            <p>{props.message}</p>
-            {/* <button onClick={props.onConfirm}>Ok</button> */}
-        </div>
-    )
+import { BUTTON_OK_LABEL } from './../../constants';
+
+function ErrorPopup({ title, message, onConfirm }) {
+  return (
+    <div className={styles.errorContainer}>
+      <h3>{title}</h3>
+      <p>{message}</p>
+      <button onClick={onConfirm}>{BUTTON_OK_LABEL}</button>
+    </div>
+  );
 }
 export default ErrorPopup;
