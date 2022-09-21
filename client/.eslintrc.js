@@ -70,10 +70,11 @@ module.exports = {
     'no-use-before-define': 'off',
     'max-lines': ['error', { max: 200 }],
     semi: ['error', 'always'],
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'prettier/prettier': [
       'error',
       {
+        singleQuote: true,
         endOfLine: 'auto'
       }
     ]

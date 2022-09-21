@@ -77,3 +77,12 @@ export type DailyWeather = CommonWeatherData & {
   snowAccum: number;
   precipAccum: number;
 };
+
+export interface Feedback {
+  id?: string;
+  nickname: string;
+  email: string;
+  title: string;
+  review: string;
+  rating: number;
+}

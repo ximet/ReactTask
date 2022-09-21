@@ -2,14 +2,15 @@ import React, { FC, ReactNode } from 'react';
 import styles from './styles.module.scss';
 
 enum ButtonStyles {
-  themeBtn = 'themeBtn',
-  iconBtn = 'searchBtn'
+  ThemeBtn = 'themeBtn',
+  IconBtn = 'searchBtn',
+  FormBtn = 'formBtn'
 }
 interface ButtonProps {
   type: 'button' | 'reset' | 'submit' | undefined;
   children: ReactNode;
   className: string;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
 }
 
 const Button: FC<ButtonProps> = ({ type, children, className, onClick }) => {

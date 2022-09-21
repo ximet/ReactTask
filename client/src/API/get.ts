@@ -8,8 +8,8 @@ export const createToken = async () => {
     const result = await axios.post(`http://localhost:5000/authorize/token?expire_hours=2`);
     window.localStorage.setItem('token', result.data.access_token);
     return result.data;
-  } catch (err) {
-    throw new Error((err as Error).message);
+  } catch (error) {
+    throw new Error((error as Error).message);
   }
 };
 

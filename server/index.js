@@ -29,4 +29,20 @@ server.post(':endpoint([\\/\\w\\.-]*)', (req, res) => {
     });
 });
 
+server.get(':endpoint([\\/\\w\\.-]*)', (req, res) => {
+  const endpoint = `https://pfa.foreca.com/api/v1${req.params.endpoint}`;
+  const headers = {
+   Authorization: req.headers.authorization
+  };
+  
+  axios
+    .get(endpoint, { headers })
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
 server.listen(PORT);

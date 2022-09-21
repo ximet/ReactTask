@@ -37,7 +37,7 @@ const Header: React.FC = ({ children }) => {
       </nav>
       <div className={styles.searchBox}>
         <div className={styles.search}>{children}</div>
-        <Button type="button" className="themeBtn" onClick={onThemeBtnClick}>
+        <Button type="button" className="ThemeBtn" onClick={onThemeBtnClick}>
           {icon ? (
             <MdOutlineLightMode
               className={`${styles.icon} ${darkMode ? styles.iconDark : styles.iconLight}`}
