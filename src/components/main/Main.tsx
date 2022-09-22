@@ -1,7 +1,7 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
-import React, { useContext, FC, useEffect, useState, useRef } from 'react';
+import React, { useContext, FC, useEffect, useState, ChangeEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
@@ -12,11 +12,6 @@ import { defaultLocationInfo } from './defaultStates';
 import MainCard from './MainCard';
 import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
-
-type PositionRef = {
-  lon: number | string;
-  lat: number | string;
-};
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -47,22 +42,23 @@ const Main: FC = () => {
     });
   }
 
+  const handleDaysSelected = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectDays(e.target.value);
+    if (e.target.value) {
+      getWeather<{ forecast: DailyWeatherType[] }>(
+        '/forecast/daily/',
+        resultLongitude,
+        resultLatitude,
+        { periods: e.target.value, dataset: 'full' }
+      ).then(res => setDailyWeather(res.forecast));
+    }
+  };
+
   useEffect(() => {
     if (resultLongitude && resultLongitude !== '0') {
       fetchData(resultLongitude, resultLatitude);
     }
   }, [resultLongitude, resultLatitude]);
-
-  useEffect(() => {
-    if (selectDays) {
-      getWeather<{ forecast: DailyWeatherType[] }>(
-        '/forecast/daily/',
-        resultLongitude,
-        resultLatitude,
-        { periods: selectDays, dataset: 'full' }
-      ).then(res => setDailyWeather(res.forecast));
-    }
-  }, [selectDays]);
 
   return (
     <main className={commonStyle.container}>
@@ -81,7 +77,7 @@ const Main: FC = () => {
             <h2 className={styles['weather-section-title']}>Daily weather</h2>
             <select
               value={selectDays}
-              onChange={e => setSelectDays(e.target.value)}
+              onChange={handleDaysSelected}
               className={styles['days-select']}
             >
               <option value="">Choose days</option>
