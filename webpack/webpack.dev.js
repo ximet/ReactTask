@@ -32,7 +32,9 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true
+    },
     contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,

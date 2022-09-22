@@ -1,13 +1,14 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
-import React, { useContext, FC, useEffect, useState } from 'react';
+import React, { useContext, FC, useEffect, useState, ChangeEvent } from 'react';
+import { useParams } from 'react-router-dom';
 import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
 import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
-import { defaultCurrentWeather, defaultLocationInfo } from './defaultStates';
+import { defaultLocationInfo } from './defaultStates';
 import MainCard from './MainCard';
 import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
@@ -19,11 +20,17 @@ const Main: FC = () => {
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
 
+  const { coordinates } = useParams();
+  const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
+
   const {
     state: { position, positionError }
   } = useContext(positionContext);
 
-  async function fetchData(lon: number, lat: number) {
+  const resultLongitude = paramLongitude || position.longitude;
+  const resultLatitude = paramLatitude || position.latitude;
+
+  async function fetchData(lon: number | string, lat: number | string) {
     Promise.all([
       getCity(lon, lat),
       getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat),
@@ -35,22 +42,23 @@ const Main: FC = () => {
     });
   }
 
-  useEffect(() => {
-    if (position.longitude) {
-      fetchData(position.longitude, position.latitude);
-    }
-  }, [position.longitude]);
-
-  useEffect(() => {
-    if (selectDays) {
+  const handleDaysSelected = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectDays(e.target.value);
+    if (e.target.value) {
       getWeather<{ forecast: DailyWeatherType[] }>(
         '/forecast/daily/',
-        position.longitude,
-        position.latitude,
-        { periods: selectDays, dataset: 'full' }
+        resultLongitude,
+        resultLatitude,
+        { periods: e.target.value, dataset: 'full' }
       ).then(res => setDailyWeather(res.forecast));
     }
-  }, [selectDays]);
+  };
+
+  useEffect(() => {
+    if (resultLongitude && resultLongitude !== '0') {
+      fetchData(resultLongitude, resultLatitude);
+    }
+  }, [resultLongitude, resultLatitude]);
 
   return (
     <main className={commonStyle.container}>
@@ -69,7 +77,7 @@ const Main: FC = () => {
             <h2 className={styles['weather-section-title']}>Daily weather</h2>
             <select
               value={selectDays}
-              onChange={e => setSelectDays(e.target.value)}
+              onChange={handleDaysSelected}
               className={styles['days-select']}
             >
               <option value="">Choose days</option>

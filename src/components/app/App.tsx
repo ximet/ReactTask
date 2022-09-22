@@ -42,6 +42,7 @@ const App: FC = () => {
               <Routes>
                 <Route path="/" element={<Layout />}>
                   <Route index element={<Main />} />
+                  <Route path="/:coordinates" element={<Main />} />
                   <Route path="countries" element={<Countries />} />
                   <Route path="about" element={<About />} />
                   <Route path="feedback" element={<Feedback />} />
