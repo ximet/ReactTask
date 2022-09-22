@@ -50,6 +50,15 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
     }
   }
 
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    color: ${({ themeType }: StylesProps) =>
+      themeType === 'light' ? theme.palette.black : theme.palette.white};
+    text-decoration: none;
+  }
+
   ul {
     list-style: none;
   }

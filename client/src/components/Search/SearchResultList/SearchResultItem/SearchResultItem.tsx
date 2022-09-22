@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Types
 import { LocationInfo } from 'types';
@@ -11,10 +12,12 @@ interface SearchResultItemProps {
 }
 
 const SearchResultItem = ({ data }: SearchResultItemProps) => {
-  const { name, state, country } = data;
+  const { id, name, state, country } = data;
 
   return (
-    <S.SearchResultItem>{`${name}, ${state ? `${state},` : ''} ${country}`}</S.SearchResultItem>
+    <S.SearchResultItem>
+      <Link to={`/location/${id}`}>{`${name}, ${state ? `${state},` : ''} ${country}`}</Link>
+    </S.SearchResultItem>
   );
 };
 

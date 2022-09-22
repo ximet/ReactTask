@@ -7,7 +7,7 @@ import Dashboard from 'components/Dashboard/Dashboard';
 // Styles
 import { Container } from 'styles/global';
 
-const HomePage: FunctionComponent = () => (
+const LocationPage: FunctionComponent = () => (
   <>
     <Header />
     <main>
@@ -17,5 +17,4 @@ const HomePage: FunctionComponent = () => (
     </main>
   </>
 );
-
-export default HomePage;
+export default LocationPage;

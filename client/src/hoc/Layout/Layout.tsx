@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { Outlet } from 'react-router-dom';
 
 // Custom hooks
 import { useAppSelector } from 'redux/hooks';
-
-// Components
-import Header from 'components/Header/Header';
 
 // Styles
 import GlobalStyle from './Layout.styles';
@@ -15,8 +13,8 @@ const Layout: FunctionComponent = ({ children }) => {
   return (
     <>
       <GlobalStyle themeType={theme} />
-      <Header />
       {children}
+      <Outlet />
     </>
   );
 };

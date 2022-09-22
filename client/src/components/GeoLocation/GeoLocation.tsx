@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 // Store
@@ -21,12 +21,13 @@ import * as S from './GeoLocation.styles';
 
 const GeoLocation: FunctionComponent = () => {
   const { pathname } = useLocation();
+  const { locationId } = useParams();
+
   const dispatch = useDispatch();
 
   const { location: pos, loading: posLoading, error: posError } = useGeoLocation();
 
-  // For now locationId is just a placeholder, later I will get it from URL
-  const query = pathname !== '/location' ? `${pos?.lon}, ${pos?.lat}` : `locationId`;
+  const query = !pathname.includes('location') ? `${pos?.lon}, ${pos?.lat}` : `${locationId}`;
 
   const { data, loading: infoLoading, error: infoError } = useAppSelector(
     state => state.location.info
