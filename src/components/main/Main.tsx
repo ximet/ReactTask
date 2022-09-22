@@ -1,7 +1,7 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
-import React, { useContext, FC, useEffect, useState, useRef } from 'react';
+import React, { useContext, FC, useEffect, useState, ChangeEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
@@ -12,11 +12,8 @@ import { defaultLocationInfo } from './defaultStates';
 import MainCard from './MainCard';
 import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
-
-type PositionRef = {
-  lon: number | string;
-  lat: number | string;
-};
+import GraphHourly from './GraphHourly';
+import GraphDaily from './GraphDaily';
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -24,6 +21,7 @@ const Main: FC = () => {
   const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
+  const [view, setView] = useState<'cards' | 'graph'>('cards');
 
   const { coordinates } = useParams();
   const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
@@ -47,41 +45,66 @@ const Main: FC = () => {
     });
   }
 
+  const handleDaysSelected = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectDays(e.target.value);
+    if (e.target.value) {
+      getWeather<{ forecast: DailyWeatherType[] }>(
+        '/forecast/daily/',
+        resultLongitude,
+        resultLatitude,
+        { periods: e.target.value, dataset: 'full' }
+      ).then(res => setDailyWeather(res.forecast));
+    }
+  };
+
   useEffect(() => {
     if (resultLongitude && resultLongitude !== '0') {
       fetchData(resultLongitude, resultLatitude);
     }
   }, [resultLongitude, resultLatitude]);
 
-  useEffect(() => {
-    if (selectDays) {
-      getWeather<{ forecast: DailyWeatherType[] }>(
-        '/forecast/daily/',
-        resultLongitude,
-        resultLatitude,
-        { periods: selectDays, dataset: 'full' }
-      ).then(res => setDailyWeather(res.forecast));
-    }
-  }, [selectDays]);
-
   return (
     <main className={commonStyle.container}>
       {currentWeather ? (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
+          <div className={styles['view-btns-wrapper']}>
+            <button
+              className={styles['view-btn']}
+              onClick={() => setView('cards')}
+              style={{
+                backgroundColor: view === 'cards' ? '#ffff00' : '#F8F8FF'
+              }}
+            >
+              Cards view
+            </button>
+            <button
+              className={styles['view-btn']}
+              onClick={() => setView('graph')}
+              style={{
+                backgroundColor: view === 'graph' ? '#ffff00' : '#F8F8FF'
+              }}
+            >
+              Graph view
+            </button>
+          </div>
           <section className={styles['weather-section-wrapper']}>
             <h2 className={styles['weather-section-title']}>Hourly weather</h2>
-            <div className={styles['section-hourly']}>
-              {hourlyWeather.map(el => (
-                <MainHourlyCard key={el.time} hourlyWeather={el} />
-              ))}
-            </div>
+            {view === 'cards' ? (
+              <div className={styles['section-hourly']}>
+                {hourlyWeather.map(el => (
+                  <MainHourlyCard key={el.time} hourlyWeather={el} />
+                ))}
+              </div>
+            ) : (
+              <GraphHourly weather={hourlyWeather} />
+            )}
           </section>
           <section className={styles['weather-section-wrapper']}>
             <h2 className={styles['weather-section-title']}>Daily weather</h2>
             <select
               value={selectDays}
-              onChange={e => setSelectDays(e.target.value)}
+              onChange={handleDaysSelected}
               className={styles['days-select']}
             >
               <option value="">Choose days</option>
@@ -90,11 +113,17 @@ const Main: FC = () => {
               <option value="14">14 days</option>
             </select>
             {selectDays && (
-              <div className={styles['section-daily']}>
-                {dailyWeather.map(el => (
-                  <MainDailyCard key={el.date} dailyWeather={el} />
-                ))}
-              </div>
+              <>
+                {view === 'cards' ? (
+                  <div className={styles['section-daily']}>
+                    {dailyWeather.map(el => (
+                      <MainDailyCard key={el.date} dailyWeather={el} />
+                    ))}
+                  </div>
+                ) : (
+                  <GraphDaily weather={dailyWeather} />
+                )}
+              </>
             )}
           </section>
         </>
