@@ -110,3 +110,17 @@
 .like-icon {
   cursor: pointer;
 }
+
+.view-btn {
+  max-width: 15rem;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  border: none;
+}
+
+.view-btns-wrapper {
+  display: flex;
+  column-gap: 3rem;
+}
