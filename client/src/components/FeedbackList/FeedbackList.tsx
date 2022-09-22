@@ -1,7 +1,6 @@
-import { FeedbackData } from 'components/Data/FeedbackData';
 import FeedbackItem from 'components/FeedbackItem/FeedbackItem';
 import FeedbackContext from 'contexts/FeedbackContext';
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useContext } from 'react';
 
 const FeedbackList = () => {
   const { feedback } = useContext(FeedbackContext);

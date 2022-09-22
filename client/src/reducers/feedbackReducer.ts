@@ -5,15 +5,15 @@ export type ActionData = {
   type: string;
   payload?: {
     name: string;
-    data?: string | number | readonly string[] | undefined;
+    data?: string | number | undefined;
   };
 };
-export const CREATE_FEEDBACK_SUCCESS = 'CREATE_FEEDBACK_SUCCESS';
+export const UPDATE_INPUT_VALUES = 'UPDATE_INPUT_VALUES';
 export const FEEDBACK_FORM_RESET = 'FEEDBACK_FORM_RESET';
 
 const feedbackReducer = (state: Feedback, { type, payload }: ActionData) => {
   switch (type) {
-    case CREATE_FEEDBACK_SUCCESS:
+    case UPDATE_INPUT_VALUES:
       return {
         ...state,
         [`${payload?.name}`]: payload?.data,
@@ -23,7 +23,7 @@ const feedbackReducer = (state: Feedback, { type, payload }: ActionData) => {
       return {
         nickname: '',
         email: '',
-        title: '',
+        reviewTitle: '',
         review: '',
         rating: 0
       };

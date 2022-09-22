@@ -82,7 +82,7 @@ export interface Feedback {
   id?: string;
   nickname: string;
   email: string;
-  title: string;
+  reviewTitle: string;
   review: string;
   rating: number;
 }

@@ -38,7 +38,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 'off',
-    'react/require-default-props': 'warn',
+    'react/require-default-props': 'off',
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
     'react/button-has-type': 'off',

@@ -16,7 +16,7 @@ const FeedbackItem: FC<ItemProps> = ({ item }) => {
       {starArray.map(i => {
         return item.rating >= i ? <BsStarFill key={i} /> : <BsStar key={i} />;
       })}
-      <h3>{item.title}</h3>
+      <h3>{item.reviewTitle}</h3>
       <p>{item.review}</p>
       <h6>by {item.nickname}</h6>
     </div>

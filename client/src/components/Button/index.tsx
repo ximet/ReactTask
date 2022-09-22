@@ -10,7 +10,9 @@ interface ButtonProps {
   type: 'button' | 'reset' | 'submit' | undefined;
   children: ReactNode;
   className: string;
-  onClick?: (event: any) => void;
+  onClick?: (
+    event: React.FormEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>
+  ) => void;
 }
 
 const Button: FC<ButtonProps> = ({ type, children, className, onClick }) => {

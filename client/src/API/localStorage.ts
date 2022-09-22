@@ -2,10 +2,7 @@ import { Feedback } from 'types';
 
 export const getFromStorage = (name: string): Feedback[] | null => {
   const valueStr = localStorage.getItem(name);
-  if (valueStr === null) {
-    return null;
-  }
-  return JSON.parse(valueStr);
+  return !valueStr ? null : JSON.parse(valueStr);
 };
 
 export const setInStorage = (name: string, value: Feedback[]): void => {
