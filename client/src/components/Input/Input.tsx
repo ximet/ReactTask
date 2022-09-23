@@ -1,11 +1,9 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { makeRequiredLabel } from 'utils/stringCorrections';
 import styles from './input.module.scss';
 
 type InputProps = {
-  label?: string | ReactNode;
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  checked?: boolean;
 };
 
 const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
@@ -13,9 +11,7 @@ const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
   name,
   id,
   value,
-  onChange,
-  label,
-  checked
+  onChange
 }) => {
   return (
     <div className={styles.userRegisterFormGroup}>
@@ -25,7 +21,7 @@ const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
         ) : (
           <input type={type} name={name} id={id} value={value} onChange={onChange} />
         )}
-        {!label ? makeRequiredLabel(name) : label}
+        {makeRequiredLabel(name)}
       </label>
     </div>
   );

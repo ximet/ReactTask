@@ -1,6 +1,6 @@
 import { getFromStorage, setInStorage } from 'API/localStorage';
 import { mockFeedbackData } from 'components/Data/mockFeedbackData';
-import React, { createContext, FC, useState, useMemo, useCallback, useEffect } from 'react';
+import React, { createContext, FC, useState, useCallback, useEffect } from 'react';
 import { Feedback } from 'types';
 
 type FeedbackContextData = {
@@ -24,7 +24,7 @@ export const FeedbackProvider: FC<React.ReactNode> = ({ children }) => {
     const feedbackData = getFromStorage(LOCALSTORAGE_LABEL);
     setFeedback(feedbackData || mockFeedbackData);
     if (!feedbackData) setInStorage(LOCALSTORAGE_LABEL, mockFeedbackData);
-  }, [setFeedback]);
+  }, []);
 
   useEffect(() => {
     fetchFeedback();

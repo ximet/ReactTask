@@ -8,7 +8,7 @@ import feedbackReducer, {
   FEEDBACK_FORM_RESET
 } from 'reducers/feedbackReducer';
 import { Feedback } from 'types';
-import { BsStar } from 'react-icons/bs';
+import InputRating from 'components/InputRating/InputRating';
 
 const FeedbackForm: FC = () => {
   const { addFeedback } = useContext(FeedbackContext);
@@ -37,24 +37,7 @@ const FeedbackForm: FC = () => {
 
   return (
     <form>
-      <ul className="rating">
-        {Array.from({ length: 5 }, (_, i) => {
-          const ratingNumber = i + 1;
-          return (
-            <li key={`rating-${ratingNumber}`}>
-              <Input
-                type="radio"
-                name="rating"
-                id={`num${ratingNumber}`}
-                value={rating + ratingNumber}
-                onChange={handleChange}
-                label={<BsStar />}
-                checked={rating === ratingNumber}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <InputRating type="radio" name="rating" id="num" value={rating} onChange={handleChange} />
       <Input type="text" name="nickname" id="nameInput" value={nickname} onChange={handleChange} />
       <Input type="email" name="email" id="emailInput" value={email} onChange={handleChange} />
       <Input
