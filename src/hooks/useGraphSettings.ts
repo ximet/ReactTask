@@ -45,18 +45,10 @@ export const useGraphSettings = (): {
         },
         grid: {
           color: function (context: { tick: { value: number } }) {
-            if (context.tick.value !== 0) {
-              return GRAY_COLOR;
-            } else {
-              return fontColor;
-            }
+            return context.tick.value ? GRAY_COLOR : fontColor;
           },
           lineWidth: function (context: { tick: { value: number } }) {
-            if (context.tick.value !== 0) {
-              return 1;
-            } else {
-              return 3;
-            }
+            return context.tick.value ? 1 : 3;
           }
         }
       },
