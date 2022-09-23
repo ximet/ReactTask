@@ -2,7 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import { getFavoriteCities } from 'services/localStorage';
 import { LocationInfoType } from 'types/cityInfoType';
 import { CitySmallCards } from './CitySmallCards';
-import { getSortedByCountries } from 'helpers';
+import { getSortedByCountries } from 'utils/helpers';
 
 import commonStyle from '../../styles/commonStyles.css';
 import styles from './Countries.css';

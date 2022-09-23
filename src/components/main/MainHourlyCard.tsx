@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Main.css';
 import { HourlyWeatherType } from '../../types/weatherTypes';
-import { convertTime, getImgURL } from '../../helpers';
+import { convertTime, getImgURL } from '../../utils/helpers';
 
 type HourlyCardProps = {
   hourlyWeather: HourlyWeatherType;

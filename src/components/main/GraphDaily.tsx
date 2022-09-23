@@ -1,12 +1,13 @@
-import React, { FC, useContext, useMemo } from 'react';
+import React, { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
 
-import { themeContext } from 'context/themeContext';
-import { convertTime } from 'helpers';
+import { getGraphDates } from 'utils/helpers';
 import { DailyWeatherType } from 'types/weatherTypes';
 import { useGraphSettings } from 'hooks/useGraphSettings';
+import { GOLD_COLOR, DODGER_BLUE_COLOR } from 'utils/colorsConstants';
+
+Chart.register(...registerables);
 
 type GraphDailyProps = {
   weather: DailyWeatherType[];
@@ -16,20 +17,20 @@ const GraphDaily: FC<GraphDailyProps> = ({ weather }) => {
   const { options } = useGraphSettings();
 
   const data = {
-    labels: weather.map(el => `${convertTime(el.date).date}-${convertTime(el.date).month}`),
+    labels: weather.map(el => getGraphDates(el)),
     datasets: [
       {
         label: 'Day',
         data: weather.map(el => el.maxTemp),
-        borderColor: '#ffd700',
-        backgroundColor: '#ffd700',
+        borderColor: GOLD_COLOR,
+        backgroundColor: GOLD_COLOR,
         yAxisID: 'y'
       },
       {
         label: 'Night',
         data: weather.map(el => el.minTemp),
-        borderColor: '#1e90ff',
-        backgroundColor: '#1e90ff',
+        borderColor: DODGER_BLUE_COLOR,
+        backgroundColor: DODGER_BLUE_COLOR,
         yAxisID: 'y'
       }
     ]

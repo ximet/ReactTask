@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Main.css';
 import { DailyWeatherType } from 'types/weatherTypes';
-import { convertTime, getImgURL } from '../../helpers';
+import { convertTime, getImgURL } from '../../utils/helpers';
 import sunRise from '../../pictures/sunrise.png';
 import sunSet from '../../pictures/sunset.png';
 

@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { defaultCurrentWeather } from 'components/main/defaultStates';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { getWeather } from 'services/getWeather';
-import { getImgURL } from 'helpers';
+import { getImgURL } from 'utils/helpers';
 import Loader from '../../pictures/loader.gif';
 
 type SmallCardProps = {

@@ -1,12 +1,13 @@
-import React, { FC, useMemo, useContext } from 'react';
+import React, { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
 
-import { themeContext } from 'context/themeContext';
-import { convertTime } from 'helpers';
+import { getGraphDates } from 'utils/helpers';
 import { HourlyWeatherType } from 'types/weatherTypes';
 import { useGraphSettings } from 'hooks/useGraphSettings';
+import { GOLD_COLOR, DODGER_BLUE_COLOR } from 'utils/colorsConstants';
+
+Chart.register(...registerables);
 
 type GraphHourlyProps = {
   weather: HourlyWeatherType[];
@@ -15,18 +16,32 @@ type GraphHourlyProps = {
 const GraphHourly: FC<GraphHourlyProps> = ({ weather }) => {
   const { options } = useGraphSettings();
 
+  const colors: string[] = [];
   const data = {
-    labels: weather.map(el => `${convertTime(el.time).hours}-${convertTime(el.time).minutes}`),
+    labels: weather.map(el => getGraphDates(el)),
     datasets: [
       {
         label: 'Temperature °C',
         data: weather.map(el => el.temperature),
-        borderColor: '#ffd700',
-        backgroundColor: '#ffd700',
-        yAxisID: 'y'
+        backgroundColor: colors,
+        yAxisID: 'y',
+        fill: { above: GOLD_COLOR, below: DODGER_BLUE_COLOR, target: { value: 0 } }
       }
     ]
   };
+
+  function getColors() {
+    for (let i = 0; i < data.datasets[0].data.length; i++) {
+      if (data.datasets[0].data[i] > 0) {
+        colors.push(GOLD_COLOR);
+      } else {
+        colors.push(DODGER_BLUE_COLOR);
+      }
+    }
+  }
+
+  getColors();
+
   return <Line data={data} options={options} />;
 };
 

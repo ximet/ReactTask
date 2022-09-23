@@ -1,12 +1,16 @@
 import { useContext, useMemo } from 'react';
 import { themeContext } from 'context/themeContext';
+import { GraphOptionsType } from 'types/graphOptionsType';
+import { BLACK_COLOR, WHITE_COLOR, GRAY_COLOR } from 'utils/colorsConstants';
 
-export const useGraphSettings = () => {
+export const useGraphSettings = (): {
+  options: GraphOptionsType;
+} => {
   const { theme } = useContext(themeContext);
 
-  const fontColor = useMemo(() => (theme === 'light' ? '#000000' : '#FFFFFF'), [theme]);
+  const fontColor: string = useMemo(() => (theme === 'light' ? BLACK_COLOR : WHITE_COLOR), [theme]);
 
-  const options = {
+  const options: GraphOptionsType = {
     responsive: true,
     interaction: {
       mode: 'index' as const,
@@ -23,6 +27,7 @@ export const useGraphSettings = () => {
         type: 'linear' as const,
         display: true,
         position: 'left' as const,
+        beginAtZero: true,
         ticks: {
           color: fontColor,
           font: {
@@ -37,6 +42,22 @@ export const useGraphSettings = () => {
             weight: 'bold',
             size: 22
           }
+        },
+        grid: {
+          color: function (context: { tick: { value: number } }) {
+            if (context.tick.value !== 0) {
+              return GRAY_COLOR;
+            } else {
+              return fontColor;
+            }
+          },
+          lineWidth: function (context: { tick: { value: number } }) {
+            if (context.tick.value !== 0) {
+              return 1;
+            } else {
+              return 3;
+            }
+          }
         }
       },
       x: {
@@ -46,6 +67,9 @@ export const useGraphSettings = () => {
           font: {
             weight: 'bold'
           }
+        },
+        grid: {
+          color: GRAY_COLOR
         }
       }
     },

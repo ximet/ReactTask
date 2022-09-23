@@ -3,6 +3,7 @@ import commonStyle from '../../styles/commonStyles.css';
 
 import React, { useContext, FC, useEffect, useState, ChangeEvent } from 'react';
 import { useParams } from 'react-router-dom';
+import classNames from 'classnames';
 import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
@@ -70,20 +71,20 @@ const Main: FC = () => {
           <MainCard currentWeather={currentWeather} location={location} />
           <div className={styles['view-btns-wrapper']}>
             <button
-              className={styles['view-btn']}
+              className={classNames(
+                styles['view-btn'],
+                view === 'cards' ? styles['active-view-btn'] : ''
+              )}
               onClick={() => setView('cards')}
-              style={{
-                backgroundColor: view === 'cards' ? '#ffff00' : '#F8F8FF'
-              }}
             >
               Cards view
             </button>
             <button
-              className={styles['view-btn']}
+              className={classNames(
+                styles['view-btn'],
+                view === 'graph' ? styles['active-view-btn'] : ''
+              )}
               onClick={() => setView('graph')}
-              style={{
-                backgroundColor: view === 'graph' ? '#ffff00' : '#F8F8FF'
-              }}
             >
               Graph view
             </button>
