@@ -26,9 +26,6 @@ const Main: FC = () => {
   const { coordinates } = useParams();
   const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
 
-  const { coordinates } = useParams();
-  const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
-
   const {
     state: { position, positionError }
   } = useContext(positionContext);
