@@ -1,38 +1,6 @@
-:root {
-  --lightBlue: #3498db;
-  --lightPurple: #b393d3;
-}
-
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  background-image: linear-gradient(to left, var(--lightBlue), var(--lightPurple));
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-}
+@import './colours.module.css';
 
 main {
   display: flex;
-  flex-direction: row;
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background-image: linear-gradient(to left, var(--lightBlue), var(--lightPurple));
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  font-size: 25px;
-  font-weight: 600;
+  flex-direction: column;
 }

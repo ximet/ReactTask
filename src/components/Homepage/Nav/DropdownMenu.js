@@ -2,32 +2,54 @@ import React, { useState } from 'react';
 import * as styles from '../../../styles/DropdownMenu.module.css';
 
 const initialCitiesState = [
-  { name: 'Sofia', id: Math.random() },
-  { name: 'Athens', id: Math.random() },
-  { name: 'Istanbul', id: Math.random() }
+  { name: 'Sofia', id: 1 },
+  { name: 'Athens', id: 2 },
+  { name: 'Istanbul', id: 3 }
 ];
 
 function DropdownMenu(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [cities, setCities] = useState(initialCitiesState);
+  const [searchedCity, setSearchedCity] = useState({});
 
   const showCities = ev => {
-    const dropdownContent = [...document.getElementsByClassName(styles.dropdownContent)][0];
     if (isOpen) {
       setIsOpen(false);
-      dropdownContent.style.display = 'none';
     } else {
       setIsOpen(true);
-      dropdownContent.style.display = 'inline-block';
     }
   };
 
-  const citiesList = cities.map(city => <a key={city.id} href="#">{city.name}</a>);
+  const onSearch = ev => {
+    setSearchedCity({ name: ev.target.value });
+  };
+
+  const filteredCities = searchedCity.name
+    ? cities.filter(city => city.name.includes(searchedCity.name))
+    : cities;
+  const citiesList = filteredCities.map(city => (
+    <a key={city.id} href="#">
+      {city.name}
+    </a>
+  ));
+  const dropdownContent = isOpen ? (
+    <div className={styles.dropdownContent}>
+      <input
+        className={styles.citySearch}
+        onChange={onSearch}
+        type="text"
+        placeholder="Search for a city"
+      />
+      {citiesList}
+    </div>
+  ) : null;
 
   return (
     <div className={styles.dropdown}>
-      <button id={styles.dropdownBtn} className={props.className} onClick={showCities}>Cities</button>
-      <div className={styles.dropdownContent}>{citiesList}</div>
+      <button className={props.navBtnClassName} onClick={showCities}>
+        Cities
+      </button>
+      {dropdownContent}
     </div>
   );
 }
