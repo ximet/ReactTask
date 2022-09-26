@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import useSearch from '../hooks/useSearch';
+import useFetch from '../hooks/useFetch';
 import styles from '../styles.scss';
 import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
+import { errors } from '../variables';
 import ModalCountries from './modals/modalCountries';
 
 const { mainPage, search, buttons } = styles;
@@ -16,11 +17,11 @@ export default function MainPage() {
   }
 
   useEffect(() => {
-    useSearch(searchQuery)
+    useFetch('search', searchQuery)
       .then(res => res.json())
       .then(cityes => setItems(cityes.locations))
       .catch(error => {
-        console.log(error);
+        console.log(errors.ERROR_SEARCH);
         setError(error);
       });
   }, [searchQuery]);
