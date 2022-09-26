@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import useToken from './useToken';
 
 function useAutorisation() {
-  if (!localStorage.getItem('TOKEN')) {
-    useToken();
-  }
+  useEffect(() => {
+    if (!localStorage.getItem('TOKEN')) {
+      useToken();
+    }
+  }, []);
 }
 export default useAutorisation;
