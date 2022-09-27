@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { STORAGE_TOKEN } from '../variables';
 
 function useFetch(endpoint, searchQuery) {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +14,7 @@ function useFetch(endpoint, searchQuery) {
           `https://pfa.foreca.com/api/v1/location/${endpoint}/${searchQuery}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
+              Authorization: `Bearer ${localStorage.getItem(STORAGE_TOKEN)}`
             }
           }
         );
