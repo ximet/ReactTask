@@ -3,14 +3,14 @@ import useFetch from '../hooks/useFetch';
 import styles from '../styles.scss';
 import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
-import { errors } from '../helper/variables';
+import { API_EDPOIONTS, errors } from '../helper/variables';
 import ModalCountries from './modals/modalCountries';
 
 const { mainPage, search, buttons } = styles;
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
-  const { isLoading, data, error } = useFetch('search', searchQuery);
+  const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery);
   function inpuHandler(e) {
     setSearchQuery(e.target.value);
   }

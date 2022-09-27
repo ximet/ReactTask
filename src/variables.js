@@ -3,7 +3,3 @@ export const errors = {
 };
 
 export const STORAGE_TOKEN = 'TOKEN';
-
-export const API_EDPOIONTS = {
-  SEARCH: 'search'
-};
