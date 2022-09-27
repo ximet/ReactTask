@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { STORAGE_TOKEN } from '../variables';
+import { STORAGE_TOKEN } from '../helper/variables';
 
 function useFetch(endpoint, searchQuery) {
   const [isLoading, setIsLoading] = useState(false);

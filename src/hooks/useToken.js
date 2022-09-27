@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { STORAGE_TOKEN } from '../variables';
+import { STORAGE_TOKEN } from '../helper/variables';
 
 function useToken() {
   let myHeaders = new Headers();

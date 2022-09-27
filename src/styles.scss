@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+@import './helper/variables';
 body {
   font-family: 'Ubuntu', sans-serif;
   margin: 0 auto;
 }
-$colorUIPrimary: teal;
-$colorUISecondary: rgb(22, 157, 215);
-$colorTextPrimary: rgb(221, 170, 17);
-$colorTextSecondary: rgb(8, 142, 152);
-$colorButtonsSecondary: rgb(14, 196, 196);
+
 .mainPage {
   display: flex;
   flex-direction: column;
