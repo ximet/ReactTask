@@ -13,8 +13,8 @@ const theme = {
       dark: '#706f74',
       darkest: '#3d3d3d'
     },
-    componentBackgroundLight: 'rgba(0, 0, 0, 0.05)',
-    componentBackgroundDark: 'rgba(255, 255, 255, 0.1)'
+    componentBackgroundLight: '#f2f2f2',
+    componentBackgroundDark: '#28282c'
   },
   shape: {
     borderRadius: '2rem'

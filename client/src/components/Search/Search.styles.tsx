@@ -58,8 +58,12 @@ export const SearchResultList = styled.ul`
     margin-bottom: 0.5rem;
   }
 
-  a:hover {
-    color: ${theme.palette.grey.dark};
+  a {
+    color: ${theme.palette.black};
+
+    &:hover {
+      color: ${theme.palette.grey.dark};
+    }
   }
 
   ::-webkit-scrollbar {

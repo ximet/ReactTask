@@ -21,7 +21,7 @@ interface WidgetProps {
 }
 
 const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) => {
-  const theme = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.global.theme);
 
   const [active, setActive] = useState<boolean>(false);
 

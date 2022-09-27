@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
+import { colorChangeOnHover } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -10,9 +11,8 @@ export const Dashboard = styled.div<StylesProps>`
   grid-column-gap: 2.5rem;
   grid-template-areas:
     'current forecast'
-    'map cities';
+    'map map';
   width: 100%;
-  height: calc(100vh - 6.5rem);
   padding-bottom: 1.5rem;
 `;
 
@@ -64,8 +64,7 @@ export const DashboardForecastType = styled.li<DashboardForecastTypeStyles>`
   cursor: pointer;
 
   &:hover {
-    color: ${theme.palette.primary.medium};
-    transition: color 0.15s;
+    ${colorChangeOnHover('color', 'color')}
   }
 `;
 
