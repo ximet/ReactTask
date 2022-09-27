@@ -1,13 +1,18 @@
 import { baseUrl } from '../components/constants';
-import { myToken } from '../components/constants';
+import { TOKEN_KEY } from '../components/constants';
+import { BAERER } from '../components/constants';
+import { API_END_POINTS } from '../components/constants';
 
-const token = `Bearer ${myToken}`;
+const myToken = localStorage.getItem(TOKEN_KEY);
+const accessToken = `${BAERER} ${myToken}`;
 
 export const getCities = async value => {
-  const response = await fetch(`${baseUrl}/location/search/${value}`, {
+  const endpoint = API_END_POINTS.searchedCities;
+
+  const response = await fetch(`${baseUrl}${endpoint}${value}`, {
     method: 'GET',
     headers: {
-      Authorization: token
+      Authorization: accessToken
     }
   });
   const cities = await response.json();

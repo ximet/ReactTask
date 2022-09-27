@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
 
-function ErrorModal( {title, message, onConfirm} ) {
+function ErrorModal({ title, message, onConfirm }) {
   return (
     <>
       {ReactDOM.createPortal(

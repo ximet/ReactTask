@@ -3,6 +3,7 @@ import styles from './DropDownMenu.module.css';
 
 import { DROP_DOWN_MENU_LABEL } from '../constants';
 import { getCities } from '../../services/weatherService';
+
 import { POSSIBLE_ERRORS } from '../Error/errorHandlingHelper';
 
 import ErrorModal from '../Error/ErrorModal/ErrorModal';
