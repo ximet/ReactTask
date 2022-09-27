@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
-import { convertTime, getImgURL } from '../../helpers';
+import { convertTime, getImgURL } from '../../utils/helpers';
 import {
   setInLocalStorage,
   getFavoriteCities,

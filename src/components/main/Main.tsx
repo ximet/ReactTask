@@ -3,6 +3,7 @@ import commonStyle from '../../styles/commonStyles.css';
 
 import React, { useContext, FC, useEffect, useState, ChangeEvent } from 'react';
 import { useParams } from 'react-router-dom';
+import classNames from 'classnames';
 import { positionContext } from 'context/positionContext';
 import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
@@ -12,6 +13,8 @@ import { defaultLocationInfo } from './defaultStates';
 import MainCard from './MainCard';
 import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
+import GraphHourly from './GraphHourly';
+import GraphDaily from './GraphDaily';
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -19,6 +22,7 @@ const Main: FC = () => {
   const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
   const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
   const [selectDays, setSelectDays] = useState<string>('');
+  const [view, setView] = useState<'cards' | 'graph'>('cards');
 
   const { coordinates } = useParams();
   const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
@@ -65,13 +69,37 @@ const Main: FC = () => {
       {currentWeather ? (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
+          <div className={styles['view-btns-wrapper']}>
+            <button
+              className={classNames(
+                styles['view-btn'],
+                view === 'cards' ? styles['active-view-btn'] : ''
+              )}
+              onClick={() => setView('cards')}
+            >
+              Cards view
+            </button>
+            <button
+              className={classNames(
+                styles['view-btn'],
+                view === 'graph' ? styles['active-view-btn'] : ''
+              )}
+              onClick={() => setView('graph')}
+            >
+              Graph view
+            </button>
+          </div>
           <section className={styles['weather-section-wrapper']}>
             <h2 className={styles['weather-section-title']}>Hourly weather</h2>
-            <div className={styles['section-hourly']}>
-              {hourlyWeather.map(el => (
-                <MainHourlyCard key={el.time} hourlyWeather={el} />
-              ))}
-            </div>
+            {view === 'cards' ? (
+              <div className={styles['section-hourly']}>
+                {hourlyWeather.map(el => (
+                  <MainHourlyCard key={el.time} hourlyWeather={el} />
+                ))}
+              </div>
+            ) : (
+              <GraphHourly weather={hourlyWeather} />
+            )}
           </section>
           <section className={styles['weather-section-wrapper']}>
             <h2 className={styles['weather-section-title']}>Daily weather</h2>
@@ -86,11 +114,17 @@ const Main: FC = () => {
               <option value="14">14 days</option>
             </select>
             {selectDays && (
-              <div className={styles['section-daily']}>
-                {dailyWeather.map(el => (
-                  <MainDailyCard key={el.date} dailyWeather={el} />
-                ))}
-              </div>
+              <>
+                {view === 'cards' ? (
+                  <div className={styles['section-daily']}>
+                    {dailyWeather.map(el => (
+                      <MainDailyCard key={el.date} dailyWeather={el} />
+                    ))}
+                  </div>
+                ) : (
+                  <GraphDaily weather={dailyWeather} />
+                )}
+              </>
             )}
           </section>
         </>
