@@ -33,7 +33,7 @@ const DashboardForecast: FunctionComponent = () => {
   const [selectedForecastType, setSelectedForecastType] = useState<string>(ForecastType.hourly);
   const [carouselChildPointerEv, setCarouselChildPointerEv] = useState<boolean>(false);
 
-  const theme = useAppSelector(state => state.theme);
+  const theme = useAppSelector(state => state.global.theme);
   const query = useAppSelector(state => state.location.query);
   const { data, loading, error } = useAppSelector(({ location: { weather } }) => {
     switch (selectedForecastType) {

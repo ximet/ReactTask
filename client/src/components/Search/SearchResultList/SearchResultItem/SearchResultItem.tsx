@@ -16,7 +16,7 @@ const SearchResultItem = ({ data }: SearchResultItemProps) => {
 
   return (
     <S.SearchResultItem>
-      <Link to={`/location/${id}`}>{`${name}, ${state ? `${state},` : ''} ${country}`}</Link>
+      <Link to={`/locations/${id}`}>{`${name}, ${state ? `${state},` : ''} ${country}`}</Link>
     </S.SearchResultItem>
   );
 };

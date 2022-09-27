@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import theme from 'styles/theme';
-import { colorChange } from 'styles/mixins';
+import { colorChange, colorChangeOnHover } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -34,6 +34,8 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
     svg {
       ${(props: StylesProps) =>
         colorChange(props, 'fill', theme.palette.black, theme.palette.white, 'fill')}
+      ${(props: StylesProps) =>
+        colorChange(props, 'stroke', theme.palette.black, theme.palette.white, 'stroke')}
     }
 
     &::after {
@@ -54,9 +56,13 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
   a:link,
   a:visited,
   a:active {
-    color: ${({ themeType }: StylesProps) =>
-      themeType === 'light' ? theme.palette.black : theme.palette.white};
+    ${(props: StylesProps) =>
+      colorChange(props, 'color', theme.palette.black, theme.palette.white, 'color')};
     text-decoration: none;
+  }
+
+  a:hover {
+    ${colorChangeOnHover('color', 'color')}
   }
 
   ul {

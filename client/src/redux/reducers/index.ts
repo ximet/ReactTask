@@ -3,12 +3,12 @@ import { combineReducers } from 'redux';
 // Reducers
 import authReducer from './auth';
 import locationReducer from './location';
-import themeReducer from './theme';
+import globalReducer from './global';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   location: locationReducer,
-  theme: themeReducer
+  global: globalReducer
 });
 
 export default rootReducer;
