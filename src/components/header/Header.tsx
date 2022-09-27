@@ -1,7 +1,8 @@
 import styles from './Header.css';
 
-import React, { FC, useState, useEffect, useRef, useContext } from 'react';
+import React, { FC, useState, useEffect, useRef, useContext, MouseEvent } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 import HTTPRequest from 'services/httpService';
 import { LocationInfoType } from 'types/cityInfoType';
 import { positionContext } from '../../context/positionContext';
@@ -18,6 +19,7 @@ const setActive = ({ isActive }: LinkType) =>
 
 const Header: FC = () => {
   const timeoutId = useRef(0);
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>('');
   const [cities, setCities] = useState<LocationInfoType[]>([]);
   const { changePosition } = useContext(positionContext);
@@ -49,10 +51,22 @@ const Header: FC = () => {
     }
   }, [searchText]);
 
+  const hamburgerHandler = (e: MouseEvent<HTMLDivElement>) => {
+    setIsShowMenu(!isShowMenu);
+  };
+
   return (
     <header className={styles.header}>
       <nav>
-        <ul className={styles.navList}>
+        <div
+          className={classNames(styles['hamburger'], isShowMenu ? styles['hamburger_active'] : '')}
+          onClick={hamburgerHandler}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul className={classNames(styles['nav-list'], isShowMenu ? styles['nav-list_active'] : '')}>
           <li>
             <NavLink to="/" className={setActive}>
               Home
