@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch } from 'react-redux';
+import { useMatch } from 'react-router-dom';
 
 // Store
 import { setTheme, setSidebarOpen } from 'redux/actionCreators/global';
@@ -20,6 +21,8 @@ import ButtonSwitch from '../ButtonSwitch/ButtonSwitch';
 const Header: FunctionComponent = () => {
   const theme = useAppSelector(state => state.global.theme);
 
+  const matchHome = useMatch('/');
+  const matchLocation = useMatch('/locations/:locationId');
   const dispatch = useDispatch();
 
   const handleThemeSwitch = () => dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
@@ -28,9 +31,12 @@ const Header: FunctionComponent = () => {
   return (
     <S.Header>
       <Container>
-        <Flex justifySpaceBetween>
-          <GeoLocation />
-          <Search />
+        <Flex
+          justifySpaceBetween={!!(matchHome || matchLocation)}
+          justifyFlexEnd={!!(!matchHome && !matchLocation)}
+        >
+          {(matchHome || matchLocation) && <GeoLocation />}
+          {(matchHome || matchLocation) && <Search />}
           <S.HeaderAction>
             <Flex>
               <ButtonSwitch width="6.25rem" switchType="theme" onClick={handleThemeSwitch}>
