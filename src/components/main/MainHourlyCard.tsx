@@ -15,7 +15,7 @@ const MainHourlyCard: FC<HourlyCardProps> = React.memo(({ hourlyWeather }) => {
   return (
     <div className={styles['hourly-card']}>
       <h4 className={styles['hourly-card__title']}>
-        {`${date.hours}:${date.minutes}0`}: {temperature}°C
+        {`${date.hours}:${date.minutes}`}: {temperature}°C
       </h4>
       <img src={getImgURL(symbol)} alt={symbol} className={styles['hourly-card__img']} />
       <span>

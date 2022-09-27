@@ -24,3 +24,13 @@ body {
 .loading-text {
   font-size: 3rem;
 }
+
+@media (max-width: 1210px) {
+  html,
+  body {
+    font-size: 50%;
+  }
+  .app {
+    padding: 0 1rem;
+  }
+}

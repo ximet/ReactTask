@@ -35,9 +35,10 @@
 
 .section-hourly {
   display: grid;
+  justify-content: center;
   column-gap: 1rem;
   row-gap: 1rem;
-  grid-template-columns: repeat(8, minmax(100px, 200px));
+  grid-template-columns: repeat(8, minmax(10rem, 20rem));
   grid-template-rows: repeat(3, max-content);
 }
 
@@ -65,7 +66,12 @@
   padding: 0.5rem;
   border-radius: 0.7rem;
   background-color: var(--card-background);
-  box-shadow: 0px 5px 10px 2px var(--card-shadow);
+  box-shadow: 0px 0.5rem 1rem 0.2rem var(--card-shadow);
+}
+
+.daily-card {
+  max-width: 20rem;
+  width: 100%;
 }
 
 .hourly-card__img {
@@ -123,8 +129,52 @@
 .view-btns-wrapper {
   display: flex;
   column-gap: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .active-view-btn {
   background-color: #ffff00;
+}
+
+@media (max-width: 991px) {
+  .section-hourly {
+    grid-template-columns: repeat(6, minmax(10rem, 20rem));
+    grid-template-rows: repeat(4, max-content);
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+  }
+
+  .hourly-card__img {
+    width: 75%;
+  }
+
+  .daily-card {
+    max-width: 15rem;
+  }
+
+  .daily-card img {
+    max-width: 10rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-hourly {
+    grid-template-columns: repeat(4, minmax(10rem, 20rem));
+    grid-template-rows: repeat(6, max-content);
+  }
+}
+
+@media (max-width: 575px) {
+  .main-card__item img {
+    max-width: 20rem;
+  }
+
+  .section-hourly {
+    grid-template-columns: repeat(3, minmax(10rem, 20rem));
+    grid-template-rows: repeat(8, max-content);
+  }
+
+  .daily-card {
+    max-width: 15rem;
+  }
 }
