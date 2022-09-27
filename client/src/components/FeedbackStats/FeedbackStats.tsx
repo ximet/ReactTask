@@ -1,31 +1,27 @@
 import InputRating from 'components/InputRating/InputRating';
 import FeedbackContext from 'contexts/FeedbackContext';
 import React, { useContext } from 'react';
-import { Feedback } from 'types';
+import { calculateFeedbackAvg } from 'utils/calculateFeedbackAvg';
+import styles from './FeedbackStats.module.scss';
 
 const FeedbackStats = () => {
   const { feedback } = useContext(FeedbackContext);
-  const feedbackRatingAvg = feedback.reduce(
-    (prev: number, current: Feedback, index: number, array: Feedback[]): number => {
-      const sum = prev + +current.rating / array.length;
-      return sum;
-    },
-    0
-  );
 
   return (
-    <div>
+    <div className={styles.container}>
       <h4>{feedback.length} Reviews</h4>
-      <InputRating
-        type="hidden"
-        name="postRating"
-        id="postNum"
-        value={Math.round(feedbackRatingAvg)}
-        onChange={() => {
-          return null;
-        }}
-      />
-      <h4>{feedbackRatingAvg.toFixed(2)}</h4>
+      <div className={styles.statsContainer}>
+        <InputRating
+          type="hidden"
+          name="postRating"
+          id="postNum"
+          value={Math.round(calculateFeedbackAvg(feedback))}
+          onChange={() => {
+            return null;
+          }}
+        />
+        <h4 className={styles.ratingAvg}>{calculateFeedbackAvg(feedback).toFixed(2)}</h4>
+      </div>
     </div>
   );
 };

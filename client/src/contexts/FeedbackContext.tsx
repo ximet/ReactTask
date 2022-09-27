@@ -15,15 +15,15 @@ const FeedbackContext = createContext<FeedbackContextData>({
   }
 });
 
-const LOCALSTORAGE_LABEL = 'feedback';
+const FEEDBACK_LOCALSTORAGE_LABEL = 'feedback';
 
 export const FeedbackProvider: FC<React.ReactNode> = ({ children }) => {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
 
   const fetchFeedback = useCallback(() => {
-    const feedbackData = getFromStorage(LOCALSTORAGE_LABEL);
+    const feedbackData = getFromStorage(FEEDBACK_LOCALSTORAGE_LABEL);
     setFeedback(feedbackData || mockFeedbackData);
-    if (!feedbackData) setInStorage(LOCALSTORAGE_LABEL, mockFeedbackData);
+    if (!feedbackData) setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, mockFeedbackData);
   }, []);
 
   useEffect(() => {
@@ -31,15 +31,14 @@ export const FeedbackProvider: FC<React.ReactNode> = ({ children }) => {
   }, [fetchFeedback]);
 
   const addFeedback = (newFeedback: Feedback) => {
-    setInStorage(LOCALSTORAGE_LABEL, [newFeedback, ...feedback]);
+    setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, [newFeedback, ...feedback]);
     setFeedback([newFeedback, ...feedback]);
-  };
-  const feedbackProviderValue = () => {
-    return { feedback, addFeedback };
   };
 
   return (
-    <FeedbackContext.Provider value={feedbackProviderValue()}>{children}</FeedbackContext.Provider>
+    <FeedbackContext.Provider value={{ feedback, addFeedback }}>
+      {children}
+    </FeedbackContext.Provider>
   );
 };
 

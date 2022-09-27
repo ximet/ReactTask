@@ -14,15 +14,30 @@ const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
   onChange
 }) => {
   return (
-    <div className={styles.userRegisterFormGroup}>
-      <label htmlFor={id}>
-        {type === 'textarea' ? (
-          <textarea name={name} id={id} value={value} onChange={onChange} />
-        ) : (
-          <input type={type} name={name} id={id} value={value} onChange={onChange} />
-        )}
+    <div className={styles.inputContainer}>
+      <label htmlFor={id} className={styles.ratingLabel}>
         {makeRequiredLabel(name)}
       </label>
+      {type === 'textarea' ? (
+        <textarea
+          name={name}
+          id={id}
+          value={value}
+          onChange={onChange}
+          onBlur={onChange}
+          className={styles.textarea}
+        />
+      ) : (
+        <input
+          type={type}
+          name={name}
+          id={id}
+          value={value}
+          onChange={onChange}
+          onBlur={onChange}
+          className={styles.input}
+        />
+      )}
     </div>
   );
 };

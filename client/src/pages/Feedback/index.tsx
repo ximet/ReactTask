@@ -9,7 +9,7 @@ const Feedback = () => {
   return (
     <SecondaryPagesLayout>
       <FeedbackProvider>
-        <h1>Leave your Feedback</h1>
+        <h2>Leave your Feedback</h2>
         <FeedbackForm />
         <FeedbackStats />
         <FeedbackList />

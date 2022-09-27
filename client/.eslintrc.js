@@ -34,6 +34,7 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    'react/jsx-no-constructed-context-values': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 0,
