@@ -1,0 +1,28 @@
+.navBtnsList {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  list-style: none;
+  line-height: 30px;
+  text-align: center;
+}
+
+.navBtn {
+  flex: 1 1 0;
+  background-color: var(--lightBlue);
+  height: 50px;
+  color: var(--white);
+  border-style: solid;
+  border-width: 2px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navBtn:not(:first-child) {
+  border-left: 0;
+}
+
+.navBtn:hover,
+.navBtn:focus {
+  background-color: var(--blue);
+}

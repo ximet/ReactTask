@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-image: linear-gradient(to left, var(--lightBlue), var(--lightPurple));
+  color: var(--white);
+  text-shadow: 1px 1px 0 black;
+}
