@@ -24,6 +24,7 @@ const Header: FunctionComponent = () => {
 
   const matchHome = useMatch('/');
   const matchLocation = useMatch('/locations/:locationId');
+  const matchDashboard = !!(matchHome || matchLocation);
   const dispatch = useDispatch();
 
   const handleThemeSwitch = () => dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
@@ -32,12 +33,13 @@ const Header: FunctionComponent = () => {
   return (
     <S.Header>
       <Container>
-        <Flex
-          justifySpaceBetween={!!(matchHome || matchLocation)}
-          justifyFlexEnd={!!(!matchHome && !matchLocation)}
-        >
-          {(matchHome || matchLocation) && <GeoLocation />}
-          {(matchHome || matchLocation) && <Search />}
+        <Flex justifySpaceBetween={matchDashboard} justifyFlexEnd={!matchDashboard}>
+          {matchDashboard && (
+            <>
+              <GeoLocation />
+              <Search />
+            </>
+          )}
           <S.HeaderAction>
             <Flex>
               <ButtonSwitch width="6.25rem" switchType="theme" onClick={handleThemeSwitch}>
