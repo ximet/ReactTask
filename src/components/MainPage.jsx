@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch';
 import styles from '../styles.scss';
 import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
-import { API_EDPOIONTS, errors } from '../helper/variables';
+import { API_EDPOIONTS, STORAGE } from '../helper/variables';
 import ModalCountries from './modals/modalCountries';
 
 const { mainPage, search, buttons } = styles;

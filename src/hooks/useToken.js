@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { STORAGE_TOKEN } from '../helper/variables';
+import { STORAGE } from '../helper/variables';
 
 function useToken() {
   let myHeaders = new Headers();
@@ -20,8 +20,7 @@ function useToken() {
   fetch('https://pfa.foreca.com/authorize/token?expire_hours=-1', requestOptions)
     .then(response => response.json())
     .then(result => {
-      console.log(result);
-      localStorage.setItem(STORAGE_TOKEN, result.access_token);
+      localStorage.setItem(STORAGE.TOKEN, result.access_token);
     })
     .catch(error => console.log('error', error));
 }

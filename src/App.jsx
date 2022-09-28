@@ -4,7 +4,7 @@ import MainPage from './components/MainPage';
 import useAutorisation from './hooks/useAutorisation';
 
 function App() {
-  useAutorisation();
+  // useAutorisation();
   return (
     <>
       <Header />
