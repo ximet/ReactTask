@@ -5,6 +5,7 @@ import { useMatch } from 'react-router-dom';
 // Store
 import { setTheme, setSidebarOpen } from 'redux/actionCreators/global';
 import { useAppSelector } from 'redux/hooks';
+import { selectTheme } from 'redux/reducers/global';
 
 // Assets
 import { IconLightMode, IconDarkMode, IconMenu } from 'assets/images/svg';
@@ -19,7 +20,7 @@ import Search from '../Search/Search';
 import ButtonSwitch from '../ButtonSwitch/ButtonSwitch';
 
 const Header: FunctionComponent = () => {
-  const theme = useAppSelector(state => state.global.theme);
+  const theme = useAppSelector(selectTheme);
 
   const matchHome = useMatch('/');
   const matchLocation = useMatch('/locations/:locationId');

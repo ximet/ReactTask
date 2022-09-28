@@ -8,6 +8,8 @@ import {
   getLocationThreeHourlyWeather,
   getLocationDailyWeather
 } from 'redux/actionCreators/location';
+import { selectTheme } from 'redux/reducers/global';
+import { selectQuery } from 'redux/reducers/location';
 
 // Components
 import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
@@ -33,8 +35,8 @@ const DashboardForecast: FunctionComponent = () => {
   const [selectedForecastType, setSelectedForecastType] = useState<string>(ForecastType.hourly);
   const [carouselChildPointerEv, setCarouselChildPointerEv] = useState<boolean>(false);
 
-  const theme = useAppSelector(state => state.global.theme);
-  const query = useAppSelector(state => state.location.query);
+  const theme = useAppSelector(selectTheme);
+  const query = useAppSelector(selectQuery);
   const { data, loading, error } = useAppSelector(({ location: { weather } }) => {
     switch (selectedForecastType) {
       case ForecastType.hourly:
