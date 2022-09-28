@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
 
+import { HEADER_HEIGHT } from './constants';
+
+import theme from './theme';
 
 export const Container = styled.div`
   position: relative;
@@ -55,3 +58,19 @@ export const Flex = styled.div<FlexStylesProps>`
     `};
 `;
 
+interface WaveStylesProps {
+  reversed?: boolean;
+}
+
+export const Wave = styled.svg<WaveStylesProps>`
+  position: absolute;
+  bottom: ${({ reversed }) => (reversed ? 'unset' : 0)};
+  top: ${({ reversed }) => (reversed ? 0 : 'unset')};
+  height: calc(100% - ${HEADER_HEIGHT}rem);
+  transform: ${({ reversed }) => reversed && `rotate(180deg)`};
+
+  path {
+    fill: ${theme.palette.primary.light};
+    stroke: none;
+  }
+`;
