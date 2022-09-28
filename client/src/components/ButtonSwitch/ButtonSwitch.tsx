@@ -2,6 +2,7 @@ import React, { FunctionComponent, MouseEvent } from 'react';
 
 // Store
 import { useAppSelector } from 'redux/hooks';
+import { selectTheme } from 'redux/reducers/global';
 
 // Styles
 import * as S from './ButtonSwitch.styles';
@@ -20,7 +21,7 @@ const ButtonSwitch: FunctionComponent<ButtonSwitchProps> = ({
   onClick,
   children
 }) => {
-  const theme = useAppSelector(state => state.global.theme);
+  const theme = useAppSelector(selectTheme);
 
   return (
     <S.ButtonSwitch

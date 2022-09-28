@@ -1,3 +1,4 @@
+import { RootState } from 'redux/store';
 import { ActionType, Action } from '../actionTypes/global';
 
 interface GlobalState {
@@ -30,3 +31,5 @@ const globalReducer = (state: GlobalState = initialState, action: Action): Globa
 };
 
 export default globalReducer;
+
+export const selectTheme = (state: RootState) => state.global.theme;

@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 // Store
 import { useAppSelector } from 'redux/hooks';
 import { searchLocations } from 'redux/actionCreators/location';
+import { selectTheme } from 'redux/reducers/global';
 
 // Custom hooks
 import useDebounce from 'hooks/useDebounce';
@@ -32,7 +33,7 @@ const Search: FunctionComponent = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [listShown, setListShown] = useState<boolean>(true);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-  const theme = useAppSelector(state => state.global.theme);
+  const theme = useAppSelector(selectTheme);
   const { data, loading, error } = useAppSelector(state => state.location.search);
 
   const searchRef = useRef<HTMLDivElement>(null);
