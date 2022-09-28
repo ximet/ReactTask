@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+
 export const Container = styled.div`
   position: relative;
   width: 100%;
@@ -7,7 +8,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-interface FlexProps {
+interface FlexStylesProps {
   directionColumn?: boolean;
   justifySpaceBetween?: boolean;
   justifyFlexEnd?: boolean;
@@ -15,7 +16,7 @@ interface FlexProps {
   alignFlexStart?: boolean;
 }
 
-export const Flex = styled.div<FlexProps>`
+export const Flex = styled.div<FlexStylesProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -53,3 +54,4 @@ export const Flex = styled.div<FlexProps>`
       align-items: flex-start;
     `};
 `;
+
