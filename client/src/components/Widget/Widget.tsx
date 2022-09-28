@@ -2,6 +2,7 @@ import React, { FunctionComponent, useMemo, useState } from 'react';
 
 // Store
 import { useAppSelector } from 'redux/hooks';
+import { selectTheme } from 'redux/reducers/global';
 
 // Types
 import { WeatherInfo } from 'types';
@@ -21,7 +22,7 @@ interface WidgetProps {
 }
 
 const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) => {
-  const theme = useAppSelector(state => state.theme);
+  const theme = useAppSelector(selectTheme);
 
   const [active, setActive] = useState<boolean>(false);
 

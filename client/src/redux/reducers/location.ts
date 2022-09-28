@@ -1,3 +1,4 @@
+import { RootState } from 'redux/store';
 import type { LocationInfo, WeatherInfo } from 'types';
 import { ActionType, Action } from '../actionTypes/location';
 
@@ -279,3 +280,5 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
 };
 
 export default locationReducer;
+
+export const selectQuery = (state: RootState) => state.location.query;

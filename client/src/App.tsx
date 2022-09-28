@@ -12,14 +12,13 @@ import type { AuthorizationRequest, AuthenticationResponse } from 'types';
 import Layout from 'hoc/Layout/Layout';
 
 // Lazy components
-const HomePage = React.lazy(() => import('components/HomePage/HomePage'));
 const LocationPage = React.lazy(() => import('components/LocationPage/LocationPage'));
 const AboutPage = React.lazy(() => import('components/AboutPage/AboutPage'));
 
 // Routes
 const routes = [
-  { path: '/', name: 'Home', Component: HomePage },
-  { path: '/location/:locationId', name: 'Location', Component: LocationPage },
+  { path: '/', name: 'Home', Component: LocationPage },
+  { path: '/locations/:locationId', name: 'Location', Component: LocationPage },
   { path: '/about', name: 'About', Component: AboutPage }
 ];
 

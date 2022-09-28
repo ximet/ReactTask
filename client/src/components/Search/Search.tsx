@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 // Store
 import { useAppSelector } from 'redux/hooks';
 import { searchLocations } from 'redux/actionCreators/location';
+import { selectTheme } from 'redux/reducers/global';
 
 // Custom hooks
 import useDebounce from 'hooks/useDebounce';
@@ -32,7 +33,7 @@ const Search: FunctionComponent = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [listShown, setListShown] = useState<boolean>(true);
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-  const theme = useAppSelector(state => state.theme);
+  const theme = useAppSelector(selectTheme);
   const { data, loading, error } = useAppSelector(state => state.location.search);
 
   const searchRef = useRef<HTMLDivElement>(null);
@@ -45,12 +46,12 @@ const Search: FunctionComponent = () => {
     setSearchQuery(e.currentTarget.value);
   };
   const handleInputFocus = (): void => setListShown(true);
-  const handleClickOutside = (): void => setListShown(false);
+  const handleSearchClose = (): void => setListShown(false);
   const handleSearchLocations = useCallback(() => {
     if (debouncedSearchQuery) dispatch(searchLocations(debouncedSearchQuery));
   }, [dispatch, debouncedSearchQuery]);
 
-  useOnClickOutside(searchRef, handleClickOutside);
+  useOnClickOutside(searchRef, handleSearchClose);
 
   // Get data
   useEffect(() => {
@@ -59,7 +60,7 @@ const Search: FunctionComponent = () => {
 
   // Close search modal on route change
   useEffect(() => {
-    setListShown(false);
+    handleSearchClose();
   }, [pathname]);
 
   return (
