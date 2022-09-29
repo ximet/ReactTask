@@ -1,0 +1,26 @@
+.errorContainer {
+  position: absolute;
+  top: 150px;
+  height: 100px;
+  left: 0px;
+  right: 0px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  width: 20%;
+  min-width: 250px;
+  margin: auto;
+  padding: 4px;
+
+  border: 1px solid var(--color-canvas-primary);
+  border-radius: 8px;
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+}
+
+.errorContainer h3 {
+  font-size: larger;
+}
