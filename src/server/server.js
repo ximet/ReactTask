@@ -1,7 +1,8 @@
 require('dotenv').config();
 const proxy = require('express-http-proxy'),
-  app = require('express')(),
-  cors = require('cors');
+const app = require('express')(),
+const cors = require('cors');
+
 app.use(cors());
 
 let token;
