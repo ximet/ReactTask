@@ -18,3 +18,14 @@ export const colorChangeOnHover = (changeProp: string, transitionVal: string) =>
   ${changeProp}: ${theme.palette.primary.dark};
   transition: ${transitionVal} 0.15s;
 `;
+
+export const imageRoot = `
+  border-radius: ${theme.shape.borderRadius};
+  box-shadow: ${theme.shadows[1]};
+`;
+
+export const sectionRoot = `
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+`;

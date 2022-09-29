@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { HEADER_HEIGHT } from './constants';
+
+import theme from './theme';
+
 export const Container = styled.div`
   position: relative;
   width: 100%;
@@ -7,7 +11,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-interface FlexProps {
+interface FlexStylesProps {
   directionColumn?: boolean;
   justifySpaceBetween?: boolean;
   justifyFlexEnd?: boolean;
@@ -15,7 +19,7 @@ interface FlexProps {
   alignFlexStart?: boolean;
 }
 
-export const Flex = styled.div<FlexProps>`
+export const Flex = styled.div<FlexStylesProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -52,4 +56,21 @@ export const Flex = styled.div<FlexProps>`
     css`
       align-items: flex-start;
     `};
+`;
+
+interface WaveStylesProps {
+  reversed?: boolean;
+}
+
+export const Wave = styled.svg<WaveStylesProps>`
+  position: absolute;
+  bottom: ${({ reversed }) => (reversed ? 'unset' : 0)};
+  top: ${({ reversed }) => (reversed ? 0 : 'unset')};
+  height: calc(100% - ${HEADER_HEIGHT}rem);
+  transform: ${({ reversed }) => reversed && `rotate(180deg)`};
+
+  path {
+    fill: ${theme.palette.primary.light};
+    stroke: none;
+  }
 `;

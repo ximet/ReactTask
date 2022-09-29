@@ -19,7 +19,7 @@ const theme = {
   shape: {
     borderRadius: '2rem'
   },
-  shadows: ['0 2px 15px rgba(0, 0, 0, 0.15)'],
+  shadows: ['0 2px 15px rgba(0, 0, 0, 0.15)', '0 20px 30px rgb(0 0 0 / 5%)'],
   transitions: ['cubic-bezier(0.25, 0.46, 0.45, 0.94)']
 };
 

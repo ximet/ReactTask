@@ -8,20 +8,21 @@ import { selectTheme } from 'redux/reducers/global';
 import { useAppSelector } from 'redux/hooks';
 
 // Components
+import Header from 'components/Header/Header';
 import Sidebar from 'components/Sidebar/Sidebar';
 
 // Styles
 import GlobalStyle from './Layout.styles';
 
-const Layout: FunctionComponent = ({ children }) => {
+const Layout: FunctionComponent = () => {
   const theme = useAppSelector(selectTheme);
   const sidebarOpen = useAppSelector(state => state.global.sidebarOpen);
 
   return (
     <>
       <GlobalStyle themeType={theme} />
+      <Header />
       <Sidebar open={sidebarOpen} />
-      {children}
       <Outlet />
     </>
   );
