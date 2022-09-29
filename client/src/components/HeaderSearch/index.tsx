@@ -2,13 +2,13 @@ import { getLocationByQuery } from 'API/get';
 import Button from 'components/Button';
 import Header from 'components/Header';
 import LocationContext from 'contexts/LocationContext';
-import React, { useContext, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { VscSearch } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import { formatNameForUrl, isInputValid } from 'utils/stringCorrections';
 import styles from './styles.module.scss';
 
-const HeaderSearch = () => {
+const HeaderSearch: FC = () => {
   const { setCoordinates, setStatusMsg } = useContext(LocationContext);
   const [inputValue, setInputValue] = useState<string>('');
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ const HeaderSearch = () => {
     }
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleSubmit = async event => {
+    event.preventDefault();
     if (inputValue) {
       const locationData = await getLocationByQuery(inputValue);
       if (!locationData.locations.length) {
@@ -50,7 +50,7 @@ const HeaderSearch = () => {
           value={inputValue}
           onChange={handleChange}
         />
-        <Button type="submit" className="iconBtn">
+        <Button type="submit" className="IconBtn">
           <VscSearch className={styles.icon} />
         </Button>
       </form>

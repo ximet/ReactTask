@@ -28,3 +28,17 @@
     background-color: $transparent;
   }
 }
+
+.formBtn {
+  width: 250px;
+  height: 40px;
+  border-radius: 3px;
+  border: 0;
+  background-color: $darkgrey;
+  color: $lightgrey;
+  font-size: 1rem;
+  margin-top: 10px;
+  &:hover {
+    background-color: $hovergrey;
+  }
+}
