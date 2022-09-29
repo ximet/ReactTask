@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MutableRefObject } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
@@ -9,18 +9,11 @@ import { Wave } from 'assets/images/svg';
 import heroImg1 from 'assets/images/dashboard-landing.png';
 import heroImg2 from 'assets/images/search-landing.png';
 
-// Utils
-import { handleScrollTo } from 'utils/helpers';
-
 // Styles
 import { Container, Flex } from 'styles/global';
 import * as S from '../AboutPage.styles';
 
-interface AboutHeroSectionProps {
-  scrollToRef: MutableRefObject<HTMLElement | null>;
-}
-
-const AboutHeroSection: FunctionComponent<AboutHeroSectionProps> = ({ scrollToRef }) => (
+const AboutHeroSection: FunctionComponent = () => (
   <S.AboutHeroSection>
     <Wave />
     <Container>
@@ -34,9 +27,7 @@ const AboutHeroSection: FunctionComponent<AboutHeroSectionProps> = ({ scrollToRe
           <Link to="/">
             <Button>Get Started</Button>
           </Link>
-          <Link to="#how-it-works" onClick={() => handleScrollTo(scrollToRef)}>
-            See How It Works
-          </Link>
+          <a href="#how-it-works">See How It Works</a>
         </S.AboutHeroContent>
         <S.AboutHeroImage>
           <img src={heroImg1} alt="App preview" />

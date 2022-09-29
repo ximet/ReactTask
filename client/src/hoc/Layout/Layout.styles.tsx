@@ -29,6 +29,12 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
     overscroll-behavior: none;
     overflow-x: hidden;
 
+    #app {
+      height: 100vh;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
     ${props =>
       colorChange(props, 'background', theme.palette.white, theme.palette.black, 'background')}
     ${props => colorChange(props, 'color', theme.palette.black, theme.palette.white, 'color')}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, RefObject } from 'react';
+import React, { FunctionComponent } from 'react';
 
 // Assets
 import imgSearch from 'assets/images/search.png';
@@ -29,24 +29,20 @@ const articles = [
   }
 ];
 
-interface AboutHowSectionProps {
-  customRef: RefObject<HTMLElement>;
-}
-
-const AboutHowSection: FunctionComponent<AboutHowSectionProps> = ({ customRef }) => (
-  <S.AboutHowSection id="how-it-works" ref={customRef}>
+const AboutHowSection: FunctionComponent = () => (
+  <S.AboutHowSection id="how-it-works">
     <Container>
       <Flex directionColumn>
         <h2>How It Works</h2>
-        {articles.map((article, i) => (
+        {articles.map(({ title, content, image }, i) => (
           <S.AboutArticle key={`article-${i + 1}`}>
             <Flex>
               <S.AboutArticleContent>
-                <h3>{article.title}</h3>
-                <p>{article.content}</p>
+                <h3>{title}</h3>
+                <p>{content}</p>
               </S.AboutArticleContent>
               <S.AboutArticlePicture>
-                <img src={article.image.src} alt={article.image.alt} />
+                <img src={image.src} alt={image.alt} />
               </S.AboutArticlePicture>
             </Flex>
           </S.AboutArticle>

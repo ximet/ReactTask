@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from 'react';
+import React, { FunctionComponent } from 'react';
 
 // Components
 import Header from 'components/Header/Header';
@@ -6,19 +6,15 @@ import AboutHeroSection from 'components/AboutPage/AboutHeroSection/AboutHeroSec
 import AboutHowSection from 'components/AboutPage/AboutHowSection/AboutHowSection';
 import AboutFeedbackSection from 'components/AboutPage/AboutFeedbackSection/AboutFeedbackSection';
 
-const AboutPage: FunctionComponent = () => {
-  const aboutHowSectionRef = useRef<null | HTMLDivElement>(null);
-
-  return (
-    <>
-      <Header />
-      <main>
-        <AboutHeroSection scrollToRef={aboutHowSectionRef} />
-        <AboutHowSection customRef={aboutHowSectionRef} />
-        <AboutFeedbackSection />
-      </main>
-    </>
-  );
-};
+const AboutPage: FunctionComponent = () => (
+  <>
+    <Header />
+    <main>
+      <AboutHeroSection />
+      <AboutHowSection />
+      <AboutFeedbackSection />
+    </main>
+  </>
+);
 
 export default AboutPage;
