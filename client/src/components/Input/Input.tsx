@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { makeRequiredLabel } from 'utils/stringCorrections';
 import styles from './input.module.scss';
 
+const INPUT_TYPE_TEXTAREA = 'textarea';
+
 type InputProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
@@ -18,7 +20,7 @@ const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
       <label htmlFor={id} className={styles.ratingLabel}>
         {makeRequiredLabel(name)}
       </label>
-      {type === 'textarea' ? (
+      {type === INPUT_TYPE_TEXTAREA ? (
         <textarea
           name={name}
           id={id}

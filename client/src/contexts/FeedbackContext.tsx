@@ -31,8 +31,9 @@ export const FeedbackProvider: FC<React.ReactNode> = ({ children }) => {
   }, [fetchFeedback]);
 
   const addFeedback = (newFeedback: Feedback) => {
-    setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, [newFeedback, ...feedback]);
-    setFeedback([newFeedback, ...feedback]);
+    const updatedFeedbackData = [newFeedback, ...feedback];
+    setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, updatedFeedbackData);
+    setFeedback(updatedFeedbackData);
   };
 
   return (

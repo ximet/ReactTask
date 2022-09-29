@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button';
 import Input from 'components/Input/Input';
 import FeedbackContext from 'contexts/FeedbackContext';
 import React, { ChangeEvent, FC, useContext, useReducer, Reducer } from 'react';
@@ -56,7 +56,7 @@ const FeedbackForm: FC = () => {
         onChange={handleChange}
       />
       <Input type="textarea" name="review" id="review" value={review} onChange={handleChange} />
-      <Button type="submit" className="FormBtn" onClick={handleSubmit}>
+      <Button type="submit" className={ButtonStyles.FormBtn} onClick={handleSubmit}>
         Submit Review
       </Button>
     </form>
