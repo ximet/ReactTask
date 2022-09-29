@@ -1,9 +1,4 @@
-export type FeedbackState = {
-  name: string;
-  email: string;
-  problems: string;
-  rating: number;
-};
+import { FeedbackState } from 'types/feedbackType';
 
 export type FeedbackActionData = {
   type: string;
@@ -27,8 +22,9 @@ export const feedbackReducer = (state: FeedbackState, { type, payload }: Feedbac
       return {
         name: '',
         email: '',
-        problems: '',
-        rating: 5
+        feedback: '',
+        phone: '',
+        rating: 0
       };
     default:
       return state;

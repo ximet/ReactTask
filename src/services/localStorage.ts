@@ -1,3 +1,4 @@
+import { FeedbackState, FeedbackInDB } from 'types/feedbackType';
 import { LocationInfoType } from 'types/cityInfoType';
 
 export const FAVORITE_CITIES_LS_LABEL = 'favorite-cities';
@@ -22,4 +23,17 @@ export const getFavoriteCities = (): LocationInfoType[] => {
   const favoriteCities: LocationInfoType[] = (getFromLocalStorage(FAVORITE_CITIES_LS_LABEL) ||
     []) as LocationInfoType[];
   return favoriteCities || [];
+};
+
+export const getFeedbacks = (): FeedbackInDB[] =>
+  (getFromLocalStorage(FEEDBACK_DATA_LS_LABEL) || []) as FeedbackInDB[];
+
+export const sendFeedback = (feedback: FeedbackState) => {
+  const feedbackInDb: FeedbackInDB = {
+    ...feedback,
+    id: Math.random()
+  };
+  const prevFeedbacks = getFeedbacks();
+  const newFeedbacks = [...prevFeedbacks, feedbackInDb];
+  setInLocalStorage(newFeedbacks, FEEDBACK_DATA_LS_LABEL);
 };

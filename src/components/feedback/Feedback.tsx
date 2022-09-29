@@ -2,7 +2,7 @@ import React, {
   FC,
   useReducer,
   ChangeEvent,
-  useMemo,
+  useState,
   useCallback,
   MouseEvent,
   Reducer
@@ -13,14 +13,15 @@ import {
   feedbackReducer,
   CHANGE_FEEDBACK_STATE,
   RESET_STATE,
-  FeedbackState,
   FeedbackActionData
 } from 'reducers/feedbackReducer';
+import { FeedbackState } from 'types/feedbackType';
 import styles from './Feedback.css';
 import useValidate from 'hooks/useValidate';
-import { setInLocalStorage, FEEDBACK_DATA_LS_LABEL } from 'services/localStorage';
-import { ValidateElementInfoType } from 'hooks/useValidate';
+import { sendFeedback } from 'services/localStorage';
 import classNames from 'classnames';
+import { RatingStar } from './RatingStar';
+import { ViewFeedbacks } from './ViewFeedbacks';
 
 export const Feedback: FC = () => {
   const [state, dispatch] = useReducer<Reducer<FeedbackState, FeedbackActionData>>(
@@ -28,13 +29,18 @@ export const Feedback: FC = () => {
     {
       name: '',
       email: '',
-      problems: '',
-      rating: 5
+      feedback: '',
+      phone: '',
+      rating: 0
     }
   );
+  const [updatedProp, setUpdatedProp] = useState<number>(0); //this prop only for rerender ViewFeedback when form sended, but not every state update
 
-  const email: ValidateElementInfoType = useValidate();
-  const name: ValidateElementInfoType = useValidate();
+  const { isValid, validateInput } = useValidate({
+    name: 'minLength,name',
+    email: 'email',
+    phone: 'minLength,phone'
+  });
 
   const stateHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
@@ -44,7 +50,7 @@ export const Feedback: FC = () => {
       type: CHANGE_FEEDBACK_STATE,
       payload: {
         name,
-        data: type === 'range' ? +value : value
+        data: type === 'radio' ? +value : value
       }
     });
   };
@@ -54,16 +60,7 @@ export const Feedback: FC = () => {
       target: { name: elementName, value: elementValue }
     } = e;
 
-    let selectedInput: ValidateElementInfoType;
-
-    if (elementName === 'name') {
-      selectedInput = name;
-    }
-    if (elementName === 'email') {
-      selectedInput = email;
-    }
-
-    selectedInput!.validateInput(elementName, elementValue);
+    validateInput(elementName, elementValue);
     stateHandler(e);
   };
 
@@ -73,94 +70,105 @@ export const Feedback: FC = () => {
 
   const sendForm = (e: MouseEvent) => {
     e.preventDefault();
-    setInLocalStorage(state, FEEDBACK_DATA_LS_LABEL);
+    sendFeedback(state);
+    setUpdatedProp(Math.random());
     resetForm();
   };
-
-  const ratingColor = useMemo(() => {
-    const { rating } = state;
-    if (rating >= 8) return 'green';
-    if (rating >= 5) return 'yellow';
-    if (rating < 5) return 'red';
-  }, [state.rating]);
 
   return (
     <main className={commonStyle.container}>
       <h2 className={styles['feedback-title']}>Please, send feedback</h2>
       <form className={styles['feedback-form']}>
-        <div className={styles['feedback-required-data']}>
-          <div className={styles['feedback-required-data__group']}>
-            <label htmlFor="feedback-name" className={styles['feedback-input-label']}>
-              What is your name?
-            </label>
-            <input
-              type="text"
-              id="feedback-name"
-              name="name"
-              value={state.name}
-              className={styles['feedback-input-text']}
-              onChange={validatedInputHandler}
-              required
-            />
-            {!name.isValid && state.name.length ? (
-              <span className={styles['validation-error']}>Incorrect name</span>
-            ) : null}
-          </div>
-          <div className={styles['feedback-required-data__group']}>
-            <label htmlFor="feedback-email" className={styles['feedback-input-label']}>
-              Enter your email
-            </label>
-            <input
-              type="email"
-              id="feedback-email"
-              name="email"
-              value={state.email}
-              className={styles['feedback-input-text']}
-              onChange={validatedInputHandler}
-              required
-            />
-            {!email.isValid && state.email.length ? (
-              <span className={styles['validation-error']}>Incorrect email</span>
-            ) : null}
-          </div>
+        <div className={styles['feedback-user-data__group']}>
+          <label htmlFor="feedback-name" className={styles['feedback-input-label']}>
+            What is your name?
+          </label>
+          <input
+            type="text"
+            id="feedback-name"
+            name="name"
+            value={state.name}
+            className={styles['feedback-input']}
+            onChange={validatedInputHandler}
+            placeholder="required field"
+            required
+          />
+          {!isValid.name && state.name.length ? (
+            <span className={styles['validation-error']}>
+              The name must include letters and numbers and be longer than 4 characters
+            </span>
+          ) : null}
+        </div>
+        <div className={styles['feedback-user-data__group']}>
+          <label htmlFor="feedback-email" className={styles['feedback-input-label']}>
+            Enter your email
+          </label>
+          <input
+            type="email"
+            id="feedback-email"
+            name="email"
+            value={state.email}
+            className={styles['feedback-input']}
+            onChange={validatedInputHandler}
+            placeholder="required field"
+            required
+          />
+          {!isValid.email && state.email.length ? (
+            <span className={styles['validation-error']}>Use format: email@example.com</span>
+          ) : null}
+        </div>
+        <div className={styles['feedback-user-data__group']}>
+          <label htmlFor="feedback-phone" className={styles['feedback-input-label']}>
+            Enter your phone
+          </label>
+          <input
+            type="tel"
+            id="feedback-phone"
+            name="phone"
+            value={state.phone}
+            className={styles['feedback-input']}
+            onChange={validatedInputHandler}
+            placeholder="required field"
+            required
+          />
+          {!isValid.phone && state.phone.length ? (
+            <span className={styles['validation-error']}>
+              The phone must include numbers and be longer than 7 characters
+            </span>
+          ) : null}
         </div>
 
-        <div className={styles['feedback-problems-group']}>
-          <label htmlFor="feedback-problems">Any problems or suggestions?</label>
+        <div className={styles['feedback-feedback-group']}>
+          <label htmlFor="feedback-feedback" className={styles['feedback-input-label']}>
+            Any problems or suggestions?
+          </label>
           <textarea
-            name="problems"
-            id="feedback-problems"
-            value={state.problems}
-            className={styles['feedback-input-text']}
+            name="feedback"
+            id="feedback-feedback"
+            value={state.feedback}
+            className={classNames(styles['feedback-input'], styles['feedback-textarea'])}
             onChange={stateHandler}
           ></textarea>
         </div>
         <div className={styles['feedback-rating-group']}>
-          <label htmlFor="feedback-rating">Rate the service</label>
-          <input
-            type="range"
-            name="rating"
-            id="feedback-rating"
-            min={1}
-            max={10}
-            step={1}
-            value={state.rating}
-            className={styles['feedback-rating-input']}
-            onChange={stateHandler}
-          />
-          <span
-            style={{
-              color: `${ratingColor}`
-            }}
-          >
-            {state.rating}
-          </span>
+          <h4>Rating</h4>
+          <div className={styles['feedback-stars-group']}>
+            {[5, 4, 3, 2, 1].map(value => (
+              <RatingStar
+                key={value}
+                onChange={stateHandler}
+                ratingValue={value}
+                currentRating={state.rating}
+              />
+            ))}
+          </div>
         </div>
+
         <div className={styles['control-buttons']}>
           <button
             type="submit"
             className={classNames(styles['form-btn'], styles['send-btn'])}
-            disabled={!email.isValid || !name.isValid}
+            disabled={!isValid.email || !isValid.name || !isValid.phone}
             onClick={sendForm}
           >
             Send
@@ -174,6 +182,7 @@ export const Feedback: FC = () => {
           </button>
         </div>
       </form>
+      <ViewFeedbacks prop={updatedProp} />
     </main>
   );
 };
