@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, InputHTMLAttributes } from 'react';
 import { BsStar, BsStarFill } from 'react-icons/bs';
 import styles from './InputRating.module.scss';
 
-const INPUT_TYPE_HIDDEN = 'hidden';
+const checkIfTypeNotHidden = 'type !== "hidden"';
 
 type InputRatingProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -17,16 +17,12 @@ const InputRating: FC<InputHTMLAttributes<HTMLInputElement> & InputRatingProps> 
   onChange
 }) => {
   return (
-    <div
-      className={type !== INPUT_TYPE_HIDDEN ? styles.ratingContainer : styles.ratingContainerMsg}
-    >
-      {type !== INPUT_TYPE_HIDDEN ? (
+    <div className={checkIfTypeNotHidden ? styles.ratingContainer : styles.ratingContainerMsg}>
+      {checkIfTypeNotHidden && (
         <div className={styles.textContainer}>
           <h3>* Rating</h3>
           <div>Fields marked with a * are required.</div>
         </div>
-      ) : (
-        ''
       )}
       <div className={styles.starsContainer}>
         {Array.from({ length: 5 }, (_, i) => {
@@ -38,7 +34,7 @@ const InputRating: FC<InputHTMLAttributes<HTMLInputElement> & InputRatingProps> 
                   type={type}
                   name={name}
                   id={`${id}${ratingNumber}`}
-                  value={type !== INPUT_TYPE_HIDDEN ? ratingNumber : value}
+                  value={checkIfTypeNotHidden ? ratingNumber : value}
                   onChange={onChange}
                   className={styles.ratingInput}
                 />
