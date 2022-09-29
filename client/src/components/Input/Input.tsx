@@ -2,8 +2,13 @@ import React, { FC } from 'react';
 import { makeRequiredLabel } from 'utils/stringCorrections';
 import styles from './input.module.scss';
 
+const checkIfTypeIsTextArea = (type: React.HTMLInputTypeAttribute): boolean => {
+  return !!(type === 'textarea');
+};
+
 type InputProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  type: React.HTMLInputTypeAttribute;
 };
 
 const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
@@ -18,7 +23,7 @@ const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
       <label htmlFor={id} className={styles.ratingLabel}>
         {makeRequiredLabel(name)}
       </label>
-      {type === 'textarea' ? (
+      {checkIfTypeIsTextArea(type) ? (
         <textarea
           name={name}
           id={id}
