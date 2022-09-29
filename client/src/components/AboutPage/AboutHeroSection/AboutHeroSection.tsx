@@ -22,7 +22,7 @@ interface AboutHeroSectionProps {
 
 const AboutHeroSection: FunctionComponent<AboutHeroSectionProps> = ({ scrollToRef }) => (
   <S.AboutHeroSection>
-    <Wave reversed={false} />
+    <Wave />
     <Container>
       <Flex>
         <S.AboutHeroContent>
