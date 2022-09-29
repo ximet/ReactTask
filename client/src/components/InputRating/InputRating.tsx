@@ -1,15 +1,13 @@
-import React, { ChangeEvent, FC, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent, FC, InputHTMLAttributes, HTMLInputTypeAttribute } from 'react';
 import { BsStar, BsStarFill } from 'react-icons/bs';
+import { makeRequiredLabel } from 'utils/stringCorrections';
+import { checkIfTypeIsNotHidden } from 'utils/inputTypeCheck';
 import styles from './InputRating.module.scss';
-
-const checkIfTypeIsNotHidden = (type: React.HTMLInputTypeAttribute): boolean => {
-  return !!(type !== 'hidden');
-};
 
 type InputRatingProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   value: number;
-  type: React.HTMLInputTypeAttribute;
+  type: HTMLInputTypeAttribute;
 };
 
 const InputRating: FC<InputHTMLAttributes<HTMLInputElement> & InputRatingProps> = ({
@@ -23,10 +21,12 @@ const InputRating: FC<InputHTMLAttributes<HTMLInputElement> & InputRatingProps> 
     <div
       className={checkIfTypeIsNotHidden(type) ? styles.ratingContainer : styles.ratingContainerMsg}
     >
-      <div className={styles.textContainer}>
-        <h3>{checkIfTypeIsNotHidden(type) ? '* Rating' : ''}</h3>
-        <div>{checkIfTypeIsNotHidden(type) && 'Fields marked with a * are required.'}</div>
-      </div>
+      {checkIfTypeIsNotHidden(type) && (
+        <div className={styles.textContainer}>
+          <h3>{makeRequiredLabel(name)} </h3>
+          <div>Fields marked with a * are required.</div>
+        </div>
+      )}
       <div className={styles.starsContainer}>
         {Array.from({ length: 5 }, (_, i) => {
           const ratingNumber = i + 1;
