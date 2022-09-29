@@ -2,6 +2,7 @@ require('dotenv').config();
 const proxy = require('express-http-proxy'),
   app = require('express')(),
   cors = require('cors');
+app.use(cors());
 
 let token;
 
@@ -26,8 +27,6 @@ async function auth() {
     .then(result => (token = result.access_token))
     .catch(error => console.log('error', error));
 }
-
-app.use(cors());
 
 app.use('/:toUrl', (req, res, next) =>
   proxy(req.params.toUrl, {
