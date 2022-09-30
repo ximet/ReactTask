@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px 20%;
+  width: 100%;
+  h4 {
+    padding: 20px 0 0;
+  }
+  .statsContainer {
+    display: flex;
+    justify-content: right;
+    width: 200px;
+    align-items: center;
+    padding: 0;
+  }
+  .ratingAvg {
+    padding: 20px 0 0 20px;
+  }
+}
