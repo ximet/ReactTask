@@ -2,7 +2,7 @@ import LocationContext from 'contexts/LocationContext';
 import useGetLocation from 'hooks/useGetLocation';
 import React, { useContext } from 'react';
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
-import Button from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button';
 import DarkLightThemeContext from 'contexts/ThemeContext';
 import NavbarLink from 'components/NavbarLink/NavbarLink';
 import styles from './styles.module.scss';
@@ -37,7 +37,7 @@ const Header: React.FC = ({ children }) => {
       </nav>
       <div className={styles.searchBox}>
         <div className={styles.search}>{children}</div>
-        <Button type="button" className="ThemeBtn" onClick={onThemeBtnClick}>
+        <Button type="button" className={ButtonStyles.ThemeBtn} onClick={onThemeBtnClick}>
           {icon ? (
             <MdOutlineLightMode
               className={`${styles.icon} ${darkMode ? styles.iconDark : styles.iconLight}`}

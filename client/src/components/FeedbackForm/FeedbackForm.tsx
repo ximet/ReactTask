@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button';
 import Input from 'components/Input/Input';
 import FeedbackContext from 'contexts/FeedbackContext';
 import React, { ChangeEvent, FC, useContext, useReducer, Reducer } from 'react';

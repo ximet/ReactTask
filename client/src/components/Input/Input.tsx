@@ -1,17 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, HTMLInputTypeAttribute, ChangeEvent, InputHTMLAttributes } from 'react';
 import { makeRequiredLabel } from 'utils/stringCorrections';
+import { checkIfTypeIsTextArea } from 'utils/inputTypeCheck';
 import styles from './input.module.scss';
 
-const checkIfTypeIsTextArea = (type: React.HTMLInputTypeAttribute): boolean => {
-  return !!(type === 'textarea');
-};
-
 type InputProps = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  type: React.HTMLInputTypeAttribute;
+  onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  type: HTMLInputTypeAttribute;
 };
 
-const Input: FC<React.InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
+const Input: FC<InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
   type,
   name,
   id,

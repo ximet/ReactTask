@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import styles from './styles.module.scss';
 
-enum ButtonStyles {
+export enum ButtonStyles {
   ThemeBtn = 'themeBtn',
   IconBtn = 'searchBtn',
   FormBtn = 'formBtn'
@@ -17,7 +17,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({ type, children, className, onClick }) => {
   return (
-    <button type={type} onClick={onClick} className={`${styles[ButtonStyles[className]]}`}>
+    <button type={type} onClick={onClick} className={styles[className]}>
       {children}
     </button>
   );
