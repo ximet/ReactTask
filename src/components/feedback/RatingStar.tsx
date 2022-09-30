@@ -17,7 +17,6 @@ export const RatingStar: FC<RatingStarProps> = ({
   className,
   size
 }) => {
-  console.log(className);
   return (
     <>
       <input
