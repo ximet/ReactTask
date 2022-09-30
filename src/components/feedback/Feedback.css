@@ -68,7 +68,7 @@
   cursor: pointer;
   border-radius: 1rem;
   border: none;
-  color: var(--font-color)
+  color: var(--font-color);
 }
 
 .send-btn {
