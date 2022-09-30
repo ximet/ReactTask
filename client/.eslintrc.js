@@ -34,11 +34,12 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    'react/jsx-no-constructed-context-values': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 'off',
-    'react/require-default-props': 'warn',
+    'react/require-default-props': 'off',
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
     'react/button-has-type': 'off',
@@ -70,10 +71,11 @@ module.exports = {
     'no-use-before-define': 'off',
     'max-lines': ['error', { max: 200 }],
     semi: ['error', 'always'],
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'prettier/prettier': [
       'error',
       {
+        singleQuote: true,
         endOfLine: 'auto'
       }
     ]

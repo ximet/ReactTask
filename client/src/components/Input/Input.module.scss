@@ -1,0 +1,32 @@
+@import '../../styles/variables.scss';
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 0 20%;
+
+  .ratingLabel {
+    font-weight: 500;
+  }
+
+  .input,
+  .textarea {
+    padding: 7px 20px;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid $lightgrey;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 5px auto 5px;
+    resize: none;
+  }
+
+  .textarea {
+    height: 150px;
+  }
+}

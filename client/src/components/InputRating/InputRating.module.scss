@@ -1,0 +1,45 @@
+.ratingContainer,
+.ratinContainerMsg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 20px 20% 5px;
+
+  .textContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8rem;
+
+    h3 {
+      font-weight: 500;
+    }
+  }
+}
+.starsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 130px;
+  padding-top: 20px;
+
+  .ratingLabel {
+    position: relative;
+    font-weight: 500;
+  }
+
+  .ratingInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+  }
+}
+
+.ratingContainerMsg {
+  align-items: left;
+}
