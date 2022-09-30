@@ -16,9 +16,6 @@ const FeedbackStats = () => {
           name="postRating"
           id="postNum"
           value={Math.round(calculateFeedbackAvg(feedback))}
-          onChange={() => {
-            return null;
-          }}
         />
         <h4 className={styles.ratingAvg}>{calculateFeedbackAvg(feedback).toFixed(2)}</h4>
       </div>
