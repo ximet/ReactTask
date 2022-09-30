@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { getArray } from 'utils/helpers';
 import { FeedbackState } from 'types/feedbackType';
 import { RatingStar } from './RatingStar';
-import { STAR_CLASS_NAMES } from 'enums/starClassNamesEnum';
 import styles from './Feedback.css';
 
 type ViewFeedbackProps = {
@@ -23,7 +22,7 @@ export const ViewFeedbacks: FC<ViewFeedbackProps> = ({ feedbacks }) => {
                 ratingValue={value}
                 currentRating={rating}
                 key={value}
-                cssClassName={STAR_CLASS_NAMES.FEEDBACK_VIEW}
+                className={styles['rating-label_feedbacks']}
               />
             ))}
           </div>

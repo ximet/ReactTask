@@ -5,7 +5,7 @@ import styles from './Feedback.css';
 type RatingStarProps = {
   currentRating: number;
   ratingValue: number;
-  cssClassName: string;
+  className: string;
   size?: number;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
@@ -14,9 +14,10 @@ export const RatingStar: FC<RatingStarProps> = ({
   onChange,
   ratingValue,
   currentRating,
-  cssClassName,
+  className,
   size
 }) => {
+  console.log(className);
   return (
     <>
       <input
@@ -27,7 +28,7 @@ export const RatingStar: FC<RatingStarProps> = ({
         onChange={onChange}
         className={styles['rating-input']}
       />
-      <label htmlFor={`rating${ratingValue}`} className={styles[cssClassName!]}>
+      <label htmlFor={`rating${ratingValue}`} className={className}>
         {currentRating >= ratingValue ? <IoMdStar size={size} /> : <IoMdStarOutline size={size} />}
       </label>
     </>

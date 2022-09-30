@@ -4,8 +4,7 @@ import commonStyle from 'styles/commonStyles.css';
 import { ViewFeedbacks } from './ViewFeedbacks';
 import { FeedbackFrom } from './FeedbackForm';
 import { FeedbackState } from 'types/feedbackType';
-import { sendFeedback } from 'services/localStorage';
-import { getFeedbacks } from 'services/localStorage';
+import { sendFeedback, getFeedbacks } from 'services/localStorage';
 
 export const Feedback: FC = () => {
   const [feedbacks, setFeedbacks] = useState<FeedbackState[]>(getFeedbacks);

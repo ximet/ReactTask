@@ -13,7 +13,6 @@ import classNames from 'classnames';
 import { RatingStar } from './RatingStar';
 import { getArray } from 'utils/helpers';
 import { ValidationFunctions } from 'enums/validationFunctionsEnum';
-import { STAR_CLASS_NAMES } from 'enums/starClassNamesEnum';
 
 type FeedbackFromProps = {
   updateFeedbacks: (feedback: FeedbackState) => void;
@@ -156,7 +155,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
                   onChange={stateHandler}
                   ratingValue={value}
                   currentRating={state.rating}
-                  cssClassName={STAR_CLASS_NAMES.FORM}
+                  className={styles['rating-label_form']}
                   size={30}
                 />
               ))}
