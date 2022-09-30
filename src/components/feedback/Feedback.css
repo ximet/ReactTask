@@ -68,10 +68,17 @@
   cursor: pointer;
   border-radius: 1rem;
   border: none;
+  color: var(--font-color)
 }
 
 .send-btn {
   background-color: green;
+}
+
+.send-btn:disabled {
+  background-color: gray;
+  color: black;
+  cursor: no-drop;
 }
 
 .reset-btn {
@@ -88,13 +95,17 @@
   column-gap: 1rem;
 }
 
-.rating-label {
+.rating-label_form {
   transition: 0.2s;
   cursor: pointer;
 }
 
-.rating-label:hover,
-.rating-label:hover ~ .rating-label {
+.rating-label_feedbacks {
+  pointer-events: none;
+}
+
+.rating-label_form:hover,
+.rating-label_form:hover ~ .rating-label_form {
   color: gold;
 }
 

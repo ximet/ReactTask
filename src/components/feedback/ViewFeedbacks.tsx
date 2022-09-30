@@ -1,32 +1,35 @@
 import React, { FC } from 'react';
 
-import { getFeedbacks } from 'services/localStorage';
-import { IoMdStarOutline, IoMdStar } from 'react-icons/io';
+import { getArray } from 'utils/helpers';
+import { FeedbackState } from 'types/feedbackType';
+import { RatingStar } from './RatingStar';
+import { STAR_CLASS_NAMES } from 'enums/starClassNamesEnum';
 import styles from './Feedback.css';
 
 type ViewFeedbackProps = {
-  prop: number;
+  feedbacks: FeedbackState[];
 };
 
-export const ViewFeedbacks: FC<ViewFeedbackProps> = React.memo(() => {
-  const feedbacks = getFeedbacks();
-
+export const ViewFeedbacks: FC<ViewFeedbackProps> = ({ feedbacks }) => {
   return (
     <section className={styles['view-feedback']}>
       <h2 className={styles['feedbacks-section-title']}>Feedbacks</h2>
-      {feedbacks.map(feedback => (
-        <article className={styles['feedbacks-article']} key={feedback.id}>
-          <h3 className={styles['feedback-article-name']}>{feedback.name}</h3>
+      {feedbacks.map(({ id, name, rating, feedback }) => (
+        <article className={styles['feedbacks-article']} key={id}>
+          <h3 className={styles['feedback-article-name']}>{name}</h3>
           <div className={styles['feedback-stars']}>
-            {[1, 2, 3, 4, 5].map(value => (
-              <React.Fragment key={value}>
-                {value <= feedback.rating ? <IoMdStar /> : <IoMdStarOutline />}
-              </React.Fragment>
+            {getArray(5).map(value => (
+              <RatingStar
+                ratingValue={value}
+                currentRating={rating}
+                key={value}
+                cssClassName={STAR_CLASS_NAMES.FEEDBACK_VIEW}
+              />
             ))}
           </div>
-          <p className={styles['feedback-article-text']}>{feedback.feedback}</p>
+          <p className={styles['feedback-article-text']}>{feedback}</p>
         </article>
       ))}
     </section>
   );
-});
+};

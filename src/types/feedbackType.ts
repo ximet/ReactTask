@@ -1,4 +1,5 @@
 export type FeedbackState = {
+  id: number;
   name: string;
   email: string;
   feedback: string;

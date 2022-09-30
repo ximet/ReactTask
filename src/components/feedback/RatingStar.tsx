@@ -5,10 +5,18 @@ import styles from './Feedback.css';
 type RatingStarProps = {
   currentRating: number;
   ratingValue: number;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  cssClassName: string;
+  size?: number;
+  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
-export const RatingStar: FC<RatingStarProps> = ({ onChange, ratingValue, currentRating }) => {
+export const RatingStar: FC<RatingStarProps> = ({
+  onChange,
+  ratingValue,
+  currentRating,
+  cssClassName,
+  size
+}) => {
   return (
     <>
       <input
@@ -19,8 +27,8 @@ export const RatingStar: FC<RatingStarProps> = ({ onChange, ratingValue, current
         onChange={onChange}
         className={styles['rating-input']}
       />
-      <label htmlFor={`rating${ratingValue}`} className={styles['rating-label']}>
-        {currentRating >= ratingValue ? <IoMdStar size={30} /> : <IoMdStarOutline size={30} />}
+      <label htmlFor={`rating${ratingValue}`} className={styles[cssClassName!]}>
+        {currentRating >= ratingValue ? <IoMdStar size={size} /> : <IoMdStarOutline size={size} />}
       </label>
     </>
   );

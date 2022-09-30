@@ -20,6 +20,7 @@ export const feedbackReducer = (state: FeedbackState, { type, payload }: Feedbac
       };
     case RESET_STATE:
       return {
+        id: 0,
         name: '',
         email: '',
         feedback: '',
