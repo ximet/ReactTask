@@ -33,3 +33,7 @@ function isDailyWeather(
 ): weatherData is DailyWeatherType {
   return 'date' in weatherData;
 }
+
+export const getArray = (n: number): number[] => {
+  return Array.from({ length: n }, (_, i) => i + 1);
+};

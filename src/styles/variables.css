@@ -9,6 +9,7 @@ body[data-theme='light'] {
   --card-shadow: rgba(34, 60, 80, 0.2);
   --search-result-background: #ffffff;
   --after-title: #0000cd;
+  --input-shadow: #223c5099;
 }
 
 body[data-theme='dark'] {
@@ -22,4 +23,5 @@ body[data-theme='dark'] {
   --card-shadow: rgba(255, 255, 224, 0.35);
   --search-result-background: #4682b4;
   --after-title: #ffffff;
+  --input-shadow: transparent;
 }
