@@ -55,15 +55,29 @@ body {
   background-color: $colorUIPrimary;
   height: 55px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
+  a {
+    text-decoration: none;
+  }
   p {
     margin: 0;
     padding-left: 90px;
     color: $colorTextPrimary;
     font-size: 25px;
     font-weight: 700;
+    text-decoration: none;
+  }
+  nav {
+    padding-right: 90px;
+    a {
+      color: $colorTextPrimary;
+      padding: 3px;
+      border: 3.5px solid $colorUISecondary;
+      font-weight: bold;
+    }
   }
 }
 
@@ -80,5 +94,17 @@ body {
     margin: 0;
     padding-left: 90px;
     color: $colorTextPrimary;
+  }
+}
+.images {
+  display: flex;
+  justify-content: center;
+}
+.about {
+  display: flex;
+  justify-content: center;
+  p {
+    width: 800px;
+    color: $colorUISecondary;
   }
 }

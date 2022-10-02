@@ -4,7 +4,7 @@ import styles from '../styles.scss';
 import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
 import { API_EDPOIONTS, STORAGE } from '../helper/variables';
-import ModalCountries from './modals/modalCountries';
+import ModalCountries from '../components/modals/modalCountries';
 
 const { mainPage, search, buttons } = styles;
 export default function MainPage() {

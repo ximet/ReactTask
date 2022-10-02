@@ -2,6 +2,7 @@ require('dotenv').config();
 const proxy = require('express-http-proxy');
 const app = require('express')();
 const cors = require('cors');
+const path = require('path');
 
 app.use(cors());
 
@@ -38,6 +39,10 @@ app.use('/:toUrl', (req, res, next) =>
     }
   })(req, res, next)
 );
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 app.listen(3333, () => {
   console.log('Listening on port 3333');
