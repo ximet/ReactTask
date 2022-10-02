@@ -74,3 +74,13 @@ export const Wave = styled.svg<WaveStylesProps>`
     stroke: none;
   }
 `;
+
+export const Headline = styled.h1`
+  span {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 4.25rem;
+    line-height: 1;
+    color: ${theme.palette.primary.dark};
+  }
+`;
