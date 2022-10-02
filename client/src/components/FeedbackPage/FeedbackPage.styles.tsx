@@ -33,3 +33,28 @@ export const FeedbackHeroContent = styled.div`
     margin-bottom: 3rem;
   }
 `;
+
+export const FeedbackFormSection = styled.section`
+  ${sectionRoot}
+  padding: 4rem 6rem;
+
+  h2 {
+    margin-bottom: 3rem;
+  }
+
+  form {
+    width: 100%;
+  }
+`;
+
+export const FeedbackFormLabel = styled.label`
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+`;
+
+export const FeedbackFormGroup = styled.div`
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+`;

@@ -15,6 +15,10 @@ export const Search = styled.div<StylesProps>`
     left: 2rem;
   }
 
+  input {
+    padding: 0 2rem 0 4.25rem;
+  }
+
   input[type='search']::-webkit-search-cancel-button {
     -webkit-appearance: none;
     display: inline-block;

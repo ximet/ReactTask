@@ -97,3 +97,5 @@ export type Theme = 'light' | 'dark';
 export interface StylesProps {
   themeType?: string;
 }
+
+export type InputElement = 'input' | 'textarea' | 'radio';

@@ -45,12 +45,27 @@
     "react/jsx-uses-react": "warn",
     "react/jsx-uses-vars": "warn",
     "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomInputLabel"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomInput"],
+        "depth": 3
+      }
+    ],
     "react/react-in-jsx-scope": "warn",
     "react-hooks/exhaustive-deps": "warn",
     "react/require-default-props": [
       2,
       {
         "ignoreFunctionalComponents": true
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      2,
+      {
+        "custom": "ignore"
       }
     ],
     "@typescript-eslint/no-unused-vars": "warn",
