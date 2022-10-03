@@ -19,6 +19,8 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock*
 package-lock.json
+.env
+.env.test
 /build/bundle.js
 /build/index.html
 /build*

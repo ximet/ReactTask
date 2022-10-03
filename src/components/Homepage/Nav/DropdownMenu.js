@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as styles from '../../../styles/DropdownMenu.module.css';
-
-const initialCitiesState = [
-  { name: 'Sofia', id: 1 },
-  { name: 'Athens', id: 2 },
-  { name: 'Istanbul', id: 3 }
-];
+import { getCities } from '../../../api/weatherApi.js';
 
 function DropdownMenu(props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [cities, setCities] = useState(initialCitiesState);
+  const [cities, setCities] = useState([]);
   const [searchedCity, setSearchedCity] = useState({});
+
+  useEffect(() => {
+    getCities(searchedCity.name)
+      .then(res => {
+        setCities(res.locations);
+      })
+      .catch(err => console.log(err));
+  }, [searchedCity.name]);
 
   const showCities = ev => {
     if (isOpen) {
@@ -27,11 +30,13 @@ function DropdownMenu(props) {
   const filteredCities = searchedCity.name
     ? cities.filter(city => city.name.includes(searchedCity.name))
     : cities;
+
   const citiesList = filteredCities.map(city => (
     <a key={city.id} href="#">
       {city.name}
     </a>
   ));
+
   const dropdownContent = isOpen ? (
     <div className={styles.dropdownContent}>
       <input
