@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Dispatch, SetStateAction, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 // Types
 import type { InputProps } from 'types';
@@ -12,10 +12,6 @@ import * as S from './StarRating.styles';
 
 interface StarRatingProps extends InputProps {
   numOfStars?: number;
-  rating?: number | null;
-  ratingHovered?: number | null;
-  setRating?: Dispatch<SetStateAction<number | null>>;
-  setRatingHovered?: Dispatch<SetStateAction<number | null>>;
 }
 
 const StarRating: FunctionComponent<StarRatingProps> = ({
