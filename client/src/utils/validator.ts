@@ -8,12 +8,11 @@ interface validatorsArray {
 }
 const createInputValidators = (name: string) => {
   const validatorsNew: validatorsArray[] = [];
-  VALIDATORS_STRINGS[name]?.split(',').map((validator: string) => {
-    const validatorStr = validator.trim();
+  VALIDATORS_STRINGS[name].map((validator: string) => {
     const separator: string | undefined = '(';
-    const valName: string = validatorStr.split(separator)[0];
+    const valName: string = validator.split(separator)[0];
     const regExp = /[()]/;
-    const param: string = validatorStr.split(regExp)[1];
+    const param: string = validator.split(regExp)[1];
     validatorsNew.push({
       valName,
       param

@@ -6,8 +6,8 @@ import React from 'react';
 const Feedback = () => {
   return (
     <SecondaryPagesLayout>
+      <h2>Leave your Feedback</h2>
       <FeedbackProvider>
-        <h2>Leave your Feedback</h2>
         <FeedbackForm />
       </FeedbackProvider>
     </SecondaryPagesLayout>

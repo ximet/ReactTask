@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button';
 import Input from 'components/Input/Input';
 import FeedbackContext from 'contexts/FeedbackContext';
 import React, { ChangeEvent, FC, useContext, useReducer, Reducer } from 'react';
@@ -9,7 +9,6 @@ import feedbackReducer, {
 } from 'reducers/feedbackReducer';
 import { Feedback } from 'types';
 import InputRating from 'components/InputRating/InputRating';
-import { getName, getValue } from 'utils/reformat';
 import styles from './FeedbackForm.module.scss';
 
 const FeedbackForm: FC = () => {
@@ -52,14 +51,14 @@ const FeedbackForm: FC = () => {
     event: React.FormEvent<HTMLFormElement | HTMLTextAreaElement | HTMLButtonElement>
   ) => {
     event.preventDefault();
-    const inputsStateArray = [{ rating }, { nickname }, { email }, { reviewTitle }, { review }];
-    inputsStateArray.forEach((stateObj: object) => {
+    const inputStates = { rating, nickname, email, reviewTitle, review };
+    const inputStatesKeys = Object.keys(inputStates);
+    inputStatesKeys.forEach((stateItem: string) => {
       dispatch({
         type: UPDATE_INPUT_VALUES,
-        payload: { name: getName(stateObj), data: getValue(stateObj) }
+        payload: { name: stateItem, data: inputStates[stateItem] }
       });
     });
-
     if (
       nickname &&
       email &&
@@ -95,7 +94,7 @@ const FeedbackForm: FC = () => {
       <div className={styles.error}>{reviewTitleError || ''}</div>
       <Input type="textarea" name="review" id="review" value={review} onChange={handleChange} />
       <div className={styles.error}>{reviewError || ''}</div>
-      <Button type="submit" className="FormBtn" onClick={handleSubmit}>
+      <Button type="submit" className={ButtonStyles.FormBtn} onClick={handleSubmit}>
         Submit Review
       </Button>
     </form>

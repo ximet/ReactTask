@@ -1,5 +1,5 @@
 import { getLocationByQuery } from 'API/get';
-import Button from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button';
 import Header from 'components/Header';
 import LocationContext from 'contexts/LocationContext';
 import React, { FC, useContext, useState } from 'react';
@@ -50,7 +50,7 @@ const HeaderSearch: FC = () => {
           value={inputValue}
           onChange={handleChange}
         />
-        <Button type="submit" className="IconBtn">
+        <Button type="submit" className={ButtonStyles.IconBtn}>
           <VscSearch className={styles.icon} />
         </Button>
       </form>
