@@ -1,13 +1,13 @@
-.navigation a{
-    padding-left: 24px;
-
-    font-family: 'Lobster Two', cursive;
-    font-size: 24px;
-
-    color: var(--color-text-primary);
-    text-decoration: none; 
+.navigation {
+  display: flex;
 }
 
-.active{
-    color:red;
-  }
+.navigation li a {
+  padding-left: 24px;
+
+  font-family: 'Lobster Two', cursive;
+  font-size: 24px;
+
+  color: var(--color-text-primary);
+  text-decoration: none;
+}

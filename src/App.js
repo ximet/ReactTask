@@ -14,12 +14,14 @@ const App = () => {
 
   return (
     <Router>
-        <Header />
-      <Routes>
-        <Route path="/" element={<Header />} />
-        <Route path="about" element={<About />} />
-        <Route path="footer" element={<Footer />} />
-      </Routes>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<DropDownMenu />} />
+          <Route path="about" element={<About />} />
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   );
 };

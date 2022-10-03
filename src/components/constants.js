@@ -13,3 +13,7 @@ export const MAIN_TITLE_LABEL = 'Show Me The Weather';
 export const DROP_DOWN_MENU_LABEL = 'Choose a city from this list:';
 export const FOOTER_TIME_LABEL = 'Current time:';
 export const BUTTON_OK_LABEL = 'OK';
+export const ABOUT_LABEL = 'ABOUT US';
+
+export const ABOUT_TEXT =
+  'This application is created for educational purposes. It uses "Foreca Weather API" which provides access to real-time weather information for millions of locations worldwide.';
