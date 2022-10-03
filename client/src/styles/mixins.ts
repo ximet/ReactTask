@@ -29,3 +29,17 @@ export const sectionRoot = `
   width: 100vw;
   overflow: hidden;
 `;
+
+export const radioWrapperRoot = `
+  position: relative;
+  cursor: pointer;
+
+  label {
+    cursor: pointer;
+  }
+  
+  input {
+    opacity: 0;
+    z-index: 0;
+  }
+`;

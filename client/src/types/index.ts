@@ -1,3 +1,5 @@
+import { HTMLInputTypeAttribute, ChangeEvent } from 'react';
+
 export interface AuthorizationRequest {
   user?: string;
   password?: string;
@@ -96,4 +98,24 @@ export type Theme = 'light' | 'dark';
 
 export interface StylesProps {
   themeType?: string;
+}
+
+export type ChangeEventType = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+
+export type InputElement = 'input' | 'textarea' | 'radio' | 'rating';
+
+export interface InputProps {
+  elementType: InputElement;
+  id?: string;
+  elementConfig: {
+    type?: HTMLInputTypeAttribute;
+    placeholder?: string;
+    rows?: number;
+    options?: Record<string, unknown>;
+  };
+  theme?: string;
+  onChange?: (e: ChangeEventType) => void;
+  onFocus?: (e: ChangeEventType) => void;
+  handleClearValue?: (e: ChangeEventType) => void;
+  clearEnabled?: boolean;
 }

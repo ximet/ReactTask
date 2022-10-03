@@ -1,79 +1,73 @@
-import React, {
-  FunctionComponent,
-  HTMLInputTypeAttribute,
-  ChangeEvent,
-  RefObject,
-  useRef
-} from 'react';
+import React, { FunctionComponent } from 'react';
 
 // Store
 import { useAppSelector } from 'redux/hooks';
 import { selectTheme } from 'redux/reducers/global';
 
+// Types
+import type { InputProps, ChangeEventType } from 'types';
+
+// Components
+import StarRating from 'components/StarRating/StarRating';
+
 // Styles
+import { Flex } from 'styles/global';
 import * as S from './Input.styles';
 
-type ChangeEventType = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
-
-interface InputProps {
-  inputRef?: RefObject<HTMLInputElement>;
-  inputElement: 'input';
-  type: HTMLInputTypeAttribute;
-  placeholder: string;
-  theme?: string;
-  onChange?: (e: ChangeEventType) => void;
-  onFocus?: (e: ChangeEventType) => void;
-  handleClearValue?: (e: ChangeEventType) => void;
-}
-
 const INPUT = {
-  input: ({
-    inputRef,
-    type,
-    placeholder,
-    theme,
-    onChange,
-    onFocus,
-    handleClearValue
-  }: InputProps) => (
+  input: ({ elementConfig, theme, handleClearValue, clearEnabled, ...otherProps }: InputProps) => (
     <S.Input
-      ref={inputRef}
-      type={type}
-      placeholder={placeholder}
       themeType={theme}
-      onChange={onChange}
-      onFocus={onFocus}
       onBlur={e => {
-        if (handleClearValue) handleClearValue(e);
+        if (clearEnabled && handleClearValue) handleClearValue(e);
       }}
+      {...elementConfig}
+      {...otherProps}
+    />
+  ),
+  textarea: ({ elementConfig, theme, ...otherProps }: InputProps) => (
+    <S.Textarea themeType={theme} {...elementConfig} {...otherProps} />
+  ),
+  radio: ({ id, elementConfig, theme, ...otherProps }: InputProps) => (
+    <S.InputGroup>
+      <Flex justifyFlexStart>
+        {elementConfig.options &&
+          Object.keys(elementConfig.options).map((option, i) => {
+            const values = elementConfig.options && Object.values(elementConfig.options);
+            return (
+              <S.RadioWrapper key={option} themeType={theme}>
+                <S.Radio id={option} name={id} {...elementConfig} {...otherProps} />
+                <label htmlFor={option}>{values && values[i]}</label>
+              </S.RadioWrapper>
+            );
+          })}
+      </Flex>
+    </S.InputGroup>
+  ),
+  rating: ({ id, elementConfig, theme, ...otherProps }: InputProps) => (
+    <StarRating
+      id={id}
+      numOfStars={elementConfig.options && Object.values(elementConfig.options).length}
+      theme={theme}
+      elementConfig={elementConfig}
+      {...otherProps}
     />
   )
 };
 
-const Input: FunctionComponent<InputProps> = ({
-  inputElement,
-  type,
-  placeholder,
-  onChange,
-  onFocus
-}) => {
+const Input: FunctionComponent<InputProps> = ({ elementType, elementConfig, ...otherProps }) => {
   const theme = useAppSelector(selectTheme);
-
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClearValue = (e: ChangeEventType) => {
     e.currentTarget.value = '';
   };
 
-  return INPUT[inputElement]({
-    inputRef,
-    type,
-    placeholder,
-    inputElement,
+  return INPUT[elementType]({
+    elementType,
+    elementConfig,
     theme,
-    onChange,
-    onFocus,
-    handleClearValue
+    handleClearValue,
+    ...otherProps
   });
 };
 

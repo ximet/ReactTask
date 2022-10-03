@@ -18,7 +18,7 @@ const AboutFeedbackSection: FunctionComponent = () => (
       <Flex directionColumn>
         <h2>Leave A Feedback</h2>
         <p>Liked our service or maybe were dissatisfied with it?</p>
-        <Link to="/feeback">
+        <Link to="/feedback">
           <Button color="white">Tell Us About It</Button>
         </Link>
       </Flex>
