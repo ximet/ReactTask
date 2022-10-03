@@ -4,11 +4,12 @@
   left: 0px;
   height: 60px;
   right: 0px;
+  padding: 0 72px;
 
   display: flex;
   overflow: hidden;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   font-family: 'Lobster', cursive;
   font-size: 28px;
@@ -28,4 +29,8 @@
   max-width: 60px;
   min-width: 40px;
   margin-right: 32px;
+}
+
+.titleContainer {
+  display: flex;
 }

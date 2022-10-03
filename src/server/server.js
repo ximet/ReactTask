@@ -5,10 +5,10 @@ import { config } from 'dotenv';
 
 const app = express();
 
-const PORT = process.env.PORT || 3030;
-
 app.use(cors());
 config();
+
+const PORT = process.env.PORT || 3030;
 
 const url = `https://pfa.foreca.com/authorize/token?user=${process.env.USER}&password=${process.env.PASSWORD}`;
 

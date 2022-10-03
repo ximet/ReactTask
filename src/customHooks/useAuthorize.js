@@ -9,6 +9,7 @@ const useAuthorize = () => {
       if (!localStorage.getItem(TOKEN_KEY)) {
         const response = await fetch(serverURL);
         const { access_token } = await response.json();
+        console.log(access_token);
         localStorage.setItem(TOKEN_KEY, access_token);
       }
     })();
