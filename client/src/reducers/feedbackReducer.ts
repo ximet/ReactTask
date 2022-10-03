@@ -1,5 +1,6 @@
 import { Feedback } from 'types';
 import { uid } from 'utils/uid';
+import { isInputValid } from 'utils/validator';
 
 export type ActionData = {
   type: string;
@@ -16,6 +17,7 @@ const feedbackReducer = (state: Feedback, { type, payload }: ActionData) => {
     case UPDATE_INPUT_VALUES:
       return {
         ...state,
+        [`${payload?.name}Error`]: isInputValid(`${payload?.name}`, `${payload?.data}`),
         [`${payload?.name}`]: payload?.data,
         id: uid()
       };
