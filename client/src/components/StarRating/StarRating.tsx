@@ -14,16 +14,18 @@ const StarRating: FunctionComponent<InputProps> = ({ id, theme, inputConfig, ...
   const [rating, setRating] = useState<number | null>(null);
   const [ratingHovered, setRatingHovered] = useState<number | null>(null);
 
+  const ratings = Object.values(inputConfig.options!);
+
   return (
     <S.StarRating>
       <Flex justifyFlexStart>
-        {[...Array(Object.values(inputConfig.options!).length)].map((_, i) => {
-          const ratingValue = Object.values(inputConfig.options!)[i] as number;
+        {[...Array(ratings.length)].map((_, i) => {
+          const ratingValue = ratings[i] as number;
           return (
             <S.StarWrapper
               key={`star-${ratingValue}`}
               themeType={theme}
-              active={!!(ratingValue <= (ratingHovered! || rating!))}
+              active={ratingValue <= (ratingHovered! || rating!)}
             >
               <label htmlFor={id}>
                 <S.Star
