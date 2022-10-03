@@ -1,3 +1,5 @@
+import { Validations } from 'constants/validatorStrings';
+
 export type GeolocationCoordinates = {
   lon: number;
   lat: number;
@@ -92,20 +94,5 @@ export interface Feedback {
   ratingError?: string;
 }
 
-export type Validator = {
-  required: (value: string) => boolean;
-  requiredRating: (value: string) => boolean;
-  string: (value: string) => boolean;
-  minLength: (value: string, param: number) => boolean;
-  maxLength: (value: string, param: number) => boolean;
-  validateEmail: (value: string) => boolean;
-};
-
-export type Errors = {
-  required: (value: string) => string;
-  requiredRating: (value: string) => string;
-  string: (value: string) => string;
-  minLength: (value: string, param: string) => string;
-  maxLength: (value: string, param: string) => string;
-  validateEmail: (value: string) => string;
-};
+export type Validator = Record<Validations, (value: string, param: number) => boolean>;
+export type Errors = Record<Validations, (value: string, param: string) => string>;
