@@ -93,6 +93,7 @@ const FeedbackForm: FC = () => {
       />
       <div className={styles.error}>{reviewTitleError || ''}</div>
       <Input type="textarea" name="review" id="review" value={review} onChange={handleChange} />
+      <div className={styles.error}>{reviewError || ''}</div>
       <Button type="submit" className={ButtonStyles.FormBtn} onClick={handleSubmit}>
         Submit Review
       </Button>

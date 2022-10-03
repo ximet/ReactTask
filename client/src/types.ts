@@ -95,4 +95,4 @@ export interface Feedback {
 }
 
 export type Validator = Record<Validations, (value: string, param: number) => boolean>;
-export type Errors = Record<Validations, (value: string, param: string) => string>;
+export type Errors = Record<Validations, (value: string, param: number) => string>;
