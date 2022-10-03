@@ -60,9 +60,9 @@ export const RadioWrapper = styled.div<StylesProps>`
     height: 1rem;
     background-color: transparent;
     border: ${({ themeType }) =>
-      themeType === 'light'
-        ? `1.75px solid ${theme.palette.grey.light}`
-        : `1.75px solid ${theme.palette.componentBackgroundDark}`};
+      `1.75px solid ${
+        themeType === 'light' ? theme.palette.grey.light : theme.palette.componentBackgroundDark
+      }`};
     z-index: 1;
     transform: translateY(-50%);
     transition: border-color 0.28s ${theme.transitions[1]};

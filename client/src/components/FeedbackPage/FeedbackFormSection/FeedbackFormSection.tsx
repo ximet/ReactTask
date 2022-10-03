@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, HTMLInputTypeAttribute } from 'react';
 
 // Types
-import { InputElement } from 'types';
+import { InputType } from 'types';
 
 // Components
 import Input from 'components/Input/Input';
@@ -10,7 +10,7 @@ import Input from 'components/Input/Input';
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
-enum FeedbackFormElement {
+enum FeedbackFormInput {
   name = 'name',
   rating = 'rating',
   reasons = 'reasons',
@@ -20,32 +20,32 @@ enum FeedbackFormElement {
 }
 
 type FeedbackForm = {
-  [key in FeedbackFormElement]: {
+  [key in FeedbackFormInput]: {
     label: string;
-    elementType: InputElement;
-    elementConfig: {
+    inputType: InputType;
+    inputConfig: {
       type?: HTMLInputTypeAttribute;
       placeholder?: string;
       rows?: number;
-      options?: Record<string, unknown>;
+      options?: Record<string, string | number>;
     };
   };
 };
 
 const FeedbackFormSection: FunctionComponent = () => {
   const [feedbackForm, setFeebackForm] = useState<FeedbackForm>({
-    name: {
+    [FeedbackFormInput.name]: {
       label: '1. What is your name?',
-      elementType: 'input',
-      elementConfig: {
+      inputType: 'input',
+      inputConfig: {
         type: 'input',
         placeholder: 'Please tell us your full name...'
       }
     },
-    rating: {
+    [FeedbackFormInput.rating]: {
       label: '2. Rate your experience with our app.',
-      elementType: 'rating',
-      elementConfig: {
+      inputType: 'rating',
+      inputConfig: {
         type: 'radio',
         options: {
           'rating-1': 1,
@@ -56,26 +56,26 @@ const FeedbackFormSection: FunctionComponent = () => {
         }
       }
     },
-    reasons: {
+    [FeedbackFormInput.reasons]: {
       label: '3. Tell us your reasons for giving this score.',
-      elementType: 'textarea',
-      elementConfig: {
+      inputType: 'textarea',
+      inputConfig: {
         placeholder: 'Please state your reasons here...',
         rows: 3
       }
     },
-    suggestions: {
+    [FeedbackFormInput.suggestions]: {
       label: '4. Anything that can be improved?',
-      elementType: 'textarea',
-      elementConfig: {
+      inputType: 'textarea',
+      inputConfig: {
         placeholder: 'Please tell us what to improve, if any...',
         rows: 3
       }
     },
-    recommend: {
+    [FeedbackFormInput.recommend]: {
       label: '5. Would you recommend this app to someone else?',
-      elementType: 'radio',
-      elementConfig: {
+      inputType: 'radio',
+      inputConfig: {
         type: 'radio',
         options: {
           'option-1': 'Yes',
@@ -83,10 +83,10 @@ const FeedbackFormSection: FunctionComponent = () => {
         }
       }
     },
-    more: {
+    [FeedbackFormInput.more]: {
       label: '6. Care to share more?',
-      elementType: 'textarea',
-      elementConfig: {
+      inputType: 'textarea',
+      inputConfig: {
         placeholder: 'Anything more?...',
         rows: 3
       }
@@ -106,12 +106,8 @@ const FeedbackFormSection: FunctionComponent = () => {
           <form>
             {formElementsArray.map(({ id, config }) => (
               <S.FeedbackFormGroup key={id}>
-                <S.FeedbackFormLabel htmlFor="name">{config.label}</S.FeedbackFormLabel>
-                <Input
-                  elementType={config.elementType}
-                  id={id}
-                  elementConfig={config.elementConfig}
-                />
+                <S.FeedbackFormLabel htmlFor={id}>{config.label}</S.FeedbackFormLabel>
+                <Input inputType={config.inputType} id={id} inputConfig={config.inputConfig} />
               </S.FeedbackFormGroup>
             ))}
           </form>

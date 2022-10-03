@@ -102,16 +102,16 @@ export interface StylesProps {
 
 export type ChangeEventType = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
-export type InputElement = 'input' | 'textarea' | 'radio' | 'rating';
+export type InputType = 'input' | 'textarea' | 'radio' | 'rating';
 
 export interface InputProps {
-  elementType: InputElement;
+  inputType: InputType;
   id?: string;
-  elementConfig: {
+  inputConfig: {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
     rows?: number;
-    options?: Record<string, unknown>;
+    options?: Record<string, string | number>;
   };
   theme?: string;
   onChange?: (e: ChangeEventType) => void;

@@ -10,43 +10,28 @@ import { IconStar } from 'assets/images/svg';
 import { Flex } from 'styles/global';
 import * as S from './StarRating.styles';
 
-interface StarRatingProps extends InputProps {
-  numOfStars?: number;
-}
-
-const StarRating: FunctionComponent<StarRatingProps> = ({
-  id,
-  numOfStars,
-  theme,
-  elementConfig,
-  ...otherProps
-}) => {
+const StarRating: FunctionComponent<InputProps> = ({ id, theme, inputConfig, ...otherProps }) => {
   const [rating, setRating] = useState<number | null>(null);
   const [ratingHovered, setRatingHovered] = useState<number | null>(null);
 
   return (
     <S.StarRating>
       <Flex justifyFlexStart>
-        {[...Array(numOfStars)].map((_, i) => {
-          const ratingValue = i + 1;
+        {[...Array(Object.values(inputConfig.options!).length)].map((_, i) => {
+          const ratingValue = Object.values(inputConfig.options!)[i] as number;
           return (
             <S.StarWrapper
-              key={`star-${i + 1}`}
+              key={`star-${ratingValue}`}
               themeType={theme}
-              active={
-                !!(
-                  (ratingHovered && ratingValue <= ratingHovered) ||
-                  (rating && ratingValue <= (ratingHovered || rating))
-                )
-              }
+              active={!!(ratingValue <= (ratingHovered! || rating!))}
             >
               <label htmlFor={id}>
                 <S.Star
                   name={id}
-                  {...elementConfig}
-                  onClick={() => setRating && setRating(ratingValue)}
-                  onMouseEnter={() => setRatingHovered && setRatingHovered(ratingValue)}
-                  onMouseLeave={() => setRatingHovered && setRatingHovered(null)}
+                  {...inputConfig}
+                  onClick={() => setRating(ratingValue)}
+                  onMouseEnter={() => setRatingHovered(ratingValue)}
+                  onMouseLeave={() => setRatingHovered(null)}
                   {...otherProps}
                 />
                 <IconStar />

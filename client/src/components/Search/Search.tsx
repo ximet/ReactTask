@@ -67,8 +67,8 @@ const Search: FunctionComponent = () => {
     <S.Search ref={searchRef} themeType={theme}>
       <IconSearch />
       <Input
-        elementType="input"
-        elementConfig={{ type: 'search', placeholder: 'Search city...' }}
+        inputType="input"
+        inputConfig={{ type: 'search', placeholder: 'Search city...' }}
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         clearEnabled
