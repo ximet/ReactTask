@@ -1,7 +1,8 @@
+import { Errors } from 'types';
 import { capitalizeFirstLetter } from 'utils/stringCorrections';
 import { Validations } from './validatorStrings';
 
-export const ERRORS = {
+export const ERRORS: Errors = {
   [Validations.REQUIRED]: (field: string) => {
     return `This ${capitalizeFirstLetter(field)} field is required!`;
   },

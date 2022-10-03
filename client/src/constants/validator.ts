@@ -1,7 +1,8 @@
+import { Validator } from 'types';
 import { validateEmail, validateName } from 'utils/validateRegex';
 import { Validations } from './validatorStrings';
 
-export const VALIDATOR = {
+export const VALIDATOR: Validator = {
   [Validations.REQUIRED]: (value: string) => {
     return !value.length;
   },
