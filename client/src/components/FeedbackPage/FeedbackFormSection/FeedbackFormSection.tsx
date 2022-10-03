@@ -1,7 +1,11 @@
-import React, { FunctionComponent, HTMLInputTypeAttribute } from 'react';
+import React, { FunctionComponent, HTMLInputTypeAttribute, useState, useEffect } from 'react';
+
+// Custom hooks
+import useBeforeUnload from 'hooks/useBeforeUnload';
+import usePrompt from 'hooks/usePrompt';
 
 // Types
-import { InputType } from 'types';
+import type { InputType, ChangeEventType } from 'types';
 
 // Components
 import Input from 'components/Input/Input';
@@ -21,14 +25,15 @@ enum FeedbackFormInput {
 
 type FeedbackForm = {
   [key in FeedbackFormInput]: {
-    label: string;
-    inputType: InputType;
-    inputConfig: {
+    label?: string;
+    inputType?: InputType;
+    inputConfig?: {
       type?: HTMLInputTypeAttribute;
       placeholder?: string;
       rows?: number;
       options?: Record<string, string | number>;
     };
+    value?: string;
   };
 };
 
@@ -92,11 +97,55 @@ const feedbackFormConfig: FeedbackForm = {
   }
 };
 
+const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
+  id: entry[0],
+  config: entry[1]
+}));
+
 const FeedbackFormSection: FunctionComponent = () => {
-  const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
-    id: entry[0],
-    config: entry[1]
-  }));
+  const [feedbackForm, setFeedbackForm] = useState<FeedbackForm>({
+    [FeedbackFormInput.name]: {
+      value: ''
+    },
+    [FeedbackFormInput.rating]: {
+      value: ''
+    },
+    [FeedbackFormInput.reasons]: {
+      value: ''
+    },
+    [FeedbackFormInput.suggestions]: {
+      value: ''
+    },
+    [FeedbackFormInput.recommend]: {
+      value: ''
+    },
+    [FeedbackFormInput.more]: {
+      value: ''
+    }
+  });
+  const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
+
+  const handleInputChange = (e: ChangeEventType, inputName: FeedbackFormInput) => {
+    const updatedFeebackForm = {
+      ...feedbackForm,
+      [inputName]: {
+        ...feedbackForm[inputName],
+        value: e.currentTarget.value
+      }
+    };
+
+    setFeedbackForm(updatedFeebackForm);
+  };
+
+  useEffect(() => {
+    setIsFormDirty(Object.values(feedbackForm).some(input => input.value));
+  }, [feedbackForm]);
+
+  useBeforeUnload({
+    when: isFormDirty
+  });
+
+  usePrompt('Are you sure you want to leave?', isFormDirty);
 
   return (
     <S.FeedbackFormSection id="survey">
@@ -107,7 +156,12 @@ const FeedbackFormSection: FunctionComponent = () => {
             {formElementsArray.map(({ id, config }) => (
               <S.FeedbackFormGroup key={id}>
                 <S.FeedbackFormLabel htmlFor={id}>{config.label}</S.FeedbackFormLabel>
-                <Input inputType={config.inputType} id={id} inputConfig={config.inputConfig} />
+                <Input
+                  inputType={config.inputType}
+                  id={id}
+                  inputConfig={config.inputConfig}
+                  onChange={e => handleInputChange(e, id as FeedbackFormInput)}
+                />
               </S.FeedbackFormGroup>
             ))}
           </form>

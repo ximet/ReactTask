@@ -105,9 +105,9 @@ export type ChangeEventType = ChangeEvent<HTMLInputElement | HTMLTextAreaElement
 export type InputType = 'input' | 'textarea' | 'radio' | 'rating';
 
 export interface InputProps {
-  inputType: InputType;
+  inputType?: InputType;
   id?: string;
-  inputConfig: {
+  inputConfig?: {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
     rows?: number;

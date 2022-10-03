@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-router/dist/lib/context.d.ts b/node_modules/react-router/dist/lib/context.d.ts
+index e52f24f..08c5f37 100644
+--- a/node_modules/react-router/dist/lib/context.d.ts
++++ b/node_modules/react-router/dist/lib/context.d.ts
+@@ -38,6 +38,7 @@ export interface NavigateOptions {
+  * and/or location were to be read directly from the history instance.
+  */
+ export interface Navigator {
++    block: History["block"];
+     createHref: History["createHref"];
+     go: History["go"];
+     push(to: To, state?: any, opts?: NavigateOptions): void;
