@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
-import { colorChange } from 'styles/mixins';
+import { colorChange, radioWrapperRoot } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -33,8 +33,14 @@ export const Textarea = styled.textarea<StylesProps>`
   resize: none;
 `;
 
-export const RadioWrapper = styled.div`
-  position: relative;
+export const InputGroup = styled.div`
+  div:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+`;
+
+export const RadioWrapper = styled.div<StylesProps>`
+  ${radioWrapperRoot}
 
   label {
     margin-left: 0.5rem;
@@ -53,7 +59,10 @@ export const RadioWrapper = styled.div`
     width: 1rem;
     height: 1rem;
     background-color: transparent;
-    border: 1.75px solid ${theme.palette.primary.dark};
+    border: ${({ themeType }) =>
+      themeType === 'light'
+        ? `1.75px solid ${theme.palette.grey.light}`
+        : `1.75px solid ${theme.palette.componentBackgroundDark}`};
     z-index: 1;
     transform: translateY(-50%);
     transition: border-color 0.28s ${theme.transitions[1]};
@@ -76,17 +85,6 @@ export const RadioWrapper = styled.div`
   input:checked + label::after {
     transform: scale(1, 1) translateY(-50%);
   }
-
-  input {
-    opacity: 0;
-    z-index: 0;
-  }
 `;
 
 export const Radio = styled.input``;
-
-export const InputGroup = styled.div`
-  ${RadioWrapper}:not(:last-of-type) {
-    margin-right: 1rem;
-  }
-`;

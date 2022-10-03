@@ -27,7 +27,7 @@ type FeedbackForm = {
       type?: HTMLInputTypeAttribute;
       placeholder?: string;
       rows?: number;
-      options?: Record<string, string>;
+      options?: Record<string, unknown>;
     };
   };
 };
@@ -44,9 +44,16 @@ const FeedbackFormSection: FunctionComponent = () => {
     },
     rating: {
       label: '2. Rate your experience with our app.',
-      elementType: 'radio',
+      elementType: 'rating',
       elementConfig: {
-        type: 'radio'
+        type: 'radio',
+        options: {
+          'rating-1': 1,
+          'rating-2': 2,
+          'rating-3': 3,
+          'rating-4': 4,
+          'rating-5': 5
+        }
       }
     },
     reasons: {
