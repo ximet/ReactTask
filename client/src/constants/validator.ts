@@ -1,22 +1,23 @@
 import { validateEmail, validateName } from 'utils/validateRegex';
+import { Validations } from './validatorStrings';
 
 export const VALIDATOR = {
-  required: (value: string) => {
-    return !!(value.length === 0);
+  [Validations.REQUIRED]: (value: string) => {
+    return !value.length;
   },
-  requiredRating: value => {
-    return !!(+value === 0);
+  [Validations.REQUIRED_RATING]: (value: string) => {
+    return !+value;
   },
-  string: (value: string) => {
+  [Validations.STRING]: (value: string) => {
     return !validateName.test(value);
   },
-  minLength: (value: string, param: number) => {
-    return !!(value.length < param);
+  [Validations.MIN_LENGTH]: (value: string, param: number) => {
+    return value.length < param;
   },
-  maxLength: (value: string, param: number) => {
-    return !!(value.length > param);
+  [Validations.MAX_LENGTH]: (value: string, param: number) => {
+    return value.length > param;
   },
-  validateEmail: (value: string) => {
+  [Validations.VALIDATE_EMAIL]: (value: string) => {
     return !validateEmail.test(value);
   }
 };
