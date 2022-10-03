@@ -15,17 +15,18 @@ import { Flex } from 'styles/global';
 import * as S from './Input.styles';
 
 const INPUT = {
-  input: ({ theme, handleClearValue, clearEnabled, ...otherProps }: InputProps) => (
+  input: ({ inputConfig, theme, handleClearValue, clearEnabled, ...otherProps }: InputProps) => (
     <S.Input
       themeType={theme}
       onBlur={e => {
         if (clearEnabled && handleClearValue) handleClearValue(e);
       }}
+      {...inputConfig}
       {...otherProps}
     />
   ),
-  textarea: ({ theme, ...otherProps }: InputProps) => (
-    <S.Textarea themeType={theme} {...otherProps} />
+  textarea: ({ inputConfig, theme, ...otherProps }: InputProps) => (
+    <S.Textarea themeType={theme} {...inputConfig} {...otherProps} />
   ),
   radio: ({ id, inputConfig, theme, ...otherProps }: InputProps) => (
     <S.InputGroup>
