@@ -34,12 +34,12 @@
 }
 
 .section-hourly {
-  display: grid;
+  /* display: grid;
   justify-content: center;
   column-gap: 1rem;
   row-gap: 1rem;
   grid-template-columns: repeat(8, minmax(10rem, 20rem));
-  grid-template-rows: repeat(3, max-content);
+  grid-template-rows: repeat(3, max-content); */
 }
 
 .weather-section-wrapper {
@@ -69,13 +69,80 @@
   box-shadow: 0px 0.5rem 1rem 0.2rem var(--card-shadow);
 }
 
+.hourly-card__title {
+  font-size: 2.4rem;
+}
+
+.hourly-card {
+  margin: 0 auto 2rem;
+  max-width: max-content;
+}
+
+.hourly-columns {
+  display: flex;
+  justify-content: space-evenly;
+  column-gap: 10rem;
+}
+
+.hourly-column:first-child {
+  text-align: left;
+}
+
+.hourly-column:last-child {
+  text-align: right;
+}
+
+.hourly-column {
+  line-height: 150%;
+}
+
+.hour-labels {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.hourly-input-range,
+.hour-labels {
+  width: 50%;
+}
+
+.hourly-input-range {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 1rem;
+  border-radius: 1rem;
+  background: #d3d3d3;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+.hourly-input-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #ffff00;
+  cursor: pointer;
+}
+
+.hourly-input-range::-moz-range-thumb {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #ffff00;
+  cursor: pointer;
+}
+
 .daily-card {
   max-width: 20rem;
   width: 100%;
 }
 
 .hourly-card__img {
-  max-width: 100px;
+  max-width: 20rem;
   width: 100%;
   text-align: center;
   object-fit: contain;
@@ -122,18 +189,25 @@
   font-size: 2rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  border-radius: 1rem;
   border: none;
+  background-color: #ffffff;
+}
+
+.view-btn:first-child {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.view-btn:last-child {
+  border-radius: 0 1rem 1rem 0;
 }
 
 .view-btns-wrapper {
   display: flex;
-  column-gap: 3rem;
   margin-bottom: 1.5rem;
 }
 
 .active-view-btn {
-  background-color: #ffff00;
+  background: linear-gradient(180deg, #ffffff 20%, #ffff00 120%);
 }
 
 @media (max-width: 991px) {

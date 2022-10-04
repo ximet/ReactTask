@@ -1,7 +1,7 @@
 import styles from './Main.css';
 import commonStyle from '../../styles/commonStyles.css';
 
-import React, { useContext, FC, useEffect, useState, ChangeEvent } from 'react';
+import React, { useContext, FC, useEffect, useState, ChangeEvent, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { positionContext } from 'context/positionContext';
@@ -11,10 +11,10 @@ import { CurrentWeatherType, HourlyWeatherType, DailyWeatherType } from 'types/w
 import { LocationInfoType } from 'types/cityInfoType';
 import { defaultLocationInfo } from './defaultStates';
 import MainCard from './MainCard';
-import MainHourlyCard from './MainHourlyCard';
 import MainDailyCard from './MainDailyCard';
 import GraphHourly from './GraphHourly';
 import GraphDaily from './GraphDaily';
+import HourlySection from './HourlySection';
 
 const Main: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -38,7 +38,9 @@ const Main: FC = () => {
     Promise.all([
       getCity(lon, lat),
       getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat),
-      getWeather<{ forecast: HourlyWeatherType[] }>('/forecast/hourly/', lon, lat)
+      getWeather<{ forecast: HourlyWeatherType[] }>('/forecast/hourly/', lon, lat, {
+        dataset: 'full'
+      })
     ]).then(res => {
       setLocation(res[0]);
       setCurrentWeather(res[1].current);
@@ -92,11 +94,7 @@ const Main: FC = () => {
           <section className={styles['weather-section-wrapper']}>
             <h2 className={styles['weather-section-title']}>Hourly weather</h2>
             {view === 'cards' ? (
-              <div className={styles['section-hourly']}>
-                {hourlyWeather.map(el => (
-                  <MainHourlyCard key={el.time} hourlyWeather={el} />
-                ))}
-              </div>
+              <HourlySection weather={hourlyWeather} />
             ) : (
               <GraphHourly weather={hourlyWeather} />
             )}
