@@ -1,0 +1,16 @@
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+.pageNotFound h1 {
+  padding: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+}
+
+.img {
+  height: 128px;
+}

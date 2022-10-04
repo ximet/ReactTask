@@ -1,0 +1,28 @@
+.aboutContainer {
+  width: 40%;
+  margin: 0 auto;
+  padding: 36px;
+
+  text-align: center;
+  border: 3px solid var(--color-canvas-primary);
+  border-radius: 12px;
+
+  color: var(--color-text-secondary);
+  border-image: linear-gradient(
+      to left,
+      var(--color-canvas-quaternary),
+      var(--color-canvas-tertiary)
+    )
+    0 0 1;
+}
+
+.aboutContainer h1 {
+  margin-bottom: 18px;
+
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.aboutContainer p {
+  font-size: 18px;
+}

@@ -1,9 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
-import DropDownMenu from './components/DropDownMenu/DropDownMenu';
-import About from './components/About/About.js';
+import Home from './Pages/Home/Home.js';
+import About from './Pages/About/About.js';
+import Page404 from './Pages/Page404/Page404.js';
 
 import useAuthorize from './customHooks/useAuthorize';
 
@@ -17,8 +18,9 @@ const App = () => {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<DropDownMenu />} />
-          <Route path="about" element={<About />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </main>
       <Footer />

@@ -9,11 +9,10 @@ const Navigation = () => {
     <nav>
       <ul className={styles.navigation}>
         <li>
-          <NavLink to="/" style={checkIsActive}>
+          <NavLink to="/" end style={checkIsActive}>
             Home
           </NavLink>
         </li>
-
         <li>
           <NavLink to="/about" style={checkIsActive}>
             About
