@@ -8,12 +8,15 @@ export const API_END_POINTS = {
 export const BAERER = 'Bearer';
 export const TOKEN_KEY = 'TOKEN_KEY';
 
+
 // Labes //
+export const HOME_LABEL = 'Home'
+export const ABOUT_LABEL = 'About'
 export const MAIN_TITLE_LABEL = 'Show Me The Weather';
 export const DROP_DOWN_MENU_LABEL = 'Choose a city from this list:';
 export const FOOTER_TIME_LABEL = 'Current time:';
 export const BUTTON_OK_LABEL = 'OK';
-export const ABOUT_LABEL = 'ABOUT US';
+export const ABOUT_TITLE = 'ABOUT US';
 export const PAGE404_TITLE = '404 Page Not Found';
 
 export const ABOUT_TEXT =

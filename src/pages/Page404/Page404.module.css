@@ -6,7 +6,9 @@
 }
 .pageNotFound h1 {
   padding: 12px;
+
   font-size: 28px;
+  
   font-weight: bold;
   color: var(--color-text-secondary);
 }

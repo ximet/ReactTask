@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Navigation.module.css';
 
+import { HOME_LABEL, ABOUT_LABEL } from '../constants';
+
 const Navigation = () => {
   const checkIsActive = ({ isActive }) => (isActive ? { textDecoration: 'underline' } : undefined);
 
@@ -10,12 +12,12 @@ const Navigation = () => {
       <ul className={styles.navigation}>
         <li>
           <NavLink to="/" end style={checkIsActive}>
-            Home
+            {HOME_LABEL}
           </NavLink>
         </li>
         <li>
           <NavLink to="/about" style={checkIsActive}>
-            About
+            {ABOUT_LABEL}
           </NavLink>
         </li>
       </ul>
