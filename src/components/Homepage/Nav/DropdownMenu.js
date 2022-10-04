@@ -18,6 +18,7 @@ function DropdownMenu(props) {
   const showCities = ev => {
     if (isOpen) {
       setIsOpen(false);
+      setSearchedCity({});
     } else {
       setIsOpen(true);
     }
@@ -26,14 +27,10 @@ function DropdownMenu(props) {
   const onSearch = ev => {
     setSearchedCity({ name: ev.target.value });
   };
-
-  const filteredCities = searchedCity.name
-    ? cities.filter(city => city.name.includes(searchedCity.name))
-    : cities;
-
-  const citiesList = filteredCities.map(city => (
+  
+  const citiesList = cities.sort((a, b) => a.country.localeCompare(b.country)).map(city => (
     <a key={city.id} href="#">
-      {city.name}
+      {city.name}, {city.country}
     </a>
   ));
 
