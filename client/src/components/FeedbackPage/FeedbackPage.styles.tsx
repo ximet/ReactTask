@@ -37,7 +37,9 @@ export const FeedbackHeroContent = styled.div`
 
 export const FeedbackFormSection = styled.section`
   ${sectionRoot}
-  padding: 4rem 6rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 0;
 
   h2 {
     margin-bottom: 3rem;

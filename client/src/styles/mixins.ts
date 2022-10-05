@@ -43,3 +43,11 @@ export const radioWrapperRoot = `
     z-index: 0;
   }
 `;
+
+export const noScrollbar = `
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+`;

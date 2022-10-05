@@ -9,6 +9,9 @@ import React, {
 // Types
 import { InputType, ChangeEventType, InputOptions, InputValidator, InputValidation } from 'types';
 
+// Custom hooks
+import useBeforeUnload from 'hooks/useBeforeUnload';
+
 // Components
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
@@ -246,6 +249,8 @@ const FeedbackFormSection: FunctionComponent = () => {
   useEffect(() => {
     setIsFormValid(!feedbackFormInputs.map(input => input.valid).includes(false));
   }, [feedbackFormInputs]);
+
+  useBeforeUnload({ when: isFormDirty });
 
   return (
     <S.FeedbackFormSection id="survey">

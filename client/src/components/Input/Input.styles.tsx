@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
-import { colorChange, radioWrapperRoot } from 'styles/mixins';
+import { colorChange, noScrollbar, radioWrapperRoot } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -31,6 +31,8 @@ export const Textarea = styled.textarea<StylesProps>`
   padding: 1rem 2rem;
   overflow: hidden;
   resize: none;
+  overflow-y: scroll;
+  ${noScrollbar}
 `;
 
 export const InputGroup = styled.div`
