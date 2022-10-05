@@ -2,10 +2,11 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Navigation.module.css';
 
-import { HOME_LABEL, ABOUT_LABEL } from '../constants';
+const HOME_LABEL = 'Home';
+const ABOUT_LABEL = 'About';
 
 const Navigation = () => {
-  const checkIsActive = ({ isActive }) => (isActive ? { textDecoration: 'underline' } : undefined);
+  const checkIsActive = ({ isActive }) => (isActive ? { textDecoration: 'underline' } : {});
 
   return (
     <nav>

@@ -1,5 +1,6 @@
 import styles from './Page404.module.css';
-import { PAGE404_TITLE } from '../../components/constants';
+
+export const PAGE404_TITLE = '404 Page Not Found';
 
 const Page404 = () => {
   return (

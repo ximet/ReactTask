@@ -1,13 +1,17 @@
 import React from 'react';
 import styles from './About.module.css';
 
-import { ABOUT_TEXT, ABOUT_TITLE } from '../../components/constants';
+const ABOUT_LABELS = {
+  TITLE: 'ABOUT US',
+  TEXT:
+    'This application is created for educational purposes. It uses "Foreca Weather API" which provides access to real-time weather information for millions of locations worldwide.'
+};
 
 const About = () => {
   return (
     <div className={styles.aboutContainer}>
-      <h1>{ABOUT_TITLE}</h1>
-      <p>{ABOUT_TEXT}</p>
+      <h1>{ABOUT_LABELS.TITLE}</h1>
+      <p>{ABOUT_LABELS.TEXT}</p>
     </div>
   );
 };

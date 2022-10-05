@@ -1,8 +1,9 @@
 import styles from './Header.module.css';
 import Navigation from '../Navigation/Navigation';
-import { MAIN_TITLE_LABEL } from '../constants';
 
 import { Link } from 'react-router-dom';
+
+const MAIN_TITLE_LABEL = 'Show Me The Weather';
 
 const Header = () => {
   return (
