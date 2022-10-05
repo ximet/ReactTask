@@ -6,10 +6,6 @@ import React, {
   useEffect
 } from 'react';
 
-// Custom hooks
-import useBeforeUnload from 'hooks/useBeforeUnload';
-import usePrompt from 'hooks/usePrompt';
-
 // Types
 import { InputType, ChangeEventType, InputOptions, InputValidator, InputValidation } from 'types';
 
@@ -250,9 +246,6 @@ const FeedbackFormSection: FunctionComponent = () => {
   useEffect(() => {
     setIsFormValid(!feedbackFormInputs.map(input => input.valid).includes(false));
   }, [feedbackFormInputs]);
-
-  useBeforeUnload({ when: isFormDirty });
-  usePrompt('Are you sure you want to leave?', isFormDirty);
 
   return (
     <S.FeedbackFormSection id="survey">
