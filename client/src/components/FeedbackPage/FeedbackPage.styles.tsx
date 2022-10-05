@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
+
 import { HEADER_HEIGHT } from 'styles/constants';
 import { sectionRoot } from 'styles/mixins';
 
