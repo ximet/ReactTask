@@ -11,27 +11,27 @@ type HourlySectionProps = {
 
 const CORRECT_POSITION_COEFFICIENT = 4.2;
 
+const getTimeLabel = (time: string): string => {
+  const date = convertTime(time);
+
+  return `${date.hours}:${date.minutes}`;
+};
+
 const getHourLabels = (weather: HourlyWeatherType[], middleLabelsCount: number): string[] => {
   const labels: string[] = [];
 
-  const step = weather.length / (middleLabelsCount + 1);
+  const step = Math.floor(weather.length / (middleLabelsCount + 1));
 
   const firstEl = weather.at(0);
   const lastEl = weather.at(-1);
 
-  labels.push(`
-      ${convertTime(firstEl!.time).hours}:${convertTime(firstEl!.time).minutes}
-    `);
+  labels.push(getTimeLabel(firstEl!.time));
 
   for (let i = step - 1; i < weather.length - step; i = i + step) {
-    const hours = convertTime(weather[i].time).hours;
-    const minutes = convertTime(weather[i].time).minutes;
-    labels.push(`${hours}:${minutes}`);
+    labels.push(getTimeLabel(weather[i].time));
   }
 
-  labels.push(`
-      ${convertTime(lastEl!.time).hours}:${convertTime(lastEl!.time).minutes}
-    `);
+  labels.push(getTimeLabel(lastEl!.time));
 
   return labels;
 };
@@ -57,8 +57,6 @@ const HourlySection: FC<HourlySectionProps> = ({ weather }) => {
 
   const hourLabels = useMemo(() => getHourLabels(weather, 2), [weather]);
 
-  const date = convertTime(currentWeatherByHour!.time);
-
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const value: number = e.target.valueAsNumber;
 
@@ -78,9 +76,7 @@ const HourlySection: FC<HourlySectionProps> = ({ weather }) => {
     <div className={styles['section-hourly']}>
       <MainHourlyCard hourlyWeather={currentWeatherByHour!} />
       <div className={styles['hourly-input-value']}>
-        <span ref={inputLabelRef}>
-          {date.hours}:{date.minutes}
-        </span>
+        <span ref={inputLabelRef}>{getTimeLabel(currentWeatherByHour!.time)}</span>
       </div>
       <input
         type="range"
