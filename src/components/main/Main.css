@@ -127,6 +127,40 @@
   cursor: pointer;
 }
 
+.hourly-input-value {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.hourly-input-value span {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  transform: translate(0%, -100%) scale(0);
+  border-radius: 50% 50% 0 50%;
+  z-index: 100;
+  color: #0000cd;
+  transition: all 0.2s linear;
+}
+
+.hourly-input-value span.show {
+  transform: translate(-33%, -100%) scale(1);
+}
+
+.hourly-input-value span::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: -30%;
+  width: 100%;
+  height: 100%;
+  background-color: #ffff00;
+  transform: rotate(45deg);
+  border-radius: 50% 50% 0 50%;
+  z-index: -1;
+}
+
 .daily-card {
   max-width: 20rem;
   width: 100%;
