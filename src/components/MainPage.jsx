@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useFetch from '../hooks/useFetch';
 import styles from '../styles.scss';
 import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
-import { allItems } from '../helper/variables';
+import { API_EDPOIONTS, STORAGE } from '../helper/variables';
+import ModalCountries from './modals/modalCountries';
 
 const { mainPage, search, buttons } = styles;
 export default function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [items, setItems] = useState(allItems);
-  const filteredItems = items.filter(item =>
-    item.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-  );
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery);
+  function inpuHandler(e) {
+    setSearchQuery(e.target.value);
+  }
+
+  const checkedItems = Boolean(data.length) ? data : [];
   return (
     <div className={mainPage}>
+      <ModalCountries
+        modal={isModalOpen}
+        onModalClose={() => setModalOpen(false)}
+        content={checkedItems}
+      />
       <div className={search}>
         <p>Find the right location</p>
+        <p>{error}</p>
         <Input
           value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
+          onChangeInput={e => inpuHandler(e)}
           placeholder="write here"
         ></Input>
-      </div>
-      <div className={buttons}>
-        {filteredItems.map(item => (
-          <Button text={item} key={item}></Button>
-        ))}
+        <Button text="show countries" onClick={() => setModalOpen(true)} />
       </div>
     </div>
   );
