@@ -24,20 +24,11 @@ export const AboutHeroContent = styled.div`
   }
 `;
 
-export const AboutHeadline = styled.h1`
-  span {
-    display: block;
-    margin-bottom: 1rem;
-    font-size: 4.25rem;
-    line-height: 1;
-    color: ${theme.palette.primary.dark};
-  }
-`;
-
 export const AboutHeroImage = styled.picture`
   position: relative;
   width: 100%;
   height: 100%;
+  align-self: center;
 
   img {
     ${imageRoot}

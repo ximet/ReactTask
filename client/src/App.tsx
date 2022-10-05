@@ -14,12 +14,14 @@ import Layout from 'hoc/Layout/Layout';
 // Lazy components
 const LocationPage = React.lazy(() => import('components/LocationPage/LocationPage'));
 const AboutPage = React.lazy(() => import('components/AboutPage/AboutPage'));
+const FeedbackPage = React.lazy(() => import('components/FeedbackPage/FeedbackPage'));
 
 // Routes
 const routes = [
   { path: '/', name: 'Home', Component: LocationPage },
   { path: '/locations/:locationId', name: 'Location', Component: LocationPage },
-  { path: '/about', name: 'About', Component: AboutPage }
+  { path: '/about', name: 'About', Component: AboutPage },
+  { path: '/feedback', name: 'Feedback', Component: FeedbackPage }
 ];
 
 const App: FunctionComponent = () => {

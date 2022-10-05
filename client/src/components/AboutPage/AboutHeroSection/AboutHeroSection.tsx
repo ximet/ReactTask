@@ -10,19 +10,19 @@ import heroImg1 from 'assets/images/dashboard-landing.png';
 import heroImg2 from 'assets/images/search-landing.png';
 
 // Styles
-import { Container, Flex } from 'styles/global';
+import { Container, Flex, Headline } from 'styles/global';
 import * as S from '../AboutPage.styles';
 
 const AboutHeroSection: FunctionComponent = () => (
   <S.AboutHeroSection>
     <Wave />
     <Container>
-      <Flex>
+      <Flex alignFlexStart>
         <S.AboutHeroContent>
-          <S.AboutHeadline>
-            <span>Weather App</span>
-            Find your weather predictions in your city
-          </S.AboutHeadline>
+          <Headline>
+            <span>Learn More</span>
+            We provide weather predictions in your city
+          </Headline>
           <p>Easy steps to predict the weather and make your day easier</p>
           <Link to="/">
             <Button>Get Started</Button>
