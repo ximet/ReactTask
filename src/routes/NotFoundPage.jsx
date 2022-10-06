@@ -5,7 +5,7 @@ import Image from '../UI/images/image';
 export default function NotFoundPage() {
   return (
     <div>
-      <Image image={image404} />
+      <Image image={image404} alt="404 Page not found" />
     </div>
   );
 }
