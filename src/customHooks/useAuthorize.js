@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
+import { TOKEN } from '../services/constants.js';
 
 const URL = 'http://localhost:5020/auth';
-const token = 'token';
 
 const useAuthorize = () => {
   useEffect(() => {
     (async () => {
-      if (!localStorage.getItem(token)) {
+      if (!localStorage.getItem(TOKEN)) {
         const response = await fetch(URL);
         const { access_token } = await response.json();
-        localStorage.setItem(token, access_token);
+        localStorage.setItem(TOKEN, access_token);
       }
     })();
   }, []);
 };
 
-export { useAuthorize, token };
+export { useAuthorize };

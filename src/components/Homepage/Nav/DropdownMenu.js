@@ -27,12 +27,14 @@ function DropdownMenu(props) {
   const onSearch = ev => {
     setSearchedCity({ name: ev.target.value });
   };
-  
-  const citiesList = cities.sort((a, b) => a.country.localeCompare(b.country)).map(city => (
-    <a key={city.id} href="#">
-      {city.name}, {city.country}
-    </a>
-  ));
+
+  const citiesList = cities
+    .sort((a, b) => a.country.localeCompare(b.country))
+    .map(city => (
+      <a key={city.id} href="#">
+        {city.name}, {city.country}
+      </a>
+    ));
 
   const dropdownContent = isOpen ? (
     <div className={styles.dropdownContent}>
