@@ -51,6 +51,7 @@ body {
     height: auto;
   }
 }
+
 .appheader {
   background-color: $colorUIPrimary;
   height: 55px;
@@ -59,25 +60,16 @@ body {
   align-items: center;
   position: sticky;
   top: 0;
+  padding: 0px 90px;
   a {
-    text-decoration: none;
-  }
-  p {
-    margin: 0;
-    padding-left: 90px;
     color: $colorTextPrimary;
-    font-size: 25px;
-    font-weight: 700;
-    text-decoration: none;
+    padding: 3px;
+    border: 3.5px solid $colorUISecondary;
+    font-weight: bold;
   }
-  nav {
-    padding-right: 90px;
-    a {
-      color: $colorTextPrimary;
-      padding: 3px;
-      border: 3.5px solid $colorUISecondary;
-      font-weight: bold;
-    }
+  .logo {
+    text-decoration: none;
+    border: 0px;
   }
 }
 
