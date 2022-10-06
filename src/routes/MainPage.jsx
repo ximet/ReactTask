@@ -7,7 +7,7 @@ import { API_EDPOIONTS, STORAGE } from '../helper/variables';
 import ModalCountries from '../components/modals/modalCountries';
 
 const { mainPage, search, buttons } = styles;
-export default function MainPage() {
+function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
   const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery);
@@ -36,3 +36,5 @@ export default function MainPage() {
     </div>
   );
 }
+
+export default MainPage;

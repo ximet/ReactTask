@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles.scss';
 
-export default function About() {
+function About() {
   return (
     <div className={styles.about}>
       <p>
@@ -17,3 +17,5 @@ export default function About() {
     </div>
   );
 }
+
+export default About;
