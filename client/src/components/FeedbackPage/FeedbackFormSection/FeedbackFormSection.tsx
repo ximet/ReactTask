@@ -1,13 +1,7 @@
-import React, {
-  FunctionComponent,
-  HTMLInputTypeAttribute,
-  FormEvent,
-  useState,
-  useEffect
-} from 'react';
+import React, { FunctionComponent, FormEvent, useState, useEffect, useCallback } from 'react';
 
 // Types
-import { InputType, ChangeEventType, InputOptions, InputValidator, InputValidation } from 'types';
+import { ChangeEventType } from 'types';
 
 // Custom hooks
 import useBeforeUnload from 'hooks/useBeforeUnload';
@@ -18,117 +12,17 @@ import Button from 'components/Button/Button';
 
 // Utils
 import inputValidator from 'utils/inputValidator';
+import {
+  FeedbackForm,
+  FeedbackFormInput,
+  feedbackFormConfig,
+  initialState,
+  createUpdatedForm
+} from './FeedbackFormSection.utils';
 
 // Styles
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
-
-enum FeedbackFormInput {
-  name = 'name',
-  rating = 'rating',
-  reasons = 'reasons',
-  suggestions = 'suggestions',
-  recommend = 'recommend',
-  more = 'more'
-}
-
-type FeedbackForm = {
-  [key in FeedbackFormInput]: {
-    label?: string;
-    inputType?: InputType;
-    inputConfig?: {
-      type?: HTMLInputTypeAttribute;
-      placeholder?: string;
-      rows?: number;
-      options?: InputOptions;
-    };
-    validation?: InputValidation;
-    value?: string;
-    valid?: boolean;
-    errMsg?: string;
-  };
-};
-
-const feedbackFormConfig: FeedbackForm = {
-  [FeedbackFormInput.name]: {
-    label: 'What is your name?',
-    inputType: 'input',
-    inputConfig: {
-      type: 'input',
-      placeholder: 'Please tell us your full name...'
-    },
-    validation: {
-      [InputValidator.required]: true,
-      [InputValidator.minLength]: 3,
-      [InputValidator.maxLength]: 16
-    }
-  },
-  [FeedbackFormInput.rating]: {
-    label: 'Rate your experience with our app.',
-    inputType: 'rating',
-    inputConfig: {
-      type: 'radio',
-      options: {
-        'rating-1': 1,
-        'rating-2': 2,
-        'rating-3': 3,
-        'rating-4': 4,
-        'rating-5': 5
-      }
-    },
-    validation: {
-      [InputValidator.required]: true
-    }
-  },
-  [FeedbackFormInput.reasons]: {
-    label: 'Tell us your reasons for giving this score.',
-    inputType: 'textarea',
-    inputConfig: {
-      placeholder: 'Please state your reasons here...',
-      rows: 3
-    },
-    validation: {
-      [InputValidator.required]: true,
-      [InputValidator.maxLength]: 250
-    }
-  },
-  [FeedbackFormInput.suggestions]: {
-    label: 'Anything that can be improved?',
-    inputType: 'textarea',
-    inputConfig: {
-      placeholder: 'Please tell us what to improve, if any...',
-      rows: 3
-    },
-    validation: {
-      [InputValidator.maxLength]: 250
-    }
-  },
-  [FeedbackFormInput.recommend]: {
-    label: 'Would you recommend this app to someone else?',
-    inputType: 'radio',
-    inputConfig: {
-      type: 'radio',
-      options: {
-        'option-1': 'Yes',
-        'option-2': 'No'
-      }
-    },
-    validation: {
-      [InputValidator.required]: true
-    }
-  },
-  [FeedbackFormInput.more]: {
-    label: 'Care to share more?',
-    inputType: 'textarea',
-    inputConfig: {
-      placeholder: 'Anything more?...',
-      rows: 3
-    },
-    validation: {
-      [InputValidator.maxLength]: 250
-    }
-  }
-};
 
 const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
   id: entry[0],
@@ -137,38 +31,7 @@ const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
 
 const FeedbackFormSection: FunctionComponent = () => {
   // State
-  const [feedbackForm, setFeedbackForm] = useState<FeedbackForm>({
-    [FeedbackFormInput.name]: {
-      value: '',
-      valid: false,
-      errMsg: ''
-    },
-    [FeedbackFormInput.rating]: {
-      value: '',
-      valid: false,
-      errMsg: ''
-    },
-    [FeedbackFormInput.reasons]: {
-      value: '',
-      valid: false,
-      errMsg: ''
-    },
-    [FeedbackFormInput.suggestions]: {
-      value: '',
-      valid: false,
-      errMsg: ''
-    },
-    [FeedbackFormInput.recommend]: {
-      value: '',
-      valid: false,
-      errMsg: ''
-    },
-    [FeedbackFormInput.more]: {
-      value: '',
-      valid: false,
-      errMsg: ''
-    }
-  });
+  const [feedbackForm, setFeedbackForm] = useState<FeedbackForm>(initialState);
   const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
@@ -195,22 +58,6 @@ const FeedbackFormSection: FunctionComponent = () => {
       }
     });
   };
-
-  const createUpdatedForm = (
-    validatedInputs: { valid: boolean; errMsg: string }[],
-    inputNames: FeedbackFormInput[],
-    form: FeedbackForm
-  ) =>
-    validatedInputs.reduce(
-      (prevFields, currField, currentIndex) => ({
-        ...prevFields,
-        [inputNames[currentIndex]]: {
-          ...form[inputNames[currentIndex]],
-          ...currField
-        }
-      }),
-      {}
-    );
 
   const handleFormChange = () => {
     const inputNames = Object.keys(FeedbackFormInput).map(key => key as FeedbackFormInput);
@@ -242,13 +89,14 @@ const FeedbackFormSection: FunctionComponent = () => {
     }
   };
 
-  useEffect(() => {
+  const checkIsFormTouched = useCallback(() => {
     setIsFormDirty(feedbackFormInputs.some(input => input.value));
+    setIsFormValid(!feedbackFormInputs.map(input => input.valid).includes(false));
   }, [feedbackFormInputs]);
 
   useEffect(() => {
-    setIsFormValid(!feedbackFormInputs.map(input => input.valid).includes(false));
-  }, [feedbackFormInputs]);
+    checkIsFormTouched();
+  }, [checkIsFormTouched]);
 
   useBeforeUnload({ when: isFormDirty });
 
