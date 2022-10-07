@@ -60,7 +60,7 @@ const FeedbackFormSection: FunctionComponent = () => {
   };
 
   const handleFormChange = () => {
-    const inputNames = Object.keys(FeedbackFormInput).map(key => key as FeedbackFormInput);
+    const inputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
 
     const validatedInputs = feedbackFormInputs.map((input, i) => {
       const { isValid: valid, message: errMsg } = inputValidator(

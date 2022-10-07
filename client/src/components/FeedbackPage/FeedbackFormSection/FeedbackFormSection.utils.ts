@@ -22,7 +22,7 @@ export type FeedbackFormConfig = {
       rows?: number;
       options?: InputOptions;
     };
-    validation: InputValidation;
+    validation: Partial<InputValidation>;
   };
 };
 

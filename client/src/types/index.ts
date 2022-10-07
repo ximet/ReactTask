@@ -106,7 +106,7 @@ export type InputType = 'input' | 'textarea' | 'radio' | 'rating';
 
 export type InputOptions = Record<string, string | number>;
 
-export type InputValidation = Record<string, number | boolean>;
+export type InputValidation = Record<InputValidator, number | boolean>;
 
 export enum InputValidator {
   required = 'required',
