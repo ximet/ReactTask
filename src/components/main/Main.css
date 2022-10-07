@@ -100,13 +100,14 @@
 }
 
 .hourly-input-range {
+  display: block;
   -webkit-appearance: none;
   width: 50%;
   height: 1rem;
   border-radius: 1rem;
   background: #d3d3d3;
   outline: none;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
 }
 
 .hourly-input-range::-webkit-slider-thumb {
@@ -181,6 +182,10 @@
   column-gap: 2rem;
 }
 
+.section-hourly {
+  width: 100%;
+}
+
 .sun-icon {
   width: 60px;
   height: auto;
@@ -233,6 +238,49 @@
 
 .active-view-btn {
   background: linear-gradient(180deg, #ffffff 20%, #ffff00 120%);
+}
+
+.layers-wrapper {
+  position: absolute;
+  top: 0;
+  right: 3vw;
+}
+
+.layers-btn {
+  position: relative;
+  top: 0;
+  left: 100%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.layers-btns-wrapper {
+  transform: scale(0);
+  transform-origin: top right;
+  transition: all 0.3s linear;
+  border-radius: 20% 0% 20% 10%;
+  overflow: hidden;
+}
+
+.show-btns {
+  transform: scale(1);
+}
+
+.layer-btn {
+  display: block;
+  width: 15rem;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  color: var(--font-color);
+  background-color: var(--second-gradient-background);
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid var(--font-color);
+}
+
+.layer-btn:first-child {
+  border-top: 1px solid var(--font-color);
 }
 
 @media (max-width: 991px) {

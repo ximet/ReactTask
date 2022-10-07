@@ -6,7 +6,6 @@ import commonStyles from '../../styles/commonStyles.css';
 import React, { FC, useEffect, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { PositionContextProvider } from '../../context/positionContext';
-import { ThemeContextProvider } from 'context/themeContext';
 
 import { Layout } from 'components/Layout';
 import { Countries } from 'components/countries/Countries';
@@ -14,6 +13,9 @@ import { About } from 'components/about/About';
 import { Feedback } from 'components/feedback/Feedback';
 import { Page404 } from 'components/page404/Page404';
 import { setInLocalStorage, getFromLocalStorage } from 'services/localStorage';
+
+import { store } from 'store';
+import { Provider } from 'react-redux';
 
 const App: FC = () => {
   const [token, setToken] = useState<string>('');
@@ -36,7 +38,7 @@ const App: FC = () => {
   return (
     <div className={styles.app}>
       {token ? (
-        <ThemeContextProvider>
+        <Provider store={store}>
           <PositionContextProvider>
             <BrowserRouter>
               <Routes>
@@ -51,7 +53,7 @@ const App: FC = () => {
               </Routes>
             </BrowserRouter>
           </PositionContextProvider>
-        </ThemeContextProvider>
+        </Provider>
       ) : (
         <div className={commonStyles.container}>
           <p className={styles['loading-text']}>loading...</p>

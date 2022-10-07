@@ -2,13 +2,16 @@ import styles from './Header.css';
 
 import React, { FC, useState, useEffect, useRef, useContext, MouseEvent } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { themeSelector } from 'store/theme/themeSelector';
+import { toggleTheme } from 'store/theme/themeAction';
 import classNames from 'classnames';
 import HTTPRequest from 'services/httpService';
 import { LocationInfoType } from 'types/cityInfoType';
 import { positionContext } from '../../context/positionContext';
-import { themeContext } from '../../context/themeContext';
 import { BsSun } from 'react-icons/bs';
 import { TbMoonStars } from 'react-icons/tb';
+import { usePosition } from 'hooks/usePosition';
 
 type LinkType = {
   isActive: boolean;
@@ -23,8 +26,11 @@ const Header: FC = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [cities, setCities] = useState<LocationInfoType[]>([]);
   const { changePosition } = useContext(positionContext);
-  const { theme, toggleTheme } = useContext(themeContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { position } = usePosition();
+
+  const theme = useSelector(themeSelector);
 
   const getCities = async (search: string): Promise<{ locations: LocationInfoType[] }> => {
     const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
@@ -68,7 +74,11 @@ const Header: FC = () => {
         </div>
         <ul className={classNames(styles['nav-list'], isShowMenu ? styles['nav-list_active'] : '')}>
           <li>
-            <NavLink to="/" className={setActive}>
+            <NavLink
+              to="/"
+              className={setActive}
+              onClick={() => changePosition(position.latitude, position.longitude)}
+            >
               Home
             </NavLink>
           </li>
@@ -111,7 +121,7 @@ const Header: FC = () => {
             : null}
         </div>
       </div>
-      <button className={styles.themeBtn} onClick={toggleTheme}>
+      <button className={styles.themeBtn} onClick={() => dispatch(toggleTheme())}>
         {theme === 'light' ? <BsSun size="30px" /> : <TbMoonStars size="30px" />} theme
       </button>
     </header>
