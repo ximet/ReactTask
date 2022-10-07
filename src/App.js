@@ -1,6 +1,10 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
-import DropDownMenu from './components/DropDownMenu/DropDownMenu';
+import Home from './Pages/Home/Home.js';
+import About from './Pages/About/About.js';
+import Page404 from './Pages/Page404/Page404.js';
 
 import useAuthorize from './customHooks/useAuthorize';
 
@@ -10,13 +14,17 @@ const App = () => {
   useAuthorize();
 
   return (
-    <div className="app-container">
+    <Router>
       <Header />
       <main>
-        <DropDownMenu />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
       </main>
       <Footer />
-    </div>
+    </Router>
   );
 };
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
-import { FOOTER_TIME_LABEL } from '../constants';
 import { getTime } from '../helper/helper.js';
+
+const FOOTER_TIME_LABEL = 'Current time:';
 
 const Footer = () => {
   const [time, setTime] = useState(getTime());

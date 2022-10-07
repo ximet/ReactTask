@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import styles from './DropDownMenu.module.css';
+import styles from './Home.module.css';
 
-import { DROP_DOWN_MENU_LABEL } from '../constants';
 import { getCities } from '../../services/weatherService';
+import { POSSIBLE_ERRORS } from '../../components/Error/errorHandlingHelper';
+import ErrorModal from '../../components/Error/ErrorModal/ErrorModal';
 
-import { POSSIBLE_ERRORS } from '../Error/errorHandlingHelper';
-
-import ErrorModal from '../Error/ErrorModal/ErrorModal';
+const DROP_DOWN_MENU_LABEL = 'Choose a city from this list:';
 
 const DropDownMenu = () => {
   const [searchValue, setSearchValue] = useState('');

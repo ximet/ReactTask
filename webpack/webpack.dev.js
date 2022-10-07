@@ -31,6 +31,8 @@ module.exports = {
     ]
   },
   devServer: {
+    publicPath: '/',
+    historyApiFallback: true,
     contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,
