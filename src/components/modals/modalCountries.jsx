@@ -20,7 +20,7 @@ function ModalCountries(props) {
           <div className={styles.buttons}>
             {content.length
               ? content.map(item => <Button text={item.name} key={item.id} />)
-              : 'There are no cityes'}
+              : 'There are no cities'}
           </div>
         </div>
       </div>,

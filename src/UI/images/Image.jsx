@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Image({ image, ...props }) {
   return (
     <div className={styles.images}>
-      <img src={image} {...props}></img>
+      <img src={image} {...props} />
     </div>
   );
 }
