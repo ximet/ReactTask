@@ -2,10 +2,10 @@ import React from 'react';
 import styles from '../../styles.scss';
 import PropTypes from 'prop-types';
 
-function Image({ image, ...props }) {
+function Image({ image, alt, ...props }) {
   return (
     <div className={styles.images}>
-      <img src={image} {...props} />
+      <img src={image} alt={alt} {...props} />
     </div>
   );
 }
