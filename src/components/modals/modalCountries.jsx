@@ -21,11 +21,7 @@ function ModalCountries(props) {
           <div className={styles.buttons}>
             {content.length
               ? content.map(item => (
-                  <Link
-                    onClick={() => localStorage.setItem('currentCity', JSON.stringify(item))}
-                    to={`/cities/${item.name}`}
-                    key={item.id}
-                  >
+                  <Link to={`/cities/${item.id}`} key={item.id}>
                     <Button text={item.name} />
                   </Link>
                 ))
