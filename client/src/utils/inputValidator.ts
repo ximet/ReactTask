@@ -5,32 +5,28 @@ import { VALIDATOR, VALIDATION_ERRORS } from '../constants';
 const inputValidator = (
   inputValue: string,
   inputName: string,
-  validation?: Partial<InputValidation>
-) => {
-  const value = inputValue.trim();
-
-  let isValid = true;
-  let message = '';
-
+  validation: Partial<InputValidation>
+): { valid: boolean; errMsg: string } => {
   if (validation) {
     const validators = Object.entries(validation);
 
-    isValid = !validators
-      .map(validator => {
-        const valid = VALIDATOR[validator[0] as InputValidator](value, validator[1]);
+    const result = validators.reduce(
+      ({ validatedList, errMsg }, [ruleName, ruleValue]) => {
+        const validated = VALIDATOR[ruleName as InputValidator](inputValue?.trim(), ruleValue);
+        const validationErr = VALIDATION_ERRORS[ruleName as InputValidator](inputName, ruleValue);
 
-        const err = valid
-          ? ''
-          : VALIDATION_ERRORS[validator[0] as InputValidator](inputName, validator[1]);
+        return {
+          validatedList: [...validatedList, validated],
+          errMsg: `${errMsg} ${!validated ? validationErr : ''}`
+        };
+      },
+      { validatedList: [], errMsg: '' } as { validatedList: boolean[]; errMsg: string }
+    );
 
-        message += ` ${err}`;
-
-        return valid;
-      })
-      .includes(false);
+    return { ...result, valid: !result.validatedList.includes(false) };
   }
 
-  return { isValid, message };
+  return { valid: true, errMsg: '' };
 };
 
 export default inputValidator;

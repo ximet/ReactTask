@@ -42,7 +42,7 @@ const FeedbackFormSection: FunctionComponent = () => {
     const inputValue = e.currentTarget.value;
     const inputName = e.currentTarget.name as FeedbackFormInput;
 
-    const { isValid, message } = inputValidator(
+    const { valid, errMsg } = inputValidator(
       inputValue,
       inputName,
       feedbackFormConfig[inputName].validation
@@ -53,8 +53,8 @@ const FeedbackFormSection: FunctionComponent = () => {
       [inputName]: {
         ...feedbackForm[inputName],
         value: inputValue,
-        valid: isValid,
-        errMsg: message
+        valid,
+        errMsg
       }
     });
   };
@@ -62,14 +62,9 @@ const FeedbackFormSection: FunctionComponent = () => {
   const handleFormChange = () => {
     const inputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
 
-    const validatedInputs = feedbackFormInputs.map((input, i) => {
-      const { isValid: valid, message: errMsg } = inputValidator(
-        input.value!,
-        inputNames[i],
-        feedbackFormConfig[inputNames[i]].validation
-      );
-      return { valid, errMsg };
-    });
+    const validatedInputs = feedbackFormInputs.map((input, i) =>
+      inputValidator(input.value, inputNames[i], feedbackFormConfig[inputNames[i]].validation)
+    );
 
     const updatedForm = createUpdatedForm(validatedInputs, inputNames, feedbackForm);
 

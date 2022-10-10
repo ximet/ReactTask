@@ -6,20 +6,20 @@ export const BASE_URL = 'http://localhost:3000';
 
 export const VALIDATOR: Record<
   InputValidator,
-  (value: string, param: number | boolean) => boolean
+  (inputValue: string, ruleValue: number | boolean) => boolean
 > = {
-  [InputValidator.required]: value => value.length !== 0,
-  [InputValidator.minLength]: (value, param) => value.length >= param,
-  [InputValidator.maxLength]: (value, param) => value.length <= param
+  [InputValidator.required]: inputValue => inputValue.length !== 0,
+  [InputValidator.minLength]: (inputValue, ruleValue) => inputValue.length >= ruleValue,
+  [InputValidator.maxLength]: (inputValue, ruleValue) => inputValue.length <= ruleValue
 };
 
 export const VALIDATION_ERRORS: Record<
   InputValidator,
-  (field: string, param: number | boolean) => string
+  (inputName: string, ruleValue: number | boolean) => string
 > = {
-  [InputValidator.required]: field => `${capitalize(field)} cannot be empty.`,
-  [InputValidator.minLength]: (field, param) =>
-    `${capitalize(field)} must be at least ${param} characters long.`,
-  [InputValidator.maxLength]: (field, param) =>
-    `${capitalize(field)} must be less than ${param} characters long.`
+  [InputValidator.required]: inputName => `${capitalize(inputName)} cannot be empty.`,
+  [InputValidator.minLength]: (inputName, ruleValue) =>
+    `${capitalize(inputName)} must be at least ${ruleValue} characters long.`,
+  [InputValidator.maxLength]: (inputName, ruleValue) =>
+    `${capitalize(inputName)} must be less than ${ruleValue} characters long.`
 };
