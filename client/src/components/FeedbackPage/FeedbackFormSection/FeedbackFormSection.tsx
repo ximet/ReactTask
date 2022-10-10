@@ -17,7 +17,8 @@ import {
   FeedbackFormInput,
   feedbackFormConfig,
   initialState,
-  createUpdatedForm
+  createUpdatedForm,
+  inputNames
 } from './FeedbackFormSection.utils';
 
 // Styles
@@ -60,13 +61,11 @@ const FeedbackFormSection: FunctionComponent = () => {
   };
 
   const handleFormChange = () => {
-    const inputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
-
     const validatedInputs = feedbackFormInputs.map((input, i) =>
       inputValidator(input.value, inputNames[i], feedbackFormConfig[inputNames[i]].validation)
     );
 
-    const updatedForm = createUpdatedForm(validatedInputs, inputNames, feedbackForm);
+    const updatedForm = createUpdatedForm(validatedInputs, feedbackForm);
 
     setFeedbackForm({
       ...feedbackForm,

@@ -12,6 +12,8 @@ export enum FeedbackFormInput {
   more = 'more'
 }
 
+export const inputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
+
 export type FeedbackFormConfig = {
   [key in FeedbackFormInput]: {
     label: string;
@@ -151,7 +153,6 @@ export const initialState: FeedbackForm = {
 
 export const createUpdatedForm = (
   validatedInputs: { valid: boolean; errMsg: string }[],
-  inputNames: FeedbackFormInput[],
   oldForm: FeedbackForm
 ): FeedbackForm =>
   validatedInputs.reduce(

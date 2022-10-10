@@ -11,19 +11,26 @@ const inputValidator = (
     const validators = Object.entries(validation);
 
     const result = validators.reduce(
-      ({ validatedList, errMsg }, [ruleName, ruleValue]) => {
+      (
+        { validatedList, errMsg },
+        [ruleName, ruleValue]
+      ): { validatedList: boolean[]; errMsg: string[] } => {
         const validated = VALIDATOR[ruleName as InputValidator](inputValue?.trim(), ruleValue);
         const validationErr = VALIDATION_ERRORS[ruleName as InputValidator](inputName, ruleValue);
 
         return {
           validatedList: [...validatedList, validated],
-          errMsg: `${errMsg} ${!validated ? validationErr : ''}`
+          errMsg: [...errMsg, !validated ? validationErr : '']
         };
       },
-      { validatedList: [], errMsg: '' } as { validatedList: boolean[]; errMsg: string }
+      { validatedList: [true], errMsg: [''] }
     );
 
-    return { ...result, valid: !result.validatedList.includes(false) };
+    return {
+      ...result,
+      valid: !result.validatedList.includes(false),
+      errMsg: result.errMsg.join(' ')
+    };
   }
 
   return { valid: true, errMsg: '' };
