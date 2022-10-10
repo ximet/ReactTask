@@ -130,3 +130,14 @@ export interface InputProps {
   handleClearValue?: (e: ChangeEventType) => void;
   clearEnabled?: boolean;
 }
+
+export enum FeedbackFormInput {
+  name = 'name',
+  rating = 'rating',
+  reasons = 'reasons',
+  suggestions = 'suggestions',
+  recommend = 'recommend',
+  more = 'more'
+}
+
+export type Feedback = Record<FeedbackFormInput, string>;

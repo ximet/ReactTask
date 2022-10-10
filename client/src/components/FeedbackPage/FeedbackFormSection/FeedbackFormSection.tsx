@@ -1,7 +1,11 @@
 import React, { FunctionComponent, FormEvent, useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+// Store
+import { addFeedback } from 'redux/actionCreators/feedback';
 
 // Types
-import { ChangeEventType } from 'types';
+import { ChangeEventType, FeedbackFormInput } from 'types';
 
 // Custom hooks
 import useBeforeUnload from 'hooks/useBeforeUnload';
@@ -14,11 +18,11 @@ import Button from 'components/Button/Button';
 import inputValidator from 'utils/inputValidator';
 import {
   FeedbackForm,
-  FeedbackFormInput,
   feedbackFormConfig,
   initialState,
   createUpdatedForm,
-  inputNames
+  feedbackFormInputNames,
+  getFormData
 } from './FeedbackFormSection.utils';
 
 // Styles
@@ -35,6 +39,8 @@ const FeedbackFormSection: FunctionComponent = () => {
   const [feedbackForm, setFeedbackForm] = useState<FeedbackForm>(initialState);
   const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
 
   const feedbackFormInputs = Object.values(feedbackForm);
 
@@ -62,7 +68,11 @@ const FeedbackFormSection: FunctionComponent = () => {
 
   const handleFormChange = () => {
     const validatedInputs = feedbackFormInputs.map((input, i) =>
-      inputValidator(input.value, inputNames[i], feedbackFormConfig[inputNames[i]].validation)
+      inputValidator(
+        input.value,
+        feedbackFormInputNames[i],
+        feedbackFormConfig[feedbackFormInputNames[i]].validation
+      )
     );
 
     const updatedForm = createUpdatedForm(validatedInputs, feedbackForm);
@@ -79,7 +89,8 @@ const FeedbackFormSection: FunctionComponent = () => {
     handleFormChange();
 
     if (isFormValid) {
-      // I will write code here in another feature
+      const formData = getFormData(feedbackFormInputs);
+      dispatch(addFeedback(formData));
     }
   };
 
