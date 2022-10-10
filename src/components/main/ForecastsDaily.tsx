@@ -22,13 +22,14 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
   } = useContext(positionContext);
 
   const handleDaysSelected = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectDays(e.target.value);
-    if (e.target.value) {
+    const selectedDays = e.target.value;
+    setSelectDays(selectedDays);
+    if (selectedDays) {
       getWeather<{ forecast: DailyWeatherType[] }>(
         '/forecast/daily/',
         position.longitude,
         position.latitude,
-        { periods: e.target.value, dataset: 'full' }
+        { periods: selectedDays, dataset: 'full' }
       ).then(res => setDailyWeather(res.forecast));
     }
   };

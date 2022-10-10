@@ -6,12 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { themeSelector } from 'store/theme/themeSelector';
 import { toggleTheme } from 'store/theme/themeAction';
 import classNames from 'classnames';
-import HTTPRequest from 'services/httpService';
 import { LocationInfoType } from 'types/cityInfoType';
 import { positionContext } from '../../context/positionContext';
 import { BsSun } from 'react-icons/bs';
 import { TbMoonStars } from 'react-icons/tb';
 import { usePosition } from 'hooks/usePosition';
+import { getCitiesSearchResults } from 'services/getCity';
 
 type LinkType = {
   isActive: boolean;
@@ -32,11 +32,6 @@ const Header: FC = () => {
 
   const theme = useSelector(themeSelector);
 
-  const getCities = async (search: string): Promise<{ locations: LocationInfoType[] }> => {
-    const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
-    return result;
-  };
-
   const cityClickHandler = (lat: number, lon: number) => {
     setSearchText('');
     setCities([]);
@@ -49,13 +44,17 @@ const Header: FC = () => {
 
     if (searchText) {
       timeoutId.current = window.setTimeout(
-        () => getCities(searchText).then(res => setCities(res.locations)),
+        () => getCitiesSearchResults(searchText).then(res => setCities(res.locations)),
         1000
       );
     } else {
       setCities([]);
     }
   }, [searchText]);
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+  }, [theme]);
 
   const hamburgerHandler = (e: MouseEvent<HTMLDivElement>) => {
     setIsShowMenu(!isShowMenu);
