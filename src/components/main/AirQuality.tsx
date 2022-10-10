@@ -8,7 +8,7 @@ import HourlySection from './HourlySection';
 import { AirQualityType } from 'types/airQualityType';
 
 const AirQuality: FC = () => {
-  const [airQuality, serAirQuality] = useState<AirQualityType[]>([]);
+  const [airQuality, setAirQuality] = useState<AirQualityType[]>([]);
   const {
     state: { position }
   } = useContext(positionContext);
@@ -18,7 +18,7 @@ const AirQuality: FC = () => {
       '/air-quality/forecast/hourly/',
       position.longitude,
       position.latitude
-    ).then(res => serAirQuality(res.forecast));
+    ).then(res => setAirQuality(res.forecast));
   }, [position.longitude, position.latitude]);
 
   return <>{airQuality.length && <HourlySection weather={airQuality} />}</>;
