@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
+import { noScrollbar } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -70,11 +71,7 @@ export const SearchResultList = styled.ul`
     }
   }
 
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  ${noScrollbar}
 `;
 
 export const SearchResultItem = styled.li`

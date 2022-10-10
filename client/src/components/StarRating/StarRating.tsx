@@ -14,7 +14,7 @@ const StarRating: FunctionComponent<InputProps> = ({ id, theme, inputConfig, ...
   const [rating, setRating] = useState<number | null>(null);
   const [ratingHovered, setRatingHovered] = useState<number | null>(null);
 
-  const ratings = Object.values(inputConfig.options!) as number[];
+  const ratings = Object.values(inputConfig!.options!) as number[];
 
   return (
     <S.StarRating>
@@ -28,6 +28,7 @@ const StarRating: FunctionComponent<InputProps> = ({ id, theme, inputConfig, ...
             <label htmlFor={id}>
               <S.Star
                 name={id}
+                value={ratingValue}
                 {...inputConfig}
                 onClick={() => setRating(ratingValue)}
                 onMouseEnter={() => setRatingHovered(ratingValue)}

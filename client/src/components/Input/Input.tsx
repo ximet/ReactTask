@@ -31,10 +31,16 @@ const INPUT = {
   radio: ({ id, inputConfig, theme, ...otherProps }: InputProps) => (
     <S.InputGroup>
       <Flex justifyFlexStart>
-        {Object.keys(inputConfig.options!).map(option => (
+        {Object.keys(inputConfig!.options!).map(option => (
           <S.RadioWrapper key={option} themeType={theme}>
-            <S.Radio id={option} name={id} {...inputConfig} {...otherProps} />
-            <label htmlFor={option}>{inputConfig.options![option]}</label>
+            <S.Radio
+              id={option}
+              name={id}
+              value={inputConfig!.options![option]}
+              {...inputConfig}
+              {...otherProps}
+            />
+            <label htmlFor={option}>{inputConfig!.options![option]}</label>
           </S.RadioWrapper>
         ))}
       </Flex>
@@ -50,7 +56,7 @@ const Input: FunctionComponent<InputProps> = ({ inputType, inputConfig, ...other
     e.currentTarget.value = '';
   };
 
-  return INPUT[inputType]({
+  return INPUT[inputType!]({
     inputType,
     inputConfig,
     theme,

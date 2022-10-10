@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from 'styles/theme';
+
 import { HEADER_HEIGHT } from 'styles/constants';
 import { sectionRoot } from 'styles/mixins';
 
@@ -36,7 +38,9 @@ export const FeedbackHeroContent = styled.div`
 
 export const FeedbackFormSection = styled.section`
   ${sectionRoot}
-  padding: 4rem 6rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 0;
 
   h2 {
     margin-bottom: 3rem;
@@ -44,6 +48,11 @@ export const FeedbackFormSection = styled.section`
 
   form {
     width: 100%;
+
+    button {
+      align-self: flex-end;
+      margin-top: 1rem;
+    }
   }
 `;
 
@@ -54,7 +63,16 @@ export const FeedbackFormLabel = styled.label`
 `;
 
 export const FeedbackFormGroup = styled.div`
+  width: 100%;
+
   &:not(:last-of-type) {
     margin-bottom: 2rem;
   }
+`;
+
+export const FeedbackFormError = styled.p`
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: ${theme.palette.error};
 `;

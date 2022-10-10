@@ -13,6 +13,7 @@ const theme = {
       dark: '#706f74',
       darkest: '#3d3d3d'
     },
+    error: '#da6868',
     componentBackgroundLight: '#f2f2f2',
     componentBackgroundDark: '#28282c'
   },

@@ -104,14 +104,25 @@ export type ChangeEventType = ChangeEvent<HTMLInputElement | HTMLTextAreaElement
 
 export type InputType = 'input' | 'textarea' | 'radio' | 'rating';
 
+export type InputOptions = Record<string, string | number>;
+
+export type InputValidation = Record<InputValidator, number | boolean>;
+
+export enum InputValidator {
+  required = 'required',
+  minLength = 'minLength',
+  maxLength = 'maxLength'
+}
+
 export interface InputProps {
-  inputType: InputType;
+  inputType?: InputType;
   id?: string;
-  inputConfig: {
+  name?: string;
+  inputConfig?: {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
     rows?: number;
-    options?: Record<string, string | number>;
+    options?: InputOptions;
   };
   theme?: string;
   onChange?: (e: ChangeEventType) => void;
