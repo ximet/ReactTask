@@ -15,7 +15,9 @@ function City() {
   }, []);
   return (
     <div className={styles.cityPage}>
-      the current weather in {city.name} is {cityInfo.temperature} deg'
+      <p>
+        the current weather in {city.name} is <span>{cityInfo.temperature}</span> deg
+      </p>
     </div>
   );
 }

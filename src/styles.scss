@@ -106,4 +106,7 @@ body {
   margin-top: 20px;
   font-size: 25px;
   color: $colorTextSecondary;
+  span {
+    color: $colorTextPrimary;
+  }
 }
