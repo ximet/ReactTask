@@ -18,9 +18,9 @@ function ModalCountries(props) {
       <div className={styles.modalBackground} onClick={() => onModalClose()}>
         <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
           <div className={styles.buttons}>
-            {content.map(item => (
-              <Button text={item.name} key={item.id} />
-            ))}
+            {content.length
+              ? content.map(item => <Button text={item.name} key={item.id} />)
+              : 'There are no cities'}
           </div>
         </div>
       </div>,

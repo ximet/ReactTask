@@ -2,10 +2,12 @@ require('dotenv').config();
 const proxy = require('express-http-proxy');
 const app = require('express')();
 const cors = require('cors');
+const path = require('path');
 
 app.use(cors());
 
 let token;
+console.log(token);
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
