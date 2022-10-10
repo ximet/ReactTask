@@ -13,7 +13,6 @@ function City() {
       setCityInfo(reqData.current);
     })();
   }, []);
-  console.log(cityInfo);
   return (
     <div className={styles.cityPage}>
       the current weather in {city.name} is {cityInfo.temperature} deg'
