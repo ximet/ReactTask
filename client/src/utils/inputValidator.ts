@@ -2,6 +2,8 @@ import type { InputValidation, InputValidator } from 'types';
 
 import { VALIDATOR, VALIDATION_ERRORS } from '../constants';
 
+type ValidatorResult = { validatedList: boolean[]; errMsg: string[] };
+
 const inputValidator = (
   inputValue: string,
   inputName: string,
@@ -10,11 +12,8 @@ const inputValidator = (
   if (validation) {
     const validators = Object.entries(validation);
 
-    const result = validators.reduce(
-      (
-        { validatedList, errMsg },
-        [ruleName, ruleValue]
-      ): { validatedList: boolean[]; errMsg: string[] } => {
+    const result = validators.reduce<ValidatorResult>(
+      ({ validatedList, errMsg }, [ruleName, ruleValue]): ValidatorResult => {
         const validated = VALIDATOR[ruleName as InputValidator](inputValue?.trim(), ruleValue);
         const validationErr = VALIDATION_ERRORS[ruleName as InputValidator](inputName, ruleValue);
 
@@ -23,11 +22,10 @@ const inputValidator = (
           errMsg: [...errMsg, !validated ? validationErr : '']
         };
       },
-      { validatedList: [true], errMsg: [''] }
+      { validatedList: [], errMsg: [] }
     );
 
     return {
-      ...result,
       valid: !result.validatedList.includes(false),
       errMsg: result.errMsg.join(' ')
     };
