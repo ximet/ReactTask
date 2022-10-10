@@ -14,11 +14,13 @@
   align-items: center;
 }
 .modalContent {
+  overflow-y: scroll;
   background: $backGroundLight;
   padding: 25px;
   border: 3px solid $primaryBorderColor;
   border-radius: 5px;
-  width: 630px;
+  width: 550px;
+  height: 80%;
 }
 .buttons {
   display: flex;
