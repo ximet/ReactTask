@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 import Button from '../../UI/button/Button';
 import styles from './modalStyles.scss';
 
@@ -19,7 +20,15 @@ function ModalCountries(props) {
         <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
           <div className={styles.buttons}>
             {content.length
-              ? content.map(item => <Button text={item.name} key={item.id} />)
+              ? content.map(item => (
+                  <Link
+                    onClick={() => localStorage.setItem('currentCity', JSON.stringify(item))}
+                    to={`/cities/${item.name}`}
+                    key={item.id}
+                  >
+                    <Button text={item.name} />
+                  </Link>
+                ))
               : 'There are no cities'}
           </div>
         </div>
