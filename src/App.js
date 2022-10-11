@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer.js';
 import Home from './Pages/Home/Home.js';
 import About from './Pages/About/About.js';
 import Page404 from './Pages/Page404/Page404.js';
+import City from './pages/City/City.js';
 
 import useAuthorize from './customHooks/useAuthorize';
 
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/:id" element={<City />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </main>
