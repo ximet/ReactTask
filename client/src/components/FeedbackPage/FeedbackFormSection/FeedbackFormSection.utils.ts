@@ -166,7 +166,7 @@ export const createUpdatedForm = (
 
 export const getFormData = (
   formInputs: {
-    value: string;
+    value: string | number | Date;
     valid: boolean;
     errMsg: string;
   }[]
@@ -178,10 +178,11 @@ export const getFormData = (
     }),
     {
       name: '',
-      rating: '',
+      rating: 0,
       reasons: '',
       suggestions: '',
       recommend: '',
-      more: ''
+      more: '',
+      timestamp: new Date()
     }
   );

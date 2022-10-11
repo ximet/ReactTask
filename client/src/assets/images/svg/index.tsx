@@ -67,6 +67,12 @@ export const IconStar: FunctionComponent = () => (
   </svg>
 );
 
+export const IconChevron: FunctionComponent = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlSpace="preserve">
+    <path d="M502.689 324.653 269.957 150.109a23.272 23.272 0 0 0-27.927 0L9.311 324.653c-10.282 7.713-12.367 22.3-4.655 32.582 4.572 6.097 11.56 9.311 18.637 9.311 4.858 0 9.759-1.517 13.945-4.656l218.758-164.072L474.763 361.89c10.285 7.714 24.871 5.627 32.582-4.655 7.711-10.282 5.626-24.87-4.656-32.582z" />
+  </svg>
+);
+
 interface WaveProps {
   reversed?: boolean;
 }

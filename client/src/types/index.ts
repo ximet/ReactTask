@@ -118,6 +118,7 @@ export interface InputProps {
   inputType?: InputType;
   id?: string;
   name?: string;
+  value?: string | number;
   inputConfig?: {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
@@ -140,4 +141,12 @@ export enum FeedbackFormInput {
   more = 'more'
 }
 
-export type Feedback = Record<FeedbackFormInput, string>;
+export type Feedback = {
+  [FeedbackFormInput.name]: string;
+  [FeedbackFormInput.rating]: number;
+  [FeedbackFormInput.reasons]: string;
+  [FeedbackFormInput.suggestions]: string;
+  [FeedbackFormInput.recommend]: string;
+  [FeedbackFormInput.more]: string;
+  timestamp: Date;
+};

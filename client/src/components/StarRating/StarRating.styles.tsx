@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
-
-import theme from 'styles/theme';
-import { radioWrapperRoot } from 'styles/mixins';
+import styled from 'styled-components';
 
 import { StylesProps } from 'types';
+
+import { radioWrapperRoot, starWrapperRoot } from 'styles/mixins';
 
 export const StarRating = styled.div`
   div:not(:last-of-type) {
@@ -17,29 +16,7 @@ interface StarWrapperStylesProps extends StylesProps {
 
 export const StarWrapper = styled.div<StarWrapperStylesProps>`
   ${radioWrapperRoot}
-  width: 2rem;
-  height: 2rem;
-
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    pointer-events: none;
-
-    path {
-      fill: ${({ themeType }) =>
-        themeType === 'light' ? `#efeded` : `${theme.palette.componentBackgroundDark}`};
-      stroke: none;
-      transition: fill 200ms;
-
-      ${({ active }) =>
-        active &&
-        css`
-          fill: ${theme.palette.primary.light};
-        `}
-    }
-  }
+  ${({ themeType, active }) => starWrapperRoot({ themeType, active })}
 
   input {
     height: 100%;

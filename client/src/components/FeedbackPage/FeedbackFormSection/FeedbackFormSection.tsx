@@ -83,14 +83,17 @@ const FeedbackFormSection: FunctionComponent = () => {
     });
   };
 
-  const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     handleFormChange();
 
     if (isFormValid) {
       const formData = getFormData(feedbackFormInputs);
+      formData.timestamp = new Date();
+
       dispatch(addFeedback(formData));
+      setFeedbackForm(initialState);
     }
   };
 
@@ -110,25 +113,28 @@ const FeedbackFormSection: FunctionComponent = () => {
       <Container>
         <Flex directionColumn>
           <h2>Fill Form Below</h2>
-          <form onSubmit={handleSubmitForm}>
+          <form onSubmit={handleFormSubmit}>
             <Flex directionColumn alignFlexStart>
-              {formElementsArray.map(({ id, config }, i) => (
-                <S.FeedbackFormGroup key={id}>
-                  <S.FeedbackFormLabel htmlFor={id}>{`${i + 1}. ${config.label} ${
-                    config.validation?.required ? '' : '(optional)'
-                  }`}</S.FeedbackFormLabel>
-                  <Input
-                    inputType={config.inputType}
-                    id={id}
-                    name={id}
-                    inputConfig={config.inputConfig}
-                    onChange={handleInputChange}
-                  />
-                  <S.FeedbackFormError>
-                    {feedbackForm[id as FeedbackFormInput].errMsg}
-                  </S.FeedbackFormError>
-                </S.FeedbackFormGroup>
-              ))}
+              {formElementsArray.map(({ id, config }, i) => {
+                const typedId = id as FeedbackFormInput;
+
+                return (
+                  <S.FeedbackFormGroup key={id}>
+                    <S.FeedbackFormLabel htmlFor={id}>{`${i + 1}. ${config.label} ${
+                      config.validation?.required ? '' : '(optional)'
+                    }`}</S.FeedbackFormLabel>
+                    <Input
+                      inputType={config.inputType}
+                      id={id}
+                      name={id}
+                      value={feedbackForm[typedId].value}
+                      inputConfig={config.inputConfig}
+                      onChange={handleInputChange}
+                    />
+                    <S.FeedbackFormError>{feedbackForm[typedId].errMsg}</S.FeedbackFormError>
+                  </S.FeedbackFormGroup>
+                );
+              })}
               <Button>Submit</Button>
             </Flex>
           </form>

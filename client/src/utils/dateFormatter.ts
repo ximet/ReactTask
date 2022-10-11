@@ -16,18 +16,23 @@ function isToday(date: Date) {
   return false;
 }
 
-const dateFormatter = (timestamp: string | undefined | Date) => {
+const dateFormatter = (timestamp: string | undefined | Date, fullDate = false) => {
   let day;
+  let year;
   let time;
 
   if (timestamp) {
     const date = new Date(timestamp);
 
-    [day, , time] = date.toLocaleString('en-US', dateFormat).split(',');
+    [day, year, time] = date.toLocaleString('en-US', dateFormat).split(',');
 
     if (isToday(date)) {
       day = 'Today';
     }
+  }
+
+  if (fullDate) {
+    return { day, year, time };
   }
 
   return { day, time };

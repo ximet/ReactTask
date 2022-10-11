@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-import theme from 'styles/theme';
+import { StylesProps } from 'types';
 
+import theme from 'styles/theme';
 import { HEADER_HEIGHT } from 'styles/constants';
-import { sectionRoot } from 'styles/mixins';
+import { sectionRoot, starWrapperRoot } from 'styles/mixins';
 
 export const FeedbackHeroSection = styled.section`
   ${sectionRoot}
@@ -75,4 +76,66 @@ export const FeedbackFormError = styled.p`
   font-size: 0.875rem;
   font-weight: 500;
   color: ${theme.palette.error};
+`;
+
+export const FeedbackTestimonialsSection = styled.section`
+  ${sectionRoot}
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 0;
+
+  h2 {
+    margin-bottom: 3rem;
+  }
+`;
+
+export const FeedbackTestimonial = styled.div<StylesProps>`
+  width: 100%;
+  padding-left: 1rem;
+  border-left: ${({ themeType }) =>
+    `3px solid ${
+      themeType === 'light' ? theme.palette.grey.light : theme.palette.componentBackgroundDark
+    }`};
+
+  &:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+`;
+
+export const FeedbackTestimonialTop = styled.div`
+  width: 100%;
+  margin-bottom: 0.5rem;
+
+  p {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+`;
+
+export const FeedbackTestimonialBottom = styled.div<StylesProps>`
+  p,
+  time {
+    font-size: 0.875rem;
+    color: ${({ themeType }) =>
+      themeType === 'light' ? theme.palette.grey.medium : theme.palette.grey.darkest};
+  }
+`;
+
+interface FeedbackTestimonialStarWrapperProps extends StylesProps {
+  active: boolean;
+}
+
+export const FeedbackTestimonialStarWrapper = styled.div<FeedbackTestimonialStarWrapperProps>`
+  position: relative;
+  margin-bottom: 0.5rem;
+  ${({ themeType, active }) => starWrapperRoot({ themeType, active })}
+
+  &:not(:last-of-type) {
+    margin-right: 0.5rem;
+  }
+`;
+
+export const FeedbackTestimonialsEmpty = styled.p`
+  text-align: center;
 `;

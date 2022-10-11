@@ -15,9 +15,17 @@ import { Flex } from 'styles/global';
 import * as S from './Input.styles';
 
 const INPUT = {
-  input: ({ inputConfig, theme, handleClearValue, clearEnabled, ...otherProps }: InputProps) => (
+  input: ({
+    inputConfig,
+    value,
+    theme,
+    handleClearValue,
+    clearEnabled,
+    ...otherProps
+  }: InputProps) => (
     <S.Input
       themeType={theme}
+      value={value}
       onBlur={e => {
         if (clearEnabled && handleClearValue) handleClearValue(e);
       }}
@@ -25,10 +33,10 @@ const INPUT = {
       {...otherProps}
     />
   ),
-  textarea: ({ inputConfig, theme, ...otherProps }: InputProps) => (
-    <S.Textarea themeType={theme} {...inputConfig} {...otherProps} />
+  textarea: ({ inputConfig, value, theme, ...otherProps }: InputProps) => (
+    <S.Textarea value={value} themeType={theme} {...inputConfig} {...otherProps} />
   ),
-  radio: ({ id, inputConfig, theme, ...otherProps }: InputProps) => (
+  radio: ({ id, value, inputConfig, theme, ...otherProps }: InputProps) => (
     <S.InputGroup>
       <Flex justifyFlexStart>
         {Object.keys(inputConfig!.options!).map(option => (
@@ -37,6 +45,7 @@ const INPUT = {
               id={option}
               name={id}
               value={inputConfig!.options![option]}
+              checked={value === inputConfig!.options![option]}
               {...inputConfig}
               {...otherProps}
             />
@@ -49,7 +58,7 @@ const INPUT = {
   rating: ({ ...props }: InputProps) => <StarRating {...props} />
 };
 
-const Input: FunctionComponent<InputProps> = ({ inputType, inputConfig, ...otherProps }) => {
+const Input: FunctionComponent<InputProps> = ({ inputType, value, inputConfig, ...otherProps }) => {
   const theme = useAppSelector(selectTheme);
 
   const handleClearValue = (e: ChangeEventType) => {
@@ -58,6 +67,7 @@ const Input: FunctionComponent<InputProps> = ({ inputType, inputConfig, ...other
 
   return INPUT[inputType!]({
     inputType,
+    value,
     inputConfig,
     theme,
     handleClearValue,
