@@ -49,7 +49,7 @@ const City = () => {
 
   return (
     <div className={styles.cityCardContainer}>
-       <>
+      <>
         {error && (
           <ErrorModal title={error.title} message={error.message} onConfirm={errorConfirmHandler} />
         )}

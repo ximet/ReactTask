@@ -10,5 +10,5 @@ export const POSSIBLE_ERRORS = {
     'GET_CITY',
     'Server error',
     'Something went wrong. Cannot get the city.'
-  ),
+  )
 };

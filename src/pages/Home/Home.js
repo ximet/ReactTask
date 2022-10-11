@@ -6,7 +6,7 @@ import { POSSIBLE_ERRORS } from '../../components/Error/errorHandlingHelper';
 import ErrorModal from '../../components/Error/ErrorModal/ErrorModal';
 import { useNavigate } from 'react-router-dom';
 
-const DROP_DOWN_MENU_LABEL = 'Choose a city from this list:';
+const DROP_DOWN_MENU_LABEL = 'Choose a city from the list:';
 
 const DropDownMenu = () => {
   const [searchValue, setSearchValue] = useState('');

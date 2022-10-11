@@ -10,6 +10,10 @@
   font-weight: bold;
 }
 
+.dropdownMenuContainer label {
+  margin-bottom: 12px;
+}
+
 .dropdownMenuContainer select {
   overflow: auto;
 }
