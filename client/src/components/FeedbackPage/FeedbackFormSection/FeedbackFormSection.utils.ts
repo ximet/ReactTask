@@ -1,18 +1,16 @@
 import { HTMLInputTypeAttribute } from 'react';
 
 // Types
-import { InputType, InputOptions, InputValidation, InputValidator } from 'types';
+import {
+  FeedbackFormInput,
+  InputType,
+  InputOptions,
+  InputValidation,
+  InputValidator,
+  Feedback
+} from 'types';
 
-export enum FeedbackFormInput {
-  name = 'name',
-  rating = 'rating',
-  reasons = 'reasons',
-  suggestions = 'suggestions',
-  recommend = 'recommend',
-  more = 'more'
-}
-
-export const inputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
+export const feedbackFormInputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
 
 export type FeedbackFormConfig = {
   [key in FeedbackFormInput]: {
@@ -158,10 +156,33 @@ export const createUpdatedForm = (
   validatedInputs.reduce(
     (prevFields, currField, currentIndex) => ({
       ...prevFields,
-      [inputNames[currentIndex]]: {
-        ...oldForm[inputNames[currentIndex]],
+      [feedbackFormInputNames[currentIndex]]: {
+        ...oldForm[feedbackFormInputNames[currentIndex]],
         ...currField
       }
     }),
     initialState
+  );
+
+export const getFormData = (
+  formInputs: {
+    value: string | number | Date;
+    valid: boolean;
+    errMsg: string;
+  }[]
+): Feedback =>
+  formInputs.reduce<Feedback>(
+    (prev, { value }, i): Feedback => ({
+      ...prev,
+      [feedbackFormInputNames[i]]: value
+    }),
+    {
+      name: '',
+      rating: 0,
+      reasons: '',
+      suggestions: '',
+      recommend: '',
+      more: '',
+      timestamp: new Date()
+    }
   );
