@@ -63,6 +63,7 @@ const DropDownMenu = () => {
           placeholder="Search"
         />
         <select id="cities" onChange={handleChange} size={cities.length}>
+          <option value="-">-</option>
           {cities.length > 0
             ? cities.map(city => (
                 <option key={city.id} value={city.id}>
