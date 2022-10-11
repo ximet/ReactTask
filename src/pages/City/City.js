@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
+import ErrorModal from '../../components/Error/ErrorModal/ErrorModal';
+import { POSSIBLE_ERRORS } from '../../components/Error/errorHandlingHelper';
 import { getForecastById, getCityDetails } from '../../services/weatherService';
 
 import styles from './City.module.css';
@@ -13,8 +15,10 @@ const City = () => {
   const [symbol, setSymbol] = useState('');
   const [cityName, setCityName] = useState('');
   const [country, setCounrty] = useState('');
+  const [error, setError] = useState(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getForecastById(id)
@@ -23,15 +27,14 @@ const City = () => {
         setWindSpeed(data.current.windSpeed);
         setSymbol(data.current.symbol);
       })
-      .catch(err => console.log(err.message));
+      .catch(() => setError(POSSIBLE_ERRORS.GET_CITY));
 
     getCityDetails(id)
       .then(data => {
         setCityName(data.name);
         setCounrty(data.country);
       })
-
-      .catch(err => console.log(err.message));
+      .catch(() => setError(POSSIBLE_ERRORS.GET_CITY));
   }, [id]);
 
   let img = {};
@@ -39,8 +42,18 @@ const City = () => {
     img = `${imageUrl}/${symbol}.png`;
   }
 
+  const errorConfirmHandler = () => {
+    setError(null);
+    navigate('/');
+  };
+
   return (
     <div className={styles.cityCardContainer}>
+       <>
+        {error && (
+          <ErrorModal title={error.title} message={error.message} onConfirm={errorConfirmHandler} />
+        )}
+      </>
       <div className={styles.cityCardInfo}>
         <div>
           <span>{CITY}</span> {cityName}
