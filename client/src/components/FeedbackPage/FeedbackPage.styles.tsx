@@ -4,7 +4,7 @@ import { StylesProps } from 'types';
 
 import theme from 'styles/theme';
 import { HEADER_HEIGHT } from 'styles/constants';
-import { sectionRoot, starWrapperRoot } from 'styles/mixins';
+import { blobContainer, sectionRoot, starWrapperRoot } from 'styles/mixins';
 
 export const FeedbackHeroSection = styled.section`
   ${sectionRoot}
@@ -39,6 +39,7 @@ export const FeedbackHeroContent = styled.div`
 
 export const FeedbackFormSection = styled.section`
   ${sectionRoot}
+  overflow: visible;
   max-width: 60rem;
   margin: 0 auto;
   padding: 4rem 0;
@@ -78,8 +79,16 @@ export const FeedbackFormError = styled.p`
   color: ${theme.palette.error};
 `;
 
+export const FeedbackFormBlob = styled.div`
+  ${blobContainer}
+  top: 80vh;
+  left: -20vw;
+  width: 50vw;
+`;
+
 export const FeedbackTestimonialsSection = styled.section`
   ${sectionRoot}
+  overflow: visible;
   max-width: 60rem;
   margin: 0 auto;
   padding: 4rem 0;
@@ -138,4 +147,11 @@ export const FeedbackTestimonialStarWrapper = styled.div<FeedbackTestimonialStar
 
 export const FeedbackTestimonialsEmpty = styled.p`
   text-align: center;
+`;
+
+export const FeedbackTestimonialBlob = styled.div`
+  ${blobContainer}
+  top: 80vh;
+  right: -15vw;
+  width: 50vw;
 `;

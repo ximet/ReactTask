@@ -9,7 +9,7 @@ import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper
 import Accordion from 'components/Accordion/Accordion';
 
 // Assets
-import { IconStar } from 'assets/images/svg';
+import { IconStar, IconBlobTwo } from 'assets/images/svg';
 
 // Utils
 import dateFormatter from 'utils/dateFormatter';
@@ -149,6 +149,9 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
           )}
         </Flex>
       </Container>
+      <S.FeedbackTestimonialBlob>
+        <IconBlobTwo />
+      </S.FeedbackTestimonialBlob>
     </S.FeedbackTestimonialsSection>
   );
 };

@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: 100%;
   padding: 0 2.5rem;
   margin: 0 auto;
+  z-index: 1;
 `;
 
 interface FlexStylesProps {

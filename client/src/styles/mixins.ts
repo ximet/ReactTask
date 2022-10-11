@@ -81,3 +81,13 @@ export const noScrollbar = `
   -ms-overflow-style: none;
   scrollbar-width: none;
 `;
+
+export const blobContainer = `
+  position: absolute;
+
+  svg {
+    width: 100%;
+    fill: ${theme.palette.primary.light};
+    stroke: none;
+  }
+`;

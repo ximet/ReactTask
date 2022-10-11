@@ -14,6 +14,9 @@ import useBeforeUnload from 'hooks/useBeforeUnload';
 import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 
+// Assets
+import { IconBlobOne } from 'assets/images/svg';
+
 // Utils
 import inputValidator from 'utils/inputValidator';
 import {
@@ -140,6 +143,9 @@ const FeedbackFormSection: FunctionComponent = () => {
           </form>
         </Flex>
       </Container>
+      <S.FeedbackFormBlob>
+        <IconBlobOne />
+      </S.FeedbackFormBlob>
     </S.FeedbackFormSection>
   );
 };
