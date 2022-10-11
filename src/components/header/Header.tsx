@@ -1,6 +1,6 @@
 import styles from './Header.css';
 
-import React, { FC, useState, useEffect, useRef, useContext, MouseEvent } from 'react';
+import React, { FC, useState, useEffect, useRef, useContext, MouseEvent, useMemo } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { themeSelector } from 'store/theme/themeSelector';
@@ -12,6 +12,7 @@ import { BsSun } from 'react-icons/bs';
 import { TbMoonStars } from 'react-icons/tb';
 import { usePosition } from 'hooks/usePosition';
 import { getCitiesSearchResults } from 'services/getCity';
+import { ThemeType } from 'store/theme/themeReducer';
 
 type LinkType = {
   isActive: boolean;
@@ -31,6 +32,7 @@ const Header: FC = () => {
   const { position } = usePosition();
 
   const theme = useSelector(themeSelector);
+  const newTheme: ThemeType = useMemo(() => (theme === 'light' ? 'dark' : 'light'), [theme]);
 
   const cityClickHandler = (lat: number, lon: number) => {
     setSearchText('');
@@ -120,7 +122,7 @@ const Header: FC = () => {
             : null}
         </div>
       </div>
-      <button className={styles.themeBtn} onClick={() => dispatch(toggleTheme())}>
+      <button className={styles.themeBtn} onClick={() => dispatch(toggleTheme(newTheme))}>
         {theme === 'light' ? <BsSun size="30px" /> : <TbMoonStars size="30px" />} theme
       </button>
     </header>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Main.css';
 import { AirQualityType } from 'types/airQualityType';
-import { convertTime } from '../../utils/helpers';
+import { convertTime, getTimeLabel } from 'utils/helpers';
 
 type HourlyCardProps = {
   airQuality: AirQualityType;
@@ -20,11 +20,9 @@ const AirQualityCard: FC<HourlyCardProps> = ({ airQuality }) => {
     AQI_PM2P5
   } = airQuality;
 
-  const date = convertTime(time);
-
   return (
     <div className={styles['hourly-card']}>
-      <h4 className={styles['hourly-card__title']}>{`${date.hours}:${date.minutes}`}</h4>
+      <h4 className={styles['hourly-card__title']}>{getTimeLabel(time)}</h4>
       <div className={styles['hourly-columns']}>
         <p className={styles['hourly-column']}>
           Pollutant : {pollutant}

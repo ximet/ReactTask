@@ -10,9 +10,9 @@ import { getCity } from 'services/getCity';
 import { getWeather } from 'services/getWeather';
 import { CurrentWeatherType, HourlyWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
+import { ViewType } from 'types/viewType';
 import { defaultLocationInfo } from './defaultStates';
 
-export type ViewType = 'cards' | 'graph';
 const Forecasts: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
@@ -27,14 +27,10 @@ const Forecasts: FC = () => {
   async function fetchData(lon: number | string, lat: number | string) {
     Promise.all([
       getCity(lon, lat),
-      getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat),
-      getWeather<{ forecast: HourlyWeatherType[] }>('/forecast/hourly/', lon, lat, {
-        dataset: 'full'
-      })
+      getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat)
     ]).then(res => {
       setLocation(res[0]);
       setCurrentWeather(res[1].current);
-      setHourlyWeather(res[2].forecast);
     });
   }
 
@@ -42,7 +38,7 @@ const Forecasts: FC = () => {
     if (position.longitude && position.latitude) {
       fetchData(position.longitude, position.latitude);
     }
-  }, [position.longitude, position.latitude]);
+  }, [position]);
   return (
     <>
       {currentWeather ? (
@@ -68,7 +64,7 @@ const Forecasts: FC = () => {
               Graph view
             </button>
           </div>
-          <ForecastsHourly view={view} hourlyWeather={hourlyWeather} />
+          <ForecastsHourly view={view} />
           <ForecastsDaily view={view} />
         </>
       ) : (

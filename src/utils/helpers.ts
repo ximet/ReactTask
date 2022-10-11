@@ -37,3 +37,9 @@ function isDailyWeather(
 export const getArray = (n: number): number[] => {
   return Array.from({ length: n }, (_, i) => i + 1);
 };
+
+export const getTimeLabel = (time: string): string => {
+  const date = convertTime(time);
+
+  return `${date.hours}:${date.minutes}`;
+};

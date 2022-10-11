@@ -107,7 +107,7 @@
   border-radius: 1rem;
   background: #d3d3d3;
   outline: none;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1rem;
 }
 
 .hourly-input-range::-webkit-slider-thumb {

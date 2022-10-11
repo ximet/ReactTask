@@ -4,14 +4,14 @@ interface ViewAction {
   type: string;
 }
 
-export type layerState = 'forecasts' | 'air';
+export type LayerState = 'forecasts' | 'air';
 
-export const layerReducer = (state: layerState = 'forecasts', action: ViewAction): layerState => {
+export const layerReducer = (state: LayerState = 'forecasts', action: ViewAction): LayerState => {
   switch (action.type) {
     case TURN_ON_FORECASTS:
-      return (state = 'forecasts');
+      return 'forecasts';
     case TURN_ON_AIR:
-      return (state = 'air');
+      return 'air';
     default:
       return state;
   }

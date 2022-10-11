@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, useState, useContext } from 'react';
 import { DailyWeatherType } from 'types/weatherTypes';
-import { ViewType } from './Forecasts';
+import { ViewType } from 'types/viewType';
 
 import { getWeather } from 'services/getWeather';
 import { positionContext } from 'context/positionContext';

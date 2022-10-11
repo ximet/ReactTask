@@ -1,7 +1,7 @@
 import React, { FC, useMemo, useState, useRef, ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { layerSelector } from 'store/layer/layerSelectors';
-import { convertTime } from 'utils/helpers';
+import { convertTime, getTimeLabel } from 'utils/helpers';
 import styles from './Main.css';
 import MainHourlyCard from './MainHourlyCard';
 import AirQualityCard from './AirQualityCard';
@@ -16,12 +16,6 @@ type HourlySectionProps = {
 };
 
 const CORRECT_POSITION_COEFFICIENT = 4.2;
-
-const getTimeLabel = (time: string): string => {
-  const date = convertTime(time);
-
-  return `${date.hours}:${date.minutes}`;
-};
 
 const getHourLabels = (weather: WeatherType, middleLabelsCount: number): string[] => {
   const labels: string[] = [];
@@ -49,7 +43,9 @@ const HourlySection: FC<HourlySectionProps> = ({ weather }) => {
   const timeoutId = useRef<number>(0);
   const layer = useSelector(layerSelector);
 
-  const hoursSchema = useMemo(
+  const hoursSchema: {
+    [index: string]: number;
+  } = useMemo(
     () =>
       weather.reduce((acc: { [index: string]: number }, el, i) => {
         acc[i] = +convertTime(el.time).hours;
@@ -58,11 +54,11 @@ const HourlySection: FC<HourlySectionProps> = ({ weather }) => {
     [weather]
   );
 
-  const currentWeatherByHour = weather.find(
+  const currentWeatherByHour: HourlyWeatherType | AirQualityType | undefined = weather.find(
     el => +convertTime(el.time).hours === hoursSchema[hour]
   );
 
-  const hourLabels = useMemo(() => getHourLabels(weather, 2), [weather]);
+  const hourLabels: string[] = useMemo(() => getHourLabels(weather, 2), [weather]);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const value: number = e.target.valueAsNumber;
