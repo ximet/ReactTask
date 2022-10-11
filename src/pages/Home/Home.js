@@ -38,11 +38,8 @@ const DropDownMenu = () => {
   const handleChange = e => setInputId(e.target.value);
 
   const handleSubmit = e => {
-    console.log('The chosed city is: ' + inputId);
-    console.log('The chosed city is: ' + searchValue);
     e.preventDefault();
-
-    navigate(`${inputId}`);
+    navigate(`city/${inputId}`);
   };
 
   return (

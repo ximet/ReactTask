@@ -10,10 +10,9 @@ import { CITY, COUNTRY, TEMPERATURE, WIND_SPEED, DEGREES, M_S, imageUrl } from '
 const City = () => {
   const [temperature, setTemperature] = useState('');
   const [windSpeed, setWindSpeed] = useState('');
+  const [symbol, setSymbol] = useState('');
   const [cityName, setCityName] = useState('');
   const [country, setCounrty] = useState('');
-
-  const [symbol, setSymbol] = useState('');
 
   const { id } = useParams();
 
