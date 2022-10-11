@@ -3,6 +3,7 @@ import { LocationInfoType } from 'types/cityInfoType';
 
 export const FAVORITE_CITIES_LS_LABEL = 'favorite-cities';
 export const FEEDBACK_DATA_LS_LABEL = 'feedback-data';
+export const THEME_LS_LABEL = 'theme';
 
 export function setInLocalStorage(data: string | {}[] | {}, key: string): void {
   const json = JSON.stringify(data);

@@ -1,12 +1,13 @@
-import { useContext, useMemo } from 'react';
-import { themeContext } from 'context/themeContext';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { themeSelector } from 'store/theme/themeSelector';
 import { GraphOptionsType } from 'types/graphOptionsType';
 import { BLACK_COLOR, WHITE_COLOR, GRAY_COLOR } from 'utils/colorsConstants';
 
 export const useGraphSettings = (): {
   options: GraphOptionsType;
 } => {
-  const { theme } = useContext(themeContext);
+  const theme = useSelector(themeSelector);
 
   const fontColor: string = useMemo(() => (theme === 'light' ? BLACK_COLOR : WHITE_COLOR), [theme]);
 

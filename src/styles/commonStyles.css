@@ -8,4 +8,5 @@
   align-items: center;
   font-size: 2rem;
   flex-direction: column;
+  position: relative;
 }

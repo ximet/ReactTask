@@ -8,3 +8,10 @@ export const getCity = async (
   const city = await HTTPRequest(`/api/v1/location/${longitude},${latitude}`, {});
   return city;
 };
+
+export const getCitiesSearchResults = async (
+  search: string
+): Promise<{ locations: LocationInfoType[] }> => {
+  const result = await HTTPRequest(`/api/v1/location/search/${search}`, {});
+  return result;
+};
