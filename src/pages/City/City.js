@@ -5,8 +5,7 @@ import { getForecastById, getCityDetails } from '../../services/weatherService';
 
 import styles from './City.module.css';
 
-import { CITY, COUNTRY, TEMPERATURE, WIND_SPEED, DEGREES , M_S, imageUrl } from './cityConstants';
-
+import { CITY, COUNTRY, TEMPERATURE, WIND_SPEED, DEGREES, M_S, imageUrl } from './cityConstants';
 
 const City = () => {
   const [temperature, setTemperature] = useState('');
@@ -35,11 +34,10 @@ const City = () => {
 
       .catch(err => console.log(err.message));
   }, [id]);
- 
 
-  let img = {}
+  let img = {};
   if (symbol) {
-    img = `${imageUrl}/${symbol}.png`
+    img = `${imageUrl}/${symbol}.png`;
   }
 
   return (
