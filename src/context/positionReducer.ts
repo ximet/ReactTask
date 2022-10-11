@@ -1,10 +1,8 @@
 import { CHANGE_POSITION } from './positionActions';
+import { Coordinates } from 'types/positionType';
 
 export type PositionContextState = {
-  position: {
-    latitude: number;
-    longitude: number;
-  };
+  position: Coordinates;
   positionError: string;
 };
 

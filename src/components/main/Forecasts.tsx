@@ -12,6 +12,7 @@ import { CurrentWeatherType, HourlyWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
 import { ViewType } from 'types/viewType';
 import { defaultLocationInfo } from './defaultStates';
+import { Coordinates } from 'types/positionType';
 
 const Forecasts: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -24,10 +25,11 @@ const Forecasts: FC = () => {
     state: { position, positionError }
   } = useContext(positionContext);
 
-  async function fetchData(lon: number | string, lat: number | string) {
+  async function fetchData(position: Coordinates) {
+    const { longitude, latitude } = position;
     Promise.all([
-      getCity(lon, lat),
-      getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat)
+      getCity(longitude, latitude),
+      getWeather<{ current: CurrentWeatherType }>('/current/', position)
     ]).then(res => {
       setLocation(res[0]);
       setCurrentWeather(res[1].current);
@@ -36,7 +38,7 @@ const Forecasts: FC = () => {
 
   useEffect(() => {
     if (position.longitude && position.latitude) {
-      fetchData(position.longitude, position.latitude);
+      fetchData(position);
     }
   }, [position]);
   return (

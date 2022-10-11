@@ -3,6 +3,10 @@
   max-width: 1000px;
 }
 
+.about-article {
+  padding: 1rem;
+}
+
 .about-title {
   font-size: 2.4rem;
   font-weight: 500;
@@ -26,9 +30,28 @@
 }
 
 .about-article > p {
+  line-height: 150%;
   padding-left: 1.5rem;
 }
 
 .about-article:not(:last-child) {
   margin-bottom: 3rem;
+}
+
+.about-article__first-item {
+  min-height: 50rem;
+  background: linear-gradient(var(--about-page-gradient), var(--about-page-gradient)),
+    url(../../pictures/diffThemes.png) center/ cover no-repeat;
+}
+
+.about-article__second-item {
+  min-height: 50rem;
+  background: linear-gradient(var(--about-page-gradient), var(--about-page-gradient)),
+    url(../../pictures/diffView.png) center/ cover no-repeat;
+}
+
+.about-article__third-item {
+  min-height: 30rem;
+  background: linear-gradient(var(--about-page-gradient), var(--about-page-gradient)),
+    url(../../pictures/feedback.png) center/ contain no-repeat;
 }

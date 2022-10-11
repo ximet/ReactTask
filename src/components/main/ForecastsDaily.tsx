@@ -25,12 +25,10 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
     const selectedDays = e.target.value;
     setSelectDays(selectedDays);
     if (selectedDays) {
-      getWeather<{ forecast: DailyWeatherType[] }>(
-        '/forecast/daily/',
-        position.longitude,
-        position.latitude,
-        { periods: selectedDays, dataset: 'full' }
-      ).then(res => setDailyWeather(res.forecast));
+      getWeather<{ forecast: DailyWeatherType[] }>('/forecast/daily/', position, {
+        periods: selectedDays,
+        dataset: 'full'
+      }).then(res => setDailyWeather(res.forecast));
     }
   };
 

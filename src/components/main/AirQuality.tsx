@@ -16,8 +16,7 @@ const AirQuality: FC = () => {
   useEffect(() => {
     getWeather<{ forecast: AirQualityType[] }>(
       '/air-quality/forecast/hourly/',
-      position.longitude,
-      position.latitude
+      position
     ).then(res => setAirQuality(res.forecast));
   }, [position]);
 
