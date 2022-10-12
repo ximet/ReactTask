@@ -15,6 +15,8 @@ import { IconStar } from 'assets/images/svg';
 import dateFormatter from 'utils/dateFormatter';
 import {
   Testimonials,
+  Testimonial,
+  TestimonialsDataArray,
   testimonialsConfig,
   generateTestimonialData
 } from './FeedbackTestimonialsSection.utils';
@@ -23,20 +25,16 @@ import {
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
-const testimonialsConfigArray = Object.entries(testimonialsConfig).map(entry => ({
-  title: entry[1].title
-}));
-
 const FeedbackTestimonialsSection: FunctionComponent = () => {
   const theme = useAppSelector(selectTheme);
   const { data, loading, error } = useAppSelector(state => state.feedback);
   const [testimonials, setTestimonials] = useState<Testimonials>();
 
-  const testimonialsDataArray =
+  const testimonialsDataArray: TestimonialsDataArray =
     testimonials &&
     Object.entries(testimonials).map(entry => ({
-      id: entry[0],
-      content: entry[1]
+      id: entry[0] as Testimonial,
+      list: entry[1]
     }));
 
   // Generate testimonials data object for use in the accordion tabs
@@ -52,11 +50,11 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
           <h2>Testimonials</h2>
           {data.length > 0 ? (
             <RequestDataWrapper data={data} loading={loading} error={error}>
-              {testimonialsDataArray?.map(({ id, content }, index) => (
-                <Accordion key={id} title={testimonialsConfigArray[index].title} index={index}>
-                  {content.list
+              {testimonialsDataArray?.map(({ id, list }, index) => (
+                <Accordion key={id} title={testimonialsConfig[id].title} index={index}>
+                  {list
                     .filter(item => item.message)
-                    .map(({ message, name, rating, timestamp }, i) => {
+                    .map(({ name, message, rating, timestamp }, i) => {
                       const { day, year, time } = dateFormatter(timestamp, true);
 
                       return (

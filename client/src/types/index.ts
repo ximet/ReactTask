@@ -135,18 +135,18 @@ export interface InputProps {
 export enum FeedbackFormInput {
   name = 'name',
   rating = 'rating',
-  reasons = 'reasons',
-  suggestions = 'suggestions',
-  recommend = 'recommend',
+  reason = 'reason',
+  suggestion = 'suggestion',
+  recommendation = 'recommendation',
   more = 'more'
 }
 
 export type Feedback = {
   [FeedbackFormInput.name]: string;
   [FeedbackFormInput.rating]: number;
-  [FeedbackFormInput.reasons]: string;
-  [FeedbackFormInput.suggestions]: string;
-  [FeedbackFormInput.recommend]: string;
+  [FeedbackFormInput.reason]: string;
+  [FeedbackFormInput.suggestion]: string;
+  [FeedbackFormInput.recommendation]: string;
   [FeedbackFormInput.more]: string;
   timestamp: Date;
 };
