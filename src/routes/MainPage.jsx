@@ -10,12 +10,12 @@ const { mainPage, search, buttons } = styles;
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
-  const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery, null);
+  const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery);
   function inpuHandler(e) {
     setSearchQuery(e.target.value);
   }
 
-  const checkedItems = Boolean(data.length) ? data : [];
+  const checkedItems = Boolean(data.locations) ? data.locations : [];
   return (
     <div className={mainPage}>
       <ModalCountries
