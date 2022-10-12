@@ -15,7 +15,7 @@ import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 
 // Assets
-import { IconBlobOne } from 'assets/images/svg';
+import { IconBlobOne, IconBlobTwo } from 'assets/images/svg';
 
 // Utils
 import inputValidator from 'utils/inputValidator';
@@ -112,6 +112,9 @@ const FeedbackFormSection: FunctionComponent = () => {
 
   return (
     <S.FeedbackFormSection id="survey">
+      <S.FeedbackFormBlobTwo>
+        <IconBlobTwo />
+      </S.FeedbackFormBlobTwo>
       <Container>
         <Flex directionColumn>
           <h2>Fill Form Below</h2>
@@ -138,9 +141,9 @@ const FeedbackFormSection: FunctionComponent = () => {
           </form>
         </Flex>
       </Container>
-      <S.FeedbackFormBlob>
+      <S.FeedbackFormBlobOne>
         <IconBlobOne />
-      </S.FeedbackFormBlob>
+      </S.FeedbackFormBlobOne>
     </S.FeedbackFormSection>
   );
 };

@@ -79,10 +79,17 @@ export const FeedbackFormError = styled.p`
   color: ${theme.palette.error};
 `;
 
-export const FeedbackFormBlob = styled.div`
+export const FeedbackFormBlobOne = styled.div`
   ${blobContainer}
   top: 80vh;
   left: -20vw;
+  width: 50vw;
+`;
+
+export const FeedbackFormBlobTwo = styled.div`
+  ${blobContainer}
+  top: -35vh;
+  right: -15vw;
   width: 50vw;
 `;
 
@@ -147,11 +154,4 @@ export const FeedbackTestimonialStarWrapper = styled.div<FeedbackTestimonialStar
 
 export const FeedbackTestimonialsEmpty = styled.p`
   text-align: center;
-`;
-
-export const FeedbackTestimonialBlob = styled.div`
-  ${blobContainer}
-  top: 80vh;
-  right: -15vw;
-  width: 50vw;
 `;
