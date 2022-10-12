@@ -14,12 +14,12 @@ type SmallCardProps = {
 export const CitySmallCard: FC<SmallCardProps> = ({ lon, lat, cityName }) => {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
 
-  const position: Coordinates = {
-    latitude: lat,
-    longitude: lon
-  };
-
   useEffect(() => {
+    const position: Coordinates = {
+      latitude: lat,
+      longitude: lon
+    };
+
     getWeather<{ current: CurrentWeatherType }>('/current/', position).then(res =>
       setCurrentWeather(res.current)
     );

@@ -132,6 +132,7 @@
   position: relative;
   width: 50%;
   margin: 0 auto;
+  text-align: center;
 }
 
 .hourly-input-value span {

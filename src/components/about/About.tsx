@@ -18,7 +18,7 @@ export const About: FC = () => {
           If you need a city all the time, you can add it to your favorites. <br />
           You can also switch the theme. At the moment, day and night themes are available. Maybe in
           the future we will add a theme for people with color vision disorders. <br />
-          You can view the weather for a day or for several days in the form of cards or a graph.{' '}
+          You can view the weather for a day or for several days in the form of cards or a graph.
           <br />
           You have a choice of different layers. Now you can see the forecast and air quality. We
           hope that soon we will add a layer with a map. <br />
@@ -46,7 +46,7 @@ export const About: FC = () => {
           Please leave them on the feedback page. <br />
           Be sure to leave correct information. You will not be able to leave a review without
           information about your name, email and phone number. <br />
-          We guarantee that we store your data securely and do not provide it to third parties.{' '}
+          We guarantee that we store your data securely and do not provide it to third parties.
           <br />
           Please rate our service when submitting a feedback.
         </p>

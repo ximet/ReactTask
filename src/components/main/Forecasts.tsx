@@ -26,9 +26,8 @@ const Forecasts: FC = () => {
   } = useContext(positionContext);
 
   async function fetchData(position: Coordinates) {
-    const { longitude, latitude } = position;
     Promise.all([
-      getCity(longitude, latitude),
+      getCity(position),
       getWeather<{ current: CurrentWeatherType }>('/current/', position)
     ]).then(res => {
       setLocation(res[0]);
