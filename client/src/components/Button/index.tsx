@@ -4,7 +4,8 @@ import styles from './styles.module.scss';
 export enum ButtonStyles {
   ThemeBtn = 'themeBtn',
   IconBtn = 'searchBtn',
-  FormBtn = 'formBtn'
+  FormBtn = 'formBtn',
+  ErrorBtn = 'errorBtn'
 }
 interface ButtonProps {
   type: 'button' | 'reset' | 'submit' | undefined;

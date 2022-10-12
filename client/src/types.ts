@@ -18,6 +18,10 @@ export type LocationData = {
   timezone: string;
 };
 
+export type LocationByQuery = {
+  locations: LocationData[];
+};
+
 export type CommonWeatherData = {
   cloudiness: number;
   precipProb: number;

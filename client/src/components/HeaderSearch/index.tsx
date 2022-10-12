@@ -19,11 +19,11 @@ const HeaderSearch: FC = () => {
     }
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     if (inputValue) {
       const locationData = await getLocationByQuery(inputValue);
-      if (!locationData.locations.length) {
+      if (!locationData?.locations.length) {
         setCoordinates(null);
         setStatusMsg(`Sorry, your entered location "${inputValue}" does not exists`);
         setInputValue('');

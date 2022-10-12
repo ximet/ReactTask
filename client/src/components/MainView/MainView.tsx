@@ -3,19 +3,18 @@ import CurrentWeatherCard from 'components/CurrentWeatherCard';
 import DailyWeatherCard from 'components/DailyWeatherCard';
 import HourlyWeatherCard from 'components/HourlyWeatherCard';
 import LocationContext from 'contexts/LocationContext';
-import DarkLightThemeContext from 'contexts/ThemeContext';
 import React, { FC, useState, useContext, useRef } from 'react';
 import { DailyWeather, HourlyWeather, LocationData, CurrentWeatherData } from 'types';
 import { getBackgroundImg } from 'utils/getImages';
 import styles from './MainView.module.scss';
 
 interface MainViewParams {
-  setHourlyForecast: (arg: HourlyWeather[]) => void;
+  setHourlyForecast: (arg: HourlyWeather[] | undefined) => void;
   statusMsg?: string | null;
   currentWeather: CurrentWeatherData | null;
   locationData: LocationData | undefined;
-  forecast: DailyWeather[];
-  hourlyForecast: HourlyWeather[];
+  forecast: DailyWeather[] | undefined;
+  hourlyForecast: HourlyWeather[] | undefined;
 }
 
 const MainView: FC<MainViewParams> = ({
@@ -28,7 +27,6 @@ const MainView: FC<MainViewParams> = ({
 }) => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const { coordinates } = useContext(LocationContext);
-  const { darkMode } = useContext(DarkLightThemeContext);
 
   const ref = useRef<null | HTMLDivElement>(null);
 
@@ -36,7 +34,7 @@ const MainView: FC<MainViewParams> = ({
     setHourlyForecast([]);
     const hourlyWeather = await getHourlyWeather(coordinates);
     const clickedDay = new Date(date).getDate();
-    const filteredHoursByDay = hourlyWeather.filter(hour => {
+    const filteredHoursByDay = hourlyWeather?.filter(hour => {
       return new Date(hour.time).getDate() === clickedDay;
     });
     setHourlyForecast(filteredHoursByDay);

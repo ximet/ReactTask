@@ -7,8 +7,8 @@ const useGetData = ({ getCurrentWeather, getDailyWeather, getHourlyWeather, getL
   const { coordinates } = useContext(LocationContext);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherData | null>(null);
   const [locationData, setLocationData] = useState<LocationData | undefined>(undefined);
-  const [forecast, setForecast] = useState<DailyWeather[]>([]);
-  const [hourlyForecast, setHourlyForecast] = useState<HourlyWeather[]>([]);
+  const [forecast, setForecast] = useState<DailyWeather[] | undefined>([]);
+  const [hourlyForecast, setHourlyForecast] = useState<HourlyWeather[] | undefined>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
 

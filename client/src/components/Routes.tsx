@@ -6,6 +6,7 @@ import Details from '../pages/Details/index';
 import Info from '../pages/Info/index';
 import Feedback from '../pages/Feedback/index';
 import LayoutSearch from './layouts/LayoutSearch';
+import Error from './ErrorPage/Error';
 
 const Routes: React.FC = () => {
   return (
@@ -15,8 +16,9 @@ const Routes: React.FC = () => {
         <Route path="details/:location" element={<Details />} />
       </Route>
       <Route path="/" element={<Layout />}>
-        <Route path="info" element={<Info />} />
+        <Route path="about" element={<Info />} />
         <Route path="feedback" element={<Feedback />} />
+        <Route path="*" element={<Error />} />
       </Route>
     </RoutesPaths>
   );
