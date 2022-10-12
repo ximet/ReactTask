@@ -15,7 +15,9 @@ function Nav(props) {
       <button className={styles.navBtn}>Weekly</button>
       <button className={styles.navBtn}>Monthly</button>
       <button className={styles.navBtn}>Yearly</button>
-      <button onClick={navigateToAbout} className={styles.navBtn}>About us</button>
+      <button onClick={navigateToAbout} className={styles.navBtn}>
+        About us
+      </button>
     </nav>
   );
 }
