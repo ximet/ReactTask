@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
-import { defaultCurrentWeather } from 'components/main/defaultStates';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { getWeather } from 'services/getWeather';
 import { getImgURL } from 'utils/helpers';
 import Loader from '../../pictures/loader.gif';
+import { Coordinates } from 'types/positionType';
 
 type SmallCardProps = {
   lon: number;
@@ -15,7 +15,12 @@ export const CitySmallCard: FC<SmallCardProps> = ({ lon, lat, cityName }) => {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
 
   useEffect(() => {
-    getWeather<{ current: CurrentWeatherType }>('/current/', lon, lat).then(res =>
+    const position: Coordinates = {
+      latitude: lat,
+      longitude: lon
+    };
+
+    getWeather<{ current: CurrentWeatherType }>('/current/', position).then(res =>
       setCurrentWeather(res.current)
     );
   }, []);

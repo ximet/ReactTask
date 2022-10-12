@@ -21,14 +21,9 @@ const ForecastsHourly: FC<ForecastsHourlyProps> = ({ view }) => {
   } = useContext(positionContext);
 
   useEffect(() => {
-    getWeather<{ forecast: HourlyWeatherType[] }>(
-      '/forecast/hourly/',
-      position.longitude,
-      position.latitude,
-      {
-        dataset: 'full'
-      }
-    ).then(res => setHourlyWeather(res.forecast));
+    getWeather<{ forecast: HourlyWeatherType[] }>('/forecast/hourly/', position, {
+      dataset: 'full'
+    }).then(res => setHourlyWeather(res.forecast));
   }, [position]);
   return (
     <section className={styles['weather-section-wrapper']}>

@@ -10,6 +10,7 @@ body[data-theme='light'] {
   --search-result-background: #ffffff;
   --after-title: #0000cd;
   --input-shadow: #223c5099;
+  --about-page-gradient: rgba(255, 255, 255, 0.8);
 }
 
 body[data-theme='dark'] {
@@ -24,4 +25,5 @@ body[data-theme='dark'] {
   --search-result-background: #4682b4;
   --after-title: #ffffff;
   --input-shadow: transparent;
+  --about-page-gradient: rgba(0, 0, 0, 0.7);
 }

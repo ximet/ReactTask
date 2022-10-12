@@ -1,10 +1,9 @@
 import HTTPRequest from './httpService';
 import { LocationInfoType } from 'types/cityInfoType';
+import { Coordinates } from 'types/positionType';
 
-export const getCity = async (
-  longitude: number | string,
-  latitude: number | string
-): Promise<LocationInfoType> => {
+export const getCity = async (position: Coordinates): Promise<LocationInfoType> => {
+  const { longitude, latitude } = position;
   const city = await HTTPRequest(`/api/v1/location/${longitude},${latitude}`, {});
   return city;
 };
