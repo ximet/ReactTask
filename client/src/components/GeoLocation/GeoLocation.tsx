@@ -55,6 +55,7 @@ const GeoLocation: FunctionComponent = () => {
           data={data}
           loading={posLoading || infoLoading}
           error={posError || infoError}
+          showSpinner={false}
         >
           <p>
             <span>{data?.name}</span>, {data?.country}

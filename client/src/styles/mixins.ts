@@ -74,6 +74,12 @@ export const starWrapperRoot = ({ themeType, active }: starWrapperRootStylesProp
   }
 `;
 
+export const spinnerRoot = `
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+`;
+
 export const noScrollbar = `
   ::-webkit-scrollbar {
     display: none;
