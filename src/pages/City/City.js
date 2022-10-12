@@ -37,7 +37,7 @@ const City = () => {
       .catch(() => setError(POSSIBLE_ERRORS.GET_CITY));
   }, [id]);
 
-  let img = {};
+  let img = '';
   if (symbol) {
     img = `${imageUrl}/${symbol}.png`;
   }
