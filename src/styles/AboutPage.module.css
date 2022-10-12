@@ -1,11 +1,11 @@
 .pageWrapper {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .aboutHeading {
-   text-align: center;
+  text-align: center;
 }
 
 p {

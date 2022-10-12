@@ -4,9 +4,8 @@ import * as styles from '../../../styles/Nav.module.css';
 import { DropdownMenu } from './DropdownMenu.js';
 
 function Nav(props) {
-  const navigate = useNavigate();
-
-  const navigateToAbout = () => navigate('/about');
+  // const navigate = useNavigate();
+  // const navigateToAbout = () => navigate('/about');
 
   return (
     <nav className={styles.navBtnsList}>
@@ -15,9 +14,9 @@ function Nav(props) {
       <button className={styles.navBtn}>Weekly</button>
       <button className={styles.navBtn}>Monthly</button>
       <button className={styles.navBtn}>Yearly</button>
-      <button onClick={navigateToAbout} className={styles.navBtn}>
+      {/* <button onClick={navigateToAbout} className={styles.navBtn}>
         About us
-      </button>
+      </button> */}
     </nav>
   );
 }
