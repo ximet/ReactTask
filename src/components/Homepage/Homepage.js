@@ -4,11 +4,7 @@ import { Nav } from './Nav/Nav.js';
 
 function HomePage(props) {
   return (
-    <>
-      <main>
-        <Nav />
-      </main>
-    </>
+   <Nav />
   );
 }
 
