@@ -5,24 +5,16 @@ import useFetch from '../hooks/useFetch';
 import styles from '../styles.scss';
 
 function City() {
+  const cityId = useParams().id;
   const [cityInfo, setCityInfo] = useState([]);
   const [cityName, setCityName] = useState('');
+  const cityInfoFetch = useFetch(API_EDPOIONTS.CURRENT, null, cityId).data;
+  const cityNameFetch = useFetch(API_EDPOIONTS.LOCATION, null, cityId).data;
 
-  const cityId = useParams().id;
   useEffect(() => {
-    (async () => {
-      const responseName = await fetch(
-        `http://localhost:3333/pfa.foreca.com/api/v1/location/${cityId}`
-      );
-      const reqDataName = await responseName.json();
-      setCityName(reqDataName.name);
-      const responseInfo = await fetch(
-        `http://localhost:3333/pfa.foreca.com/api/v1/current/${cityId}`
-      );
-      const reqDataInfo = await responseInfo.json();
-      setCityInfo(reqDataInfo.current);
-    })();
-  }, [cityId]);
+    setCityInfo(cityInfoFetch);
+    setCityName(cityNameFetch);
+  }, [cityInfoFetch, cityNameFetch]);
   return (
     <div className={styles.cityPage}>
       <p>

@@ -10,7 +10,7 @@ const { mainPage, search, buttons } = styles;
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
-  const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery);
+  const { isLoading, data, error } = useFetch(API_EDPOIONTS.SEARCH, searchQuery, null);
   function inpuHandler(e) {
     setSearchQuery(e.target.value);
   }
