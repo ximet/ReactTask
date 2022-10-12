@@ -6,7 +6,7 @@ import { noScrollbar } from 'styles/mixins';
 
 interface AccordionStylesProps extends StylesProps {
   active: boolean;
-  isExpanded: boolean;
+  isDefaultExpanded: boolean;
 }
 
 export const Accordion = styled.div`
@@ -25,15 +25,16 @@ export const AccordionTab = styled.div<AccordionStylesProps>`
 
   svg {
     height: 1rem;
-    transform: ${({ active, isExpanded }) =>
-      active || isExpanded ? 'rotate(0deg)' : 'rotate(180deg)'};
+    transform: ${({ active, isDefaultExpanded }) =>
+      active || isDefaultExpanded ? 'rotate(0deg)' : 'rotate(180deg)'};
     transition: transform 0.25s ease;
   }
 `;
 
 export const AccordionContent = styled.div<AccordionStylesProps>`
   width: 100%;
-  max-height: ${({ active, isExpanded }) => (active || isExpanded ? '24rem' : '0rem')};
+  max-height: ${({ active, isDefaultExpanded }) =>
+    active || isDefaultExpanded ? '24rem' : '0rem'};
   overflow-y: scroll;
   transition: max-height 0.6s ease;
   will-change: max-height;

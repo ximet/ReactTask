@@ -13,12 +13,12 @@ interface AccordionProps {
 }
 
 const Accordion: FunctionComponent<AccordionProps> = ({ index, title, children }) => {
-  const [active, setActive] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(index === 0);
+  const [active, setActive] = useState<boolean>(false);
+  const [isDefaultExpanded, setIsDefaultExpanded] = useState<boolean>(index === 0);
 
   const handleToggleAccordion = (): void => {
-    if (isExpanded) {
-      setIsExpanded(false);
+    if (isDefaultExpanded) {
+      setIsDefaultExpanded(false);
       setActive(false);
     } else {
       setActive(!active);
@@ -28,13 +28,17 @@ const Accordion: FunctionComponent<AccordionProps> = ({ index, title, children }
   return (
     <S.Accordion>
       <Flex directionColumn>
-        <S.AccordionTab active={active} isExpanded={isExpanded} onClick={handleToggleAccordion}>
+        <S.AccordionTab
+          active={active}
+          isDefaultExpanded={isDefaultExpanded}
+          onClick={handleToggleAccordion}
+        >
           <Flex justifySpaceBetween>
             <p>&#x2022; {title}</p>
             <IconChevron />
           </Flex>
         </S.AccordionTab>
-        <S.AccordionContent active={active} isExpanded={isExpanded}>
+        <S.AccordionContent active={active} isDefaultExpanded={isDefaultExpanded}>
           {children}
         </S.AccordionContent>
       </Flex>
