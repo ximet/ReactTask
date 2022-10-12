@@ -22,10 +22,10 @@ import inputValidator from 'utils/inputValidator';
 import {
   FeedbackForm,
   feedbackFormConfig,
-  initialState,
-  createUpdatedForm,
   feedbackFormInputNames,
-  getFormData
+  initialState,
+  generateUpdatedForm,
+  generateFormData
 } from './FeedbackFormSection.utils';
 
 // Styles
@@ -78,8 +78,7 @@ const FeedbackFormSection: FunctionComponent = () => {
       )
     );
 
-    const updatedForm = createUpdatedForm(validatedInputs, feedbackForm);
-
+    const updatedForm = generateUpdatedForm(validatedInputs, feedbackForm);
     setFeedbackForm({
       ...feedbackForm,
       ...updatedForm
@@ -92,7 +91,7 @@ const FeedbackFormSection: FunctionComponent = () => {
     handleFormChange();
 
     if (isFormValid) {
-      const formData = getFormData(feedbackFormInputs);
+      const formData = generateFormData(feedbackFormInputs);
       formData.timestamp = new Date();
 
       dispatch(addFeedback(formData));

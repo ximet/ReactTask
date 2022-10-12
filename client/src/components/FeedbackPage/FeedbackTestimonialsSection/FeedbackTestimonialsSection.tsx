@@ -13,84 +13,35 @@ import { IconStar, IconBlobTwo } from 'assets/images/svg';
 
 // Utils
 import dateFormatter from 'utils/dateFormatter';
+import {
+  Testimonials,
+  testimonialsConfig,
+  generateTestimonialData
+} from './FeedbackTestimonialsSection.utils';
 
 // Styles
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
-export enum Testimonial {
-  ratings = 'ratings',
-  suggestions = 'suggestions',
-  recommendations = 'recommendations',
-  more = 'more'
-}
-
-type Testimonials = Record<
-  Testimonial,
-  {
-    title: string;
-    list: {
-      name: string;
-      rating?: number;
-      message: string;
-      timestamp: Date;
-    }[];
-  }
->;
+const testimonialsConfigArray = Object.entries(testimonialsConfig).map(entry => ({
+  title: entry[1].title
+}));
 
 const FeedbackTestimonialsSection: FunctionComponent = () => {
   const theme = useAppSelector(selectTheme);
   const { data, loading, error } = useAppSelector(state => state.feedback);
   const [testimonials, setTestimonials] = useState<Testimonials>();
 
-  const testimonialsArray =
+  const testimonialsDataArray =
     testimonials &&
     Object.entries(testimonials).map(entry => ({
       id: entry[0],
       content: entry[1]
     }));
 
+  // Generate testimonials data object for use in the accordion tabs
   useEffect(() => {
-    const testimonialData = data.reduce<Testimonials>(
-      ({ ratings, suggestions, recommendations, more }, curr): Testimonials => ({
-        [Testimonial.ratings]: {
-          title: 'How would you rate our app?',
-          list: [
-            ...ratings.list,
-            {
-              name: curr.name,
-              rating: curr.rating,
-              message: curr.reasons,
-              timestamp: curr.timestamp
-            }
-          ]
-        },
-        [Testimonial.suggestions]: {
-          title: 'Anything that can be improved?',
-          list: [
-            ...suggestions.list,
-            { name: curr.name, message: curr.suggestions, timestamp: curr.timestamp }
-          ]
-        },
-        [Testimonial.recommendations]: {
-          title: 'Would you recommend this app to someone else?',
-          list: [
-            ...recommendations.list,
-            { name: curr.name, message: curr.recommend, timestamp: curr.timestamp }
-          ]
-        },
-        [Testimonial.more]: {
-          title: 'Care to share more? ',
-          list: [...more.list, { name: curr.name, message: curr.more, timestamp: curr.timestamp }]
-        }
-      }),
-      {
-        [Testimonial.ratings]: { title: '', list: [] },
-        [Testimonial.suggestions]: { title: '', list: [] },
-        [Testimonial.recommendations]: { title: '', list: [] },
-        [Testimonial.more]: { title: '', list: [] }
-      }
-    );
+    const testimonialData = generateTestimonialData(data);
     setTestimonials(testimonialData);
   }, [data]);
 
@@ -101,8 +52,8 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
           <h2>Testimonials</h2>
           {data.length > 0 ? (
             <RequestDataWrapper data={data} loading={loading} error={error}>
-              {testimonialsArray?.map(({ id, content }, index) => (
-                <Accordion key={id} title={content.title} index={index}>
+              {testimonialsDataArray?.map(({ id, content }, index) => (
+                <Accordion key={id} title={testimonialsConfigArray[index].title} index={index}>
                   {content.list
                     .filter(item => item.message)
                     .map(({ message, name, rating, timestamp }, i) => {

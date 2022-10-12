@@ -149,7 +149,7 @@ export const initialState: FeedbackForm = {
   }
 };
 
-export const createUpdatedForm = (
+export const generateUpdatedForm = (
   validatedInputs: { valid: boolean; errMsg: string }[],
   oldForm: FeedbackForm
 ): FeedbackForm =>
@@ -164,7 +164,7 @@ export const createUpdatedForm = (
     initialState
   );
 
-export const getFormData = (
+export const generateFormData = (
   formInputs: {
     value: string | number | Date;
     valid: boolean;
