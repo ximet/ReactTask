@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import { StylesProps } from 'types';
 
-import { noScrollbar } from 'styles/mixins';
-
 interface AccordionStylesProps extends StylesProps {
   active: boolean;
 }
@@ -39,5 +37,4 @@ export const AccordionContent = styled.div<AccordionStylesProps>`
   overflow-y: scroll;
   transition: max-height 0.6s ease;
   will-change: max-height;
-  ${noScrollbar}
 `;

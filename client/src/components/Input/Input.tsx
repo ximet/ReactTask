@@ -34,7 +34,9 @@ const INPUT = {
     />
   ),
   textarea: ({ inputConfig, value, theme, ...otherProps }: InputProps) => (
-    <S.Textarea value={value} themeType={theme} {...inputConfig} {...otherProps} />
+    <S.TextareaWrapper>
+      <S.Textarea value={value} themeType={theme} {...inputConfig} {...otherProps} />
+    </S.TextareaWrapper>
   ),
   radio: ({ id, value, inputConfig, theme, ...otherProps }: InputProps) => (
     <S.InputGroup role="radiogroup">

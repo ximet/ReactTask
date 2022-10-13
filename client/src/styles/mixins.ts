@@ -54,14 +54,6 @@ export const spinnerRoot = `
   height: 10em;
 `;
 
-export const noScrollbar = `
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-`;
-
 export const blobContainer = `
   position: absolute;
 

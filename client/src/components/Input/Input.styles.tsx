@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
-import { colorChange, noScrollbar, radioWrapperRoot } from 'styles/mixins';
+import { colorChange, radioWrapperRoot } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -25,14 +25,24 @@ export const Input = styled.input<StylesProps>`
   ${props => inputRoot(props)}
 `;
 
+export const TextareaWrapper = styled.div<StylesProps>`
+  border-radius: ${theme.shape.borderRadius};
+  overflow: hidden;
+
+  &:focus-within {
+    outline: auto;
+  }
+`;
+
 export const Textarea = styled.textarea<StylesProps>`
   ${props => inputRoot(props)}
   height: unset;
   padding: 1rem 2rem;
+  border-radius: unset;
   overflow: hidden;
   resize: none;
   overflow-y: scroll;
-  ${noScrollbar}
+  outline: none;
 `;
 
 export const InputGroup = styled.div`
