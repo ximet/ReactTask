@@ -3,13 +3,7 @@ import * as styles from '../../styles/HomePage.module.css';
 import { Nav } from './Nav/Nav.js';
 
 function HomePage(props) {
-  return (
-    <>
-      <main>
-        <Nav />
-      </main>
-    </>
-  );
+  return <Nav />;
 }
 
 export { HomePage };

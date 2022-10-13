@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as footerStyles from '../../styles/Footer.module.css';
 
 function Footer(props) {
   const [time, setTime] = useState(null);
