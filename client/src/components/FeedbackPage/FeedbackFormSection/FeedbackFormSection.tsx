@@ -15,17 +15,17 @@ import Input from 'components/Input/Input';
 import Button from 'components/Button/Button';
 
 // Assets
-import { IconBlobOne } from 'assets/images/svg';
+import { IconBlobOne, IconBlobTwo } from 'assets/images/svg';
 
 // Utils
 import inputValidator from 'utils/inputValidator';
 import {
   FeedbackForm,
   feedbackFormConfig,
-  initialState,
-  createUpdatedForm,
   feedbackFormInputNames,
-  getFormData
+  initialState,
+  generateUpdatedForm,
+  generateFormData
 } from './FeedbackFormSection.utils';
 
 // Styles
@@ -33,7 +33,7 @@ import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
 const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
-  id: entry[0],
+  id: entry[0] as FeedbackFormInput,
   config: entry[1]
 }));
 
@@ -78,8 +78,7 @@ const FeedbackFormSection: FunctionComponent = () => {
       )
     );
 
-    const updatedForm = createUpdatedForm(validatedInputs, feedbackForm);
-
+    const updatedForm = generateUpdatedForm(validatedInputs, feedbackForm);
     setFeedbackForm({
       ...feedbackForm,
       ...updatedForm
@@ -92,7 +91,7 @@ const FeedbackFormSection: FunctionComponent = () => {
     handleFormChange();
 
     if (isFormValid) {
-      const formData = getFormData(feedbackFormInputs);
+      const formData = generateFormData(feedbackFormInputs);
       formData.timestamp = new Date();
 
       dispatch(addFeedback(formData));
@@ -113,31 +112,30 @@ const FeedbackFormSection: FunctionComponent = () => {
 
   return (
     <S.FeedbackFormSection id="survey">
+      <S.FeedbackFormBlobTwo>
+        <IconBlobTwo />
+      </S.FeedbackFormBlobTwo>
       <Container>
         <Flex directionColumn>
           <h2>Fill Form Below</h2>
           <form onSubmit={handleFormSubmit}>
             <Flex directionColumn alignFlexStart>
-              {formElementsArray.map(({ id, config }, i) => {
-                const typedId = id as FeedbackFormInput;
-
-                return (
-                  <S.FeedbackFormGroup key={id}>
-                    <S.FeedbackFormLabel htmlFor={id}>{`${i + 1}. ${config.label} ${
-                      config.validation?.required ? '' : '(optional)'
-                    }`}</S.FeedbackFormLabel>
-                    <Input
-                      inputType={config.inputType}
-                      id={id}
-                      name={id}
-                      value={feedbackForm[typedId].value}
-                      inputConfig={config.inputConfig}
-                      onChange={handleInputChange}
-                    />
-                    <S.FeedbackFormError>{feedbackForm[typedId].errMsg}</S.FeedbackFormError>
-                  </S.FeedbackFormGroup>
-                );
-              })}
+              {formElementsArray.map(({ id, config }, i) => (
+                <S.FeedbackFormGroup key={id}>
+                  <S.FeedbackFormLabel htmlFor={id}>{`${i + 1}. ${config.label} ${
+                    config.validation?.required ? '' : '(optional)'
+                  }`}</S.FeedbackFormLabel>
+                  <Input
+                    inputType={config.inputType}
+                    id={id}
+                    name={id}
+                    value={feedbackForm[id].value}
+                    inputConfig={config.inputConfig}
+                    onChange={handleInputChange}
+                  />
+                  <S.FeedbackFormError>{feedbackForm[id].errMsg}</S.FeedbackFormError>
+                </S.FeedbackFormGroup>
+              ))}
               <Button type="submit" ariaLabel="Submit a form">
                 Submit
               </Button>
@@ -145,9 +143,9 @@ const FeedbackFormSection: FunctionComponent = () => {
           </form>
         </Flex>
       </Container>
-      <S.FeedbackFormBlob>
+      <S.FeedbackFormBlobOne>
         <IconBlobOne />
-      </S.FeedbackFormBlob>
+      </S.FeedbackFormBlobOne>
     </S.FeedbackFormSection>
   );
 };

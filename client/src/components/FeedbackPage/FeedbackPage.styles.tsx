@@ -4,7 +4,7 @@ import { StylesProps } from 'types';
 
 import theme from 'styles/theme';
 import { HEADER_HEIGHT } from 'styles/constants';
-import { blobContainer, sectionRoot, starWrapperRoot } from 'styles/mixins';
+import { blobContainer, sectionRoot } from 'styles/mixins';
 
 export const FeedbackHeroSection = styled.section`
   ${sectionRoot}
@@ -79,10 +79,17 @@ export const FeedbackFormError = styled.p`
   color: ${theme.palette.error};
 `;
 
-export const FeedbackFormBlob = styled.div`
+export const FeedbackFormBlobOne = styled.div`
   ${blobContainer}
   top: 80vh;
   left: -20vw;
+  width: 50vw;
+`;
+
+export const FeedbackFormBlobTwo = styled.div`
+  ${blobContainer}
+  top: -35vh;
+  right: -15vw;
   width: 50vw;
 `;
 
@@ -115,6 +122,10 @@ export const FeedbackTestimonialTop = styled.div`
   width: 100%;
   margin-bottom: 0.5rem;
 
+  > div:first-of-type {
+    margin-bottom: 0.5rem;
+  }
+
   p {
     font-size: 1.125rem;
     font-weight: 500;
@@ -131,27 +142,6 @@ export const FeedbackTestimonialBottom = styled.div<StylesProps>`
   }
 `;
 
-interface FeedbackTestimonialStarWrapperProps extends StylesProps {
-  active: boolean;
-}
-
-export const FeedbackTestimonialStarWrapper = styled.div<FeedbackTestimonialStarWrapperProps>`
-  position: relative;
-  margin-bottom: 0.5rem;
-  ${({ themeType, active }) => starWrapperRoot({ themeType, active })}
-
-  &:not(:last-of-type) {
-    margin-right: 0.5rem;
-  }
-`;
-
 export const FeedbackTestimonialsEmpty = styled.p`
   text-align: center;
-`;
-
-export const FeedbackTestimonialBlob = styled.div`
-  ${blobContainer}
-  top: 80vh;
-  right: -15vw;
-  width: 50vw;
 `;

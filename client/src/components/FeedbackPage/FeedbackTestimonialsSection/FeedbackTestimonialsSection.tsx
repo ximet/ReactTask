@@ -7,90 +7,40 @@ import { selectTheme } from 'redux/reducers/global';
 // Components
 import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
 import Accordion from 'components/Accordion/Accordion';
-
-// Assets
-import { IconStar, IconBlobTwo } from 'assets/images/svg';
+import StarRating from 'components/StarRating/StarRating';
 
 // Utils
 import dateFormatter from 'utils/dateFormatter';
+import {
+  Testimonials,
+  Testimonial,
+  TestimonialsDataArray,
+  testimonialsConfig,
+  generateTestimonialData
+} from './FeedbackTestimonialsSection.utils';
 
 // Styles
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
-export enum Testimonial {
-  ratings = 'ratings',
-  suggestions = 'suggestions',
-  recommendations = 'recommendations',
-  more = 'more'
-}
-
-type Testimonials = Record<
-  Testimonial,
-  {
-    title: string;
-    list: {
-      name: string;
-      rating?: number;
-      message: string;
-      timestamp: Date;
-    }[];
-  }
->;
+// Constants
+import { STAR_RATING_OPTIONS } from '../../../constants';
 
 const FeedbackTestimonialsSection: FunctionComponent = () => {
   const theme = useAppSelector(selectTheme);
   const { data, loading, error } = useAppSelector(state => state.feedback);
   const [testimonials, setTestimonials] = useState<Testimonials>();
 
-  const testimonialsArray =
+  const testimonialsDataArray: TestimonialsDataArray =
     testimonials &&
     Object.entries(testimonials).map(entry => ({
-      id: entry[0],
-      content: entry[1]
+      id: entry[0] as Testimonial,
+      list: entry[1]
     }));
 
+  // Generate testimonials data object for use in the accordion tabs
   useEffect(() => {
-    const testimonialData = data.reduce<Testimonials>(
-      ({ ratings, suggestions, recommendations, more }, curr): Testimonials => ({
-        [Testimonial.ratings]: {
-          title: 'How would you rate our app?',
-          list: [
-            ...ratings.list,
-            {
-              name: curr.name,
-              rating: curr.rating,
-              message: curr.reasons,
-              timestamp: curr.timestamp
-            }
-          ]
-        },
-        [Testimonial.suggestions]: {
-          title: 'Anything that can be improved?',
-          list: [
-            ...suggestions.list,
-            { name: curr.name, message: curr.suggestions, timestamp: curr.timestamp }
-          ]
-        },
-        [Testimonial.recommendations]: {
-          title: 'Would you recommend this app to someone else?',
-          list: [
-            ...recommendations.list,
-            { name: curr.name, message: curr.recommend, timestamp: curr.timestamp }
-          ]
-        },
-        [Testimonial.more]: {
-          title: 'Care to share more? ',
-          list: [...more.list, { name: curr.name, message: curr.more, timestamp: curr.timestamp }]
-        }
-      }),
-      {
-        [Testimonial.ratings]: { title: '', list: [] },
-        [Testimonial.suggestions]: { title: '', list: [] },
-        [Testimonial.recommendations]: { title: '', list: [] },
-        [Testimonial.more]: { title: '', list: [] }
-      }
-    );
+    const testimonialData = generateTestimonialData(data);
     setTestimonials(testimonialData);
   }, [data]);
 
@@ -101,11 +51,11 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
           <h2>Testimonials</h2>
           {data.length > 0 ? (
             <RequestDataWrapper data={data} loading={loading} error={error}>
-              {testimonialsArray?.map(({ id, content }, index) => (
-                <Accordion key={id} id={id} title={content.title} index={index}>
-                  {content.list
+              {testimonialsDataArray?.map(({ id, list }, index) => (
+                <Accordion key={id} id={id} title={testimonialsConfig[id].title} index={index}>
+                  {list
                     .filter(item => item.message)
-                    .map(({ message, name, rating, timestamp }, i) => {
+                    .map(({ name, message, rating, timestamp }, i) => {
                       const { day, year, time } = dateFormatter(timestamp, true);
 
                       return (
@@ -113,17 +63,15 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
                           <Flex directionColumn alignFlexStart>
                             <S.FeedbackTestimonialTop>
                               {rating && (
-                                <Flex justifyFlexStart>
-                                  {[...Array(5)].map((_, j) => (
-                                    <S.FeedbackTestimonialStarWrapper
-                                      key={`star-${j + 1}`}
-                                      active={rating >= j + 1}
-                                      themeType={theme}
-                                    >
-                                      <IconStar />
-                                    </S.FeedbackTestimonialStarWrapper>
-                                  ))}
-                                </Flex>
+                                <StarRating
+                                  theme={theme}
+                                  inputConfig={{
+                                    type: 'radio',
+                                    options: STAR_RATING_OPTIONS
+                                  }}
+                                  readOnly
+                                  defaultValue={rating}
+                                />
                               )}
                               <p>{message}</p>
                             </S.FeedbackTestimonialTop>
@@ -149,9 +97,6 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
           )}
         </Flex>
       </Container>
-      <S.FeedbackTestimonialBlob>
-        <IconBlobTwo />
-      </S.FeedbackTestimonialBlob>
     </S.FeedbackTestimonialsSection>
   );
 };

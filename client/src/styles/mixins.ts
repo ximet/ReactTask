@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 import { StylesProps } from 'types';
 
 import theme from './theme';
@@ -47,34 +45,6 @@ export const radioWrapperRoot = `
   input:focus + svg,
   input:focus + label {
     outline: auto;
-  }
-`;
-
-interface starWrapperRootStylesProps extends StylesProps {
-  active: boolean;
-}
-
-export const starWrapperRoot = ({ themeType, active }: starWrapperRootStylesProps) => css`
-  width: 2rem;
-  height: 2rem;
-
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    pointer-events: none;
-
-    path {
-      fill: ${themeType === 'light' ? `#efeded` : `${theme.palette.componentBackgroundDark}`};
-      stroke: none;
-      transition: fill 200ms;
-
-      ${active &&
-      css`
-        fill: ${theme.palette.primary.light};
-      `}
-    }
   }
 `;
 

@@ -1,7 +1,7 @@
 import type { AccessToken } from 'types';
 import { ActionType, Action } from '../actionTypes/auth';
 
-interface AuthState {
+export interface AuthState {
   accessToken?: AccessToken;
   loading: boolean;
   error: string | null;

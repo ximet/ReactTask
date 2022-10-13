@@ -25,3 +25,13 @@ export const VALIDATION_ERRORS: Record<
   [InputValidator.maxLength]: (inputName, ruleValue) =>
     `${capitalize(inputName)} must be less than ${ruleValue} characters long.`
 };
+
+export const STORE_STATE_LS_LABEL = 'state';
+
+export const STAR_RATING_OPTIONS = {
+  'rating-1': 1,
+  'rating-2': 2,
+  'rating-3': 3,
+  'rating-4': 4,
+  'rating-5': 5
+};

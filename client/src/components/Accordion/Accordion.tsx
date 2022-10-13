@@ -17,28 +17,14 @@ interface AccordionProps {
 }
 
 const Accordion: FunctionComponent<AccordionProps> = ({ id, index, title, children }) => {
-  const [active, setActive] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(index === 0);
+  const [active, setActive] = useState<boolean>(index === 0);
 
-  const handleToggleOnClick = (): void => {
-    if (isExpanded) {
-      setIsExpanded(false);
-      setActive(false);
-    } else {
-      setActive(!active);
-    }
-  };
+  const handleToggleOnClick = (): void => setActive(!active);
 
   const handleToggleOnKeyPress = (e: KeyboardEvent<HTMLDivElement>): void => {
     e.preventDefault();
-
     if (checkIfEnterOrSpacePressed(e)) {
-      if (isExpanded) {
-        setIsExpanded(false);
-        setActive(false);
-      } else {
-        setActive(!active);
-      }
+      setActive(!active);
     }
   };
 
@@ -47,7 +33,6 @@ const Accordion: FunctionComponent<AccordionProps> = ({ id, index, title, childr
       <Flex directionColumn>
         <S.AccordionTab
           active={active}
-          isExpanded={isExpanded}
           onClick={handleToggleOnClick}
           onKeyPress={handleToggleOnKeyPress}
         >
@@ -58,7 +43,7 @@ const Accordion: FunctionComponent<AccordionProps> = ({ id, index, title, childr
             <IconChevron />
           </Flex>
         </S.AccordionTab>
-        <S.AccordionContent id={id} active={active} isExpanded={isExpanded}>
+        <S.AccordionContent id={id} active={active}>
           {children}
         </S.AccordionContent>
       </Flex>
