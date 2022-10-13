@@ -20,8 +20,12 @@ export const Accordion = styled.div`
 export const AccordionTab = styled.div<AccordionStylesProps>`
   width: 100%;
   padding: 1rem 0;
-  font-weight: 500;
   cursor: pointer;
+
+  button {
+    cursor: inherit;
+    font-weight: 500;
+  }
 
   svg {
     height: 1rem;

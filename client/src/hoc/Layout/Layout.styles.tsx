@@ -84,7 +84,6 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
   button {
     border: none;
     background: none;
-    outline: none;
   }
 `;
 

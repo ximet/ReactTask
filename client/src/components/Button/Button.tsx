@@ -4,11 +4,15 @@ import React, { FunctionComponent } from 'react';
 import * as S from './Button.styles';
 
 interface ButtonProps {
+  type?: 'button' | 'submit' | 'reset';
   color?: string;
+  ariaLabel: string;
 }
 
-const Button: FunctionComponent<ButtonProps> = ({ color, children }) => (
-  <S.Button color={color}>{children}</S.Button>
+const Button: FunctionComponent<ButtonProps> = ({ type, color, ariaLabel, children }) => (
+  <S.Button type={type} color={color} aria-label={ariaLabel}>
+    {children}
+  </S.Button>
 );
 
 export default Button;

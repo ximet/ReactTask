@@ -41,7 +41,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ open }) => {
   }, [pathname, handleSidebarClose]);
 
   return (
-    <S.Sidebar ref={sidebarRef} open={open}>
+    <S.Sidebar role="menu" ref={sidebarRef} open={open}>
       <Flex directionColumn alignFlexStart>
         <S.SidebarHeader>
           <Flex>

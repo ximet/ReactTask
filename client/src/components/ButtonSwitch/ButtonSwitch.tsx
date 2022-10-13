@@ -11,6 +11,7 @@ interface ButtonSwitchProps {
   width: string;
   switchType: string;
   infoType?: string;
+  ariaLabel: string;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -18,6 +19,7 @@ const ButtonSwitch: FunctionComponent<ButtonSwitchProps> = ({
   width,
   switchType,
   infoType,
+  ariaLabel,
   onClick,
   children
 }) => {
@@ -25,6 +27,9 @@ const ButtonSwitch: FunctionComponent<ButtonSwitchProps> = ({
 
   return (
     <S.ButtonSwitch
+      type="button"
+      role="switch"
+      aria-label={ariaLabel}
       themeType={theme}
       width={width}
       switchType={switchType}

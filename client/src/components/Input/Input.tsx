@@ -37,7 +37,7 @@ const INPUT = {
     <S.Textarea value={value} themeType={theme} {...inputConfig} {...otherProps} />
   ),
   radio: ({ id, value, inputConfig, theme, ...otherProps }: InputProps) => (
-    <S.InputGroup>
+    <S.InputGroup role="radiogroup">
       <Flex justifyFlexStart>
         {Object.keys(inputConfig!.options!).map(option => (
           <S.RadioWrapper key={option} themeType={theme}>

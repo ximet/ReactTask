@@ -102,7 +102,7 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
           {data.length > 0 ? (
             <RequestDataWrapper data={data} loading={loading} error={error}>
               {testimonialsArray?.map(({ id, content }, index) => (
-                <Accordion key={id} title={content.title} index={index}>
+                <Accordion key={id} id={id} title={content.title} index={index}>
                   {content.list
                     .filter(item => item.message)
                     .map(({ message, name, rating, timestamp }, i) => {

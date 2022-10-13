@@ -39,10 +39,14 @@ export const radioWrapperRoot = `
   label {
     cursor: pointer;
   }
-  
+
   input {
     opacity: 0;
-    z-index: 0;
+  }
+
+  input:focus + svg,
+  input:focus + label {
+    outline: auto;
   }
 `;
 

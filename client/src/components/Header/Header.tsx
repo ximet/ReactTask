@@ -21,6 +21,7 @@ import ButtonSwitch from '../ButtonSwitch/ButtonSwitch';
 
 const Header: FunctionComponent = () => {
   const theme = useAppSelector(selectTheme);
+  const sidebarOpen = useAppSelector(state => state.global.sidebarOpen);
 
   const matchHome = useMatch('/');
   const matchLocation = useMatch('/locations/:locationId');
@@ -42,11 +43,23 @@ const Header: FunctionComponent = () => {
           )}
           <S.HeaderAction>
             <Flex>
-              <ButtonSwitch width="6.25rem" switchType="theme" onClick={handleThemeSwitch}>
+              <ButtonSwitch
+                ariaLabel="Toggle theme"
+                width="6.25rem"
+                switchType="theme"
+                onClick={handleThemeSwitch}
+              >
                 <IconLightMode />
                 <IconDarkMode />
               </ButtonSwitch>
-              <S.HeaderMenuButton themeType={theme} onClick={handleSidebarOpen}>
+              <S.HeaderMenuButton
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded={sidebarOpen ? true : undefined}
+                aria-label="Open sidebar"
+                themeType={theme}
+                onClick={handleSidebarOpen}
+              >
                 <IconMenu />
               </S.HeaderMenuButton>
             </Flex>

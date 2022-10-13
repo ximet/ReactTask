@@ -1,5 +1,7 @@
+// Types
 import { InputValidator } from 'types';
 
+// Utils
 import { capitalize } from 'utils/helpers';
 
 export const BASE_URL = 'http://localhost:3000';

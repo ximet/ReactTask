@@ -138,7 +138,9 @@ const FeedbackFormSection: FunctionComponent = () => {
                   </S.FeedbackFormGroup>
                 );
               })}
-              <Button>Submit</Button>
+              <Button type="submit" ariaLabel="Submit a form">
+                Submit
+              </Button>
             </Flex>
           </form>
         </Flex>
