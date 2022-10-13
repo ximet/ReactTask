@@ -6,5 +6,7 @@ export const STORAGE = {
 };
 
 export const API_EDPOIONTS = {
-  SEARCH: 'search'
+  SEARCH: 'location/search',
+  CURRENT: 'current',
+  LOCATION: 'location'
 };

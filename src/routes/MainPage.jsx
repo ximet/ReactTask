@@ -15,7 +15,7 @@ function MainPage() {
     setSearchQuery(e.target.value);
   }
 
-  const checkedItems = Boolean(data.length) ? data : [];
+  const checkedItems = Boolean(data.locations) ? data.locations : [];
   return (
     <div className={mainPage}>
       <ModalCountries

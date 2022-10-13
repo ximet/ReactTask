@@ -100,3 +100,13 @@ body {
     color: $colorUISecondary;
   }
 }
+.cityPage {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 25px;
+  color: $colorTextSecondary;
+  span {
+    color: $colorTextPrimary;
+  }
+}
