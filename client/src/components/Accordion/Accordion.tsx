@@ -1,5 +1,9 @@
 import React, { FunctionComponent, useState, KeyboardEvent } from 'react';
 
+// Store
+import { useAppSelector } from 'redux/hooks';
+import { selectTheme } from 'redux/reducers/global';
+
 // Assets
 import { IconChevron } from 'assets/images/svg';
 
@@ -17,6 +21,8 @@ interface AccordionProps {
 }
 
 const Accordion: FunctionComponent<AccordionProps> = ({ id, index, title, children }) => {
+  const theme = useAppSelector(selectTheme);
+
   const [active, setActive] = useState<boolean>(index === 0);
 
   const handleToggleOnClick = (): void => setActive(!active);
@@ -33,6 +39,7 @@ const Accordion: FunctionComponent<AccordionProps> = ({ id, index, title, childr
       <Flex directionColumn>
         <S.AccordionTab
           active={active}
+          themeType={theme}
           onClick={handleToggleOnClick}
           onKeyPress={handleToggleOnKeyPress}
         >

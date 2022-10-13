@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import { StylesProps } from 'types';
 
+import theme from 'styles/theme';
+import { colorChange } from 'styles/mixins';
+
 interface AccordionStylesProps extends StylesProps {
   active: boolean;
 }
@@ -22,6 +25,8 @@ export const AccordionTab = styled.div<AccordionStylesProps>`
   button {
     cursor: inherit;
     font-weight: 500;
+    ${props => colorChange(props, 'color', theme.palette.black, theme.palette.white, 'color')}
+    transition: color 1.2s, background 0s 1.2s;
   }
 
   svg {
