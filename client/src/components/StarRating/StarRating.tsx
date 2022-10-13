@@ -12,7 +12,7 @@ import * as S from './StarRating.styles';
 
 interface StarRatingProps extends InputProps {
   readOnly?: boolean;
-  readOnlyRating?: number;
+  defaultValue?: number;
 }
 
 const StarRating: FunctionComponent<StarRatingProps> = ({
@@ -21,7 +21,7 @@ const StarRating: FunctionComponent<StarRatingProps> = ({
   theme,
   inputConfig,
   readOnly,
-  readOnlyRating,
+  defaultValue,
   ...otherProps
 }) => {
   const [rating, setRating] = useState<number | null>(null);
@@ -41,7 +41,7 @@ const StarRating: FunctionComponent<StarRatingProps> = ({
           <S.StarWrapper
             key={`star-${ratingValue}`}
             themeType={theme}
-            active={ratingValue <= (ratingHovered! || rating! || readOnlyRating!)}
+            active={ratingValue <= (ratingHovered! || rating! || defaultValue!)}
             readOnly={readOnly}
           >
             {readOnly ? (

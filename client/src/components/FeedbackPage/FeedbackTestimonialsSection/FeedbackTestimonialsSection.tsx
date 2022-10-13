@@ -23,6 +23,9 @@ import {
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
+// Constants
+import { STAR_RATING_OPTIONS } from '../../../constants';
+
 const FeedbackTestimonialsSection: FunctionComponent = () => {
   const theme = useAppSelector(selectTheme);
   const { data, loading, error } = useAppSelector(state => state.feedback);
@@ -64,16 +67,10 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
                                   theme={theme}
                                   inputConfig={{
                                     type: 'radio',
-                                    options: {
-                                      'rating-1': 1,
-                                      'rating-2': 2,
-                                      'rating-3': 3,
-                                      'rating-4': 4,
-                                      'rating-5': 5
-                                    }
+                                    options: STAR_RATING_OPTIONS
                                   }}
                                   readOnly
-                                  readOnlyRating={rating}
+                                  defaultValue={rating}
                                 />
                               )}
                               <p>{message}</p>

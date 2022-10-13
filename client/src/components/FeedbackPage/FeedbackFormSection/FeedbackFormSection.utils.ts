@@ -10,6 +10,9 @@ import {
   Feedback
 } from 'types';
 
+// Constants
+import { STAR_RATING_OPTIONS } from '../../../constants';
+
 export const feedbackFormInputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
 
 export type FeedbackFormConfig = {
@@ -45,13 +48,7 @@ export const feedbackFormConfig: FeedbackFormConfig = {
     inputType: 'rating',
     inputConfig: {
       type: 'radio',
-      options: {
-        'rating-1': 1,
-        'rating-2': 2,
-        'rating-3': 3,
-        'rating-4': 4,
-        'rating-5': 5
-      }
+      options: STAR_RATING_OPTIONS
     },
     validation: {
       [InputValidator.required]: true

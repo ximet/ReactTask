@@ -13,7 +13,7 @@ interface AccordionProps {
 }
 
 const Accordion: FunctionComponent<AccordionProps> = ({ index, title, children }) => {
-  const [active, setActive] = useState<boolean>(index === 0 || false);
+  const [active, setActive] = useState<boolean>(index === 0);
 
   const handleToggleAccordion = (): void => setActive(!active);
 
