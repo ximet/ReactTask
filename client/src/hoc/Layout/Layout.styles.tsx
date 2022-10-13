@@ -119,6 +119,11 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
       background-color: ${theme.palette.primary.dark};
     }
   }
+
+  ::selection {
+    background-color: ${theme.palette.primary.medium};
+    color: ${theme.palette.black};
+  }
 `;
 
 export default GlobalStyle;

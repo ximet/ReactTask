@@ -50,6 +50,7 @@ export const ButtonSwitch = styled.button<ButtonSwitchStylesProps>`
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
+    user-select: none;
   }
 
   svg {

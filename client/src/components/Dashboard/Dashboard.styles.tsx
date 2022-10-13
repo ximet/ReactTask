@@ -64,6 +64,7 @@ export const DashboardForecastType = styled.li<DashboardForecastTypeStyles>`
   transition: color 1.2s;
   will-change: color;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     ${colorChangeOnHover('color', 'color')}
