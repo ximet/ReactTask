@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react';
 import { BsLayers } from 'react-icons/bs';
 import { TiWeatherShower } from 'react-icons/ti';
 import { MdAir } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'store/hooks';
 
 import { turnOnForecasts, turnOnAir } from 'store/layer/layerActions';
 
@@ -12,7 +12,7 @@ import styles from './Main.css';
 const LayersButton: FC = () => {
   const [isShowLayers, setIsShowLayers] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const btnClickHandler = (action: { type: string }) => {
     dispatch(action);
