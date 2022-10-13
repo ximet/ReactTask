@@ -1,0 +1,67 @@
+form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px 20px;
+  border-radius: 8px;
+
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  background-color: var(--color-text-primary);
+}
+
+form h2 {
+  padding: 4px;
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+
+  color: var(--color-text-secondary);
+}
+
+.titleSecondary {
+  margin-bottom: 16px;
+}
+
+.formControl {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.formControl label {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 18px;
+
+  color: var(--color-text-secondary);
+}
+
+.formControl input,
+.formControl select,
+.formControl textarea {
+  border: 1px solid var(--color-text-tertiary);
+  border-radius: 2px;
+  font-family: inherit;
+  padding: 10px;
+  display: block;
+  width: 95%;
+}
+
+button {
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-tertiary);
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 21px;
+  display: block;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}

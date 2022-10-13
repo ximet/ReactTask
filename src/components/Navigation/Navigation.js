@@ -4,6 +4,7 @@ import styles from './Navigation.module.css';
 
 const HOME_LABEL = 'Home';
 const ABOUT_LABEL = 'About';
+const FEEDBACK_LABEL = 'Feedback';
 
 const Navigation = () => {
   const checkIsActive = ({ isActive }) => (isActive ? { textDecoration: 'underline' } : {});
@@ -19,6 +20,9 @@ const Navigation = () => {
         <li>
           <NavLink to="/about" style={checkIsActive}>
             {ABOUT_LABEL}
+          </NavLink>
+          <NavLink to="/feedback" style={checkIsActive}>
+            {FEEDBACK_LABEL}
           </NavLink>
         </li>
       </ul>
