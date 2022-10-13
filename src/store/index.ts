@@ -1,12 +1,8 @@
-import { compose, createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from '@redux-devtools/extension';
 import { rootReducer } from './rootReducer';
 import { loadThemeState, saveThemeState } from './helpers';
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
 
 const persistedState = {
   theme: loadThemeState()
@@ -15,9 +11,11 @@ const persistedState = {
 export const store = createStore(
   rootReducer,
   persistedState,
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 store.subscribe(() => {
   saveThemeState(store.getState().theme);
 });
+
+export type AppDispatch = typeof store.dispatch;

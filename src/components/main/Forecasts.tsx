@@ -1,48 +1,48 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch, useCurrentWeatherDispatch } from 'store/hooks';
 import styles from './Main.css';
 import classNames from 'classnames';
+import { CurrentWeatherDispatch } from 'store/currentWeather/types';
 
 import MainCard from './MainCard';
 import ForecastsHourly from './ForecastsHourly';
 import ForecastsDaily from './ForecastsDaily';
+import Loader from 'components/loader/Loader';
 import { positionContext } from 'context/positionContext';
+import { loadCurrentWeather } from 'store/currentWeather/currentWeatherActions';
+import { currentWeatherSelector } from 'store/currentWeather/currentWeatherSelectors';
 import { getCity } from 'services/getCity';
-import { getWeather } from 'services/getWeather';
-import { CurrentWeatherType, HourlyWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
 import { ViewType } from 'types/viewType';
 import { defaultLocationInfo } from './defaultStates';
-import { Coordinates } from 'types/positionType';
 
 const Forecasts: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | undefined>(undefined);
-  const [hourlyWeather, setHourlyWeather] = useState<HourlyWeatherType[]>([]);
 
   const [view, setView] = useState<ViewType>('cards');
+
+  const { data: currentWeather, loading, error: loadingError } = useSelector(
+    currentWeatherSelector
+  );
+  const dispatch = useCurrentWeatherDispatch();
 
   const {
     state: { position, positionError }
   } = useContext(positionContext);
 
-  async function fetchData(position: Coordinates) {
-    Promise.all([
-      getCity(position),
-      getWeather<{ current: CurrentWeatherType }>('/current/', position)
-    ]).then(res => {
-      setLocation(res[0]);
-      setCurrentWeather(res[1].current);
-    });
-  }
-
   useEffect(() => {
     if (position.longitude && position.latitude) {
-      fetchData(position);
+      getCity(position).then(res => setLocation(res));
+      dispatch(loadCurrentWeather(position));
     }
-  }, [position]);
+  }, [position, dispatch]);
   return (
     <>
-      {currentWeather ? (
+      {loading && <Loader />}
+      {loadingError && <h3>Oops: {loadingError}</h3>}
+      {positionError && <h3>We can't show you current weather, because: {positionError}</h3>}
+      {currentWeather && !loadingError && !positionError && !loading && (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
           <div className={styles['view-btns-wrapper']}>
@@ -68,8 +68,6 @@ const Forecasts: FC = () => {
           <ForecastsHourly view={view} />
           <ForecastsDaily view={view} />
         </>
-      ) : (
-        <p>{positionError}</p>
       )}
     </>
   );

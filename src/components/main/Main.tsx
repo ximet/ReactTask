@@ -1,6 +1,5 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { layerSelector } from 'store/layer/layerSelectors';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import Forecasts from './Forecasts';
@@ -9,11 +8,12 @@ import AirQuality from './AirQuality';
 
 import { LayerState } from 'store/layer/layerReducer';
 import { positionContext } from 'context/positionContext';
+import { useAppSelector } from 'store/hooks';
 
 import commonStyle from 'styles/commonStyles.css';
 
 const Main: FC = () => {
-  const layer: LayerState = useSelector(layerSelector);
+  const layer: LayerState = useAppSelector(layerSelector);
 
   const { coordinates } = useParams();
 

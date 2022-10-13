@@ -11,6 +11,8 @@ body[data-theme='light'] {
   --after-title: #0000cd;
   --input-shadow: #223c5099;
   --about-page-gradient: rgba(255, 255, 255, 0.8);
+  --loader-background: #f3f3f3;
+  --loader-main: #ffff00;
 }
 
 body[data-theme='dark'] {
@@ -26,4 +28,6 @@ body[data-theme='dark'] {
   --after-title: #ffffff;
   --input-shadow: transparent;
   --about-page-gradient: rgba(0, 0, 0, 0.7);
+  --loader-background: #f3f3f3;
+  --loader-main: #ffff00;
 }

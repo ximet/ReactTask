@@ -1,4 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { currentWeatherSelector } from 'store/currentWeather/currentWeatherSelectors';
 import styles from './Main.css';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { LocationInfoType } from 'types/cityInfoType';
@@ -21,7 +23,9 @@ const getIsFavorite = (id: number): boolean => {
   return favoriteCities.some(city => city.id === id);
 };
 
-const MainCard: FC<MainCardProps> = React.memo(({ currentWeather, location }) => {
+const MainCard: FC<MainCardProps> = React.memo(({ location }) => {
+  const { data: currentWeather } = useSelector(currentWeatherSelector);
+
   const {
     time,
     symbol,
@@ -34,7 +38,7 @@ const MainCard: FC<MainCardProps> = React.memo(({ currentWeather, location }) =>
     precipProb,
     cloudiness,
     uvIndex
-  } = currentWeather;
+  } = currentWeather!;
 
   const date = convertTime(time);
 

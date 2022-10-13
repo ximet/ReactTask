@@ -13,6 +13,7 @@ import { TbMoonStars } from 'react-icons/tb';
 import { usePosition } from 'hooks/usePosition';
 import { getCitiesSearchResults } from 'services/getCity';
 import { ThemeType } from 'store/theme/themeReducer';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
 
 type LinkType = {
   isActive: boolean;
@@ -28,10 +29,10 @@ const Header: FC = () => {
   const [cities, setCities] = useState<LocationInfoType[]>([]);
   const { changePosition } = useContext(positionContext);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { position } = usePosition();
 
-  const theme = useSelector(themeSelector);
+  const theme = useAppSelector(themeSelector);
   const newTheme: ThemeType = useMemo(() => (theme === 'light' ? 'dark' : 'light'), [theme]);
 
   const cityClickHandler = (lat: number, lon: number) => {
