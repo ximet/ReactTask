@@ -10,11 +10,18 @@ import { IconStar } from 'assets/images/svg';
 import { Flex } from 'styles/global';
 import * as S from './StarRating.styles';
 
-const StarRating: FunctionComponent<InputProps> = ({
+interface StarRatingProps extends InputProps {
+  readOnly?: boolean;
+  readOnlyRating?: number;
+}
+
+const StarRating: FunctionComponent<StarRatingProps> = ({
   id,
   value,
   theme,
   inputConfig,
+  readOnly,
+  readOnlyRating,
   ...otherProps
 }) => {
   const [rating, setRating] = useState<number | null>(null);
@@ -34,21 +41,29 @@ const StarRating: FunctionComponent<InputProps> = ({
           <S.StarWrapper
             key={`star-${ratingValue}`}
             themeType={theme}
-            active={ratingValue <= (ratingHovered! || rating!)}
+            active={ratingValue <= (ratingHovered! || rating! || readOnlyRating!)}
+            readOnly={readOnly}
           >
-            <label htmlFor={id}>
-              <S.Star
-                name={id}
-                value={ratingValue}
-                checked={value === ratingValue}
-                {...inputConfig}
-                onClick={() => setRating(ratingValue)}
-                onMouseEnter={() => setRatingHovered(ratingValue)}
-                onMouseLeave={() => setRatingHovered(null)}
-                {...otherProps}
-              />
-              <IconStar />
-            </label>
+            {readOnly ? (
+              <>
+                <S.Star {...inputConfig} />
+                <IconStar />
+              </>
+            ) : (
+              <label htmlFor={id}>
+                <S.Star
+                  name={id}
+                  value={ratingValue}
+                  checked={value === ratingValue}
+                  {...inputConfig}
+                  onClick={() => setRating(ratingValue)}
+                  onMouseEnter={() => setRatingHovered(ratingValue)}
+                  onMouseLeave={() => setRatingHovered(null)}
+                  {...otherProps}
+                />
+                <IconStar />
+              </label>
+            )}
           </S.StarWrapper>
         ))}
       </Flex>

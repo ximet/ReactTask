@@ -4,7 +4,7 @@ import { StylesProps } from 'types';
 
 import theme from 'styles/theme';
 import { HEADER_HEIGHT } from 'styles/constants';
-import { blobContainer, sectionRoot, starWrapperRoot } from 'styles/mixins';
+import { blobContainer, sectionRoot } from 'styles/mixins';
 
 export const FeedbackHeroSection = styled.section`
   ${sectionRoot}
@@ -122,6 +122,10 @@ export const FeedbackTestimonialTop = styled.div`
   width: 100%;
   margin-bottom: 0.5rem;
 
+  > div:first-of-type {
+    margin-bottom: 0.5rem;
+  }
+
   p {
     font-size: 1.125rem;
     font-weight: 500;
@@ -135,20 +139,6 @@ export const FeedbackTestimonialBottom = styled.div<StylesProps>`
     font-size: 0.875rem;
     color: ${({ themeType }) =>
       themeType === 'light' ? theme.palette.grey.medium : theme.palette.grey.darkest};
-  }
-`;
-
-interface FeedbackTestimonialStarWrapperProps extends StylesProps {
-  active: boolean;
-}
-
-export const FeedbackTestimonialStarWrapper = styled.div<FeedbackTestimonialStarWrapperProps>`
-  position: relative;
-  margin-bottom: 0.5rem;
-  ${({ themeType, active }) => starWrapperRoot({ themeType, active })}
-
-  &:not(:last-of-type) {
-    margin-right: 0.5rem;
   }
 `;
 

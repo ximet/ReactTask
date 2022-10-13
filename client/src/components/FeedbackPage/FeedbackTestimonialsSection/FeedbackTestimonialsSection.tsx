@@ -7,9 +7,7 @@ import { selectTheme } from 'redux/reducers/global';
 // Components
 import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
 import Accordion from 'components/Accordion/Accordion';
-
-// Assets
-import { IconStar } from 'assets/images/svg';
+import StarRating from 'components/StarRating/StarRating';
 
 // Utils
 import dateFormatter from 'utils/dateFormatter';
@@ -62,17 +60,21 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
                           <Flex directionColumn alignFlexStart>
                             <S.FeedbackTestimonialTop>
                               {rating && (
-                                <Flex justifyFlexStart>
-                                  {[...Array(5)].map((_, j) => (
-                                    <S.FeedbackTestimonialStarWrapper
-                                      key={`star-${j + 1}`}
-                                      active={rating >= j + 1}
-                                      themeType={theme}
-                                    >
-                                      <IconStar />
-                                    </S.FeedbackTestimonialStarWrapper>
-                                  ))}
-                                </Flex>
+                                <StarRating
+                                  theme={theme}
+                                  inputConfig={{
+                                    type: 'radio',
+                                    options: {
+                                      'rating-1': 1,
+                                      'rating-2': 2,
+                                      'rating-3': 3,
+                                      'rating-4': 4,
+                                      'rating-5': 5
+                                    }
+                                  }}
+                                  readOnly
+                                  readOnlyRating={rating}
+                                />
                               )}
                               <p>{message}</p>
                             </S.FeedbackTestimonialTop>
