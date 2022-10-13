@@ -1,18 +1,19 @@
 import { HTMLInputTypeAttribute } from 'react';
 
 // Types
-import { InputType, InputOptions, InputValidation, InputValidator } from 'types';
+import {
+  FeedbackFormInput,
+  InputType,
+  InputOptions,
+  InputValidation,
+  InputValidator,
+  Feedback
+} from 'types';
 
-export enum FeedbackFormInput {
-  name = 'name',
-  rating = 'rating',
-  reasons = 'reasons',
-  suggestions = 'suggestions',
-  recommend = 'recommend',
-  more = 'more'
-}
+// Constants
+import { STAR_RATING_OPTIONS } from '../../../constants';
 
-export const inputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
+export const feedbackFormInputNames = Object.keys(FeedbackFormInput) as FeedbackFormInput[];
 
 export type FeedbackFormConfig = {
   [key in FeedbackFormInput]: {
@@ -47,19 +48,13 @@ export const feedbackFormConfig: FeedbackFormConfig = {
     inputType: 'rating',
     inputConfig: {
       type: 'radio',
-      options: {
-        'rating-1': 1,
-        'rating-2': 2,
-        'rating-3': 3,
-        'rating-4': 4,
-        'rating-5': 5
-      }
+      options: STAR_RATING_OPTIONS
     },
     validation: {
       [InputValidator.required]: true
     }
   },
-  [FeedbackFormInput.reasons]: {
+  [FeedbackFormInput.reason]: {
     label: 'Tell us your reasons for giving this score.',
     inputType: 'textarea',
     inputConfig: {
@@ -71,7 +66,7 @@ export const feedbackFormConfig: FeedbackFormConfig = {
       [InputValidator.maxLength]: 250
     }
   },
-  [FeedbackFormInput.suggestions]: {
+  [FeedbackFormInput.suggestion]: {
     label: 'Anything that can be improved?',
 
     inputType: 'textarea',
@@ -83,7 +78,7 @@ export const feedbackFormConfig: FeedbackFormConfig = {
       [InputValidator.maxLength]: 250
     }
   },
-  [FeedbackFormInput.recommend]: {
+  [FeedbackFormInput.recommendation]: {
     label: 'Would you recommend this app to someone else?',
     inputType: 'radio',
     inputConfig: {
@@ -129,17 +124,17 @@ export const initialState: FeedbackForm = {
     valid: false,
     errMsg: ''
   },
-  [FeedbackFormInput.reasons]: {
+  [FeedbackFormInput.reason]: {
     value: '',
     valid: false,
     errMsg: ''
   },
-  [FeedbackFormInput.suggestions]: {
+  [FeedbackFormInput.suggestion]: {
     value: '',
     valid: false,
     errMsg: ''
   },
-  [FeedbackFormInput.recommend]: {
+  [FeedbackFormInput.recommendation]: {
     value: '',
     valid: false,
     errMsg: ''
@@ -151,17 +146,40 @@ export const initialState: FeedbackForm = {
   }
 };
 
-export const createUpdatedForm = (
+export const generateUpdatedForm = (
   validatedInputs: { valid: boolean; errMsg: string }[],
   oldForm: FeedbackForm
 ): FeedbackForm =>
   validatedInputs.reduce(
     (prevFields, currField, currentIndex) => ({
       ...prevFields,
-      [inputNames[currentIndex]]: {
-        ...oldForm[inputNames[currentIndex]],
+      [feedbackFormInputNames[currentIndex]]: {
+        ...oldForm[feedbackFormInputNames[currentIndex]],
         ...currField
       }
     }),
     initialState
+  );
+
+export const generateFormData = (
+  formInputs: {
+    value: string | number | Date;
+    valid: boolean;
+    errMsg: string;
+  }[]
+): Feedback =>
+  formInputs.reduce<Feedback>(
+    (prev, { value }, i): Feedback => ({
+      ...prev,
+      [feedbackFormInputNames[i]]: value
+    }),
+    {
+      name: '',
+      rating: 0,
+      reason: '',
+      suggestion: '',
+      recommendation: '',
+      more: '',
+      timestamp: new Date()
+    }
   );

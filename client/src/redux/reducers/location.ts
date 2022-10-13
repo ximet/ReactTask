@@ -8,7 +8,7 @@ interface LocationRequestResult<T> {
   error: string | null;
 }
 
-interface LocationState {
+export interface LocationState {
   search: LocationRequestResult<LocationInfo[]>;
   info: LocationRequestResult<LocationInfo>;
   weather: {

@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { StylesProps } from 'types';
+
 import theme from 'styles/theme';
 import { radioWrapperRoot } from 'styles/mixins';
-
-import { StylesProps } from 'types';
 
 export const StarRating = styled.div`
   div:not(:last-of-type) {
@@ -13,6 +13,7 @@ export const StarRating = styled.div`
 
 interface StarWrapperStylesProps extends StylesProps {
   active: boolean;
+  readOnly?: boolean;
 }
 
 export const StarWrapper = styled.div<StarWrapperStylesProps>`
@@ -45,6 +46,12 @@ export const StarWrapper = styled.div<StarWrapperStylesProps>`
     height: 100%;
     width: 100%;
     cursor: pointer;
+
+    ${({ readOnly }) =>
+      readOnly &&
+      css`
+        cursor: default;
+      `}
   }
 `;
 

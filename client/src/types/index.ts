@@ -118,6 +118,7 @@ export interface InputProps {
   inputType?: InputType;
   id?: string;
   name?: string;
+  value?: string | number;
   inputConfig?: {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
@@ -130,3 +131,22 @@ export interface InputProps {
   handleClearValue?: (e: ChangeEventType) => void;
   clearEnabled?: boolean;
 }
+
+export enum FeedbackFormInput {
+  name = 'name',
+  rating = 'rating',
+  reason = 'reason',
+  suggestion = 'suggestion',
+  recommendation = 'recommendation',
+  more = 'more'
+}
+
+export type Feedback = {
+  [FeedbackFormInput.name]: string;
+  [FeedbackFormInput.rating]: number;
+  [FeedbackFormInput.reason]: string;
+  [FeedbackFormInput.suggestion]: string;
+  [FeedbackFormInput.recommendation]: string;
+  [FeedbackFormInput.more]: string;
+  timestamp: Date;
+};

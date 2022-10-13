@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 
 // Types
 import type { InputProps } from 'types';
@@ -10,11 +10,29 @@ import { IconStar } from 'assets/images/svg';
 import { Flex } from 'styles/global';
 import * as S from './StarRating.styles';
 
-const StarRating: FunctionComponent<InputProps> = ({ id, theme, inputConfig, ...otherProps }) => {
+interface StarRatingProps extends InputProps {
+  readOnly?: boolean;
+  defaultValue?: number;
+}
+
+const StarRating: FunctionComponent<StarRatingProps> = ({
+  id,
+  value,
+  theme,
+  inputConfig,
+  readOnly,
+  defaultValue,
+  ...otherProps
+}) => {
   const [rating, setRating] = useState<number | null>(null);
   const [ratingHovered, setRatingHovered] = useState<number | null>(null);
 
   const ratings = Object.values(inputConfig!.options!) as number[];
+
+  // Clear active state if value is empty
+  useEffect(() => {
+    if (!value) setRating(null);
+  }, [value]);
 
   return (
     <S.StarRating>
@@ -23,20 +41,29 @@ const StarRating: FunctionComponent<InputProps> = ({ id, theme, inputConfig, ...
           <S.StarWrapper
             key={`star-${ratingValue}`}
             themeType={theme}
-            active={ratingValue <= (ratingHovered! || rating!)}
+            active={ratingValue <= (ratingHovered! || rating! || defaultValue!)}
+            readOnly={readOnly}
           >
-            <label htmlFor={id}>
-              <S.Star
-                name={id}
-                value={ratingValue}
-                {...inputConfig}
-                onClick={() => setRating(ratingValue)}
-                onMouseEnter={() => setRatingHovered(ratingValue)}
-                onMouseLeave={() => setRatingHovered(null)}
-                {...otherProps}
-              />
-              <IconStar />
-            </label>
+            {readOnly ? (
+              <>
+                <S.Star {...inputConfig} />
+                <IconStar />
+              </>
+            ) : (
+              <label htmlFor={id}>
+                <S.Star
+                  name={id}
+                  value={ratingValue}
+                  checked={value === ratingValue}
+                  {...inputConfig}
+                  onClick={() => setRating(ratingValue)}
+                  onMouseEnter={() => setRatingHovered(ratingValue)}
+                  onMouseLeave={() => setRatingHovered(null)}
+                  {...otherProps}
+                />
+                <IconStar />
+              </label>
+            )}
           </S.StarWrapper>
         ))}
       </Flex>

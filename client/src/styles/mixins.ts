@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 import { StylesProps } from 'types';
 
 import theme from './theme';
@@ -50,4 +52,14 @@ export const noScrollbar = `
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+`;
+
+export const blobContainer = `
+  position: absolute;
+
+  svg {
+    width: 100%;
+    fill: ${theme.palette.primary.light};
+    stroke: none;
+  }
 `;

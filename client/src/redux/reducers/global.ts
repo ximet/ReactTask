@@ -1,7 +1,7 @@
 import { RootState } from 'redux/store';
 import { ActionType, Action } from '../actionTypes/global';
 
-interface GlobalState {
+export interface GlobalState {
   theme: string;
   sidebarOpen: boolean;
 }

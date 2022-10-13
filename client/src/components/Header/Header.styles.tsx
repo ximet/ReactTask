@@ -6,7 +6,9 @@ import { colorChange } from 'styles/mixins';
 import { StylesProps } from 'types';
 
 export const Header = styled.header<StylesProps>`
+  position: relative;
   padding: 1.5rem 0;
+  z-index: 2;
 
   svg {
     width: 2rem;
