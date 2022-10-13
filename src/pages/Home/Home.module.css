@@ -1,6 +1,6 @@
 .dropdownMenuContainer {
   margin: 40px auto;
-  width: 60%;
+  width: 25%;
   border-radius: 8px;
 
   color: var(--color-text-secondary);
@@ -8,4 +8,26 @@
   text-align: center;
   font-size: 22px;
   font-weight: bold;
+}
+
+.dropdownMenuContainer label {
+  margin-bottom: 12px;
+}
+
+.dropdownMenuContainer select {
+  overflow: auto;
+}
+
+.dropdownMenuContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit {
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+}
+
+.submit:hover {
+  cursor: pointer;
 }

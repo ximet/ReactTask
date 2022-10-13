@@ -18,3 +18,29 @@ export const getCities = async value => {
   const cities = await response.json();
   return cities;
 };
+
+export const getForecastById = async id => {
+  const endpoint = API_END_POINTS.cityForecast;
+
+  const response = await fetch(`${baseUrl}${endpoint}${id}`, {
+    method: 'GET',
+    headers: {
+      Authorization: accessToken
+    }
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const getCityDetails = async id => {
+  const endpoint = API_END_POINTS.cityDetails;
+
+  const response = await fetch(`${baseUrl}${endpoint}${id}`, {
+    method: 'GET',
+    headers: {
+      Authorization: accessToken
+    }
+  });
+  const dataDetails = await response.json();
+  return dataDetails;
+};

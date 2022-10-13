@@ -4,13 +4,17 @@ import styles from './Home.module.css';
 import { getCities } from '../../services/weatherService';
 import { POSSIBLE_ERRORS } from '../../components/Error/errorHandlingHelper';
 import ErrorModal from '../../components/Error/ErrorModal/ErrorModal';
+import { useNavigate } from 'react-router-dom';
 
-const DROP_DOWN_MENU_LABEL = 'Choose a city from this list:';
+const DROP_DOWN_MENU_LABEL = 'Choose a city from the list:';
 
 const DropDownMenu = () => {
   const [searchValue, setSearchValue] = useState('');
   const [cities, setCities] = useState([]);
   const [error, setError] = useState(null);
+  const [inputId, setInputId] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (searchValue) {
@@ -31,6 +35,13 @@ const DropDownMenu = () => {
     setSearchValue('');
   };
 
+  const handleChange = e => setInputId(e.target.value);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    navigate(`city/${inputId}`);
+  };
+
   return (
     <div className={styles.dropdownMenuContainer}>
       <>
@@ -38,24 +49,28 @@ const DropDownMenu = () => {
           <ErrorModal title={error.title} message={error.message} onConfirm={errorConfirmHandler} />
         )}
       </>
-      <label>
-        {DROP_DOWN_MENU_LABEL}
+
+      <form onSubmit={handleSubmit}>
+        <label>{DROP_DOWN_MENU_LABEL}</label>
         <input
           list="cities"
           name="choose-city"
           onChange={e => getSearchedValue(e)}
           value={searchValue}
+          placeholder="Search"
         />
-      </label>
-      <datalist id="cities">
-        {cities.length > 0
-          ? cities.map(city => (
-              <option key={city.id} value={city.name}>
-                {city.name} , {city.country}
-              </option>
-            ))
-          : null}
-      </datalist>
+        <select id="cities" onChange={handleChange} size={cities.length}>
+          <option value="-">-</option>
+          {cities.length > 0
+            ? cities.map(city => (
+                <option key={city.id} value={city.id}>
+                  {city.name} , {city.country}
+                </option>
+              ))
+            : null}
+        </select>
+        <input type="submit" value="Show" className={styles.submit} />
+      </form>
     </div>
   );
 };
