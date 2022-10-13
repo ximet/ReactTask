@@ -1,9 +1,9 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'store/hooks';
+import { useAppDispatch, useCurrentWeatherDispatch } from 'store/hooks';
 import styles from './Main.css';
 import classNames from 'classnames';
-import { CurrentWeatherThunkDispatch } from 'store/currentWeather/types';
+import { CurrentWeatherDispatch } from 'store/currentWeather/types';
 
 import MainCard from './MainCard';
 import ForecastsHourly from './ForecastsHourly';
@@ -25,7 +25,7 @@ const Forecasts: FC = () => {
   const { data: currentWeather, loading, error: loadingError } = useSelector(
     currentWeatherSelector
   );
-  const dispatch: CurrentWeatherThunkDispatch = useAppDispatch();
+  const dispatch = useCurrentWeatherDispatch();
 
   const {
     state: { position, positionError }

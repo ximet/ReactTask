@@ -17,8 +17,7 @@ export enum CurrentWeatherActions {
 }
 
 const requestCurrentWeather = (): RequestCurrentWeatherAction => ({
-  type: CurrentWeatherActions.REQUEST_CURRENT_WEATHER,
-  payload: null
+  type: CurrentWeatherActions.REQUEST_CURRENT_WEATHER
 });
 
 const requestCurrentWeatherSuccess = (

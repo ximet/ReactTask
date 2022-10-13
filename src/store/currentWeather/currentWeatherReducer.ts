@@ -9,7 +9,6 @@ interface CurrentWeatherState {
 
 export interface RequestCurrentWeatherAction {
   type: CurrentWeatherActions.REQUEST_CURRENT_WEATHER;
-  payload: null;
 }
 export interface RequestCurrentWeatherSuccessAction {
   type: CurrentWeatherActions.REQUEST_CURRENT_WEATHER_SUCCESS;
