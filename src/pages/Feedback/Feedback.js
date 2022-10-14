@@ -13,7 +13,7 @@ import {
   question2,
   question3,
   question4,
-  feedbackCountMessage, 
+  feedbackCountMessage,
   alertMessage
 } from './feedbackQuestions';
 
@@ -46,9 +46,9 @@ const Feedback = () => {
 
     dispatch(sumbitFeedback(feedbackComments));
     setTimeout(() => {
-      alert(alertMessage)
+      alert(alertMessage);
       navigate('/');
-  }, 500);
+    }, 500);
   };
 
   return (
