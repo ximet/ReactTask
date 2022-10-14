@@ -44,7 +44,7 @@ const Header: FunctionComponent = () => {
           <S.HeaderAction>
             <Flex>
               <ButtonSwitch
-                ariaLabel="Toggle theme"
+                aria-label="Toggle theme"
                 width="6.25rem"
                 switchType="theme"
                 onClick={handleThemeSwitch}

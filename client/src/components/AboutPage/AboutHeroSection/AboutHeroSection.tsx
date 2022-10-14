@@ -25,7 +25,7 @@ const AboutHeroSection: FunctionComponent = () => (
           </Headline>
           <p>Easy steps to predict the weather and make your day easier</p>
           <Link to="/">
-            <Button type="button" ariaLabel="Go to dashboard page">
+            <Button type="button" aria-label="Go to dashboard page">
               Get Started
             </Button>
           </Link>

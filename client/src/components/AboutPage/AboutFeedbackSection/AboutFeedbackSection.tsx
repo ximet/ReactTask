@@ -19,7 +19,7 @@ const AboutFeedbackSection: FunctionComponent = () => (
         <h2>Leave A Feedback</h2>
         <p>Liked our service or maybe were dissatisfied with it?</p>
         <Link to="/feedback">
-          <Button type="button" ariaLabel="Go to feedback page" color="white">
+          <Button type="button" aria-label="Go to feedback page" color="white">
             Tell Us About It
           </Button>
         </Link>
