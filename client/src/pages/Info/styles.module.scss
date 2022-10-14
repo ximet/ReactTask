@@ -128,9 +128,13 @@
 
 .scrollContainer {
   width: 100%;
-  height: fit-content;
-  overflow-y: hidden;
+  height: 100vh;
+  overflow-y: scroll;
   scroll-behavior: smooth;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  width: 0;
 }
 
 .currentWeatherBox,
