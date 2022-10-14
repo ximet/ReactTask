@@ -88,7 +88,7 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
 
   /* Custom scrollbar for Firefox */
   * {
-    scrollbar-width: auto;
+    scrollbar-width: thin;
     scrollbar-color: ${theme.palette.primary.light} ${({ themeType }) =>
   themeType === 'light'
     ? theme.palette.componentBackgroundLight
@@ -98,6 +98,7 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
   /* Custom scrollbar for Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 0.5rem;
+    height: 0.5rem;
   }
 
   *::-webkit-scrollbar-track {

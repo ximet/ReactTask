@@ -30,6 +30,7 @@ const Widget: FunctionComponent<WidgetProps> = ({ color, data, pointerEvents }) 
 
   return (
     <S.Widget
+      aria-roledescription="widget"
       themeType={theme}
       color={color}
       active={active}
