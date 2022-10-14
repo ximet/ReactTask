@@ -1,34 +1,43 @@
 import React, { ChangeEvent, FC, useState, useContext } from 'react';
-import { DailyWeatherType } from 'types/weatherTypes';
 import { ViewType } from 'types/viewType';
 
-import { getWeather } from 'services/getWeather';
 import { positionContext } from 'context/positionContext';
 
 import GraphDaily from './GraphDaily';
 import MainDailyCard from './MainDailyCard';
 
 import styles from './Main.css';
+import { useAppSelector, useDailyWeatherDispatch } from 'store/hooks';
+import { dailyWeatherSelector } from 'store/dailyWeather/dailyWeatherSelectors';
+import { loadDailyWeather } from 'store/dailyWeather/dailyWeatherActions';
+import Loader from 'components/loader/Loader';
 
 type ForecastsDailyProps = {
   view: ViewType;
 };
 
 const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
-  const [dailyWeather, setDailyWeather] = useState<DailyWeatherType[]>([]);
+  const { data: dailyWeather, loading, error } = useAppSelector(dailyWeatherSelector);
   const [selectDays, setSelectDays] = useState<string>('');
   const {
     state: { position }
   } = useContext(positionContext);
 
+  const dispatch = useDailyWeatherDispatch();
+
   const handleDaysSelected = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedDays = e.target.value;
     setSelectDays(selectedDays);
     if (selectedDays) {
-      getWeather<{ forecast: DailyWeatherType[] }>('/forecast/daily/', position, {
-        periods: selectedDays,
-        dataset: 'full'
-      }).then(res => setDailyWeather(res.forecast));
+      dispatch(
+        loadDailyWeather({
+          position,
+          settings: {
+            periods: selectedDays,
+            dataset: 'full'
+          }
+        })
+      );
     }
   };
 
@@ -41,7 +50,9 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
         <option value="10">10 days</option>
         <option value="14">14 days</option>
       </select>
-      {selectDays && (
+      {loading && <Loader />}
+      {error && <h3>Oops: {error}</h3>}
+      {selectDays && !loading && !error && dailyWeather && (
         <>
           {view === 'cards' ? (
             <div className={styles['section-daily']}>
@@ -50,7 +61,7 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
               ))}
             </div>
           ) : (
-            <GraphDaily weather={dailyWeather} />
+            <GraphDaily />
           )}
         </>
       )}

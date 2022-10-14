@@ -1,26 +1,33 @@
-import React, { FC, useState, useEffect, useContext } from 'react';
+import React, { FC, useEffect, useContext } from 'react';
 
-import { getWeather } from 'services/getWeather';
 import { positionContext } from 'context/positionContext';
 
 import HourlySection from './HourlySection';
 
-import { AirQualityType } from 'types/airQualityType';
+import { useAirQualityDispatch, useAppSelector } from 'store/hooks';
+import { loadAirQuality } from 'store/airQuality/airQualityActions';
+import { airQualitySelector } from 'store/airQuality/airQualitySelectors';
+import Loader from 'components/loader/Loader';
 
 const AirQuality: FC = () => {
-  const [airQuality, setAirQuality] = useState<AirQualityType[] | undefined>(undefined);
+  const dispatch = useAirQualityDispatch();
+  const { data: airQuality, loading, error } = useAppSelector(airQualitySelector);
+
   const {
     state: { position }
   } = useContext(positionContext);
 
   useEffect(() => {
-    getWeather<{ forecast: AirQualityType[] }>(
-      '/air-quality/forecast/hourly/',
-      position
-    ).then(res => setAirQuality(res.forecast));
-  }, [position]);
+    dispatch(loadAirQuality(position));
+  }, [position, dispatch]);
 
-  return <>{airQuality && <HourlySection weather={airQuality} />}</>;
+  return (
+    <>
+      {loading && <Loader />}
+      {error && <h3>Oops: {error}</h3>}
+      {airQuality && !loading && !error && <HourlySection weather={airQuality} />}
+    </>
+  );
 };
 
 export default AirQuality;
