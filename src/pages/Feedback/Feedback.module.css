@@ -19,11 +19,11 @@ form h2 {
 }
 
 .titleSecondary {
-  margin-bottom: 16px;
+  margin-bottom: 36px;
 }
 
 .formControl {
-  margin-bottom: 25px;
+  margin-bottom: 48px;
   text-align: left;
 }
 
@@ -37,8 +37,7 @@ form h2 {
 }
 
 .formControl input,
-.formControl select,
-.formControl textarea {
+.formControl select {
   display: block;
   width: 100%;
   padding: 10px;
@@ -66,4 +65,8 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+.feedbackCount {
+  text-align: center;
 }

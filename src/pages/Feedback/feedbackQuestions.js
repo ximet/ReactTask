@@ -27,3 +27,7 @@ export const question3 =
 
 // Question 4
 export const question4 = 'Any comments or suggestions.';
+
+export const feedbackCountMessage = 'So far the count of the feedback comments is';
+
+export const alertMessage = 'We have received your feedback. Thank you!';

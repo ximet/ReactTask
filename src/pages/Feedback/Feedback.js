@@ -1,7 +1,10 @@
-import { useState } from 'react';
-import styles from './Feedback.module.css';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { sumbitFeedback } from '../../redux/feedbackReducer';
+import { useNavigate } from 'react-router-dom';
 
-import { FEEDBACK, SUMBIT_LABEL } from '../../components/constants';
+import styles from './Feedback.module.css';
+import { SUMBIT_LABEL } from '../../components/constants';
 
 import {
   title,
@@ -9,12 +12,18 @@ import {
   question1,
   question2,
   question3,
-  question4
+  question4,
+  feedbackCountMessage, 
+  alertMessage
 } from './feedbackQuestions';
 
 const Feedback = () => {
-  const [answer3, setAnswer3] = useState('');
-  const [answer4, setAnswer4] = useState('');
+  const [answer3, setAnswer3] = React.useState('');
+  const [answer4, setAnswer4] = React.useState('');
+
+  const { feedback } = useSelector(state => state.feedback);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAnswer3 = e => setAnswer3(e.target.value);
   const handleAnswer4 = e => setAnswer4(e.target.value);
@@ -26,19 +35,20 @@ const Feedback = () => {
     const answer2 = formData.get('question2');
     const answer3 = formData.get('question3');
     const answer4 = formData.get('question4');
+
     const feedbackComments = {
       [question1.question]: answer1,
       [question2.question]: answer2,
       [question3]: answer3,
-      [question4]: answer4
+      [question4]: answer4,
+      id: Date.now()
     };
 
-    let arrayFeedback = [feedbackComments];
-    const prevFeedback = JSON.parse(localStorage.getItem(FEEDBACK));
-    if (prevFeedback) {
-      arrayFeedback = [...prevFeedback, feedbackComments];
-    }
-    localStorage.setItem(FEEDBACK, JSON.stringify(arrayFeedback));
+    dispatch(sumbitFeedback(feedbackComments));
+    setTimeout(() => {
+      alert(alertMessage)
+      navigate('/');
+  }, 500);
   };
 
   return (
@@ -103,6 +113,9 @@ const Feedback = () => {
       <button type="submit" value="submit">
         {SUMBIT_LABEL}
       </button>
+      <div className={styles.feedbackCount}>
+        {feedbackCountMessage} {feedback.length}.
+      </div>
     </form>
   );
 };
