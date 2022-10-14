@@ -73,7 +73,11 @@ const Search: FunctionComponent = () => {
         onFocus={handleInputFocus}
         clearEnabled
       />
-      {data && listShown && <SearchResultList data={data} loading={loading} error={error} />}
+      {data && listShown && (
+        <S.SearchResultWrapper>
+          <SearchResultList data={data} loading={loading} error={error} />
+        </S.SearchResultWrapper>
+      )}
     </S.Search>
   );
 };

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import theme from 'styles/theme';
-import { noScrollbar } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
@@ -47,31 +46,36 @@ export const Search = styled.div<StylesProps>`
   }
 `;
 
-export const SearchResultList = styled.ul`
+export const SearchResultWrapper = styled.div`
   position: absolute;
   top: 110%;
   width: 100%;
-  max-height: 360px;
-  padding: 1rem 2rem;
   background: ${theme.palette.primary.light};
   border-radius: ${theme.shape.borderRadius};
   box-shadow: ${theme.shadows[0]};
-  overflow-y: scroll;
+  overflow: hidden;
   z-index: 100;
+`;
+
+export const SearchResultList = styled.ul`
+  padding: 1rem 2rem;
+  max-height: 360px;
+  overflow-y: scroll;
 
   li:not(:last-child) {
     margin-bottom: 0.5rem;
   }
 
-  a {
+  a,
+  a:link,
+  a:visited,
+  a:active {
     color: ${theme.palette.black};
 
     &:hover {
       color: ${theme.palette.grey.dark};
     }
   }
-
-  ${noScrollbar}
 `;
 
 export const SearchResultItem = styled.li`

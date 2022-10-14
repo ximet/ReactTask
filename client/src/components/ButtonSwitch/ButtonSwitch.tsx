@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEvent } from 'react';
+import React, { FunctionComponent, MouseEvent, ButtonHTMLAttributes } from 'react';
 
 // Store
 import { useAppSelector } from 'redux/hooks';
@@ -7,7 +7,7 @@ import { selectTheme } from 'redux/reducers/global';
 // Styles
 import * as S from './ButtonSwitch.styles';
 
-interface ButtonSwitchProps {
+interface ButtonSwitchProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   width: string;
   switchType: string;
   infoType?: string;
@@ -19,17 +19,21 @@ const ButtonSwitch: FunctionComponent<ButtonSwitchProps> = ({
   switchType,
   infoType,
   onClick,
-  children
+  children,
+  ...otherProps
 }) => {
   const theme = useAppSelector(selectTheme);
 
   return (
     <S.ButtonSwitch
+      type="button"
+      role="switch"
       themeType={theme}
       width={width}
       switchType={switchType}
       infoType={infoType}
       onClick={onClick}
+      {...otherProps}
     >
       {children}
     </S.ButtonSwitch>

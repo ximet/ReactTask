@@ -84,7 +84,46 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
   button {
     border: none;
     background: none;
-    outline: none;
+  }
+
+  /* Custom scrollbar for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${theme.palette.primary.light} ${({ themeType }) =>
+  themeType === 'light'
+    ? theme.palette.componentBackgroundLight
+    : theme.palette.componentBackgroundDark};
+  }
+
+  /* Custom scrollbar for Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: ${({ themeType }) =>
+      themeType === 'light'
+        ? theme.palette.componentBackgroundLight
+        : theme.palette.componentBackgroundDark};
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${theme.palette.primary.light};
+    border-radius: ${theme.shape.borderRadius};
+
+    &:hover {
+      background-color: ${theme.palette.primary.medium};
+    }
+
+    &:active {
+      background-color: ${theme.palette.primary.dark};
+    }
+  }
+
+  ::selection {
+    background-color: ${theme.palette.primary.medium};
+    color: ${theme.palette.black};
   }
 `;
 

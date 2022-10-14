@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { StylesProps } from 'types';
 
@@ -10,17 +10,8 @@ export const Carousel = styled.div<CarouselStyles>`
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-
-  &:hover {
-    cursor: grab;
-  }
-
-  ${({ active }) =>
-    active &&
-    css`
-      cursor: grabbing;
-    `};
+  overflow-x: auto;
+  cursor: ${({ active }) => (active ? 'grabbing' : 'grab')};
 `;
 
 export const CarouselTrack = styled.div<CarouselStyles>`
@@ -30,4 +21,5 @@ export const CarouselTrack = styled.div<CarouselStyles>`
   height: 100%;
   display: flex;
   pointer-events: none;
+  padding-bottom: 0.5rem;
 `;

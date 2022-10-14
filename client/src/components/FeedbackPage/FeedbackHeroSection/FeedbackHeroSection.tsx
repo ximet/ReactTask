@@ -21,7 +21,9 @@ const FeedbackHeroSection: FunctionComponent = () => (
           </Headline>
           <p>Share your thoughts of your overall experience with our app</p>
           <a href="#survey">
-            <Button>Leave A Feedback</Button>
+            <Button type="button" aria-label="Go to feedback page">
+              Leave A Feedback
+            </Button>
           </a>
           <a href="#testimonials">See Other People Testimonials</a>
         </S.FeedbackHeroContent>

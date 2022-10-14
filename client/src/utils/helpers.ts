@@ -1,3 +1,5 @@
+import { KeyboardEvent } from 'react';
+
 export const capitalize = (string?: string): string =>
   `${string && string[0].toUpperCase()}${string?.slice(1)}`;
 
@@ -16,3 +18,6 @@ export const throttle = (callback: any, limit: number) => {
     }
   };
 };
+
+export const checkIfEnterOrSpacePressed = <T>(e: KeyboardEvent<T>): boolean =>
+  e.key === 'Enter' || e.code === 'Space';

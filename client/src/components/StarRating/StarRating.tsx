@@ -46,7 +46,7 @@ const StarRating: FunctionComponent<StarRatingProps> = ({
           >
             {readOnly ? (
               <>
-                <S.Star {...inputConfig} />
+                <S.Star tabIndex={-1} {...inputConfig} />
                 <IconStar />
               </>
             ) : (

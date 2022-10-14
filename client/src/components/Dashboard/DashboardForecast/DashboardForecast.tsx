@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect, useCallback } from 'react';
+import React, { FunctionComponent, useState, useEffect, useCallback, KeyboardEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
 // Store
@@ -18,7 +18,7 @@ import Carousel from 'components/Carousel/Carousel';
 import Widget from 'components/Widget/Widget';
 
 // Utils
-import { capitalize } from 'utils/helpers';
+import { capitalize, checkIfEnterOrSpacePressed } from 'utils/helpers';
 
 // Styles
 import { Flex } from 'styles/global';
@@ -56,7 +56,19 @@ const DashboardForecast: FunctionComponent = () => {
   // Handlers
   const handleInfoType = (): void =>
     setInfoType(prevState => (prevState === 'forecast' ? 'air-quality' : 'forecast'));
-  const handleForecastType = (forecastType: string): void => setSelectedForecastType(forecastType);
+
+  const handleForecastTypeOnClick = (forecastType: string): void =>
+    setSelectedForecastType(forecastType);
+
+  const handleForecastTypeOnKeyPress = (
+    e: KeyboardEvent<HTMLLIElement>,
+    forecastType: string
+  ): void => {
+    if (checkIfEnterOrSpacePressed(e)) {
+      setSelectedForecastType(forecastType);
+    }
+  };
+
   const handleGetLocationWeather = useCallback(() => {
     if (!query) return;
 
@@ -85,14 +97,19 @@ const DashboardForecast: FunctionComponent = () => {
     <S.DashboardForecast>
       <S.DashboardToolbar>
         <Flex justifySpaceBetween>
-          <S.DashboardForecastTypes>
+          <S.DashboardForecastTypes role="tablist">
             <Flex justifySpaceBetween>
               {(Object.keys(ForecastType) as Array<keyof typeof ForecastType>).map(key => (
                 <S.DashboardForecastType
+                  tabIndex={0}
+                  role="tab"
+                  aria-controls="tabpanel"
+                  aria-selected={selectedForecastType === key}
                   key={key}
                   themeType={theme}
                   active={selectedForecastType === key}
-                  onClick={() => handleForecastType(key)}
+                  onClick={() => handleForecastTypeOnClick(key)}
+                  onKeyPress={e => handleForecastTypeOnKeyPress(e, key)}
                 >
                   {capitalize(key)}
                 </S.DashboardForecastType>
@@ -100,6 +117,7 @@ const DashboardForecast: FunctionComponent = () => {
             </Flex>
           </S.DashboardForecastTypes>
           <ButtonSwitch
+            aria-label="Toggle info type"
             width="14.5rem"
             switchType="info"
             infoType={infoType}
@@ -110,7 +128,7 @@ const DashboardForecast: FunctionComponent = () => {
           </ButtonSwitch>
         </Flex>
       </S.DashboardToolbar>
-      <S.DashboardForecastWidgets>
+      <S.DashboardForecastWidgets id="tabpanel" role="tabpanel">
         <RequestDataWrapper data={data} loading={loading} error={error}>
           <Carousel setCarouselChildPointerEv={setCarouselChildPointerEv}>
             {data?.map(item => (

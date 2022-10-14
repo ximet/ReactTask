@@ -68,6 +68,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ setCarouselChildPointerEv,
 
   return (
     <S.Carousel
+      aria-roledescription="carousel"
       ref={carouselRef}
       active={isPressed}
       onMouseDown={handleCursorDown}
@@ -75,7 +76,9 @@ const Carousel: FunctionComponent<CarouselProps> = ({ setCarouselChildPointerEv,
       onMouseUp={handleCursorUp}
       onMouseMove={handleCursorMove}
     >
-      <S.CarouselTrack ref={carouselTrackRef}>{children}</S.CarouselTrack>
+      <S.CarouselTrack role="group" ref={carouselTrackRef}>
+        {children}
+      </S.CarouselTrack>
     </S.Carousel>
   );
 };

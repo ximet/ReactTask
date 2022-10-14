@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 
+import { StylesProps } from 'types';
+
 import { HEADER_HEIGHT } from './constants';
+import { spinning } from './keyframes';
+import { spinnerRoot } from './mixins';
 
 import theme from './theme';
 
@@ -83,5 +87,23 @@ export const Headline = styled.h1`
     font-size: 4.25rem;
     line-height: 1;
     color: ${theme.palette.primary.dark};
+  }
+`;
+
+export const Spinner = styled.div<StylesProps>`
+  ${spinnerRoot};
+  margin: 4rem auto;
+  font-size: 1rem;
+  border: ${({ themeType }) =>
+    `1.1em solid ${
+      themeType === 'light'
+        ? theme.palette.componentBackgroundLight
+        : theme.palette.componentBackgroundDark
+    }`};
+  border-left: 1.1em solid ${theme.palette.primary.light};
+  animation: ${spinning} 1.1s infinite linear;
+
+  &:after {
+    ${spinnerRoot};
   }
 `;

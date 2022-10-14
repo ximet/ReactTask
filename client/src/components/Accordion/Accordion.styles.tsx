@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 import { StylesProps } from 'types';
 
-import { noScrollbar } from 'styles/mixins';
+import theme from 'styles/theme';
+import { colorChange } from 'styles/mixins';
 
 interface AccordionStylesProps extends StylesProps {
   active: boolean;
@@ -19,8 +20,14 @@ export const Accordion = styled.div`
 export const AccordionTab = styled.div<AccordionStylesProps>`
   width: 100%;
   padding: 1rem 0;
-  font-weight: 500;
   cursor: pointer;
+
+  button {
+    cursor: inherit;
+    font-weight: 500;
+    ${props => colorChange(props, 'color', theme.palette.black, theme.palette.white, 'color')}
+    transition: color 1.2s, background 0s 1.2s;
+  }
 
   svg {
     height: 1rem;
@@ -35,5 +42,4 @@ export const AccordionContent = styled.div<AccordionStylesProps>`
   overflow-y: scroll;
   transition: max-height 0.6s ease;
   will-change: max-height;
-  ${noScrollbar}
 `;

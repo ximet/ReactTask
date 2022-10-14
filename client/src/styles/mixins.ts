@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 import { StylesProps } from 'types';
 
 import theme from './theme';
@@ -39,19 +37,21 @@ export const radioWrapperRoot = `
   label {
     cursor: pointer;
   }
-  
+
   input {
     opacity: 0;
-    z-index: 0;
+  }
+
+  input:focus + svg,
+  input:focus + label {
+    outline: auto;
   }
 `;
 
-export const noScrollbar = `
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+export const spinnerRoot = `
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
 `;
 
 export const blobContainer = `

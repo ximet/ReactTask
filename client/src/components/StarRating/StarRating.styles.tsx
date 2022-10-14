@@ -50,9 +50,16 @@ export const StarWrapper = styled.div<StarWrapperStylesProps>`
     ${({ readOnly }) =>
       readOnly &&
       css`
-        cursor: default;
+        user-select: none;
+        pointer-events: none;
       `}
   }
+
+  ${({ readOnly }) =>
+    readOnly &&
+    css`
+      cursor: default;
+    `}
 `;
 
 export const Star = styled.input``;

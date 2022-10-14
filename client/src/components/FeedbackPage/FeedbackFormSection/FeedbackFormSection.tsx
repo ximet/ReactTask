@@ -136,7 +136,9 @@ const FeedbackFormSection: FunctionComponent = () => {
                   <S.FeedbackFormError>{feedbackForm[id].errMsg}</S.FeedbackFormError>
                 </S.FeedbackFormGroup>
               ))}
-              <Button>Submit</Button>
+              <Button type="submit" aria-label="Submit a form">
+                Submit
+              </Button>
             </Flex>
           </form>
         </Flex>

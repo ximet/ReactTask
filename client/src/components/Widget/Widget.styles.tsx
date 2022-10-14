@@ -30,9 +30,9 @@ export const Widget = styled.article<WidgetStyles>`
   border-radius: ${theme.shape.borderRadius};
   transition: color 1.2s, background 1.2s, width 0.1s ease;
   overflow: hidden;
-  user-select: none;
   pointer-events: ${({ pointerEvents }: WidgetStyles) =>
     pointerEvents === 'true' ? 'auto' : 'none'};
+  user-select: none;
 
   &:not(:last-of-type) {
     margin-right: 2rem;
