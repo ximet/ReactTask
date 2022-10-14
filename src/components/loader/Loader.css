@@ -1,4 +1,5 @@
 .loader {
+  margin: 0 auto;
   border: 10px solid var(--loader-background);
   border-top: 10px solid var(--loader-main);
   border-radius: 50%;
