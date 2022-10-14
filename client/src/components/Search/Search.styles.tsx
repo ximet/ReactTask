@@ -66,7 +66,10 @@ export const SearchResultList = styled.ul`
     margin-bottom: 0.5rem;
   }
 
-  a {
+  a,
+  a:link,
+  a:visited,
+  a:active {
     color: ${theme.palette.black};
 
     &:hover {
