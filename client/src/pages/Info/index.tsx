@@ -25,14 +25,6 @@ const linkIcons = [
 ];
 
 const Info: FC = () => {
-  const handleClick = (
-    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLAnchorElement>,
-    name: string
-  ): void => {
-    event.preventDefault();
-    const link = document.getElementById(name);
-    link?.scrollIntoView({ behavior: 'smooth' });
-  };
   return (
     <SecondaryPagesLayout>
       <div className={styles.banner}>
@@ -45,16 +37,7 @@ const Info: FC = () => {
         {linkIcons.map(({ title, icon, name }) => {
           return (
             <div className={styles.iconBox}>
-              <a
-                key={name}
-                href={`#${name}`}
-                onClick={event => {
-                  return handleClick(event, name);
-                }}
-                onKeyDown={event => {
-                  return handleClick(event, name);
-                }}
-              >
+              <a key={name} href={`about/#${name}`}>
                 {icon}
                 <h3>{title}</h3>
               </a>

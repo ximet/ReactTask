@@ -126,6 +126,13 @@
   }
 }
 
+.scrollContainer {
+  width: 100%;
+  height: fit-content;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
 .currentWeatherBox,
 .forecastBox,
 .themeBox {
