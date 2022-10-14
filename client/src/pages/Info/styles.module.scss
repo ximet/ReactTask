@@ -154,7 +154,6 @@
     margin: 490px 0 0 0;
     border-radius: 10px;
     height: fit-content;
-    // font-size: 1rem;
     font-size: 1.9vw;
 
     @include mQ(1000px) {
@@ -169,7 +168,6 @@
     }
   }
 }
-
 
 .sectionTitle {
   font-size: 3rem;
@@ -245,6 +243,5 @@
     top: 40px;
     left: 10vw;
     z-index: 0;
-
   }
 }
