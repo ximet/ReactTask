@@ -27,25 +27,25 @@ const linkIcons = [
 const Info: FC = () => {
   return (
     <SecondaryPagesLayout>
-      <div className={styles.banner}>
-        <div className={styles.imgDiv}>
-          <img src={getBannerImage} alt="weather" className={styles.backgroundImage} />
-        </div>
-        <h1 className={styles.title}>Weather in the city</h1>
-      </div>
-      <section className={styles.content}>
-        {linkIcons.map(({ title, icon, name }) => {
-          return (
-            <div className={styles.iconBox}>
-              <a key={name} href={`about/#${name}`}>
-                {icon}
-                <h3>{title}</h3>
-              </a>
-            </div>
-          );
-        })}
-      </section>
       <div className={styles.scrollContainer}>
+        <div className={styles.banner}>
+          <div className={styles.imgDiv}>
+            <img src={getBannerImage} alt="weather" className={styles.backgroundImage} />
+          </div>
+          <h1 className={styles.title}>Weather in the city</h1>
+        </div>
+        <section className={styles.content}>
+          {linkIcons.map(({ title, icon, name }) => {
+            return (
+              <div key={name} className={styles.iconBox}>
+                <a href={`about#${name}`}>
+                  {icon}
+                  <h3>{title}</h3>
+                </a>
+              </div>
+            );
+          })}
+        </section>
         <section className={styles.currentWeatherBox} id="current">
           <div className={styles.text}>
             <h2 className={styles.sectionTitle}>Your Current City Weather</h2>

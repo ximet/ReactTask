@@ -142,7 +142,7 @@
   width: 100%;
   background-size: auto;
   background-repeat: no-repeat;
-  background-image: url('../../assets/Screenshot\ 2022-10-11\ 170123.png');
+  background-image: url('../../assets/currentSection.png');
 
   @include mQ(1000px) {
     height: 480px;
@@ -184,7 +184,7 @@
 
 .forecastBox {
   background-size: auto 480px;
-  background-image: url('../../assets/2022-10-11\ 210950_2[2537].png');
+  background-image: url('../../assets/forecastSection.png');
   background-position: right;
   margin-top: -160px;
 
@@ -241,7 +241,7 @@
   }
 
   .iconsImg {
-    background-image: url('../../assets/themeicons2[2541].png');
+    background-image: url('../../assets/themeSection.png');
     object-fit: fill;
     width: 90vw;
     height: 320px;
