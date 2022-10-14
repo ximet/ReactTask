@@ -6,7 +6,7 @@ import Input from '../UI/input/Input';
 import { API_EDPOIONTS, STORAGE } from '../helper/variables';
 import ModalCountries from '../components/modals/modalCountries';
 
-const { mainPage, search, buttons } = styles;
+const { mainPage, search } = styles;
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);

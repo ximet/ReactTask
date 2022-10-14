@@ -5,6 +5,7 @@ import MainPage from './routes/MainPage';
 import About from './routes/About';
 import NotFoundPage from './routes/NotFoundPage';
 import City from './routes/City';
+import Feedback from './routes/Feedback';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/cities/:id" element={<City />} />
+        <Route path="/feedback" element={<Feedback />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
