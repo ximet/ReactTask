@@ -32,7 +32,7 @@ const ForecastsHourly: FC<ForecastsHourlyProps> = ({ view }) => {
       <h2 className={styles['weather-section-title']}>Hourly weather</h2>
       {loading && <Loader />}
       {error && <h3>Oops: {error}</h3>}
-      {hourlyWeather && !loading && !error && (
+      {hourlyWeather && (
         <>{view === 'cards' ? <HourlySection weather={hourlyWeather} /> : <GraphHourly />}</>
       )}
     </section>

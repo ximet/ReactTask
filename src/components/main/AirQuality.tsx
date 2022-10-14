@@ -25,7 +25,7 @@ const AirQuality: FC = () => {
     <>
       {loading && <Loader />}
       {error && <h3>Oops: {error}</h3>}
-      {airQuality && !loading && !error && <HourlySection weather={airQuality} />}
+      {airQuality && <HourlySection weather={airQuality} />}
     </>
   );
 };

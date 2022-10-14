@@ -52,7 +52,7 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
       </select>
       {loading && <Loader />}
       {error && <h3>Oops: {error}</h3>}
-      {selectDays && !loading && !error && dailyWeather && (
+      {selectDays && dailyWeather && (
         <>
           {view === 'cards' ? (
             <div className={styles['section-daily']}>

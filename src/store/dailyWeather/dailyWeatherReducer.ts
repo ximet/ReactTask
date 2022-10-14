@@ -1,5 +1,6 @@
 import { DailyWeatherType } from 'types/weatherTypes';
 import { DailyWeatherActions } from './dailyWeatherActions';
+import { WeatherReduxState } from 'types/reduxState';
 
 export interface RequestDailyWeather {
   type: DailyWeatherActions.REQUEST_DAILY_WEATHER;
@@ -18,11 +19,7 @@ export type DailyWeatherAction =
   | RequestDailyWeatherSuccess
   | RequestDailyWeatherFailed;
 
-interface DailyWeatherState {
-  data: DailyWeatherType[] | null;
-  loading: boolean;
-  error: string | null;
-}
+type DailyWeatherState = WeatherReduxState<DailyWeatherType[]>;
 
 const defaultState: DailyWeatherState = {
   data: null,

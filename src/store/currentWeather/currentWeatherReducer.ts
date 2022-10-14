@@ -1,11 +1,8 @@
 import { CurrentWeatherType, DailyWeatherType, HourlyWeatherType } from 'types/weatherTypes';
 import { CurrentWeatherActions } from './currentWeatherActions';
+import { WeatherReduxState } from 'types/reduxState';
 
-interface CurrentWeatherState {
-  data: CurrentWeatherType | null;
-  error: string | null;
-  loading: boolean;
-}
+type CurrentWeatherState = WeatherReduxState<CurrentWeatherType>;
 
 export interface RequestCurrentWeatherAction {
   type: CurrentWeatherActions.REQUEST_CURRENT_WEATHER;

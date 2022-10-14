@@ -1,5 +1,6 @@
 import { HourlyWeatherType } from 'types/weatherTypes';
 import { HourlyWeatherActions } from './hourlyWeatherActions';
+import { WeatherReduxState } from 'types/reduxState';
 
 export interface RequestHourlyWeather {
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER;
@@ -18,11 +19,7 @@ export type HourlyWeatherAction =
   | RequestHourlyWeatherSuccess
   | RequestHourlyWeatherFailed;
 
-interface HourlyWeatherState {
-  data: HourlyWeatherType[] | null;
-  loading: boolean;
-  error: string | null;
-}
+type HourlyWeatherState = WeatherReduxState<HourlyWeatherType[]>;
 
 const defaultState: HourlyWeatherState = {
   data: null,

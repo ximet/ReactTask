@@ -1,5 +1,6 @@
 import { AirQualityType } from 'types/airQualityType';
 import { AirQualityActions } from './airQualityActions';
+import { WeatherReduxState } from 'types/reduxState';
 
 export interface RequestAirQuality {
   type: AirQualityActions.REQUEST_AIR_QUALITY;
@@ -13,11 +14,7 @@ export interface RequestAirQualityFailed {
   payload: string;
 }
 
-interface AirQualityState {
-  data: AirQualityType[] | null;
-  loading: boolean;
-  error: string | null;
-}
+type AirQualityState = WeatherReduxState<AirQualityType[]>;
 
 const defaultState: AirQualityState = {
   data: null,
