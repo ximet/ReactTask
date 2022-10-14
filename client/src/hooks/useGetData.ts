@@ -1,4 +1,3 @@
-import { createToken } from 'API/get';
 import LocationContext from 'contexts/LocationContext';
 import { useState, useEffect, useCallback, useContext } from 'react';
 import { DailyWeather, HourlyWeather, LocationData, CurrentWeatherData } from 'types';
@@ -14,7 +13,6 @@ const useGetData = ({ getCurrentWeather, getDailyWeather, getHourlyWeather, getL
 
   const getData = useCallback(async () => {
     try {
-      await createToken();
       const data = await getCurrentWeather(coordinates);
       const locationResult = await getLocation(coordinates);
       const dailyWeather = await getDailyWeather(coordinates);

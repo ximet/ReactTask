@@ -13,13 +13,13 @@ const HeaderSearch: FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (isInputValid(event.target.value)) {
       setInputValue(event.target.value);
     }
   };
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputValue) {
       const locationData = await getLocationByQuery(inputValue);

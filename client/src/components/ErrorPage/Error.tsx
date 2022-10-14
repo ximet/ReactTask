@@ -17,7 +17,7 @@ const Error: FC = () => {
         <p>Try again or return to our homepage, where you can find all the latest news.</p>
         <Link to="/">
           <div className={styles.buttonBox}>
-            <Button type="submit" className={ButtonStyles.ErrorBtn}>
+            <Button type="button" className={ButtonStyles.ErrorBtn}>
               Return Home
             </Button>
           </div>
