@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCityForecast, getCityInfo } from '../../api/weatherApi.js';
+import * as styles from '../../styles/CityPage.module.css';
 
 function CityPage(props) {
   const [city, setCity] = useState({});
@@ -33,9 +34,9 @@ function CityPage(props) {
   }, [params.id]);
 
   return (
-    <div>
-      <span>{city.name}</span>
-      <ul>
+    <div className={styles.cityInfo}>
+      <span className={styles.cityName}>{city.name}</span>
+      <ul className={styles.weatherVariables}>
         <li>Temperature: {temperature}</li>
         <li>Wind Speed: {windSpeed}</li>
         <li>Pressure: {pressure}</li>
