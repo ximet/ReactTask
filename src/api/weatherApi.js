@@ -1,6 +1,6 @@
 import { TOKEN } from '../services/constants.js';
 
-const getCities = async (value) => {
+const getCities = async value => {
   const response = await fetch(`https://pfa.foreca.com/api/v1/location/search/${value}`, {
     method: 'GET',
     headers: {
@@ -10,7 +10,7 @@ const getCities = async (value) => {
   return await response.json();
 };
 
-const getCityInfo = async (city) => {
+const getCityInfo = async city => {
   const response = await fetch(`https://pfa.foreca.com/api/v1/location/${city}`, {
     method: 'GET',
     headers: {
@@ -20,14 +20,14 @@ const getCityInfo = async (city) => {
   return await response.json();
 };
 
-const getCityForecast = async (city) => {
-  const response = await fetch(`https://pfa.foreca.com/api/v1/observation/latest/${city}`, {
+const getCityForecast = async city => {
+  const response = await fetch(`https://pfa.foreca.com/api/v1/current/${city}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${localStorage.getItem(TOKEN)}`
     }
   });
   return await response.json();
-}
+};
 
 export { getCities, getCityInfo, getCityForecast };

@@ -1,47 +1,50 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getCityForecast, getCityInfo } from "../../api/weatherApi.js";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getCityForecast, getCityInfo } from '../../api/weatherApi.js';
 
 function CityPage(props) {
-   const [city, setCity] = useState({});
-   const [temperature, setTemperature] = useState('');
-   const [windSpeed, setWindSpeed] = useState('');
-   const [pressure, setPressure] = useState('');
-   const [relHumidity, setRelHumidity] = useState('');
-   const [visibility, setVisibility] = useState('');
-   
-   const params = useParams();
+  const [city, setCity] = useState({});
+  const [temperature, setTemperature] = useState('');
+  const [windSpeed, setWindSpeed] = useState('');
+  const [pressure, setPressure] = useState('');
+  const [precipProb, setPrecipProb] = useState('');
+  const [cloudiness, setCloudiness] = useState('');
+  const [visibility, setVisibility] = useState('');
 
-   useEffect(() => {
-      getCityInfo(params.id)
+  const params = useParams();
+
+  useEffect(() => {
+    getCityInfo(params.id)
       .then(res => {
-         setCity(res);
+        setCity(res);
       })
       .catch(err => console.log(err));
 
-      getCityForecast(params.id)
+    getCityForecast(params.id)
       .then(res => {
-         setTemperature(res.observations[0].temperature);
-         setWindSpeed(res.observations[0].windSpeed);
-         setPressure(res.observations[0].pressure);
-         setRelHumidity(res.observations[0].relHumidity);
-         setVisibility(res.observations[0].visibility);
+        setTemperature(res.current.temperature);
+        setWindSpeed(res.current.windSpeed);
+        setPressure(res.current.pressure);
+        setPrecipProb(res.current.precipProb);
+        setCloudiness(res.current.cloudiness);
+        setVisibility(res.current.visibility);
       })
-      .catch(err => console.log(err))
-   }, [params.id]);
+      .catch(err => console.log(err));
+  }, [params.id]);
 
-   return (
-      <div>
-         <span>{city.name}</span>
-         <ul>
-            <li>Temperature: {temperature}</li>
-            <li>Wind Speed: {windSpeed}</li>
-            <li>Pressure: {pressure}</li>
-            <li>Relative Humidity: {relHumidity}</li>
-            <li>Visibility: {visibility}</li>
-         </ul>
-      </div>
-   );
+  return (
+    <div>
+      <span>{city.name}</span>
+      <ul>
+        <li>Temperature: {temperature}</li>
+        <li>Wind Speed: {windSpeed}</li>
+        <li>Pressure: {pressure}</li>
+        <li>Precipitation Probability: {precipProb}</li>
+        <li>Cloudiness: {cloudiness}</li>
+        <li>Visibility: {visibility}</li>
+      </ul>
+    </div>
+  );
 }
 
 export { CityPage };
