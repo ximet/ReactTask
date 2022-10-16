@@ -37,12 +37,12 @@ function CityPage(props) {
     <div className={styles.cityInfo}>
       <span className={styles.cityName}>{city.name}</span>
       <ul className={styles.weatherVariables}>
-        <li>Temperature: {temperature}</li>
-        <li>Wind Speed: {windSpeed}</li>
-        <li>Pressure: {pressure}</li>
-        <li>Precipitation Probability: {precipProb}</li>
-        <li>Cloudiness: {cloudiness}</li>
-        <li>Visibility: {visibility}</li>
+        <li>Temperature: {temperature} °C</li>
+        <li>Wind Speed: {windSpeed} m/s</li>
+        <li>Pressure: {pressure} mbar</li>
+        <li>Precipitation Probability: {precipProb} %</li>
+        <li>Cloudiness: {cloudiness} %</li>
+        <li>Visibility: {visibility} m</li>
       </ul>
     </div>
   );
