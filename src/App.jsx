@@ -1,6 +1,7 @@
 import { Header } from './components/Header/Header.js';
 import { Footer } from './components/Footer/Footer.js';
 import { HomePage } from './components/Homepage/HomePage.js';
+import { CityPage } from './components/CityPage/CityPage.js';
 import { AboutPage } from './components/AboutPage/AboutPage.js';
 import { ErrorPage } from './components/ErrorPage/ErrorPage.js';
 import * as appStyles from './styles/App.module.css';
@@ -12,21 +13,18 @@ function App() {
 
   return (
     <>
-      {/* <Header />
-      <main> */}
-        <BrowserRouter>
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </BrowserRouter>
-      {/* </main>
-      <Footer /> */}
+      <BrowserRouter>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/city/:id" element={<CityPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
