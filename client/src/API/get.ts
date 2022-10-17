@@ -18,7 +18,7 @@ const forecaClient: AxiosInstance = axios.create({
 forecaClient.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
     const accessToken: string | null | undefined = localStorage.getItem(TOKEN_LOCALSTORAGE_LABEL);
-    if (accessToken && accessToken !== 'undefined') {
+    if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     } else {
       const token = await createToken();
