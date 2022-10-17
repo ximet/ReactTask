@@ -1,68 +1,105 @@
-import axios from 'axios';
-import { GeolocationCoordinates, LocationData } from 'types';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { TOKEN_LOCALSTORAGE_LABEL } from 'constants/labels';
+import {
+  AuthenticationResponse,
+  CurrentWeatherData,
+  DailyWeather,
+  GeolocationCoordinates,
+  HourlyWeather,
+  LocationByQuery,
+  LocationData
+} from 'types';
 
-const URL = 'http://localhost:5000';
+const forecaClient: AxiosInstance = axios.create({
+  baseURL: 'http://localhost:5000',
+  headers: {}
+});
 
-export const createToken = async () => {
+forecaClient.interceptors.request.use(
+  async (config: AxiosRequestConfig) => {
+    const accessToken: string | null | undefined = localStorage.getItem(TOKEN_LOCALSTORAGE_LABEL);
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    } else {
+      const token = await createToken();
+      config.headers.Authorization = `Bearer ${token?.access_token}`;
+    }
+    return config;
+  },
+  error => {
+    Promise.reject((error as Error).message);
+  }
+);
+
+forecaClient.interceptors.response.use(
+  async (response: AxiosResponse) => {
+    const originalRequest = response.config;
+    if (response.data.status === 401) {
+      const token = await createToken();
+      axios.defaults.headers.common.Authorization = `Bearer ${token?.access_token}`;
+      return forecaClient(originalRequest);
+    }
+    return response;
+  },
+  error => {
+    return Promise.reject((error as Error).message);
+  }
+);
+
+export const createToken = async (): Promise<AuthenticationResponse> => {
   try {
-    const result = await axios.post(`http://localhost:5000/authorize/token?expire_hours=2`);
-    window.localStorage.setItem('token', result.data.access_token);
+    const result: AxiosResponse<AuthenticationResponse> = await axios.post(
+      `http://localhost:5000/authorize/token?expire_hours=2`
+    );
+    if (result.data.access_token)
+      window.localStorage.setItem(TOKEN_LOCALSTORAGE_LABEL, result.data.access_token);
     return result.data;
   } catch (err) {
     throw new Error((err as Error).message);
   }
 };
 
-export const getCurrentWeather = async (param: GeolocationCoordinates | null) => {
-  try {
-    const result = await axios.get(`${URL}/current/location=${param?.lon},${param?.lat}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-    return result.data.current;
-  } catch (error) {
-    throw new Error((error as Error).message);
-  }
-};
-
-export const getLocation = async (
+export const getCurrentWeather = async (
   param: GeolocationCoordinates | null
-): Promise<LocationData | undefined> => {
+): Promise<CurrentWeatherData> => {
   try {
-    const result = await axios.get(`${URL}/location/${param?.lon},${param?.lat}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
+    const result: AxiosResponse<{ current: CurrentWeatherData }> = await forecaClient.get(
+      `/current/location=${param?.lon},${param?.lat}`
+    );
+    return result.data.current;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+export const getLocation = async (param: GeolocationCoordinates | null): Promise<LocationData> => {
+  try {
+    const result: AxiosResponse<LocationData> = await forecaClient.get(
+      `/location/${param?.lon},${param?.lat}`
+    );
     return result.data;
   } catch (error) {
     throw new Error((error as Error).message);
   }
 };
 
-export const getLocationByQuery = async (param: string | undefined) => {
+export const getLocationByQuery = async (param: string | undefined): Promise<LocationByQuery> => {
   try {
-    const result = await axios.get(`${URL}/location/search/${param}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
+    const result: AxiosResponse<LocationByQuery> = await forecaClient.get(
+      `/location/search/${param}`
+    );
     return result.data;
   } catch (error) {
     throw new Error((error as Error).message);
   }
 };
 
-export const getDailyWeather = async (param: GeolocationCoordinates | null) => {
+export const getDailyWeather = async (
+  param: GeolocationCoordinates | null
+): Promise<DailyWeather[]> => {
   try {
-    const result = await axios.get(
-      `${URL}/forecast/daily/location=${param?.lon},${param?.lat}&dataset=full`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      }
+    const result: AxiosResponse<{ forecast: DailyWeather[] }> = await forecaClient.get(
+      `/forecast/daily/location=${param?.lon},${param?.lat}&dataset=full`
     );
     return result.data.forecast;
   } catch (error) {
@@ -70,15 +107,12 @@ export const getDailyWeather = async (param: GeolocationCoordinates | null) => {
   }
 };
 
-export const getHourlyWeather = async (param: GeolocationCoordinates | null) => {
+export const getHourlyWeather = async (
+  param: GeolocationCoordinates | null
+): Promise<HourlyWeather[]> => {
   try {
-    const result = await axios.get(
-      `${URL}/forecast/hourly/location=${param?.lon},${param?.lat}&periods=168&dataset=full`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      }
+    const result: AxiosResponse<{ forecast: HourlyWeather[] }> = await forecaClient.get(
+      `/forecast/hourly/location=${param?.lon},${param?.lat}&periods=168&dataset=full`
     );
     return result.data.forecast;
   } catch (error) {

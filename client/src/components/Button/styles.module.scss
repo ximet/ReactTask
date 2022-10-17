@@ -29,7 +29,8 @@
   }
 }
 
-.formBtn {
+.formBtn,
+.errorBtn {
   width: 250px;
   height: 40px;
   border-radius: 3px;
@@ -41,4 +42,8 @@
   &:hover {
     background-color: $hovergrey;
   }
+}
+.errorBtn {
+  height: 45px;
+  border-radius: 30px;
 }

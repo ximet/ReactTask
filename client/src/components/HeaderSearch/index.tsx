@@ -13,17 +13,17 @@ const HeaderSearch: FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (isInputValid(event.target.value)) {
       setInputValue(event.target.value);
     }
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputValue) {
       const locationData = await getLocationByQuery(inputValue);
-      if (!locationData.locations.length) {
+      if (!locationData?.locations.length) {
         setCoordinates(null);
         setStatusMsg(`Sorry, your entered location "${inputValue}" does not exists`);
         setInputValue('');

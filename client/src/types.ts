@@ -4,6 +4,14 @@ export type GeolocationCoordinates = {
   lon: number;
   lat: number;
 };
+export type AuthenticationResponse = {
+  // eslint-disable-next-line camelcase
+  access_token: string;
+  // eslint-disable-next-line camelcase
+  expires_in: number;
+  // eslint-disable-next-line camelcase
+  token_type: string;
+};
 
 export type LocationData = {
   adminArea: string;
@@ -16,6 +24,10 @@ export type LocationData = {
   lon: number;
   name: string;
   timezone: string;
+};
+
+export type LocationByQuery = {
+  locations: LocationData[];
 };
 
 export type CommonWeatherData = {
@@ -95,4 +107,4 @@ export interface Feedback {
 }
 
 export type Validator = Record<Validations, (value: string, param: number) => boolean>;
-export type Errors = Record<Validations, (value: string, param: string) => string>;
+export type Errors = Record<Validations, (value: string, param: number) => string>;

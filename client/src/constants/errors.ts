@@ -12,10 +12,10 @@ export const ERRORS: Errors = {
   [Validations.STRING]: (field: string) => {
     return `This ${capitalizeFirstLetter(field)} field must consist of letters.`;
   },
-  [Validations.MIN_LENGTH]: (field: string, param: string) => {
+  [Validations.MIN_LENGTH]: (field: string, param: number) => {
     return `${capitalizeFirstLetter(field)} min-length is ${param} letters.`;
   },
-  [Validations.MAX_LENGTH]: (field: string, param: string) => {
+  [Validations.MAX_LENGTH]: (field: string, param: number) => {
     return ` ${capitalizeFirstLetter(field)} max-length is ${param} letters.`;
   },
   [Validations.VALIDATE_EMAIL]: () => {

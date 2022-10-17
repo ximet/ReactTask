@@ -22,10 +22,12 @@ server.post(':endpoint([\\/\\w\\.-]*)', (req, res) => {
   axios
     .get(endpoint, { params })
     .then(response => {
-      res.json(response.data);
+         res.json(response.data);
     })
     .catch(error => {
-      res.json(error);
+      res.status(error.response.status).send({
+        message: error.response.statusText
+     })
     });
 });
 

@@ -31,8 +31,8 @@ const Header: React.FC = ({ children }) => {
         <NavbarLink onClick={onLinkClick} url="feedback">
           Feedback
         </NavbarLink>
-        <NavbarLink onClick={onLinkClick} url="info">
-          Info
+        <NavbarLink onClick={onLinkClick} url="about">
+          About
         </NavbarLink>
       </nav>
       <div className={styles.searchBox}>

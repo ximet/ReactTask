@@ -4,10 +4,10 @@ import { VALIDATOR } from '../constants/validator';
 
 interface ValidatorItem {
   valName: string;
-  param?: string;
+  param: number;
 }
 
-export const isInputValid = (name: string, value: string | number): string => {
+export const isInputValid = (name: string, value: string): string => {
   const inputMessage: string[] = [];
   const inputValidators = VALIDATORS_STRINGS[name];
   inputValidators.forEach((validator: ValidatorItem): void => {

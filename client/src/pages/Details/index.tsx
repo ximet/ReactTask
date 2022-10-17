@@ -23,11 +23,13 @@ const Details: React.FC = () => {
       const locationName = location && separateCapitalizeName(location);
       if (location) {
         const searchLocationData = await getLocationByQuery(locationName);
-        const searchLocationCoords = {
-          lat: searchLocationData.locations[0].lat,
-          lon: searchLocationData.locations[0].lon
-        };
-        setCoordinates(searchLocationCoords);
+        if (searchLocationData) {
+          const searchLocationCoords = {
+            lat: searchLocationData?.locations[0].lat,
+            lon: searchLocationData?.locations[0].lon
+          };
+          setCoordinates(searchLocationCoords);
+        }
       }
     };
     getLocationData();

@@ -1,4 +1,3 @@
-import { createToken } from 'API/get';
 import LocationContext from 'contexts/LocationContext';
 import { useState, useEffect, useCallback, useContext } from 'react';
 import { DailyWeather, HourlyWeather, LocationData, CurrentWeatherData } from 'types';
@@ -7,22 +6,21 @@ const useGetData = ({ getCurrentWeather, getDailyWeather, getHourlyWeather, getL
   const { coordinates } = useContext(LocationContext);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeatherData | null>(null);
   const [locationData, setLocationData] = useState<LocationData | undefined>(undefined);
-  const [forecast, setForecast] = useState<DailyWeather[]>([]);
-  const [hourlyForecast, setHourlyForecast] = useState<HourlyWeather[]>([]);
+  const [forecast, setForecast] = useState<DailyWeather[] | undefined>([]);
+  const [hourlyForecast, setHourlyForecast] = useState<HourlyWeather[] | undefined>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
 
   const getData = useCallback(async () => {
     try {
-      await createToken();
-      const data = await getCurrentWeather(coordinates);
-      const locationResult = await getLocation(coordinates);
-      const dailyWeather = await getDailyWeather(coordinates);
-      const hourlyWeather = await getHourlyWeather(coordinates);
+      const data: CurrentWeatherData = await getCurrentWeather(coordinates);
+      const locationResult: LocationData = await getLocation(coordinates);
+      const dailyWeather: DailyWeather[] = await getDailyWeather(coordinates);
+      const hourlyWeather: HourlyWeather[] = await getHourlyWeather(coordinates);
       setCurrentWeather(data);
       setLocationData(locationResult);
       setForecast(dailyWeather);
-      const first24Hours = hourlyWeather?.slice(0, 24);
+      const first24Hours: HourlyWeather[] = hourlyWeather?.slice(0, 24);
       setHourlyForecast(first24Hours);
       setIsLoading(false);
     } catch (error) {

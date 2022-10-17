@@ -1,23 +1,338 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.banner {
+  width: 100%;
+  height: 600px;
+}
+
+.imgDiv {
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 5px 5px rgb(77, 76, 76);
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 1250px;
+  background-size: cover;
+  background-position: center;
+  animation: mover 6s normal;
+  animation-fill-mode: forwards;
+  object-fit: cover;
+  filter: brightness(80%);
+  margin: 0;
+}
+
+@keyframes mover {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-570px);
+  }
+}
+
 .title {
-  margin-top: 60px;
+  text-align: center;
+  width: 25%;
+  width: 24%;
+  margin-top: -350px;
+  margin-left: 38%;
+  animation: scale 5s normal;
+  animation-fill-mode: forwards;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.5;
+
+  @include mQ(1000px) {
+    font-size: 1.5rem;
+    width: 25%;
+  }
+
+  @include mQ(1200px) {
+    font-size: 2rem;
+    width: 24%;
+  }
 }
 
-.main {
-  min-height: calc(100vh - 80px);
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  background-color: whitesmoke;
-  color: rgb(33, 33, 33);
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(3.8);
+  }
 }
 
-.mainDark {
-  min-height: calc(100vh - 80px);
+.scrollContainer {
   width: 100%;
-  padding: 20px;
-  text-align: center;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  margin: 0;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  width: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+
+  @include mQ(860px) {
+    flex-direction: row;
+    height: 400px;
+  }
+}
+
+.iconBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 220px;
+  padding: 25px;
+  color: $hovergrey;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: $hovergrey;
+    font-size: 1rem;
+    font-weight: 400;
+    position: relative;
+    text-decoration: none;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+    }
+
+    @include mQ(860px) {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
+
+  .icon {
+    font-size: 5.5rem;
+    font-weight: 200;
+    padding: 20px;
+
+    @include mQ(860px) {
+      font-size: 6rem;
+      font-weight: 200;
+      padding: 20px;
+    }
+  }
+
+  &:hover {
+    h3 {
+      color: $darkgrey;
+    }
+
+    .icon {
+      color: $darkgrey;
+    }
+  }
+}
+
+////////////////////////
+.currentWeatherBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  background-repeat: no-repeat;
+  background-image: url('../../assets/currentSection.png');
+  background-position: -140px 0;
+  box-shadow: 0 -1px 5px 3px rgb(77, 76, 76);
+
+  @include mQ(460px) {
+    background-position: -90px 0;
+  }
+
+  @include mQ(560px) {
+    background-position: 0 0;
+  }
+
+  @include mQ(860px) {
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    background-position: 0 0;
+    height: 480px;
+    width: 100%;
+    padding: 20px;
+    background-size: cover;
+    margin: 0;
+  }
+
+  .text {
+    background-color: rgba(211, 211, 211, 0.541);
+    padding: 40px;
+    text-align: left;
+    width: 100%;
+    border-radius: 10px;
+    height: fit-content;
+    font-size: 4vw;
+    margin-top: 490px;
+
+    @include mQ(460px) {
+      font-size: 3.2vw;
+    }
+
+    @include mQ(560px) {
+      font-size: 2.2vw;
+    }
+
+    @include mQ(860px) {
+      font-size: 1.5vw;
+      height: 400px;
+      width: 45%;
+      margin: 0;
+    }
+
+    @include mQ(1000px) {
+      font-size: 1.2vw;
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 300;
+  padding-bottom: 20px;
+
+  @include mQ(420px) {
+    font-size: 3rem;
+  }
+}
+
+.forecastBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  background-repeat: no-repeat;
+  background-image: url('../../assets/forecastSection.png');
+  background-position: -500px 0;
+  background-size: auto 480px;
+  background-size: fill;
+  box-shadow: 0 -1px 5px 3px rgb(77, 76, 76);
+
+  @include mQ(760px) {
+    background-position: -400px 0;
+  }
+
+  @include mQ(860px) {
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    background-position: right;
+    height: 480px;
+    width: 100%;
+    padding: 20px;
+    background-size: cover;
+  }
+
+  .text {
+    background-color: rgba(211, 211, 211, 0.541);
+    padding: 40px;
+    text-align: left;
+    width: 100%;
+    border-radius: 10px;
+    height: fit-content;
+    font-size: 4vw;
+    margin-top: 480px;
+
+    @include mQ(460px) {
+      font-size: 3.2vw;
+    }
+
+    @include mQ(560px) {
+      font-size: 2.2vw;
+    }
+
+    @include mQ(860px) {
+      font-size: 1.2vw;
+      height: 400px;
+      width: 45%;
+      margin: 0;
+    }
+
+    @include mQ(1000px) {
+      font-size: 1.2vw;
+    }
+  }
+}
+
+.themeBox {
+  background-color: $darkgrey;
+  width: 100%;
+  height: 480px;
+  box-shadow: 0 -1px 5px 3px rgb(77, 76, 76);
   position: relative;
-  background-color: rgb(48, 48, 48);
-  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sectionTitle {
+    position: absolute;
+    top: 150px;
+    left: 8vw;
+    text-align: center;
+    color: $footergrey;
+    font-size: 14vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    opacity: 0.4;
+    z-index: 1;
+
+    @include mQ(860px) {
+      left: 12vw;
+      font-weight: 300;
+    }
+  }
+
+  .iconsImg {
+    background-image: url('../../assets/themeSection.png');
+    background-size: auto 100%;
+    background-position: -340px 0;
+    width: 80%;
+    height: 320px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 40px;
+    left: 10vw;
+    z-index: 0;
+
+    @include mQ(860px) {
+      width: 50%;
+      left: 20vw;
+      background-position: -150px 0;
+    }
+    @include mQ(1000px) {
+      background-position: 0 0;
+      background-size: auto 100%;
+      left: 30vw;
+    }
+  }
 }

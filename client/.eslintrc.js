@@ -65,6 +65,7 @@ module.exports = {
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'no-nested-ternary': 'off',
+    'no-param-reassign': ['error', { props: false }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/prefer-default-export': 'off',
     'no-unused-vars': 'warn',

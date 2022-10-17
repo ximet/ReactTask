@@ -8,3 +8,6 @@ export const getBackgroundImg = (url: string): string => {
     ''
   )}.jpg`;
 };
+
+export const getBannerImage =
+  'https://res.cloudinary.com/dlvhpqrkd/image/upload/v1665474967/weather/2400x0_21_bzs6wr.jpg';
