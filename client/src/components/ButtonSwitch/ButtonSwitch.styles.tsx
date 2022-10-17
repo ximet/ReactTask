@@ -17,14 +17,14 @@ export const ButtonSwitch = styled.button<ButtonSwitchStylesProps>`
   height: 3rem;
   padding: 0 2rem;
   border-radius: ${theme.shape.borderRadius};
-  ${(props: ButtonSwitchStylesProps) =>
-    colorChange(
-      props,
-      'background',
-      theme.palette.componentBackgroundLight,
-      theme.palette.componentBackgroundDark,
-      'background'
-    )}
+  ${({ themeType }: ButtonSwitchStylesProps) =>
+    colorChange({
+      themeType,
+      changeProp: 'background',
+      changeVal1: theme.palette.componentBackgroundLight,
+      changeVal2: theme.palette.componentBackgroundDark,
+      transitionVal: 'background'
+    })}
   cursor: pointer;
 
   &::before {

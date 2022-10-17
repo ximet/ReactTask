@@ -81,7 +81,9 @@ export const WidgetDetails = styled.div<StylesProps>`
   }
 `;
 
-export const WidgetDetailsTop = styled.div<StylesProps>``;
+export const WidgetDetailsTop = styled.div<StylesProps>`
+  margin-bottom: 0.5rem;
+`;
 
 export const WidgetDetailsBottom = styled.div<WidgetStyles>`
   display: ${({ color, active }: WidgetStyles) =>
@@ -89,13 +91,10 @@ export const WidgetDetailsBottom = styled.div<WidgetStyles>`
 `;
 
 export const WidgetTemp = styled.p<StylesProps>`
-  margin-bottom: 0.5rem;
   font-size: 3.5rem;
 `;
 
 export const WidgetTempMaxMin = styled.p<StylesProps>`
-  margin-bottom: 0.5rem;
-
   span:first-of-type {
     font-size: 3.5rem;
   }
@@ -110,12 +109,16 @@ export const WidgetImg = styled.div<StylesProps>`
     width: 5rem;
   }
 
+  svg {
+    margin: -0.5rem 0;
+    width: 6rem;
+  }
+
   p {
     margin-top: 0.25rem;
     font-size: 0.875rem;
+    text-align: center;
   }
-
-  margin-bottom: 0.5rem;
 `;
 
 export const WidgetDetailsItem = styled.p<WidgetStyles>`

@@ -25,7 +25,7 @@ export type LocationAllResponse = LocationInfoResponse & {
   data: {
     locations?: LocationInfo[];
     current?: WeatherInfo;
-    forecast?: WeatherInfo[];
+    forecast?: WeatherInfo[] | AirQualityInfo[];
   };
 };
 
@@ -92,6 +92,21 @@ export interface WeatherInfo {
   confidence?: string;
   visibility?: number;
   minVisibility?: number;
+}
+
+export interface AirQualityInfo {
+  date?: string;
+  time?: string;
+  AQI?: number;
+  pollutant?: string;
+  pollutantPhrase?: string;
+  AQI_CO?: number;
+  AQI_NO2?: number;
+  AQI_O3?: number;
+  AQI_GO3?: number;
+  AQI_SO2?: number;
+  AQI_PM2P5?: number;
+  AQI_PM10?: number;
 }
 
 export type Theme = 'light' | 'dark';
