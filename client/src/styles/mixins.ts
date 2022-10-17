@@ -1,20 +1,33 @@
-import { StylesProps } from 'types';
+import { Theme } from 'types';
 
 import theme from './theme';
 
-export const colorChange = (
-  { themeType }: StylesProps,
-  changeProp: string,
-  changeVal1: string,
-  changeVal2: string,
-  transitionVal: string
-) => `
+interface colorChangeProps {
+  themeType?: string;
+  changeProp: string;
+  changeVal1: string;
+  changeVal2: string;
+  transitionVal: string;
+}
+
+export const colorChange = ({
+  themeType,
+  changeProp,
+  changeVal1,
+  changeVal2,
+  transitionVal
+}: colorChangeProps) => `
   ${changeProp}: ${themeType === 'light' ? changeVal1 : changeVal2};
   transition: ${transitionVal} 1.2s;
   will-change: ${transitionVal};
 `;
 
-export const colorChangeOnHover = (changeProp: string, transitionVal: string) => `
+interface colorChangeOnHoverProps {
+  changeProp: string;
+  transitionVal: string;
+}
+
+export const colorChangeOnHover = ({ changeProp, transitionVal }: colorChangeOnHoverProps) => `
   ${changeProp}: ${theme.palette.primary.dark};
   transition: ${transitionVal} 0.15s;
 `;
