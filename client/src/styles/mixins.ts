@@ -1,5 +1,3 @@
-import { Theme } from 'types';
-
 import theme from './theme';
 
 interface colorChangeProps {
