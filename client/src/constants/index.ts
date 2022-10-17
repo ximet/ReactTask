@@ -26,8 +26,6 @@ export const VALIDATION_ERRORS: Record<
     `${capitalize(inputName)} must be less than ${ruleValue} characters long.`
 };
 
-export const STORE_STATE_LS_LABEL = 'state';
-
 export const STAR_RATING_OPTIONS = {
   'rating-1': 1,
   'rating-2': 2,
@@ -35,3 +33,9 @@ export const STAR_RATING_OPTIONS = {
   'rating-4': 4,
   'rating-5': 5
 };
+
+export const STORE_STATE_LS_LABEL = 'state';
+
+export const FORECAST_LABEL = 'forecast';
+
+export const AIR_QUALITY_LABEL = 'air-quality';

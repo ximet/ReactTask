@@ -64,6 +64,26 @@ export const getLocationDailyWeather = (query: string) =>
     ActionType.GET_LOCATION_DAILY_WEATHER_FAIL
   );
 
+export const getLocationHourlyAirQuality = (query: string) =>
+  dispatchAsyncReq<Action, null, LocationAllResponse>(
+    `forecaApi/air-quality/forecast/hourly/${query}`,
+    'get',
+    null,
+    ActionType.GET_LOCATION_HOURLY_AIR_QUALITY_PENDING,
+    ActionType.GET_LOCATION_HOURLY_AIR_QUALITY_SUCCESS,
+    ActionType.GET_LOCATION_HOURLY_AIR_QUALITY_FAIL
+  );
+
+export const getLocationDailyAirQuality = (query: string) =>
+  dispatchAsyncReq<Action, null, LocationAllResponse>(
+    `forecaApi/air-quality/forecast/daily/${query}`,
+    'get',
+    null,
+    ActionType.GET_LOCATION_DAILY_AIR_QUALITY_PENDING,
+    ActionType.GET_LOCATION_DAILY_AIR_QUALITY_SUCCESS,
+    ActionType.GET_LOCATION_DAILY_AIR_QUALITY_FAIL
+  );
+
 export const setLocationQuery = (query: string) => (dispatch: Dispatch<Action>) => {
   dispatch({ type: ActionType.SET_LOCATION_QUERY, payload: query });
 };

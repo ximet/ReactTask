@@ -37,9 +37,7 @@ export const DashboardForecast = styled.div<StylesProps>`
   height: 16.775rem;
 `;
 
-export const DashboardForecastTypes = styled.ul<StylesProps>`
-  width: 33%;
-`;
+export const DashboardForecastTypes = styled.ul<StylesProps>``;
 
 interface DashboardForecastTypeStyles extends StylesProps {
   active: boolean;
@@ -68,6 +66,10 @@ export const DashboardForecastType = styled.li<DashboardForecastTypeStyles>`
 
   &:hover {
     ${colorChangeOnHover('color', 'color')}
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 2rem;
   }
 `;
 
