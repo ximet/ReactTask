@@ -110,3 +110,43 @@ body {
     color: $colorTextPrimary;
   }
 }
+
+.formFeedback {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  textarea {
+    background: none;
+    color: $colorTextPrimary;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 320px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $colorUISecondary;
+    resize: none;
+  }
+  input {
+    width: 25%;
+  }
+  button {
+    margin-top: 10px;
+  }
+}
+.comments {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  p {
+    width: 350px;
+    height: 60px;
+    border: 1px solid $colorTextSecondary;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  span {
+    color: $colorTextPrimary;
+  }
+}

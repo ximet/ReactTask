@@ -6,7 +6,10 @@ function Header() {
       <Link className={styles.logo} to="/">
         CanYouSwim??
       </Link>
-      <Link to="/about">About</Link>
+      <div>
+        <Link to="/feedback">Feedback</Link>
+        <Link to="/about">About</Link>
+      </div>
     </nav>
   );
 }
