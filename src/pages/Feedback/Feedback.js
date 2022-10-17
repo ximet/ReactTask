@@ -20,7 +20,6 @@ import {
 const Feedback = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const feedback = useSelector(state => state.feedback.feedbackComments);
 
   const submitHandler = e => {
