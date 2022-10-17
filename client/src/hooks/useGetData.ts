@@ -13,14 +13,14 @@ const useGetData = ({ getCurrentWeather, getDailyWeather, getHourlyWeather, getL
 
   const getData = useCallback(async () => {
     try {
-      const data = await getCurrentWeather(coordinates);
-      const locationResult = await getLocation(coordinates);
-      const dailyWeather = await getDailyWeather(coordinates);
-      const hourlyWeather = await getHourlyWeather(coordinates);
+      const data: CurrentWeatherData = await getCurrentWeather(coordinates);
+      const locationResult: LocationData = await getLocation(coordinates);
+      const dailyWeather: DailyWeather[] = await getDailyWeather(coordinates);
+      const hourlyWeather: HourlyWeather[] = await getHourlyWeather(coordinates);
       setCurrentWeather(data);
       setLocationData(locationResult);
       setForecast(dailyWeather);
-      const first24Hours = hourlyWeather?.slice(0, 24);
+      const first24Hours: HourlyWeather[] = hourlyWeather?.slice(0, 24);
       setHourlyForecast(first24Hours);
       setIsLoading(false);
     } catch (error) {

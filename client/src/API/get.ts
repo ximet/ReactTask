@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { TOKEN_LOCALSTORAGE_LABEL } from 'constants/labels';
 import {
   AuthenticationResponse,
   CurrentWeatherData,
@@ -16,7 +17,7 @@ const forecaClient: AxiosInstance = axios.create({
 
 forecaClient.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
-    const accessToken: string | null | undefined = localStorage.getItem('token');
+    const accessToken: string | null | undefined = localStorage.getItem(TOKEN_LOCALSTORAGE_LABEL);
     if (accessToken && accessToken !== 'undefined') {
       config.headers.Authorization = `Bearer ${accessToken}`;
     } else {
@@ -50,8 +51,9 @@ export const createToken = async (): Promise<AuthenticationResponse> => {
     const result: AxiosResponse<AuthenticationResponse> = await axios.post(
       `http://localhost:5000/authorize/token?expire_hours=2`
     );
-    window.localStorage.setItem('token', result.data.access_token);
-    return result?.data;
+    if (result.data.access_token)
+      window.localStorage.setItem(TOKEN_LOCALSTORAGE_LABEL, result.data.access_token);
+    return result.data;
   } catch (err) {
     throw new Error((err as Error).message);
   }
