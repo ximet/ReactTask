@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { sumbitFeedback } from '../../redux/feedbackReducer';
+import { sumbitFeedback } from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Feedback.module.css';
@@ -18,15 +18,10 @@ import {
 } from './feedbackQuestions';
 
 const Feedback = () => {
-  const [answer3, setAnswer3] = React.useState('');
-  const [answer4, setAnswer4] = React.useState('');
-
-  const { feedback } = useSelector(state => state.feedback);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleAnswer3 = e => setAnswer3(e.target.value);
-  const handleAnswer4 = e => setAnswer4(e.target.value);
+  const feedback = useSelector(state => state.feedback.feedbackComments);
 
   const submitHandler = e => {
     e.preventDefault();
@@ -90,31 +85,19 @@ const Feedback = () => {
           {question3}
         </label>
 
-        <input
-          name="question3"
-          id="comment"
-          placeholder="Enter your comment here"
-          onChange={handleAnswer3}
-          value={answer3}
-        />
+        <input name="question3" id="comment" placeholder="Enter your comment here" />
       </div>
 
       <div className={styles.formControl}>
         <label htmlFor="question4">{question4}</label>
-        <input
-          name="question4"
-          id="question4"
-          placeholder="Enter your comment here"
-          onChange={handleAnswer4}
-          value={answer4}
-        />
+        <input name="question4" id="question4" placeholder="Enter your comment here" />
       </div>
 
       <button type="submit" value="submit">
         {SUMBIT_LABEL}
       </button>
       <div className={styles.feedbackCount}>
-        {feedbackCountMessage} {feedback.length}.
+        {feedbackCountMessage} {feedback.length}
       </div>
     </form>
   );

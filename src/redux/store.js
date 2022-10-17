@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import sumbitFeedbackReducer from './feedbackReducer';
+
+import sumbitFeedbackReducer from './actions';
 
 export default configureStore({
   reducer: {
