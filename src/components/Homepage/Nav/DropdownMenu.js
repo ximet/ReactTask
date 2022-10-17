@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as styles from '../../../styles/DropdownMenu.module.css';
-import { getCities } from '../../../api/weatherApi.js';
+import { apiGet } from '../../../api/weatherApi.js';
 
 function DropdownMenu(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ function DropdownMenu(props) {
   const cityIdParam = params ? params.id : null;
 
   useEffect(() => {
-    getCities(searchedCity.name)
+    apiGet(`https://pfa.foreca.com/api/v1/location/search/${searchedCity.name}`)
       .then(res => {
         setCities(res.locations);
       })

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCityForecast, getCityInfo } from '../../api/weatherApi.js';
+import { apiGet } from '../../api/weatherApi.js';
 import * as styles from '../../styles/CityPage.module.css';
 
 function CityPage(props) {
@@ -15,13 +15,13 @@ function CityPage(props) {
   const params = useParams();
 
   useEffect(() => {
-    getCityInfo(params.id)
+    apiGet(`https://pfa.foreca.com/api/v1/location/${params.id}`)
       .then(res => {
         setCity(res);
       })
       .catch(err => console.log(err));
 
-    getCityForecast(params.id)
+    apiGet(`https://pfa.foreca.com/api/v1/current/${params.id}`)
       .then(res => {
         setTemperature(res.current.temperature);
         setWindSpeed(res.current.windSpeed);
@@ -35,7 +35,9 @@ function CityPage(props) {
 
   return (
     <div className={styles.cityInfo}>
-      <span className={styles.cityName}>{city.name}, {city.country}</span>
+      <span className={styles.cityName}>
+        {city.name}, {city.country}
+      </span>
       <ul className={styles.weatherVariables}>
         <li>Temperature: {temperature} °C</li>
         <li>Wind Speed: {windSpeed} m/s</li>
