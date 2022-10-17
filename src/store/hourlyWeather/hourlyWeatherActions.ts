@@ -7,9 +7,9 @@ import {
   HourlyWeatherAction,
   RequestHourlyWeather,
   RequestHourlyWeatherSuccess,
-  RequestHourlyWeatherFailed,
-  UnionHourlyWeatherType
+  RequestHourlyWeatherFailed
 } from './hourlyWeatherReducer';
+import { UnionHourlyWeatherType } from 'types/unionHourlyWeatherType';
 
 import { getWeather } from 'services/getWeather';
 

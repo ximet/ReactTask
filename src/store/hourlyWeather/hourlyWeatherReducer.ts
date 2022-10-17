@@ -1,9 +1,7 @@
-import { AirQualityType } from './../../types/airQualityType';
-import { HourlyWeatherType } from 'types/weatherTypes';
 import { HourlyWeatherActions } from './hourlyWeatherActions';
 import { WeatherReduxState } from 'types/reduxState';
+import { UnionHourlyWeatherType } from 'types/unionHourlyWeatherType';
 
-export type UnionHourlyWeatherType = HourlyWeatherType[] | AirQualityType[];
 export interface RequestHourlyWeather {
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER;
 }

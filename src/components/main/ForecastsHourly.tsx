@@ -26,7 +26,7 @@ const ForecastsHourly: FC<ForecastsHourlyProps> = ({ view }) => {
   } = useContext(positionContext);
 
   useEffect(() => {
-    dispatch(loadHourlyWeather({ position, layer, settings: {} }));
+    dispatch(loadHourlyWeather({ position, layer }));
   }, [dispatch, position, layer]);
 
   return (

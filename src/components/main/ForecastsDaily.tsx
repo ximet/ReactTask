@@ -16,7 +16,7 @@ type ForecastsDailyProps = {
 };
 
 const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
-  const { data: dailyWeather, loading, error } = useAppSelector(dailyWeatherSelector);
+  const { data: dailyWeather, error } = useAppSelector(dailyWeatherSelector);
   const [selectDays, setSelectDays] = useState<string>('');
   const {
     state: { position }

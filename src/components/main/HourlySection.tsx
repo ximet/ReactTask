@@ -11,8 +11,7 @@ import classNames from 'classnames';
 import { useAppSelector } from 'store/hooks';
 import { hourlyWeatherSelector } from 'store/hourlyWeather/hourlyWeatherSelectors';
 import { getHourLabels } from './HourlySection.utils';
-
-export type WeatherType = Array<HourlyWeatherType | AirQualityType>;
+import { UnionHourlyWeatherType } from 'types/unionHourlyWeatherType';
 
 const CORRECT_POSITION_COEFFICIENT = 4.2;
 
@@ -23,7 +22,7 @@ const HourlySection: FC = () => {
   const timeoutId = useRef<number>(0);
   const layer = useSelector(layerSelector);
   const { data } = useAppSelector(hourlyWeatherSelector);
-  const weather = data as WeatherType;
+  const weather = data as UnionHourlyWeatherType;
 
   const hoursSchema: {
     [index: string]: number;

@@ -1,7 +1,10 @@
 import { getTimeLabel } from 'utils/helpers';
-import { WeatherType } from './HourlySection';
+import { UnionHourlyWeatherType } from 'types/unionHourlyWeatherType';
 
-export const getHourLabels = (weather: WeatherType, middleLabelsCount: number): string[] => {
+export const getHourLabels = (
+  weather: UnionHourlyWeatherType,
+  middleLabelsCount: number
+): string[] => {
   const labels: string[] = [];
 
   const step = Math.floor(weather.length / (middleLabelsCount + 1));

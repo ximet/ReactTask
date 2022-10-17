@@ -20,7 +20,7 @@ const AirQuality: FC = () => {
   } = useContext(positionContext);
 
   useEffect(() => {
-    dispatch(loadHourlyWeather({ position, layer, settings: {} }));
+    dispatch(loadHourlyWeather({ position, layer }));
   }, [position, dispatch]);
 
   return (

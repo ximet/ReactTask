@@ -31,8 +31,9 @@ const requestDailyWeatherFailed = (error: string): RequestDailyWeatherFailed => 
 
 export const loadDailyWeather = ({
   position,
-  settings: { periods, dataset }
+  settings
 }: ThunkParams): ThunkAction<void, RootState, unknown, DailyWeatherAction> => dispatch => {
+  const { periods, dataset } = settings!;
   dispatch(requestDailyWeather());
 
   getWeather<{ forecast: DailyWeatherType[] }>('/forecast/daily/', position, {
