@@ -10,6 +10,7 @@ import styles from './Main.css';
 import { positionContext } from 'context/positionContext';
 import { hourlyWeatherSelector } from 'store/hourlyWeather/hourlyWeatherSelectors';
 import Loader from 'components/loader/Loader';
+import { layerSelector } from 'store/layer/layerSelectors';
 
 type ForecastsHourlyProps = {
   view: ViewType;
@@ -18,23 +19,22 @@ type ForecastsHourlyProps = {
 const ForecastsHourly: FC<ForecastsHourlyProps> = ({ view }) => {
   const dispatch = useHourlyWeatherDispatch();
   const { data: hourlyWeather, loading, error } = useAppSelector(hourlyWeatherSelector);
+  const layer = useAppSelector(layerSelector);
 
   const {
     state: { position }
   } = useContext(positionContext);
 
   useEffect(() => {
-    dispatch(loadHourlyWeather(position));
-  }, [position, dispatch]);
+    dispatch(loadHourlyWeather({ position, layer, settings: {} }));
+  }, [dispatch, position, layer]);
 
   return (
     <section className={styles['weather-section-wrapper']}>
       <h2 className={styles['weather-section-title']}>Hourly weather</h2>
       {loading && <Loader />}
       {error && <h3>Oops: {error}</h3>}
-      {hourlyWeather && (
-        <>{view === 'cards' ? <HourlySection weather={hourlyWeather} /> : <GraphHourly />}</>
-      )}
+      {hourlyWeather && !loading && <>{view === 'cards' ? <HourlySection /> : <GraphHourly />}</>}
     </section>
   );
 };

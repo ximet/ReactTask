@@ -10,7 +10,6 @@ import styles from './Main.css';
 import { useAppSelector, useDailyWeatherDispatch } from 'store/hooks';
 import { dailyWeatherSelector } from 'store/dailyWeather/dailyWeatherSelectors';
 import { loadDailyWeather } from 'store/dailyWeather/dailyWeatherActions';
-import Loader from 'components/loader/Loader';
 
 type ForecastsDailyProps = {
   view: ViewType;
@@ -50,7 +49,6 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
         <option value="10">10 days</option>
         <option value="14">14 days</option>
       </select>
-      {loading && <Loader />}
       {error && <h3>Oops: {error}</h3>}
       {selectDays && dailyWeather && (
         <>

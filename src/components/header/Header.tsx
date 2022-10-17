@@ -78,6 +78,7 @@ const Header: FC = () => {
           <li>
             <NavLink
               to="/"
+              end
               className={setActive}
               onClick={() => changePosition(position.latitude, position.longitude)}
             >

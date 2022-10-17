@@ -12,7 +12,8 @@ import { hourlyWeatherSelector } from 'store/hourlyWeather/hourlyWeatherSelector
 Chart.register(...registerables);
 
 const GraphHourly: FC = () => {
-  const { data: weather } = useAppSelector(hourlyWeatherSelector);
+  const { data: dataWeather } = useAppSelector(hourlyWeatherSelector);
+  const weather = dataWeather as HourlyWeatherType[];
   const { options } = useGraphSettings();
 
   const colors: string[] = [];

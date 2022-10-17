@@ -1,13 +1,15 @@
+import { AirQualityType } from './../../types/airQualityType';
 import { HourlyWeatherType } from 'types/weatherTypes';
 import { HourlyWeatherActions } from './hourlyWeatherActions';
 import { WeatherReduxState } from 'types/reduxState';
 
+export type UnionHourlyWeatherType = HourlyWeatherType[] | AirQualityType[];
 export interface RequestHourlyWeather {
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER;
 }
 export interface RequestHourlyWeatherSuccess {
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER_SUCCESS;
-  payload: HourlyWeatherType[];
+  payload: UnionHourlyWeatherType;
 }
 export interface RequestHourlyWeatherFailed {
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER_FAILED;
@@ -19,7 +21,7 @@ export type HourlyWeatherAction =
   | RequestHourlyWeatherSuccess
   | RequestHourlyWeatherFailed;
 
-type HourlyWeatherState = WeatherReduxState<HourlyWeatherType[]>;
+type HourlyWeatherState = WeatherReduxState<UnionHourlyWeatherType>;
 
 const defaultState: HourlyWeatherState = {
   data: null,

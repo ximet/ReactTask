@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
+import Loader from 'components/loader/Loader';
 import { CurrentWeatherType } from 'types/weatherTypes';
 import { getWeather } from 'services/getWeather';
 import { getImgURL } from 'utils/helpers';
-import Loader from '../../pictures/loader.gif';
 import { Coordinates } from 'types/positionType';
 
 type SmallCardProps = {
@@ -34,7 +34,7 @@ export const CitySmallCard: FC<SmallCardProps> = ({ lon, lat, cityName }) => {
           <img src={getImgURL(currentWeather.symbol)} alt={currentWeather.symbol} />
         </>
       ) : (
-        <img src={Loader} />
+        <Loader />
       )}
     </>
   );

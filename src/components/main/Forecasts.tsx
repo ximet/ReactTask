@@ -1,9 +1,8 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch, useCurrentWeatherDispatch } from 'store/hooks';
+import { useCurrentWeatherDispatch } from 'store/hooks';
 import styles from './Main.css';
 import classNames from 'classnames';
-import { CurrentWeatherDispatch } from 'store/currentWeather/types';
 
 import MainCard from './MainCard';
 import ForecastsHourly from './ForecastsHourly';
@@ -16,6 +15,7 @@ import { getCity } from 'services/getCity';
 import { LocationInfoType } from 'types/cityInfoType';
 import { ViewType } from 'types/viewType';
 import { defaultLocationInfo } from './defaultStates';
+import { CurrentWeatherDispatch } from 'store/currentWeather/types';
 
 const Forecasts: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -25,10 +25,10 @@ const Forecasts: FC = () => {
   const { data: currentWeather, loading, error: loadingError } = useSelector(
     currentWeatherSelector
   );
-  const dispatch = useCurrentWeatherDispatch();
+  const dispatch: CurrentWeatherDispatch = useCurrentWeatherDispatch();
 
   const {
-    state: { position, positionError }
+    state: { position }
   } = useContext(positionContext);
 
   useEffect(() => {
@@ -41,8 +41,7 @@ const Forecasts: FC = () => {
     <>
       {loading && <Loader />}
       {loadingError && <h3>Oops: {loadingError}</h3>}
-      {positionError && <h3>We can't show you current weather, because: {positionError}</h3>}
-      {currentWeather && !loadingError && !positionError && !loading && (
+      {currentWeather && !loading && (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
           <div className={styles['view-btns-wrapper']}>

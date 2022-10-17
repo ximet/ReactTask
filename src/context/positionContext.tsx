@@ -3,6 +3,7 @@ import { usePosition } from 'hooks/usePosition';
 import { reducer } from './positionReducer';
 import { CHANGE_POSITION } from './positionActions';
 import { PositionContextState, PositionActionData } from './positionReducer';
+import { useParams } from 'react-router-dom';
 
 type PositionContextValuesType = {
   state: PositionContextState;
@@ -23,6 +24,7 @@ const contextValues: PositionContextValuesType = {
 export const positionContext = createContext<PositionContextValuesType>(contextValues);
 
 export const PositionContextProvider = ({ children }: { children: ReactNode }) => {
+  const { coordinates } = useParams();
   const { position, error } = usePosition();
 
   const { Provider } = positionContext;
@@ -49,8 +51,25 @@ export const PositionContextProvider = ({ children }: { children: ReactNode }) =
   };
 
   useEffect(() => {
-    changePosition(position.latitude, position.longitude);
-  }, [position.latitude]);
+    const [paramLongitude, paramLatitude] = (coordinates || '').split(',');
 
-  return <Provider value={{ state, changePosition }}>{children}</Provider>;
+    const resultLongitude = +paramLongitude || position.longitude;
+    const resultLatitude = +paramLatitude || position.latitude;
+
+    if (position.latitude || position.latitude) {
+      changePosition(resultLatitude, resultLongitude);
+    }
+  }, [position]);
+
+  const latitude = state.position.latitude;
+  const longitude = state.position.longitude;
+
+  return (
+    <Provider value={{ state, changePosition }}>
+      <>
+        {(latitude || longitude) && children}
+        {error && <>Error in position: {error}</>}
+      </>
+    </Provider>
+  );
 };

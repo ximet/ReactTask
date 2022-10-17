@@ -1,3 +1,4 @@
+import { LayerState } from 'store/layer/layerReducer';
 import { Coordinates } from './positionType';
 
 export interface ThunkParams {
@@ -6,4 +7,5 @@ export interface ThunkParams {
     periods?: string;
     dataset?: string;
   };
+  layer?: LayerState;
 }

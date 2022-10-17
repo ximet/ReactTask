@@ -5,7 +5,6 @@ import commonStyles from '../../styles/commonStyles.css';
 
 import React, { FC, useEffect, useState } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { PositionContextProvider } from '../../context/positionContext';
 
 import { Layout } from 'components/Layout';
 import { Countries } from 'components/countries/Countries';
@@ -39,20 +38,18 @@ const App: FC = () => {
     <div className={styles.app}>
       {token ? (
         <Provider store={store}>
-          <PositionContextProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Main />} />
-                  <Route path="/:coordinates" element={<Main />} />
-                  <Route path="countries" element={<Countries />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="feedback" element={<Feedback />} />
-                  <Route path="*" element={<Page404 />} />
-                </Route>
-              </Routes>
-            </BrowserRouter>
-          </PositionContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Main />} />
+                <Route path="/:coordinates" element={<Main />} />
+                <Route path="countries" element={<Countries />} />
+                <Route path="about" element={<About />} />
+                <Route path="feedback" element={<Feedback />} />
+                <Route path="*" element={<Page404 />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
         </Provider>
       ) : (
         <div className={commonStyles.container}>
