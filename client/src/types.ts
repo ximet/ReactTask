@@ -1,4 +1,3 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Validations } from 'constants/validatorStrings';
 
 export type GeolocationCoordinates = {
@@ -12,8 +11,6 @@ export type AuthenticationResponse = {
   expires_in: number;
   // eslint-disable-next-line camelcase
   token_type: string;
-  status?: number;
-  message?: string;
 };
 
 export type LocationData = {
@@ -27,16 +24,6 @@ export type LocationData = {
   lon: number;
   name: string;
   timezone: string;
-};
-export type Response = {
-  statusText: string;
-  status: number;
-  request: XMLHttpRequest;
-  headers: AxiosResponse;
-  config: AxiosRequestConfig;
-};
-export type LocationDataResponse = Response & {
-  data: LocationData;
 };
 
 export type LocationByQuery = {
@@ -103,10 +90,6 @@ export type DailyWeather = CommonWeatherData & {
   solarRadiationSum: number;
   snowAccum: number;
   precipAccum: number;
-};
-
-export type DailyWeatherResponse = {
-  forecast: PromiseLike<AxiosResponse<DailyWeather[]> | undefined> | undefined;
 };
 
 export interface Feedback {

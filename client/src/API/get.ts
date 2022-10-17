@@ -3,12 +3,10 @@ import {
   AuthenticationResponse,
   CurrentWeatherData,
   DailyWeather,
-  DailyWeatherResponse,
   GeolocationCoordinates,
   HourlyWeather,
   LocationByQuery,
-  LocationData,
-  LocationDataResponse
+  LocationData
 } from 'types';
 
 const forecaClient: AxiosInstance = axios.create({
@@ -28,7 +26,6 @@ forecaClient.interceptors.request.use(
     return config;
   },
   error => {
-    console.log('error', error);
     Promise.reject((error as Error).message);
   }
 );
@@ -38,25 +35,17 @@ forecaClient.interceptors.response.use(
     const originalRequest = response.config;
     if (response.data.status === 401) {
       const token = await createToken();
-      if (token?.status === 401) {
-        return Promise.reject(token.message);
-      }
       axios.defaults.headers.common.Authorization = `Bearer ${token?.access_token}`;
       return forecaClient(originalRequest);
     }
     return response;
   },
   error => {
-    console.log('error', error);
-    const originalRequest = error.config;
-    console.log('originalRequest', originalRequest);
     return Promise.reject((error as Error).message);
   }
 );
 
-export const createToken = async (): Promise<
-  AxiosResponse<AuthenticationResponse>['data'] | undefined
-> => {
+export const createToken = async (): Promise<AuthenticationResponse> => {
   try {
     const result: AxiosResponse<AuthenticationResponse> = await axios.post(
       `http://localhost:5000/authorize/token?expire_hours=2`
@@ -64,30 +53,26 @@ export const createToken = async (): Promise<
     window.localStorage.setItem('token', result.data.access_token);
     return result?.data;
   } catch (err) {
-    console.log('err', err);
     throw new Error((err as Error).message);
   }
 };
 
 export const getCurrentWeather = async (
   param: GeolocationCoordinates | null
-): Promise<AxiosResponse<CurrentWeatherData>['data'] | undefined> => {
+): Promise<CurrentWeatherData> => {
   try {
     const result: AxiosResponse<{ current: CurrentWeatherData }> = await forecaClient.get(
       `/current/location=${param?.lon},${param?.lat}`
     );
     return result.data.current;
   } catch (error: any) {
-    return error;
-    // throw new Error((error as Error).message);
+    throw new Error(error);
   }
 };
 
-export const getLocation = async (
-  param: GeolocationCoordinates | null
-): Promise<AxiosResponse<LocationData> | undefined> => {
+export const getLocation = async (param: GeolocationCoordinates | null): Promise<LocationData> => {
   try {
-    const result: AxiosResponse<LocationDataResponse> = await forecaClient.get(
+    const result: AxiosResponse<LocationData> = await forecaClient.get(
       `/location/${param?.lon},${param?.lat}`
     );
     return result.data;
@@ -96,9 +81,7 @@ export const getLocation = async (
   }
 };
 
-export const getLocationByQuery = async (
-  param: string | undefined
-): Promise<AxiosResponse<LocationByQuery>['data'] | undefined> => {
+export const getLocationByQuery = async (param: string | undefined): Promise<LocationByQuery> => {
   try {
     const result: AxiosResponse<LocationByQuery> = await forecaClient.get(
       `/location/search/${param}`
@@ -111,9 +94,9 @@ export const getLocationByQuery = async (
 
 export const getDailyWeather = async (
   param: GeolocationCoordinates | null
-): Promise<AxiosResponse<DailyWeather[]> | undefined> => {
+): Promise<DailyWeather[]> => {
   try {
-    const result: AxiosResponse<DailyWeatherResponse> = await forecaClient.get(
+    const result: AxiosResponse<{ forecast: DailyWeather[] }> = await forecaClient.get(
       `/forecast/daily/location=${param?.lon},${param?.lat}&dataset=full`
     );
     return result.data.forecast;
@@ -124,9 +107,9 @@ export const getDailyWeather = async (
 
 export const getHourlyWeather = async (
   param: GeolocationCoordinates | null
-): Promise<AxiosResponse<HourlyWeather[]>['data'] | undefined> => {
+): Promise<HourlyWeather[]> => {
   try {
-    const result = await forecaClient.get<{ forecast: HourlyWeather[] }>(
+    const result: AxiosResponse<{ forecast: HourlyWeather[] }> = await forecaClient.get(
       `/forecast/hourly/location=${param?.lon},${param?.lat}&periods=168&dataset=full`
     );
     return result.data.forecast;
