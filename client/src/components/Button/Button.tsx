@@ -1,16 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, MouseEvent, ButtonHTMLAttributes } from 'react';
 
 // Styles
 import * as S from './Button.styles';
 
-interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
-  ariaLabel: string;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button: FunctionComponent<ButtonProps> = ({ type, color, ariaLabel, children }) => (
-  <S.Button type={type} color={color} aria-label={ariaLabel}>
+const Button: FunctionComponent<ButtonProps> = ({ color, children, onClick, ...otherProps }) => (
+  <S.Button color={color} onClick={onClick} {...otherProps}>
     {children}
   </S.Button>
 );

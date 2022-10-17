@@ -92,7 +92,7 @@ const DashboardForecast: FunctionComponent = () => {
             </Flex>
           </S.DashboardForecastTypes>
           <ButtonSwitch
-            ariaLabel="Toggle info type"
+            aria-label="Toggle info type"
             width="14.5rem"
             switchType="info"
             infoType={infoType}
