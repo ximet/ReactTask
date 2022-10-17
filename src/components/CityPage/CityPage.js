@@ -35,7 +35,7 @@ function CityPage(props) {
 
   return (
     <div className={styles.cityInfo}>
-      <span className={styles.cityName}>{city.name}</span>
+      <span className={styles.cityName}>{city.name}, {city.country}</span>
       <ul className={styles.weatherVariables}>
         <li>Temperature: {temperature} °C</li>
         <li>Wind Speed: {windSpeed} m/s</li>
