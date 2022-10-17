@@ -18,8 +18,8 @@ const forecaClient: AxiosInstance = axios.create({
 
 forecaClient.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
-    const accessToken: string | null = localStorage.getItem('token');
-    if (accessToken) {
+    const accessToken: string | null | undefined = localStorage.getItem('token');
+    if (accessToken && accessToken !== 'undefined') {
       config.headers.Authorization = `Bearer ${accessToken}`;
     } else {
       const token = await createToken();
@@ -28,6 +28,7 @@ forecaClient.interceptors.request.use(
     return config;
   },
   error => {
+    console.log('error', error);
     Promise.reject((error as Error).message);
   }
 );
@@ -37,12 +38,18 @@ forecaClient.interceptors.response.use(
     const originalRequest = response.config;
     if (response.data.status === 401) {
       const token = await createToken();
+      if (token?.status === 401) {
+        return Promise.reject(token.message);
+      }
       axios.defaults.headers.common.Authorization = `Bearer ${token?.access_token}`;
       return forecaClient(originalRequest);
     }
     return response;
   },
-  async error => {
+  error => {
+    console.log('error', error);
+    const originalRequest = error.config;
+    console.log('originalRequest', originalRequest);
     return Promise.reject((error as Error).message);
   }
 );
@@ -57,6 +64,7 @@ export const createToken = async (): Promise<
     window.localStorage.setItem('token', result.data.access_token);
     return result?.data;
   } catch (err) {
+    console.log('err', err);
     throw new Error((err as Error).message);
   }
 };
@@ -69,8 +77,9 @@ export const getCurrentWeather = async (
       `/current/location=${param?.lon},${param?.lat}`
     );
     return result.data.current;
-  } catch (error) {
-    throw new Error((error as Error).message);
+  } catch (error: any) {
+    return error;
+    // throw new Error((error as Error).message);
   }
 };
 

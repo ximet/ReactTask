@@ -12,6 +12,8 @@ export type AuthenticationResponse = {
   expires_in: number;
   // eslint-disable-next-line camelcase
   token_type: string;
+  status?: number;
+  message?: string;
 };
 
 export type LocationData = {
