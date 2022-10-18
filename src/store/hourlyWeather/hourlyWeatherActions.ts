@@ -1,6 +1,6 @@
+import { ThunkParams } from './../../types/thunkParams';
+import { thunkUrlSchema } from './thunkUrlSchema';
 import { ThunkAction } from 'redux-thunk';
-import { HourlyWeatherType } from 'types/weatherTypes';
-import { Coordinates } from 'types/positionType';
 
 import { RootState } from 'store/rootReducer';
 import {
@@ -9,6 +9,7 @@ import {
   RequestHourlyWeatherSuccess,
   RequestHourlyWeatherFailed
 } from './hourlyWeatherReducer';
+import { UnionHourlyWeatherType } from 'types/unionHourlyWeatherType';
 
 import { getWeather } from 'services/getWeather';
 
@@ -22,7 +23,7 @@ const requestHourlyWeather = (): RequestHourlyWeather => ({
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER
 });
 const requestHourlyWeatherSuccess = (
-  hourlyWeather: HourlyWeatherType[]
+  hourlyWeather: UnionHourlyWeatherType
 ): RequestHourlyWeatherSuccess => ({
   type: HourlyWeatherActions.REQUEST_HOURLY_WEATHER_SUCCESS,
   payload: hourlyWeather
@@ -32,12 +33,13 @@ const requestHourlyWeatherFailed = (error: string): RequestHourlyWeatherFailed =
   payload: error
 });
 
-export const loadHourlyWeather = (
-  position: Coordinates
-): ThunkAction<void, RootState, unknown, HourlyWeatherAction> => dispatch => {
+export const loadHourlyWeather = ({
+  position,
+  layer
+}: ThunkParams): ThunkAction<void, RootState, unknown, HourlyWeatherAction> => dispatch => {
   dispatch(requestHourlyWeather());
 
-  getWeather<{ forecast: HourlyWeatherType[] }>('/forecast/hourly/', position, {
+  getWeather<{ forecast: UnionHourlyWeatherType }>(thunkUrlSchema[layer!], position, {
     dataset: 'full'
   })
     .then(res => dispatch(requestHourlyWeatherSuccess(res.forecast)))

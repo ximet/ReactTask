@@ -4,28 +4,30 @@ import { positionContext } from 'context/positionContext';
 
 import HourlySection from './HourlySection';
 
-import { useAirQualityDispatch, useAppSelector } from 'store/hooks';
-import { loadAirQuality } from 'store/airQuality/airQualityActions';
-import { airQualitySelector } from 'store/airQuality/airQualitySelectors';
+import { useAppSelector, useHourlyWeatherDispatch } from 'store/hooks';
 import Loader from 'components/loader/Loader';
+import { layerSelector } from 'store/layer/layerSelectors';
+import { loadHourlyWeather } from 'store/hourlyWeather/hourlyWeatherActions';
+import { hourlyWeatherSelector } from 'store/hourlyWeather/hourlyWeatherSelectors';
 
 const AirQuality: FC = () => {
-  const dispatch = useAirQualityDispatch();
-  const { data: airQuality, loading, error } = useAppSelector(airQualitySelector);
+  const dispatch = useHourlyWeatherDispatch();
+  const layer = useAppSelector(layerSelector);
+  const { data: weather, loading, error } = useAppSelector(hourlyWeatherSelector);
 
   const {
     state: { position }
   } = useContext(positionContext);
 
   useEffect(() => {
-    dispatch(loadAirQuality(position));
+    dispatch(loadHourlyWeather({ position, layer }));
   }, [position, dispatch]);
 
   return (
     <>
       {loading && <Loader />}
       {error && <h3>Oops: {error}</h3>}
-      {airQuality && <HourlySection weather={airQuality} />}
+      {weather && !loading && <HourlySection />}
     </>
   );
 };
