@@ -1,17 +1,30 @@
-import React, { FunctionComponent, useState, useEffect, KeyboardEvent } from 'react';
+import React, { FunctionComponent, useState, useEffect, useCallback, KeyboardEvent } from 'react';
+import { useDispatch } from 'react-redux';
 
 // Store
 import { useAppSelector } from 'redux/hooks';
 import { selectTheme } from 'redux/reducers/global';
 import { selectQuery } from 'redux/reducers/location';
 
+// Types
+import { WeatherInfo, AirQualityInfo } from 'types';
+
 // Components
-import DashboardForecastWeather from 'components/Dashboard/DashboardForecast/DashboardForecastWeather/DashboardForecastWeather';
-import DashboardForecastAir from 'components/Dashboard/DashboardForecast/DashboardForecastAir/DashboardForecastAir';
+import RequestDataWrapper from 'components/RequestDataWrapper/RequestDataWrapper';
 import ButtonSwitch from 'components/ButtonSwitch/ButtonSwitch';
+import Carousel from 'components/Carousel/Carousel';
+import Widget from 'components/Widget/Widget';
 
 // Utils
 import { capitalize, checkIfEnterOrSpacePressed } from 'utils/helpers';
+import {
+  WeatherType,
+  AirQualityType,
+  selectLocationWeather,
+  selectLocationAirQuality,
+  getLocationWeather,
+  getLocationAirQuality
+} from './DashboardForecast.utils';
 
 // Styles
 import { Flex } from 'styles/global';
@@ -20,49 +33,58 @@ import * as S from '../Dashboard.styles';
 // Constants
 import { FORECAST_LABEL, AIR_QUALITY_LABEL } from '../../../constants';
 
-export enum ForecastType {
-  weatherHourly = 'weatherHourly',
-  weatherThreeHourly = 'weatherThreeHourly',
-  weatherDaily = 'weatherDaily',
-  airQualityHourly = 'airQualityHourly',
-  airQualityDaily = 'airQualityDaily'
-}
-
 const DashboardForecast: FunctionComponent = () => {
-  const theme = useAppSelector(selectTheme);
-  const query = useAppSelector(selectQuery);
-
+  const [carouselChildPointerEv, setCarouselChildPointerEv] = useState<boolean>(false);
   const [infoType, setInfoType] = useState<string>(FORECAST_LABEL);
+  const [selectedForecastType, setSelectedForecastType] = useState<WeatherType | AirQualityType>(
+    WeatherType.hourly
+  );
 
   const isWeatherForecast = infoType === FORECAST_LABEL;
 
-  const [selectedForecastType, setSelectedForecastType] = useState<string>(
-    ForecastType.weatherHourly
+  const theme = useAppSelector(selectTheme);
+  const query = useAppSelector(selectQuery);
+
+  const dispatch = useDispatch();
+
+  const { data, loading, error } = useAppSelector(state =>
+    isWeatherForecast
+      ? selectLocationWeather(state, selectedForecastType)
+      : selectLocationAirQuality(state, selectedForecastType)
   );
 
   // Handlers
   const handleInfoType = (): void =>
     setInfoType(prevState => (prevState === FORECAST_LABEL ? AIR_QUALITY_LABEL : FORECAST_LABEL));
 
-  const handleForecastTypeOnClick = (forecastType: string): void =>
+  const handleForecastTypeOnClick = (forecastType: WeatherType | AirQualityType): void =>
     setSelectedForecastType(forecastType);
 
   const handleForecastTypeOnKeyPress = (
     e: KeyboardEvent<HTMLLIElement>,
-    forecastType: string
+    forecastType: WeatherType | AirQualityType
   ): void => {
     if (checkIfEnterOrSpacePressed(e)) {
       setSelectedForecastType(forecastType);
     }
   };
 
+  const handleGetLocationForecast = useCallback(() => {
+    if (!query) return;
+    isWeatherForecast
+      ? getLocationWeather(query, selectedForecastType, dispatch)
+      : getLocationAirQuality(query, selectedForecastType, dispatch);
+  }, [dispatch, query, selectedForecastType, isWeatherForecast]);
+
+  // Set selected forecast type depending on info type
   useEffect(() => {
-    if (isWeatherForecast) {
-      setSelectedForecastType(ForecastType.weatherHourly);
-    } else {
-      setSelectedForecastType(ForecastType.airQualityHourly);
-    }
+    setSelectedForecastType(isWeatherForecast ? WeatherType.hourly : AirQualityType.hourly);
   }, [isWeatherForecast]);
+
+  // Get data
+  useEffect(() => {
+    handleGetLocationForecast();
+  }, [handleGetLocationForecast]);
 
   return (
     <S.DashboardForecast>
@@ -70,25 +92,23 @@ const DashboardForecast: FunctionComponent = () => {
         <Flex justifySpaceBetween>
           <S.DashboardForecastTypes role="tablist">
             <Flex justifySpaceBetween>
-              {(Object.keys(ForecastType) as Array<keyof typeof ForecastType>)
-                .filter(key =>
-                  isWeatherForecast ? key.startsWith('weather') : key.startsWith('air')
-                )
-                .map(key => (
-                  <S.DashboardForecastType
-                    tabIndex={0}
-                    role="tab"
-                    aria-controls="tabpanel"
-                    aria-selected={selectedForecastType === key}
-                    key={key}
-                    themeType={theme}
-                    active={selectedForecastType === key}
-                    onClick={() => handleForecastTypeOnClick(key)}
-                    onKeyPress={e => handleForecastTypeOnKeyPress(e, key)}
-                  >
-                    {capitalize(key.split(isWeatherForecast ? 'weather' : 'airQuality')[1])}
-                  </S.DashboardForecastType>
-                ))}
+              {(Object.keys(isWeatherForecast ? WeatherType : AirQualityType) as
+                | WeatherType[]
+                | AirQualityType[]).map(key => (
+                <S.DashboardForecastType
+                  tabIndex={0}
+                  role="tab"
+                  aria-controls="tabpanel"
+                  aria-selected={selectedForecastType === key}
+                  key={key}
+                  themeType={theme}
+                  active={selectedForecastType === key}
+                  onClick={() => handleForecastTypeOnClick(key)}
+                  onKeyPress={e => handleForecastTypeOnKeyPress(e, key)}
+                >
+                  {capitalize(key)}
+                </S.DashboardForecastType>
+              ))}
             </Flex>
           </S.DashboardForecastTypes>
           <ButtonSwitch
@@ -103,19 +123,20 @@ const DashboardForecast: FunctionComponent = () => {
           </ButtonSwitch>
         </Flex>
       </S.DashboardToolbar>
-      {isWeatherForecast ? (
-        <DashboardForecastWeather
-          selectedForecastType={selectedForecastType}
-          infoType={infoType}
-          query={query}
-        />
-      ) : (
-        <DashboardForecastAir
-          selectedForecastType={selectedForecastType}
-          infoType={infoType}
-          query={query}
-        />
-      )}
+      <S.DashboardForecastWidgets id="tabpanel" role="tabpanel">
+        <RequestDataWrapper data={data} loading={loading} error={error}>
+          <Carousel setCarouselChildPointerEv={setCarouselChildPointerEv}>
+            {data?.map((item: WeatherInfo | AirQualityInfo) => (
+              <Widget
+                key={item.time || item.date}
+                data={item}
+                infoType={infoType}
+                pointerEvents={carouselChildPointerEv}
+              />
+            ))}
+          </Carousel>
+        </RequestDataWrapper>
+      </S.DashboardForecastWidgets>
     </S.DashboardForecast>
   );
 };
