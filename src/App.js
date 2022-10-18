@@ -6,6 +6,10 @@ import Home from './Pages/Home/Home.js';
 import About from './Pages/About/About.js';
 import Page404 from './Pages/Page404/Page404.js';
 import City from './pages/City/City.js';
+import Feedback from './pages/Feedback/Feedback.js';
+
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import useAuthorize from './customHooks/useAuthorize';
 
@@ -18,12 +22,15 @@ const App = () => {
     <Router>
       <Header />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/city/:id" element={<City />} />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
+        <Provider store={store}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/city/:id" element={<City />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </Provider>
       </main>
       <Footer />
     </Router>

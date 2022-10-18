@@ -9,6 +9,8 @@ export const API_END_POINTS = {
 
 export const BAERER = 'Bearer';
 export const TOKEN_KEY = 'TOKEN_KEY';
+export const FEEDBACK = 'FEEDBACK';
 
 // Labes //
 export const BUTTON_OK_LABEL = 'OK';
+export const SUMBIT_LABEL = 'Submit';
