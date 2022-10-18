@@ -1,7 +1,7 @@
 import { TOKEN } from '../services/constants.js';
 
-const getCities = async value => {
-  const response = await fetch(`https://pfa.foreca.com/api/v1/location/search/${value}`, {
+const apiGet = async (url) => {
+  const response = await fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${localStorage.getItem(TOKEN)}`
@@ -10,4 +10,4 @@ const getCities = async value => {
   return await response.json();
 };
 
-export { getCities };
+export { apiGet };
