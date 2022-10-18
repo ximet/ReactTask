@@ -4,7 +4,7 @@ import theme from 'styles/theme';
 import { colorChangeOnHover } from 'styles/mixins';
 
 import { StylesProps } from 'types';
-import { HEADER_HEIGHT } from 'styles/constants';
+import { FOOTER_HEIGHT, HEADER_HEIGHT } from 'styles/constants';
 
 export const Dashboard = styled.div<StylesProps>`
   display: grid;
@@ -14,7 +14,7 @@ export const Dashboard = styled.div<StylesProps>`
     'current forecast'
     'map map';
   width: 100%;
-  height: calc(100vh - ${HEADER_HEIGHT}rem);
+  height: calc(100vh - ${HEADER_HEIGHT}rem - ${FOOTER_HEIGHT}rem);
   padding-bottom: 1.5rem;
 `;
 
