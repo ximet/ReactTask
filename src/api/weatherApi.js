@@ -1,6 +1,6 @@
 import { TOKEN } from '../services/constants.js';
 
-const apiGet = async (url) => {
+const apiGet = async url => {
   const response = await fetch(url, {
     method: 'GET',
     headers: {
