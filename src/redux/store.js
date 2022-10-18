@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 import sumbitFeedbackReducer from './actions';
+import { refreshFromLocalStorage, localStorageMiddleware } from './localStorageService';
 
 export default configureStore({
   reducer: {
     feedback: sumbitFeedbackReducer
   },
-  middleware: [thunk, logger]
+  preloadedState: refreshFromLocalStorage(),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(localStorageMiddleware).concat(logger)
 });
