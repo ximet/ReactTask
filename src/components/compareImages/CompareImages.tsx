@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
+import { getNewX, getPercent } from './CompareImages.utils';
 
 import styles from './CompareImages.css';
 
@@ -29,27 +30,13 @@ const CompareImages: FC<CompareImagesProps> = ({ leftPhoto, rightPhoto }) => {
     const leftBorder = wrapperElement.getBoundingClientRect().left;
     const wrapperWidth = wrapperElement.getBoundingClientRect().width;
 
-    const getNewX = (x: number) => {
-      let correctX = x - leftBorder;
-
-      correctX = correctX <= 0 ? 0 : correctX;
-      correctX = correctX >= wrapperWidth ? wrapperWidth : correctX;
-
-      return correctX;
-    };
-
-    const getPercent = (x: number) => {
-      return (x / wrapperWidth) * 100;
-    };
-
     const moveHandler = (e: MouseEvent | TouchEvent) => {
-      let newX: number;
-      if ('movementX' in e) {
-        newX = getNewX(e.pageX);
-      } else {
-        newX = getNewX(e.touches[0].pageX);
-      }
-      const percent = getPercent(newX);
+      const newX = getNewX({
+        x: 'movementX' in e ? e.pageX : e.touches[0].pageX,
+        leftBorder,
+        wrapperWidth
+      });
+      const percent = getPercent({ x: newX, wrapperWidth });
       lineElement.style.left = newX + 'px';
       rightPhoto.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
     };
