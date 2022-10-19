@@ -23,40 +23,28 @@ const App = () => {
   const [theme, setTheme] = useState('light');
   useAuthorize();
 
-  const testF = () => {
-      if (theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-  }
+  const switchTheme = () => theme === 'dark' ? setTheme('light') : setTheme('dark');
 
   return (
     <div>
-    <div data-theme={theme}>
-      <Router>
-        <Header />
-        <main>
-          <ThemeContext.Consumer>
-            {() => (
-              <ToggleDark
-                toggleDark={testF}
-              />
-            )}
-          </ThemeContext.Consumer>
-          <Provider store={store}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/feedback" element={<Feedback />} />
-              <Route path="/city/:id" element={<City />} />
-              <Route path="*" element={<Page404 />} />
-            </Routes>
-          </Provider>
-        </main>
-        <Footer />
-      </Router>
-    </div>
+      <div data-theme={theme}>
+        <Router>
+          <Header />
+          <main>
+            <ToggleDark toggleDark={switchTheme}/>
+            <Provider store={store}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/feedback" element={<Feedback />} />
+                <Route path="/city/:id" element={<City />} />
+                <Route path="*" element={<Page404 />} />
+              </Routes>
+            </Provider>
+          </main>
+          <Footer />
+        </Router>
+      </div>
     </div>
   );
 };
