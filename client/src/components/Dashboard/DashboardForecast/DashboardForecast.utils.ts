@@ -21,6 +21,8 @@ export enum AirQualityType {
   daily = 'daily'
 }
 
+export type ForecastType = WeatherType | AirQualityType;
+
 export const selectLocationWeather = (
   { location: { weather } }: RootState,
   selectedForecastType: WeatherType | AirQualityType

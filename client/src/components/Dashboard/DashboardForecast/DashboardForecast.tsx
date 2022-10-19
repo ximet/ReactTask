@@ -18,6 +18,7 @@ import Widget from 'components/Widget/Widget';
 // Utils
 import { capitalize, checkIfEnterOrSpacePressed } from 'utils/helpers';
 import {
+  ForecastType,
   WeatherType,
   AirQualityType,
   selectLocationWeather,
@@ -36,7 +37,7 @@ import { FORECAST_LABEL, AIR_QUALITY_LABEL } from '../../../constants';
 const DashboardForecast: FunctionComponent = () => {
   const [carouselChildPointerEv, setCarouselChildPointerEv] = useState<boolean>(false);
   const [infoType, setInfoType] = useState<string>(FORECAST_LABEL);
-  const [selectedForecastType, setSelectedForecastType] = useState<WeatherType | AirQualityType>(
+  const [selectedForecastType, setSelectedForecastType] = useState<ForecastType>(
     WeatherType.hourly
   );
 
@@ -57,12 +58,12 @@ const DashboardForecast: FunctionComponent = () => {
   const handleInfoType = (): void =>
     setInfoType(prevState => (prevState === FORECAST_LABEL ? AIR_QUALITY_LABEL : FORECAST_LABEL));
 
-  const handleForecastTypeOnClick = (forecastType: WeatherType | AirQualityType): void =>
+  const handleForecastTypeOnClick = (forecastType: ForecastType): void =>
     setSelectedForecastType(forecastType);
 
   const handleForecastTypeOnKeyPress = (
     e: KeyboardEvent<HTMLLIElement>,
-    forecastType: WeatherType | AirQualityType
+    forecastType: ForecastType
   ): void => {
     if (checkIfEnterOrSpacePressed(e)) {
       setSelectedForecastType(forecastType);
