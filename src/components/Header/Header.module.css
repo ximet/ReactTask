@@ -34,3 +34,7 @@
 .titleContainer {
   display: flex;
 }
+
+.mainTitle {
+  color: var(--color-text-quaternary);
+}

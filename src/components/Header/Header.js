@@ -16,7 +16,7 @@ const Header = () => {
             alt="Logo image"
           />
         </Link>
-        <h1> {MAIN_TITLE_LABEL} </h1>
+        <h1 className={styles.mainTitle}> {MAIN_TITLE_LABEL} </h1>
       </div>
       <Navigation />
     </header>

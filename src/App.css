@@ -8,8 +8,21 @@
   --color-canvas-quaternary: #1192b9;
 
   --color-text-primary: #ffffff;
-  --color-text-secondary: #601293;
+  --color-text-secondary: #282525;
+  --color-text-tertiary: #c1e3ed;
+  --color-text-quaternary: #fff;
+}
+
+[data-theme='dark'] {
+  --color-canvas-primary: #181616;
+  --color-canvas-secondary: #b5179e;
+  --color-canvas-tertiary: #808080;
+  --color-canvas-quaternary: #808080;
+
+  --color-text-primary: #000f;
+  --color-text-secondary: #fff;
   --color-text-tertiary: #777;
+  --color-text-quaternary: #fff;
 }
 
 main {

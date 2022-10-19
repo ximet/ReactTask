@@ -10,7 +10,7 @@
   overflow: hidden;
 
   background-color: var(--color-canvas-primary);
-  color: var(--color-text-primary);
+  color: var(--color-canvas-quaternary);
   font-size: larger;
   text-align: right;
 }

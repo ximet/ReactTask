@@ -11,3 +11,7 @@
   color: var(--color-text-primary);
   text-decoration: none;
 }
+
+.navigation li a:hover {
+  color: var(--color-text-tertiary);
+}
