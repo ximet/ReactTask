@@ -1,19 +1,20 @@
 import Button, { ButtonStyles } from 'components/Button';
 import Input from 'components/Input/Input';
-import FeedbackContext from 'contexts/FeedbackContext';
-import React, { ChangeEvent, FC, useContext, useReducer, Reducer } from 'react';
-import feedbackReducer, {
+import React, { ChangeEvent, FC, useReducer, Reducer } from 'react';
+import { useDispatch } from 'react-redux';
+import feedbackInputsReducer, {
   ActionData,
   UPDATE_INPUT_VALUES,
   FEEDBACK_FORM_RESET
-} from 'reducers/feedbackReducer';
+} from 'reducers/feedbackInputsReducer';
 import { Feedback } from 'types';
 import InputRating from 'components/InputRating/InputRating';
+import { addFeedback } from 'redux/actions';
 import styles from './FeedbackForm.module.scss';
 
 const FeedbackForm: FC = () => {
-  const { addFeedback } = useContext(FeedbackContext);
-  const [state, dispatch] = useReducer<Reducer<Feedback, ActionData>>(feedbackReducer, {
+  const dispatchRedux = useDispatch();
+  const [state, dispatch] = useReducer<Reducer<Feedback, ActionData>>(feedbackInputsReducer, {
     id: '',
     nickname: '',
     nicknameError: '',
@@ -71,7 +72,7 @@ const FeedbackForm: FC = () => {
       !reviewTitleError &&
       !reviewError
     ) {
-      addFeedback(state);
+      dispatchRedux(addFeedback(state));
       dispatch({ type: FEEDBACK_FORM_RESET });
     }
   };

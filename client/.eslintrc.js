@@ -69,6 +69,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/prefer-default-export': 'off',
     'no-unused-vars': 'warn',
+    'default-param-last': 'off',
     'no-use-before-define': 'off',
     'max-lines': ['error', { max: 200 }],
     semi: ['error', 'always'],

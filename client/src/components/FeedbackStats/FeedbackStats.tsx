@@ -1,11 +1,13 @@
 import InputRating from 'components/InputRating/InputRating';
-import FeedbackContext from 'contexts/FeedbackContext';
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { calculateFeedbackAvg } from 'utils/calculateFeedbackAvg';
+import { feedbackSelector } from 'redux/feedbackReducer';
+
 import styles from './FeedbackStats.module.scss';
 
 const FeedbackStats = () => {
-  const { feedback } = useContext(FeedbackContext);
+  const feedback = useSelector(feedbackSelector);
 
   return (
     <div className={styles.container}>

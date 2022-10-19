@@ -12,7 +12,7 @@ export type ActionData = {
 export const UPDATE_INPUT_VALUES = 'UPDATE_INPUT_VALUES';
 export const FEEDBACK_FORM_RESET = 'FEEDBACK_FORM_RESET';
 
-const feedbackReducer = (state: Feedback, { type, payload }: ActionData) => {
+const feedbackInputsReducer = (state: Feedback, { type, payload }: ActionData) => {
   switch (type) {
     case UPDATE_INPUT_VALUES:
       return {
@@ -34,4 +34,4 @@ const feedbackReducer = (state: Feedback, { type, payload }: ActionData) => {
   }
 };
 
-export default feedbackReducer;
+export default feedbackInputsReducer;
