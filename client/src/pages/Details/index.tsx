@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import MainView from 'components/MainView/MainView';
 import useGetData from 'hooks/useGetData';
-import { separateCapitalizeName } from 'utils/stringCorrections';
+import { extractLocationName } from 'utils/stringCorrections';
 import styles from '../../components/Loader/styles.module.scss';
 
 const Details: React.FC = () => {
@@ -20,8 +20,8 @@ const Details: React.FC = () => {
 
   useEffect(() => {
     const getLocationData = async () => {
-      const locationName = location && separateCapitalizeName(location);
       if (location) {
+        const locationName = extractLocationName(location);
         const searchLocationData = await getLocationByQuery(locationName);
         if (searchLocationData) {
           const searchLocationCoords = {

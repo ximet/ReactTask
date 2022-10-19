@@ -27,15 +27,13 @@ export const getFeedback = () => {
 export const addFeedback = (newFeedback: Feedback) => {
   return dispatch => {
     try {
-      const feedback = getFromStorage(FEEDBACK_LOCALSTORAGE_LABEL);
-      if (feedback) {
-        const updatedFeedbackData = [newFeedback, ...feedback];
-        setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, updatedFeedbackData);
-        dispatch({ type: FEEDBACK_REQUEST_SUCCESS, payload: { data: updatedFeedbackData } });
-      } else {
-        setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, [newFeedback]);
-        dispatch({ type: FEEDBACK_REQUEST_SUCCESS, payload: { data: [newFeedback] } });
-      }
+      const feedbackData = getFromStorage(FEEDBACK_LOCALSTORAGE_LABEL);
+      const updatedFeedbackData = feedbackData ? [newFeedback, ...feedbackData] : [newFeedback];
+      setInStorage(FEEDBACK_LOCALSTORAGE_LABEL, updatedFeedbackData);
+      dispatch({
+        type: FEEDBACK_REQUEST_SUCCESS,
+        payload: { data: updatedFeedbackData }
+      });
     } catch (error) {
       dispatch({ type: FEEDBACK_REQUEST_FAILED, payload: error });
     }

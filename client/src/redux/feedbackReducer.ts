@@ -9,8 +9,6 @@ export const initState: FeedbackState = {
 export const FEEDBACK_REQUEST_START = 'FEEDBACK_REQUEST_START';
 export const FEEDBACK_REQUEST_SUCCESS = 'FEEDBACK_REQUEST_SUCCESS';
 export const FEEDBACK_REQUEST_FAILED = 'FEEDBACK_REQUEST_FAILED';
-export const FEEDBACK_CREATE_SUCCESS = 'FEEDBACK_CREATE_SUCCESS';
-export const FEEDBACK_CREATE_FAILED = 'FEEDBACK_CREATE_FAILED';
 
 export const feedbackReducer = (state: FeedbackState = initState, action: AnyAction) => {
   switch (action.type) {

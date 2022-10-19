@@ -30,3 +30,17 @@
     height: 150px;
   }
 }
+
+.ligth {
+  background-color: whitesmoke;
+  color: rgb(33, 33, 33);
+}
+
+.dark {
+  background-color: rgb(54, 54, 54);
+  color: whitesmoke;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}

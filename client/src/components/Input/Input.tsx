@@ -1,6 +1,13 @@
-import React, { FC, HTMLInputTypeAttribute, ChangeEvent, InputHTMLAttributes } from 'react';
+import React, {
+  FC,
+  HTMLInputTypeAttribute,
+  ChangeEvent,
+  InputHTMLAttributes,
+  useContext
+} from 'react';
 import { makeRequiredLabel } from 'utils/stringCorrections';
 import { checkIfTypeIsTextArea } from 'utils/inputTypeCheck';
+import DarkLightThemeContext from 'contexts/ThemeContext';
 import styles from './input.module.scss';
 
 type InputProps = {
@@ -15,6 +22,8 @@ const Input: FC<InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
   value,
   onChange
 }) => {
+  const { darkMode } = useContext(DarkLightThemeContext);
+
   return (
     <div className={styles.inputContainer}>
       <label htmlFor={id} className={styles.ratingLabel}>
@@ -27,7 +36,7 @@ const Input: FC<InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
           value={value}
           onChange={onChange}
           onBlur={onChange}
-          className={styles.textarea}
+          className={`${styles.input} ${darkMode ? styles.dark : styles.light}`}
         />
       ) : (
         <input
@@ -37,7 +46,7 @@ const Input: FC<InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
           value={value}
           onChange={onChange}
           onBlur={onChange}
-          className={styles.input}
+          className={`${styles.input} ${darkMode ? styles.dark : styles.light}`}
         />
       )}
     </div>

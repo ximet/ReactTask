@@ -1,4 +1,4 @@
-import React, { FC, createContext, useState, useMemo } from 'react';
+import React, { FC, createContext, useState } from 'react';
 
 export type ThemeContextData = {
   darkMode: boolean;
@@ -22,12 +22,8 @@ export const ThemeProvider: FC<React.ReactNode> = ({ children }) => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [icon, setIcon] = useState<boolean>(false);
 
-  const darkLightThemeContext = useMemo(() => {
-    return { darkMode, setDarkMode, icon, setIcon };
-  }, [darkMode, icon]);
-
   return (
-    <DarkLightThemeContext.Provider value={darkLightThemeContext}>
+    <DarkLightThemeContext.Provider value={{ darkMode, setDarkMode, icon, setIcon }}>
       {children}
     </DarkLightThemeContext.Provider>
   );
