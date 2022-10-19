@@ -13,6 +13,22 @@
   margin-bottom: 5rem;
 }
 
+.compare {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.compare:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.compare-title {
+  font-size: 2rem;
+}
+
 .about-article-title {
   position: relative;
   width: max-content;
@@ -54,4 +70,14 @@
   min-height: 30rem;
   background: linear-gradient(var(--about-page-gradient), var(--about-page-gradient)),
     url(../../pictures/feedback.png) center/ contain no-repeat;
+}
+
+@media (max-width: 767px) {
+  .compare {
+    flex-direction: column;
+  }
+
+  .compare:nth-child(even) {
+    flex-direction: column;
+  }
 }

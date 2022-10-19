@@ -1,15 +1,36 @@
 import React, { FC } from 'react';
 
+import CompareImages from 'components/compareImages/CompareImages';
 import commonStyle from '../../styles/commonStyles.css';
 import styles from './About.css';
 import classNames from 'classnames';
+
+import lightTheme from 'pictures/lightTheme.png';
+import darkTheme from 'pictures/darkTheme.png';
+import cardView from 'pictures/cardView.png';
+import graphView from 'pictures/graphView.png';
+import forecastsLayer from 'pictures/forecastsLayer.png';
+import airQualityLayer from 'pictures/airQualityLayer.png';
 
 export const About: FC = () => {
   return (
     <main className={classNames(commonStyle['container'], styles['about-container'])}>
       <h2 className={styles['about-title']}>More info about our service</h2>
+      <div className={styles['compare']}>
+        <h4 className={styles['compare-title']}>See! You can change theme :)</h4>
+        <CompareImages leftPhoto={lightTheme} rightPhoto={darkTheme} />
+      </div>
+      <div className={styles['compare']}>
+        <h4 className={styles['compare-title']}>See! You can change view :)</h4>
+        <CompareImages leftPhoto={cardView} rightPhoto={graphView} />
+      </div>
+      <div className={styles['compare']}>
+        <h4 className={styles['compare-title']}>See! You can change layer :)</h4>
+        <CompareImages leftPhoto={forecastsLayer} rightPhoto={airQualityLayer} />
+      </div>
+
       <article className={classNames(styles['about-article'], styles['about-article__first-item'])}>
-        <h3 className={styles['about-article-title']}>What you can?</h3>
+        <h3 className={styles['about-article-title']}>What you can else?</h3>
         <p>
           By default, you can see the weather in your city. <br />
           You have access to the main card with a lot of information about the weather. You can also
