@@ -1,0 +1,10 @@
+.toggleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.toggleContainer img {
+    width: 5%;
+    min-width: 80px;
+}

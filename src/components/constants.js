@@ -14,3 +14,8 @@ export const FEEDBACK = 'FEEDBACK';
 // Labes //
 export const BUTTON_OK_LABEL = 'OK';
 export const SUMBIT_LABEL = 'Submit';
+
+export const themes = {
+  dark: 'dark',
+  light: 'light'
+};

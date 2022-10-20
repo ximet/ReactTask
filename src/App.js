@@ -7,11 +7,12 @@ import About from './Pages/About/About.js';
 import Page404 from './Pages/Page404/Page404.js';
 import City from './pages/City/City.js';
 import Feedback from './pages/Feedback/Feedback.js';
-import { ThemeContext, themes } from './context/ThemeContext';
-import ToggleDark from './components/Toggle/ToggleDark';
+import Toggle from './components/Toggle/Toggle';
+import { themes } from './components/constants.js';
+
+import './App.css';
 
 import { useState } from 'react';
-
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -20,18 +21,18 @@ import useAuthorize from './customHooks/useAuthorize';
 import './App.css';
 
 const App = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(themes.light);
+  const switchTheme = () =>
+    theme === themes.dark ? setTheme(themes.light) : setTheme(themes.dark);
+
   useAuthorize();
-
-  const switchTheme = () => theme === 'dark' ? setTheme('light') : setTheme('dark');
-
   return (
     <div>
       <div data-theme={theme}>
         <Router>
           <Header />
           <main>
-            <ToggleDark toggleDark={switchTheme}/>
+            <Toggle toggleDark={switchTheme} />
             <Provider store={store}>
               <Routes>
                 <Route path="/" element={<Home />} />
