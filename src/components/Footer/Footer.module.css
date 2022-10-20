@@ -12,5 +12,6 @@
   background-color: var(--color-canvas-quaternary);
   color: var(--color-text-quaternary);
   font-size: larger;
+  font-weight: bold;
   text-align: right;
 }

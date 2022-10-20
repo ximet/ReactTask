@@ -13,5 +13,5 @@
 }
 
 .navigation li a:hover {
-  color: var(--color-text-tertiary);
+  color: var(--color-canvas-primary);
 }

@@ -1,26 +1,31 @@
 import { useState } from 'react';
-
+import { useThemeContext } from '../../context/ThemeContext';
 import styles from './Toggle.module.css';
 
-const Toggle = props => {
-  const [img, setImg] = useState('lightswitch-on');
+const imageLight = {
+  on: 'lightswitch-on',
+  off: 'lightswitch-off'
+};
+
+const Toggle = () => {
+  const [img, setImg] = useState(imageLight.on);
 
   const changeImage = () => {
-    img === 'lightswitch-off' ? setImg('lightswitch-on') : setImg('lightswitch-off');
+    img === imageLight.off ? setImg(imageLight.on) : setImg(imageLight.off);
   };
 
+  const { toggleDark } = useThemeContext();
+
   return (
-    <div>
-      <div className={styles.toggleContainer}>
-        <img
-          src={require(`../../../public/images/${img}.png`)}
-          alt="Logo image"
-          onClick={() => {
-            props.toggleDark();
-            changeImage();
-          }}
-        />
-      </div>
+    <div className={styles.toggleContainer}>
+      <img
+        src={require(`../../../public/images/${img}.png`)}
+        alt="Logo image"
+        onClick={() => {
+          toggleDark();
+          changeImage();
+        }}
+      />
     </div>
   );
 };
