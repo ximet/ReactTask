@@ -108,3 +108,10 @@ export interface Feedback {
 
 export type Validator = Record<Validations, (value: string, param: number) => boolean>;
 export type Errors = Record<Validations, (value: string, param: number) => string>;
+
+export interface FeedbackState {
+  feedback: Feedback[];
+  loading?: boolean;
+  error?: string;
+}
+

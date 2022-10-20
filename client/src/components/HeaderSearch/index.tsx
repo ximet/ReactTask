@@ -31,7 +31,9 @@ const HeaderSearch: FC = () => {
         setCoordinates(null);
         setStatusMsg(null);
         setInputValue('');
-        const urlLocationName = formatNameForUrl(locationData.locations[0].name);
+        const urlLocationName = formatNameForUrl(
+          `${locationData.locations[0].name}-${locationData.locations[0].country}`
+        );
         navigate(`/details/${urlLocationName}`);
       }
     } else {
