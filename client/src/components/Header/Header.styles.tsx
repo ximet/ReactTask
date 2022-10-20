@@ -25,7 +25,13 @@ export const HeaderMenuButton = styled.button<StylesProps>`
   cursor: pointer;
 
   svg {
-    ${(props: StylesProps) =>
-      colorChange(props, 'fill', theme.palette.black, theme.palette.white, 'fill')}
+    ${({ themeType }: StylesProps) =>
+      colorChange({
+        themeType,
+        changeProp: 'fill',
+        changeVal1: theme.palette.black,
+        changeVal2: theme.palette.white,
+        transitionVal: 'fill'
+      })}
   }
 `;

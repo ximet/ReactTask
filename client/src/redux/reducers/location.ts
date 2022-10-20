@@ -1,5 +1,5 @@
 import { RootState } from 'redux/store';
-import type { LocationInfo, WeatherInfo } from 'types';
+import type { LocationInfo, WeatherInfo, AirQualityInfo } from 'types';
 import { ActionType, Action } from '../actionTypes/location';
 
 interface LocationRequestResult<T> {
@@ -16,6 +16,10 @@ export interface LocationState {
     hourly: LocationRequestResult<WeatherInfo[]>;
     threeHourly: LocationRequestResult<WeatherInfo[]>;
     daily: LocationRequestResult<WeatherInfo[]>;
+  };
+  airQuality: {
+    hourly: LocationRequestResult<AirQualityInfo[]>;
+    daily: LocationRequestResult<AirQualityInfo[]>;
   };
   query: string;
 }
@@ -43,6 +47,18 @@ const initialState = {
       error: null
     },
     threeHourly: {
+      data: null,
+      loading: false,
+      error: null
+    },
+    daily: {
+      data: null,
+      loading: false,
+      error: null
+    }
+  },
+  airQuality: {
+    hourly: {
       data: null,
       loading: false,
       error: null
@@ -262,6 +278,82 @@ const locationReducer = (state: LocationState = initialState, action: Action): L
           ...state.weather,
           daily: {
             ...state.weather.daily,
+            loading: false,
+            error: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_HOURLY_AIR_QUALITY_PENDING: {
+      return {
+        ...state,
+        airQuality: {
+          ...state.airQuality,
+          hourly: {
+            ...state.airQuality.hourly,
+            loading: true
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_HOURLY_AIR_QUALITY_SUCCESS: {
+      return {
+        ...state,
+        airQuality: {
+          ...state.airQuality,
+          hourly: {
+            ...state.airQuality.hourly,
+            loading: false,
+            data: action.payload.data.forecast
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_HOURLY_AIR_QUALITY_FAIL: {
+      return {
+        ...state,
+        airQuality: {
+          ...state.airQuality,
+          hourly: {
+            ...state.airQuality.hourly,
+            loading: false,
+            error: action.payload
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_DAILY_AIR_QUALITY_PENDING: {
+      return {
+        ...state,
+        airQuality: {
+          ...state.airQuality,
+          daily: {
+            ...state.airQuality.daily,
+            loading: true
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_DAILY_AIR_QUALITY_SUCCESS: {
+      return {
+        ...state,
+        airQuality: {
+          ...state.airQuality,
+          daily: {
+            ...state.airQuality.daily,
+            loading: false,
+            data: action.payload.data.forecast
+          }
+        }
+      };
+    }
+    case ActionType.GET_LOCATION_DAILY_AIR_QUALITY_FAIL: {
+      return {
+        ...state,
+        airQuality: {
+          ...state.airQuality,
+          daily: {
+            ...state.airQuality.daily,
             loading: false,
             error: action.payload
           }

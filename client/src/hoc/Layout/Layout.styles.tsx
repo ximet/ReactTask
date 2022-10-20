@@ -35,9 +35,22 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
       overflow-x: hidden;
     }
 
-    ${props =>
-      colorChange(props, 'background', theme.palette.white, theme.palette.black, 'background')}
-    ${props => colorChange(props, 'color', theme.palette.black, theme.palette.white, 'color')}
+    ${({ themeType }) =>
+      colorChange({
+        themeType,
+        changeProp: 'background',
+        changeVal1: theme.palette.white,
+        changeVal2: theme.palette.black,
+        transitionVal: 'background'
+      })}
+    ${({ themeType }) =>
+      colorChange({
+        themeType,
+        changeProp: 'color',
+        changeVal1: theme.palette.black,
+        changeVal2: theme.palette.white,
+        transitionVal: 'color'
+      })}
     transition: color 1.2s, background 0s 1.2s;
 
     ${({ themeType }) =>
@@ -47,8 +60,22 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
       `};
 
     svg {
-      ${props => colorChange(props, 'fill', theme.palette.black, theme.palette.white, 'fill')}
-      ${props => colorChange(props, 'stroke', theme.palette.black, theme.palette.white, 'stroke')}
+      ${({ themeType }) =>
+        colorChange({
+          themeType,
+          changeProp: 'fill',
+          changeVal1: theme.palette.black,
+          changeVal2: theme.palette.white,
+          transitionVal: 'fill'
+        })}
+      ${({ themeType }) =>
+        colorChange({
+          themeType,
+          changeProp: 'stroke',
+          changeVal1: theme.palette.black,
+          changeVal2: theme.palette.white,
+          transitionVal: 'stroke'
+        })}
     }
 
     &::after {
@@ -69,12 +96,19 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
   a:link,
   a:visited,
   a:active {
-    ${props => colorChange(props, 'color', theme.palette.black, theme.palette.white, 'color')};
+    ${({ themeType }) =>
+      colorChange({
+        themeType,
+        changeProp: 'color',
+        changeVal1: theme.palette.black,
+        changeVal2: theme.palette.white,
+        transitionVal: 'color'
+      })};
     text-decoration: none;
   }
 
   a:hover {
-    ${colorChangeOnHover('color', 'color')}
+    ${colorChangeOnHover({ changeProp: 'color', transitionVal: 'color' })}
   }
 
   ul {

@@ -25,6 +25,7 @@
     "no-use-before-define": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-shadow": "off",
+    "no-unused-expressions": ["error", { "allowTernary": true }],
     "default-param-last": "off",
     "prettier/prettier": [
       "error",

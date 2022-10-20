@@ -5,20 +5,26 @@ import { colorChange, radioWrapperRoot } from 'styles/mixins';
 
 import { StylesProps } from 'types';
 
-const inputRoot = (props: StylesProps) => `
+const inputRoot = ({ themeType }: StylesProps) => `
   width: 100%;
   height: 3rem;
   padding: 0 2rem;
   border: none;
   border-radius: ${theme.shape.borderRadius};
-  ${colorChange(
-    props,
-    'background',
-    theme.palette.componentBackgroundLight,
-    theme.palette.componentBackgroundDark,
-    'all'
-  )}
-  ${colorChange(props, 'color', theme.palette.black, theme.palette.white, 'all')}
+  ${colorChange({
+    themeType,
+    changeProp: 'background',
+    changeVal1: theme.palette.componentBackgroundLight,
+    changeVal2: theme.palette.componentBackgroundDark,
+    transitionVal: 'all'
+  })}
+  ${colorChange({
+    themeType,
+    changeProp: 'color',
+    changeVal1: theme.palette.black,
+    changeVal2: theme.palette.white,
+    transitionVal: 'all'
+  })}
 `;
 
 export const Input = styled.input<StylesProps>`
