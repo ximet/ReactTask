@@ -93,9 +93,9 @@ const DashboardForecast: FunctionComponent = () => {
         <Flex justifySpaceBetween>
           <S.DashboardForecastTypes role="tablist">
             <Flex justifySpaceBetween>
-              {(Object.keys(isWeatherForecast ? WeatherType : AirQualityType) as
-                | WeatherType[]
-                | AirQualityType[]).map(key => (
+              {(Object.keys(
+                isWeatherForecast ? WeatherType : AirQualityType
+              ) as ForecastType[]).map(key => (
                 <S.DashboardForecastType
                   tabIndex={0}
                   role="tab"
