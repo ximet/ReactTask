@@ -17,16 +17,14 @@
 
 [data-theme='dark'] {
   --color-canvas-primary: #181616;
-  --color-canvas-secondary:#ab539d;
+  --color-canvas-secondary: #ab539d;
   --color-canvas-tertiary: #808080;
   --color-canvas-quaternary: #808080;
-  
 
   --color-text-primary: #000f;
   --color-text-secondary: #fff;
   --color-text-tertiary: #777;
   --color-text-quaternary: #fff;
- 
 
   --bg-image: url('./../public/images/sky_dark.jpg');
 }

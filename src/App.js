@@ -22,8 +22,7 @@ import './App.css';
 
 const App = () => {
   const [theme, setTheme] = useState('');
-  const switchTheme = () =>
-    theme === themes.dark ? setTheme('') : setTheme(themes.dark);
+  const switchTheme = () => (theme === themes.dark ? setTheme('') : setTheme(themes.dark));
 
   useAuthorize();
   return (

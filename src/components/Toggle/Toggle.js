@@ -3,12 +3,11 @@ import { useState } from 'react';
 import styles from './Toggle.module.css';
 
 const Toggle = props => {
-
   const [img, setImg] = useState('lightswitch-on');
 
   const changeImage = () => {
     img === 'lightswitch-off' ? setImg('lightswitch-on') : setImg('lightswitch-off');
-  }
+  };
 
   return (
     <div>
