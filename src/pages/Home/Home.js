@@ -6,7 +6,7 @@ import { POSSIBLE_ERRORS } from '../../components/Error/errorHandlingHelper';
 import ErrorModal from '../../components/Error/ErrorModal/ErrorModal';
 import { useNavigate } from 'react-router-dom';
 
-const DROP_DOWN_MENU_LABEL = 'Choose a city from the list:';
+const DROP_DOWN_MENU_LABEL = 'Choose a city:';
 
 const DropDownMenu = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -51,7 +51,7 @@ const DropDownMenu = () => {
       </>
 
       <form onSubmit={handleSubmit}>
-        <label>{DROP_DOWN_MENU_LABEL}</label>
+        <label className={styles.text}>{DROP_DOWN_MENU_LABEL}</label>
         <input
           list="cities"
           name="choose-city"

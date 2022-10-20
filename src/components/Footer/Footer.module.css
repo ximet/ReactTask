@@ -9,8 +9,8 @@
   padding-right: 40px;
   overflow: hidden;
 
-  background-color: var(--color-canvas-primary);
-  color: var(--color-canvas-quaternary);
+  background-color: var(--color-canvas-quaternary);
+  color: var(--color-text-quaternary);
   font-size: larger;
   text-align: right;
 }

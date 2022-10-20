@@ -6,6 +6,7 @@
   text-align: center;
   border: 3px solid var(--color-canvas-primary);
   border-radius: 12px;
+  line-height: 28px;
 
   color: var(--color-text-secondary);
   border-image: linear-gradient(
@@ -19,7 +20,7 @@
 .aboutContainer h1 {
   margin-bottom: 18px;
 
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
 }
 

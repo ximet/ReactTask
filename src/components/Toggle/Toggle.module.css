@@ -1,10 +1,19 @@
 .toggleContainer {
-    display: flex;
+     display: flex;
     align-items: center;
-    justify-content: end;
-}
+    justify-content: end; 
+    position: relative;
+} 
 
 .toggleContainer img {
+    position: relative;
+    top: 82vh;
+    right: 18px;
+
     width: 5%;
     min-width: 80px;
+    
+}
+.toggleContainer img:hover {
+    cursor: pointer;
 }

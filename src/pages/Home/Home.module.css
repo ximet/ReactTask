@@ -1,6 +1,5 @@
 .dropdownMenuContainer {
   margin: 40px auto;
-  width: 25%;
   border-radius: 8px;
 
   color: var(--color-text-secondary);
@@ -24,10 +23,18 @@
 }
 
 .submit {
-  background-color: var(--color-text-secondary);
-  color: var(--color-text-primary);
+  padding: 4px;
+  font-weight: bold;
+
+  background-color: var(--color-canvas-secondary);
+  color: var(--color-text-quaternary);
 }
 
 .submit:hover {
   cursor: pointer;
+}
+
+.text {
+  font-size: 24px;
+  color: var(--color-text-secondary);
 }

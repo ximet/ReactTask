@@ -21,9 +21,9 @@ import useAuthorize from './customHooks/useAuthorize';
 import './App.css';
 
 const App = () => {
-  const [theme, setTheme] = useState(themes.light);
+  const [theme, setTheme] = useState('');
   const switchTheme = () =>
-    theme === themes.dark ? setTheme(themes.light) : setTheme(themes.dark);
+    theme === themes.dark ? setTheme('') : setTheme(themes.dark);
 
   useAuthorize();
   return (
