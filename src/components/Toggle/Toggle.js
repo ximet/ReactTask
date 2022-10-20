@@ -17,8 +17,7 @@ const Toggle = () => {
   const { toggleDark } = useThemeContext();
 
   return (
-    <div className={styles.toggleContainer}>
-      <img
+      <img className={styles.toggleImg}
         src={require(`../../../public/images/${img}.png`)}
         alt="Logo image"
         onClick={() => {
@@ -26,7 +25,6 @@ const Toggle = () => {
           changeImage();
         }}
       />
-    </div>
   );
 };
 

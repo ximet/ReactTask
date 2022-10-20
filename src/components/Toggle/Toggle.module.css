@@ -1,18 +1,9 @@
-.toggleContainer {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  position: relative;
-}
-
-.toggleContainer img {
-  position: relative;
-  top: 82vh;
-  right: 18px;
-
+.toggleImg  {
   width: 5%;
   min-width: 80px;
+
+  padding: 4px;
 }
-.toggleContainer img:hover {
+.toggleImg:hover {
   cursor: pointer;
 }

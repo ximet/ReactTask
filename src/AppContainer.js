@@ -8,7 +8,7 @@ import About from './pages/About/About.js';
 import Page404 from './pages/Page404/Page404.js';
 import City from './pages/City/City.js';
 import Feedback from './pages/Feedback/Feedback.js';
-import Toggle from './components/Toggle/Toggle';
+// import Toggle from './components/Toggle/Toggle';
 
 import { useThemeContext } from './context/ThemeContext';
 
@@ -22,7 +22,7 @@ const AppContainer = () => {
       <Router>
         <Header />
         <main>
-          <Toggle />
+          {/* <Toggle /> */}
           <Provider store={store}>
             <Routes>
               <Route path="/" element={<Home />} />
