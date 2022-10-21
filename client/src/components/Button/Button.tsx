@@ -7,7 +7,7 @@ export enum ButtonStyles {
   FormBtn = 'formBtn',
   ErrorBtn = 'errorBtn'
 }
-interface ButtonProps {
+export interface ButtonProps {
   type: 'button' | 'reset' | 'submit' | undefined;
   children: ReactNode;
   className: string;
@@ -18,7 +18,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({ type, children, className, onClick }) => {
   return (
-    <button type={type} onClick={onClick} className={styles[className]}>
+    <button data-testid="button" type={type} onClick={onClick} className={styles[className]}>
       {children}
     </button>
   );

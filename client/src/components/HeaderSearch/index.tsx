@@ -1,5 +1,5 @@
 import { getLocationByQuery } from 'API/get';
-import Button, { ButtonStyles } from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button/Button';
 import Header from 'components/Header';
 import LocationContext from 'contexts/LocationContext';
 import React, { FC, useContext, useState } from 'react';
