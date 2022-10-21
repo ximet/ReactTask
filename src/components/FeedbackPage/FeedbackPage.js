@@ -5,37 +5,41 @@ import { SAVE_USER_FEEDBACK } from '../../redux/actions.js';
 import * as styles from '../../styles/FeedbackPage.module.css';
 
 function FeedbackPage(props) {
+   if (localStorage.getItem('userInput') === null) {
+      const userInput = {};
+      localStorage.setItem('userInput', JSON.stringify(userInput));
+   }
+
    const unsubscribe = store.subscribe(() => {
-      console.log('Store changed!', store.getState());
+    console.log('Store changed!', store.getState());
    });
 
    useEffect(() => {
-      return () => {
-         unsubscribe();
-      }
+    return () => {
+      unsubscribe();
+    };
    });
 
-   const onSubmit = (ev) => {
-      ev.preventDefault();
-      const form = document.querySelector('form');
+   const onSubmit = ev => {
+    ev.preventDefault();
+    const form = document.querySelector('form');
 
-      const data = new FormData(form);
-      const question1 = data.get('question1');
-      const question2 = data.get('question2');
-      const question3 = data.get('question3');
-      const question4 = data.get('question4');
-   
-      const user = {
-         question1,
-         question2,
-         question3,
-         question4
-      };
-      setInLS(user);
-      store.dispatch(SAVE_USER_FEEDBACK(user));
-      console.log(store.getState());
-      alert('Thank you for the feedback!');
-      form.reset();
+    const data = new FormData(form);
+    const question1 = data.get('question1');
+    const question2 = data.get('question2');
+    const question3 = data.get('question3');
+    const question4 = data.get('question4');
+
+    const user = {
+      question1,
+      question2,
+      question3,
+      question4
+    };
+    setInLS(user);
+    store.dispatch(SAVE_USER_FEEDBACK(user));
+    alert('Thank you for the feedback!');
+    form.reset();
    };
 
    return (
@@ -63,7 +67,7 @@ function FeedbackPage(props) {
       </div>
       <button className={styles.submitBtn}>Submit</button>
     </form>
-  );
+   );
 }
 
 export { FeedbackPage };
