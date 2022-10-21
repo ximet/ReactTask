@@ -8,6 +8,10 @@
   font-family: 'Lobster Two', cursive;
   font-size: 24px;
 
-  color: var(--color-text-primary);
+  color: var(--color-text-quaternary);
   text-decoration: none;
+}
+
+.navigation li a:hover {
+  color: var(--color-canvas-primary);
 }

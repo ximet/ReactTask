@@ -1,5 +1,6 @@
 import styles from './Header.module.css';
 import Navigation from '../Navigation/Navigation';
+import Toggle from '../Toggle/Toggle';
 
 import { Link } from 'react-router-dom';
 
@@ -16,9 +17,12 @@ const Header = () => {
             alt="Logo image"
           />
         </Link>
-        <h1> {MAIN_TITLE_LABEL} </h1>
+        <h1 className={styles.mainTitle}> {MAIN_TITLE_LABEL} </h1>
       </div>
-      <Navigation />
+      <div className={styles.navContainer}>
+        <Navigation />
+        <Toggle />
+      </div>
     </header>
   );
 };

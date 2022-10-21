@@ -8,8 +8,25 @@
   --color-canvas-quaternary: #1192b9;
 
   --color-text-primary: #ffffff;
-  --color-text-secondary: #601293;
+  --color-text-secondary: #282525;
+  --color-text-tertiary: #c1e3ed;
+  --color-text-quaternary: #fff;
+
+  --bg-image: url('./../public/images/sky.jpg');
+}
+
+[data-theme='dark'] {
+  --color-canvas-primary: #181616;
+  --color-canvas-secondary: #ab539d;
+  --color-canvas-tertiary: #808080;
+  --color-canvas-quaternary: #808080;
+
+  --color-text-primary: #000f;
+  --color-text-secondary: #fff;
   --color-text-tertiary: #777;
+  --color-text-quaternary: #fff;
+
+  --bg-image: url('./../public/images/sky_dark.jpg');
 }
 
 main {
@@ -19,15 +36,15 @@ main {
   left: 0px;
   right: 0px;
   overflow: auto;
+
+  background-image: var(--bg-image);
+  background-color: var(--color-canvas-quaternary);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {
   height: 100%;
   height: 100vh;
-
-  background-image: url('./../public/images/sky.jpg');
-  background-color: var(--color-canvas-quaternary);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }

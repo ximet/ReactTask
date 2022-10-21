@@ -1,0 +1,9 @@
+.toggleImg {
+  width: 5%;
+  min-width: 80px;
+
+  padding: 4px;
+}
+.toggleImg:hover {
+  cursor: pointer;
+}
