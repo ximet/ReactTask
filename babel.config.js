@@ -15,19 +15,20 @@ module.exports = function (api) {
     ],
     ['@babel/preset-react', { runtime: 'automatic' }],
     '@babel/preset-typescript'
-  ];
+    ];
   const plugins = [
     '@babel/transform-react-constant-elements',
     'transform-react-pure-class-to-function',
     '@babel/plugin-transform-runtime',
     'react-hot-loader/babel',
-
+    
     // Stage 2 https://github.com/babel/babel/tree/master/packages/babel-preset-stage-2
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     '@babel/plugin-proposal-function-sent',
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-numeric-separator',
     '@babel/plugin-proposal-throw-expressions',
+    '@babel/plugin-syntax-jsx',
 
     // Stage 3
     '@babel/plugin-syntax-dynamic-import',
