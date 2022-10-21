@@ -17,14 +17,15 @@ const Toggle = () => {
   const { toggleDark } = useThemeContext();
 
   return (
-      <img className={styles.toggleImg}
-        src={require(`../../../public/images/${img}.png`)}
-        alt="Logo image"
-        onClick={() => {
-          toggleDark();
-          changeImage();
-        }}
-      />
+    <img
+      className={styles.toggleImg}
+      src={require(`../../../public/images/${img}.png`)}
+      alt="Logo image"
+      onClick={() => {
+        toggleDark();
+        changeImage();
+      }}
+    />
   );
 };
 
