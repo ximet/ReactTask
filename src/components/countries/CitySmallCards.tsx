@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LocationInfoType } from 'types/cityInfoType';
 import { CitySmallCard } from './CitySmallCard';
 import styles from './Countries.css';
@@ -16,7 +16,7 @@ export const CitySmallCards: FC<CityPropsType> = ({ locations, country }) => {
 
   const cardClickHandler = (lat: number, lon: number) => {
     changePosition(lat, lon);
-    navigate(`/${lon},${lat}`);
+    // navigate(`/${lon},${lat}`);
   };
 
   return (
@@ -24,13 +24,15 @@ export const CitySmallCards: FC<CityPropsType> = ({ locations, country }) => {
       {locations
         .filter(location => location.country === country)
         .map(city => (
-          <div
+          <Link
+            to={`/${city.lon},${city.lat}`}
             key={city.id}
             className={styles['city-card']}
             onClick={() => cardClickHandler(city.lat, city.lon)}
+            data-testid="city-card"
           >
             <CitySmallCard lon={city.lon} lat={city.lat} cityName={city.name} />
-          </div>
+          </Link>
         ))}
     </div>
   );

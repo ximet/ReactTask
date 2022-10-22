@@ -14,7 +14,7 @@ const Main: FC = () => {
   const layer: LayerState = useAppSelector(layerSelector);
 
   return (
-    <main className={commonStyle.container}>
+    <main className={commonStyle.container} data-testid="main-page">
       <LayersButton />
       {layer === 'forecasts' && <Forecasts />}
       {layer === 'air' && <AirQuality />}
