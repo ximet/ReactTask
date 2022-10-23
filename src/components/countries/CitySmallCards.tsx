@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LocationInfoType } from 'types/cityInfoType';
 import { CitySmallCard } from './CitySmallCard';
 import styles from './Countries.css';
@@ -12,11 +12,9 @@ type CityPropsType = {
 
 export const CitySmallCards: FC<CityPropsType> = ({ locations, country }) => {
   const { changePosition } = useContext(positionContext);
-  const navigate = useNavigate();
 
   const cardClickHandler = (lat: number, lon: number) => {
     changePosition(lat, lon);
-    // navigate(`/${lon},${lat}`);
   };
 
   return (
