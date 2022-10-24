@@ -7,7 +7,6 @@ const path = require('path');
 app.use(cors());
 
 let token;
-console.log(token);
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
