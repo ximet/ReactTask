@@ -35,7 +35,7 @@ const StarRating: FunctionComponent<StarRatingProps> = ({
   }, [value]);
 
   return (
-    <S.StarRating>
+    <S.StarRating role="radiogroup">
       <Flex justifyFlexStart>
         {ratings.map(ratingValue => (
           <S.StarWrapper
@@ -54,7 +54,7 @@ const StarRating: FunctionComponent<StarRatingProps> = ({
                 <S.Star
                   name={id}
                   value={ratingValue}
-                  checked={value === ratingValue}
+                  checked={Number(value) === ratingValue}
                   {...inputConfig}
                   onClick={() => setRating(ratingValue)}
                   onMouseEnter={() => setRatingHovered(ratingValue)}

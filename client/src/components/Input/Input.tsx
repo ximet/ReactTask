@@ -60,21 +60,39 @@ const INPUT = {
   rating: ({ ...props }: InputProps) => <StarRating {...props} />
 };
 
-const Input: FunctionComponent<InputProps> = ({ inputType, value, inputConfig, ...otherProps }) => {
+const Input: FunctionComponent<InputProps> = ({
+  id,
+  value,
+  inputType,
+  inputConfig,
+  valid,
+  errMsg,
+  ...otherProps
+}) => {
   const theme = useAppSelector(selectTheme);
 
   const handleClearValue = (e: ChangeEventType) => {
     e.currentTarget.value = '';
   };
 
-  return INPUT[inputType!]({
-    inputType,
-    value,
-    inputConfig,
-    theme,
-    handleClearValue,
-    ...otherProps
-  });
+  return (
+    <>
+      {INPUT[inputType!]({
+        id,
+        value,
+        inputType,
+        inputConfig,
+        theme,
+        handleClearValue,
+        ...otherProps
+      })}
+      {!valid && (
+        <S.InputError id={`${id}-errormessage`} role="alert">
+          {errMsg}
+        </S.InputError>
+      )}
+    </>
+  );
 };
 
 export default Input;

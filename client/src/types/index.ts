@@ -121,7 +121,11 @@ export type InputType = 'input' | 'textarea' | 'radio' | 'rating';
 
 export type InputOptions = Record<string, string | number>;
 
-export type InputValidation = Record<InputValidator, number | boolean>;
+export type InputValidation = {
+  [InputValidator.required]: boolean;
+  [InputValidator.minLength]: number;
+  [InputValidator.maxLength]: number;
+};
 
 export enum InputValidator {
   required = 'required',
@@ -130,16 +134,18 @@ export enum InputValidator {
 }
 
 export interface InputProps {
-  inputType?: InputType;
   id?: string;
   name?: string;
   value?: string | number;
+  inputType?: InputType;
   inputConfig?: {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
     rows?: number;
     options?: InputOptions;
   };
+  valid?: boolean;
+  errMsg?: string;
   theme?: string;
   onChange?: (e: ChangeEventType) => void;
   onFocus?: (e: ChangeEventType) => void;

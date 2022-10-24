@@ -18,7 +18,15 @@
     "airbnb/hooks",
     "prettier"
   ],
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "import",
+    "prettier",
+    "testing-library"
+  ],
   "rules": {
     "import/extensions": "off",
     "no-unused-vars": "off",
@@ -81,6 +89,19 @@
     "commonjs": true,
     "es6": true
   },
+  "overrides": [
+    {
+      "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"],
+      "rules": {
+        "testing-library/await-async-query": "error",
+        "testing-library/no-await-sync-query": "error",
+        "testing-library/no-debugging-utils": "warn",
+        "testing-library/no-dom-import": "off",
+        "testing-library/no-unnecessary-act": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "version": "detect"
