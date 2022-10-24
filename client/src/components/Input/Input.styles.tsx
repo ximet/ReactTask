@@ -57,6 +57,14 @@ export const InputGroup = styled.div`
   }
 `;
 
+export const InputError = styled.span`
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: ${theme.palette.error};
+`;
+
 export const RadioWrapper = styled.div<StylesProps>`
   ${radioWrapperRoot}
 

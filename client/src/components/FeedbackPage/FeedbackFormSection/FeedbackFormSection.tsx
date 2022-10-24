@@ -32,7 +32,7 @@ import {
 import { Container, Flex } from 'styles/global';
 import * as S from '../FeedbackPage.styles';
 
-const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
+export const formElementsArray = Object.entries(feedbackFormConfig).map(entry => ({
   id: entry[0] as FeedbackFormInput,
   config: entry[1]
 }));
@@ -118,7 +118,7 @@ const FeedbackFormSection: FunctionComponent = () => {
       <Container>
         <Flex directionColumn>
           <h2>Fill Form Below</h2>
-          <form onSubmit={handleFormSubmit}>
+          <form aria-label="Fill out survey" onSubmit={handleFormSubmit}>
             <Flex directionColumn alignFlexStart>
               {formElementsArray.map(({ id, config }, i) => (
                 <S.FeedbackFormGroup key={id}>
@@ -126,14 +126,18 @@ const FeedbackFormSection: FunctionComponent = () => {
                     config.validation?.required ? '' : '(optional)'
                   }`}</S.FeedbackFormLabel>
                   <Input
-                    inputType={config.inputType}
                     id={id}
                     name={id}
                     value={feedbackForm[id].value}
+                    inputType={config.inputType}
                     inputConfig={config.inputConfig}
+                    valid={feedbackForm[id].valid}
+                    errMsg={feedbackForm[id].errMsg}
+                    aria-invalid={feedbackForm[id].valid}
+                    aria-required={config.validation.required}
+                    aria-errormessage={`${id}-errormessage`}
                     onChange={handleInputChange}
                   />
-                  <S.FeedbackFormError>{feedbackForm[id].errMsg}</S.FeedbackFormError>
                 </S.FeedbackFormGroup>
               ))}
               <Button type="submit" aria-label="Submit a form">
