@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as styles from '../../styles/Header.module.css';
+import * as darkStyles from '../../styles/dark_mode/HeaderDark.module.css';
 import cloudLogo from '../../images/cloud.png';
 
 function Header(props) {
@@ -8,7 +9,7 @@ function Header(props) {
 
   return (
     <>
-      <header>
+      <header className={props.darkMode ? darkStyles.header : styles.header}>
         <ul className={styles.leftLinks}>
           <li>
             <Link to="/" className={styles.leftLink}>
@@ -30,6 +31,12 @@ function Header(props) {
             <Link to="/feedback" className={styles.rightLink}>
               Feedback
             </Link>
+          </li>
+          <li>
+            <label className={styles.switch}>
+              <input type="checkbox"></input>
+              <span className={styles.slider} onClick={() => props.toggleMode()}></span>
+            </label>
           </li>
         </ul>
       </header>

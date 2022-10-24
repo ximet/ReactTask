@@ -7,9 +7,12 @@ footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-image: linear-gradient(to left, var(--lightBlue), var(--lightPurple));
   color: var(--white);
   font-size: 25px;
   font-weight: 600;
   text-shadow: 1px 1px 0 black;
+}
+
+.footer {
+  background-image: linear-gradient(to left, var(--lightBlue), var(--lightPurple));
 }

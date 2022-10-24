@@ -3,6 +3,7 @@ import { setInLS } from '../../services/localStorage.js';
 import { store } from '../../redux/store.js';
 import { SAVE_USER_FEEDBACK } from '../../redux/actions.js';
 import * as styles from '../../styles/FeedbackPage.module.css';
+import * as darkStyles from '../../styles/dark_mode/FeedbackPageDark.module.css';
 
 function FeedbackPage(props) {
    if (localStorage.getItem('userInput') === null) {
@@ -65,7 +66,7 @@ function FeedbackPage(props) {
         </label>
         <input type="text" placeholder="Type your answer here" name="question4"></input>
       </div>
-      <button className={styles.submitBtn}>Submit</button>
+      <button className={`${styles.submitBtn} ${props.darkMode ? darkStyles.submitBtnColours : styles.submitBtnColours}`}>Submit</button>
     </form>
    );
 }

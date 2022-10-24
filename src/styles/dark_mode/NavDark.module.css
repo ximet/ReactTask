@@ -1,0 +1,8 @@
+.navBtnColours {
+  background-color: var(--darkBlue);
+}
+
+.navBtnColours:hover,
+.navBtnColours:focus {
+  background-color: var(--darkerBlue);
+}

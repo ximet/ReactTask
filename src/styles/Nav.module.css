@@ -9,7 +9,6 @@
 
 .navBtn {
   flex: 1 1 0;
-  background-color: var(--lightBlue);
   height: 50px;
   color: var(--white);
   border-style: solid;
@@ -18,11 +17,16 @@
   cursor: pointer;
 }
 
+
 .navBtn:not(:first-child) {
   border-left: 0;
 }
 
-.navBtn:hover,
-.navBtn:focus {
+.navBtnColours {
+  background-color: var(--lightBlue);
+}
+
+.navBtnColours:hover,
+.navBtnColours:focus {
   background-color: var(--blue);
 }

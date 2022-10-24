@@ -3,7 +3,7 @@ import * as styles from '../../styles/HomePage.module.css';
 import { Nav } from './Nav/Nav.js';
 
 function HomePage(props) {
-  return <Nav />;
+  return <Nav darkMode={props.darkMode}/>;
 }
 
 export { HomePage };

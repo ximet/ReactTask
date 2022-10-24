@@ -4,4 +4,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 469.33px;
+}
+
+.main {
+  background-color: var(--white);
+  color: var(--black);
 }

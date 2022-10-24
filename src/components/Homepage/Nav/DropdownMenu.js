@@ -54,7 +54,7 @@ function DropdownMenu(props) {
 
   return (
     <div className={styles.dropdown}>
-      <button className={props.navBtnClassName} onClick={showCities}>
+      <button className={props.className} onClick={showCities}>
         Cities
       </button>
       {dropdownContent}
