@@ -1,13 +1,13 @@
-import Button, { ButtonStyles } from 'components/Button/Button';
-import SecondaryPagesLayout from 'components/layouts/SecondaryPagesLayout';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Error.modules.scss';
+import SecondaryPagesLayout from 'components/layouts/SecondaryPagesLayout';
+import Button, { ButtonStyles } from 'components/Button/Button';
+import styles from './Error.module.scss';
 
 const Error: FC = () => {
   return (
     <SecondaryPagesLayout>
-      <h2 data-testid="h2" className={styles.notFound}>
+      <h2 data-testid="title-404" className={styles.notFound}>
         404 - No page found
       </h2>
       <h2 className={styles.title}>Oh no...</h2>

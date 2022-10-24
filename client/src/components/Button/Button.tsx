@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import styles from './styles.module.scss';
+import styles from './Button.module.scss';
 
 export enum ButtonStyles {
   ThemeBtn = 'themeBtn',
