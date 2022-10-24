@@ -4,6 +4,7 @@ import { HomePage } from './components/Homepage/HomePage.js';
 import { CityPage } from './components/CityPage/CityPage.js';
 import { AboutPage } from './components/AboutPage/AboutPage.js';
 import { ErrorPage } from './components/ErrorPage/ErrorPage.js';
+import { FeedbackPage } from './components/FeedbackPage/FeedbackPage.js';
 import * as appStyles from './styles/App.module.css';
 import { useAuthorize } from './customHooks/useAuthorize.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
             <Route path="/city/:id" element={<CityPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path="/feedback" element={<FeedbackPage />} />
           </Routes>
         </main>
         <Footer />
