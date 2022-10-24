@@ -21,9 +21,11 @@ export enum AirQualityType {
   daily = 'daily'
 }
 
+export type ForecastType = WeatherType | AirQualityType;
+
 export const selectLocationWeather = (
   { location: { weather } }: RootState,
-  selectedForecastType: WeatherType | AirQualityType
+  selectedForecastType: ForecastType
 ) => {
   switch (selectedForecastType) {
     case WeatherType.hourly:
@@ -40,7 +42,7 @@ export const selectLocationWeather = (
 
 export const selectLocationAirQuality = (
   { location: { airQuality } }: RootState,
-  selectedForecastType: WeatherType | AirQualityType
+  selectedForecastType: ForecastType
 ) => {
   switch (selectedForecastType) {
     case AirQualityType.hourly:
@@ -54,7 +56,7 @@ export const selectLocationAirQuality = (
 
 export const getLocationWeather = (
   query: string,
-  selectedForecastType: WeatherType | AirQualityType,
+  selectedForecastType: ForecastType,
   dispatch: Dispatch<any>
 ) => {
   switch (selectedForecastType) {
@@ -75,7 +77,7 @@ export const getLocationWeather = (
 
 export const getLocationAirQuality = (
   query: string,
-  selectedForecastType: WeatherType | AirQualityType,
+  selectedForecastType: ForecastType,
   dispatch: Dispatch<any>
 ) => {
   switch (selectedForecastType) {
