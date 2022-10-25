@@ -53,9 +53,8 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
             <RequestDataWrapper data={data} loading={loading} error={error}>
               {testimonialsDataArray?.map(({ id, list }, index) => (
                 <Accordion key={id} id={id} title={testimonialsConfig[id].title} index={index}>
-                  {list
-                    .filter(item => item.message)
-                    .map(({ name, message, rating, timestamp }, i) => {
+                  {list.filter(item => item.message).length > 0 ? (
+                    list.map(({ name, message, rating, timestamp }, i) => {
                       const { day, year, time } = dateFormatter(timestamp, true);
 
                       return (
@@ -86,7 +85,12 @@ const FeedbackTestimonialsSection: FunctionComponent = () => {
                           </Flex>
                         </S.FeedbackTestimonial>
                       );
-                    })}
+                    })
+                  ) : (
+                    <S.FeedbackTestimonialsNoData themeType={theme}>
+                      No data available
+                    </S.FeedbackTestimonialsNoData>
+                  )}
                 </Accordion>
               ))}
             </RequestDataWrapper>

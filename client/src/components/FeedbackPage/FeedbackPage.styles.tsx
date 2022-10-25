@@ -194,3 +194,11 @@ export const FeedbackTestimonialBottom = styled.div<StylesProps>`
 export const FeedbackTestimonialsEmpty = styled.p`
   text-align: center;
 `;
+
+export const FeedbackTestimonialsNoData = styled.span<StylesProps>`
+  margin-left: 1rem;
+  font-size: 0.875rem;
+  color: ${({ themeType }) =>
+    themeType === 'light' ? theme.palette.grey.medium : theme.palette.grey.darkest};
+  user-select: none;
+`;
