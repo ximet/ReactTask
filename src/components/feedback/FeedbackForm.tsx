@@ -18,7 +18,7 @@ type FeedbackFromProps = {
   updateFeedbacks: (feedback: FeedbackState) => void;
 };
 
-export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
+export const FeedbackForm: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
   const [state, dispatch] = useReducer<Reducer<FeedbackState, FeedbackActionData>>(
     feedbackReducer,
     {
@@ -72,7 +72,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
   return (
     <>
       <h2 className={styles['feedback-title']}>Please, send feedback</h2>
-      <form className={styles['feedback-form']}>
+      <form className={styles['feedback-form']} aria-label="form">
         <div className={styles['feedback-user-data__group']}>
           <label htmlFor="feedback-name" className={styles['feedback-input-label']}>
             What is your name?
@@ -86,6 +86,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
             onChange={validatedInputHandler}
             placeholder="required field"
             required
+            data-testid={'name-input'}
           />
           {!isValid.name && !!state.name && (
             <span className={styles['validation-error']}>
@@ -106,6 +107,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
             onChange={validatedInputHandler}
             placeholder="required field"
             required
+            data-testid={'email-input'}
           />
           {!isValid.email && !!state.email && (
             <span className={styles['validation-error']}>Use format: email@example.com</span>
@@ -124,6 +126,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
             onChange={validatedInputHandler}
             placeholder="required field"
             required
+            data-testid={'phone-input'}
           />
           {!isValid.phone && !!state.phone && (
             <span className={styles['validation-error']}>
@@ -168,6 +171,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
             className={classNames(styles['form-btn'], styles['send-btn'])}
             disabled={!isValid.email || !isValid.name || !isValid.phone}
             onClick={sendForm}
+            data-testid={'submit-btn'}
           >
             Send
           </button>
@@ -175,6 +179,7 @@ export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
             type="reset"
             className={classNames(styles['form-btn'], styles['reset-btn'])}
             onClick={resetForm}
+            data-testid={'reset-btn'}
           >
             Reset
           </button>

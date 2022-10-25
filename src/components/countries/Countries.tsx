@@ -13,9 +13,13 @@ export const Countries: FC = () => {
   const uniqueCountries: Set<string> = new Set(countries);
 
   return (
-    <main className={commonStyle.container}>
+    <main className={commonStyle.container} data-testid="countries">
       {Array.from(uniqueCountries).map(countryName => (
-        <section key={countryName} className={styles['country-section']}>
+        <section
+          key={countryName}
+          className={styles['country-section']}
+          data-testid="cards-section"
+        >
           <h3 className={styles['country-title']}>{countryName}</h3>
           <CitySmallCards locations={sortedByCountries} country={countryName} />
         </section>

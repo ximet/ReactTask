@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 
 import commonStyle from 'styles/commonStyles.css';
 import { ViewFeedbacks } from './ViewFeedbacks';
-import { FeedbackFrom } from './FeedbackForm';
+import { FeedbackForm } from './FeedbackForm';
 import { FeedbackState } from 'types/feedbackType';
 import { sendFeedback, getFeedbacks } from 'services/localStorage';
 
@@ -20,7 +20,7 @@ export const Feedback: FC = () => {
 
   return (
     <main className={commonStyle.container}>
-      <FeedbackFrom updateFeedbacks={updateFeedbacks} />
+      <FeedbackForm updateFeedbacks={updateFeedbacks} />
       <ViewFeedbacks feedbacks={feedbacks} />
     </main>
   );
