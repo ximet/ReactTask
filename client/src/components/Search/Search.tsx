@@ -47,11 +47,13 @@ const Search: FunctionComponent = () => {
   };
   const handleInputFocus = (): void => setListShown(true);
   const handleSearchClose = (): void => setListShown(false);
-  const handleSearchLocations = useCallback(() => {
+  const handleSearchClear = (): void => setSearchQuery('');
+  const handleSearchLocations = useCallback((): void => {
     if (debouncedSearchQuery) dispatch(searchLocations(debouncedSearchQuery));
   }, [dispatch, debouncedSearchQuery]);
 
   useOnClickOutside(searchRef, handleSearchClose);
+  useOnClickOutside(searchRef, handleSearchClear);
 
   // Get data
   useEffect(() => {
@@ -73,9 +75,14 @@ const Search: FunctionComponent = () => {
         onFocus={handleInputFocus}
         clearEnabled
       />
-      {data && listShown && (
+      {data && searchQuery && listShown && (
         <S.SearchResultWrapper>
-          <SearchResultList data={data} loading={loading} error={error} />
+          <SearchResultList
+            data={data}
+            loading={loading}
+            error={error}
+            handleSearchClear={handleSearchClear}
+          />
         </S.SearchResultWrapper>
       )}
     </S.Search>

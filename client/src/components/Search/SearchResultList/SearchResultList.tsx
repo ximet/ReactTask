@@ -14,14 +14,19 @@ interface SearchResultListProps {
   data: LocationInfo[] | null;
   loading?: boolean;
   error?: boolean | string | null;
+  handleSearchClear: () => void;
 }
 
-const SearchResultList = ({ data, loading, error }: SearchResultListProps) => (
+const SearchResultList = ({ data, loading, error, handleSearchClear }: SearchResultListProps) => (
   <S.SearchResultList>
     <RequestDataWrapper data={data} loading={loading} error={error}>
-      {data?.map(item => (
-        <SearchResultItem key={item.id} data={item} />
-      ))}
+      {data && data?.length > 0 ? (
+        data?.map(item => (
+          <SearchResultItem key={item.id} data={item} handleSearchClear={handleSearchClear} />
+        ))
+      ) : (
+        <span>No results found</span>
+      )}
     </RequestDataWrapper>
   </S.SearchResultList>
 );

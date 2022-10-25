@@ -79,6 +79,14 @@ export const SearchResultList = styled.ul`
       color: ${theme.palette.grey.dark};
     }
   }
+
+  span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: ${theme.palette.grey.dark};
+    user-select: none;
+  }
 `;
 
 export const SearchResultItem = styled.li`
