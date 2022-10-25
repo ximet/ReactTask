@@ -1,20 +1,21 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { FeedbackFrom } from '../FeedbackForm';
+import { FeedbackForm } from '../FeedbackForm';
+import { Feedback } from '../Feedback';
 
 const updateFeedbacks = jest.fn();
 
 describe('FeedbackForm', () => {
   test('component renders', () => {
-    render(<FeedbackFrom updateFeedbacks={updateFeedbacks} />);
+    render(<FeedbackForm updateFeedbacks={updateFeedbacks} />);
 
     expect(screen.getByText(/Please, send feedback/i)).toBeInTheDocument();
   });
 
   test('reset form', async () => {
-    render(<FeedbackFrom updateFeedbacks={updateFeedbacks} />);
+    render(<FeedbackForm updateFeedbacks={updateFeedbacks} />);
 
     const resetBtn = screen.getByTestId('reset-btn');
     const nameInput = screen.getByTestId('name-input');
@@ -34,7 +35,7 @@ describe('FeedbackForm', () => {
   });
 
   test('invalid data', () => {
-    render(<FeedbackFrom updateFeedbacks={updateFeedbacks} />);
+    render(<FeedbackForm updateFeedbacks={updateFeedbacks} />);
 
     const nameInput = screen.getByTestId('name-input');
     const emailInput = screen.getByTestId('email-input');
@@ -64,5 +65,56 @@ describe('FeedbackForm', () => {
     });
 
     expect(submitBtn).toBeDisabled();
+  });
+
+  test('state updates and send form', async () => {
+    render(<Feedback />);
+
+    const nameInput = screen.getByTestId('name-input');
+    const emailInput = screen.getByTestId('email-input');
+    const phoneInput = screen.getByTestId('phone-input');
+    const submitBtn = screen.getByTestId('submit-btn');
+
+    fireEvent.change(nameInput, {
+      target: {
+        value: 'MyName'
+      }
+    });
+
+    waitFor(() => {
+      expect(nameInput).toHaveValue('MyName');
+    });
+
+    fireEvent.change(nameInput, {
+      target: {
+        value: 'Andrew'
+      }
+    });
+    fireEvent.change(emailInput, {
+      target: {
+        value: 'Andrew@test.com'
+      }
+    });
+    fireEvent.change(phoneInput, {
+      target: {
+        value: '+375291112233'
+      }
+    });
+
+    waitFor(() => {
+      expect(nameInput).toHaveValue('Andrew');
+      expect(emailInput).toHaveValue('Andrew@test.com');
+      expect(phoneInput).toHaveValue('+375291112233');
+    });
+
+    expect(submitBtn).not.toBeDisabled();
+
+    fireEvent.click(submitBtn);
+
+    waitFor(() => {
+      expect(nameInput).toHaveValue('');
+      expect(emailInput).toHaveValue('');
+      expect(phoneInput).toHaveValue('');
+    });
   });
 });

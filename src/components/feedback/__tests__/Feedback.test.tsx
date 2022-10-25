@@ -1,12 +1,11 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import userEvent from '@testing-library/user-event';
 
 import { Feedback } from '../Feedback';
 
-const updateFeedbacks = jest.fn();
-
 describe('Feedback component', () => {
+  jest.spyOn(Storage.prototype, 'setItem');
+
   test('Component renders', () => {
     render(<Feedback />);
 
@@ -19,22 +18,13 @@ describe('Feedback component', () => {
     expect(screen.getByRole('form')).toBeInTheDocument();
   });
 
-  test('state updates and send form', () => {
+  test('SetItem calls', () => {
     render(<Feedback />);
 
     const nameInput = screen.getByTestId('name-input');
     const emailInput = screen.getByTestId('email-input');
     const phoneInput = screen.getByTestId('phone-input');
     const submitBtn = screen.getByTestId('submit-btn');
-
-    userEvent.type(nameInput, 'MyName');
-
-    waitFor(() => {
-      expect(updateFeedbacks).toHaveBeenCalledTimes(6);
-    });
-    waitFor(() => {
-      expect(nameInput).toHaveValue('MyName');
-    });
 
     fireEvent.change(nameInput, {
       target: {
@@ -52,20 +42,8 @@ describe('Feedback component', () => {
       }
     });
 
-    waitFor(() => {
-      expect(nameInput).toHaveValue('Andrew');
-      expect(emailInput).toHaveValue('Andrew@test.com');
-      expect(phoneInput).toHaveValue('+375291112233');
-    });
-
-    expect(submitBtn).not.toBeDisabled();
-
     fireEvent.click(submitBtn);
 
-    waitFor(() => {
-      expect(nameInput).toHaveValue('');
-      expect(emailInput).toHaveValue('');
-      expect(phoneInput).toHaveValue('');
-    });
+    expect(localStorage.setItem).toHaveBeenCalledTimes(1);
   });
 });

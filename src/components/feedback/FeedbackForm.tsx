@@ -18,7 +18,7 @@ type FeedbackFromProps = {
   updateFeedbacks: (feedback: FeedbackState) => void;
 };
 
-export const FeedbackFrom: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
+export const FeedbackForm: FC<FeedbackFromProps> = ({ updateFeedbacks }) => {
   const [state, dispatch] = useReducer<Reducer<FeedbackState, FeedbackActionData>>(
     feedbackReducer,
     {

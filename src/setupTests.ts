@@ -1,16 +1,22 @@
 import '@testing-library/jest-dom';
-import 'whatwg-fetch';
 
-import { server } from 'mocks/server';
+import { fakeCurrentWeather } from 'mocks/fakeData';
 
-beforeAll(() => {
-  server.listen();
-});
+export const mockGetWeather = jest.fn().mockResolvedValue(fakeCurrentWeather);
 
-afterEach(() => {
-  server.resetHandlers();
-});
+jest.mock('services/getWeather', () => ({
+  getWeather: mockGetWeather
+}));
 
-afterAll(() => {
-  server.close();
-});
+jest.mock('react-chartjs-2', () => ({
+  ...jest.requireActual('react-chartjs-2'),
+  Line: () => null
+}));
+
+jest.mock('chart.js', () => ({
+  ...jest.requireActual('chart.js'),
+  Chart: {
+    register: jest.fn()
+  },
+  registerables: []
+}));
