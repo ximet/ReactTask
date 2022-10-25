@@ -1,5 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
+// Store
+import { useAppSelector } from 'redux/hooks';
+import { selectTheme } from 'redux/reducers/global';
+
 // Assets
 import imgSearch from 'assets/images/search.png';
 import imgWidget from 'assets/images/widget.png';
@@ -29,27 +33,31 @@ const articles = [
   }
 ];
 
-const AboutHowSection: FunctionComponent = () => (
-  <S.AboutHowSection id="how-it-works">
-    <Container>
-      <Flex directionColumn>
-        <h2>How It Works</h2>
-        {articles.map(({ title, content, image }, i) => (
-          <S.AboutArticle key={`article-${i + 1}`}>
-            <Flex>
-              <S.AboutArticleContent>
-                <h3>{title}</h3>
-                <p>{content}</p>
-              </S.AboutArticleContent>
-              <S.AboutArticlePicture>
-                <img src={image.src} alt={image.alt} />
-              </S.AboutArticlePicture>
-            </Flex>
-          </S.AboutArticle>
-        ))}
-      </Flex>
-    </Container>
-  </S.AboutHowSection>
-);
+const AboutHowSection: FunctionComponent = () => {
+  const theme = useAppSelector(selectTheme);
+
+  return (
+    <S.AboutHowSection id="how-it-works" themeType={theme}>
+      <Container>
+        <Flex directionColumn>
+          <h2>How It Works</h2>
+          {articles.map(({ title, content, image }, i) => (
+            <S.AboutArticle key={`article-${i + 1}`}>
+              <Flex>
+                <S.AboutArticleContent>
+                  <h3>{title}</h3>
+                  <p>{content}</p>
+                </S.AboutArticleContent>
+                <S.AboutArticlePicture>
+                  <img src={image.src} alt={image.alt} />
+                </S.AboutArticlePicture>
+              </Flex>
+            </S.AboutArticle>
+          ))}
+        </Flex>
+      </Container>
+    </S.AboutHowSection>
+  );
+};
 
 export default AboutHowSection;

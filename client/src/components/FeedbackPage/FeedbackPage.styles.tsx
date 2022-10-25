@@ -92,7 +92,7 @@ export const FeedbackFormGroup = styled.div`
   }
 `;
 
-export const FeedbackFormBlobOne = styled.div`
+export const FeedbackFormBlobOne = styled.div<StylesProps>`
   ${blobContainer}
   top: -35vh;
   right: -15vw;
@@ -111,7 +111,7 @@ export const FeedbackFormBlobOne = styled.div`
   }
 `;
 
-export const FeedbackFormBlobTwo = styled.div`
+export const FeedbackFormBlobTwo = styled.div<StylesProps>`
   ${blobContainer}
   height: max-content;
 

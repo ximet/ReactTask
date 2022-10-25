@@ -2,6 +2,8 @@ import React, { FunctionComponent, FormEvent, useState, useEffect, useCallback }
 import { useDispatch } from 'react-redux';
 
 // Store
+import { useAppSelector } from 'redux/hooks';
+import { selectTheme } from 'redux/reducers/global';
 import { addFeedback } from 'redux/actionCreators/feedback';
 
 // Types
@@ -39,6 +41,8 @@ export const formElementsArray = Object.entries(feedbackFormConfig).map(entry =>
 
 const FeedbackFormSection: FunctionComponent = () => {
   // State
+  const theme = useAppSelector(selectTheme);
+
   const [feedbackForm, setFeedbackForm] = useState<FeedbackForm>(initialState);
   const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
@@ -112,7 +116,7 @@ const FeedbackFormSection: FunctionComponent = () => {
 
   return (
     <S.FeedbackFormSection id="survey">
-      <S.FeedbackFormBlobOne>
+      <S.FeedbackFormBlobOne themeType={theme}>
         <IconBlobTwo />
       </S.FeedbackFormBlobOne>
       <Container>
@@ -147,7 +151,7 @@ const FeedbackFormSection: FunctionComponent = () => {
           </form>
         </Flex>
       </Container>
-      <S.FeedbackFormBlobTwo>
+      <S.FeedbackFormBlobTwo themeType={theme}>
         <IconBlobOne />
       </S.FeedbackFormBlobTwo>
     </S.FeedbackFormSection>

@@ -1,3 +1,5 @@
+import { StylesProps } from 'types';
+
 import { breakpoints } from './breakpoints';
 import theme from './theme';
 
@@ -70,12 +72,17 @@ export const spinnerRoot = `
   height: 10em;
 `;
 
-export const blobContainer = `
+export const blobContainer = ({ themeType }: StylesProps) => `
   position: absolute;
-
   svg {
     width: 100%;
-    fill: ${theme.palette.primary.light};
+    ${colorChange({
+      themeType,
+      changeProp: 'fill',
+      changeVal1: theme.palette.primary.light,
+      changeVal2: theme.palette.primary.medium,
+      transitionVal: 'fill'
+    })}
     stroke: none;
   }
 `;

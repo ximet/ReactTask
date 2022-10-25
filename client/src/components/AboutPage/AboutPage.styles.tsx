@@ -1,15 +1,29 @@
 import styled from 'styled-components';
 
-import theme from 'styles/theme';
+import { StylesProps } from 'types';
 
 import { breakpoints } from 'styles/breakpoints';
 import { HEADER_HEIGHT } from 'styles/constants';
 import { Flex } from 'styles/global';
-import { sectionRoot, imageRoot, buttonPrimary } from 'styles/mixins';
+import { sectionRoot, imageRoot, buttonPrimary, colorChange } from 'styles/mixins';
+import theme from 'styles/theme';
 
-export const AboutHeroSection = styled.section`
+export const AboutHeroSection = styled.section<StylesProps>`
   ${sectionRoot}
   height: calc(100vh - ${HEADER_HEIGHT}rem);
+
+  svg {
+    path {
+      ${({ themeType }) =>
+        colorChange({
+          themeType,
+          changeProp: 'fill',
+          changeVal1: theme.palette.primary.light,
+          changeVal2: theme.palette.primary.medium,
+          transitionVal: 'fill'
+        })}
+    }
+  }
 
   ${Flex}:first-child {
     @media (orientation: portrait) {
@@ -80,10 +94,17 @@ export const AboutHeroImage = styled.picture`
   }
 `;
 
-export const AboutHowSection = styled.section`
+export const AboutHowSection = styled.section<StylesProps>`
   ${sectionRoot}
   padding: 4rem 10vw;
-  background: ${theme.palette.primary.light};
+  ${({ themeType }) =>
+    colorChange({
+      themeType,
+      changeProp: 'background',
+      changeVal1: theme.palette.primary.light,
+      changeVal2: theme.palette.primary.medium,
+      transitionVal: 'background'
+    })}
   color: ${theme.palette.black};
 
   h2 {
@@ -189,7 +210,7 @@ export const AboutArticlePicture = styled.picture`
   }
 `;
 
-export const AboutFeedbackSection = styled.section`
+export const AboutFeedbackSection = styled.section<StylesProps>`
   ${sectionRoot}
   height: 80vh;
   padding: 4rem 0;
@@ -205,6 +226,17 @@ export const AboutFeedbackSection = styled.section`
 
   svg {
     height: 100%;
+
+    path {
+      ${({ themeType }) =>
+        colorChange({
+          themeType,
+          changeProp: 'fill',
+          changeVal1: theme.palette.primary.light,
+          changeVal2: theme.palette.primary.medium,
+          transitionVal: 'fill'
+        })}
+    }
   }
 
   @media (orientation: landscape) {
