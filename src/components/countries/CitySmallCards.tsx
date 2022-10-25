@@ -18,20 +18,20 @@ export const CitySmallCards: FC<CityPropsType> = ({ locations, country }) => {
   };
 
   return (
-    <div className={styles['cities-wrapper']}>
+    <ul className={styles['cities-wrapper']}>
       {locations
         .filter(location => location.country === country)
         .map(city => (
-          <Link
-            to={`/${city.lon},${city.lat}`}
-            key={city.id}
-            className={styles['city-card']}
-            onClick={() => cardClickHandler(city.lat, city.lon)}
-            data-testid="city-card"
-          >
-            <CitySmallCard lon={city.lon} lat={city.lat} cityName={city.name} />
-          </Link>
+          <li key={city.id} data-testid="city-card">
+            <Link
+              to={`/${city.lon},${city.lat}`}
+              className={styles['city-card']}
+              onClick={() => cardClickHandler(city.lat, city.lon)}
+            >
+              <CitySmallCard lon={city.lon} lat={city.lat} cityName={city.name} />
+            </Link>
+          </li>
         ))}
-    </div>
+    </ul>
   );
 };

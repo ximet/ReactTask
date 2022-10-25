@@ -1,5 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
-import { getFavoriteCities } from 'services/localStorage';
+import React, { FC } from 'react';
 import { LocationInfoType } from 'types/cityInfoType';
 import { CitySmallCards } from './CitySmallCards';
 import { getSortedByCountries } from 'utils/helpers';

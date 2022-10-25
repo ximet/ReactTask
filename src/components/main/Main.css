@@ -2,6 +2,10 @@
   font-size: 3rem;
 }
 
+.error-title {
+  text-align: center;
+}
+
 .main-card {
   display: flex;
   margin-bottom: 3rem;

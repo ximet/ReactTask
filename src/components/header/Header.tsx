@@ -2,7 +2,6 @@ import styles from './Header.css';
 
 import React, { FC, useState, useEffect, useRef, useContext, MouseEvent, useMemo } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { themeSelector } from 'store/theme/themeSelector';
 import { toggleTheme } from 'store/theme/themeAction';
 import classNames from 'classnames';
@@ -110,19 +109,19 @@ const Header: FC = () => {
           value={searchText}
           onChange={e => setSearchText(e.target.value)}
         />
-        <div className={styles['search-results']}>
+        <ul className={styles['search-results']}>
           {cities.length
             ? cities.map(city => (
-                <div
+                <li
                   key={city.id}
                   className={styles['search-results__item']}
                   onClick={() => cityClickHandler(city.lat, city.lon)}
                 >
                   {city.name}, {city.country}
-                </div>
+                </li>
               ))
             : null}
-        </div>
+        </ul>
       </div>
       <button className={styles.themeBtn} onClick={() => dispatch(toggleTheme(newTheme))}>
         {theme === 'light' ? <BsSun size="30px" /> : <TbMoonStars size="30px" />} theme

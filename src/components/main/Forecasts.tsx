@@ -40,7 +40,11 @@ const Forecasts: FC = () => {
   return (
     <>
       {loading && <Loader />}
-      {loadingError && <h3>Oops: {loadingError}</h3>}
+      {loadingError && (
+        <h3 className={styles['error-title']}>
+          Oops ¯\_(ツ)_/¯ <br /> something went wrong
+        </h3>
+      )}
       {currentWeather && !loading && (
         <>
           <MainCard currentWeather={currentWeather} location={location} />

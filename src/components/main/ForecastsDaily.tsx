@@ -49,7 +49,11 @@ const ForecastsDaily: FC<ForecastsDailyProps> = ({ view }) => {
         <option value="10">10 days</option>
         <option value="14">14 days</option>
       </select>
-      {error && <h3>Oops: {error}</h3>}
+      {error && (
+        <h3 className={styles['error-title']}>
+          Oops ¯\_(ツ)_/¯ <br /> something went wrong
+        </h3>
+      )}
       {selectDays && dailyWeather && (
         <>
           {view === 'cards' ? (
