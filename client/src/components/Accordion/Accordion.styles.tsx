@@ -25,6 +25,7 @@ export const AccordionTab = styled.div<AccordionStylesProps>`
   button {
     cursor: inherit;
     font-weight: 500;
+    text-align: start;
     ${({ themeType }) =>
       colorChange({
         themeType,

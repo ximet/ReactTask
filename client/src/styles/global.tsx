@@ -5,15 +5,33 @@ import { StylesProps } from 'types';
 import { HEADER_HEIGHT } from './constants';
 import { spinning } from './keyframes';
 import { spinnerRoot } from './mixins';
+import { breakpoints } from './breakpoints';
 
 import theme from './theme';
 
 export const Container = styled.div`
   position: relative;
+  max-width: 155rem;
   width: 100%;
   padding: 0 2.5rem;
   margin: 0 auto;
   z-index: 1;
+
+  @media ${breakpoints.lg} {
+    padding: 0 2rem;
+  }
+
+  @media ${breakpoints.md} and (orientation: landscape) {
+    padding: 0 1.5rem;
+  }
+
+  @media ${breakpoints.xs} {
+    padding: 0 1.5rem;
+  }
+
+  @media ${breakpoints.xxs} {
+    padding: 0 1rem;
+  }
 `;
 
 interface FlexStylesProps {
@@ -87,6 +105,20 @@ export const Headline = styled.h1`
     font-size: 4.25rem;
     line-height: 1;
     color: ${theme.palette.primary.dark};
+  }
+
+  @media ${breakpoints.md} {
+    span {
+      font-size: 3.25rem;
+    }
+  }
+
+  @media only screen and (max-width: 22.25em) {
+    font-size: 1.8rem;
+  }
+
+  @media only screen and (max-height: 49.125em) and (orientation: portrait) {
+    margin-top: -5vh;
   }
 `;
 

@@ -1,10 +1,11 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import theme from 'styles/theme';
-import { colorChange, colorChangeOnHover } from 'styles/mixins';
-
 import { StylesProps } from 'types';
+
+import { breakpoints } from 'styles/breakpoints';
+import { colorChange, colorChangeOnHover } from 'styles/mixins';
+import theme from 'styles/theme';
 
 const GlobalStyle = createGlobalStyle<StylesProps>`
   ${normalize}
@@ -24,10 +25,17 @@ const GlobalStyle = createGlobalStyle<StylesProps>`
   
   body {
     min-height: 100vh;
+ 
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overscroll-behavior: none;
     overflow-x: hidden;
+
+    @media ${breakpoints.xxxl} {
+      max-width: 120rem;
+      margin: 0 auto;
+      box-shadow: ${theme.shadows[1]};
+    }
 
     #app {
       height: 100vh;

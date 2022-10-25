@@ -1,3 +1,4 @@
+import { breakpoints } from './breakpoints';
 import theme from './theme';
 
 interface colorChangeProps {
@@ -38,7 +39,11 @@ export const imageRoot = `
 export const sectionRoot = `
   position: relative;
   width: 100vw;
-  overflow: hidden;
+  padding-bottom: 4rem;
+
+  @media ${breakpoints.xxxl} {
+    width: 100%;
+  }
 `;
 
 export const radioWrapperRoot = `
@@ -72,5 +77,17 @@ export const blobContainer = `
     width: 100%;
     fill: ${theme.palette.primary.light};
     stroke: none;
+  }
+`;
+
+export const buttonPrimary = `
+  background: ${theme.palette.primary.light};
+
+  &:hover {
+    background: ${theme.palette.primary.medium};
+  }
+
+  &:active {
+    background: ${theme.palette.primary.dark};
   }
 `;

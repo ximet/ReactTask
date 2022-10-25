@@ -13,19 +13,21 @@ import * as S from '../FeedbackPage.styles';
 const FeedbackHeroSection: FunctionComponent = () => (
   <S.FeedbackHeroSection>
     <Container>
-      <Flex alignFlexStart>
+      <Flex>
         <S.FeedbackHeroContent>
           <Headline>
             <span>Give Feedback</span>
             We are constantly looking to improve
           </Headline>
           <p>Share your thoughts of your overall experience with our app</p>
-          <a href="#survey">
-            <Button type="button" aria-label="Go to feedback page">
-              Leave A Feedback
-            </Button>
-          </a>
-          <a href="#testimonials">See Other People Testimonials</a>
+          <Flex justifyFlexStart>
+            <a href="#survey">
+              <Button type="button" aria-label="Go to feedback page">
+                Leave A Feedback
+              </Button>
+            </a>
+            <a href="#testimonials">See Other People Testimonials</a>
+          </Flex>
         </S.FeedbackHeroContent>
         <FeedbackHeroImg />
       </Flex>

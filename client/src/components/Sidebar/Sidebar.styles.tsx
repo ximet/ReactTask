@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import theme from 'styles/theme';
-
 import { StylesProps } from 'types';
+
+import theme from 'styles/theme';
+import { breakpoints } from 'styles/breakpoints';
+import { Search } from 'components/Search/Search.styles';
 
 interface SidebarStyles extends StylesProps {
   open: boolean;
@@ -27,13 +29,47 @@ export const Sidebar = styled.nav<SidebarStyles>`
   a:hover {
     color: ${theme.palette.black};
   }
+
+  @media ${breakpoints.lg} {
+    padding: 1.5rem 2rem;
+  }
+
+  @media ${breakpoints.md} and (orientation: landscape) {
+    padding: 1.5rem;
+  }
+
+  @media ${breakpoints.sm} {
+    width: 100%;
+  }
+
+  @media ${breakpoints.xs} {
+    padding: 1.5rem;
+  }
 `;
 
 export const SidebarHeader = styled.div<StylesProps>`
-  height: 3rem;
-  margin-top: 0.25rem;
+  width: 100%;
   color: ${theme.palette.black};
 
+  ${Search} {
+    display: none;
+    margin-top: 2rem;
+  }
+
+  @media ${breakpoints.sm} {
+    ${Search} {
+      display: block;
+      width: 100%;
+
+      svg {
+        top: 25%;
+        transform: translate(0%, -0%);
+      }
+    }
+  }
+`;
+
+export const SidebarMenuButton = styled.button`
   svg {
     width: 2rem;
     margin-right: 1rem;

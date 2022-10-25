@@ -1,21 +1,36 @@
 import styled from 'styled-components';
 
-import theme from 'styles/theme';
-import { colorChangeOnHover } from 'styles/mixins';
-
 import { StylesProps } from 'types';
-import { FOOTER_HEIGHT, HEADER_HEIGHT } from 'styles/constants';
+
+import theme from 'styles/theme';
+import { breakpoints } from 'styles/breakpoints';
+import { HEADER_HEIGHT, FOOTER_HEIGHT } from 'styles/constants';
+import { colorChangeOnHover } from 'styles/mixins';
+import { Widget, WidgetBody } from 'components/Widget/Widget.styles';
+import { Flex } from 'styles/global';
+import { ButtonSwitch } from 'components/ButtonSwitch/ButtonSwitch.styles';
 
 export const Dashboard = styled.div<StylesProps>`
   display: grid;
   grid-auto-columns: 18.5rem 1fr;
-  grid-column-gap: 2.5rem;
+  grid-gap: 2.5rem;
   grid-template-areas:
     'current forecast'
     'map map';
   width: 100%;
-  height: calc(100vh - ${HEADER_HEIGHT}rem - ${FOOTER_HEIGHT}rem);
-  padding-bottom: 1.5rem;
+
+  @media ${breakpoints.mdalt}, ${breakpoints.largePortrait} {
+    grid-auto-columns: 1fr 1fr;
+    grid-template-areas:
+      'current current'
+      'forecast forecast'
+      'map map';
+    grid-row-gap: 8rem;
+  }
+
+  @media ${breakpoints.largeLandscape} {
+    height: calc(100vh - ${HEADER_HEIGHT}rem - ${FOOTER_HEIGHT}rem);
+  }
 `;
 
 export const DashboardCurrent = styled.div<StylesProps>`
@@ -26,15 +41,48 @@ export const DashboardCurrent = styled.div<StylesProps>`
     margin-bottom: 1rem;
     line-height: 3rem;
   }
+
+  @media ${breakpoints.mdalt}, ${breakpoints.largePortrait} {
+    ${Widget} {
+      width: 100%;
+    }
+  }
+
+  @media ${breakpoints.largeLandscape} {
+    ${Widget} {
+      height: 100%;
+    }
+
+    ${WidgetBody} {
+      flex-direction: column;
+      align-items: flex-start;
+      height: 100%;
+    }
+  }
 `;
 
 export const DashboardToolbar = styled.div<StylesProps>`
   margin-bottom: 1rem;
+
+  @media ${breakpoints.sm} {
+    > ${Flex} {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    ${ButtonSwitch} {
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const DashboardForecast = styled.div<StylesProps>`
   grid-area: forecast;
   height: 16.775rem;
+
+  @media ${breakpoints.largeLandscape} {
+    height: 100%;
+  }
 `;
 
 export const DashboardForecastTypes = styled.ul<StylesProps>``;
