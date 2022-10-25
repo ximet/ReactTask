@@ -1,4 +1,6 @@
 import { LocationInfoType } from 'types/cityInfoType';
+import { FeedbackState } from 'types/feedbackType';
+import { CurrentWeatherType, DailyWeatherType, HourlyWeatherType } from 'types/weatherTypes';
 
 export const fakeSortedCities: LocationInfoType[] = [
   {
@@ -15,7 +17,7 @@ export const fakeSortedCities: LocationInfoType[] = [
   }
 ];
 
-export const fakeFavoriteCities = [
+export const fakeFavoriteCities: LocationInfoType[] = [
   {
     id: 105128581,
     name: 'New York',
@@ -23,8 +25,8 @@ export const fakeFavoriteCities = [
     timezone: 'America/New_York',
     language: 'en',
     adminArea: 'New York',
-    adminArea2: '',
-    adminArea3: '',
+    adminArea2: null,
+    adminArea3: null,
     lon: -74.006,
     lat: 40.7143
   },
@@ -66,7 +68,7 @@ export const fakeFavoriteCities = [
   }
 ];
 
-export const fakeCurrentWeather = {
+export const fakeCurrentWeather: { current: CurrentWeatherType } = {
   current: {
     time: '2022-10-21T10:03+03:00',
     symbol: 'd400',
@@ -89,7 +91,7 @@ export const fakeCurrentWeather = {
   }
 };
 
-export const fakeFeedbacks = [
+export const fakeFeedbacks: FeedbackState[] = [
   {
     id: 1,
     name: 'Kolya',
@@ -108,7 +110,7 @@ export const fakeFeedbacks = [
   }
 ];
 
-export const fakeHourlyWeather = [
+export const fakeHourlyWeather: HourlyWeatherType[] = [
   {
     time: '2022-10-22T13:00+03:00',
     symbol: 'd400',
@@ -663,7 +665,7 @@ export const fakeHourlyWeather = [
   }
 ];
 
-export const fakeDailyWeather = [
+export const fakeDailyWeather: DailyWeatherType[] = [
   {
     date: '2022-10-22',
     symbol: 'd300',
