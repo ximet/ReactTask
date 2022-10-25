@@ -34,7 +34,6 @@ export const feedbackReducer = (state: FeedbackState = initState, action: AnyAct
       return state;
   }
 };
-
 export const feedbackSelector = (state: FeedbackState) => {
   return state.feedback;
 };

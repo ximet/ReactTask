@@ -1,8 +1,9 @@
 import { getLocationByQuery } from 'API/get';
 import Button, { ButtonStyles } from 'components/Button';
 import Header from 'components/Header';
+import SearchResultslist from 'components/SearchResultsList/SearchResultsList';
 import LocationContext from 'contexts/LocationContext';
-import React, { FC, useContext, useState } from 'react';
+import React, { ChangeEvent, FC, useContext, useState } from 'react';
 import { VscSearch } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import { formatNameForUrl, isInputValid } from 'utils/stringCorrections';
@@ -11,6 +12,7 @@ import styles from './styles.module.scss';
 const HeaderSearch: FC = () => {
   const { setCoordinates, setStatusMsg } = useContext(LocationContext);
   const [inputValue, setInputValue] = useState<string>('');
+  const [displaySearchResults, setDisplaySearchResults] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,21 +43,43 @@ const HeaderSearch: FC = () => {
       setCoordinates(null);
     }
   };
+  const handleInputFocus = (): void => {
+    return setDisplaySearchResults(true);
+  };
+  const handleInputBlur = (): void => {
+    return setDisplaySearchResults(false);
+  };
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setDisplaySearchResults(true);
+    setInputValue(event.target.value);
+  };
+  const handleResultSelected = () => {
+    setInputValue('');
+    setDisplaySearchResults(false);
+  };
 
   return (
     <Header>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Search"
-          value={inputValue}
-          onChange={handleChange}
-        />
-        <Button type="submit" className={ButtonStyles.IconBtn}>
-          <VscSearch className={styles.icon} />
-        </Button>
-      </form>
+      {/* <form onSubmit={handleSubmit} className={styles.form}> */}
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="Search"
+        value={inputValue}
+        // onChange={handleChange}
+        onChange={handleInputChange}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+      />
+      <SearchResultslist
+        inputValue={inputValue}
+        display={displaySearchResults}
+        resultSelected={handleResultSelected}
+      />
+      {/* <Button type="submit" className={ButtonStyles.IconBtn}>
+        <VscSearch className={styles.icon} />
+      </Button> */}
+      {/* </form> */}
     </Header>
   );
 };

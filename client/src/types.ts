@@ -109,9 +109,33 @@ export interface Feedback {
 export type Validator = Record<Validations, (value: string, param: number) => boolean>;
 export type Errors = Record<Validations, (value: string, param: number) => string>;
 
-export interface FeedbackState {
+export type FeedbackState = {
   feedback: Feedback[];
   loading?: boolean;
   error?: string;
+};
+export interface SearchState {
+  prevSearches: any;
 }
 
+export type CombinedState = {
+  feedback: FeedbackState;
+  search: SearchState;
+};
+export enum FeedbackActions {
+  FEEDBACK_REQUEST_START,
+  FEEDBACK_REQUEST_SUCCESS,
+  FEEDBACK_REQUEST_FAILED
+}
+export interface FeedbackActionConfig {
+  type: FeedbackActions;
+  payload: Feedback[] | Feedback | string;
+}
+export enum SearchActions {
+  SEARCH_SAVE_CURRENT_LOCATION,
+  SEARCH_SAVE_LOCATION
+}
+export interface SearchActionConfig {
+  type: SearchActions;
+  payload: string;
+}

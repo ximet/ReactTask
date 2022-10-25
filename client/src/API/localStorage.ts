@@ -1,6 +1,6 @@
 import { Feedback } from 'types';
 
-export const getFromStorage = (name: string): Feedback[] | null => {
+export const getFromStorage = (name: string): any => {
   const valueStr = localStorage.getItem(name);
   return !valueStr ? null : JSON.parse(valueStr);
 };
