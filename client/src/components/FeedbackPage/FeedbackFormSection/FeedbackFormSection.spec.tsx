@@ -148,7 +148,7 @@ describe('FeedbackFormSection', () => {
           suggestion: 'Some value',
           recommendation: 'Yes',
           more: 'Some value',
-          timestamp: new Date(1482363367071)
+          timestamp: new Date()
         })
       );
       expect(formElement).toHaveFormValues(initialFormValues);
