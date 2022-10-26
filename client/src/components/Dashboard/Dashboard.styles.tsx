@@ -12,7 +12,7 @@ import { ButtonSwitch } from 'components/ButtonSwitch/ButtonSwitch.styles';
 
 export const Dashboard = styled.div<StylesProps>`
   display: grid;
-  grid-auto-columns: 18.5rem 1fr;
+  grid-auto-columns: 20rem 1fr;
   grid-gap: 2.5rem;
   grid-template-areas:
     'current forecast'
@@ -51,6 +51,10 @@ export const DashboardCurrent = styled.div<StylesProps>`
   @media ${breakpoints.largeLandscape} {
     ${Widget} {
       height: 100%;
+
+      > div:nth-of-type(2) {
+        align-items: center;
+      }
     }
 
     ${WidgetBody} {
@@ -78,7 +82,7 @@ export const DashboardToolbar = styled.div<StylesProps>`
 
 export const DashboardForecast = styled.div<StylesProps>`
   grid-area: forecast;
-  height: 16.775rem;
+  height: 17.775rem;
 
   @media ${breakpoints.largeLandscape} {
     height: 100%;

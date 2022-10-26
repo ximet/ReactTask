@@ -1,19 +1,26 @@
 import styled, { css } from 'styled-components';
 
 import { StylesProps } from 'types';
+import {
+  ForecastType,
+  WeatherType,
+  AirQualityType
+} from 'components/Dashboard/DashboardForecast/DashboardForecast.utils';
 
 import { breakpoints } from 'styles/breakpoints';
+import { Flex } from 'styles/global';
 import theme from 'styles/theme';
 
 interface WidgetStyles extends StylesProps {
   color?: string;
   active?: boolean;
+  selectedForecastType?: ForecastType;
   pointerEvents?: string;
 }
 
 export const Widget = styled.article<WidgetStyles>`
   width: ${({ color, active }: WidgetStyles) =>
-    color !== 'primary' && !active ? '10rem' : '18.5rem'};
+    color !== 'primary' && !active ? '8.5rem' : '20rem'};
   color: ${({ themeType, color }: WidgetStyles) => {
     if (color === 'primary') {
       return theme.palette.black;
@@ -40,7 +47,7 @@ export const WidgetHeader = styled.div<WidgetStyles>`
   height: 3rem;
   padding: 0rem 1rem;
   font-weight: 500;
-  background: ${({ themeType, color }: WidgetStyles) => {
+  background: ${({ themeType, color }) => {
     if (color !== 'primary' && themeType === 'light') {
       return theme.palette.grey.light;
     }
@@ -54,8 +61,39 @@ export const WidgetHeader = styled.div<WidgetStyles>`
   }};
   transition: background 1.2s;
   will-change: background;
-  border-bottom: ${({ color }: WidgetStyles) =>
+  border-bottom: ${({ color }) =>
     color !== 'primary' ? theme.palette.grey.dark : theme.palette.grey.medium};
+
+  time:first-of-type {
+    display: ${({ selectedForecastType, active, color }) => {
+      if (
+        selectedForecastType === (WeatherType.daily || AirQualityType.daily) ||
+        active ||
+        color === 'primary'
+      ) {
+        return 'block';
+      }
+      return 'none';
+    }};
+  }
+
+  time:last-of-type {
+    display: ${({ selectedForecastType, active, color }) => {
+      if (
+        selectedForecastType === (WeatherType.daily || AirQualityType.daily) &&
+        !active &&
+        color !== 'primary'
+      ) {
+        return 'none';
+      }
+      return 'block';
+    }};
+  }
+
+  ${Flex} {
+    justify-content: ${({ active, color }) =>
+      active || color === 'primary' ? 'space-between' : 'center'};
+  }
 `;
 
 export const WidgetBody = styled.div<WidgetStyles>`
@@ -73,6 +111,10 @@ export const WidgetBody = styled.div<WidgetStyles>`
 `;
 
 export const WidgetDetails = styled.div<StylesProps>`
+  &:first-of-type {
+    margin-right: 0.5rem;
+  }
+
   p:not(:last-of-type) {
     margin-bottom: 0.5rem;
   }
@@ -96,6 +138,8 @@ export const WidgetTemp = styled.p<StylesProps>`
 `;
 
 export const WidgetTempMaxMin = styled.p<StylesProps>`
+  text-align: center;
+
   span:first-of-type {
     font-size: 3.5rem;
   }

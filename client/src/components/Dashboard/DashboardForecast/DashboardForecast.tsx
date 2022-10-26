@@ -132,6 +132,7 @@ const DashboardForecast: FunctionComponent = () => {
                 key={item.time || item.date}
                 data={item}
                 infoType={infoType}
+                selectedForecastType={selectedForecastType}
                 pointerEvents={carouselChildPointerEv}
               />
             ))}

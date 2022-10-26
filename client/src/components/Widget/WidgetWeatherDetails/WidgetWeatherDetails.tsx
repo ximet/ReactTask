@@ -24,36 +24,36 @@ const WidgetWeatherDetails: FunctionComponent<WidgetWeatherDetailsProps> = ({
   <>
     <S.WidgetDetails>
       <S.WidgetDetailsTop>
-        {data?.temperature && <S.WidgetTemp>{data?.temperature}°</S.WidgetTemp>}
-        {data?.maxTemp && (
+        {!!data?.temperature && <S.WidgetTemp>{data?.temperature}°</S.WidgetTemp>}
+        {!!data?.maxTemp && (
           <S.WidgetTempMaxMin>
             <span>{data?.maxTemp}°</span> <span>{data?.minTemp}°</span>
           </S.WidgetTempMaxMin>
         )}
       </S.WidgetDetailsTop>
       <S.WidgetDetailsBottom color={color} active={active}>
-        {data?.feelsLikeTemp && (
+        {!!data?.feelsLikeTemp && (
           <S.WidgetDetailsItem color={color}>
             <span>Real Feel</span> {data?.feelsLikeTemp}°
           </S.WidgetDetailsItem>
         )}
-        {data?.windSpeed && (
+        {!!data?.windSpeed && (
           <S.WidgetDetailsItem color={color}>
             <span>Wind</span> {data?.windDirString}, speed {data?.windSpeed}&nbsp;m/s, gust{' '}
             {data?.windGust} m/s
           </S.WidgetDetailsItem>
         )}
-        {data?.maxWindSpeed && (
+        {!!data?.maxWindSpeed && (
           <S.WidgetDetailsItem color={color}>
             <span>Wind</span> {data?.maxWindSpeed}&nbsp;m/s max,
           </S.WidgetDetailsItem>
         )}
-        {data?.pressure && (
+        {!!data?.pressure && (
           <S.WidgetDetailsItem color={color}>
             <span>Pressure</span> {data?.pressure}
           </S.WidgetDetailsItem>
         )}
-        {data?.relHumidity && (
+        {!!data?.relHumidity && (
           <S.WidgetDetailsItem color={color}>
             <span>Humidity</span> {data?.relHumidity}%
           </S.WidgetDetailsItem>
@@ -65,22 +65,22 @@ const WidgetWeatherDetails: FunctionComponent<WidgetWeatherDetailsProps> = ({
         <S.WidgetImg>
           <Flex directionColumn>
             <img src={getWeatherSymbol(data?.symbol)} alt={data?.symbolPhrase} />
-            {data?.symbolPhrase && <p>{capitalize(data?.symbolPhrase)}</p>}
+            {!!data?.symbolPhrase && <p>{capitalize(data?.symbolPhrase)}</p>}
           </Flex>
         </S.WidgetImg>
       </S.WidgetDetailsTop>
       <S.WidgetDetailsBottom color={color} active={active}>
-        {data?.cloudiness && (
+        {!!data?.cloudiness && (
           <S.WidgetDetailsItem color={color}>
             <span>Cloudiness</span> {data?.cloudiness}%
           </S.WidgetDetailsItem>
         )}
-        {data?.precipProb && (
+        {!!data?.precipProb && (
           <S.WidgetDetailsItem color={color}>
             <span>Precipation</span> {data?.precipProb}%, {data?.precipRate}&nbsp;mm/h
           </S.WidgetDetailsItem>
         )}
-        {data?.precipAccum && (
+        {!!data?.precipAccum && (
           <S.WidgetDetailsItem color={color}>
             <span>Precipation</span> {data?.precipAccum} &nbsp;mm
           </S.WidgetDetailsItem>

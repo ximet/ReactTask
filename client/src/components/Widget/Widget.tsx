@@ -5,6 +5,7 @@ import { useAppSelector } from 'redux/hooks';
 import { selectTheme } from 'redux/reducers/global';
 
 // Types
+import { ForecastType } from 'components/Dashboard/DashboardForecast/DashboardForecast.utils';
 import { AirQualityInfo, WeatherInfo } from 'types';
 
 // Components
@@ -25,6 +26,7 @@ interface WidgetProps {
   color?: string;
   data?: AirQualityInfo | WeatherInfo | null;
   infoType?: string;
+  selectedForecastType?: ForecastType;
   pointerEvents?: boolean;
 }
 
@@ -32,6 +34,7 @@ const Widget: FunctionComponent<WidgetProps> = ({
   color,
   data,
   infoType = FORECAST_LABEL,
+  selectedForecastType,
   pointerEvents
 }) => {
   const theme = useAppSelector(selectTheme);
@@ -49,7 +52,12 @@ const Widget: FunctionComponent<WidgetProps> = ({
       onClick={() => setActive(!active)}
       pointerEvents={pointerEvents?.toString()}
     >
-      <S.WidgetHeader color={color} themeType={theme}>
+      <S.WidgetHeader
+        color={color}
+        themeType={theme}
+        active={active}
+        selectedForecastType={selectedForecastType}
+      >
         <Flex justifySpaceBetween>
           <time dateTime={timeStamp?.day}>{timeStamp?.day}</time>
           <time dateTime={timeStamp?.time}>{timeStamp?.time}</time>
