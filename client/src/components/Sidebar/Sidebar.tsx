@@ -25,7 +25,7 @@ interface SidebarProps {
 const navLinks = [
   { to: '/', name: 'Dashboard' },
   { to: '/about', name: 'About' },
-  { to: '/feedback', name: 'Feeback' }
+  { to: '/feedback', name: 'Feedback' }
 ];
 
 const Sidebar: FunctionComponent<SidebarProps> = ({ open }) => {
@@ -59,7 +59,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ open }) => {
         </S.SidebarHeader>
         <S.SidebarBody>
           {navLinks.map(navLink => (
-            <NavLink key={navLink.to} to={navLink.to}>
+            <NavLink key={navLink.to} to={navLink.to} end>
               {({ isActive }) => <S.SidebarItem active={isActive}>{navLink.name}</S.SidebarItem>}
             </NavLink>
           ))}

@@ -13,7 +13,7 @@ import * as S from '../FeedbackPage.styles';
 const FeedbackHeroSection: FunctionComponent = () => (
   <S.FeedbackHeroSection>
     <Container>
-      <Flex>
+      <Flex alignFlexStart>
         <S.FeedbackHeroContent>
           <Headline>
             <span>Give Feedback</span>
