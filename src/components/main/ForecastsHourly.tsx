@@ -11,6 +11,7 @@ import { positionContext } from 'context/positionContext';
 import { hourlyWeatherSelector } from 'store/hourlyWeather/hourlyWeatherSelectors';
 import Loader from 'components/loader/Loader';
 import { layerSelector } from 'store/layer/layerSelectors';
+import ErrorMessage from 'components/error/ErrorMessage';
 
 type ForecastsHourlyProps = {
   view: ViewType;
@@ -33,11 +34,7 @@ const ForecastsHourly: FC<ForecastsHourlyProps> = ({ view }) => {
     <section className={styles['weather-section-wrapper']}>
       <h2 className={styles['weather-section-title']}>Hourly weather</h2>
       {loading && <Loader />}
-      {error && (
-        <h3 className={styles['error-title']}>
-          Oops ¯\_(ツ)_/¯ <br /> something went wrong
-        </h3>
-      )}
+      {error && <ErrorMessage />}
       {hourlyWeather && !loading && <>{view === 'cards' ? <HourlySection /> : <GraphHourly />}</>}
     </section>
   );
