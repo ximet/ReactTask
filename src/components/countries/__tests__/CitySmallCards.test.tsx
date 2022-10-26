@@ -6,7 +6,7 @@ import { CitySmallCards } from 'components/countries/CitySmallCards';
 import { fakeSortedCities } from 'mocks/fakeData';
 import Main from 'components/main/Main';
 import { renderWithProvider } from 'utils/testUtils';
-import { renderWidthRouter } from 'utils/testUtils';
+import { renderWithRouter } from 'utils/testUtils';
 
 jest.mock('components/main/HourlySection.utils', () => ({
   ...jest.requireActual('components/main/HourlySection.utils'),
@@ -16,7 +16,7 @@ jest.mock('components/main/HourlySection.utils', () => ({
 describe('CitySmallCards test', () => {
   test('component renders', () => {
     render(
-      renderWidthRouter([<CitySmallCards locations={fakeSortedCities} country={'United States'} />])
+      renderWithRouter([<CitySmallCards locations={fakeSortedCities} country={'United States'} />])
     );
 
     const wrapper = document.querySelector('div[class="cities-wrapper"]');
@@ -26,7 +26,7 @@ describe('CitySmallCards test', () => {
   test('page redirects', async () => {
     render(
       renderWithProvider(
-        renderWidthRouter([
+        renderWithRouter([
           <Main />,
           <CitySmallCards locations={fakeSortedCities} country={'United States'} />,
           '/countries'

@@ -62,6 +62,13 @@ const Header: FC = () => {
     setIsShowMenu(!isShowMenu);
   };
 
+  const setFalse = () => setIsShowMenu(false);
+
+  const linkToMainHandler = (e: MouseEvent<HTMLAnchorElement>) => {
+    changePosition(position.latitude, position.longitude);
+    setFalse();
+  };
+
   return (
     <header className={styles.header}>
       <nav>
@@ -75,27 +82,22 @@ const Header: FC = () => {
         </div>
         <ul className={classNames(styles['nav-list'], isShowMenu ? styles['nav-list_active'] : '')}>
           <li>
-            <NavLink
-              to="/"
-              end
-              className={setActive}
-              onClick={() => changePosition(position.latitude, position.longitude)}
-            >
+            <NavLink to="/" end className={setActive} onClick={linkToMainHandler}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/countries" className={setActive}>
+            <NavLink to="/countries" className={setActive} onClick={setFalse}>
               Countries
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className={setActive}>
+            <NavLink to="/about" className={setActive} onClick={setFalse}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/feedback" className={setActive}>
+            <NavLink to="/feedback" className={setActive} onClick={setFalse}>
               Feedback
             </NavLink>
           </li>

@@ -19,7 +19,7 @@ const fakeState = {
 
 const mockStore = createStore((state = fakeState) => state, applyMiddleware(thunk));
 
-export const renderWidthRouter = (components: React.ReactNode[], initialRoute: string = '/') => {
+export const renderWithRouter = (components: React.ReactNode[], initialRoute: string = '/') => {
   return (
     <MemoryRouter initialEntries={[initialRoute]}>
       {components.map((el, index) => (

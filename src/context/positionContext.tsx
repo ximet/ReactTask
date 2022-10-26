@@ -67,7 +67,7 @@ export const PositionContextProvider = ({ children }: { children: ReactNode }) =
   return (
     <Provider value={{ state, changePosition }}>
       <>
-        {(latitude || longitude) && children}
+        {latitude || longitude ? children : null}
         {error && <>Error in position: {error}</>}
       </>
     </Provider>
