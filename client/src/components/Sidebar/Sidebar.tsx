@@ -11,9 +11,6 @@ import useOnClickOutside from 'hooks/useOnClickOutside';
 // Components
 import Search from 'components/Search/Search';
 
-// Assets
-import { IconMenu } from 'assets/images/svg';
-
 // Styles
 import { Flex } from 'styles/global';
 import * as S from './Sidebar.styles';
@@ -48,12 +45,13 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ open }) => {
       <Flex directionColumn alignFlexStart>
         <S.SidebarHeader>
           <Flex directionColumn>
-            <S.SidebarMenuButton>
-              <Flex>
-                <IconMenu />
-                <span>Weather App</span>
-              </Flex>
-            </S.SidebarMenuButton>
+            <Flex justifySpaceBetween>
+              <span>Weather App</span>
+              <S.SidebarCloseButton onClick={handleSidebarClose}>
+                <span />
+                <span />
+              </S.SidebarCloseButton>
+            </Flex>
             <Search />
           </Flex>
         </S.SidebarHeader>

@@ -51,6 +51,12 @@ export const SidebarHeader = styled.div<StylesProps>`
   width: 100%;
   color: ${theme.palette.black};
 
+  span {
+    font-size: 1.8rem;
+    font-weight: 500;
+    user-select: none;
+  }
+
   ${Search} {
     display: none;
     margin-top: 2rem;
@@ -69,16 +75,27 @@ export const SidebarHeader = styled.div<StylesProps>`
   }
 `;
 
-export const SidebarMenuButton = styled.button`
-  svg {
-    width: 2rem;
-    margin-right: 1rem;
-    fill: ${theme.palette.black};
-  }
+export const SidebarCloseButton = styled.button`
+  padding-top: 1.5rem;
+  border: none;
+  background: none;
+  transform-origin: center;
+  cursor: pointer;
 
   span {
-    font-size: 1.5rem;
-    font-weight: 500;
+    width: 1.8rem;
+    height: 3.475px;
+    display: block;
+    background: ${theme.palette.black};
+    margin: 5.475px;
+
+    &:first-child {
+      transform: rotate(-45deg) translate(4px, -5px);
+    }
+
+    &:last-child {
+      transform: rotate(45deg) translate(-11px, -10px);
+    }
   }
 `;
 
