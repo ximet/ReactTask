@@ -2,7 +2,7 @@ import LocationContext from 'contexts/LocationContext';
 import useGetLocation from 'hooks/useGetLocation';
 import React, { useContext } from 'react';
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
-import Button, { ButtonStyles } from 'components/Button';
+import Button, { ButtonStyles } from 'components/Button/Button';
 import DarkLightThemeContext from 'contexts/ThemeContext';
 import NavbarLink from 'components/NavbarLink/NavbarLink';
 import styles from './styles.module.scss';

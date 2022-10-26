@@ -10,7 +10,10 @@ const SecondaryPagesLayout: FC<LayoutProps> = ({ children }) => {
   const { darkMode } = useContext(DarkLightThemeContext);
 
   return (
-    <main className={`${styles.main} ${darkMode ? styles.mainDark : styles.mainLight}`}>
+    <main
+      className={`${styles.main} ${darkMode ? styles.mainDark : styles.mainLight}`}
+      data-testid="layout"
+    >
       {children}
     </main>
   );
