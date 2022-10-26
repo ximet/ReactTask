@@ -2,9 +2,10 @@ import { getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation } fro
 import LocationContext from 'contexts/LocationContext';
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader, LoaderStyles } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import MainView from 'components/MainView/MainView';
 import useGetData from 'hooks/useGetData';
+import { getCoordsFromString } from 'utils/getCoordsFromString';
 import styles from '../../components/Loader/styles.module.scss';
 
 const Details: React.FC = () => {
@@ -14,12 +15,7 @@ const Details: React.FC = () => {
   useEffect(() => {
     const getLocationData = async () => {
       if (location) {
-        const lon = location.split('(')[1].split(')')[0];
-        const lat = location.split('(')[2].split(')')[0];
-        const searchLocationCoords = {
-          lat: Number(lat),
-          lon: Number(lon)
-        };
+        const searchLocationCoords = getCoordsFromString(location);
         setCoordinates(searchLocationCoords);
       }
     };
@@ -40,7 +36,7 @@ const Details: React.FC = () => {
     return statusMsg || errorMsg ? (
       <div className={styles.loaderContainer}>{statusMsg || errorMsg}</div>
     ) : (
-      <Loader className={LoaderStyles.main} />
+      <Loader />
     );
   }
   return (

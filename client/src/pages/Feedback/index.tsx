@@ -5,7 +5,7 @@ import SecondaryPagesLayout from 'components/layouts/SecondaryPagesLayout';
 import { FeedbackProvider } from 'contexts/FeedbackContext';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getFeedback } from 'redux/actions';
+import { getFeedback } from 'redux/actionsFeedback';
 import styles from './styles.module.scss';
 
 const Feedback = () => {

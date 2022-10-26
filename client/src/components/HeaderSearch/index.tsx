@@ -12,10 +12,11 @@ const HeaderSearch: FC = () => {
   const [displaySearchResults, setDisplaySearchResults] = useState<boolean>(false);
 
   const handleInputFocus = (): void => {
-    return setDisplaySearchResults(true);
+    setDisplaySearchResults(true);
   };
   const handleInputBlur = (): void => {
-    return setDisplaySearchResults(false);
+    setInputValue('');
+    setDisplaySearchResults(false);
   };
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setDisplaySearchResults(true);

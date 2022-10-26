@@ -9,7 +9,7 @@ import feedbackInputsReducer, {
 } from 'reducers/feedbackInputsReducer';
 import { Feedback } from 'types';
 import InputRating from 'components/InputRating/InputRating';
-import { addFeedback } from 'redux/actions';
+import { addFeedback } from 'redux/actionsFeedback';
 import styles from './FeedbackForm.module.scss';
 
 const FeedbackForm: FC = () => {

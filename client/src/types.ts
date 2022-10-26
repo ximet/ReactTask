@@ -115,7 +115,7 @@ export type FeedbackState = {
   error?: string;
 };
 export interface SearchState {
-  prevSearches: any;
+  prevSearches: Feedback[];
 }
 
 export type CombinedState = {

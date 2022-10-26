@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 import { getCurrentWeather, getDailyWeather, getHourlyWeather, getLocation } from 'API/get';
 import LocationContext from 'contexts/LocationContext';
 import useGetData from 'hooks/useGetData';
-import { Loader, LoaderStyles } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import MainView from 'components/MainView/MainView';
 import styles from '../../components/Loader/styles.module.scss';
 
@@ -23,7 +23,7 @@ const Main: FC = () => {
     return statusMsg || errorMsg ? (
       <div className={styles.loaderContainer}>{statusMsg || errorMsg}</div>
     ) : (
-      <Loader className={LoaderStyles.main} />
+      <Loader />
     );
   }
 

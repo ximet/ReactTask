@@ -34,7 +34,7 @@ forecaClient.interceptors.request.use(
 forecaClient.interceptors.response.use(
   async (response: AxiosResponse) => {
     const originalRequest = response.config;
-    if (response.data.status === 401) {
+    if (response.data.status === 401 || response.data.status === 429) {
       const token = await createToken();
       axios.defaults.headers.common.Authorization = `Bearer ${token?.access_token}`;
       return forecaClient(originalRequest);
