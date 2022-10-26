@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as styles from '../../styles/Header.module.css';
-import * as darkStyles from '../../styles/dark_mode/HeaderDark.module.css';
 import cloudLogo from '../../images/cloud.png';
 
 function Header(props) {
@@ -9,7 +8,7 @@ function Header(props) {
 
   return (
     <>
-      <header className={props.darkMode ? darkStyles.header : styles.header}>
+      <header>
         <ul className={styles.leftLinks}>
           <li>
             <Link to="/" className={styles.leftLink}>

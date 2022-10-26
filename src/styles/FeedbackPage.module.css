@@ -19,7 +19,7 @@
 
 .submitBtn {
   height: 35px;
-  color: var(--white);
+  color: var(--textColour1);
   border-style: solid;
   border-width: 2px;
   border-radius: 8px;
@@ -28,5 +28,5 @@
 }
 
 .submitBtnColours {
-  background-color: var(--lightBlue);
+  background-color: var(--backgroundColour1);
 }

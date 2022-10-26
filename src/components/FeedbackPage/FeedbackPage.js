@@ -3,25 +3,24 @@ import { setInLS } from '../../services/localStorage.js';
 import { store } from '../../redux/store.js';
 import { SAVE_USER_FEEDBACK } from '../../redux/actions.js';
 import * as styles from '../../styles/FeedbackPage.module.css';
-import * as darkStyles from '../../styles/dark_mode/FeedbackPageDark.module.css';
 
 function FeedbackPage(props) {
-   if (localStorage.getItem('userInput') === null) {
-      const userInput = {};
-      localStorage.setItem('userInput', JSON.stringify(userInput));
-   }
+  if (localStorage.getItem('userInput') === null) {
+    const userInput = {};
+    localStorage.setItem('userInput', JSON.stringify(userInput));
+  }
 
-   const unsubscribe = store.subscribe(() => {
+  const unsubscribe = store.subscribe(() => {
     console.log('Store changed!', store.getState());
-   });
+  });
 
-   useEffect(() => {
+  useEffect(() => {
     return () => {
       unsubscribe();
     };
-   });
+  });
 
-   const onSubmit = ev => {
+  const onSubmit = ev => {
     ev.preventDefault();
     const form = document.querySelector('form');
 
@@ -41,9 +40,9 @@ function FeedbackPage(props) {
     store.dispatch(SAVE_USER_FEEDBACK(user));
     alert('Thank you for the feedback!');
     form.reset();
-   };
+  };
 
-   return (
+  return (
     <form onSubmit={onSubmit} className={styles.feedbackForm}>
       <h2 className={styles.feedbackHeading}>Give us your feedback!</h2>
       <div className={styles.formGroup}>
@@ -66,9 +65,11 @@ function FeedbackPage(props) {
         </label>
         <input type="text" placeholder="Type your answer here" name="question4"></input>
       </div>
-      <button className={`${styles.submitBtn} ${props.darkMode ? darkStyles.submitBtnColours : styles.submitBtnColours}`}>Submit</button>
+      <button className={styles.submitBtn}>
+        Submit
+      </button>
     </form>
-   );
+  );
 }
 
 export { FeedbackPage };

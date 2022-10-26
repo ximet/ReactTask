@@ -1,11 +1,21 @@
 :root {
-  --lightBlue: #3498db;
-  --blue: #2980b9;
-  --darkBlue: rgb(2, 2, 117);
-  --darkerBlue: rgb(2, 2, 91);
-  --lightPurple: #b393d3;
-  --darkPurple: rgb(75, 4, 75);
-  --white: rgb(255, 255, 255);
-  --grey: #ccc;
-  --black: rgba(0, 0, 0);
+  --backgroundColour1: #3498db;
+  --backgroundColour2: #b393d3;
+  --hoverColour1: #2980b9;
+  --hoverColour2: #ccc;
+  --textColour1: rgb(255, 255, 255);
+  --textColour2: rgba(0, 0, 0);
+  --textColour3: rgb(255, 255, 255);
+  --switchColour: #ccc;
+}
+
+[data-theme="dark"] {
+  --backgroundColour1: rgb(2, 2, 117);
+  --backgroundColour2: rgb(75, 4, 75);
+  --hoverColour1: rgb(2, 2, 91);
+  --hoverColour2: #ccc;
+  --textColour1: rgba(0, 0, 0);
+  --textColour2: rgb(255, 255, 255);
+  --textColour3: rgb(255, 255, 255);
+  --switchColour: #ccc;
 }

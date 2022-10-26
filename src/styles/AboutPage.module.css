@@ -12,15 +12,3 @@ p {
   text-align: center;
   padding: 0 15px 0 15px;
 }
-
-.homeBtn {
-  background-color: var(--lightBlue);
-  text-decoration: none;
-  height: 30px;
-  color: var(--white);
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-}

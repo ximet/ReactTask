@@ -9,24 +9,20 @@
 
 .navBtn {
   flex: 1 1 0;
+  background-color: var(--backgroundColour1);
   height: 50px;
-  color: var(--white);
+  color: var(--textColour3);
   border-style: solid;
   border-width: 2px;
   font-size: 16px;
   cursor: pointer;
 }
 
-
 .navBtn:not(:first-child) {
   border-left: 0;
 }
 
-.navBtnColours {
-  background-color: var(--lightBlue);
-}
-
-.navBtnColours:hover,
-.navBtnColours:focus {
-  background-color: var(--blue);
+.navBtn:hover,
+.navBtn:focus {
+  background-color: var(--hoverColour1);
 }
