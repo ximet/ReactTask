@@ -24,18 +24,14 @@ export const CitySmallCard: FC<SmallCardProps> = ({ lon, lat, cityName }) => {
       setCurrentWeather(res.current)
     );
   }, []);
-  return (
+  return currentWeather ? (
     <>
-      {currentWeather ? (
-        <>
-          <h4>
-            {cityName}, {currentWeather.temperature}°C
-          </h4>
-          <img src={getImgURL(currentWeather.symbol)} alt={currentWeather.symbol} />
-        </>
-      ) : (
-        <Loader />
-      )}
+      <h4>
+        {cityName}, {currentWeather.temperature}°C
+      </h4>
+      <img src={getImgURL(currentWeather.symbol)} alt={currentWeather.symbol} />
     </>
+  ) : (
+    <Loader />
   );
 };

@@ -62,11 +62,11 @@ const Header: FC = () => {
     setIsShowMenu(!isShowMenu);
   };
 
-  const setFalse = () => setIsShowMenu(false);
+  const setFalseInIsShowState = () => setIsShowMenu(false);
 
   const linkToMainHandler = (e: MouseEvent<HTMLAnchorElement>) => {
     changePosition(position.latitude, position.longitude);
-    setFalse();
+    setFalseInIsShowState();
   };
 
   return (
@@ -87,17 +87,17 @@ const Header: FC = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/countries" className={setActive} onClick={setFalse}>
+            <NavLink to="/countries" className={setActive} onClick={setFalseInIsShowState}>
               Countries
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className={setActive} onClick={setFalse}>
+            <NavLink to="/about" className={setActive} onClick={setFalseInIsShowState}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/feedback" className={setActive} onClick={setFalse}>
+            <NavLink to="/feedback" className={setActive} onClick={setFalseInIsShowState}>
               Feedback
             </NavLink>
           </li>
