@@ -5,7 +5,7 @@ import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
 import Button, { ButtonStyles } from 'components/Button/Button';
 import DarkLightThemeContext from 'contexts/ThemeContext';
 import NavbarLink from 'components/NavbarLink/NavbarLink';
-import styles from './styles.module.scss';
+import styles from './Header.module.scss';
 
 const Header: React.FC = ({ children }) => {
   const { setCoordinates, setStatusMsg } = useContext(LocationContext);

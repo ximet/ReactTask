@@ -1,7 +1,7 @@
 import { getHourlyWeather } from 'API/get';
-import CurrentWeatherCard from 'components/CurrentWeatherCard';
-import DailyWeatherCard from 'components/DailyWeatherCard';
-import HourlyWeatherCard from 'components/HourlyWeatherCard';
+import CurrentWeatherCard from 'components/CurrentWeatherCard/CurrentWeatherCard';
+import DailyWeatherCard from 'components/DailyWeatherCard/DailyWeatherCard';
+import HourlyWeatherCard from 'components/HourlyWeatherCard/HourlyWeatherCard';
 import LocationContext from 'contexts/LocationContext';
 import React, { FC, useState, useContext, useRef } from 'react';
 import { DailyWeather, HourlyWeather, LocationData, CurrentWeatherData } from 'types';

@@ -4,7 +4,7 @@ import { CgDarkMode } from 'react-icons/cg';
 import { MdWbSunny } from 'react-icons/md';
 import { FaTemperatureLow } from 'react-icons/fa';
 import { getBannerImage } from 'utils/getImages';
-import styles from './styles.module.scss';
+import styles from './Info.module.scss';
 
 const linkIcons = [
   {

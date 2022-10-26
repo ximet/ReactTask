@@ -1,12 +1,12 @@
 import { getLocationByQuery } from 'API/get';
 import Button, { ButtonStyles } from 'components/Button/Button';
-import Header from 'components/Header';
+import Header from 'components/Header/Header';
 import LocationContext from 'contexts/LocationContext';
 import React, { FC, useContext, useState } from 'react';
 import { VscSearch } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import { formatNameForUrl, isInputValid } from 'utils/stringCorrections';
-import styles from './styles.module.scss';
+import styles from './HeaderSearch.module.scss';
 
 const HeaderSearch: FC = () => {
   const { setCoordinates, setStatusMsg } = useContext(LocationContext);
