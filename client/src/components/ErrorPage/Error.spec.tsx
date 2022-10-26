@@ -1,46 +1,45 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter, Route } from 'react-router-dom';
-import Button, { ButtonStyles } from 'components/Button/Button';
-import Routes from 'components/Routes';
-import Main from 'pages/Main';
-import SecondaryPagesLayout from 'components/layouts/SecondaryPagesLayout';
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import Error from './Error';
 
 const testIds = {
   title404: 'title-404',
+  link: 'homeLink',
   button: 'button',
-  layout: 'layout'
+  layout: 'layout',
+  homePage: 'homePage',
+  buttonLink: 'buttonLink'
 };
 
 describe('Error tests', () => {
   test('error is rendering', async () => {
-    <MemoryRouter>{render(<Error />, { wrapper: BrowserRouter })}</MemoryRouter>;
+    render(<Error />, { wrapper: MemoryRouter });
     expect(screen.getByText(/404 - No page found/i)).toBeInTheDocument();
     expect(screen.getByTestId(testIds.title404)).toBeInTheDocument();
+    expect(screen.getByTestId(testIds.link)).toBeInTheDocument();
+    const buttonElement = screen.getByText(/Return Home/i);
+    expect(buttonElement).toBeInTheDocument();
   });
 
-  test('button is rendering', async () => {
-    render(<Button type="button" children="Return Home" className={ButtonStyles.ErrorBtn} />);
-    expect(screen.getByTestId(testIds.button)).toBeInTheDocument();
+  test('should be a link that have href value to "/"', () => {
+    render(<Error />, { wrapper: MemoryRouter });
+    const link = screen.getByTestId(testIds.link);
+    expect(link.getAttribute('href')).toBe('/');
   });
 
-  test('SecondaryPagesLayout is rendering', async () => {
-    render(<SecondaryPagesLayout children={undefined} />);
-    expect(screen.getByTestId(testIds.layout)).toBeInTheDocument();
-  });
-
-  test('User can navigate to a home page', async () => {
+  test('when button clicks, there is link to "/"', async () => {
     render(
       <MemoryRouter>
-        <Routes>
-          <Route index element={<Main />} />
-        </Routes>
+        <Error />
       </MemoryRouter>
     );
-    const links: HTMLAnchorElement[] = screen.getAllByRole('link');
-    expect(links[0].textContent).toEqual('Home');
-    expect(links[0].href).toContain('/');
+    const user = userEvent.setup();
+    const buttonElement = screen.getByText(/Return Home/i);
+    await user.click(buttonElement);
+    const link = screen.getByTestId(testIds.link);
+    expect(link.getAttribute('href')).toBe('/');
   });
 });

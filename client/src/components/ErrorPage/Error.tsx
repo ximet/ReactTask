@@ -17,9 +17,9 @@ const Error: FC = () => {
           been removed.
         </p>
         <p>Try again or return to our homepage, where you can find all the latest news.</p>
-        <Link to="/">
+        <Link to="/" data-testid="homeLink">
           <div className={styles.buttonBox}>
-            <Button type="button" className={ButtonStyles.ErrorBtn}>
+            <Button data-testid="buttonLink" type="button" className={ButtonStyles.ErrorBtn}>
               Return Home
             </Button>
           </div>
