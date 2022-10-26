@@ -1,7 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Error from './Error';
 
@@ -30,16 +29,9 @@ describe('Error tests', () => {
     expect(link.getAttribute('href')).toBe('/');
   });
 
-  test('when button clicks, there is link to "/"', async () => {
-    render(
-      <MemoryRouter>
-        <Error />
-      </MemoryRouter>
-    );
-    const user = userEvent.setup();
-    const buttonElement = screen.getByText(/Return Home/i);
-    await user.click(buttonElement);
-    const link = screen.getByTestId(testIds.link);
-    expect(link.getAttribute('href')).toBe('/');
+  test('navigation to home page', () => {
+    render(<Error />, { wrapper: MemoryRouter });
+    fireEvent.click(screen.getByTestId(testIds.link));
+    expect(window.location.pathname).toBe('/');
   });
 });
