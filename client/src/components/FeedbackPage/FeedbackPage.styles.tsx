@@ -72,13 +72,6 @@ export const FeedbackFormGroup = styled.div`
   }
 `;
 
-export const FeedbackFormError = styled.p`
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: ${theme.palette.error};
-`;
-
 export const FeedbackFormBlobOne = styled.div`
   ${blobContainer}
   top: 80vh;
