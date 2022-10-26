@@ -8,6 +8,9 @@ import { setSidebarOpen } from 'redux/actionCreators/global';
 // Custom hooks
 import useOnClickOutside from 'hooks/useOnClickOutside';
 
+// Components
+import Search from 'components/Search/Search';
+
 // Assets
 import { IconMenu } from 'assets/images/svg';
 
@@ -44,9 +47,14 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ open }) => {
     <S.Sidebar role="menu" ref={sidebarRef} open={open}>
       <Flex directionColumn alignFlexStart>
         <S.SidebarHeader>
-          <Flex>
-            <IconMenu />
-            <span>Weather App</span>
+          <Flex directionColumn>
+            <S.SidebarMenuButton>
+              <Flex>
+                <IconMenu />
+                <span>Weather App</span>
+              </Flex>
+            </S.SidebarMenuButton>
+            <Search />
           </Flex>
         </S.SidebarHeader>
         <S.SidebarBody>

@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import theme from 'styles/theme';
-
 import { StylesProps } from 'types';
+
+import { breakpoints } from 'styles/breakpoints';
+import theme from 'styles/theme';
 
 interface WidgetStyles extends StylesProps {
   color?: string;
@@ -33,10 +34,6 @@ export const Widget = styled.article<WidgetStyles>`
   pointer-events: ${({ pointerEvents }: WidgetStyles) =>
     pointerEvents === 'true' ? 'auto' : 'none'};
   user-select: none;
-
-  &:not(:last-of-type) {
-    margin-right: 2rem;
-  }
 `;
 
 export const WidgetHeader = styled.div<WidgetStyles>`
@@ -64,7 +61,7 @@ export const WidgetHeader = styled.div<WidgetStyles>`
 export const WidgetBody = styled.div<WidgetStyles>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 0.75rem 1rem 1.25rem 1rem;
 
   ${({ color, active }) =>
@@ -83,6 +80,10 @@ export const WidgetDetails = styled.div<StylesProps>`
 
 export const WidgetDetailsTop = styled.div<StylesProps>`
   margin-bottom: 0.5rem;
+
+  @media ${breakpoints.largeLandscape} {
+    text-align: center;
+  }
 `;
 
 export const WidgetDetailsBottom = styled.div<WidgetStyles>`

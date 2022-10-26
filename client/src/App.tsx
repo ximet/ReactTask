@@ -15,13 +15,15 @@ import Layout from 'hoc/Layout/Layout';
 const LocationPage = React.lazy(() => import('components/LocationPage/LocationPage'));
 const AboutPage = React.lazy(() => import('components/AboutPage/AboutPage'));
 const FeedbackPage = React.lazy(() => import('components/FeedbackPage/FeedbackPage'));
+const NotFoundPage = React.lazy(() => import('components/NotFoundPage/NotFoundPage'));
 
 // Routes
 const routes = [
   { path: '/', name: 'Home', Component: LocationPage },
   { path: '/locations/:locationId', name: 'Location', Component: LocationPage },
   { path: '/about', name: 'About', Component: AboutPage },
-  { path: '/feedback', name: 'Feedback', Component: FeedbackPage }
+  { path: '/feedback', name: 'Feedback', Component: FeedbackPage },
+  { path: '*', name: '404', Component: NotFoundPage }
 ];
 
 const App: FunctionComponent = () => {

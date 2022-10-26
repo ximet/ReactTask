@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { StylesProps } from 'types';
 
 import theme from 'styles/theme';
+import { breakpoints } from 'styles/breakpoints';
 import { HEADER_HEIGHT } from 'styles/constants';
+import { Flex } from 'styles/global';
 import { blobContainer, sectionRoot } from 'styles/mixins';
 
 export const FeedbackHeroSection = styled.section`
   ${sectionRoot}
-  height: calc(100vh - ${HEADER_HEIGHT}rem);
 
   svg {
     align-self: center;
@@ -19,10 +20,29 @@ export const FeedbackHeroSection = styled.section`
     path {
       stroke: none;
     }
+
+    @media (orientation: portrait) {
+      margin-left: 12vw;
+    }
   }
 
   button:first-of-type {
     margin-right: 2rem;
+  }
+
+  ${Flex}:first-child {
+    @media (orientation: portrait) {
+      flex-direction: column;
+    }
+  }
+
+  @media ${breakpoints.iPadLandscape}, ${breakpoints.largeLandscape} {
+    padding-top: 10vh;
+  }
+
+  @media (orientation: landscape) and (min-height: 37.5em) {
+    height: calc(100vh - ${HEADER_HEIGHT}rem);
+    margin-bottom: 0;
   }
 `;
 
@@ -74,16 +94,48 @@ export const FeedbackFormGroup = styled.div`
 
 export const FeedbackFormBlobOne = styled.div`
   ${blobContainer}
-  top: 80vh;
-  left: -20vw;
-  width: 50vw;
+  top: -35vh;
+  right: -15vw;
+
+  @media (orientation: landscape) {
+    width: 45vw;
+    max-width: 60rem;
+  }
+
+  @media ${breakpoints.lg} {
+    width: 60vw;
+  }
+
+  @media (orientation: portrait) {
+    width: 50vh;
+  }
 `;
 
 export const FeedbackFormBlobTwo = styled.div`
   ${blobContainer}
-  top: -35vh;
-  right: -15vw;
-  width: 50vw;
+  height: max-content;
+
+  @media (orientation: landscape) {
+    bottom: -20%;
+    left: -20vw;
+    width: 45vw;
+    max-width: 60rem;
+  }
+
+  @media ${breakpoints.lg} {
+    bottom: -15%;
+    width: 60vw;
+  }
+
+  @media (orientation: portrait) {
+    top: 60%;
+    left: -20vw;
+    width: 50vh;
+  }
+
+  @media ${breakpoints.sm} {
+    left: -30vw;
+  }
 `;
 
 export const FeedbackTestimonialsSection = styled.section`
@@ -123,6 +175,10 @@ export const FeedbackTestimonialTop = styled.div`
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.4;
+
+    @media ${breakpoints.sm} {
+      font-size: 1rem;
+    }
   }
 `;
 

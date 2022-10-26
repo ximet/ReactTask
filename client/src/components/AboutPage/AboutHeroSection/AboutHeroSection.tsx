@@ -17,19 +17,21 @@ const AboutHeroSection: FunctionComponent = () => (
   <S.AboutHeroSection>
     <Wave />
     <Container>
-      <Flex alignFlexStart>
+      <Flex>
         <S.AboutHeroContent>
           <Headline>
             <span>Learn More</span>
             We provide weather predictions in your city
           </Headline>
           <p>Easy steps to predict the weather and make your day easier</p>
-          <Link to="/">
-            <Button type="button" aria-label="Go to dashboard page">
-              Get Started
-            </Button>
-          </Link>
-          <a href="#how-it-works">See How It Works</a>
+          <Flex justifyFlexStart>
+            <Link to="/">
+              <Button type="button" aria-label="Go to dashboard page">
+                Get Started
+              </Button>
+            </Link>
+            <a href="#how-it-works">See How It Works</a>
+          </Flex>
         </S.AboutHeroContent>
         <S.AboutHeroImage>
           <img src={heroImg1} alt="App preview" />

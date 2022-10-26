@@ -9,10 +9,13 @@ export const Search = styled.div<StylesProps>`
   display: flex;
   align-items: center;
   width: 50%;
+  margin: 0 1rem;
 
   svg {
     position: absolute;
+    top: 50%;
     left: 2rem;
+    transform: translate(0, -50%);
   }
 
   input {

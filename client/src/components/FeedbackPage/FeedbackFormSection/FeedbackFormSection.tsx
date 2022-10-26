@@ -112,9 +112,9 @@ const FeedbackFormSection: FunctionComponent = () => {
 
   return (
     <S.FeedbackFormSection id="survey">
-      <S.FeedbackFormBlobTwo>
+      <S.FeedbackFormBlobOne>
         <IconBlobTwo />
-      </S.FeedbackFormBlobTwo>
+      </S.FeedbackFormBlobOne>
       <Container>
         <Flex directionColumn>
           <h2>Fill Form Below</h2>
@@ -147,9 +147,9 @@ const FeedbackFormSection: FunctionComponent = () => {
           </form>
         </Flex>
       </Container>
-      <S.FeedbackFormBlobOne>
+      <S.FeedbackFormBlobTwo>
         <IconBlobOne />
-      </S.FeedbackFormBlobOne>
+      </S.FeedbackFormBlobTwo>
     </S.FeedbackFormSection>
   );
 };
