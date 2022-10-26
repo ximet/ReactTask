@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 
 import { getGraphDates } from 'utils/helpers';
-import { DailyWeatherType } from 'types/weatherTypes';
 import { useGraphSettings } from 'hooks/useGraphSettings';
 import { GOLD_COLOR, DODGER_BLUE_COLOR } from 'utils/colorsConstants';
 import { useAppSelector } from 'store/hooks';

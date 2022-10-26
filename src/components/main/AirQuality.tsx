@@ -10,6 +10,8 @@ import { layerSelector } from 'store/layer/layerSelectors';
 import { loadHourlyWeather } from 'store/hourlyWeather/hourlyWeatherActions';
 import { hourlyWeatherSelector } from 'store/hourlyWeather/hourlyWeatherSelectors';
 
+import ErrorMessage from 'components/error/ErrorMessage';
+
 const AirQuality: FC = () => {
   const dispatch = useHourlyWeatherDispatch();
   const layer = useAppSelector(layerSelector);
@@ -26,7 +28,7 @@ const AirQuality: FC = () => {
   return (
     <>
       {loading && <Loader />}
-      {error && <h3>Oops: {error}</h3>}
+      {error && <ErrorMessage />}
       {weather && !loading && <HourlySection />}
     </>
   );

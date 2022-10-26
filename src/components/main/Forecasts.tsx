@@ -16,6 +16,7 @@ import { LocationInfoType } from 'types/cityInfoType';
 import { ViewType } from 'types/viewType';
 import { defaultLocationInfo } from './defaultStates';
 import { CurrentWeatherDispatch } from 'store/currentWeather/types';
+import ErrorMessage from 'components/error/ErrorMessage';
 
 const Forecasts: FC = () => {
   const [location, setLocation] = useState<LocationInfoType>(defaultLocationInfo);
@@ -40,7 +41,7 @@ const Forecasts: FC = () => {
   return (
     <>
       {loading && <Loader />}
-      {loadingError && <h3>Oops: {loadingError}</h3>}
+      {loadingError && <ErrorMessage />}
       {currentWeather && !loading && (
         <>
           <MainCard currentWeather={currentWeather} location={location} />
