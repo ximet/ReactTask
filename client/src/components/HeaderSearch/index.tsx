@@ -1,4 +1,5 @@
-import Button, { ButtonStyles } from 'components/Button';
+import { getLocationByQuery } from 'API/get';
+import Button, { ButtonStyles } from 'components/Button/Button';
 import Header from 'components/Header';
 import SearchResultslist from 'components/SearchResultsList/SearchResultsList';
 import LocationContext from 'contexts/LocationContext';
