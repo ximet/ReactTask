@@ -6,7 +6,6 @@ const useGetSearchRequest = (inputValue: string) => {
   const [searchData, setSearchData] = useState<LocationByQuery>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
-
   const getLocations = useCallback(async () => {
     try {
       const locationData = await getLocationByQuery(inputValue);
@@ -18,8 +17,8 @@ const useGetSearchRequest = (inputValue: string) => {
   }, [inputValue]);
 
   useEffect(() => {
-    setIsLoading(true);
     if (inputValue) {
+      setIsLoading(true);
       getLocations();
     }
   }, [getLocations, inputValue]);
@@ -27,7 +26,8 @@ const useGetSearchRequest = (inputValue: string) => {
   return {
     searchData,
     isLoading,
-    errorMsg
+    errorMsg,
+    setSearchData
   };
 };
 

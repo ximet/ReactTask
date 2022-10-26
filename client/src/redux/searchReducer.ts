@@ -29,8 +29,8 @@ export const searchReducer = (
         prevSearches
       };
     }
-    if (state.prevSearches.length > 6) {
-      const slicedPrevSearches = [...state.prevSearches].slice(0, 6);
+    if (state.prevSearches.length > 3) {
+      const slicedPrevSearches = [...state.prevSearches].slice(0, 3);
       const prevSearches = [action.payload, ...slicedPrevSearches];
       setInStorage(SEARCH_LOCALSTORAGE_LABEL, prevSearches);
       return {
@@ -49,5 +49,5 @@ export const searchReducer = (
 };
 
 export const prevSearchSelector = state => {
-  return { currentLocation: state.currentLocation, prevSearches: state.prevSearches };
+  return state.search.prevSearches;
 };

@@ -1,4 +1,4 @@
-import { Loader } from 'components/Loader/Loader';
+import { Loader, LoaderStyles } from 'components/Loader/Loader';
 import SearchSavedLocations from 'components/SearchSavedLocations/SearchSavedLocations';
 import DarkLightThemeContext from 'contexts/ThemeContext';
 import { useDebounce } from 'hooks/useDebounce';
@@ -12,21 +12,24 @@ import styles from './SearchResultsList.module.scss';
 
 const SearchResultslist = ({ inputValue, display, resultSelected }) => {
   const { darkMode } = useContext(DarkLightThemeContext);
-  const { prevSearches } = useSelector(prevSearchSelector);
+  const prevSearches = useSelector(prevSearchSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const debouncedInputValue: string = useDebounce(inputValue);
-  const { searchData, isLoading } = useGetSearchRequest(debouncedInputValue);
+  const { searchData, isLoading, setSearchData } = useGetSearchRequest(debouncedInputValue);
 
-  const clickHandler = useCallback(
+  const handleClick = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const target = event.target as HTMLDivElement;
       resultSelected();
-      const urlLocationName = formatNameForUrl(`${target.dataset.name}-${target.dataset.country}`);
+      const urlLocationName = formatNameForUrl(
+        `${target.dataset.name}(${target.dataset.lon})-(${target.dataset.lat})`
+      );
       navigate(`/details/${urlLocationName}`);
-      dispatch({ type: SEARCH_SAVE_LOCATION, payload: target.dataset.name });
+      dispatch({ type: SEARCH_SAVE_LOCATION, payload: urlLocationName });
+      setSearchData(undefined);
     },
-    [dispatch, navigate, resultSelected]
+    [dispatch, navigate, resultSelected, setSearchData]
   );
 
   if (!display) return <> </>;
@@ -34,18 +37,18 @@ const SearchResultslist = ({ inputValue, display, resultSelected }) => {
   return (
     <ul className={`${styles.container} ${darkMode ? styles.dark : styles.light}`}>
       {isLoading ? (
-        <Loader />
+        <Loader className={LoaderStyles.search} />
       ) : (
         searchData?.locations.slice(0, 10).map(({ lon, lat, id, name, country }) => {
-          console.log('lon', lon, lat);
           return (
             <li className={styles.listElement} key={id}>
               <div
                 className={styles.locationName}
                 id={id.toString()}
-                onMouseDown={clickHandler}
-                data-name={name}
-                data-country={country}
+                onMouseDown={handleClick}
+                data-lon={lon}
+                data-lat={lat}
+                data-name={`${name}-${country}`}
               >
                 {name}, {country}
               </div>
@@ -54,13 +57,19 @@ const SearchResultslist = ({ inputValue, display, resultSelected }) => {
         })
       )}
       <li>
-        <div className={styles.previousSearches}>
-          <b>Previous searches:</b>
-        </div>
+        <div className={styles.previousSearches}>Previous searches:</div>
+        <hr />
       </li>
       {prevSearches?.map(savedSearch => {
-        return <SearchSavedLocations clickHandler={clickHandler} savedSearch={savedSearch} />;
+        return (
+          <SearchSavedLocations onClick={handleClick} savedSearch={savedSearch} key={savedSearch} />
+        );
       })}
+      {!prevSearches.length && (
+        <li className={styles.listElement}>
+          <div className={styles.locationName}>No saved locations</div>
+        </li>
+      )}
     </ul>
   );
 };

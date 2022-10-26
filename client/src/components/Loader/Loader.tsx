@@ -1,9 +1,16 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
 
-export const Loader: FC = () => {
+export enum LoaderStyles {
+  search = 'searchContainer',
+  main = 'loaderContainer'
+}
+interface LoaderProps {
+  className: string;
+}
+export const Loader: FC<LoaderProps> = ({ className }) => {
   return (
-    <div className={styles.loaderContainer}>
+    <div className={styles[className]}>
       <div className={styles.ldsEllipsis}>
         <div />
         <div />
