@@ -139,4 +139,3 @@ export interface SearchActionConfig {
   type: SearchActions;
   payload: string;
 }
-

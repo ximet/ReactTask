@@ -5,7 +5,7 @@ import { feedbackSelector } from 'redux/feedbackReducer';
 import { Feedback } from 'types';
 
 const FeedbackList = () => {
-const { feedback } = useSelector(feedbackSelector);
+  const { feedback } = useSelector(feedbackSelector);
 
   return (
     <div>
