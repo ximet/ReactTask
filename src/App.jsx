@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Header } from './components/Header/Header.js';
 import { Footer } from './components/Footer/Footer.js';
 import { HomePage } from './components/Homepage/HomePage.js';
@@ -5,17 +6,29 @@ import { CityPage } from './components/CityPage/CityPage.js';
 import { AboutPage } from './components/AboutPage/AboutPage.js';
 import { ErrorPage } from './components/ErrorPage/ErrorPage.js';
 import { FeedbackPage } from './components/FeedbackPage/FeedbackPage.js';
-import * as appStyles from './styles/App.module.css';
+import * as styles from './styles/App.module.css';
 import { useAuthorize } from './customHooks/useAuthorize.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   useAuthorize();
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleMode = () => {
+    if (darkMode) {
+      document.querySelector('body').dataset.theme = 'light';
+      setDarkMode(false);
+    } else {
+      document.querySelector('body').dataset.theme = 'dark';
+      setDarkMode(true);
+    }
+  };
+
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header toggleMode={toggleMode} />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />

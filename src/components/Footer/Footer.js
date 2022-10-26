@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as footerStyles from '../../styles/Footer.module.css';
+import * as styles from '../../styles/Footer.module.css';
 
 function Footer(props) {
   const [time, setTime] = useState(null);
@@ -29,7 +29,9 @@ function Footer(props) {
     }
   };
 
-  return <footer>{footerSpan}</footer>;
+  return (
+    <footer>{footerSpan}</footer>
+  );
 }
 
 export { Footer };

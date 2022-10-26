@@ -18,12 +18,15 @@
 }
 
 .submitBtn {
-  background-color: var(--lightBlue);
   height: 35px;
-  color: var(--white);
+  color: var(--textColour1);
   border-style: solid;
   border-width: 2px;
   border-radius: 8px;
   font-size: 18px;
   cursor: pointer;
+}
+
+.submitBtnColours {
+  background-color: var(--backgroundColour1);
 }

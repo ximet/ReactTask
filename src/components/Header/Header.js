@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as styles from '../../styles/Header.module.css';
 import cloudLogo from '../../images/cloud.png';
@@ -30,6 +30,12 @@ function Header(props) {
             <Link to="/feedback" className={styles.rightLink}>
               Feedback
             </Link>
+          </li>
+          <li>
+            <label className={styles.switch}>
+              <input type="checkbox"></input>
+              <span className={styles.slider} onClick={() => props.toggleMode()}></span>
+            </label>
           </li>
         </ul>
       </header>
