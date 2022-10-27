@@ -27,3 +27,23 @@ export const makeRequiredLabel = (label: string | undefined): string => {
   });
   return `* ${capitalizeWords}`;
 };
+
+export const convertStringCharacters = phrase => {
+  let returnString = phrase;
+  returnString = returnString.replace(/š/g, 's');
+  returnString = returnString.replace(/Š/g, 'S');
+  returnString = returnString.replace(/ū/g, 'u');
+  returnString = returnString.replace(/Ū/g, 'U');
+  returnString = returnString.replace(/ų/g, 'u');
+  returnString = returnString.replace(/ę/g, 'e');
+  returnString = returnString.replace(/ė/g, 'e');
+  returnString = returnString.replace(/Ė/g, 'E');
+  returnString = returnString.replace(/ą/g, 'a');
+  returnString = returnString.replace(/į/g, 'i');
+  returnString = returnString.replace(/č/g, 'c');
+  returnString = returnString.replace(/Č/g, 'C');
+
+  returnString = returnString.replace(/\s/g, '-');
+
+  return returnString;
+};

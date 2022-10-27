@@ -7,7 +7,7 @@ import { feedbackSelector } from 'redux/feedbackReducer';
 import styles from './FeedbackStats.module.scss';
 
 const FeedbackStats = () => {
-  const feedback = useSelector(feedbackSelector);
+  const { feedback } = useSelector(feedbackSelector);
 
   return (
     <div className={styles.container}>
