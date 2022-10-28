@@ -6,9 +6,7 @@ import styles from '../styles.scss';
 
 function Header() {
   const theme = useSelector(state => state.theme.theme);
-  const dispatch = useDispatch();
   function switchTheme() {
-    // dispatch(setTheme(themeName));
     function deleteThemeData() {
       delete document.body.dataset.theme;
     }
@@ -16,12 +14,6 @@ function Header() {
     dataset ? deleteThemeData() : document.body.setAttribute('data-theme', theme);
   }
 
-  useEffect(() => {
-    // const backgroundColorHeader = `var(--background-color-${theme})`;
-    // const backgroundColorMain = `var(--background-color-main-${theme})`;
-    // document.body.style.setProperty('--background-color', backgroundColorHeader);
-    // document.body.style.setProperty('--background-color-main', backgroundColorMain);
-  }, [theme]);
   return (
     <nav className={styles.appheader}>
       <div>
