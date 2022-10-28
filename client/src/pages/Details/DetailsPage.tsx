@@ -49,6 +49,6 @@ const Details: React.FC = () => {
       hourlyForecast={hourlyForecast}
     />
   );
-};  
+};
 
 export default Details;
