@@ -1,5 +1,6 @@
 import Button, { ButtonStyles } from 'components/Button/Button';
 import Input from 'components/Input/Input';
+import Button, { ButtonStyles } from 'components/Button/Button';
 import React, { ChangeEvent, FC, useReducer, Reducer } from 'react';
 import { useDispatch } from 'react-redux';
 import feedbackInputsReducer, {
