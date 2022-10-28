@@ -1,6 +1,6 @@
 import DarkLightThemeContext from 'contexts/ThemeContext';
 import React, { useContext } from 'react';
-import styles from './styles.module.scss';
+import styles from './Footer.module.scss';
 
 const Footer = () => {
   const { darkMode } = useContext(DarkLightThemeContext);

@@ -17,10 +17,22 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "downlevelIteration": true,
-    "lib": ["ESNext", "dom", "dom.iterable"],
+    "lib": [
+      "ESNext",
+      "dom",
+      "dom.iterable"
+    ],
     "sourceMap": true,
     "noImplicitAny": false
   },
-  "exclude": ["node_modules", "build"],
-  "include": ["src", "__mocks__", "jest.config.js"]
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "include": [
+    "src",
+    "__mocks__/Data",
+    "__mocks__",
+    "jest.config.js"
+  ]
 }

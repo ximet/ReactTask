@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from 'components/Footer';
-import HeaderSearch from 'components/HeaderSearch';
+import Footer from 'components/Footer/Footer';
+import HeaderSearch from 'components/HeaderSearch/HeaderSearch';
 
 const LayoutSearch = () => {
   return (

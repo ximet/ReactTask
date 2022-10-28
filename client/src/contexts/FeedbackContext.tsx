@@ -1,5 +1,5 @@
 import { getFromStorage, setInStorage } from 'API/localStorage';
-import { mockFeedbackData } from 'components/Data/mockFeedbackData';
+import { mockFeedbackData } from 'assets/Data/mockFeedbackData';
 import { FEEDBACK_LOCALSTORAGE_LABEL } from 'constants/labels';
 import React, { createContext, FC, useState, useCallback, useEffect } from 'react';
 import { Feedback } from 'types';
@@ -15,7 +15,6 @@ const FeedbackContext = createContext<FeedbackContextData>({
     return null;
   }
 });
-
 export const FeedbackProvider: FC<React.ReactNode> = ({ children }) => {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
 
