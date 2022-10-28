@@ -1,4 +1,5 @@
 import Input from 'components/Input/Input';
+import Button, { ButtonStyles } from 'components/Button/Button';
 import React, { ChangeEvent, FC, useReducer, Reducer } from 'react';
 import { useDispatch } from 'react-redux';
 import feedbackInputsReducer, {
@@ -8,8 +9,7 @@ import feedbackInputsReducer, {
 } from 'reducers/feedbackInputsReducer';
 import { Feedback } from 'types';
 import InputRating from 'components/InputRating/InputRating';
-import { addFeedback } from 'redux/actions';
-import Button, { ButtonStyles } from 'components/Button/Button';
+import { addFeedback } from 'redux/actionsFeedback';
 import styles from './FeedbackForm.module.scss';
 
 const FeedbackForm: FC = () => {

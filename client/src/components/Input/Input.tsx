@@ -36,7 +36,7 @@ const Input: FC<InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
           value={value}
           onChange={onChange}
           onBlur={onChange}
-          className={`${styles.input} ${darkMode ? styles.dark : styles.light}`}
+          className={`${styles.textarea} ${darkMode ? styles.dark : styles.light}`}
         />
       ) : (
         <input

@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
 
-export const Loader: FC = () => {
+interface LoaderProps {
+  className?: string;
+}
+export const Loader: FC<LoaderProps> = ({ className }) => {
   return (
-    <div className={styles.loaderContainer}>
+    <div className={`${styles.loaderContainer} ${className}`}>
       <div className={styles.ldsEllipsis}>
         <div />
         <div />

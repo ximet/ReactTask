@@ -1,0 +1,57 @@
+@import '../../styles/variables.scss';
+
+.container {
+  margin: 40px auto;
+  background-color: white;
+  height: 30vh;
+  width: 95%;
+  overflow-y: scroll;
+  border-radius: 0.5rem;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 2%;
+  z-index: 2;
+
+  .listElement {
+    display: flex;
+    align-content: center;
+    width: 100%;
+    height: 50px;
+    padding-left: 50px;
+
+    &:hover {
+      background-color: $hovergrey;
+    }
+
+    .locationName {
+      text-align: left;
+      list-style: none;
+      text-decoration: none;
+      color: $darkgrey;
+      padding: 20px;
+      cursor: pointer;
+
+      &.liCurrent {
+        font-style: italic;
+      }
+    }
+  }
+
+  .previousSearches {
+    text-align: left;
+    list-style: none;
+    margin: 0 2rem;
+    font-style: italic;
+    border-bottom: none;
+    padding: 10px;
+  }
+
+  &.dark {
+    background-color: $footergrey;
+
+    .listElement:hover {
+      color: $lightgrey;
+    }
+  }
+}
