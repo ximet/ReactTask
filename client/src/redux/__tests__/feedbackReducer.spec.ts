@@ -7,7 +7,7 @@ import {
   FEEDBACK_REQUEST_START,
   FEEDBACK_REQUEST_SUCCESS
 } from 'redux/feedbackReducer';
-import { mockFeedbackData } from 'components/Data/mockFeedbackData';
+import { mockFeedbackData } from 'assets/Data/mockFeedbackData';
 
 describe('feedback reducer', () => {
   test('should return the initial state', () => {

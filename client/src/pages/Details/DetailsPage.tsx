@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import MainView from 'components/MainView/MainView';
 import useGetData from 'hooks/useGetData';
 import { getCoordsFromString } from 'utils/getCoordsFromString';
-import styles from '../../components/Loader/styles.module.scss';
+import styles from '../../components/Loader/Loader.module.scss';
 
 const Details: React.FC = () => {
   const { setCoordinates, statusMsg } = useContext(LocationContext);

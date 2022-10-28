@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { HourlyWeather } from 'types';
 import { getSymbol } from 'utils/getImages';
-import styles from './styles.module.scss';
+import styles from './HourlyWeatherCard.module.scss';
 
 interface HourForecast {
   hourWeather: HourlyWeather;

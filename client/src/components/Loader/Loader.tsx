@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styles from './styles.module.scss';
+import styles from './Loader.module.scss';
 
 interface LoaderProps {
   className?: string;

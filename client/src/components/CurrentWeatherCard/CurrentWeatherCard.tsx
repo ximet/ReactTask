@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { LocationData, CurrentWeatherData } from 'types';
 import { getSymbol } from 'utils/getImages';
-import styles from './styles.module.scss';
+import styles from './CurrentWeatherCard.module.scss';
 
 type WeatherProps = {
   weatherData: CurrentWeatherData | null;
