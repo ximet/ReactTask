@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
 @import './helper/variables';
+
+:root {
+  --background-color: white;
+  --background-color-header: teal;
+  --color: $colorUISecondary;
+}
+[data-theme] {
+  --background-color: gray;
+  --background-color-header: rgb(66, 64, 64);
+  --color: white;
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
   margin: 0 auto;
+  background-color: var(--background-color);
 }
 
 .mainPage {
@@ -29,6 +42,7 @@ body {
   height: 20px;
   border-radius: 8px;
   border: 2px solid $colorUISecondary;
+  background-color: var(--background-color-main);
 }
 
 .search {
@@ -37,7 +51,7 @@ body {
   align-items: center;
   p {
     margin-bottom: 2px;
-    color: $colorUISecondary;
+    color: var(--color);
   }
 }
 .buttons {
@@ -53,7 +67,8 @@ body {
 }
 
 .appheader {
-  background-color: $colorUIPrimary;
+  background-color: var(--background-color-header);
+
   height: 55px;
   display: flex;
   justify-content: space-between;
@@ -74,7 +89,7 @@ body {
 }
 
 .appfooter {
-  background-color: $colorUIPrimary;
+  background-color: var(--background-color-header);
   height: 55px;
   display: flex;
   align-items: center;

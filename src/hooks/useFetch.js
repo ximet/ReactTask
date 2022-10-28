@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { API_EDPOIONTS, STORAGE_TOKEN } from '../helper/variables';
 
 function useFetch(endpoint, param) {
   const [isLoading, setIsLoading] = useState(false);
