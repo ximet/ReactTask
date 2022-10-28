@@ -1,5 +1,5 @@
 import { getFromStorage, setInStorage } from 'API/localStorage';
-import { mockFeedbackData } from 'components/Data/mockFeedbackData';
+import { mockFeedbackData } from 'assets/Data/mockFeedbackData';
 import { FEEDBACK_LOCALSTORAGE_LABEL } from 'constants/labels';
 import {
   FEEDBACK_REQUEST_FAILED,
